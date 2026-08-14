@@ -1,0 +1,3996 @@
+=== JS Logic in C:\Users\nflgd\.claude\ViaMX_Global_Publico\index.html ===
+Found 2 script tags.
+
+--- Found keyword: loadCatalogData at char 99820 ---
+}
+
+    // Cargar catálogo local con fallback asíncrono y normalización universal
+    async function loadCatalogData() {
+      let data = null;
+      try {
+        const response = await fetch('docs/data/catalog.json');
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        }
+      } catch (e) {
+        console.warn("Error cargando catálogo remoto, intentando fallback local...");
+        try {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        } catch (inner_e) {
+          console.warn("Fallo total de red. Utilizando catálogo de fallbacks de alta gama.");
+        }
+      }
+
+      if (data) {
+        let productsArray = [];
+        if (Array.isArray(data)) {
+          productsArray = data;
+        } else if (data && Array.isArray(data.products)) {
+          productsArray = data.products;
+          // Guardar datos en el motor universal si es el formato del crawler
+          window.VIA_MX_PRO_ENGINE.catalog_data = data;
+        }
+
+        if (productsArray.length > 0) {
+          productsArray.forEach(jsonProd => {
+            // Normalizar producto del crawler nuevo al formato del chasis base
+            const id = jsonProd.id || jsonProd.product_id;
+            const plat = jsonProd.platform || jsonProd.platform_source || (id && id.includes("amazon") ? "amazon_mx" : "mercadolibre_mx");
+            const clean_key = id ? id.replace("card_amazon_mx_", "").replace("card_mercadolibre_mx_", "").replace("card_", "") : "";
+            
+            // Determinar origen
+            let source = jsonProd.source;
+            if (!source) {
+              if (plat === "amazon_mx") source = "Amazon México";
+              else if (plat === "mercadolibre_mx") source = "Mercado Libre";
+              else if (plat === "sears_mx") source = "SEARS";
+           
+-----------------------------
+
+
+--- Found keyword: loadCatalogData at char 110926 ---
+tar normal procesada con 50% de descuento.");
+      }
+    }
+
+    window.onload = function() {
+      loadCatalogData();
+    };
+  </script>
+  <!-- MODAL DE ACOMPAÑAMIENTO DIGITAL / SOPORTE EMOCIONAL -->
+  <div id="wellness-modal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden opacity-0 transition-opacity duration-300">
+    <div class="bg-white text-slate-900 max-w-xl w-full p-6 sm:p-8 rounded-lg shadow-2xl border border-slate-200 transform scale-95 transition-transform duration-300 relative">
+      
+      <!-- Botón Cerrar -->
+      <button onclick="closeWellnessModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 w-8 h-8 rounded-full flex items-center justify-center font-bold text-lg transition-colors">
+        ✕
+      </button>
+
+      <!-- Encabezado Clínico -->
+      <div class="text-center mb-6">
+        <span class="bg-[#003e29]/10 text-[#003e29] border border-[#003e29]/20 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider font-mono">ECOSISTEMA DE BIENESTAR CLÍNICO</span>
+        <h3 class="text-2xl font-luxury-title italic text-slate-900 mt-2">Acompañamiento Digital</h3>
+        <p class="text-xs text-slate-500 mt-1 leading-relaxed">Soporte emocional y telemedicina automatizada para crisis personales en español.</p>
+        <div class="h-0.5 w-16 bg-[#c5a059] mx-auto mt-3"></div>
+      </div>
+
+      <!-- Paso 1: Test Diagnóstico Interactivo -->
+      <div id="wellness-step-test">
+        <p class="text-xs font-semibold text-slate-700 mb-4 leading-relaxed">
+          Para canalizar tu sesión con el terapeuta óptimo, por favor responde con total honestidad este breve diagnóstico inicial de tu estado actual:
+        </p>
+
+        <form id="wellness-form" onsubmit="processWellnessTest(event)" class="space-y-4">
+          <!-- Pregunta 1: Causa de Crisis -->
+          <div>
+            <label class="block text-xs font-bold text-slate-800 uppercase tracking-wide mb-1.5">1. ¿Qué situación está afectando tu bienestar hoy?</label>
+           
+-----------------------------
+
+
+--- Found keyword: renderProducts at char 72355 ---
+unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80";
+    }
+
+    function renderProducts(list) {
+      const grid = document.getElementById('products-grid');
+      grid.innerHTML = '';
+
+      if (list.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-10 bg-white border border-dashed border-slate-300 rounded-lg px-4 shadow-inner">
+            <p class="text-slate-800 text-sm font-semibold">🔍 Honestidad Comercial: No encontramos ningún artículo para esta búsqueda.</p>
+            <button onclick="clearAllFilters()" class="mt-4 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs px-4 py-2 rounded font-semibold transition-all uppercase tracking-wide">Ver Todo el Catálogo</button>
+          </div>
+        `;
+        return;
+      }
+
+      list.forEach((prod) => {
+        let badgeColor = "bg-[#003e29]/10 text-[#003e29] border-[#003e29]/30";
+        if (prod.source.includes("Mercado")) badgeColor = "bg-[#ffe600]/10 text-[#736300] border-[#ffe600]/40";
+
+        // UK Compliance: Inyectar Ad / Advert
+        let displayTitle = prod.title;
+        if (detectedCountry === "GB") {
+          displayTitle = `Ad - ${prod.title}`;
+        }
+
+        // Germany Compliance: Separación estricta de términos publicitarios
+        let displayDescription = prod.description;
+        if (detectedCountry === "DE") {
+          displayDescription = `<strong>WERBUNG / ANZEIGE:</strong> ${prod.description}`;
+        }
+
+        const discountPercentage = Math.round(((prod.oldPrice - prod.price) / prod.oldPrice) * 100);
+        const card = document.createElement('article');
+        card.className = "card-amazon-wrapper rounded-lg p-4 flex flex-col justify-between shadow-sm cursor-pointer";
+        card.setAttribute("onclick", `openProductInNewTab('${prod.id}')`);
+        
+        card.innerHTML = `
+          <div>
+            <div class="flex justify-between items-center mb-3">
+              <span class="text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${badgeColor}">
+                ${prod.source}
+-----------------------------
+
+
+--- Found keyword: renderProducts at char 78183 ---
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://viamx.pro/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es VíaMX Pro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Es una vitrina e-commerce premium que ofrece recomendaciones y enlaces de afiliación verídicos para prepararse para el Mundial 2026 en México."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo se calcula la ganancia neta en el widget financiero?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El widget deduce automáticamente un 1% de ISR y un 8% de IVA para reportar flujos netos al SAT México de forma honesta."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "@id": "https://viamx.pro/#howto",
+       
+-----------------------------
+
+
+--- Found keyword: renderProducts at char 78461 ---
+roductsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://viamx.pro/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es VíaMX Pro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Es una vitrina e-commerce premium que ofrece recomendaciones y enlaces de afiliación verídicos para prepararse para el Mundial 2026 en México."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo se calcula la ganancia neta en el widget financiero?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El widget deduce automáticamente un 1% de ISR y un 8% de IVA para reportar flujos netos al SAT México de forma honesta."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "@id": "https://viamx.pro/#howto",
+          "name": "Cómo equiparte para el Mundial 2026 en México",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "position": 1,
+              "name": "Selecciona la sede del partido",
+              "text": "Elige entre Estadio Azteca (CDMX), Estad
+-----------------------------
+
+
+--- Found keyword: init at char 118 ---
+tml lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VíaMX - Selección de Lujo Mundial 2026</title>
+  <!-- Tailwind CSS para renderizado ultra-rápido y responsivo -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Fuente elegante y comercial de alta legibilidad -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,400&family=Segoe+UI:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    body {
+      background-color: #f4f6f4;
+      color: #0f1111;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+    }
+    
+    /* PALETA SIGNATURE DE HARRODS */
+    .harrods-green {
+      background-color: #003e29;
+    }
+    .harrods-green-light {
+      background-color: #005237;
+    }
+    .harrods-gold {
+      color: #c5a059;
+    }
+    .bg-harrods-gold {
+      background-color: #c5a059;
+    }
+    .border-harrods-gold {
+      border-color: #c5a059;
+    }
+    .text-harrods-dark {
+      color: #003e29;
+    }
+    .font-luxury-title {
+      font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    /* PALETA ACTIVADORA DE AMAZON */
+    .amazon-yellow-btn {
+      background-color: #ffd814;
+      border: 1px solid #fcd200;
+      color: #0f1111;
+      transition: all 0.15s ease;
+    }
+    .amazon-yellow-btn:hover {
+      background-color: #f7ca00;
+      border-color: #f2c200;
+      transform: translateY(-1px);
+    }
+    .card-amazon-wrapper {
+      background-color: #ffffff;
+      border: 1px solid #e7e7e7;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .card-amazon-wrapper:hover {
+      border-color: #c5a059;
+      box-shadow: 0 12px 28px rgba(197, 160, 89, 0.15);
+      transform: translateY(-4px) scale(1.01);
+    }
+    .card-amazon-wrapper h4 {
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+    .card-amazon-wrapper:hover h4 {
+      color:
+-----------------------------
+
+
+--- Found keyword: init at char 2944 ---
+ansparent 1px, transparent 2px);
+      pointer-events: none;
+      animation: scanline 6s linear infinite;
+    }
+    @keyframes scanline {
+      0% { background-position: 0 0; }
+      100% { background-position: 0 100%; }
+    }
+    .pulse-dot {
+      animation: livePulse 1.2s infinite alternate;
+    }
+    @keyframes livePulse {
+      from { opacity: 0.3; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1.1); }
+    }
+    .waveform-bar {
+      display: inline-block;
+      width: 3px;
+      height: 12px;
+      background-color: #10b981;
+      margin: 0 1px;
+      border-radius: 1px;
+      animation: soundWave 1.2s ease-in-out infinite alternate;
+    }
+    .waveform-bar:nth-child(2) { animation-delay: 0.15s; height: 18px; }
+    .waveform-bar:nth-child(3) { animation-delay: 0.3s; height: 10px; }
+    .waveform-bar:nth-child(4) { animation-delay: 0.45s; height: 22px; }
+    .waveform-bar:nth-child(5) { animation-delay: 0.6s; height: 14px; }
+    
+    @keyframes soundWave {
+      from { transform: scaleY(0.4); }
+      to { transform: scaleY(1.2); }
+    }
+
+
+    /* PSICOLOGÍA DE PRECIOS AMAZON STYLE */
+    .price-original-amazon {
+      color: #bfa100;
+      text-decoration: line-through;
+    }
+    .price-offer-amazon {
+      color: #b12704;
+    }
+
+    /* Barra lateral con scroll interno auto-ajustable */
+    .custom-sidebar-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-thumb {
+      background: #c5a059;
+      border-radius: 2px;
+    }
+
+    /* Manejo del colapso dinámico de acordeones */
+    .accordion-arrow {
+      transition: transform 0.2s ease;
+    }
+    .accordion-closed .accordion-arrow {
+      transform: rotate(-90deg);
+    }
+    .accordion-content {
+      transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
+      overflow: hidden;
+    }
+    .accordion-closed .accordion-content {
+      max-height: 0 !important;
+      opacity: 0;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+-----------------------------
+
+
+--- Found keyword: init at char 3124 ---
+    100% { background-position: 0 100%; }
+    }
+    .pulse-dot {
+      animation: livePulse 1.2s infinite alternate;
+    }
+    @keyframes livePulse {
+      from { opacity: 0.3; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1.1); }
+    }
+    .waveform-bar {
+      display: inline-block;
+      width: 3px;
+      height: 12px;
+      background-color: #10b981;
+      margin: 0 1px;
+      border-radius: 1px;
+      animation: soundWave 1.2s ease-in-out infinite alternate;
+    }
+    .waveform-bar:nth-child(2) { animation-delay: 0.15s; height: 18px; }
+    .waveform-bar:nth-child(3) { animation-delay: 0.3s; height: 10px; }
+    .waveform-bar:nth-child(4) { animation-delay: 0.45s; height: 22px; }
+    .waveform-bar:nth-child(5) { animation-delay: 0.6s; height: 14px; }
+    
+    @keyframes soundWave {
+      from { transform: scaleY(0.4); }
+      to { transform: scaleY(1.2); }
+    }
+
+
+    /* PSICOLOGÍA DE PRECIOS AMAZON STYLE */
+    .price-original-amazon {
+      color: #bfa100;
+      text-decoration: line-through;
+    }
+    .price-offer-amazon {
+      color: #b12704;
+    }
+
+    /* Barra lateral con scroll interno auto-ajustable */
+    .custom-sidebar-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-thumb {
+      background: #c5a059;
+      border-radius: 2px;
+    }
+
+    /* Manejo del colapso dinámico de acordeones */
+    .accordion-arrow {
+      transition: transform 0.2s ease;
+    }
+    .accordion-closed .accordion-arrow {
+      transform: rotate(-90deg);
+    }
+    .accordion-content {
+      transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
+      overflow: hidden;
+    }
+    .accordion-closed .accordion-content {
+      max-height: 0 !important;
+      opacity: 0;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    /* LUPA / HOVER ZOOM PREMIUM */
+    .zoom-container {
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+      background-color: #f8fafc;
+      border-ra
+-----------------------------
+
+
+--- Found keyword: init at char 3494 ---
+b981;
+      margin: 0 1px;
+      border-radius: 1px;
+      animation: soundWave 1.2s ease-in-out infinite alternate;
+    }
+    .waveform-bar:nth-child(2) { animation-delay: 0.15s; height: 18px; }
+    .waveform-bar:nth-child(3) { animation-delay: 0.3s; height: 10px; }
+    .waveform-bar:nth-child(4) { animation-delay: 0.45s; height: 22px; }
+    .waveform-bar:nth-child(5) { animation-delay: 0.6s; height: 14px; }
+    
+    @keyframes soundWave {
+      from { transform: scaleY(0.4); }
+      to { transform: scaleY(1.2); }
+    }
+
+
+    /* PSICOLOGÍA DE PRECIOS AMAZON STYLE */
+    .price-original-amazon {
+      color: #bfa100;
+      text-decoration: line-through;
+    }
+    .price-offer-amazon {
+      color: #b12704;
+    }
+
+    /* Barra lateral con scroll interno auto-ajustable */
+    .custom-sidebar-scroll::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-sidebar-scroll::-webkit-scrollbar-thumb {
+      background: #c5a059;
+      border-radius: 2px;
+    }
+
+    /* Manejo del colapso dinámico de acordeones */
+    .accordion-arrow {
+      transition: transform 0.2s ease;
+    }
+    .accordion-closed .accordion-arrow {
+      transform: rotate(-90deg);
+    }
+    .accordion-content {
+      transition: max-height 0.2s ease-out, opacity 0.2s ease-out;
+      overflow: hidden;
+    }
+    .accordion-closed .accordion-content {
+      max-height: 0 !important;
+      opacity: 0;
+      margin-bottom: 0 !important;
+      padding-bottom: 0 !important;
+    }
+
+    /* LUPA / HOVER ZOOM PREMIUM */
+    .zoom-container {
+      position: relative;
+      overflow: hidden;
+      cursor: zoom-in;
+      background-color: #f8fafc;
+      border-radius: 8px;
+    }
+    .zoom-image {
+      transition: transform 0.1s ease-out;
+      transform-origin: center center;
+    }
+
+    /* Estilo del Modal de Detalle */
+    .detail-modal {
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+    
+    /* Botón de Pánico Animado */
+    .panic-active {
+      animation: panicPulse 1s infinite alternate;
+      backgrou
+-----------------------------
+
+
+--- Found keyword: init at char 5463 ---
+
+    }
+    
+    /* Botón de Pánico Animado */
+    .panic-active {
+      animation: panicPulse 1s infinite alternate;
+      background-color: #dc2626 !important;
+      color: white !important;
+    }
+    @keyframes panicPulse {
+      from { box-shadow: 0 0 4px #dc2626; }
+      to { box-shadow: 0 0 16px #ef4444; }
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-[#c5a059] selection:text-white">
+
+  <!-- PANEL DE CONTROL DE AFILIACIÓN Y CONTROL DE PÁNICO (Herramienta de Diagnóstico en Caliente) -->
+  <div class="bg-amber-500 text-slate-950 px-4 py-2 text-xs font-semibold flex flex-col sm:flex-row justify-between items-center gap-2 border-b border-amber-600 shadow-inner z-50 relative">
+    <div class="flex items-center gap-2">
+      <span class="bg-slate-950 text-white px-2 py-0.5 rounded text-[10px] uppercase font-mono font-bold">ASUS FRANKENSTEIN SYNC</span>
+      <span>Entorno Sandbox activo: Prueba tus tags de comisión en caliente.</span>
+    </div>
+    
+    <div class="flex flex-wrap gap-4 items-center">
+      <div>
+        <label for="param-amazon-tag" class="text-[10px] uppercase font-mono mr-1">Tag Amazon:</label>
+        <input type="text" id="param-amazon-tag" value="viamx2026-20" oninput="updateAffiliateUrls()" class="bg-white text-slate-950 px-2 py-0.5 rounded text-[11px] font-mono border-none focus:outline-none focus:ring-1 focus:ring-slate-950 w-28">
+      </div>
+      <div>
+        <label for="param-meli-campaign" class="text-[10px] uppercase font-mono mr-1">Campaña Meli:</label>
+        <input type="text" id="param-meli-campaign" value="viamx_campaign_2026" oninput="updateAffiliateUrls()" class="bg-white text-slate-950 px-2 py-0.5 rounded text-[11px] font-mono border-none focus:outline-none focus:ring-1 focus:ring-slate-950 w-32">
+      </div>
+      
+      <!-- BOTÓN DE PÁNICO (Desacopla Atribución y Máscara a Microsoft Mirror) -->
+      <button id="btn-panic" onclick="togglePanicMode()" class="bg-red-700 hover:bg-red-800 text-white px-3 py-1 rounded text-[10px] uppercase tracking-wider font-bold transition-al
+-----------------------------
+
+
+--- Found keyword: init at char 49955 ---
+5\" 4K QLED 120Hz (65U7N)",
+        "category": "Tecnología",
+        "description": "El monitor definitivo para disfrutar del Mundial 2026. Cuenta con panel QLED, frecuencia de actualización nativa de 120Hz para un movimiento de balón ultra fluido y tecnología Dolby Vision.",
+        "qualities": "Resolución de 3840 x 2160 píxeles, panel de puntos cuánticos con mil millones de colores. Conectividad HDMI 2.1 nativa para un retardo imperceptible.",
+        "care": "Limpiar únicamente con paño de microfibra seco. No rociar líquidos directamente sobre la pantalla QLED.",
+        "price": 14999.00,
+        "oldPrice": 18999.00,
+        "rating": 4.8,
+        "ratingCount": "820",
+        "delivery": "Entrega GRATIS mañana con Prime",
+        "tag": "Estadio en Casa",
+        "basePath": "https://www.amazon.com.mx/dp/B0D1299KPN",
+        "city": "CDMX",
+        "image": "prod_tv_65.jpg"
+      },
+      {
+        "id": "card_soundbar",
+        "source": "Amazon México",
+        "title": "Barra de Sonido Bose TV Speaker con Bluetooth",
+        "category": "Audio",
+        "description": "Siente el rugido de la tribuna y los cánticos de la afición con total claridad. Diseñada especialmente para mejorar las voces de los narradores y ofrecer graves profundos.",
+        "qualities": "Conectividad Bluetooth integrada y entrada óptica digital. Control remoto incluido con modo de diálogo especial para voces nítidas.",
+        "care": "No obstruir las ranuras de ventilación. Desconectar durante tormentas eléctricas.",
+        "price": 5499.00,
+        "oldPrice": 6499.00,
+        "rating": 4.7,
+        "ratingCount": "432",
+        "delivery": "Envío Prime Gratis",
+        "tag": "Sonido de Tribuna",
+        "basePath": "https://www.amazon.com.mx/dp/B088383Z4V",
+        "city": "all",
+        "image": "prod_soundbar.jpg"
+      },
+      {
+        "id": "card_weber_grill",
+        "source": "Amazon México",
+        "title": "Asador de Carbón Weber Go-Anywhere Portátil",
+        "category": "Hogar",
+        "description": "La herramienta indispensable para el 'tailgate' en los estad
+-----------------------------
+
+
+--- Found keyword: init at char 54622 ---
+ak Classic Light 2L",
+        "category": "Estilo de Vida",
+        "description": "El accesorio definitivo para el fan viajero. Ligera y transpirable, ideal para Fan Fests y largas caminatas hacia los estadios.",
+        "qualities": "Depósito Crux de 2.0 litros integrado. Arnés transpirable de malla ultra-ligera con compartimento para llaves.",
+        "care": "Enjuagar y colgar el depósito abierto boca abajo después de cada uso para evitar hongos.",
+        "price": 1450.00,
+        "oldPrice": 1799.00,
+        "rating": 4.6,
+        "ratingCount": "189",
+        "delivery": "Envío Prime Gratis",
+        "tag": "Fan Viajero",
+        "basePath": "https://www.amazon.com.mx/dp/B08QV1GYWN",
+        "city": "Guadalajara",
+        "image": "prod_hydration_bag.jpg"
+      },
+      {
+        "id": "card_adidas_ball",
+        "source": "Mercado Libre",
+        "title": "Balón de Fútbol Adidas Conext 24 League Oficial",
+        "category": "Coleccionables",
+        "description": "Siente la emoción del juego con el balón oficial. Diseñado para ofrecer una trayectoria predecible, excelente retención de aire y durabilidad extrema en entrenamientos.",
+        "qualities": "Construcción cosida a máquina de alta durabilidad. Cámara de butilo para una retención óptima del aire.",
+        "care": "Inflar a la presión recomendada marcada en la válvula. Evitar superficies ásperas de concreto.",
+        "price": 799.00,
+        "oldPrice": 999.00,
+        "rating": 4.8,
+        "ratingCount": "250",
+        "delivery": "Envío gratis mañana",
+        "tag": "Adidas Oficial",
+        "basePath": "https://www.mercadolibre.com.mx/balon-de-futbol-adidas-conext-24-league-blanconegroazul/p/MLM34637291",
+        "city": "CDMX",
+        "image": "prod_ball.jpg"
+      },
+      {
+        "id": "card_oster_airfryer",
+        "source": "Mercado Libre",
+        "title": "Freidora de Aire Digital Oster de 4 Litros",
+        "category": "Hogar",
+        "description": "Prepara alitas, papas y botanas mundialistas sin culpa. De gran capacidad, rápida, saludable y fácil de limpiar en el medio tiemp
+-----------------------------
+
+
+--- Found keyword: init at char 60391 ---
+de Carbón Tipo Maletín Plegable",
+        "category": "Hogar",
+        "description": "El asador definitivo para acampar o asar al aire libre antes de entrar al estadio. Plegado rápido en forma de maletín.",
+        "qualities": "Acero laminado de alta durabilidad con rejilla cromada desmontable. Patas plegables de estabilidad rápida.",
+        "care": "Limpiar cenizas frías después de su uso. Secar bien antes de almacenar para prevenir óxido.",
+        "price": 499.00,
+        "oldPrice": 699.00,
+        "rating": 4.5,
+        "ratingCount": "199",
+        "delivery": "Envío gratis mañana",
+        "tag": "Parrilla Portátil",
+        "basePath": "https://www.mercadolibre.com.mx/asador-portatil-carbon-plegable-tipo-maletin-jardin-camping/p/MLM19982345",
+        "city": "all",
+        "image": "prod_grill_portable.jpg"
+      }
+    ];
+
+    // Variables de control de asociados
+    let activeAmazonTag = "viamx2026-20";
+    let activeMeliCampaign = "viamx_campaign_2026";
+    let isPanicModeActive = false;
+    let selectedStarRating = 0;
+    let clicks = 0;
+    let commissions = 0;
+    const targetAlojamiento = 350.00;
+    let activeProductIndex = null;
+    let selectedImageIndex = 0;
+    let activeProductDetail = null;
+    let detectedCountry = "MX";
+
+    // Click ID / S2S Ready Tracking
+    function getOrCreateClickID() {
+      let clickId = sessionStorage.getItem('viamx_click_id');
+      if (!clickId) {
+        const urlParams = new URLSearchParams(window.location.search);
+        clickId = urlParams.get('click_id') || urlParams.get('gclid') || urlParams.get('fbclid');
+        if (!clickId) {
+          clickId = `viamx_s2s_${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
+        }
+        sessionStorage.setItem('viamx_click_id', clickId);
+      }
+      return clickId;
+    }
+
+    async function sendS2STracking(productId, eventType) {
+      const clickId = getOrCreateClickID();
+      // Block by default policy
+      const gdprConsent = localStorage.getItem('viamx_gdpr_consent');
+      if (isEuCountry(detectedCountry) && gdprConsent !== 'true') {
+        c
+-----------------------------
+
+
+--- Found keyword: init at char 76303 ---
+ text-[11px] font-semibold uppercase tracking-wide">Detalle</button>
+              <button onclick="initiateRedirection('${prod.id}')" class="flex-1 amazon-yellow-btn py-2 rounded text-[11px] font-semibold uppercase tracking-wide">Comprar</button>
+            </div>
+          </div>
+
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    let currentPage = 1;
+    const productsPerPage = 10;
+    let filteredProductsGlobal = [];
+
+    function filterProducts() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const category = document.getElementById('category-select').value;
+      const priceLimit = parseFloat(document.getElementById('filter-price-range').value);
+      const sortOption = document.getElementById('sort-select').value;
+
+      // Obtener Sede
+      const cityRadios = document.getElementsByName('city-filter');
+      let selectedCity = 'all';
+      cityRadios.forEach(radio => {
+        if (radio.checked) selectedCity = radio.value;
+      });
+
+      let filtered = window.CATALOGO.filter(prod => {
+        const matchesQuery = prod.title.toLowerCase().includes(query) || prod.description.toLowerCase().includes(query);
+        const matchesCategory = (category === 'all' || prod.category === category);
+        const matchesPrice = prod.price <= priceLimit;
+        const matchesCity = (selectedCity === 'all' || prod.city === selectedCity || prod.city === 'all');
+        return matchesQuery && matchesCategory && matchesPrice && matchesCity;
+      });
+
+      if (sortOption === "price-asc") filtered.sort((a, b) => a.price - b.price);
+      else if (sortOption === "price-desc") filtered.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        retu
+-----------------------------
+
+
+--- Found keyword: init at char 95875 ---
+ransform = "scale(1)";
+      zoomImg.style.transformOrigin = "center center";
+    });
+
+    function initiateRedirection(productId) {
+      const product = window.CATALOGO.find(p => p.id === productId);
+      if (!product) return;
+      activeProductIndex = window.CATALOGO.findIndex(p => p.id === productId);
+      activeProductDetail = product;
+
+      updateAffiliateUrls();
+
+      // Transparencia total de cloaking
+      document.getElementById('modal-product-name').innerText = product.title;
+      document.getElementById('modal-target-url').innerText = product.url;
+      
+      const modal = document.getElementById('redirect-modal');
+      modal.classList.remove('hidden');
+    }
+
+    function goToMerchant() {
+      if (activeProductDetail) {
+        closeProductDetail();
+        initiateRedirection(activeProductDetail.id);
+      }
+    }
+
+    function closeModal(confirmRedirect) {
+      const modal = document.getElementById('redirect-modal');
+      modal.classList.add('hidden');
+
+      if (confirmRedirect && activeProductIndex !== null) {
+        const product = window.CATALOGO[activeProductIndex];
+        
+        clicks++;
+        sendS2STracking(product.id, "redirect_approved");
+
+        const isSale = Math.random() < 0.20;
+        if (isSale) {
+          const grossCommission = product.price * 0.085;
+          const netCommission = calculateNetCommission(grossCommission);
+          commissions += netCommission;
+        }
+
+        updateFinancialStats();
+        
+        // Crear un enlace temporal con nofollow sponsored e id único para cumplir con las directivas
+        const tempAnchor = document.createElement('a');
+        tempAnchor.href = product.url;
+        tempAnchor.target = "_blank";
+        tempAnchor.rel = "nofollow sponsored";
+        tempAnchor.id = `outbound-trigger-${product.id}`;
+        document.body.appendChild(tempAnchor);
+        tempAnchor.click();
+        tempAnchor.remove();
+      }
+      activeProductIndex = null;
+    }
+
+    function updateFinancialStats() {
+      document.getElementById('clicks-count').innerText = clicks;
+      document
+-----------------------------
+
+
+--- Found keyword: init at char 96565 ---
+   function goToMerchant() {
+      if (activeProductDetail) {
+        closeProductDetail();
+        initiateRedirection(activeProductDetail.id);
+      }
+    }
+
+    function closeModal(confirmRedirect) {
+      const modal = document.getElementById('redirect-modal');
+      modal.classList.add('hidden');
+
+      if (confirmRedirect && activeProductIndex !== null) {
+        const product = window.CATALOGO[activeProductIndex];
+        
+        clicks++;
+        sendS2STracking(product.id, "redirect_approved");
+
+        const isSale = Math.random() < 0.20;
+        if (isSale) {
+          const grossCommission = product.price * 0.085;
+          const netCommission = calculateNetCommission(grossCommission);
+          commissions += netCommission;
+        }
+
+        updateFinancialStats();
+        
+        // Crear un enlace temporal con nofollow sponsored e id único para cumplir con las directivas
+        const tempAnchor = document.createElement('a');
+        tempAnchor.href = product.url;
+        tempAnchor.target = "_blank";
+        tempAnchor.rel = "nofollow sponsored";
+        tempAnchor.id = `outbound-trigger-${product.id}`;
+        document.body.appendChild(tempAnchor);
+        tempAnchor.click();
+        tempAnchor.remove();
+      }
+      activeProductIndex = null;
+    }
+
+    function updateFinancialStats() {
+      document.getElementById('clicks-count').innerText = clicks;
+      document.getElementById('commissions-sum').innerText = formatMXN(commissions);
+
+      const percent = Math.min((commissions / targetAlojamiento) * 100, 100);
+      const bar = document.getElementById('progress-bar');
+      if (bar) bar.style.width = percent + '%';
+      
+      const text = document.getElementById('progress-text-under');
+      if (text) text.innerText = `Progreso: ${Math.round(percent)}% para cubrir costos`;
+      
+      document.getElementById('progress-percentage-label').innerText = `${formatMXN(commissions)} / ${formatMXN(targetAlojamiento)} MXN`;
+    }
+
+    function formatMXN(value) {
+      return '$' + parseFloat(value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+ 
+-----------------------------
+
+
+--- Found keyword: filter at char 9021 ---
+order-[#c5a059] shadow-sm">
+        <select id="category-select" onchange="syncSearchAndCategory(); filterProducts();" class="bg-[#f3f4f1] text-slate-700 text-xs px-3 border-r border-slate-200 focus:outline-none cursor-pointer">
+          <option value="all">Ver todo</option>
+          <option value="Tecnología">Smart TVs</option>
+          <option value="Hogar">Parrillas y Cocina</option>
+          <option value="Accesorios">Accesorios</option>
+          <option value="Coleccionables">Mundial 2026</option>
+          <option value="Audio">Audio y Sonido</option>
+          <option value="Seguridad">Seguridad del Hogar</option>
+          <option value="Estilo de Vida">Estilo de Vida</option>
+        </select>
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Busca en la selección de artículos recomendados para el Mundial..." 
+          class="w-full px-4 py-2 text-sm focus:outline-none"
+          oninput="filterProducts()"
+        >
+        <button onclick="filterProducts()" class="bg-harrods-gold hover:bg-[#003e29] hover:text-white text-slate-950 px-6 flex items-center justify-center transition-colors font-semibold uppercase text-xs tracking-wider">
+          Buscar
+        </button>
+      </div>
+
+      <!-- Monitor Financiero en Caliente -->
+      <div class="flex items-center gap-6 text-xs w-full lg:w-auto justify-around lg:justify-end">
+        <div class="flex flex-col text-slate-300">
+          <span class="text-[10px] uppercase tracking-wider text-[#c5a059]">Clicks</span>
+          <span id="clicks-count" class="text-white font-bold text-sm">0</span>
+        </div>
+        <div class="flex flex-col text-slate-300">
+          <span class="text-[10px] uppercase tracking-wider text-[#c5a059]">Fondo Neto SAT</span>
+          <span id="commissions-sum" class="text-[#10b981] font-bold text-sm">$0.00 MXN</span>
+        </div>
+        <div class="border border-[#c5a059]/30 px-3 py-1.5 rounded flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-ping" id="status-s2s-dot"></span>
+       
+-----------------------------
+
+
+--- Found keyword: filter at char 9879 ---
+ra el Mundial..." 
+          class="w-full px-4 py-2 text-sm focus:outline-none"
+          oninput="filterProducts()"
+        >
+        <button onclick="filterProducts()" class="bg-harrods-gold hover:bg-[#003e29] hover:text-white text-slate-950 px-6 flex items-center justify-center transition-colors font-semibold uppercase text-xs tracking-wider">
+          Buscar
+        </button>
+      </div>
+
+      <!-- Monitor Financiero en Caliente -->
+      <div class="flex items-center gap-6 text-xs w-full lg:w-auto justify-around lg:justify-end">
+        <div class="flex flex-col text-slate-300">
+          <span class="text-[10px] uppercase tracking-wider text-[#c5a059]">Clicks</span>
+          <span id="clicks-count" class="text-white font-bold text-sm">0</span>
+        </div>
+        <div class="flex flex-col text-slate-300">
+          <span class="text-[10px] uppercase tracking-wider text-[#c5a059]">Fondo Neto SAT</span>
+          <span id="commissions-sum" class="text-[#10b981] font-bold text-sm">$0.00 MXN</span>
+        </div>
+        <div class="border border-[#c5a059]/30 px-3 py-1.5 rounded flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-ping" id="status-s2s-dot"></span>
+          <span class="text-[9px] font-mono tracking-wider text-slate-300" id="status-s2s-text">S2S ACTIVO</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- SEGUNDO NIVEL DE NAVEGACIÓN -->
+  <nav class="harrods-green-light text-white px-4 py-2 text-xs font-semibold sm:px-6 shadow-inner border-t border-white/5 relative z-30">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex flex-wrap gap-4 items-center">
+        <a href="#" onclick="setCategoryFilter('all')" class="hover:text-[#c5a059] px-2 py-1 rounded transition-all">Todos los departamentos</a>
+        <a href="#" onclick="setCategoryFilter('Tecnología')" class="hover:text-[#c5a059] px-2 py-1 rounded transition-all">Smart TVs Premium</a>
+        <a href="#" onclick="setCategoryFilter('Hogar')" class="hover:text-[#c5a059] px-2 
+-----------------------------
+
+
+--- Found keyword: filter at char 9932 ---
+text-sm focus:outline-none"
+          oninput="filterProducts()"
+        >
+        <button onclick="filterProducts()" class="bg-harrods-gold hover:bg-[#003e29] hover:text-white text-slate-950 px-6 flex items-center justify-center transition-colors font-semibold uppercase text-xs tracking-wider">
+          Buscar
+        </button>
+      </div>
+
+      <!-- Monitor Financiero en Caliente -->
+      <div class="flex items-center gap-6 text-xs w-full lg:w-auto justify-around lg:justify-end">
+        <div class="flex flex-col text-slate-300">
+          <span class="text-[10px] uppercase tracking-wider text-[#c5a059]">Clicks</span>
+          <span id="clicks-count" class="text-white font-bold text-sm">0</span>
+        </div>
+        <div class="flex flex-col text-slate-300">
+          <span class="text-[10px] uppercase tracking-wider text-[#c5a059]">Fondo Neto SAT</span>
+          <span id="commissions-sum" class="text-[#10b981] font-bold text-sm">$0.00 MXN</span>
+        </div>
+        <div class="border border-[#c5a059]/30 px-3 py-1.5 rounded flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-ping" id="status-s2s-dot"></span>
+          <span class="text-[9px] font-mono tracking-wider text-slate-300" id="status-s2s-text">S2S ACTIVO</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- SEGUNDO NIVEL DE NAVEGACIÓN -->
+  <nav class="harrods-green-light text-white px-4 py-2 text-xs font-semibold sm:px-6 shadow-inner border-t border-white/5 relative z-30">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex flex-wrap gap-4 items-center">
+        <a href="#" onclick="setCategoryFilter('all')" class="hover:text-[#c5a059] px-2 py-1 rounded transition-all">Todos los departamentos</a>
+        <a href="#" onclick="setCategoryFilter('Tecnología')" class="hover:text-[#c5a059] px-2 py-1 rounded transition-all">Smart TVs Premium</a>
+        <a href="#" onclick="setCategoryFilter('Hogar')" class="hover:text-[#c5a059] px-2 py-1 rounded transition-all">Parrillas y Jardín</a>
+ 
+-----------------------------
+
+
+--- Found keyword: filter at char 27977 ---
+text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-amazon" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Amazon México</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-meli" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Mercado Libre</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-ali" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">AliExpress</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-local" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Liverpool / Sears</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Acordeón 3: Rango de Precios -->
+      <div id="accordion-budget" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-budget')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Presupuesto</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 px-1">
+          <input 
+            type="range" 
+          
+-----------------------------
+
+
+--- Found keyword: filter at char 28006 ---
+ hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-amazon" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Amazon México</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-meli" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Mercado Libre</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-ali" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">AliExpress</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-local" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Liverpool / Sears</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Acordeón 3: Rango de Precios -->
+      <div id="accordion-budget" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-budget')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Presupuesto</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 px-1">
+          <input 
+            type="range" 
+            id="filter-price-range" 
+  
+-----------------------------
+
+
+--- Found keyword: filter at char 28336 ---
+text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-meli" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Mercado Libre</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-ali" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">AliExpress</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-local" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Liverpool / Sears</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Acordeón 3: Rango de Precios -->
+      <div id="accordion-budget" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-budget')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Presupuesto</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 px-1">
+          <input 
+            type="range" 
+            id="filter-price-range" 
+            min="100" 
+            max="35000" 
+            step="100" 
+            value="35000" 
+            oninput="updatePriceSliderLabel(); filterProducts();" 
+            class="w-full accent-[#c5a059] cursor-pointer"
+          >
+          <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+            <span>
+-----------------------------
+
+
+--- Found keyword: filter at char 28363 ---
+er hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-meli" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Mercado Libre</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-ali" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">AliExpress</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-local" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Liverpool / Sears</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Acordeón 3: Rango de Precios -->
+      <div id="accordion-budget" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-budget')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Presupuesto</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 px-1">
+          <input 
+            type="range" 
+            id="filter-price-range" 
+            min="100" 
+            max="35000" 
+            step="100" 
+            value="35000" 
+            oninput="updatePriceSliderLabel(); filterProducts();" 
+            class="w-full accent-[#c5a059] cursor-pointer"
+          >
+          <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+            <span>Min: $100</span>
+          
+-----------------------------
+
+
+--- Found keyword: filter at char 28693 ---
+text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-ali" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">AliExpress</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-local" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Liverpool / Sears</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Acordeón 3: Rango de Precios -->
+      <div id="accordion-budget" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-budget')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Presupuesto</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 px-1">
+          <input 
+            type="range" 
+            id="filter-price-range" 
+            min="100" 
+            max="35000" 
+            step="100" 
+            value="35000" 
+            oninput="updatePriceSliderLabel(); filterProducts();" 
+            class="w-full accent-[#c5a059] cursor-pointer"
+          >
+          <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+            <span>Min: $100</span>
+            <span class="font-bold text-[#003e29]" id="price-slider-label">Max: $35,000 MXN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acordeón 4: Estrellas -->
+      <div id="accordion-reviews" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-reviews')" class="w-full fl
+-----------------------------
+
+
+--- Found keyword: filter at char 28719 ---
+ter hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-ali" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">AliExpress</span>
+          </label>
+          <label class="flex items-center gap-2 text-xs text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-local" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Liverpool / Sears</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Acordeón 3: Rango de Precios -->
+      <div id="accordion-budget" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-budget')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Presupuesto</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 px-1">
+          <input 
+            type="range" 
+            id="filter-price-range" 
+            min="100" 
+            max="35000" 
+            step="100" 
+            value="35000" 
+            oninput="updatePriceSliderLabel(); filterProducts();" 
+            class="w-full accent-[#c5a059] cursor-pointer"
+          >
+          <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+            <span>Min: $100</span>
+            <span class="font-bold text-[#003e29]" id="price-slider-label">Max: $35,000 MXN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acordeón 4: Estrellas -->
+      <div id="accordion-reviews" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-reviews')" class="w-full flex justify-between items-c
+-----------------------------
+
+
+--- Found keyword: filter at char 29046 ---
+text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-local" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Liverpool / Sears</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Acordeón 3: Rango de Precios -->
+      <div id="accordion-budget" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-budget')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Presupuesto</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 px-1">
+          <input 
+            type="range" 
+            id="filter-price-range" 
+            min="100" 
+            max="35000" 
+            step="100" 
+            value="35000" 
+            oninput="updatePriceSliderLabel(); filterProducts();" 
+            class="w-full accent-[#c5a059] cursor-pointer"
+          >
+          <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+            <span>Min: $100</span>
+            <span class="font-bold text-[#003e29]" id="price-slider-label">Max: $35,000 MXN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acordeón 4: Estrellas -->
+      <div id="accordion-reviews" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-reviews')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Filtro por Estrellas</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-
+-----------------------------
+
+
+--- Found keyword: filter at char 29074 ---
+r hover:text-slate-950">
+            <input type="checkbox" checked id="filter-src-local" onchange="filterProducts()" class="rounded border-slate-300 text-[#003e29] focus:ring-[#003e29] h-4 w-4">
+            <span class="font-medium">Liverpool / Sears</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Acordeón 3: Rango de Precios -->
+      <div id="accordion-budget" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-budget')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Presupuesto</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 px-1">
+          <input 
+            type="range" 
+            id="filter-price-range" 
+            min="100" 
+            max="35000" 
+            step="100" 
+            value="35000" 
+            oninput="updatePriceSliderLabel(); filterProducts();" 
+            class="w-full accent-[#c5a059] cursor-pointer"
+          >
+          <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+            <span>Min: $100</span>
+            <span class="font-bold text-[#003e29]" id="price-slider-label">Max: $35,000 MXN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acordeón 4: Estrellas -->
+      <div id="accordion-reviews" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-reviews')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Filtro por Estrellas</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg
+-----------------------------
+
+
+--- Found keyword: filter at char 29983 ---
+iv class="accordion-content mt-3 px-1">
+          <input 
+            type="range" 
+            id="filter-price-range" 
+            min="100" 
+            max="35000" 
+            step="100" 
+            value="35000" 
+            oninput="updatePriceSliderLabel(); filterProducts();" 
+            class="w-full accent-[#c5a059] cursor-pointer"
+          >
+          <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+            <span>Min: $100</span>
+            <span class="font-bold text-[#003e29]" id="price-slider-label">Max: $35,000 MXN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acordeón 4: Estrellas -->
+      <div id="accordion-reviews" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-reviews')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Filtro por Estrellas</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 space-y-1.5 text-xs text-slate-600">
+          <button onclick="setStarFilter(4.5)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★★½</span> <span>o más</span>
+          </button>
+          <button onclick="setStarFilter(4.0)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★★☆</span> <span>o más</span>
+          </button>
+          <button onclick="setStarFilter(3.5)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★½☆</span> <span>o más</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acordeón 5: Sedes de México -->
+  
+-----------------------------
+
+
+--- Found keyword: filter at char 30150 ---
+ 
+            step="100" 
+            value="35000" 
+            oninput="updatePriceSliderLabel(); filterProducts();" 
+            class="w-full accent-[#c5a059] cursor-pointer"
+          >
+          <div class="flex justify-between text-[11px] text-slate-500 mt-1">
+            <span>Min: $100</span>
+            <span class="font-bold text-[#003e29]" id="price-slider-label">Max: $35,000 MXN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Acordeón 4: Estrellas -->
+      <div id="accordion-reviews" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-reviews')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Filtro por Estrellas</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 space-y-1.5 text-xs text-slate-600">
+          <button onclick="setStarFilter(4.5)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★★½</span> <span>o más</span>
+          </button>
+          <button onclick="setStarFilter(4.0)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★★☆</span> <span>o más</span>
+          </button>
+          <button onclick="setStarFilter(3.5)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★½☆</span> <span>o más</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acordeón 5: Sedes de México -->
+      <div id="accordion-cities" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-cities')" class="w-full flex justify-be
+-----------------------------
+
+
+--- Found keyword: filter at char 31233 ---
+t-3 space-y-1.5 text-xs text-slate-600">
+          <button onclick="setStarFilter(4.5)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★★½</span> <span>o más</span>
+          </button>
+          <button onclick="setStarFilter(4.0)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★★☆</span> <span>o más</span>
+          </button>
+          <button onclick="setStarFilter(3.5)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★½☆</span> <span>o más</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acordeón 5: Sedes de México -->
+      <div id="accordion-cities" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-cities')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Por Sede Mundial</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 space-y-2 text-xs">
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="all" checked onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Todas las sedes</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="CDMX" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Azteca (CDMX)</span>
+          </label>
+          <label class="fle
+-----------------------------
+
+
+--- Found keyword: filter at char 31478 ---
+> <span>o más</span>
+          </button>
+          <button onclick="setStarFilter(4.0)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★★☆</span> <span>o más</span>
+          </button>
+          <button onclick="setStarFilter(3.5)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★½☆</span> <span>o más</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acordeón 5: Sedes de México -->
+      <div id="accordion-cities" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-cities')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Por Sede Mundial</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 space-y-2 text-xs">
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="all" checked onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Todas las sedes</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="CDMX" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Azteca (CDMX)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Monterrey" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio BBV
+-----------------------------
+
+
+--- Found keyword: filter at char 31723 ---
+> <span>o más</span>
+          </button>
+          <button onclick="setStarFilter(3.5)" class="star-filter-btn flex items-center gap-1 hover:text-[#c5a059] text-left w-full transition-colors">
+            <span class="text-amber-500">★★★½☆</span> <span>o más</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Acordeón 5: Sedes de México -->
+      <div id="accordion-cities" class="border-b border-slate-100 pb-3 mb-3">
+        <button onclick="toggleAccordion('accordion-cities')" class="w-full flex justify-between items-center text-xs font-bold text-slate-800 uppercase tracking-wide py-1">
+          <span>Por Sede Mundial</span>
+          <svg class="w-3 h-3 accordion-arrow text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M19 9l-7 7-7-7"></path>
+          </svg>
+        </button>
+        <div class="accordion-content mt-3 space-y-2 text-xs">
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="all" checked onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Todas las sedes</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="CDMX" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Azteca (CDMX)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Monterrey" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio BBVA (MTY)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Guadalajara" onchange="filterProducts()" class="text
+-----------------------------
+
+
+--- Found keyword: filter at char 32741 ---
+p-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="all" checked onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Todas las sedes</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="CDMX" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Azteca (CDMX)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Monterrey" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio BBVA (MTY)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Guadalajara" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Akron (GDL)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="bg-[#f7f8f6] border border-slate-200 p-3 rounded mt-4 text-[10px] text-slate-500 leading-relaxed">
+        <span class="text-[10px] font-bold text-[#003e29] uppercase block mb-1 font-mono">Control de Calidad</span>
+        Cada enlace es validado contablemente aplicando retenciones del 1% ISR y 8% IVA para reportar flujos netos al SAT.
+      </div>
+    </aside>
+
+    <!-- COLUMNA DERECHA: EXPOSICIÓN -->
+    <section class="flex-grow">
+      
+      <!-- Ordenamiento -->
+      <div class="bg-white border border-slate-200 p-3 rounded shadow-sm mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+        <span class="text-slate-600 font-semibold" id="results-counter">Cargando catálogo...</span>
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500">Ordenar por:</span>
+          <select id="sort-sele
+-----------------------------
+
+
+--- Found keyword: filter at char 32779 ---
+r:text-slate-950">
+            <input type="radio" name="city-filter" value="all" checked onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Todas las sedes</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="CDMX" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Azteca (CDMX)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Monterrey" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio BBVA (MTY)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Guadalajara" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Akron (GDL)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="bg-[#f7f8f6] border border-slate-200 p-3 rounded mt-4 text-[10px] text-slate-500 leading-relaxed">
+        <span class="text-[10px] font-bold text-[#003e29] uppercase block mb-1 font-mono">Control de Calidad</span>
+        Cada enlace es validado contablemente aplicando retenciones del 1% ISR y 8% IVA para reportar flujos netos al SAT.
+      </div>
+    </aside>
+
+    <!-- COLUMNA DERECHA: EXPOSICIÓN -->
+    <section class="flex-grow">
+      
+      <!-- Ordenamiento -->
+      <div class="bg-white border border-slate-200 p-3 rounded shadow-sm mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+        <span class="text-slate-600 font-semibold" id="results-counter">Cargando catálogo...</span>
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500">Ordenar por:</span>
+          <select id="sort-select" onchange="filterProducts()" class=
+-----------------------------
+
+
+--- Found keyword: filter at char 33046 ---
+p-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="CDMX" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Azteca (CDMX)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Monterrey" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio BBVA (MTY)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Guadalajara" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Akron (GDL)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="bg-[#f7f8f6] border border-slate-200 p-3 rounded mt-4 text-[10px] text-slate-500 leading-relaxed">
+        <span class="text-[10px] font-bold text-[#003e29] uppercase block mb-1 font-mono">Control de Calidad</span>
+        Cada enlace es validado contablemente aplicando retenciones del 1% ISR y 8% IVA para reportar flujos netos al SAT.
+      </div>
+    </aside>
+
+    <!-- COLUMNA DERECHA: EXPOSICIÓN -->
+    <section class="flex-grow">
+      
+      <!-- Ordenamiento -->
+      <div class="bg-white border border-slate-200 p-3 rounded shadow-sm mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+        <span class="text-slate-600 font-semibold" id="results-counter">Cargando catálogo...</span>
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500">Ordenar por:</span>
+          <select id="sort-select" onchange="filterProducts()" class="border border-slate-300 rounded px-2 py-1 bg-[#f7f8f6] focus:outline-none">
+            <option value="featured">Selección Especial</option>
+            <option value="price-asc">Precio: Menor a Mayor</option>
+            <option value="price-desc">Precio: Mayor a M
+-----------------------------
+
+
+--- Found keyword: filter at char 33077 ---
+er hover:text-slate-950">
+            <input type="radio" name="city-filter" value="CDMX" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Azteca (CDMX)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Monterrey" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio BBVA (MTY)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Guadalajara" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Akron (GDL)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="bg-[#f7f8f6] border border-slate-200 p-3 rounded mt-4 text-[10px] text-slate-500 leading-relaxed">
+        <span class="text-[10px] font-bold text-[#003e29] uppercase block mb-1 font-mono">Control de Calidad</span>
+        Cada enlace es validado contablemente aplicando retenciones del 1% ISR y 8% IVA para reportar flujos netos al SAT.
+      </div>
+    </aside>
+
+    <!-- COLUMNA DERECHA: EXPOSICIÓN -->
+    <section class="flex-grow">
+      
+      <!-- Ordenamiento -->
+      <div class="bg-white border border-slate-200 p-3 rounded shadow-sm mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+        <span class="text-slate-600 font-semibold" id="results-counter">Cargando catálogo...</span>
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500">Ordenar por:</span>
+          <select id="sort-select" onchange="filterProducts()" class="border border-slate-300 rounded px-2 py-1 bg-[#f7f8f6] focus:outline-none">
+            <option value="featured">Selección Especial</option>
+            <option value="price-asc">Precio: Menor a Mayor</option>
+            <option value="price-desc">Precio: Mayor a Menor</option>
+          </selec
+-----------------------------
+
+
+--- Found keyword: filter at char 33350 ---
+p-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Monterrey" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio BBVA (MTY)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Guadalajara" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Akron (GDL)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="bg-[#f7f8f6] border border-slate-200 p-3 rounded mt-4 text-[10px] text-slate-500 leading-relaxed">
+        <span class="text-[10px] font-bold text-[#003e29] uppercase block mb-1 font-mono">Control de Calidad</span>
+        Cada enlace es validado contablemente aplicando retenciones del 1% ISR y 8% IVA para reportar flujos netos al SAT.
+      </div>
+    </aside>
+
+    <!-- COLUMNA DERECHA: EXPOSICIÓN -->
+    <section class="flex-grow">
+      
+      <!-- Ordenamiento -->
+      <div class="bg-white border border-slate-200 p-3 rounded shadow-sm mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+        <span class="text-slate-600 font-semibold" id="results-counter">Cargando catálogo...</span>
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500">Ordenar por:</span>
+          <select id="sort-select" onchange="filterProducts()" class="border border-slate-300 rounded px-2 py-1 bg-[#f7f8f6] focus:outline-none">
+            <option value="featured">Selección Especial</option>
+            <option value="price-asc">Precio: Menor a Mayor</option>
+            <option value="price-desc">Precio: Mayor a Menor</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Cuadrícula de Tarjetas -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Inyección Dinámica -->
+      </div>
+
+      <!-- Controles de Paginación -->
+      <div id="paginat
+-----------------------------
+
+
+--- Found keyword: filter at char 33386 ---
+ver:text-slate-950">
+            <input type="radio" name="city-filter" value="Monterrey" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio BBVA (MTY)</span>
+          </label>
+          <label class="flex items-center gap-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Guadalajara" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Akron (GDL)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="bg-[#f7f8f6] border border-slate-200 p-3 rounded mt-4 text-[10px] text-slate-500 leading-relaxed">
+        <span class="text-[10px] font-bold text-[#003e29] uppercase block mb-1 font-mono">Control de Calidad</span>
+        Cada enlace es validado contablemente aplicando retenciones del 1% ISR y 8% IVA para reportar flujos netos al SAT.
+      </div>
+    </aside>
+
+    <!-- COLUMNA DERECHA: EXPOSICIÓN -->
+    <section class="flex-grow">
+      
+      <!-- Ordenamiento -->
+      <div class="bg-white border border-slate-200 p-3 rounded shadow-sm mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+        <span class="text-slate-600 font-semibold" id="results-counter">Cargando catálogo...</span>
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500">Ordenar por:</span>
+          <select id="sort-select" onchange="filterProducts()" class="border border-slate-300 rounded px-2 py-1 bg-[#f7f8f6] focus:outline-none">
+            <option value="featured">Selección Especial</option>
+            <option value="price-asc">Precio: Menor a Mayor</option>
+            <option value="price-desc">Precio: Mayor a Menor</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Cuadrícula de Tarjetas -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Inyección Dinámica -->
+      </div>
+
+      <!-- Controles de Paginación -->
+      <div id="pagination-controls" class="flex justify-ce
+-----------------------------
+
+
+--- Found keyword: filter at char 33656 ---
+p-2 text-slate-600 cursor-pointer hover:text-slate-950">
+            <input type="radio" name="city-filter" value="Guadalajara" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Akron (GDL)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="bg-[#f7f8f6] border border-slate-200 p-3 rounded mt-4 text-[10px] text-slate-500 leading-relaxed">
+        <span class="text-[10px] font-bold text-[#003e29] uppercase block mb-1 font-mono">Control de Calidad</span>
+        Cada enlace es validado contablemente aplicando retenciones del 1% ISR y 8% IVA para reportar flujos netos al SAT.
+      </div>
+    </aside>
+
+    <!-- COLUMNA DERECHA: EXPOSICIÓN -->
+    <section class="flex-grow">
+      
+      <!-- Ordenamiento -->
+      <div class="bg-white border border-slate-200 p-3 rounded shadow-sm mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+        <span class="text-slate-600 font-semibold" id="results-counter">Cargando catálogo...</span>
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500">Ordenar por:</span>
+          <select id="sort-select" onchange="filterProducts()" class="border border-slate-300 rounded px-2 py-1 bg-[#f7f8f6] focus:outline-none">
+            <option value="featured">Selección Especial</option>
+            <option value="price-asc">Precio: Menor a Mayor</option>
+            <option value="price-desc">Precio: Mayor a Menor</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Cuadrícula de Tarjetas -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Inyección Dinámica -->
+      </div>
+
+      <!-- Controles de Paginación -->
+      <div id="pagination-controls" class="flex justify-center items-center gap-2 mt-8 pt-4 border-t border-slate-200">
+        <!-- Inyección Dinámica -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SECCIÓN ADAPTACIÓN POR SEDES MUNDIALISTAS -->
+  <section id="sedes-section" class="bg-white border-t border-b border-slate-20
+-----------------------------
+
+
+--- Found keyword: filter at char 33694 ---
+r:text-slate-950">
+            <input type="radio" name="city-filter" value="Guadalajara" onchange="filterProducts()" class="text-[#003e29] focus:ring-[#003e29]">
+            <span>Estadio Akron (GDL)</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="bg-[#f7f8f6] border border-slate-200 p-3 rounded mt-4 text-[10px] text-slate-500 leading-relaxed">
+        <span class="text-[10px] font-bold text-[#003e29] uppercase block mb-1 font-mono">Control de Calidad</span>
+        Cada enlace es validado contablemente aplicando retenciones del 1% ISR y 8% IVA para reportar flujos netos al SAT.
+      </div>
+    </aside>
+
+    <!-- COLUMNA DERECHA: EXPOSICIÓN -->
+    <section class="flex-grow">
+      
+      <!-- Ordenamiento -->
+      <div class="bg-white border border-slate-200 p-3 rounded shadow-sm mb-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs">
+        <span class="text-slate-600 font-semibold" id="results-counter">Cargando catálogo...</span>
+        <div class="flex items-center gap-2">
+          <span class="text-slate-500">Ordenar por:</span>
+          <select id="sort-select" onchange="filterProducts()" class="border border-slate-300 rounded px-2 py-1 bg-[#f7f8f6] focus:outline-none">
+            <option value="featured">Selección Especial</option>
+            <option value="price-asc">Precio: Menor a Mayor</option>
+            <option value="price-desc">Precio: Mayor a Menor</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Cuadrícula de Tarjetas -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Inyección Dinámica -->
+      </div>
+
+      <!-- Controles de Paginación -->
+      <div id="pagination-controls" class="flex justify-center items-center gap-2 mt-8 pt-4 border-t border-slate-200">
+        <!-- Inyección Dinámica -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SECCIÓN ADAPTACIÓN POR SEDES MUNDIALISTAS -->
+  <section id="sedes-section" class="bg-white border-t border-b border-slate-200 py-16 px-4 sm:px-6">
+    <div class=
+-----------------------------
+
+
+--- Found keyword: filter at char 34755 ---
+      <span class="text-slate-500">Ordenar por:</span>
+          <select id="sort-select" onchange="filterProducts()" class="border border-slate-300 rounded px-2 py-1 bg-[#f7f8f6] focus:outline-none">
+            <option value="featured">Selección Especial</option>
+            <option value="price-asc">Precio: Menor a Mayor</option>
+            <option value="price-desc">Precio: Mayor a Menor</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Cuadrícula de Tarjetas -->
+      <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Inyección Dinámica -->
+      </div>
+
+      <!-- Controles de Paginación -->
+      <div id="pagination-controls" class="flex justify-center items-center gap-2 mt-8 pt-4 border-t border-slate-200">
+        <!-- Inyección Dinámica -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SECCIÓN ADAPTACIÓN POR SEDES MUNDIALISTAS -->
+  <section id="sedes-section" class="bg-white border-t border-b border-slate-200 py-16 px-4 sm:px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="text-xs font-bold text-[#c5a059] uppercase tracking-widest font-mono">// Solución Regional</span>
+        <h2 class="text-3xl font-luxury-title italic text-slate-900 mt-2">Equipamiento Técnico por Sede</h2>
+        <p class="text-slate-500 text-sm mt-2 leading-relaxed">Artículos minuciosamente calificados para resolver las condiciones físicas de cada estadio.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- CDMX -->
+        <div class="bg-[#f7f8f6] p-6 rounded-lg border border-slate-200 hover:border-[#c5a059] transition-all duration-300">
+          <div class="w-10 h-10 rounded-full bg-[#003e29] text-white flex items-center justify-center font-bold mb-4 font-mono">01</div>
+          <h3 class="text-lg font-bold text-slate-900">Estadio Azteca (CDMX)</h3>
+          <p class="text-xs text-[#c5a059] font-mono uppercase mt-1">Foco: Altitud & Protección UV</p>
+          <p class="text-sm text-slate-600 mt-3 leading-
+-----------------------------
+
+
+--- Found keyword: filter at char 71967 ---
+ = "text-[9px] font-mono tracking-wider text-slate-300";
+      }
+      updateAffiliateUrls();
+      filterProducts();
+    }
+
+    function getImageSrc(imgFilename) {
+      if (imgFilename.startsWith('http')) return imgFilename;
+      return `images/${imgFilename}`;
+    }
+
+    function handleImageError(imgElement) {
+      imgElement.onerror = null;
+      imgElement.src = "https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=600&q=80";
+    }
+
+    function renderProducts(list) {
+      const grid = document.getElementById('products-grid');
+      grid.innerHTML = '';
+
+      if (list.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-10 bg-white border border-dashed border-slate-300 rounded-lg px-4 shadow-inner">
+            <p class="text-slate-800 text-sm font-semibold">🔍 Honestidad Comercial: No encontramos ningún artículo para esta búsqueda.</p>
+            <button onclick="clearAllFilters()" class="mt-4 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs px-4 py-2 rounded font-semibold transition-all uppercase tracking-wide">Ver Todo el Catálogo</button>
+          </div>
+        `;
+        return;
+      }
+
+      list.forEach((prod) => {
+        let badgeColor = "bg-[#003e29]/10 text-[#003e29] border-[#003e29]/30";
+        if (prod.source.includes("Mercado")) badgeColor = "bg-[#ffe600]/10 text-[#736300] border-[#ffe600]/40";
+
+        // UK Compliance: Inyectar Ad / Advert
+        let displayTitle = prod.title;
+        if (detectedCountry === "GB") {
+          displayTitle = `Ad - ${prod.title}`;
+        }
+
+        // Germany Compliance: Separación estricta de términos publicitarios
+        let displayDescription = prod.description;
+        if (detectedCountry === "DE") {
+          displayDescription = `<strong>WERBUNG / ANZEIGE:</strong> ${prod.description}`;
+        }
+
+        const discountPercentage = Math.round(((prod.oldPrice - prod.price) / prod.oldPrice) * 100);
+        const card = document.createElement('article');
+        card.className = "card-amazon-wrapper rounded-lg p-4 flex fl
+-----------------------------
+
+
+--- Found keyword: filter at char 76613 ---
+ppendChild(card);
+      });
+    }
+
+    let currentPage = 1;
+    const productsPerPage = 10;
+    let filteredProductsGlobal = [];
+
+    function filterProducts() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const category = document.getElementById('category-select').value;
+      const priceLimit = parseFloat(document.getElementById('filter-price-range').value);
+      const sortOption = document.getElementById('sort-select').value;
+
+      // Obtener Sede
+      const cityRadios = document.getElementsByName('city-filter');
+      let selectedCity = 'all';
+      cityRadios.forEach(radio => {
+        if (radio.checked) selectedCity = radio.value;
+      });
+
+      let filtered = window.CATALOGO.filter(prod => {
+        const matchesQuery = prod.title.toLowerCase().includes(query) || prod.description.toLowerCase().includes(query);
+        const matchesCategory = (category === 'all' || prod.category === category);
+        const matchesPrice = prod.price <= priceLimit;
+        const matchesCity = (selectedCity === 'all' || prod.city === selectedCity || prod.city === 'all');
+        return matchesQuery && matchesCategory && matchesPrice && matchesCity;
+      });
+
+      if (sortOption === "price-asc") filtered.sort((a, b) => a.price - b.price);
+      else if (sortOption === "price-desc") filtered.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex
+-----------------------------
+
+
+--- Found keyword: filter at char 76656 ---
+currentPage = 1;
+    const productsPerPage = 10;
+    let filteredProductsGlobal = [];
+
+    function filterProducts() {
+      const query = document.getElementById('search-input').value.toLowerCase();
+      const category = document.getElementById('category-select').value;
+      const priceLimit = parseFloat(document.getElementById('filter-price-range').value);
+      const sortOption = document.getElementById('sort-select').value;
+
+      // Obtener Sede
+      const cityRadios = document.getElementsByName('city-filter');
+      let selectedCity = 'all';
+      cityRadios.forEach(radio => {
+        if (radio.checked) selectedCity = radio.value;
+      });
+
+      let filtered = window.CATALOGO.filter(prod => {
+        const matchesQuery = prod.title.toLowerCase().includes(query) || prod.description.toLowerCase().includes(query);
+        const matchesCategory = (category === 'all' || prod.category === category);
+        const matchesPrice = prod.price <= priceLimit;
+        const matchesCity = (selectedCity === 'all' || prod.city === selectedCity || prod.city === 'all');
+        return matchesQuery && matchesCategory && matchesPrice && matchesCity;
+      });
+
+      if (sortOption === "price-asc") filtered.sort((a, b) => a.price - b.price);
+      else if (sortOption === "price-desc") filtered.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artíc
+-----------------------------
+
+
+--- Found keyword: filter at char 76890 ---
+tElementById('category-select').value;
+      const priceLimit = parseFloat(document.getElementById('filter-price-range').value);
+      const sortOption = document.getElementById('sort-select').value;
+
+      // Obtener Sede
+      const cityRadios = document.getElementsByName('city-filter');
+      let selectedCity = 'all';
+      cityRadios.forEach(radio => {
+        if (radio.checked) selectedCity = radio.value;
+      });
+
+      let filtered = window.CATALOGO.filter(prod => {
+        const matchesQuery = prod.title.toLowerCase().includes(query) || prod.description.toLowerCase().includes(query);
+        const matchesCategory = (category === 'all' || prod.category === category);
+        const matchesPrice = prod.price <= priceLimit;
+        const matchesCity = (selectedCity === 'all' || prod.city === selectedCity || prod.city === 'all');
+        return matchesQuery && matchesCategory && matchesPrice && matchesCity;
+      });
+
+      if (sortOption === "price-asc") filtered.sort((a, b) => a.price - b.price);
+      else if (sortOption === "price-desc") filtered.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+  
+-----------------------------
+
+
+--- Found keyword: filter at char 77071 ---
+rt-select').value;
+
+      // Obtener Sede
+      const cityRadios = document.getElementsByName('city-filter');
+      let selectedCity = 'all';
+      cityRadios.forEach(radio => {
+        if (radio.checked) selectedCity = radio.value;
+      });
+
+      let filtered = window.CATALOGO.filter(prod => {
+        const matchesQuery = prod.title.toLowerCase().includes(query) || prod.description.toLowerCase().includes(query);
+        const matchesCategory = (category === 'all' || prod.category === category);
+        const matchesPrice = prod.price <= priceLimit;
+        const matchesCity = (selectedCity === 'all' || prod.city === selectedCity || prod.city === 'all');
+        return matchesQuery && matchesCategory && matchesPrice && matchesCity;
+      });
+
+      if (sortOption === "price-asc") filtered.sort((a, b) => a.price - b.price);
+      else if (sortOption === "price-desc") filtered.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rend
+-----------------------------
+
+
+--- Found keyword: filter at char 77225 ---
+dios.forEach(radio => {
+        if (radio.checked) selectedCity = radio.value;
+      });
+
+      let filtered = window.CATALOGO.filter(prod => {
+        const matchesQuery = prod.title.toLowerCase().includes(query) || prod.description.toLowerCase().includes(query);
+        const matchesCategory = (category === 'all' || prod.category === category);
+        const matchesPrice = prod.price <= priceLimit;
+        const matchesCity = (selectedCity === 'all' || prod.city === selectedCity || prod.city === 'all');
+        return matchesQuery && matchesCategory && matchesPrice && matchesCity;
+      });
+
+      if (sortOption === "price-asc") filtered.sort((a, b) => a.price - b.price);
+      else if (sortOption === "price-desc") filtered.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+        
+-----------------------------
+
+
+--- Found keyword: filter at char 77252 ---
+     if (radio.checked) selectedCity = radio.value;
+      });
+
+      let filtered = window.CATALOGO.filter(prod => {
+        const matchesQuery = prod.title.toLowerCase().includes(query) || prod.description.toLowerCase().includes(query);
+        const matchesCategory = (category === 'all' || prod.category === category);
+        const matchesPrice = prod.price <= priceLimit;
+        const matchesCity = (selectedCity === 'all' || prod.city === selectedCity || prod.city === 'all');
+        return matchesQuery && matchesCategory && matchesPrice && matchesCity;
+      });
+
+      if (sortOption === "price-asc") filtered.sort((a, b) => a.price - b.price);
+      else if (sortOption === "price-desc") filtered.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://viamx.pro
+-----------------------------
+
+
+--- Found keyword: filter at char 77764 ---
+&& matchesCategory && matchesPrice && matchesCity;
+      });
+
+      if (sortOption === "price-asc") filtered.sort((a, b) => a.price - b.price);
+      else if (sortOption === "price-desc") filtered.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://viamx.pro/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es VíaMX Pro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Es una vitrina e-commerce premium que ofrece recomendaciones y enlaces de afiliación verídicos para prepararse para el Mundial 2026 en México."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo se calcula la ganancia neta en el widg
+-----------------------------
+
+
+--- Found keyword: filter at char 77852 ---
+price-asc") filtered.sort((a, b) => a.price - b.price);
+      else if (sortOption === "price-desc") filtered.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://viamx.pro/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es VíaMX Pro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Es una vitrina e-commerce premium que ofrece recomendaciones y enlaces de afiliación verídicos para prepararse para el Mundial 2026 en México."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo se calcula la ganancia neta en el widget financiero?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+  
+-----------------------------
+
+
+--- Found keyword: filter at char 77907 ---
+
+      else if (sortOption === "price-desc") filtered.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://viamx.pro/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es VíaMX Pro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Es una vitrina e-commerce premium que ofrece recomendaciones y enlaces de afiliación verídicos para prepararse para el Mundial 2026 en México."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo se calcula la ganancia neta en el widget financiero?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El widget deduce automáticamente
+-----------------------------
+
+
+--- Found keyword: filter at char 77960 ---
+.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://viamx.pro/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es VíaMX Pro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Es una vitrina e-commerce premium que ofrece recomendaciones y enlaces de afiliación verídicos para prepararse para el Mundial 2026 en México."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo se calcula la ganancia neta en el widget financiero?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El widget deduce automáticamente un 1% de ISR y un 8% de IVA para reportar flujos net
+-----------------------------
+
+
+--- Found keyword: filter at char 77985 ---
+ a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://viamx.pro/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es VíaMX Pro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Es una vitrina e-commerce premium que ofrece recomendaciones y enlaces de afiliación verídicos para prepararse para el Mundial 2026 en México."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo se calcula la ganancia neta en el widget financiero?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El widget deduce automáticamente un 1% de ISR y un 8% de IVA para reportar flujos netos al SAT México de forma
+-----------------------------
+
+
+--- Found keyword: filter at char 78111 ---
+e(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://viamx.pro/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es VíaMX Pro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Es una vitrina e-commerce premium que ofrece recomendaciones y enlaces de afiliación verídicos para prepararse para el Mundial 2026 en México."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo se calcula la ganancia neta en el widget financiero?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El widget deduce automáticamente un 1% de ISR y un 8% de IVA para reportar flujos netos al SAT México de forma honesta."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+        
+-----------------------------
+
+
+--- Found keyword: filter at char 78476 ---
+
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://viamx.pro/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es VíaMX Pro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Es una vitrina e-commerce premium que ofrece recomendaciones y enlaces de afiliación verídicos para prepararse para el Mundial 2026 en México."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo se calcula la ganancia neta en el widget financiero?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El widget deduce automáticamente un 1% de ISR y un 8% de IVA para reportar flujos netos al SAT México de forma honesta."
+              }
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "HowTo",
+          "@id": "https://viamx.pro/#howto",
+          "name": "Cómo equiparte para el Mundial 2026 en México",
+          "step": [
+            {
+              "@type": "HowToStep",
+              "position": 1,
+              "name": "Selecciona la sede del partido",
+              "text": "Elige entre Estadio Azteca (CDMX), Estadio BBVA (Monter
+-----------------------------
+
+
+--- Found keyword: filter at char 83645 ---
+rectas ("Quienes compraron esto también adquirieron...")
+      const alternatives = window.CATALOGO.filter(p => p.id !== prod.id).slice(0, 4);
+      let alternativesHTML = "";
+      alternatives.forEach(alt => {
+        alternativesHTML += `
+          <div onclick="showProductDetail('${alt.id}')" class="bg-slate-50 border border-slate-100 p-2 rounded hover:border-[#c5a059] transition-all cursor-pointer">
+            <div class="h-16 w-full flex items-center justify-center mb-1 overflow-hidden bg-white rounded">
+              <img src="${getImageSrc(alt.image)}" alt="${alt.title}" class="max-h-full max-w-full object-contain" onerror="handleImageError(this)">
+            </div>
+            <h5 class="text-[9px] font-bold text-slate-800 line-clamp-1 leading-tight">${alt.title}</h5>
+            <span class="text-[9px] font-bold text-[#b12704]">${formatMXN(alt.price)}</span>
+          </div>
+        `;
+      });
+
+      // Mapeo dinámico del título y categorías
+      let displayTitle = prod.title;
+      if (detectedCountry === "GB") displayTitle = `Ad - ${prod.title}`;
+
+      let displayDescription = prod.description;
+      if (detectedCountry === "DE") displayDescription = `<strong>WERBUNG / ANZEIGE:</strong> ${prod.description}`;
+
+      // Inyectar la plantilla editorial estructurada secuencialmente en el modal
+      detailInfoContainer.innerHTML = `
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-[9px] font-bold uppercase tracking-widest bg-slate-100 text-[#003e29] border border-slate-200 px-2 py-0.5 rounded">${prod.category}</span>
+          <span class="text-[9px] text-[#c5a059] font-mono font-bold uppercase">${prod.city === 'all' ? 'Toda la República' : `Sede: ${prod.city}`}</span>
+        </div>
+        <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight mb-0.5">${displayTitle}</h2>
+        <p class="text-[10px] text-[#c5a059] font-mono uppercase font-bold tracking-wider mb-3">★ ${prod.tag} ★</p>
+        <div class="h-0.5 w-12 bg-[#c5a059] mb-4"></div>
+
+        <!-- Flujo Escaneable de Texto en Párrafos Co
+-----------------------------
+
+
+--- Found keyword: filter at char 98757 ---
+ '';
+      document.getElementById('category-select').value = 'all';
+      document.getElementById('filter-price-range').value = 35000;
+      document.getElementById('filter-src-amazon').checked = true;
+      document.getElementById('filter-src-meli').checked = true;
+      document.getElementById('filter-src-ali').checked = true;
+      document.getElementById('filter-src-local').checked = true;
+      selectedStarRating = 0;
+      
+      const cityRadios = document.getElementsByName('city-filter');
+      cityRadios.forEach(radio => {
+        if (radio.value === 'all') radio.checked = true;
+      });
+      
+      updatePriceSliderLabel();
+      filterProducts();
+    }
+
+    function updatePriceSliderLabel() {
+      const val = document.getElementById('filter-price-range').value;
+      document.getElementById('price-slider-label').innerText = `Max: ${formatMXN(parseFloat(val))}`;
+    }
+
+    function setCategoryFilter(category) {
+      const select = document.getElementById('category-select');
+      select.value = category;
+      filterProducts();
+    }
+
+    // Cargar catálogo local con fallback asíncrono y normalización universal
+    async function loadCatalogData() {
+      let data = null;
+      try {
+        const response = await fetch('docs/data/catalog.json');
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        }
+      } catch (e) {
+        console.warn("Error cargando catálogo remoto, intentando fallback local...");
+        try {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        } catch (inner_e) {
+          console.warn("Fallo total de red. Utilizando catálogo de fallbacks de alta gama.");
+        }
+      }
+
+      if (data) {
+        let productsArray = [];
+        if (Array.isArray(data)) {
+          productsArray = data;
+        } 
+-----------------------------
+
+
+--- Found keyword: filter at char 98824 ---
+;
+      document.getElementById('filter-price-range').value = 35000;
+      document.getElementById('filter-src-amazon').checked = true;
+      document.getElementById('filter-src-meli').checked = true;
+      document.getElementById('filter-src-ali').checked = true;
+      document.getElementById('filter-src-local').checked = true;
+      selectedStarRating = 0;
+      
+      const cityRadios = document.getElementsByName('city-filter');
+      cityRadios.forEach(radio => {
+        if (radio.value === 'all') radio.checked = true;
+      });
+      
+      updatePriceSliderLabel();
+      filterProducts();
+    }
+
+    function updatePriceSliderLabel() {
+      const val = document.getElementById('filter-price-range').value;
+      document.getElementById('price-slider-label').innerText = `Max: ${formatMXN(parseFloat(val))}`;
+    }
+
+    function setCategoryFilter(category) {
+      const select = document.getElementById('category-select');
+      select.value = category;
+      filterProducts();
+    }
+
+    // Cargar catálogo local con fallback asíncrono y normalización universal
+    async function loadCatalogData() {
+      let data = null;
+      try {
+        const response = await fetch('docs/data/catalog.json');
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        }
+      } catch (e) {
+        console.warn("Error cargando catálogo remoto, intentando fallback local...");
+        try {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        } catch (inner_e) {
+          console.warn("Fallo total de red. Utilizando catálogo de fallbacks de alta gama.");
+        }
+      }
+
+      if (data) {
+        let productsArray = [];
+        if (Array.isArray(data)) {
+          productsArray = data;
+        } else if (data && Array.isArray(data.products)) {
+          products
+-----------------------------
+
+
+--- Found keyword: filter at char 98891 ---
+;
+      document.getElementById('filter-src-amazon').checked = true;
+      document.getElementById('filter-src-meli').checked = true;
+      document.getElementById('filter-src-ali').checked = true;
+      document.getElementById('filter-src-local').checked = true;
+      selectedStarRating = 0;
+      
+      const cityRadios = document.getElementsByName('city-filter');
+      cityRadios.forEach(radio => {
+        if (radio.value === 'all') radio.checked = true;
+      });
+      
+      updatePriceSliderLabel();
+      filterProducts();
+    }
+
+    function updatePriceSliderLabel() {
+      const val = document.getElementById('filter-price-range').value;
+      document.getElementById('price-slider-label').innerText = `Max: ${formatMXN(parseFloat(val))}`;
+    }
+
+    function setCategoryFilter(category) {
+      const select = document.getElementById('category-select');
+      select.value = category;
+      filterProducts();
+    }
+
+    // Cargar catálogo local con fallback asíncrono y normalización universal
+    async function loadCatalogData() {
+      let data = null;
+      try {
+        const response = await fetch('docs/data/catalog.json');
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        }
+      } catch (e) {
+        console.warn("Error cargando catálogo remoto, intentando fallback local...");
+        try {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        } catch (inner_e) {
+          console.warn("Fallo total de red. Utilizando catálogo de fallbacks de alta gama.");
+        }
+      }
+
+      if (data) {
+        let productsArray = [];
+        if (Array.isArray(data)) {
+          productsArray = data;
+        } else if (data && Array.isArray(data.products)) {
+          productsArray = data.products;
+          // Guardar datos en el motor unive
+-----------------------------
+
+
+--- Found keyword: filter at char 98956 ---
+ue;
+      document.getElementById('filter-src-meli').checked = true;
+      document.getElementById('filter-src-ali').checked = true;
+      document.getElementById('filter-src-local').checked = true;
+      selectedStarRating = 0;
+      
+      const cityRadios = document.getElementsByName('city-filter');
+      cityRadios.forEach(radio => {
+        if (radio.value === 'all') radio.checked = true;
+      });
+      
+      updatePriceSliderLabel();
+      filterProducts();
+    }
+
+    function updatePriceSliderLabel() {
+      const val = document.getElementById('filter-price-range').value;
+      document.getElementById('price-slider-label').innerText = `Max: ${formatMXN(parseFloat(val))}`;
+    }
+
+    function setCategoryFilter(category) {
+      const select = document.getElementById('category-select');
+      select.value = category;
+      filterProducts();
+    }
+
+    // Cargar catálogo local con fallback asíncrono y normalización universal
+    async function loadCatalogData() {
+      let data = null;
+      try {
+        const response = await fetch('docs/data/catalog.json');
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        }
+      } catch (e) {
+        console.warn("Error cargando catálogo remoto, intentando fallback local...");
+        try {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        } catch (inner_e) {
+          console.warn("Fallo total de red. Utilizando catálogo de fallbacks de alta gama.");
+        }
+      }
+
+      if (data) {
+        let productsArray = [];
+        if (Array.isArray(data)) {
+          productsArray = data;
+        } else if (data && Array.isArray(data.products)) {
+          productsArray = data.products;
+          // Guardar datos en el motor universal si es el formato del crawler
+          window.VIA_MX_PRO_ENG
+-----------------------------
+
+
+--- Found keyword: filter at char 99020 ---
+rue;
+      document.getElementById('filter-src-ali').checked = true;
+      document.getElementById('filter-src-local').checked = true;
+      selectedStarRating = 0;
+      
+      const cityRadios = document.getElementsByName('city-filter');
+      cityRadios.forEach(radio => {
+        if (radio.value === 'all') radio.checked = true;
+      });
+      
+      updatePriceSliderLabel();
+      filterProducts();
+    }
+
+    function updatePriceSliderLabel() {
+      const val = document.getElementById('filter-price-range').value;
+      document.getElementById('price-slider-label').innerText = `Max: ${formatMXN(parseFloat(val))}`;
+    }
+
+    function setCategoryFilter(category) {
+      const select = document.getElementById('category-select');
+      select.value = category;
+      filterProducts();
+    }
+
+    // Cargar catálogo local con fallback asíncrono y normalización universal
+    async function loadCatalogData() {
+      let data = null;
+      try {
+        const response = await fetch('docs/data/catalog.json');
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        }
+      } catch (e) {
+        console.warn("Error cargando catálogo remoto, intentando fallback local...");
+        try {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        } catch (inner_e) {
+          console.warn("Fallo total de red. Utilizando catálogo de fallbacks de alta gama.");
+        }
+      }
+
+      if (data) {
+        let productsArray = [];
+        if (Array.isArray(data)) {
+          productsArray = data;
+        } else if (data && Array.isArray(data.products)) {
+          productsArray = data.products;
+          // Guardar datos en el motor universal si es el formato del crawler
+          window.VIA_MX_PRO_ENGINE.catalog_data = data;
+        }
+
+        if (productsArray.le
+-----------------------------
+
+
+--- Found keyword: filter at char 99150 ---
+rue;
+      selectedStarRating = 0;
+      
+      const cityRadios = document.getElementsByName('city-filter');
+      cityRadios.forEach(radio => {
+        if (radio.value === 'all') radio.checked = true;
+      });
+      
+      updatePriceSliderLabel();
+      filterProducts();
+    }
+
+    function updatePriceSliderLabel() {
+      const val = document.getElementById('filter-price-range').value;
+      document.getElementById('price-slider-label').innerText = `Max: ${formatMXN(parseFloat(val))}`;
+    }
+
+    function setCategoryFilter(category) {
+      const select = document.getElementById('category-select');
+      select.value = category;
+      filterProducts();
+    }
+
+    // Cargar catálogo local con fallback asíncrono y normalización universal
+    async function loadCatalogData() {
+      let data = null;
+      try {
+        const response = await fetch('docs/data/catalog.json');
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        }
+      } catch (e) {
+        console.warn("Error cargando catálogo remoto, intentando fallback local...");
+        try {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        } catch (inner_e) {
+          console.warn("Fallo total de red. Utilizando catálogo de fallbacks de alta gama.");
+        }
+      }
+
+      if (data) {
+        let productsArray = [];
+        if (Array.isArray(data)) {
+          productsArray = data;
+        } else if (data && Array.isArray(data.products)) {
+          productsArray = data.products;
+          // Guardar datos en el motor universal si es el formato del crawler
+          window.VIA_MX_PRO_ENGINE.catalog_data = data;
+        }
+
+        if (productsArray.length > 0) {
+          productsArray.forEach(jsonProd => {
+            // Normalizar producto del crawler nuevo al formato del chas
+-----------------------------
+
+
+--- Found keyword: filter at char 99308 ---
+radio.value === 'all') radio.checked = true;
+      });
+      
+      updatePriceSliderLabel();
+      filterProducts();
+    }
+
+    function updatePriceSliderLabel() {
+      const val = document.getElementById('filter-price-range').value;
+      document.getElementById('price-slider-label').innerText = `Max: ${formatMXN(parseFloat(val))}`;
+    }
+
+    function setCategoryFilter(category) {
+      const select = document.getElementById('category-select');
+      select.value = category;
+      filterProducts();
+    }
+
+    // Cargar catálogo local con fallback asíncrono y normalización universal
+    async function loadCatalogData() {
+      let data = null;
+      try {
+        const response = await fetch('docs/data/catalog.json');
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        }
+      } catch (e) {
+        console.warn("Error cargando catálogo remoto, intentando fallback local...");
+        try {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        } catch (inner_e) {
+          console.warn("Fallo total de red. Utilizando catálogo de fallbacks de alta gama.");
+        }
+      }
+
+      if (data) {
+        let productsArray = [];
+        if (Array.isArray(data)) {
+          productsArray = data;
+        } else if (data && Array.isArray(data.products)) {
+          productsArray = data.products;
+          // Guardar datos en el motor universal si es el formato del crawler
+          window.VIA_MX_PRO_ENGINE.catalog_data = data;
+        }
+
+        if (productsArray.length > 0) {
+          productsArray.forEach(jsonProd => {
+            // Normalizar producto del crawler nuevo al formato del chasis base
+            const id = jsonProd.id || jsonProd.product_id;
+            const plat = jsonProd.platform || jsonProd.platform_source || (id && id.include
+-----------------------------
+
+
+--- Found keyword: filter at char 99416 ---
+oducts();
+    }
+
+    function updatePriceSliderLabel() {
+      const val = document.getElementById('filter-price-range').value;
+      document.getElementById('price-slider-label').innerText = `Max: ${formatMXN(parseFloat(val))}`;
+    }
+
+    function setCategoryFilter(category) {
+      const select = document.getElementById('category-select');
+      select.value = category;
+      filterProducts();
+    }
+
+    // Cargar catálogo local con fallback asíncrono y normalización universal
+    async function loadCatalogData() {
+      let data = null;
+      try {
+        const response = await fetch('docs/data/catalog.json');
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        }
+      } catch (e) {
+        console.warn("Error cargando catálogo remoto, intentando fallback local...");
+        try {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        } catch (inner_e) {
+          console.warn("Fallo total de red. Utilizando catálogo de fallbacks de alta gama.");
+        }
+      }
+
+      if (data) {
+        let productsArray = [];
+        if (Array.isArray(data)) {
+          productsArray = data;
+        } else if (data && Array.isArray(data.products)) {
+          productsArray = data.products;
+          // Guardar datos en el motor universal si es el formato del crawler
+          window.VIA_MX_PRO_ENGINE.catalog_data = data;
+        }
+
+        if (productsArray.length > 0) {
+          productsArray.forEach(jsonProd => {
+            // Normalizar producto del crawler nuevo al formato del chasis base
+            const id = jsonProd.id || jsonProd.product_id;
+            const plat = jsonProd.platform || jsonProd.platform_source || (id && id.includes("amazon") ? "amazon_mx" : "mercadolibre_mx");
+            const clean_key = id ? id.replace("card_amazon_m
+-----------------------------
+
+
+--- Found keyword: filter at char 99698 ---
+    const select = document.getElementById('category-select');
+      select.value = category;
+      filterProducts();
+    }
+
+    // Cargar catálogo local con fallback asíncrono y normalización universal
+    async function loadCatalogData() {
+      let data = null;
+      try {
+        const response = await fetch('docs/data/catalog.json');
+        if (response.ok) {
+          data = await response.json();
+        } else {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        }
+      } catch (e) {
+        console.warn("Error cargando catálogo remoto, intentando fallback local...");
+        try {
+          const responseFallback = await fetch('data/catalog.json');
+          if (responseFallback.ok) {
+            data = await responseFallback.json();
+          }
+        } catch (inner_e) {
+          console.warn("Fallo total de red. Utilizando catálogo de fallbacks de alta gama.");
+        }
+      }
+
+      if (data) {
+        let productsArray = [];
+        if (Array.isArray(data)) {
+          productsArray = data;
+        } else if (data && Array.isArray(data.products)) {
+          productsArray = data.products;
+          // Guardar datos en el motor universal si es el formato del crawler
+          window.VIA_MX_PRO_ENGINE.catalog_data = data;
+        }
+
+        if (productsArray.length > 0) {
+          productsArray.forEach(jsonProd => {
+            // Normalizar producto del crawler nuevo al formato del chasis base
+            const id = jsonProd.id || jsonProd.product_id;
+            const plat = jsonProd.platform || jsonProd.platform_source || (id && id.includes("amazon") ? "amazon_mx" : "mercadolibre_mx");
+            const clean_key = id ? id.replace("card_amazon_mx_", "").replace("card_mercadolibre_mx_", "").replace("card_", "") : "";
+            
+            // Determinar origen
+            let source = jsonProd.source;
+            if (!source) {
+              if (plat === "amazon_mx") source = "Amazon México";
+              else if (plat 
+-----------------------------
+
+
+--- Found keyword: filter at char 106332 ---
+ogo en vivo combinado con éxito.");
+        }
+      }
+
+      await applyClientGeotargeting();
+      filterProducts();
+
+      // Cargar producto por URL si existe
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodIdParam = urlParams.get('product_id');
+      if (prodIdParam) {
+        setTimeout(() => showProductDetail(prodIdParam), 150);
+      }
+    }
+
+    // Abre el producto en una pestaña nueva con el parámetro product_id
+    function openProductInNewTab(productId) {
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.set("product_id", productId);
+      window.open(currentUrl.toString(), '_blank');
+    }
+
+    // Funciones del Modal Clínico de Acompañamiento Digital
+    function openWellnessModal() {
+      const modal = document.getElementById('wellness-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.firstElementChild.classList.remove('scale-95');
+      }, 50);
+    }
+
+    function closeWellnessModal() {
+      const modal = document.getElementById('wellness-modal');
+      modal.classList.add('opacity-0');
+      modal.firstElementChild.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        // Reiniciar las vistas
+        document.getElementById('wellness-step-test').classList.remove('hidden');
+        document.getElementById('wellness-step-offer').classList.add('hidden');
+        document.getElementById('wellness-step-emergency').classList.add('hidden');
+        document.getElementById('wellness-form').reset();
+      }, 300);
+    }
+
+    function processWellnessTest(event) {
+      event.preventDefault();
+      const crisis = document.getElementById('wellness-q-crisis').value;
+      
+      const severities = document.getElementsByName('wellness-q-severity');
+      let severity = 'mild';
+      severities.forEach(r => {
+        if (r.checked) severity = r.value;
+      });
+
+      const medsList = document.getElementsByName('wellness-q-meds');
+      let tookMeds = 'yes';
+      
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 49735 ---
+directa al catálogo verificado por el validador local con imágenes verídicas de Unsplash
+    window.CATALOGO = [
+      {
+        "id": "card_tv_65",
+        "source": "Amazon México",
+        "title": "Pantalla Hisense 65\" 4K QLED 120Hz (65U7N)",
+        "category": "Tecnología",
+        "description": "El monitor definitivo para disfrutar del Mundial 2026. Cuenta con panel QLED, frecuencia de actualización nativa de 120Hz para un movimiento de balón ultra fluido y tecnología Dolby Vision.",
+        "qualities": "Resolución de 3840 x 2160 píxeles, panel de puntos cuánticos con mil millones de colores. Conectividad HDMI 2.1 nativa para un retardo imperceptible.",
+        "care": "Limpiar únicamente con paño de microfibra seco. No rociar líquidos directamente sobre la pantalla QLED.",
+        "price": 14999.00,
+        "oldPrice": 18999.00,
+        "rating": 4.8,
+        "ratingCount": "820",
+        "delivery": "Entrega GRATIS mañana con Prime",
+        "tag": "Estadio en Casa",
+        "basePath": "https://www.amazon.com.mx/dp/B0D1299KPN",
+        "city": "CDMX",
+        "image": "prod_tv_65.jpg"
+      },
+      {
+        "id": "card_soundbar",
+        "source": "Amazon México",
+        "title": "Barra de Sonido Bose TV Speaker con Bluetooth",
+        "category": "Audio",
+        "description": "Siente el rugido de la tribuna y los cánticos de la afición con total claridad. Diseñada especialmente para mejorar las voces de los narradores y ofrecer graves profundos.",
+        "qualities": "Conectividad Bluetooth integrada y entrada óptica digital. Control remoto incluido con modo de diálogo especial para voces nítidas.",
+        "care": "No obstruir las ranuras de ventilación. Desconectar durante tormentas eléctricas.",
+        "price": 5499.00,
+        "oldPrice": 6499.00,
+        "rating": 4.7,
+        "ratingCount": "432",
+        "delivery": "Envío Prime Gratis",
+        "tag": "Sonido de Tribuna",
+        "basePath": "https://www.amazon.com.mx/dp/B088383Z4V",
+        "city": "all",
+        "image": "prod_soundbar.jpg"
+      },
+      {
+        "id": "card_weber_
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 65531 ---
+: "https://www.amazon.com/s?k=Portable+Charcoal+Grill+Foldable+Suitcase"
+        };
+
+        window.CATALOGO.forEach(prod => {
+          if (prod.basePath.includes("amazon.com.mx")) {
+            const asinMatch = prod.basePath.match(/\/dp\/([A-Z0-9]{10})/) || prod.basePath.match(/\/gp\/product\/([A-Z0-9]{10})/);
+            if (asinMatch) {
+              const asin = asinMatch[1];
+              let domain = "amazon.com";
+              if (detectedCountry === "CA") domain = "amazon.ca";
+              else if (detectedCountry === "AU") domain = "amazon.com.au";
+
+              prod.basePath = `https://www.${domain}/dp/${asin}`;
+              prod.source = `Amazon ${detectedCountry === "CA" ? "Canadá" : detectedCountry === "AU" ? "Australia" : "Internacional"}`;
+              prod.delivery = `Envío disponible a ${detectedCountry}`;
+            }
+          } else if (prod.basePath.includes("mercadolibre.com.mx")) {
+            const equiv = MELI_EQUIVALENTS[prod.id];
+            if (equiv) {
+              prod.basePath = equiv;
+              prod.source = "Amazon Internacional";
+              prod.delivery = `Envío internacional directo a ${detectedCountry}`;
+            }
+          }
+        });
+      }
+
+      applyRegulatoryCompliance();
+      updateAffiliateUrls();
+      updateJSONLDSchema(null);
+    }
+
+    // Inyección de cumplimiento regulatorio local por IP
+    function applyRegulatoryCompliance() {
+      // 1. Estados Unidos (FTC Compliance)
+      const existingFtc = document.getElementById('ftc-banner');
+      if (existingFtc) existingFtc.remove();
+      
+      if (detectedCountry === "US") {
+        const ftcBanner = document.createElement('div');
+        ftcBanner.id = "ftc-banner";
+        ftcBanner.className = "bg-slate-100 text-slate-800 px-6 py-3 text-xs text-center border-b border-slate-200 font-semibold z-30 relative";
+        ftcBanner.innerHTML = `📢 <strong>Divulgación de Afiliados:</strong> Este artículo contiene enlaces patrocinados. Me estoy asociando con las marcas recomendadas para ofrecerte esta selección.`;
+        document.body.insertBefore(f
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 70067 ---
+').value.trim() || "viamx_campaign_2026";
+      const clickId = getOrCreateClickID();
+
+      window.CATALOGO.forEach(prod => {
+        const separator = prod.basePath.includes('?') ? '&' : '?';
+        if (isPanicModeActive) {
+          prod.url = prod.basePath;
+        } else {
+          let affUrl = "";
+          if (prod.affiliateUrl) {
+            affUrl = prod.affiliateUrl;
+          } else if (prod.source.includes("Amazon")) {
+            affUrl = `${prod.basePath}${separator}tag=${encodeURIComponent(activeAmazonTag)}`;
+          } else if (prod.source.includes("Mercado")) {
+            affUrl = `${prod.basePath}${separator}utm_source=affiliate&utm_medium=${encodeURIComponent(activeMeliCampaign)}`;
+          } else {
+            affUrl = `${prod.basePath}${separator}tag=${encodeURIComponent(activeAmazonTag)}`;
+          }
+          
+          if (!affUrl.includes("click_id=")) {
+            prod.url = `${affUrl}&click_id=${encodeURIComponent(clickId)}`;
+          } else {
+            prod.url = affUrl;
+          }
+        }
+      });
+    }
+
+    function togglePanicMode() {
+      const btn = document.getElementById('btn-panic');
+      isPanicModeActive = !isPanicModeActive;
+      const s2sDot = document.getElementById('status-s2s-dot');
+      const s2sText = document.getElementById('status-s2s-text');
+
+      if (isPanicModeActive) {
+        btn.classList.add('panic-active');
+        btn.innerText = "🚨 Pánico Activo (Mirror)";
+        s2sDot.className = "w-1.5 h-1.5 bg-red-600 rounded-full";
+        s2sText.innerText = "S2S MASCARADO";
+        s2sText.className = "text-[9px] font-mono tracking-wider text-red-500";
+      } else {
+        btn.classList.remove('panic-active');
+        btn.innerText = "🚨 Botón de Pánico";
+        s2sDot.className = "w-1.5 h-1.5 bg-[#10b981] rounded-full animate-ping";
+        s2sText.innerText = "S2S ACTIVO";
+        s2sText.className = "text-[9px] font-mono tracking-wider text-slate-300";
+      }
+      updateAffiliateUrls();
+      filterProducts();
+    }
+
+    function getImageSrc(imgFilename) {
+      if (imgFilename.startsWith('h
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 77243 ---
+ => {
+        if (radio.checked) selectedCity = radio.value;
+      });
+
+      let filtered = window.CATALOGO.filter(prod => {
+        const matchesQuery = prod.title.toLowerCase().includes(query) || prod.description.toLowerCase().includes(query);
+        const matchesCategory = (category === 'all' || prod.category === category);
+        const matchesPrice = prod.price <= priceLimit;
+        const matchesCity = (selectedCity === 'all' || prod.city === selectedCity || prod.city === 'all');
+        return matchesQuery && matchesCategory && matchesPrice && matchesCity;
+      });
+
+      if (sortOption === "price-asc") filtered.sort((a, b) => a.price - b.price);
+      else if (sortOption === "price-desc") filtered.sort((a, b) => b.price - a.price);
+      else filtered.sort((a, b) => b.rating - a.rating);
+
+      filteredProductsGlobal = filtered;
+      displayPage(1);
+    }
+
+    function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 82941 ---
+
+    function showProductDetail(productId) {
+      isImagePinned = false;
+      const prod = window.CATALOGO.find(p => p.id === productId);
+      if (!prod) return;
+      activeProductDetail = prod;
+      activeProductIndex = window.CATALOGO.findIndex(p => p.id === productId);
+
+      updateAffiliateUrls();
+
+      // Mapear el JSON-LD dinámico del producto seleccionado
+      updateJSONLDSchema(prod);
+
+      const modal = document.getElementById('product-detail-modal');
+
+      // Modificar la vista de detalle para seguir estrictamente la estructura psicológica de consumo
+      const detailInfoContainer = modal.querySelector('.md\\:w-1\\/2.p-6.sm\\:p-8');
+      
+      // Construir 4 Alternativas Directas ("Quienes compraron esto también adquirieron...")
+      const alternatives = window.CATALOGO.filter(p => p.id !== prod.id).slice(0, 4);
+      let alternativesHTML = "";
+      alternatives.forEach(alt => {
+        alternativesHTML += `
+          <div onclick="showProductDetail('${alt.id}')" class="bg-slate-50 border border-slate-100 p-2 rounded hover:border-[#c5a059] transition-all cursor-pointer">
+            <div class="h-16 w-full flex items-center justify-center mb-1 overflow-hidden bg-white rounded">
+              <img src="${getImageSrc(alt.image)}" alt="${alt.title}" class="max-h-full max-w-full object-contain" onerror="handleImageError(this)">
+            </div>
+            <h5 class="text-[9px] font-bold text-slate-800 line-clamp-1 leading-tight">${alt.title}</h5>
+            <span class="text-[9px] font-bold text-[#b12704]">${formatMXN(alt.price)}</span>
+          </div>
+        `;
+      });
+
+      // Mapeo dinámico del título y categorías
+      let displayTitle = prod.title;
+      if (detectedCountry === "GB") displayTitle = `Ad - ${prod.title}`;
+
+      let displayDescription = prod.description;
+      if (detectedCountry === "DE") displayDescription = `<strong>WERBUNG / ANZEIGE:</strong> ${prod.description}`;
+
+      // Inyectar la plantilla editorial estructurada secuencialmente en el modal
+      detailInfoContainer.innerHTML = `
+        <div class="flex ju
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 83074 ---
+ctId);
+      if (!prod) return;
+      activeProductDetail = prod;
+      activeProductIndex = window.CATALOGO.findIndex(p => p.id === productId);
+
+      updateAffiliateUrls();
+
+      // Mapear el JSON-LD dinámico del producto seleccionado
+      updateJSONLDSchema(prod);
+
+      const modal = document.getElementById('product-detail-modal');
+
+      // Modificar la vista de detalle para seguir estrictamente la estructura psicológica de consumo
+      const detailInfoContainer = modal.querySelector('.md\\:w-1\\/2.p-6.sm\\:p-8');
+      
+      // Construir 4 Alternativas Directas ("Quienes compraron esto también adquirieron...")
+      const alternatives = window.CATALOGO.filter(p => p.id !== prod.id).slice(0, 4);
+      let alternativesHTML = "";
+      alternatives.forEach(alt => {
+        alternativesHTML += `
+          <div onclick="showProductDetail('${alt.id}')" class="bg-slate-50 border border-slate-100 p-2 rounded hover:border-[#c5a059] transition-all cursor-pointer">
+            <div class="h-16 w-full flex items-center justify-center mb-1 overflow-hidden bg-white rounded">
+              <img src="${getImageSrc(alt.image)}" alt="${alt.title}" class="max-h-full max-w-full object-contain" onerror="handleImageError(this)">
+            </div>
+            <h5 class="text-[9px] font-bold text-slate-800 line-clamp-1 leading-tight">${alt.title}</h5>
+            <span class="text-[9px] font-bold text-[#b12704]">${formatMXN(alt.price)}</span>
+          </div>
+        `;
+      });
+
+      // Mapeo dinámico del título y categorías
+      let displayTitle = prod.title;
+      if (detectedCountry === "GB") displayTitle = `Ad - ${prod.title}`;
+
+      let displayDescription = prod.description;
+      if (detectedCountry === "DE") displayDescription = `<strong>WERBUNG / ANZEIGE:</strong> ${prod.description}`;
+
+      // Inyectar la plantilla editorial estructurada secuencialmente en el modal
+      detailInfoContainer.innerHTML = `
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-[9px] font-bold uppercase tracking-widest bg-slate-100 text-[#003e29] b
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 83636 ---
+ativas Directas ("Quienes compraron esto también adquirieron...")
+      const alternatives = window.CATALOGO.filter(p => p.id !== prod.id).slice(0, 4);
+      let alternativesHTML = "";
+      alternatives.forEach(alt => {
+        alternativesHTML += `
+          <div onclick="showProductDetail('${alt.id}')" class="bg-slate-50 border border-slate-100 p-2 rounded hover:border-[#c5a059] transition-all cursor-pointer">
+            <div class="h-16 w-full flex items-center justify-center mb-1 overflow-hidden bg-white rounded">
+              <img src="${getImageSrc(alt.image)}" alt="${alt.title}" class="max-h-full max-w-full object-contain" onerror="handleImageError(this)">
+            </div>
+            <h5 class="text-[9px] font-bold text-slate-800 line-clamp-1 leading-tight">${alt.title}</h5>
+            <span class="text-[9px] font-bold text-[#b12704]">${formatMXN(alt.price)}</span>
+          </div>
+        `;
+      });
+
+      // Mapeo dinámico del título y categorías
+      let displayTitle = prod.title;
+      if (detectedCountry === "GB") displayTitle = `Ad - ${prod.title}`;
+
+      let displayDescription = prod.description;
+      if (detectedCountry === "DE") displayDescription = `<strong>WERBUNG / ANZEIGE:</strong> ${prod.description}`;
+
+      // Inyectar la plantilla editorial estructurada secuencialmente en el modal
+      detailInfoContainer.innerHTML = `
+        <div class="flex justify-between items-center mb-2">
+          <span class="text-[9px] font-bold uppercase tracking-widest bg-slate-100 text-[#003e29] border border-slate-200 px-2 py-0.5 rounded">${prod.category}</span>
+          <span class="text-[9px] text-[#c5a059] font-mono font-bold uppercase">${prod.city === 'all' ? 'Toda la República' : `Sede: ${prod.city}`}</span>
+        </div>
+        <h2 class="text-lg sm:text-xl font-bold text-slate-900 leading-tight mb-0.5">${displayTitle}</h2>
+        <p class="text-[10px] text-[#c5a059] font-mono uppercase font-bold tracking-wider mb-3">★ ${prod.tag} ★</p>
+        <div class="h-0.5 w-12 bg-[#c5a059] mb-4"></div>
+
+        <!-- Flujo Escaneable de Texto en Pá
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 95937 ---
+center center";
+    });
+
+    function initiateRedirection(productId) {
+      const product = window.CATALOGO.find(p => p.id === productId);
+      if (!product) return;
+      activeProductIndex = window.CATALOGO.findIndex(p => p.id === productId);
+      activeProductDetail = product;
+
+      updateAffiliateUrls();
+
+      // Transparencia total de cloaking
+      document.getElementById('modal-product-name').innerText = product.title;
+      document.getElementById('modal-target-url').innerText = product.url;
+      
+      const modal = document.getElementById('redirect-modal');
+      modal.classList.remove('hidden');
+    }
+
+    function goToMerchant() {
+      if (activeProductDetail) {
+        closeProductDetail();
+        initiateRedirection(activeProductDetail.id);
+      }
+    }
+
+    function closeModal(confirmRedirect) {
+      const modal = document.getElementById('redirect-modal');
+      modal.classList.add('hidden');
+
+      if (confirmRedirect && activeProductIndex !== null) {
+        const product = window.CATALOGO[activeProductIndex];
+        
+        clicks++;
+        sendS2STracking(product.id, "redirect_approved");
+
+        const isSale = Math.random() < 0.20;
+        if (isSale) {
+          const grossCommission = product.price * 0.085;
+          const netCommission = calculateNetCommission(grossCommission);
+          commissions += netCommission;
+        }
+
+        updateFinancialStats();
+        
+        // Crear un enlace temporal con nofollow sponsored e id único para cumplir con las directivas
+        const tempAnchor = document.createElement('a');
+        tempAnchor.href = product.url;
+        tempAnchor.target = "_blank";
+        tempAnchor.rel = "nofollow sponsored";
+        tempAnchor.id = `outbound-trigger-${product.id}`;
+        document.body.appendChild(tempAnchor);
+        tempAnchor.click();
+        tempAnchor.remove();
+      }
+      activeProductIndex = null;
+    }
+
+    function updateFinancialStats() {
+      document.getElementById('clicks-count').innerText = clicks;
+      document.getElementById('commissions-sum').innerText = formatMXN(commi
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 96039 ---
+TALOGO.find(p => p.id === productId);
+      if (!product) return;
+      activeProductIndex = window.CATALOGO.findIndex(p => p.id === productId);
+      activeProductDetail = product;
+
+      updateAffiliateUrls();
+
+      // Transparencia total de cloaking
+      document.getElementById('modal-product-name').innerText = product.title;
+      document.getElementById('modal-target-url').innerText = product.url;
+      
+      const modal = document.getElementById('redirect-modal');
+      modal.classList.remove('hidden');
+    }
+
+    function goToMerchant() {
+      if (activeProductDetail) {
+        closeProductDetail();
+        initiateRedirection(activeProductDetail.id);
+      }
+    }
+
+    function closeModal(confirmRedirect) {
+      const modal = document.getElementById('redirect-modal');
+      modal.classList.add('hidden');
+
+      if (confirmRedirect && activeProductIndex !== null) {
+        const product = window.CATALOGO[activeProductIndex];
+        
+        clicks++;
+        sendS2STracking(product.id, "redirect_approved");
+
+        const isSale = Math.random() < 0.20;
+        if (isSale) {
+          const grossCommission = product.price * 0.085;
+          const netCommission = calculateNetCommission(grossCommission);
+          commissions += netCommission;
+        }
+
+        updateFinancialStats();
+        
+        // Crear un enlace temporal con nofollow sponsored e id único para cumplir con las directivas
+        const tempAnchor = document.createElement('a');
+        tempAnchor.href = product.url;
+        tempAnchor.target = "_blank";
+        tempAnchor.rel = "nofollow sponsored";
+        tempAnchor.id = `outbound-trigger-${product.id}`;
+        document.body.appendChild(tempAnchor);
+        tempAnchor.click();
+        tempAnchor.remove();
+      }
+      activeProductIndex = null;
+    }
+
+    function updateFinancialStats() {
+      document.getElementById('clicks-count').innerText = clicks;
+      document.getElementById('commissions-sum').innerText = formatMXN(commissions);
+
+      const percent = Math.min((commissions / targetAlojamiento) * 100, 100);
+      const ba
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 96860 ---
+dden');
+
+      if (confirmRedirect && activeProductIndex !== null) {
+        const product = window.CATALOGO[activeProductIndex];
+        
+        clicks++;
+        sendS2STracking(product.id, "redirect_approved");
+
+        const isSale = Math.random() < 0.20;
+        if (isSale) {
+          const grossCommission = product.price * 0.085;
+          const netCommission = calculateNetCommission(grossCommission);
+          commissions += netCommission;
+        }
+
+        updateFinancialStats();
+        
+        // Crear un enlace temporal con nofollow sponsored e id único para cumplir con las directivas
+        const tempAnchor = document.createElement('a');
+        tempAnchor.href = product.url;
+        tempAnchor.target = "_blank";
+        tempAnchor.rel = "nofollow sponsored";
+        tempAnchor.id = `outbound-trigger-${product.id}`;
+        document.body.appendChild(tempAnchor);
+        tempAnchor.click();
+        tempAnchor.remove();
+      }
+      activeProductIndex = null;
+    }
+
+    function updateFinancialStats() {
+      document.getElementById('clicks-count').innerText = clicks;
+      document.getElementById('commissions-sum').innerText = formatMXN(commissions);
+
+      const percent = Math.min((commissions / targetAlojamiento) * 100, 100);
+      const bar = document.getElementById('progress-bar');
+      if (bar) bar.style.width = percent + '%';
+      
+      const text = document.getElementById('progress-text-under');
+      if (text) text.innerText = `Progreso: ${Math.round(percent)}% para cubrir costos`;
+      
+      document.getElementById('progress-percentage-label').innerText = `${formatMXN(commissions)} / ${formatMXN(targetAlojamiento)} MXN`;
+    }
+
+    function formatMXN(value) {
+      return '$' + parseFloat(value).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,');
+    }
+
+    function clearAllFilters() {
+      document.getElementById('search-input').value = '';
+      document.getElementById('category-select').value = 'all';
+      document.getElementById('filter-price-range').value = 35000;
+      document.getElementById('filter-src-amazon').checked = true;
+
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 105945 ---
+od.affiliateUrl = processed.final_redirect_url;
+            }
+
+            const localProd = window.CATALOGO.find(p => p.id === id || p.id === `card_${plat}_${clean_key}`);
+            if (localProd) {
+              Object.assign(localProd, normalizedProd);
+            } else {
+              window.CATALOGO.push(normalizedProd);
+            }
+          });
+          console.log("Catálogo en vivo combinado con éxito.");
+        }
+      }
+
+      await applyClientGeotargeting();
+      filterProducts();
+
+      // Cargar producto por URL si existe
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodIdParam = urlParams.get('product_id');
+      if (prodIdParam) {
+        setTimeout(() => showProductDetail(prodIdParam), 150);
+      }
+    }
+
+    // Abre el producto en una pestaña nueva con el parámetro product_id
+    function openProductInNewTab(productId) {
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.set("product_id", productId);
+      window.open(currentUrl.toString(), '_blank');
+    }
+
+    // Funciones del Modal Clínico de Acompañamiento Digital
+    function openWellnessModal() {
+      const modal = document.getElementById('wellness-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.firstElementChild.classList.remove('scale-95');
+      }, 50);
+    }
+
+    function closeWellnessModal() {
+      const modal = document.getElementById('wellness-modal');
+      modal.classList.add('opacity-0');
+      modal.firstElementChild.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        // Reiniciar las vistas
+        document.getElementById('wellness-step-test').classList.remove('hidden');
+        document.getElementById('wellness-step-offer').classList.add('hidden');
+        document.getElementById('wellness-step-emergency').classList.add('hidden');
+        document.getElementById('wellness-form').reset();
+      }, 300);
+    }
+
+    function processWellnessTest(event) {
+      event.preven
+-----------------------------
+
+
+--- Found keyword: CATALOGO at char 106145 ---
+{
+              Object.assign(localProd, normalizedProd);
+            } else {
+              window.CATALOGO.push(normalizedProd);
+            }
+          });
+          console.log("Catálogo en vivo combinado con éxito.");
+        }
+      }
+
+      await applyClientGeotargeting();
+      filterProducts();
+
+      // Cargar producto por URL si existe
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodIdParam = urlParams.get('product_id');
+      if (prodIdParam) {
+        setTimeout(() => showProductDetail(prodIdParam), 150);
+      }
+    }
+
+    // Abre el producto en una pestaña nueva con el parámetro product_id
+    function openProductInNewTab(productId) {
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.set("product_id", productId);
+      window.open(currentUrl.toString(), '_blank');
+    }
+
+    // Funciones del Modal Clínico de Acompañamiento Digital
+    function openWellnessModal() {
+      const modal = document.getElementById('wellness-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.firstElementChild.classList.remove('scale-95');
+      }, 50);
+    }
+
+    function closeWellnessModal() {
+      const modal = document.getElementById('wellness-modal');
+      modal.classList.add('opacity-0');
+      modal.firstElementChild.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        // Reiniciar las vistas
+        document.getElementById('wellness-step-test').classList.remove('hidden');
+        document.getElementById('wellness-step-offer').classList.add('hidden');
+        document.getElementById('wellness-step-emergency').classList.add('hidden');
+        document.getElementById('wellness-form').reset();
+      }, 300);
+    }
+
+    function processWellnessTest(event) {
+      event.preventDefault();
+      const crisis = document.getElementById('wellness-q-crisis').value;
+      
+      const severities = document.getElementsByName('wellness-q-severity');
+      let severity = 'mild';
+   
+-----------------------------

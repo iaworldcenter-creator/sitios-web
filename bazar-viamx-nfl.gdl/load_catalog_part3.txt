@@ -1,0 +1,43 @@
+window.CATALOGO.push(normalizedProd);
+            }
+          });
+          console.log("Catálogo en vivo combinado con éxito.");
+        }
+      }
+
+      await applyClientGeotargeting();
+      filterProducts();
+
+      // Cargar producto por URL si existe
+      const urlParams = new URLSearchParams(window.location.search);
+      const prodIdParam = urlParams.get('product_id');
+      if (prodIdParam) {
+        setTimeout(() => showProductDetail(prodIdParam), 150);
+      }
+    }
+
+    // Abre el producto en una pestaña nueva con el parámetro product_id
+    function openProductInNewTab(productId) {
+      const currentUrl = new URL(window.location.href);
+      currentUrl.searchParams.set("product_id", productId);
+      window.open(currentUrl.toString(), '_blank');
+    }
+
+    // Funciones del Modal Clínico de Acompañamiento Digital
+    function openWellnessModal() {
+      const modal = document.getElementById('wellness-modal');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modal.firstElementChild.classList.remove('scale-95');
+      }, 50);
+    }
+
+    function closeWellnessModal() {
+      const modal = document.getElementById('wellness-modal');
+      modal.classList.add('opacity-0');
+      modal.firstElementChild.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        // Reiniciar las vistas
+        document.getElementById('wellness-step-test').classList.remove('hidden'

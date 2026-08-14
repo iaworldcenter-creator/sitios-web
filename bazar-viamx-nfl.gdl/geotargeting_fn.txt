@@ -1,0 +1,36 @@
+function applyClientGeotargeting() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const simCountry = urlParams.get('sim_country');
+
+      if (simCountry) {
+        detectedCountry = simCountry.toUpperCase();
+        console.log(`Geotargeting Simulado: País forzado a [${detectedCountry}] por URL.`);
+      } else {
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 600);
+          const res = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+          clearTimeout(timeoutId);
+          if (res.ok) {
+            const data = await res.json();
+            if (data.country_code) {
+              detectedCountry = data.country_code.toUpperCase();
+              console.log(`Geotargeting Real: IP geolocalizada en [${detectedCountry}]`);
+            }
+          }
+        } catch (e) {
+          console.warn("Geotargeting: Error o timeout al geolocalizar IP. Fallback a MX.");
+        }
+      }
+
+      // Indicador de S2S en panel superior
+      const s2sText = document.getElementById('status-s2s-text');
+      if (s2sText && !isPanicModeActive) {
+        s2sText.innerText = `S2S ACTIVO | PAÍS: ${detectedCountry}`;
+      }
+
+      // Redirección y adaptación transnacional en vivo (CA, AU, US, PA, PR, etc.)
+      if (detectedCountry !== "MX") {
+        const MELI_EQUIVALENTS = {
+          "card_adidas_ball": "https://www.amazon.com/dp/B09B2L4HHL",
+          "card_

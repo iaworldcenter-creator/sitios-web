@@ -1,0 +1,43 @@
+# ==============================================================================
+#                 ESCUDO DE CONTROL DE VERSIONES - VIA MX
+# ==============================================================================
+
+# Entorno y Configuración de Credenciales
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.staging
+
+# Archivos de Registro y Logs de Actividad
+*.log
+activity.log
+error.log
+mic_lock/*.log
+mic_lock/activity.log
+mic_lock/error.log
+
+# Caché, Entornos Virtuales y Empaquetados de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+build/
+dist/
+*.egg-info/
+
+# Archivos de Sistema de Windows (ASUS Frankenstein)
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Datos Temporales de Ingesta en Caliente
+docs/data/catalog.json

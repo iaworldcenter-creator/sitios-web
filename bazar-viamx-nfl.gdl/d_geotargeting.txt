@@ -1,0 +1,76 @@
+async function applyClientGeotargeting() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const simCountry = urlParams.get('sim_country');
+
+      if (simCountry) {
+        detectedCountry = simCountry.toUpperCase();
+        console.log(`Geotargeting Simulado: País forzado a [${detectedCountry}] por URL.`);
+      } else {
+        try {
+          // Timeout controlado mediante abort controller
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 600);
+          const res = await fetch('https://ipapi.co/json/', { signal: controller.signal });
+          clearTimeout(timeoutId);
+          if (res.ok) {
+            const data = await res.json();
+            if (data.country_code) {
+              detectedCountry = data.country_code.toUpperCase();
+              console.log(`Geotargeting Real: IP geolocalizada en [${detectedCountry}]`);
+            }
+          }
+        } catch (e) {
+          console.warn("Geotargeting: Error o timeout al geolocalizar IP. Fallback a MX.");
+        }
+      }
+
+      // Actualizar indicador de estado S2S en el panel superior
+      const s2sText = document.getElementById('status-s2s-text');
+      if (s2sText && !isPanicModeActive) {
+        s2sText.innerText = `S2S ACTIVO | PAÍS: ${detectedCountry}`;
+      }
+
+      // Redirección y adaptación transnacional en vivo (CA, AU, US, PA, PR, etc.)
+      if (detectedCountry !== "MX") {
+        const MELI_EQUIVALENTS = {
+          "card_adidas_ball": "https://www.amazon.com/dp/B09B2L4HHL",
+          "card_oster_airfryer": "https://www.amazon.com/dp/B08B1F54DF",
+          "card_ring_doorbell": "https://www.amazon.com/dp/B08CKYXL5B",
+          "card_silla_ergo": "https://www.amazon.com/s?k=Ergonomic+Office+Chair+Lumbar+Support+Mesh",
+          "card_power_bank_10": "https://www.amazon.com/dp/B07S829LBX",
+          "card_portable_grill": "https://www.amazon.com/s?k=Portable+Charcoal+Grill+Foldable+Suitcase"
+        };
+
+        window.CATALOGO.forEach(prod => {
+          // 1. Adaptación Amazon MX -> CA / AU / US
+          if (prod.basePath.includes("amazon.com.mx")) {
+            const asinMatch = prod.basePath.match(/\/dp\/([A-Z0-9]{10})/) || prod.basePath.match(/\/gp\/product\/([A-Z0-9]{10})/);
+            if (asinMatch) {
+              const asin = asinMatch[1];
+              let domain = "amazon.com"; // Fallback EE.UU. / Panamá / Puerto Rico / otros
+              if (detectedCountry === "CA") domain = "amazon.ca";
+              else if (detectedCountry === "AU") domain = "amazon.com.au";
+
+              prod.basePath = `https://www.${domain}/dp/${asin}`;
+              prod.source = `Amazon ${detectedCountry === "CA" ? "Canadá" : detectedCountry === "AU" ? "Australia" : "Internacional"}`;
+              prod.delivery = `Envío disponible a ${detectedCountry}`;
+            }
+          }
+          // 2. Adaptación Mercado Libre MX -> Equivalentes comisionables de Amazon US
+          else if (prod.basePath.includes("mercadolibre.com.mx")) {
+            const equiv = MELI_EQUIVALENTS[prod.id];
+            if (equiv) {
+              prod.basePath = equiv;
+              prod.source = "Amazon Internacional";
+              prod.delivery = `Envío internacional directo a ${detectedCountry}`;
+            }
+          }
+        });
+      }
+
+      updateAffiliateUrls();
+    }
+
+    // Actualizar URLs de afiliados
+    function updateAffiliateUrls() {
+      activeAmazonTag = document.getElementById('pa

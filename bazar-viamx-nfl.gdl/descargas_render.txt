@@ -1,0 +1,59 @@
+=== renderProducts ===
+function renderProducts(list) {
+      const grid = document.getElementById('products-grid');
+      grid.innerHTML = '';
+
+      if (list.length === 0) {
+        // Honest fallback message with complementary recommendations
+        grid.innerHTML = `
+          <div class="col-span-full text-center py-10 bg-white border border-dashed border-slate-300 rounded-lg px-4 shadow-inner">
+            <p class="text-slate-800 text-sm font-semibold">🔍 Honestidad Comercial: No encontramos ningún artículo en nuestra selección exclusiva para el término ingresado.</p>
+            <p class="text-slate-500 text-xs mt-1 leading-relaxed">Sin embargo, como parte de nuestro ecosistema multinicho adaptable, te sugerimos explorar estas destacadas recomendaciones complementarias:</p>
+            <button onclick="clearAllFilters()" class="mt-4 bg-slate-100 hover:bg-slate-200 text-slate-800 text-xs px-4 py-2 rounded font-semibold transition-all uppercase tracking-wide">Limpiar búsqueda y ver todo</button>
+          </div>
+          
+          <!-- Inyección de Recomendaciones Dinámicas Complementarias -->
+          <div class="col-span-full mt-8">
+            <h3 class="text-xs font-bold text-[#003e29] uppercase tracking-widest border-b border-slate-200 pb-2 mb-6">// Recomendaciones Especiales Multinicho</h3>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <!-- Mascota -->
+              <div class="card-amazon-wrapper rounded-lg p-4 bg-white border border-slate-200 flex flex-col justify-between hover:-translate-y-1 hover:shadow-md transition-all duration-300 cursor-pointer" onclick="window.open('https://www.amazon.com/s?k=pet+travel+backpack&tag=viamx2026-20', '_blank')">
+                <div>
+                  <span class="text-[9px] font-bold uppercase bg-purple-100 text-purple-800 px-2 py-0.5 rounded border border-purple-200">Logística de Mascotas</span>
+                  <div class="h-28 w-full my-2 bg-slate-50 rounded flex items-center justify-center overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=300&q=80" alt="Mascotas" class="max-h-full max-w-full object-cover">
+                  </div>
+                  <h4 class="font-bold text-xs text-slate-900 leading-tight">Mochila Transportadora de Viaje para Gatos y Perros</h4>
+                  <p class="text-[10px] text-slate-500 mt-1 line-clamp-2">Transporte seguro y ergonómico para tus mascotas de cualquier tamaño.</p>
+                </div>
+                <div class="pt-2 border-t border-slate-100 mt-3">
+                  <div class="price-offer-amazon text-sm font-bold">$890.00 MXN</div>
+                  <a href="https://www.amazon.com/s?k=pet+travel+backpack&tag=viamx2026-20" target="_blank" class="block w-full text-center py-1.5 mt-2 bg-[#ffd814] hover:bg-[#f7ca00] text-slate-950 font-bold rounded text-[10px] uppercase transition-colors">Comprar Ahora ➔</a>
+                </div>
+            
+
+=== displayPage ===
+function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      
+      if (totalProducts === 0) {
+        renderProducts([]);
+        const pagControls = document.getElementById('pagination-controls');
+        if (pagControls) pagControls.innerHTML = '';
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos comisionables seleccionados`;
+        return;
+      }
+
+      const totalPages = Math.ceil(totalProducts / productsPerPage);
+      if (currentPage < 1) currentPage = 1;
+      if (currentPage > totalPages) currentPage = totalPages;
+
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      const pageProducts = filteredProductsGlobal.slice(startIndex, endIndex);
+
+      renderProducts(pageProducts);
+      renderPaginationControls(totalPages);
+      
+      document.getElementById('results-counter').innerText = `Mos

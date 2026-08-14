@@ -1,0 +1,47 @@
+=== filterProducts Function in index.html ===
+filterProducts();" class="bg-[#f3f4f1] text-slate-700 text-xs px-3 border-r border-slate-200 focus:outline-none cursor-pointer">
+          <option value="all">Ver todo</option>
+          <option value="Tecnología">Smart TVs</option>
+          <option value="Hogar">Parrillas y Cocina</option>
+          <option value="Accesorios">Accesorios</option>
+          <option value="Coleccionables">Mundial 2026</option>
+          <option value="Audio">Audio y Sonido</option>
+          <option value="Seguridad">Seguridad del Hogar</option>
+          <option value="Estilo de Vida">Estilo de Vida</option>
+        </select>
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Busca en la selección de artículos recomendados para el Mundial..." 
+          class="w-full px-4 py-2 text-sm focus:outline-none"
+          oninput="filterProducts()"
+        >
+        <button onclick="filterProducts()" class="bg-harrods-gold hover:bg-[#003e29] hover:text-white text-slate-950 px-6 flex items-center justify-center transition-colors font-semibold uppercase text-xs tracking-wider">
+          Buscar
+        </button>
+      </div>
+
+      <!-- Monitor Financiero en Caliente -->
+      <div class="flex items-center gap-6 text-xs w-full lg:w-auto justify-around lg:justify-end">
+        <div class="flex flex-col text-slate-300">
+          <span class="text-[10px] uppercase tracking-wider text-[#c5a059]">Clicks</span>
+          <span id="clicks-count" class="text-white font-bold text-sm">0</span>
+        </div>
+        <div class="flex flex-col text-slate-300">
+          <span class="text-[10px] uppercase tracking-wider text-[#c5a059]">Fondo Neto SAT</span>
+          <span id="commissions-sum" class="text-[#10b981] font-bold text-sm">$0.00 MXN</span>
+        </div>
+        <div class="border border-[#c5a059]/30 px-3 py-1.5 rounded flex items-center gap-2">
+          <span class="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-ping" id="status-s2s-dot"></span>
+          <span class="text-[9px] font-mono tracking-wider text-slate-300" id="status-s2s-text">S2S ACTIVO</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- SEGUNDO NIVEL DE NAVEGACIÓN -->
+  <nav class="harrods-green-light text-white px-4 py-2 text-xs font-semibold sm:px-6 shadow-inner border-t border-white/5 relative z-30">
+    <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+      <div class="flex flex-wrap gap-4 items-center">
+        <a href="#" onc

@@ -1,0 +1,47 @@
+function displayPage(page) {
+      currentPage = page;
+      const totalProducts = filteredProductsGlobal.length;
+      if (totalProducts === 0) {
+        renderProducts([]);
+        document.getElementById('results-counter').innerText = `Mostrando 0 artículos`;
+        return;
+      }
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = Math.min(startIndex + productsPerPage, totalProducts);
+      renderProducts(filteredProductsGlobal.slice(startIndex, endIndex));
+      document.getElementById('results-counter').innerText = `Mostrando ${startIndex + 1}-${endIndex} de ${totalProducts} artículos`;
+    }
+
+    // Inyección de JSON-LD estructurado dinámicamente en el head
+    function updateJSONLDSchema(activeProd) {
+      const graph = [
+        {
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": "https://viamx.pro/#website",
+          "url": "https://viamx.pro",
+          "name": "VíaMX Pro",
+          "description": "Portal de afiliación premium de alto rendimiento para el Mundial de Fútbol 2026 en México."
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "@id": "https://viamx.pro/#faq",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "¿Qué es VíaMX Pro?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Es una vitrina e-commerce premium que ofrece recomendaciones y enlaces de afiliación verídicos para prepararse para el Mundial 2026 en México."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "¿Cómo se calcula la ganancia neta en el widget financiero?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "El widget deduce automáticamente un 1% de ISR y un 8% de IVA para reportar flujos netos al SAT México de forma honesta."
+              }
+            }
+  
