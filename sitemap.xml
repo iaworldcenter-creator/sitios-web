@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Raíz principal del ecosistema -->
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- PC Custom Lab -->
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/pc-custom-lab/index.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/pc-custom-lab/checkout.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Bazar VíaMX NFL GDL -->
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/bazar-viamx-nfl.gdl/index.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/bazar-viamx-nfl.gdl/checkout.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Cigarros Bazar -->
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/cigarros-bazar/index.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/cigarros-bazar/checkout.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Dulces Bazar -->
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/dulces-bazar/index.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/dulces-bazar/checkout.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Kiosco Digital -->
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/kiosco-digital/index.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/kiosco-digital/checkout.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Mi Puesto Bazar -->
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/mi-puesto-bazar/index.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/mi-puesto-bazar/checkout.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Ofertas y Liquidaciones -->
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/ofertas-y-liquidaciones/index.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/ofertas-y-liquidaciones/checkout.html</loc>
+    <lastmod>2026-08-18</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+</urlset>
