@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/sitemap.xml
