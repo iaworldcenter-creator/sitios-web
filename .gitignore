@@ -1,1 +1,11 @@
-.aider*
+﻿.aider*
+*.bak
+__pycache__/
+*.pyc
+pc-custom-lab/
+bazar-viamx-nfl.gdl/
+cigarros-bazar/
+dulces-bazar/
+kiosco-digital/
+mi-puesto-bazar/
+ofertas-y-liquidaciones/
