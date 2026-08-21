@@ -3,6 +3,7 @@ import re
 import subprocess
 
 BASE_DIR = r"E:\sitios web"
+
 STORES = [
     "pc-custom-lab",
     "cigarros-bazar",
@@ -10,31 +11,41 @@ STORES = [
     "kiosco-digital",
     "mi-puesto-bazar",
     "ofertas-y-liquidaciones",
+    "ofertas-y-liquidaciones-",
     "bazar-viamx-nfl.gdl"
 ]
 
-ACCORDION_AND_CLEAN_CHECKOUT_JS = """
+DEFINITIVE_CHECKOUT_JS = """
 <script>
-// ==========================================
-// MOTOR DE CHECKOUT INTELIGENTE Y CARRITO LIMPIO
-// ==========================================
+// ============================================================
+// MOTOR UNIFICADO DE CHECKOUT CON PURGA INMEDIATA DE PRODUCTOS
+// ============================================================
 
-function getGlobalCart() {
+function getCleanCart() {
     try {
         const raw = localStorage.getItem('ecosystem_global_cart');
         if (!raw) return [];
-        let parsed = JSON.parse(raw);
-        // Filtrado estricto: Solo productos válidos con cantidad >= 1
-        return Array.isArray(parsed) ? parsed.filter(item => item && parseInt(item.quantity) > 0) : [];
+        const parsed = JSON.parse(raw);
+        if (!Array.isArray(parsed)) return [];
+        return parsed.filter(item => item && item.sku && parseInt(item.quantity) > 0);
     } catch(e) {
         return [];
     }
 }
 
-function saveGlobalCart(cart) {
-    const cleanCart = cart.filter(item => item && parseInt(item.quantity) > 0);
-    localStorage.setItem('ecosystem_global_cart', JSON.stringify(cleanCart));
+function saveCleanCart(cart) {
+    const valid = cart.filter(item => item && item.sku && parseInt(item.quantity) > 0);
+    localStorage.setItem('ecosystem_global_cart', JSON.stringify(valid));
     window.dispatchEvent(new Event('storage'));
+}
+
+function clearUrlSkuParam() {
+    try {
+        if (window.location.search.includes('sku=')) {
+            const cleanUrl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.replaceState({ path: cleanUrl }, '', cleanUrl);
+        }
+    } catch(e) {}
 }
 
 function resolveProductImage(sku, localImg) {
@@ -54,38 +65,43 @@ function resolveProductImage(sku, localImg) {
     return 'https://iaworldcenter-creator.github.io/' + storeDomain + '/' + path;
 }
 
-// 1. ELIMINACIÓN Y MODIFICACIÓN ESTRICTA
+// 1. ELIMINACIÓN TOTAL Y DEFINITIVA
 window.deleteItem = function(sku) {
-    let cart = getGlobalCart();
-    cart = cart.filter(i => i.sku.toUpperCase() !== sku.toUpperCase());
-    saveGlobalCart(cart);
+    if (!sku) return;
+    clearUrlSkuParam();
+    let cart = getCleanCart();
+    cart = cart.filter(i => (i.sku || '').toUpperCase().trim() !== sku.toUpperCase().trim());
+    saveCleanCart(cart);
     renderSmartCheckout();
 };
+window.removeItem = window.deleteItem;
 
+// 2. MODIFICACIÓN DE CANTIDADES
 window.changeQty = function(sku, delta) {
-    let cart = getGlobalCart();
-    let item = cart.find(i => i.sku.toUpperCase() === sku.toUpperCase());
+    if (!sku) return;
+    let cart = getCleanCart();
+    let item = cart.find(i => (i.sku || '').toUpperCase().trim() === sku.toUpperCase().trim());
     if (item) {
         item.quantity = (parseInt(item.quantity) || 1) + delta;
         if (item.quantity <= 0) {
-            cart = cart.filter(i => i.sku.toUpperCase() !== sku.toUpperCase());
+            clearUrlSkuParam();
+            cart = cart.filter(i => (i.sku || '').toUpperCase().trim() !== sku.toUpperCase().trim());
         }
     }
-    saveGlobalCart(cart);
+    saveCleanCart(cart);
     renderSmartCheckout();
 };
 
-// 2. ACORDEÓN PASO 1: DOMICILIO DE ENTREGA
+// 3. ACORDEÓN PASO 1 (DOMICILIO) Y PASO 2 (PAGO)
 window.guardarDomicilio = function(e) {
     if (e) e.preventDefault();
-    const nombre = document.getElementById('input-nombre')?.value || document.querySelector('input[placeholder*="Juan"]')?.value || 'Cliente General';
+    const nombre = document.getElementById('input-nombre')?.value || document.querySelector('input[placeholder*="Juan"]')?.value || 'Cliente Registrado';
     const tel = document.getElementById('input-tel')?.value || document.querySelector('input[placeholder*="33"]')?.value || '';
     const calle = document.getElementById('input-calle')?.value || document.querySelector('input[placeholder*="Moreno"]')?.value || 'Av. Pedro Moreno';
     const col = document.getElementById('input-colonia')?.value || 'Centro';
     const cd = document.getElementById('input-ciudad')?.value || 'Guadalajara';
 
-    const shippingData = { nombre, tel, calle, col, cd, guardado: true };
-    localStorage.setItem('ecosystem_shipping_data', JSON.stringify(shippingData));
+    localStorage.setItem('ecosystem_shipping_data', JSON.stringify({ nombre, tel, calle, col, cd }));
     toggleDomicilioView(true);
 };
 
@@ -115,7 +131,6 @@ window.toggleDomicilioView = function(colapsar) {
     }
 };
 
-// 3. ACORDEÓN PASO 2: FORMA DE PAGO
 window.seleccionarPago = function(metodo) {
     localStorage.setItem('ecosystem_payment_method', metodo);
     togglePagoView(true);
@@ -145,10 +160,10 @@ window.togglePagoView = function(colapsar) {
     }
 };
 
-// 4. RENDERIZADO DEL CHECKOUT Y TOTALES
+// 4. RENDERIZADO VISUAL
 window.renderSmartCheckout = function() {
-    const cart = getGlobalCart();
-    const container = document.getElementById('cart-items-container') || document.querySelector('[data-cart-container]');
+    const cart = getCleanCart();
+    const container = document.getElementById('cart-items-container') || document.querySelector('[data-cart-container]') || document.querySelector('#cart-items');
     const countBadge = document.querySelector('[data-item-count]') || document.getElementById('cart-count-badge');
     
     const totalItems = cart.reduce((sum, i) => sum + (parseInt(i.quantity) || 0), 0);
@@ -162,7 +177,7 @@ window.renderSmartCheckout = function() {
             <div class="text-center py-12 px-4 bg-slate-900/40 border border-slate-800/80 rounded-2xl">
                 <i class="fa-solid fa-cart-shopping text-4xl text-slate-600 mb-3 block"></i>
                 <p class="text-slate-400 font-semibold text-sm">Tu carrito está vacío.</p>
-                <a href="index.html" class="inline-block mt-4 px-6 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs uppercase tracking-wider transition">Explorar catálogo</a>
+                <a href="index.html" class="inline-block mt-4 px-6 py-2.5 bg-amber-500 hover:bg-amber-400 text-slate-950 font-black rounded-xl text-xs uppercase tracking-wider transition">Ir a la tienda</a>
             </div>
         `;
         actualizarTotales(0, 0);
@@ -175,15 +190,23 @@ window.renderSmartCheckout = function() {
         subtotal += itemSub;
         const imgUrl = resolveProductImage(item.sku, item.imagen);
 
-        const minusBtn = item.quantity === 1 
-            ? `<button onclick="deleteItem('${item.sku}')" class="w-8 h-8 rounded-lg bg-red-950/80 text-red-400 hover:bg-red-900 transition flex items-center justify-center text-xs cursor-pointer" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>`
-            : `<button onclick="changeQty('${item.sku}', -1)" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition flex items-center justify-center font-bold text-xs cursor-pointer">-</button>`;
+        const minusAction = item.quantity === 1 
+            ? `deleteItem('${item.sku}')` 
+            : `changeQty('${item.sku}', -1)`;
+
+        const minusIcon = item.quantity === 1 
+            ? `<i class="fa-solid fa-trash-can pointer-events-none"></i>` 
+            : `-`;
+
+        const minusBtnClass = item.quantity === 1
+            ? `w-8 h-8 rounded-lg bg-red-950/80 text-red-400 hover:bg-red-900 hover:text-red-200 transition flex items-center justify-center text-xs cursor-pointer`
+            : `w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition flex items-center justify-center font-bold text-xs cursor-pointer`;
 
         const div = document.createElement('div');
         div.className = "flex flex-col sm:flex-row items-center sm:items-stretch gap-4 p-4 bg-slate-900 border border-slate-800 rounded-2xl mb-3 shadow-md transition-all";
         div.innerHTML = `
             <div class="w-[170px] h-[170px] min-w-[170px] max-w-[170px] min-h-[170px] max-h-[170px] rounded-xl overflow-hidden bg-slate-950 border border-slate-700/80 shrink-0 p-2 flex items-center justify-center">
-                <img src="${imgUrl}" class="w-full h-full object-contain rounded-lg" alt="${item.nombre}" loading="lazy" onerror="this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp';" />
+                <img src="${imgUrl}" class="w-full h-full object-contain rounded-lg" alt="${item.nombre}" loading="lazy" onerror="this.onerror=null;this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp';" />
             </div>
             <div class="flex-1 flex flex-col justify-between min-w-0 w-full py-1">
                 <div>
@@ -192,7 +215,7 @@ window.renderSmartCheckout = function() {
                 </div>
                 <div class="flex items-center justify-between w-full mt-3 pt-3 border-t border-slate-800">
                     <div class="flex items-center gap-1.5 bg-slate-950 border border-slate-800 rounded-xl p-1">
-                        ${minusBtn}
+                        <button onclick="${minusAction}" class="${minusBtnClass}" title="Reducir / Eliminar">${minusIcon}</button>
                         <span class="text-white font-black text-xs w-7 text-center font-mono">${item.quantity}</span>
                         <button onclick="changeQty('${item.sku}', 1)" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition flex items-center justify-center font-bold text-xs cursor-pointer">+</button>
                     </div>
@@ -200,7 +223,7 @@ window.renderSmartCheckout = function() {
                         <span class="text-[10px] text-slate-400 font-semibold">$${parseFloat(item.precio).toLocaleString()} c/u</span>
                         <span class="text-cyan-400 font-black text-sm">$${itemSub.toFixed(2)} MXN</span>
                     </div>
-                    <button onclick="deleteItem('${item.sku}')" class="text-slate-500 hover:text-red-400 text-sm cursor-pointer shrink-0 transition p-1.5 ml-1" title="Eliminar"><i class="fa-solid fa-trash-can"></i></button>
+                    <button onclick="deleteItem('${item.sku}')" class="text-slate-500 hover:text-red-400 text-sm cursor-pointer shrink-0 transition p-2 ml-1" title="Eliminar"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
                 </div>
             </div>
         `;
@@ -224,26 +247,25 @@ function actualizarTotales(subtotal, totalItems) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Si viene SKU por URL, agregarlo antes de pintar
+    // Si viene SKU por URL, añadirlo únicamente si no fue borrado previamente
     const urlParams = new URLSearchParams(window.location.search);
     const skuParam = urlParams.get('sku');
     if (skuParam) {
-        let cart = getGlobalCart();
-        let existing = cart.find(i => i.sku.toUpperCase() === skuParam.toUpperCase());
+        let cart = getCleanCart();
+        let existing = cart.find(i => (i.sku || '').toUpperCase() === skuParam.toUpperCase());
         if (!existing) {
-            let prod = (typeof productCatalog !== 'undefined') ? productCatalog.find(p => p.sku.toUpperCase() === skuParam.toUpperCase()) : null;
+            let prod = (typeof productCatalog !== 'undefined') ? productCatalog.find(p => (p.sku || '').toUpperCase() === skuParam.toUpperCase()) : null;
             if (prod) {
                 cart.push({ ...prod, quantity: 1 });
             } else {
                 cart.push({ sku: skuParam, nombre: 'Producto ' + skuParam, precio: 100, imagen: '', quantity: 1 });
             }
-            saveGlobalCart(cart);
+            saveCleanCart(cart);
         }
     }
 
     renderSmartCheckout();
 
-    // Comprobar si ya había datos guardados para iniciar colapsado
     const savedShipping = localStorage.getItem('ecosystem_shipping_data');
     if (savedShipping) toggleDomicilioView(true);
     const savedPayment = localStorage.getItem('ecosystem_payment_method');
@@ -252,53 +274,38 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 """
 
-def patch_checkout(store):
-    filepath = os.path.join(BASE_DIR, store, "checkout.html")
+for store in STORES:
+    store_dir = os.path.join(BASE_DIR, store)
+    if not os.path.exists(store_dir):
+        continue
+
+    filepath = os.path.join(store_dir, "checkout.html")
     if not os.path.exists(filepath):
-        return
+        continue
 
     with open(filepath, "r", encoding="utf-8") as f:
         html = f.read()
 
-    # Estructurar contenedores de acordeón en Paso 1 y Paso 2 si no existen
-    if 'id="step-1-summary"' not in html and 'data-step="1-summary"' not in html:
-        html = re.sub(
-            r'(<div[^>]*class="[^"]*p-6[^"]*bg-slate-900[^"]*"[^>]*>\s*<h2[^>]*>.*?Domicilio.*?</h2>)([\s\S]*?)(</div>\s*<div[^>]*class="[^"]*p-6)',
-            r'\1\n<div id="step-1-summary" class="hidden mt-3"></div>\n<div id="step-1-form">\2</div>\n</div>\n\3',
-            html,
-            count=1,
-            flags=re.IGNORECASE
-        )
-
-    # Inyectar motor JS
-    if "renderSmartCheckout" not in html:
-        html = html.replace("</body>", f"{ACCORDION_AND_CLEAN_CHECKOUT_JS}\n</body>", 1)
+    # Reemplazar motor previo de render y eventos
+    if "renderSmartCheckout" in html or "deleteItem" in html:
+        html = re.sub(r'<script>[\s\S]*?(?:renderSmartCheckout|deleteItem)[\s\S]*?</script>', DEFINITIVE_CHECKOUT_JS, html)
     else:
-        html = re.sub(r'<script>[\s\S]*?renderSmartCheckout[\s\S]*?</script>', ACCORDION_AND_CLEAN_CHECKOUT_JS, html)
+        html = html.replace("</body>", f"{DEFINITIVE_CHECKOUT_JS}\n</body>", 1)
 
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"[OK] Checkout optimizado en: {store}")
+    print(f"[OK] {store}/checkout.html actualizado.")
 
-def execute_pipeline():
-    print("=== 1. APLICANDO CHECKOUT ACORDEÓN Y LIMPIEZA DE CARRITO ===")
-    for store in STORES:
-        patch_checkout(store)
+print("Desplegando cambios a repositorios...")
+for store in STORES:
+    store_dir = os.path.join(BASE_DIR, store)
+    if os.path.exists(os.path.join(store_dir, ".git")):
+        subprocess.run(["git", "add", "-A"], cwd=store_dir, check=True)
+        subprocess.run(["git", "commit", "-m", "fix(cart): purga inmediata con icono de papelera y URL limpia", "--allow-empty"], cwd=store_dir, capture_output=True)
+        subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=store_dir, capture_output=True)
+        print(f"🟢 Push completado: {store}")
 
-    print("\n=== 2. DESPLIEGUE GIT MASIVO ===")
-    for store in STORES:
-        store_dir = os.path.join(BASE_DIR, store)
-        if os.path.exists(os.path.join(store_dir, ".git")):
-            subprocess.run(["git", "add", "-A"], cwd=store_dir, check=True)
-            subprocess.run(["git", "commit", "-m", "fix(checkout): acordeon interactivo y purga total de eliminados", "--allow-empty"], cwd=store_dir, capture_output=True)
-            subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=store_dir, capture_output=True)
-            print(f"🟢 Push OK: {store}")
-
-    subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
-    subprocess.run(["git", "commit", "-m", "feat(checkout): flujo ultra compacto con acordeon y productos activos", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
-    subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True)
-    print("🟢 Push OK: Repositorio Raíz (sitios web)")
-
-if __name__ == "__main__":
-    os.chdir(BASE_DIR)
-    execute_pipeline()
+subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
+subprocess.run(["git", "commit", "-m", "feat(cart): eliminacion estricta de items en checkout", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True)
+print("🟢 Push completado en raíz.")
