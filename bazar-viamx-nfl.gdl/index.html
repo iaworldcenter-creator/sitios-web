@@ -43,7 +43,7 @@
   </script>
 
   <!-- Tailwind CSS para renderizado ultra-rápido y responsivo -->
-  <link href="assets/css/tailwind-built.css" rel="stylesheet" />
+  
   <!-- Fuente elegante y comercial de alta legibilidad -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -187,8 +187,10 @@
     } catch(e) {}
 })();
 </script>
+<link rel="stylesheet" href="assets/css/tailwind-built.css?v=1.1.0" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
-<body class="min-h-screen flex flex-col justify-between selection:bg-[#c5a059] selection:text-white">
+<body class="bg-slate-950 text-slate-100 font-sans antialiased overflow-x-hidden">
 
   <!-- PANEL DE CONTROL DE AFILIACIÓN (Herramienta de Diagnóstico del Director de Proyecto) -->
   <div id="debug-control-panel" class="bg-amber-500 text-slate-950 px-4 py-2 text-xs font-semibold flex flex-col sm:flex-row justify-between items-center gap-2 border-b border-amber-600 shadow-inner z-50 relative hidden">
