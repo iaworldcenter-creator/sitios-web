@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+﻿import os
+import subprocess
+import glob
+
+BASE_DIR = r"E:\sitios web"
+
+PORTAL_CENTRAL_HTML = """<!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
     <meta charset="UTF-8" />
@@ -294,4 +300,39 @@
     window.addEventListener('storage', syncPortalCartBadge);
     </script>
 </body>
-</html>
+</html>"""
+
+def run_task():
+    print("=== 1. COMPILANDO INDEX.HTML DEL PORTAL CENTRAL ===")
+    index_path = os.path.join(BASE_DIR, "index.html")
+    with open(index_path, "w", encoding="utf-8") as f:
+        f.write(PORTAL_CENTRAL_HTML)
+    print("✓ index.html compilado con éxito bajo retícula 4+3 y Schema.org.")
+
+    print("\n=== 2. PURGA DE ARCHIVOS .PY TEMPORALES EN E:\sitios web ===")
+    purgados = []
+    current_script = os.path.basename(__file__)
+    for f in glob.glob(os.path.join(BASE_DIR, "*.py")):
+        fname = os.path.basename(f)
+        if fname != current_script:
+            try:
+                os.remove(f)
+                purgados.append(fname)
+                print(f"  [Eliminado] {fname}")
+            except Exception as e:
+                print(f"  [Error] No se pudo borrar {fname}: {e}")
+
+    if not purgados:
+        print("  Directorio limpio. No se detectaron scripts huérfanos adicionales.")
+
+    print("\n=== 3. SINCRONIZACIÓN Y DESPLIEGUE A GITHUB ===")
+    subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
+    subprocess.run(["git", "commit", "-m", "feat(portal): modernizacion de hub central y purga de scripts residuales", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+    res = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
+    print(f"✓ Push completado con código de salida: {res.returncode}")
+    if res.returncode != 0:
+        print(f"Detalle Git: {res.stderr}")
+
+if __name__ == "__main__":
+    os.chdir(BASE_DIR)
+    run_task()
