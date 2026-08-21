@@ -169,6 +169,24 @@
       100% { background-position: 1200px 0; }
     }
   </style>
+<script>
+(function() {
+    try {
+        const vKey = "ecosystem_reset_v2026_clean";
+        if (!localStorage.getItem(vKey)) {
+            const cart = localStorage.getItem("ecosystem_global_cart");
+            if (cart && (cart.includes("GPU-001") || cart === "[object Object]")) {
+                localStorage.setItem("ecosystem_global_cart", "[]");
+            }
+            const history = localStorage.getItem("user_purchases_history");
+            if (history && history.includes("AGY-4982")) {
+                localStorage.setItem("user_purchases_history", "[]");
+            }
+            localStorage.setItem(vKey, "true");
+        }
+    } catch(e) {}
+})();
+</script>
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-[#c5a059] selection:text-white">
 
