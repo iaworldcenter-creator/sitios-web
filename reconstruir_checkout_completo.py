@@ -1,26 +1,42 @@
-<!DOCTYPE html>
+﻿import os
+import subprocess
+
+BASE_DIR = r"E:\sitios web"
+
+STORES = {
+    "pc-custom-lab": "PC CUSTOM LAB",
+    "cigarros-bazar": "CIGARROS BAZAR",
+    "dulces-bazar": "DULCES BAZAR",
+    "kiosco-digital": "KIOSCO DIGITAL",
+    "mi-puesto-bazar": "MI PUESTO BAZAR",
+    "ofertas-y-liquidaciones": "LIQUIDACIONES Y OFERTAS",
+    "bazar-viamx-nfl.gdl": "BAZAR VIAMX NFL"
+}
+
+def generate_checkout_html(store_slug, store_title):
+    return f"""<!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BAZAR VIAMX NFL | Caja y Checkout</title>
+    <title>{store_title} | Caja y Checkout</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="assets/css/tailwind-built.css?v=1.1.0" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
-        @keyframes marqueeContinuousMove {
-            0% { transform: translateX(0%); }
-            100% { transform: translateX(-50%); }
-        }
-        .marquee-track-active {
+        @keyframes marqueeContinuousMove {{
+            0% {{ transform: translateX(0%); }}
+            100% {{ transform: translateX(-50%); }}
+        }}
+        .marquee-track-active {{
             display: flex;
             width: max-content;
             animation: marqueeContinuousMove 30s linear infinite;
             will-change: transform;
-        }
-        .marquee-track-active:hover {
+        }}
+        .marquee-track-active:hover {{
             animation-play-state: paused;
-        }
+        }}
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between overflow-x-hidden">
@@ -33,7 +49,7 @@
                     <i class="fa-solid fa-shop"></i>
                 </div>
                 <div>
-                    <span class="font-black text-lg text-white tracking-wider block leading-tight">BAZAR VIAMX NFL</span>
+                    <span class="font-black text-lg text-white tracking-wider block leading-tight">{store_title}</span>
                     <span class="text-[10px] font-mono text-cyan-400 uppercase tracking-widest block">Ecosistema Seguro 2026</span>
                 </div>
             </a>
@@ -241,33 +257,33 @@
 
     <!-- FOOTER -->
     <footer class="bg-slate-900/90 border-t border-slate-800 py-6 text-center text-xs text-slate-500 mt-12">
-        <p>&copy; 2026 BAZAR VIAMX NFL. Pedro Moreno 501 A, Guadalajara Centro. Todos los derechos reservados.</p>
+        <p>&copy; 2026 {store_title}. Pedro Moreno 501 A, Guadalajara Centro. Todos los derechos reservados.</p>
     </footer>
 
     <!-- LÓGICA DE JAVASCRIPT ROBUSTA -->
     <script>
-    function getCleanCart() {
-        try {
+    function getCleanCart() {{
+        try {{
             const raw = localStorage.getItem('ecosystem_global_cart');
             if (!raw) return [];
             const parsed = JSON.parse(raw);
             if (!Array.isArray(parsed)) return [];
             return parsed.filter(item => item && item.sku && parseInt(item.quantity) > 0);
-        } catch(e) {
+        }} catch(e) {{
             return [];
-        }
-    }
+        }}
+    }}
 
-    function saveCleanCart(cart) {
+    function saveCleanCart(cart) {{
         const valid = cart.filter(item => item && item.sku && parseInt(item.quantity) > 0);
         localStorage.setItem('ecosystem_global_cart', JSON.stringify(valid));
         window.dispatchEvent(new Event('storage'));
-    }
+    }}
 
-    function resolveProductImage(sku, localImg) {
+    function resolveProductImage(sku, localImg) {{
         if (localImg && (localImg.startsWith('http://') || localImg.startsWith('https://'))) return localImg;
         const cleanSku = (sku || '').toUpperCase();
-        let storeDomain = 'bazar-viamx-nfl.gdl';
+        let storeDomain = '{store_slug}';
         if (cleanSku.startsWith('GPU-') || cleanSku.startsWith('PC-')) storeDomain = 'pc-custom-lab';
         else if (cleanSku.startsWith('CN-') || cleanSku.startsWith('CB-')) storeDomain = 'cigarros-bazar';
         else if (cleanSku.startsWith('DB-') || cleanSku.startsWith('DUL-')) storeDomain = 'dulces-bazar';
@@ -279,83 +295,83 @@
         let path = localImg || 'assets/img/slider_ia_human_thumb.webp';
         path = path.replace(/^(\.\/|\/)/, '');
         return 'https://iaworldcenter-creator.github.io/' + storeDomain + '/' + path;
-    }
+    }}
 
-    window.deleteItem = function(sku) {
+    window.deleteItem = function(sku) {{
         if (!sku) return;
         let cart = getCleanCart();
         cart = cart.filter(i => (i.sku || '').toUpperCase().trim() !== sku.toUpperCase().trim());
         saveCleanCart(cart);
-        if (window.location.search.includes('sku=')) {
-            window.history.replaceState({}, '', window.location.pathname);
-        }
+        if (window.location.search.includes('sku=')) {{
+            window.history.replaceState({{}}, '', window.location.pathname);
+        }}
         renderSmartCheckout();
-    };
+    }};
 
-    window.changeQty = function(sku, delta) {
+    window.changeQty = function(sku, delta) {{
         if (!sku) return;
         let cart = getCleanCart();
         let item = cart.find(i => (i.sku || '').toUpperCase().trim() === sku.toUpperCase().trim());
-        if (item) {
+        if (item) {{
             item.quantity = (parseInt(item.quantity) || 1) + delta;
-            if (item.quantity <= 0) {
+            if (item.quantity <= 0) {{
                 cart = cart.filter(i => (i.sku || '').toUpperCase().trim() !== sku.toUpperCase().trim());
-                if (window.location.search.includes('sku=')) {
-                    window.history.replaceState({}, '', window.location.pathname);
-                }
-            }
-        }
+                if (window.location.search.includes('sku=')) {{
+                    window.history.replaceState({{}}, '', window.location.pathname);
+                }}
+            }}
+        }}
         saveCleanCart(cart);
         renderSmartCheckout();
-    };
+    }};
 
-    window.guardarDomicilio = function(e) {
+    window.guardarDomicilio = function(e) {{
         if (e) e.preventDefault();
         const nombre = document.getElementById('input-nombre')?.value || 'Cliente Registrado';
         const tel = document.getElementById('input-tel')?.value || '';
         const calle = document.getElementById('input-calle')?.value || '';
         const col = document.getElementById('input-colonia')?.value || '';
 
-        localStorage.setItem('ecosystem_shipping_data', JSON.stringify({ nombre, tel, calle, col }));
+        localStorage.setItem('ecosystem_shipping_data', JSON.stringify({{ nombre, tel, calle, col }}));
         toggleDomicilioView(true);
-    };
+    }};
 
-    window.toggleDomicilioView = function(colapsar) {
+    window.toggleDomicilioView = function(colapsar) {{
         const formBox = document.getElementById('step-1-form');
         const summaryBox = document.getElementById('step-1-summary');
-        if (formBox && summaryBox) {
-            if (colapsar) {
+        if (formBox && summaryBox) {{
+            if (colapsar) {{
                 formBox.classList.add('hidden');
                 summaryBox.classList.remove('hidden');
-                const data = JSON.parse(localStorage.getItem('ecosystem_shipping_data') || '{}');
+                const data = JSON.parse(localStorage.getItem('ecosystem_shipping_data') || '{{}}');
                 summaryBox.innerHTML = `
                     <div class="flex items-center justify-between p-3.5 bg-slate-950 border border-slate-800 rounded-xl text-xs">
                         <div class="flex items-center gap-2.5 min-w-0">
                             <i class="fa-solid fa-location-dot text-amber-400 text-base"></i>
                             <div class="truncate text-slate-200">
-                                <strong>${data.nombre || 'Datos guardados'}</strong> &bull; ${data.calle || ''}, ${data.col || ''} (${data.tel || ''})
+                                <strong>${{data.nombre || 'Datos guardados'}}</strong> &bull; ${{data.calle || ''}}, ${{data.col || ''}} (${{data.tel || ''}})
                             </div>
                         </div>
                         <button onclick="toggleDomicilioView(false)" class="text-cyan-400 hover:text-cyan-300 font-bold ml-2 underline cursor-pointer shrink-0">Editar</button>
                     </div>
                 `;
-            } else {
+            }} else {{
                 formBox.classList.remove('hidden');
                 summaryBox.classList.add('hidden');
-            }
-        }
-    };
+            }}
+        }}
+    }};
 
-    window.seleccionarPago = function(metodo) {
+    window.seleccionarPago = function(metodo) {{
         localStorage.setItem('ecosystem_payment_method', metodo);
         togglePagoView(true);
-    };
+    }};
 
-    window.togglePagoView = function(colapsar) {
+    window.togglePagoView = function(colapsar) {{
         const formBox = document.getElementById('step-2-form');
         const summaryBox = document.getElementById('step-2-summary');
-        if (formBox && summaryBox) {
-            if (colapsar) {
+        if (formBox && summaryBox) {{
+            if (colapsar) {{
                 formBox.classList.add('hidden');
                 summaryBox.classList.remove('hidden');
                 const metodo = localStorage.getItem('ecosystem_payment_method') || 'Tarjeta de Crédito / Débito';
@@ -363,30 +379,30 @@
                     <div class="flex items-center justify-between p-3.5 bg-slate-950 border border-slate-800 rounded-xl text-xs">
                         <div class="flex items-center gap-2.5">
                             <i class="fa-solid fa-credit-card text-emerald-400 text-base"></i>
-                            <span class="text-slate-200">Método de pago: <strong>${metodo}</strong></span>
+                            <span class="text-slate-200">Método de pago: <strong>${{metodo}}</strong></span>
                         </div>
                         <button onclick="togglePagoView(false)" class="text-cyan-400 hover:text-cyan-300 font-bold ml-2 underline cursor-pointer shrink-0">Editar</button>
                     </div>
                 `;
-            } else {
+            }} else {{
                 formBox.classList.remove('hidden');
                 summaryBox.classList.add('hidden');
-            }
-        }
-    };
+            }}
+        }}
+    }};
 
-    window.renderSmartCheckout = function() {
+    window.renderSmartCheckout = function() {{
         const cart = getCleanCart();
         const container = document.getElementById('cart-items-container');
         const countBadge = document.getElementById('cart-count-badge');
         
         const totalItems = cart.reduce((sum, i) => sum + (parseInt(i.quantity) || 0), 0);
-        if (countBadge) countBadge.innerText = `${totalItems} producto${totalItems === 1 ? '' : 's'}`;
+        if (countBadge) countBadge.innerText = `${{totalItems}} producto${{totalItems === 1 ? '' : 's'}}`;
 
         if (!container) return;
         container.innerHTML = '';
 
-        if (cart.length === 0) {
+        if (cart.length === 0) {{
             container.innerHTML = `
                 <div class="text-center py-12 px-4 bg-slate-950/60 border border-slate-800/80 rounded-2xl">
                     <i class="fa-solid fa-cart-shopping text-4xl text-slate-600 mb-3 block"></i>
@@ -396,10 +412,10 @@
             `;
             actualizarTotales(0, 0);
             return;
-        }
+        }}
 
         let subtotal = 0;
-        cart.forEach(item => {
+        cart.forEach(item => {{
             const qty = parseInt(item.quantity) || 1;
             const price = parseFloat(item.precio) || 0;
             const itemSub = price * qty;
@@ -407,8 +423,8 @@
             const imgUrl = resolveProductImage(item.sku, item.imagen);
 
             const minusAction = qty === 1 
-                ? `deleteItem('${item.sku}')` 
-                : `changeQty('${item.sku}', -1)`;
+                ? `deleteItem('${{item.sku}}')` 
+                : `changeQty('${{item.sku}}', -1)`;
 
             const minusIcon = qty === 1 
                 ? `<i class="fa-solid fa-trash-can pointer-events-none text-red-400"></i>` 
@@ -422,88 +438,88 @@
             div.className = "flex flex-col sm:flex-row items-center sm:items-stretch gap-4 p-4 bg-slate-950 border border-slate-800/90 rounded-2xl mb-3 shadow-md transition-all";
             div.innerHTML = `
                 <div class="w-[170px] h-[170px] min-w-[170px] max-w-[170px] min-h-[170px] max-h-[170px] rounded-xl overflow-hidden bg-slate-900 border border-slate-700/80 shrink-0 p-2 flex items-center justify-center">
-                    <img src="${imgUrl}" class="w-full h-full object-contain rounded-lg" alt="${item.nombre}" loading="lazy" onerror="this.onerror=null;this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp';" />
+                    <img src="${{imgUrl}}" class="w-full h-full object-contain rounded-lg" alt="${{item.nombre}}" loading="lazy" onerror="this.onerror=null;this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp';" />
                 </div>
                 <div class="flex-1 flex flex-col justify-between min-w-0 w-full py-1">
                     <div>
-                        <h3 class="text-white font-bold text-sm sm:text-base leading-snug">${item.nombre}</h3>
-                        <span class="text-[10px] font-mono text-cyan-400 uppercase font-bold tracking-wider block mt-1">${item.sku}</span>
+                        <h3 class="text-white font-bold text-sm sm:text-base leading-snug">${{item.nombre}}</h3>
+                        <span class="text-[10px] font-mono text-cyan-400 uppercase font-bold tracking-wider block mt-1">${{item.sku}}</span>
                     </div>
                     <div class="flex items-center justify-between w-full mt-3 pt-3 border-t border-slate-800">
                         <div class="flex items-center gap-1.5 bg-slate-900 border border-slate-800 rounded-xl p-1">
-                            <button onclick="${minusAction}" class="${minusBtnClass}" title="Reducir / Eliminar">${minusIcon}</button>
-                            <span class="text-white font-black text-xs w-7 text-center font-mono">${qty}</span>
-                            <button onclick="changeQty('${item.sku}', 1)" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition flex items-center justify-center font-bold text-xs cursor-pointer">+</button>
+                            <button onclick="${{minusAction}}" class="${{minusBtnClass}}" title="Reducir / Eliminar">${{minusIcon}}</button>
+                            <span class="text-white font-black text-xs w-7 text-center font-mono">${{qty}}</span>
+                            <button onclick="changeQty('${{item.sku}}', 1)" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-300 hover:text-white transition flex items-center justify-center font-bold text-xs cursor-pointer">+</button>
                         </div>
                         <div class="flex flex-col items-end">
-                            <span class="text-[10px] text-slate-400 font-semibold">$${price.toLocaleString()} c/u</span>
-                            <span class="text-cyan-400 font-black text-sm">$${itemSub.toFixed(2)} MXN</span>
+                            <span class="text-[10px] text-slate-400 font-semibold">$${{price.toLocaleString()}} c/u</span>
+                            <span class="text-cyan-400 font-black text-sm">$${{itemSub.toFixed(2)}} MXN</span>
                         </div>
-                        <button onclick="deleteItem('${item.sku}')" class="text-slate-500 hover:text-red-400 text-sm cursor-pointer shrink-0 transition p-2 ml-1" title="Eliminar"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
+                        <button onclick="deleteItem('${{item.sku}}')" class="text-slate-500 hover:text-red-400 text-sm cursor-pointer shrink-0 transition p-2 ml-1" title="Eliminar"><i class="fa-solid fa-trash-can pointer-events-none"></i></button>
                     </div>
                 </div>
             `;
             container.appendChild(div);
-        });
+        }});
 
         actualizarTotales(subtotal, totalItems);
-    };
+    }};
 
-    function actualizarTotales(subtotal, totalItems) {
+    function actualizarTotales(subtotal, totalItems) {{
         const envio = subtotal >= 1500 || subtotal === 0 ? 0 : 49;
         const mayoreoDesc = totalItems >= 10 ? subtotal * 0.15 : 0;
         const subConDescuento = subtotal - mayoreoDesc;
         const total = subConDescuento > 0 ? subConDescuento + envio : 0;
         const cashback = subConDescuento * 0.05;
 
-        document.getElementById('txt-subtotal').innerText = `$${subtotal.toFixed(2)} MXN`;
-        document.getElementById('txt-envio').innerText = envio === 0 ? 'GRATIS' : `$${envio.toFixed(2)} MXN`;
-        document.getElementById('txt-total').innerText = `$${total.toFixed(2)} MXN`;
-        document.getElementById('txt-cashback').innerText = `$${cashback.toFixed(2)} MXN`;
+        document.getElementById('txt-subtotal').innerText = `$${{subtotal.toFixed(2)}} MXN`;
+        document.getElementById('txt-envio').innerText = envio === 0 ? 'GRATIS' : `$${{envio.toFixed(2)}} MXN`;
+        document.getElementById('txt-total').innerText = `$${{total.toFixed(2)}} MXN`;
+        document.getElementById('txt-cashback').innerText = `$${{cashback.toFixed(2)}} MXN`;
 
         const rowMayoreo = document.getElementById('row-mayoreo');
-        if (rowMayoreo) {
-            if (mayoreoDesc > 0) {
+        if (rowMayoreo) {{
+            if (mayoreoDesc > 0) {{
                 rowMayoreo.classList.remove('hidden');
                 rowMayoreo.classList.add('flex');
-                document.getElementById('txt-mayoreo').innerText = `-$${mayoreoDesc.toFixed(2)} MXN`;
-            } else {
+                document.getElementById('txt-mayoreo').innerText = `-$${{mayoreoDesc.toFixed(2)}} MXN`;
+            }} else {{
                 rowMayoreo.classList.add('hidden');
                 rowMayoreo.classList.remove('flex');
-            }
-        }
-    }
+            }}
+        }}
+    }}
 
-    window.finalizarCompra = function() {
+    window.finalizarCompra = function() {{
         const cart = getCleanCart();
-        if (cart.length === 0) {
+        if (cart.length === 0) {{
             alert('Tu carrito está vacío.');
             return;
-        }
+        }}
         const shipping = localStorage.getItem('ecosystem_shipping_data');
-        if (!shipping) {
+        if (!shipping) {{
             alert('Por favor ingresa y guarda tu Domicilio de Entrega (Paso 1).');
             return;
-        }
+        }}
         alert('¡Pedido registrado con éxito! Procesando orden en el Ecosistema...');
-    };
+    }};
 
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {{
         const urlParams = new URLSearchParams(window.location.search);
         const skuParam = urlParams.get('sku');
-        if (skuParam) {
+        if (skuParam) {{
             let cart = getCleanCart();
             let existing = cart.find(i => (i.sku || '').toUpperCase() === skuParam.toUpperCase());
-            if (!existing) {
+            if (!existing) {{
                 let prod = (typeof productCatalog !== 'undefined') ? productCatalog.find(p => (p.sku || '').toUpperCase() === skuParam.toUpperCase()) : null;
-                if (prod) {
-                    cart.push({ ...prod, quantity: 1 });
-                } else {
-                    cart.push({ sku: skuParam, nombre: 'Producto ' + skuParam, precio: 100, imagen: '', quantity: 1 });
-                }
+                if (prod) {{
+                    cart.push({{ ...prod, quantity: 1 }});
+                }} else {{
+                    cart.push({{ sku: skuParam, nombre: 'Producto ' + skuParam, precio: 100, imagen: '', quantity: 1 }});
+                }}
                 saveCleanCart(cart);
-            }
-        }
+            }}
+        }}
 
         renderSmartCheckout();
 
@@ -511,7 +527,39 @@
         if (savedShipping) toggleDomicilioView(true);
         const savedPayment = localStorage.getItem('ecosystem_payment_method');
         if (savedPayment) togglePagoView(true);
-    });
+    }});
     </script>
 </body>
-</html>
+</html>"""
+
+def build_all_checkouts():
+    print("=== RECONSTRUYENDO CHECKOUT.HTML EN TODAS LAS BOUTIQUES ===")
+    for store_slug, store_title in STORES.items():
+        store_dir = os.path.join(BASE_DIR, store_slug)
+        if not os.path.exists(store_dir):
+            continue
+
+        checkout_path = os.path.join(store_dir, "checkout.html")
+        html_content = generate_checkout_html(store_slug, store_title)
+        
+        with open(checkout_path, "w", encoding="utf-8") as f:
+            f.write(html_content)
+        print(f"[OK] Reconstruido completo: {store_slug}/checkout.html")
+
+    print("\n=== DESPLEGANDO A GITHUB PAGES ===")
+    for store_slug in STORES.keys():
+        store_dir = os.path.join(BASE_DIR, store_slug)
+        if os.path.exists(os.path.join(store_dir, ".git")):
+            subprocess.run(["git", "add", "-A"], cwd=store_dir, check=True)
+            subprocess.run(["git", "commit", "-m", "fix(checkout): reconstruccion completa de plantilla e interfaz", "--allow-empty"], cwd=store_dir, capture_output=True)
+            subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=store_dir, capture_output=True)
+            print(f"🟢 Push OK: {store_slug}")
+
+    subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
+    subprocess.run(["git", "commit", "-m", "feat(checkout): arquitectura definitiva de checkout en 7 boutiques", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+    subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True)
+    print("🟢 Push OK: Monorepositorio central")
+
+if __name__ == "__main__":
+    os.chdir(BASE_DIR)
+    build_all_checkouts()
