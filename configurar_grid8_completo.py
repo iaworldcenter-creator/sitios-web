@@ -14,197 +14,108 @@ INDEX_PATH = os.path.join(VIAMX_DIR, "index.html")
 CATALOG_PATH = os.path.join(VIAMX_DIR, "catalog.json")
 
 print("=" * 70)
-print("INTEGRANDO ESTRUCTURA DE 8 COLUMNAS Y 20 PRODUCTOS SÍNCRONOS EN VÍA MX")
+print("CONFIGURANDO 8 COLUMNAS + 30 DEPARTAMENTOS CON SUBMENÚS FLYOUT EN VÍA MX")
 print("=" * 70)
 
+# Base de 20 productos de Electrónica y Oportunidades
 productos_data = [
-    {
-        "sku": "VMX-EL-001",
-        "nombre": "Sony Audífonos Inalámbricos On-Ear WH-CH520 (Hasta 50h)",
-        "precio": 699.00,
-        "categoria": "electronica",
-        "marca": "Sony",
-        "descripcion": "Audífonos de diadema Bluetooth con hasta 50 horas de batería, carga rápida y conexión multipunto.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-002",
-        "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Negro)",
-        "precio": 999.00,
-        "categoria": "smarthome",
-        "marca": "Amazon",
-        "descripcion": "Bocina inteligente compacta de sonido envolvente con asistente virtual Alexa integrado.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-003",
-        "nombre": "1 Hora Bocina Bluetooth Portátil 5W (Radio FM / MicroSD)",
-        "precio": 141.99,
-        "categoria": "electronica",
-        "marca": "1 Hora",
-        "descripcion": "Mini bocina inalámbrica de 5W con 25 horas de reproducción, radio FM y ranura MicroSD.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-HR-004",
-        "nombre": "Juego de Destornilladores de Precisión 117 en 1 AXIDUN",
-        "precio": 149.00,
-        "categoria": "herramientas",
-        "marca": "AXIDUN",
-        "descripcion": "Kit magnético profesional de puntas intercambiables para electrónica y celulares.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-005",
-        "nombre": "INIU Power Bank 20000mAh 22.5W Carga Rápida",
-        "precio": 599.99,
-        "categoria": "electronica",
-        "marca": "INIU",
-        "descripcion": "Batería externa de alta capacidad con display digital LED y puertos USB-C de carga veloz.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-006",
-        "nombre": "Amazon Echo Dot (5ta Gen) Bocina Alexa (Negro)",
-        "precio": 1699.00,
-        "categoria": "smarthome",
-        "marca": "Amazon",
-        "descripcion": "Bocina inteligente con audio de alta fidelidad, voces nítidas y control domótico.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-007",
-        "nombre": "Amazon Echo Pop Bocina Alexa (Lavanda)",
-        "precio": 999.00,
-        "categoria": "smarthome",
-        "marca": "Amazon",
-        "descripcion": "Altavoz compacto con sonido direccional en acabado lavanda con Alexa integrada.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-008",
-        "nombre": "Skullcandy Dime 3 Auriculares In-Ear Inalámbricos",
-        "precio": 447.00,
-        "categoria": "electronica",
-        "marca": "Skullcandy",
-        "descripcion": "Auriculares True Wireless compactos con micrófono, resistencia al agua IPX4 y estuche.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-009",
-        "nombre": "Soundcore by Anker V20i Audífonos Open-Ear",
-        "precio": 498.98,
-        "categoria": "electronica",
-        "marca": "Anker",
-        "descripcion": "Audífonos ergonómicos de oído abierto con sonido ultra claro para jornadas prolongadas.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-010",
-        "nombre": "Soundcore by Anker P30i con Cancelación de Ruido",
-        "precio": 537.98,
-        "categoria": "electronica",
-        "marca": "Anker",
-        "descripcion": "Auriculares inalámbricos con cancelación activa de ruido híbrida y graves profundos.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-011",
-        "nombre": "AXIDUN Barra de Sonido RGB Estéreo Bluetooth 5.0",
-        "precio": 298.00,
-        "categoria": "electronica",
-        "marca": "AXIDUN",
-        "descripcion": "Soundbar para escritorio con iluminación dinámica RGB y conexión Bluetooth 5.0.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-HR-012",
-        "nombre": "Kit de Soldadura Electrónica 80W LCD Regulable",
-        "precio": 349.99,
-        "categoria": "herramientas",
-        "marca": "Tech Tool",
-        "descripcion": "Cautín profesional de 80W con display digital LCD y control térmico 180°C - 520°C.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-013",
-        "nombre": "ISTENTINFY Kit Electrónica Protoboard Arduino Uno",
-        "precio": 262.24,
-        "categoria": "maker",
-        "marca": "Arduino Compatible",
-        "descripcion": "Set de prototipado con cables jumper, LEDs, resistencias y botones para proyectos.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-014",
-        "nombre": "JBL Tune 520BT Audífonos Diadema Pure Bass (Negro)",
-        "precio": 699.00,
-        "categoria": "electronica",
-        "marca": "JBL",
-        "descripcion": "Audífonos Bluetooth con sonido Pure Bass y hasta 57 horas continuas de autonomía.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-015",
-        "nombre": "FANDBO Multicontacto Extensión 12 en 1 (USB-C / CA)",
-        "precio": 263.11,
-        "categoria": "electronica",
-        "marca": "FANDBO",
-        "descripcion": "Estación de energía con 8 tomas CA, puertos USB de carga rápida y cable de 1.5m.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-016",
-        "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Blanco)",
-        "precio": 999.00,
-        "categoria": "smarthome",
-        "marca": "Amazon",
-        "descripcion": "Bocina inteligente compacta en elegante color blanco con asistente Alexa y audio HD.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-017",
-        "nombre": "Uplayteck Antena TV Digital Interior HDTV 1080P/4K",
-        "precio": 220.15,
-        "categoria": "lineablanca",
-        "marca": "Uplayteck",
-        "descripcion": "Antena para sintonización abierta en alta definición 1080P/4K con amplificador.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-018",
-        "nombre": "Motorola Moto G06 Azul (4GB RAM / 256GB)",
-        "precio": 2368.00,
-        "categoria": "telefonia",
-        "marca": "Motorola",
-        "descripcion": "Smartphone desbloqueado con 256GB de almacenamiento interno y batería de larga duración.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-019",
-        "nombre": "Kit de Robótica y Electrónica Compatible Arduino R3",
-        "precio": 544.00,
-        "categoria": "maker",
-        "marca": "Maker Pro",
-        "descripcion": "Kit de componentes y módulos de aprendizaje para robótica con microcontrolador R3.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    },
-    {
-        "sku": "VMX-EL-020",
-        "nombre": "Qiilu Altavoces Estéreo USB de Escritorio",
-        "precio": 209.00,
-        "categoria": "electronica",
-        "marca": "Qiilu",
-        "descripcion": "Par de bocinas compactas para PC/laptop con alimentación USB y audio 3.5mm.",
-        "imagen": "assets/img/mascota_tigre_thumb.webp"
-    }
+    {"sku": "VMX-EL-001", "nombre": "Sony Audífonos Inalámbricos On-Ear WH-CH520", "precio": 699.00, "original": 1177.00, "categoria": "electronica", "marca": "Sony", "rating": "4.8", "reviews": "9.7k", "descripcion": "Audífonos Bluetooth con hasta 50h de batería, carga rápida y conexión multipunto.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-002", "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Negro)", "precio": 999.00, "original": 999.00, "categoria": "smarthome", "marca": "Amazon", "rating": "4.8", "reviews": "30.6k", "descripcion": "Bocina inteligente compacta de sonido envolvente con asistente Alexa integrado.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-003", "nombre": "1 Hora Bocina Bluetooth Portátil 5W (Radio FM/SD)", "precio": 141.99, "original": 169.99, "categoria": "electronica", "marca": "1 Hora", "rating": "4.6", "reviews": "2.4k", "descripcion": "Mini bocina inalámbrica de 5W con 25h de reproducción continua y ranura MicroSD.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-HR-004", "nombre": "Juego de Destornilladores de Precisión 117 en 1 AXIDUN", "precio": 149.00, "original": 199.00, "categoria": "herramientas", "marca": "AXIDUN", "rating": "4.6", "reviews": "7.3k", "descripcion": "Kit magnético profesional de puntas intercambiables para electrónica y celulares.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-005", "nombre": "INIU Power Bank 20000mAh 22.5W Carga Rápida", "precio": 599.99, "original": 699.99, "categoria": "electronica", "marca": "INIU", "rating": "4.7", "reviews": "82.8k", "descripcion": "Batería externa con display digital LED y puertos USB-C de entrega de energía veloz.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-006", "nombre": "Amazon Echo Dot (5ta Gen) Bocina Alexa (Negro)", "precio": 1699.00, "original": 1699.00, "categoria": "smarthome", "marca": "Amazon", "rating": "4.8", "reviews": "48.6k", "descripcion": "Bocina inteligente con audio HD, voces nítidas y control de dispositivos del hogar.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-007", "nombre": "Amazon Echo Pop Bocina Alexa (Lavanda)", "precio": 999.00, "original": 999.00, "categoria": "smarthome", "marca": "Amazon", "rating": "4.8", "reviews": "30.6k", "descripcion": "Altavoz compacto con sonido direccional en color lavanda con Alexa integrada.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-008", "nombre": "Skullcandy Dime 3 Auriculares In-Ear Inalámbricos", "precio": 447.00, "original": 749.00, "categoria": "electronica", "marca": "Skullcandy", "rating": "4.4", "reviews": "9.5k", "descripcion": "Auriculares True Wireless con micrófono, protección IPX4 y hasta 20h de batería.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-009", "nombre": "Soundcore by Anker V20i Audífonos Open-Ear", "precio": 498.98, "original": 899.00, "categoria": "electronica", "marca": "Anker", "rating": "4.5", "reviews": "17.6k", "descripcion": "Audífonos de diseño ergonómico de oído abierto con sonido nítido y confort total.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-010", "nombre": "Soundcore by Anker P30i Cancelación Activa de Ruido", "precio": 537.98, "original": 999.00, "categoria": "electronica", "marca": "Anker", "rating": "4.5", "reviews": "40.3k", "descripcion": "Auriculares con cancelación de ruido híbrida y estuche con soporte para smartphone.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-011", "nombre": "AXIDUN Barra de Sonido RGB Estéreo Bluetooth 5.0", "precio": 298.00, "original": 399.00, "categoria": "electronica", "marca": "AXIDUN", "rating": "4.3", "reviews": "1.4k", "descripcion": "Soundbar para escritorio con iluminación dinámica RGB y conexión Bluetooth 5.0.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-HR-012", "nombre": "Kit de Soldadura Electrónica 80W LCD Regulable", "precio": 349.99, "original": 429.00, "categoria": "herramientas", "marca": "Tech Tool", "rating": "4.1", "reviews": "161", "descripcion": "Cautín profesional de 80W con display digital LCD y rango térmico 180°C - 520°C.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-013", "nombre": "ISTENTINFY Kit Electrónica Protoboard Arduino Uno", "precio": 262.24, "original": 298.00, "categoria": "maker", "marca": "Arduino Comp", "rating": "4.7", "reviews": "191", "descripcion": "Set de prototipado con cables jumper, LEDs, resistencias y botones para proyectos.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-014", "nombre": "JBL Tune 520BT Audífonos Diadema Pure Bass", "precio": 699.00, "original": 999.00, "categoria": "electronica", "marca": "JBL", "rating": "4.8", "reviews": "11.5k", "descripcion": "Audífonos Bluetooth con sonido Pure Bass y hasta 57 horas continuas de batería.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-015", "nombre": "FANDBO Multicontacto Extensión 12 en 1 USB-C / CA", "precio": 263.11, "original": 298.99, "categoria": "electronica", "marca": "FANDBO", "rating": "4.7", "reviews": "985", "descripcion": "Estación de energía con 8 tomas CA, puertos USB de carga rápida y cable de 1.5m.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-016", "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Blanco)", "precio": 999.00, "original": 999.00, "categoria": "smarthome", "marca": "Amazon", "rating": "4.8", "reviews": "30.6k", "descripcion": "Bocina compacta en acabado blanco con asistente Alexa y audio HD en streaming.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-017", "nombre": "Uplayteck Antena TV Digital Interior HDTV 1080P/4K", "precio": 220.15, "original": 259.00, "categoria": "lineablanca", "marca": "Uplayteck", "rating": "4.2", "reviews": "3.7k", "descripcion": "Antena para sintonización abierta en alta definición 1080P/4K con amplificador.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-018", "nombre": "Motorola Moto G06 Azul (4GB RAM / 256GB)", "precio": 2368.00, "original": 2999.00, "categoria": "telefonia", "marca": "Motorola", "rating": "4.4", "reviews": "111", "descripcion": "Smartphone desbloqueado con 256GB de almacenamiento interno y batería de 5000mAh.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-019", "nombre": "Kit de Robótica y Electrónica Compatible Arduino R3", "precio": 544.00, "original": 598.00, "categoria": "maker", "marca": "Maker Pro", "rating": "4.7", "reviews": "4", "descripcion": "Kit de componentes y módulos de aprendizaje para robótica con microcontrolador R3.", "imagen": "assets/img/mascota_tigre_thumb.webp"},
+    {"sku": "VMX-EL-020", "nombre": "Qiilu Altavoces Estéreo USB de Escritorio", "precio": 209.00, "original": 209.00, "categoria": "electronica", "marca": "Qiilu", "rating": "3.0", "reviews": "1", "descripcion": "Par de bocinas compactas para PC/laptop con alimentación USB y audio auxiliar 3.5mm.", "imagen": "assets/img/mascota_tigre_thumb.webp"}
 ]
 
-# Guardar catalog.json
 with open(CATALOG_PATH, "w", encoding="utf-8") as f:
     json.dump(productos_data, f, indent=4, ensure_ascii=False)
 
 JSON_EMBEDDED = json.dumps(productos_data, ensure_ascii=False)
+
+# Definición de los 30 Departamentos con sus Subcategorías para el Flyout Menu
+departamentos_menu = [
+    {"id": "electronica", "nombre": "Electrónica & Audio", "icon": "fa-headphones", "subs": ["Pantallas y Smart TV", "Estéreos y Bocinas", "Barras de Sonido RGB", "Audífonos In-Ear", "Audífonos de Diadema", "Bocinas Portátiles"]},
+    {"id": "lineablanca", "nombre": "Línea Blanca & Climas", "icon": "fa-snowflake", "subs": ["Refrigeradores Inverter", "Lavadoras y Secadoras", "Aires Acondicionados", "Estufas y Hornos", "Hornos de Microondas", "Dispensadores de Agua"]},
+    {"id": "smarthome", "nombre": "Smart Home & Domótica", "icon": "fa-robot", "subs": ["Bocinas Alexa y Echo", "Focos Inteligentes RGB", "Cámaras de Seguridad WiFi", "Cerraduras Digitales", "Enchufes Programables", "Sensores de Movimiento"]},
+    {"id": "telefonia", "nombre": "Telefonía & Celulares", "icon": "fa-mobile-screen", "subs": ["Smartphones Desbloqueados", "Power Banks Carga Rápida", "Cargadores y Cables USB-C", "Fundas de Alta Protección", "Smartwatches y Bandas", "Soportes de Escritorio"]},
+    {"id": "computacion", "nombre": "Computación & Laptops", "icon": "fa-laptop", "subs": ["Laptops Gamer y Trabajo", "Monitores Curvos y Planos", "Teclados Mecánicos", "Mouse Ergonómicos", "Discos SSD y M.2", "Memorias RAM DDR4/DDR5"]},
+    {"id": "cocina", "nombre": "Cocina & Electrodomésticos", "icon": "fa-kitchen-set", "subs": ["Freidoras de Aire (Air Fryers)", "Licuadoras de Alta Potencia", "Cafeteras Espresso y Goteo", "Batidoras de Inmersión", "Tostadores Eléctricos", "Parrillas de Inducción"]},
+    {"id": "herramientas", "nombre": "Herramientas & Ferretería", "icon": "fa-screwdriver-wrench", "subs": ["Kits de Destornilladores 117 en 1", "Cautines y Soldadura 80W", "Multímetros Digitales", "Taladros Inalámbricos", "Juegos de Llaves y Dados", "Cajas de Herramientas"]},
+    {"id": "maker", "nombre": "Maker & Robótica Arduino", "icon": "fa-microchip", "subs": ["Placas Arduino Uno y R3", "Kits de Electrónica y Protoboard", "Sensores de Ultrasonido y Gas", "Servomotores y Drivers", "Cables Jumper y Pines", "Módulos ESP32 y Bluetooth"]},
+    {"id": "cristaleria", "nombre": "Cristalería & Vajillas", "icon": "fa-wine-glass", "subs": ["Copas de Cristal de Lujo", "Juegos de Vasos Térmicos", "Vajillas de Cerámica Fina", "Decantadores de Vino", "Jarras de Vidrio Borosilicato", "Cubiertos de Acero Inoxidable"]},
+    {"id": "moda", "nombre": "Ropa & Moda Internacional", "icon": "fa-shirt", "subs": ["Jerseys Deportivos Oficiales", "Chamarras y Rompevientos", "Sudaderas Urbanas", "Playeras de Algodón Premium", "Pantalones y Joggers", "Gorras y Sombreros"]},
+    {"id": "calzado", "nombre": "Calzado & Sneakers", "icon": "fa-shoe-prints", "subs": ["Tenis Urbanos y Deportivos", "Botas de Trabajo y Senderismo", "Zapatos Casuales de Piel", "Sandalias Confort", "Plantillas Ortopédicas"]},
+    {"id": "bano", "nombre": "Baño & Grifería", "icon": "fa-shower", "subs": ["Regaderas Tipo Lluvia", "Monolandos y Grifos Modernos", "Espejos Touch con Luz LED", "Accesorios de Acero Negro", "Toalleros y Repisas"]},
+    {"id": "hogar", "nombre": "Hogar, Muebles & Sala", "icon": "fa-couch", "subs": ["Sillones Reclinables", "Mesas de Centro Elevables", "Lámparas de Pie Modernas", "Estantes y Libreros", "Cuadros y Arte Decorativo"]},
+    {"id": "iluminacion", "nombre": "Iluminación & Neón Flex", "icon": "fa-lightbulb", "subs": ["Letreros Neón Personalizados", "Tiras LED RGBIC Inteligentes", "Lámparas de Escritorio Regulables", "Reflectores Solares LED", "Focos Vintage Edison"]},
+    {"id": "joyeria", "nombre": "Joyería & Relojería", "icon": "fa-gem", "subs": ["Relojes Automáticos de Lujo", "Cadenas de Plata 925", "Pulseras de Cuero Trenzado", "Anillos de Titanio", "Estuches Organizadores"]},
+    {"id": "deportes", "nombre": "Deportes & Fitness", "icon": "fa-dumbbell", "subs": ["Balones Coleccionables NFL", "Mancuernas y Pesas Rusas", "Bandas de Resistencia Pro", "Tapetes de Yoga Antideslizantes", "Cilindros Térmicos de Agua"]},
+    {"id": "belleza", "nombre": "Belleza & Cuidado Personal", "icon": "fa-wand-magic", "subs": ["Rasuradoras Profesionales", "Secadoras de Pelo Iónicas", "Cepillos Alaciadores", "Masajeadores Cervicales", "Cuidado Facial y Skincare"]},
+    {"id": "juguetes", "nombre": "Juguetes & Coleccionables", "icon": "fa-gamepad", "subs": ["Figuras de Acción y Anime", "Autos de Colección a Escala", "Juegos de Mesa y Estrategia", "Bloques de Construcción", "Drones con Cámara HD"]},
+    {"id": "automotriz", "nombre": "Automotriz & Accesorios", "icon": "fa-car", "subs": ["Cámaras Dashcam 4K", "Transmisores FM Bluetooth", "Soportes Magnéticos para Auto", "Aspiradoras Portátiles 12V", "Arrancadores de Batería"]},
+    {"id": "bebes", "nombre": "Bebés & Maternidad", "icon": "fa-baby", "subs": ["Monitores de Video para Bebé", "Esterilizadores de Biberones", "Sillas de Seguridad para Auto", "Juguetes de Estimulación", "Mochilas Pañaleras Térmicas"]},
+    {"id": "mascotas", "nombre": "Mascotas & Accesorios", "icon": "fa-paw", "subs": ["Comederos Automáticos WiFi", "Fuentes de Agua para Gatos", "Camas Térmicas para Perros", "Arneses y Correas Tácticas", "Juguetes Interactivos"]},
+    {"id": "oficina", "nombre": "Oficina & Papelería", "icon": "fa-briefcase", "subs": ["Sillas Ergonómicas Ejecutivas", "Organizadores de Escritorio", "Destructoras de Documentos", "Plumas Ejecutivas", "Pizarrones Blancos Magnéticos"]},
+    {"id": "musica", "nombre": "Instrumentos Musicales", "icon": "fa-guitar", "subs": ["Guitarras Eléctricas y Acústicas", "Teclados y Sintetizadores", "Micrófonos de Condensador", "Interfaces de Audio USB", "Soportes y Fundas"]},
+    {"id": "jardineria", "nombre": "Jardinería & Exteriores", "icon": "fa-seedling", "subs": ["Luces Solares para Jardín", "Mangueras Retráctiles 30m", "Macetas Autorriego", "Herramientas de Poda y Cuidado", "Fumigadores Manuales"]},
+    {"id": "gourmet", "nombre": "Vinos & Coctelería Gourmet", "icon": "fa-martini-glass-citrus", "subs": ["Cavas Enfriadoras de Vino", "Sacacorchos Eléctricos USB", "Kits de Barman y Coctelería", "Vasos Térmicos y Shakers", "Hieleras de Acero Doble Pared"]},
+    {"id": "fotografia", "nombre": "Fotografía & Video Pro", "icon": "fa-camera", "subs": ["Aros de Luz LED 18 Pulgadas", "Trípodes Profesionales 2m", "Micrófonos Inalámbricos Lavalier", "Gimbals Estabilizadores 3 Ejes", "Fondos Verdes y Softboxes"]},
+    {"id": "seguridad", "nombre": "Seguridad & Vigilancia", "icon": "fa-shield-halved", "subs": ["Cámaras PTZ 360 Exterior", "Alarmas Vecinales con Sirena", "Cajas Fuertes Digitales", "Intercomunicadores con Video", "Sensores de Apertura Puerta/Ventana"]},
+    {"id": "camping", "nombre": "Camping & Aventura", "icon": "fa-campground", "subs": ["Casas de Campaña Impermeables", "Lámparas de Campamento LED", "Mochilas Militares 50L", "Navajas Multiusos Suizas", "Colchones Inflables con Bomba"]},
+    {"id": "salud", "nombre": "Salud & Cuidado Médico", "icon": "fa-heart-pulse", "subs": ["Baumanómetros Digitales de Brazo", "Oxímetros de Pulso Pediátrico/Adulto", "Termómetros Infrarrojos Sin Contacto", "Básculas Inteligentes con App", "Nebulizadores Portátiles"]},
+    {"id": "oportunidades", "nombre": "Liquidaciones & Remates B2B", "icon": "fa-tags", "subs": ["Lotes de Importación Directa", "Remates de Almacén Guadalajara", "Artículos de Exposición Grado A", "Cajas Sorpresa de Electrónica", "Ofertas Exclusivas al Mayoreo"]}
+]
+
+# Construir HTML de los 30 Departamentos con Flyout Submenús
+dept_sidebar_html = """
+    <div class="flex flex-row lg:flex-col gap-1.5 w-full pr-1">
+        <div class="relative group/dept">
+            <button onclick="filterByDept('todos', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 cursor-pointer">
+                <span class="flex items-center gap-2 truncate"><i class="fa-solid fa-border-all text-cyan-400 w-4 text-center"></i> Todos los Artículos</span>
+                <span class="text-[10px] font-mono text-cyan-400 font-bold hidden lg:inline">20</span>
+            </button>
+        </div>
+"""
+
+for d in departamentos_menu:
+    subs_links = "".join([f"""<a href="#catalogo" onclick="handleSearch('{s}')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> {s}</a>""" for s in d["subs"]])
+    
+    dept_sidebar_html += f"""
+        <div class="relative group/dept">
+            <button onclick="filterByDept('{d["id"]}', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid {d["icon"]} text-cyan-400 w-4 text-center"></i> {d["nombre"]}</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid {d["icon"]}"></i> {d["nombre"]}
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    {subs_links}
+                </div>
+            </div>
+        </div>
+    """
+
+dept_sidebar_html += "</div>"
 
 INDEX_COMPLETO = f"""<!DOCTYPE html>
 <html lang="es">
@@ -215,10 +126,8 @@ INDEX_COMPLETO = f"""<!DOCTYPE html>
     <title>VíaMX | Curaduría y Boutique Internacional</title>
     <meta name="description" content="Boutique oficial VíaMX en Guadalajara Centro. Curaduría de artículos selectos e importaciones dentro del ecosistema Anti-Gravity. Pedro Moreno 501 A.">
     
-    <!-- Preload del Logo LCP -->
     <link rel="preload" as="image" href="assets/img/mascota_tigre_thumb.webp" fetchpriority="high">
     
-    <!-- Tipografías & Estilos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="assets/css/tailwind-built.css?v=1.1.0" />
@@ -278,7 +187,7 @@ INDEX_COMPLETO = f"""<!DOCTYPE html>
             <a href="https://antigravity.google/download" target="_blank" class="hover:text-amber-400 transition">Descargar Anti-Gravity</a>
         </div>
 
-        <!-- Nivel 2: Fila Principal en UNA SOLA LÍNEA -->
+        <!-- Nivel 2: Fila Principal (Izquierda: Carrito/Cuenta, Centro: Buscador Amplio, Derecha: Vía MX) -->
         <div class="w-full max-w-[98%] 2xl:max-w-7xl mx-auto flex flex-nowrap items-center justify-between gap-3 sm:gap-6 py-3 px-2 sm:px-6">
             
             <!-- 1. EXTREMO IZQUIERDO: Mi Carrito y Mi Cuenta -->
@@ -362,77 +271,59 @@ INDEX_COMPLETO = f"""<!DOCTYPE html>
     </div>
 
     <!-- ========================================================================
-         CATÁLOGO PRINCIPAL EN GRID DE 8 COLUMNAS SIMÉTRICAS (TIPO AMAZON / B2B)
+         CATÁLOGO PRINCIPAL EN GRID EXACTO DE 8 COLUMNAS SIMÉTRICAS
          ======================================================================== -->
     <main class="flex-1 w-full py-16 bg-slate-900/90 border-t border-slate-800 text-slate-100" id="catalogo">
-        <div class="w-full px-4 sm:px-6 lg:px-8">
+        <div class="w-full px-2 sm:px-4 lg:px-8">
             
-            <!-- Encabezado de Sección -->
+            <!-- Encabezado de Sección Centrado -->
             <div class="text-center mb-12">
                 <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">// VíaMX Curaduría Selecta & Boutique Internacional</span>
                 <h2 class="text-3xl sm:text-4xl font-black text-white">Catálogo de Oportunidades & Electrónica 2026</h2>
                 <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl mx-auto">Selección de artículos garantizados, electrónica de consumo, herramientas y oportunidades de importación directa en Guadalajara Centro.</p>
             </div>
 
-            <!-- GRID VIRTUAL DE 8 COLUMNAS SIMÉTRICAS -->
-            <div class="grid grid-cols-8 gap-6">
+            <!-- GRID MAESTRO DE 8 COLUMNAS SIMÉTRICAS -->
+            <div class="grid grid-cols-8 gap-4 sm:gap-6">
                 
                 <!-- COLUMNA 1: Margen Izquierdo Vacío -->
                 <div class="hidden lg:block col-span-1"></div>
 
-                <!-- COLUMNA 2: Sidebar de Departamentos y Divisiones -->
-                <aside class="col-span-8 lg:col-span-1 w-full bg-slate-950/90 border border-slate-800 rounded-2xl p-4 lg:p-5 shadow-xl sticky lg:top-24 top-16 z-30 self-start flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-4 lg:gap-6 whitespace-nowrap lg:whitespace-normal scrollbar-none items-center lg:items-stretch">
-                    <h3 class="text-sm font-black text-white hidden lg:flex items-center gap-2 border-b border-slate-800 pb-3">
-                        <i class="fa-solid fa-layer-group text-amber-400"></i> Departamentos
-                    </h3>
-                    
-                    <div class="flex flex-row lg:flex-col gap-2 lg:gap-1.5 w-full">
-                        <button onclick="filterByDept('todos', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 cursor-pointer">
-                            <i class="fa-solid fa-border-all text-[11px]"></i> Todos los Artículos
-                        </button>
-                        <button onclick="filterByDept('electronica', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-headphones text-[11px] text-cyan-400"></i> Electrónica & Audio
-                        </button>
-                        <button onclick="filterByDept('smarthome', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-robot text-[11px] text-amber-400"></i> Smart Home & Alexa
-                        </button>
-                        <button onclick="filterByDept('herramientas', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-screwdriver-wrench text-[11px] text-emerald-400"></i> Herramientas Pro
-                        </button>
-                        <button onclick="filterByDept('maker', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-microchip text-[11px] text-purple-400"></i> Maker & Arduino
-                        </button>
-                        <button onclick="filterByDept('telefonia', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-mobile-screen text-[11px] text-blue-400"></i> Telefonía Móvil
-                        </button>
-                        <button onclick="filterByDept('lineablanca', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-tv text-[11px] text-pink-400"></i> Video & TV Abierta
-                        </button>
+                <!-- COLUMNA 2: Sidebar de 30 Departamentos con Submenús Flyout on Hover -->
+                <aside class="col-span-8 lg:col-span-1 w-full bg-slate-950/95 border border-slate-800 rounded-3xl p-3 sm:p-4 shadow-2xl sticky lg:top-24 top-16 z-30 self-start flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-4 lg:gap-2 whitespace-nowrap lg:whitespace-normal scrollbar-none items-center lg:items-stretch">
+                    <div class="border-b border-slate-800 pb-3 mb-2 hidden lg:flex items-center justify-between">
+                        <h3 class="text-xs font-mono font-black text-white uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-layer-group text-amber-400"></i> Departamentos
+                        </h3>
+                        <span class="text-[9px] font-mono text-slate-500">30 Áreas</span>
                     </div>
+                    
+                    {dept_sidebar_html}
 
-                    <div class="pt-4 border-t border-slate-800 hidden lg:block">
+                    <div class="pt-4 border-t border-slate-800 hidden lg:block mt-2">
                         <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block mb-1">Garantía Local</span>
                         <p class="text-[11px] text-slate-300 leading-relaxed font-semibold">
-                            Revisión y entrega directa en Pedro Moreno 501 A.
+                            Revisión y entrega física directa en Pedro Moreno 501 A.
                         </p>
                     </div>
                 </aside>
 
-                <!-- COLUMNAS 3 A 7: Cuadrícula de Productos (5 columnas interiores) -->
+                <!-- COLUMNAS 3 A 7: Cuadrícula de 5 Columnas de Productos (Tipo Amazon) -->
                 <div class="col-span-8 lg:col-span-5">
                     
+                    <!-- Barra de Conteo y Garantía -->
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-3 border-b border-slate-800">
                         <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider" id="catalog-count-text">
                             Mostrando 20 artículos disponibles
                         </span>
                         <div class="flex items-center gap-2 text-xs text-slate-400 font-mono">
-                            <i class="fa-solid fa-shield-check text-emerald-400"></i> Pago Seguro & 5% Cashback
+                            <i class="fa-solid fa-shield-check text-emerald-400"></i> Pago Seguro & 5% Cashback Acumulable
                         </div>
                     </div>
 
-                    <!-- Cuadrícula Dinámica -->
-                    <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        <!-- Poblado síncronamente desde JavaScript -->
+                    <!-- CUADRÍCULA INTERIOR DE 5 COLUMNAS EN DESKTOP (TIPO AMAZON) -->
+                    <div id="catalog-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+                        <!-- Se poblará síncronamente desde JavaScript -->
                     </div>
 
                 </div>
@@ -488,34 +379,46 @@ INDEX_COMPLETO = f"""<!DOCTYPE html>
         }}
 
         grid.innerHTML = items.map(item => `
-            <div class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 rounded-2xl p-4 flex flex-col justify-between transition duration-300 shadow-xl group cursor-pointer hover:shadow-cyan-950/20">
+            <div class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 rounded-2xl p-3.5 flex flex-col justify-between transition duration-300 shadow-xl group cursor-pointer hover:shadow-cyan-950/20">
                 <div>
-                    <div class="w-full h-44 overflow-hidden rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-center mb-3 p-2 relative">
+                    <!-- Contenedor Imagen -->
+                    <div class="w-full h-36 sm:h-40 overflow-hidden rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-center mb-3 p-1.5 relative">
                         <img 
                             src="${{item.imagen || 'assets/img/mascota_tigre_thumb.webp'}}" 
                             alt="${{item.nombre}}" 
                             loading="lazy" 
                             decoding="async" 
-                            width="300" 
-                            height="300" 
+                            width="250" 
+                            height="250" 
                             class="w-full h-full object-contain group-hover:scale-105 transition duration-300" 
                             onerror="this.onerror=null;this.src='assets/img/mascota_tigre_thumb.webp';"
                         />
+                        <span class="absolute top-2 left-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[9px] font-mono font-black px-1.5 py-0.5 rounded shadow">
+                            Oferta
+                        </span>
                     </div>
+
+                    <!-- Datos y Rating -->
                     <div class="flex items-center justify-between gap-1 mb-1">
                         <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block">${{item.marca || 'Vía MX'}}</span>
-                        <span class="text-[9px] font-mono text-slate-500 uppercase">${{item.sku}}</span>
+                        <div class="flex items-center gap-1 text-[10px] text-amber-400 font-bold">
+                            <i class="fa-solid fa-star text-[9px]"></i> ${{item.rating || '4.8'}}
+                        </div>
                     </div>
-                    <h4 class="text-white font-bold text-xs sm:text-sm mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${{item.nombre}}">${{item.nombre}}</h4>
-                    <p class="text-slate-400 text-xs mb-3 line-clamp-2 leading-relaxed font-normal">${{item.descripcion || ''}}</p>
+
+                    <!-- Título -->
+                    <h4 class="text-white font-bold text-xs mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${{item.nombre}}">${{item.nombre}}</h4>
+                    <p class="text-slate-400 text-[11px] mb-3 line-clamp-2 leading-tight font-normal">${{item.descripcion || ''}}</p>
                 </div>
-                <div class="flex justify-between items-center pt-3 border-t border-slate-800/80">
-                    <div>
-                        <span class="text-[9px] font-mono text-slate-400 block uppercase">Precio</span>
+
+                <!-- Precio y Botón de Compra -->
+                <div class="flex flex-col gap-2 pt-2.5 border-t border-slate-800/80">
+                    <div class="flex items-baseline justify-between">
                         <span class="text-amber-400 font-black text-sm sm:text-base font-mono">${{formatCurrency(item.precio)}}</span>
+                        ${{item.original && item.original > item.precio ? `<span class="text-slate-500 line-through text-[10px] font-mono">$${{item.original.toFixed(2)}}</span>` : ''}}
                     </div>
-                    <button onclick="addToCart('${{item.sku}}')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition active:scale-95 shadow-md shadow-cyan-500/20 cursor-pointer">
-                        <i class="fa-solid fa-cart-plus"></i> Agregar
+                    <button onclick="addToCart('${{item.sku}}')" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-md shadow-amber-500/20 cursor-pointer">
+                        <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
                     </button>
                 </div>
             </div>
@@ -524,10 +427,10 @@ INDEX_COMPLETO = f"""<!DOCTYPE html>
 
     function filterByDept(dept, btn) {{
         document.querySelectorAll('.dept-btn').forEach(b => {{
-            b.className = "dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer";
+            b.className = "dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer";
         }});
         if (btn) {{
-            btn.className = "dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 cursor-pointer";
+            btn.className = "dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 cursor-pointer";
         }}
 
         if (dept === 'todos') {{
@@ -536,6 +439,12 @@ INDEX_COMPLETO = f"""<!DOCTYPE html>
             currentFilteredCatalog = viamxCatalog.filter(i => i.categoria === dept);
         }}
         renderCatalog(currentFilteredCatalog);
+    }}
+
+    function handleSearch(q) {{
+        const input = document.getElementById("siteSearch");
+        if (input) input.value = q;
+        handleSearchSubmit();
     }}
 
     function handleSearchSubmit(e) {{
@@ -583,7 +492,7 @@ INDEX_COMPLETO = f"""<!DOCTYPE html>
             
             localStorage.setItem("ecosystem_global_cart", JSON.stringify(cart));
             updateCartBadge();
-            alert(`"${{item.nombre}}" agregado al carrito con éxito.`);
+            alert(`"${{item.nombre}}" agregado al carrito.`);
         }} catch(e) {{}}
     }}
 
@@ -693,16 +602,16 @@ INDEX_COMPLETO = f"""<!DOCTYPE html>
 with open(INDEX_PATH, "w", encoding="utf-8") as f:
     f.write(INDEX_COMPLETO)
 
-print(f"✓ index.html reconstruido con Grid de 8 columnas y 20 productos síncronos.")
+print("✓ index.html configurado con 8 columnas, 30 departamentos con flyout y 5 columnas de productos.")
 
 print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
 if os.path.exists(os.path.join(VIAMX_DIR, ".git")):
     subprocess.run(["git", "add", "-A"], cwd=VIAMX_DIR, check=True)
-    subprocess.run(["git", "commit", "-m", "feat(catalog): grid de 8 columnas y carga sincrona de 20 articulos con departamentos", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "feat(catalog): grid estricto de 8 columnas con 30 departamentos flyout y 5 columnas de productos tipo Amazon", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
     res_viamx = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=VIAMX_DIR, capture_output=True, text=True)
     print(f"🟢 Vía MX NFL -> Push: {'OK' if res_viamx.returncode == 0 else res_viamx.stderr.strip()}")
 
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
-subprocess.run(["git", "commit", "-m", "feat(viamx): grid simetrico 8 columnas y 20 productos visibles de inmediato", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+subprocess.run(["git", "commit", "-m", "feat(viamx): grid simetrico 8 columnas, 30 departamentos con hover flyout y 5 cols de articulos", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
 res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
