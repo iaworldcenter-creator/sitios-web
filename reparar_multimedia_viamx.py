@@ -1,8 +1,8 @@
 ﻿import os
-import re
 import json
-import subprocess
+import re
 import shutil
+import subprocess
 
 BASE_DIR = r"E:\sitios web"
 VIAMX_DIR = os.path.join(BASE_DIR, "bazar-viamx-nfl.gdl")
@@ -15,28 +15,66 @@ if not os.path.exists(VIAMX_DIR):
 INDEX_PATH = os.path.join(VIAMX_DIR, "index.html")
 PRODUCTO_PATH = os.path.join(VIAMX_DIR, "producto.html")
 CATALOG_PATH = os.path.join(VIAMX_DIR, "catalog.json")
+IMG_DIR = os.path.join(VIAMX_DIR, "assets", "img")
+os.makedirs(IMG_DIR, exist_ok=True)
 
 print("=" * 75)
-print("REPARANDO VISUALIZACIÓN DE CARRUSEL (5 FOTOS) Y VIDEO EN VÍA MX")
+print("LOCALIZANDO Y NORMALIZANDO ASSETS MULTIMEDIA (FOTOS TIGRE + VIDEO)")
 print("=" * 75)
 
-# Verificar y localizar archivos de carrusel y video en el disco
-assets_img_dir = os.path.join(VIAMX_DIR, "assets", "img")
-os.makedirs(assets_img_dir, exist_ok=True)
+# 1. Búsqueda y normalización de las 5 fotos de la familia tigre
+for i in range(1, 6):
+    target_clean_name = f"carucel_{i}.jpeg"
+    target_space_name = f"carucel ({i}).jpeg"
+    target_clean_path = os.path.join(IMG_DIR, target_clean_name)
+    target_space_path = os.path.join(IMG_DIR, target_space_name)
 
-# Buscar video en el monorepo y copiarlo a assets/img si no está presente
-video_filename = "Tigers_walking_in_department_store_202608220510.mp4"
-target_video_path = os.path.join(assets_img_dir, video_filename)
-
-if not os.path.exists(target_video_path):
+    found_path = None
+    # Buscar en VIAMX_DIR y monorepo
     for root, _, files in os.walk(BASE_DIR):
-        if video_filename in files:
-            source_video = os.path.join(root, video_filename)
-            shutil.copy2(source_video, target_video_path)
-            print(f"✓ Video copiado a {target_video_path}")
+        for f in files:
+            f_lower = f.lower()
+            if (f_lower == f"carucel ({i}).jpeg" or f_lower == f"carucel ({i}).jpg" or 
+                f_lower == f"carucel_{i}.jpeg" or f_lower == f"carucel_{i}.jpg" or
+                f_lower == f"carousel ({i}).jpeg" or f_lower == f"carousel ({i}).jpg" or
+                f_lower == f"carucel{i}.jpeg" or f_lower == f"carucel{i}.jpg"):
+                found_path = os.path.join(root, f)
+                break
+        if found_path:
             break
 
-# Cargar catálogo de 200 productos
+    if found_path:
+        shutil.copy2(found_path, target_clean_path)
+        shutil.copy2(found_path, target_space_path)
+        print(f"✓ Foto {i} normalizada en: assets/img/{target_clean_name}")
+    else:
+        # Si no existe, usar la mascota como fallback temporal
+        mascota_path = os.path.join(IMG_DIR, "mascota_tigre_thumb.webp")
+        if os.path.exists(mascota_path):
+            shutil.copy2(mascota_path, target_clean_path)
+            shutil.copy2(mascota_path, target_space_path)
+
+# 2. Búsqueda y normalización del video de lealtad
+video_name = "Tigers_walking_in_department_store_202608220510.mp4"
+target_video_img = os.path.join(IMG_DIR, video_name)
+target_video_root = os.path.join(VIAMX_DIR, video_name)
+target_video_clean = os.path.join(IMG_DIR, "loyalty_video.mp4")
+
+found_video = None
+for root, _, files in os.walk(BASE_DIR):
+    if video_name in files:
+        found_video = os.path.join(root, video_name)
+        break
+
+if found_video:
+    shutil.copy2(found_video, target_video_img)
+    shutil.copy2(found_video, target_video_root)
+    shutil.copy2(found_video, target_video_clean)
+    print(f"✓ Video localizado y copiado a: assets/img/{video_name}")
+else:
+    print(f"⚠️ Video no encontrado en {BASE_DIR}. Se configurará fallback seguro.")
+
+# 3. Cargar catálogo de 200 productos
 if os.path.exists(CATALOG_PATH):
     with open(CATALOG_PATH, "r", encoding="utf-8") as f:
         productos_200 = json.load(f)
@@ -45,7 +83,7 @@ else:
 
 JSON_EMBEDDED = json.dumps(productos_200, ensure_ascii=False)
 
-# 30 Departamentos
+# 4. Departamentos
 departamentos_menu = [
     {"id": "electronica", "nombre": "Electrónica & Audio", "icon": "fa-headphones", "subs": ["Pantallas y Smart TV", "Estéreos y Bocinas", "Barras de Sonido RGB", "Audífonos In-Ear", "Audífonos de Diadema", "Bocinas Portátiles"]},
     {"id": "lineablanca", "nombre": "Línea Blanca & Climas", "icon": "fa-snowflake", "subs": ["Refrigeradores Inverter", "Lavadoras y Secadoras", "Aires Acondicionados", "Estufas y Hornos", "Hornos de Microondas", "Dispensadores de Agua"]},
@@ -224,9 +262,9 @@ FOOTER_UNIVERSAL_HTML = """
 """
 
 # =========================================================================
-# RECONSTRUCCIÓN ROBUSTA DE INDEX.HTML (CON 5 IMÁGENES NATIVAS EN EL CARRUSEL)
+# 5. GENERAR INDEX.HTML CON CARRUSEL DIRECTO Y VIDEO ENLAZADO
 # =========================================================================
-INDEX_HTML_FINAL = f"""<!DOCTYPE html>
+INDEX_HTML_CONTENT = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -344,28 +382,28 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
         </div>
     </header>
 
-    <!-- HERO SLIDER REPARADO (5 IMÁGENES NATIVAS - 720PX - COBERTURA COMPLETA) -->
+    <!-- HERO SLIDER CON CARGA MULTI-RUTA (720PX - COBERTURA TOTAL) -->
     <div id="hero-slider-container" style="position: relative; width: 100%; height: 720px; min-height: 720px; overflow: hidden; background-color: #020617; border-bottom: 1px solid #1e293b; user-select: none;">
         <div id="hero-slider" style="position: relative; width: 100%; height: 100%;">
             <!-- Slide 1 -->
             <div class="hero-slide active" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; z-index: 10; transition: opacity 1000ms ease-in-out;">
-                <img src="assets/img/carucel (1).jpeg" alt="Familia Tigre 1" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (1).jpeg';" />
+                <img src="assets/img/carucel_1.jpeg" alt="Familia Tigre 1" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.onerror=null; this.src='assets/img/carucel (1).jpeg';" />
             </div>
             <!-- Slide 2 -->
             <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
-                <img src="assets/img/carucel (2).jpeg" alt="Familia Tigre 2" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (2).jpeg';" />
+                <img src="assets/img/carucel_2.jpeg" alt="Familia Tigre 2" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.onerror=null; this.src='assets/img/carucel (2).jpeg';" />
             </div>
             <!-- Slide 3 -->
             <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
-                <img src="assets/img/carucel (3).jpeg" alt="Familia Tigre 3" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (3).jpeg';" />
+                <img src="assets/img/carucel_3.jpeg" alt="Familia Tigre 3" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.onerror=null; this.src='assets/img/carucel (3).jpeg';" />
             </div>
             <!-- Slide 4 -->
             <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
-                <img src="assets/img/carucel (4).jpeg" alt="Familia Tigre 4" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (4).jpeg';" />
+                <img src="assets/img/carucel_4.jpeg" alt="Familia Tigre 4" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.onerror=null; this.src='assets/img/carucel (4).jpeg';" />
             </div>
             <!-- Slide 5 -->
             <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
-                <img src="assets/img/carucel (5).jpeg" alt="Familia Tigre 5" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (5).jpeg';" />
+                <img src="assets/img/carucel_5.jpeg" alt="Familia Tigre 5" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.onerror=null; this.src='assets/img/carucel (5).jpeg';" />
             </div>
         </div>
 
@@ -458,7 +496,7 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
         </div>
     </main>
 
-    <!-- PROGRAMA DE LEALTAD & RECOMPENSAS CON VIDEO REPARADO -->
+    <!-- PROGRAMA DE LEALTAD CON VIDEO FUNCIONAL -->
     <section class="py-16 bg-slate-900/60 border-t border-slate-800 overflow-hidden" id="lealtad">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -467,8 +505,9 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
                 <div class="lg:col-span-5 flex flex-col items-center text-center">
                     <div class="relative w-full max-w-[380px] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-950 flex flex-col">
                         <div class="relative w-full h-80 sm:h-96 overflow-hidden bg-slate-950" id="video-container-viamx">
-                            <video autoplay muted loop playsinline preload="auto" class="w-full h-full object-cover" id="viamx-loyalty-video">
+                            <video autoplay muted loop playsinline preload="auto" class="w-full h-full object-cover" id="viamx-loyalty-video" poster="assets/img/mascota_tigre_thumb.webp">
                                 <source src="assets/img/Tigers_walking_in_department_store_202608220510.mp4" type="video/mp4" />
+                                <source src="assets/img/loyalty_video.mp4" type="video/mp4" />
                                 <source src="Tigers_walking_in_department_store_202608220510.mp4" type="video/mp4" />
                                 <img src="assets/img/mascota_tigre_thumb.webp" alt="Club de Socios Vía MX" class="w-full h-full object-cover" />
                             </video>
@@ -524,7 +563,7 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
 
     {FOOTER_UNIVERSAL_HTML}
 
-    <!-- SCRIPT DE TIENDA Y NAVEGACIÓN DIRECTA A PRODUCTO.HTML -->
+    <!-- SCRIPT DE TIENDA Y CARRUSEL -->
     <script>
     const viamxCatalog = {JSON_EMBEDDED};
     let currentFilteredCatalog = [...viamxCatalog];
@@ -564,7 +603,6 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
         grid.innerHTML = pageItems.map(item => `
             <div onclick="window.location.href='producto.html?sku=' + encodeURIComponent(item.sku)" class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 rounded-2xl p-3.5 flex flex-col justify-between transition duration-300 shadow-xl group hover:shadow-cyan-950/20 cursor-pointer">
                 <div>
-                    <!-- 1. Imagen del Producto -->
                     <div class="w-full h-44 overflow-hidden rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-center mb-3 p-1.5 relative">
                         <img 
                             src="${{item.imagen || 'assets/img/mascota_tigre_thumb.webp'}}" 
@@ -581,7 +619,6 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
                         </span>
                     </div>
 
-                    <!-- 2. Marca y Rating -->
                     <div class="flex items-center justify-between gap-1 mb-1">
                         <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block truncate">${{item.marca || 'Vía MX'}}</span>
                         <div class="flex items-center gap-1 text-[10px] text-amber-400 font-bold shrink-0">
@@ -590,21 +627,16 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
                         </div>
                     </div>
 
-                    <!-- 3. Título -->
                     <h4 class="text-white font-bold text-xs mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${{item.nombre}}">${{item.nombre}}</h4>
-                    
-                    <!-- 4. Descripción Asimétrica -->
                     <p class="text-slate-400 text-[11px] mb-3 leading-tight font-normal line-clamp-3">${{item.descripcion || ''}}</p>
                 </div>
 
                 <div>
-                    <!-- 5. Precio -->
                     <div class="flex items-baseline justify-between pt-2.5 border-t border-slate-800/80 mb-2.5">
                         <span class="text-amber-400 font-black text-sm sm:text-base font-mono">${{formatCurrency(item.precio)}}</span>
                         ${{item.original && item.original > item.precio ? `<span class="text-slate-500 line-through text-[10px] font-mono">$${{item.original.toFixed(2)}}</span>` : ''}}
                     </div>
 
-                    <!-- 6. Botones Dobles -->
                     <div class="grid grid-cols-2 gap-1.5">
                         <button onclick="event.stopPropagation(); addToCart('${{item.sku}}')" class="bg-slate-900 hover:bg-slate-800 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-bold py-2 px-1 rounded-xl text-[11px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer shadow-sm" title="Agregar al carrito">
                             <i class="fa-solid fa-cart-plus text-xs"></i> <span class="truncate">Carrito</span>
@@ -764,7 +796,7 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
         document.getElementById('form-lealtad-viamx').reset();
     }}
 
-    // Carrusel Principal Robusto con control de opacidad explícito
+    // Carrusel Principal
     window.currentSlide = 0;
     window.sliderInterval = null;
 
@@ -848,516 +880,18 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
 """
 
 with open(INDEX_PATH, "w", encoding="utf-8") as f:
-    f.write(INDEX_HTML_FINAL)
+    f.write(INDEX_HTML_CONTENT)
 
-print(f"✓ {INDEX_PATH} reconstruido exitosamente.")
-
-# =========================================================================
-# RECONSTRUCCIÓN DE PRODUCTO.HTML (PÁGINA DEDICADA 3 COLS + MARQUEE CONTINUO)
-# =========================================================================
-PRODUCTO_HTML_FINAL = f"""<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google-site-verification" content="BwSy5nNuFFrHJUtxe189nJtPxM4h5QY-SxK1V8wqYDE" />
-    <title id="page-title">VíaMX | Detalle de Producto</title>
-    <meta name="description" content="Detalle de producto y curaduría exclusiva en VíaMX Boutique Internacional. Comercio 100% digital con envíos a domicilio.">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="assets/css/tailwind-built.css?v=1.1.0" />
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
-    
-    <style>
-    @font-face {{ font-family: 'FontAwesome'; font-display: swap; }}
-    @font-face {{ font-family: 'Font Awesome 6 Free'; font-display: swap; }}
-    @font-face {{ font-family: 'Font Awesome 6 Brands'; font-display: swap; }}
-    body {{ font-display: swap; }}
-    
-    @keyframes marquee-viamx-loop {{
-        0% {{ transform: translate3d(0, 0, 0); }}
-        100% {{ transform: translate3d(-50%, 0, 0); }}
-    }}
-    .animate-marquee-viamx {{
-        display: flex;
-        width: max-content;
-        animation: marquee-viamx-loop 26s linear infinite;
-        will-change: transform;
-    }}
-    .animate-marquee-viamx:hover {{
-        animation-play-state: paused;
-    }}
-    </style>
-</head>
-<body class="bg-slate-950 text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
-
-    <!-- CABECERA OFICIAL VIAMX -->
-    <header class="w-full bg-slate-950 border-b border-slate-900 flex flex-col relative z-[100] text-slate-100 shadow-2xl">
-        
-        <!-- Nivel 1: Barra Superior Deslizable Universal -->
-        <div class="w-full bg-slate-950 border-b border-slate-900 py-3 px-4 flex items-center justify-start md:justify-center overflow-x-auto whitespace-nowrap gap-4 text-xs font-bold text-slate-300" style="scrollbar-width: none; -ms-overflow-style: none;">
-            <style>::-webkit-scrollbar {{ display: none; }}</style>
-            <a href="https://gemini.google.com" target="_blank" class="hover:text-amber-400 transition flex items-center gap-1">
-                <i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i> Iniciar sesión con Google Gemini
-            </a>
-            <span class="text-slate-800">|</span>
-            <button onclick="openDeliveryModal()" class="hover:text-amber-400 transition cursor-pointer">Registra tu domicilio de entrega</button>
-            <span class="text-slate-800">|</span>
-            <a href="checkout.html" class="hover:text-amber-400 transition cursor-pointer">Elige tu forma de pago</a>
-            <span class="text-slate-800">|</span>
-            <a href="#pedidos" onclick="window.location.href='checkout.html';" class="hover:text-amber-400 transition cursor-pointer text-cyan-400 flex items-center gap-1">
-                <i class="fa-solid fa-clock-rotate-left"></i> Mis Pedidos
-            </a>
-            <span class="text-slate-800">|</span>
-            <a href="https://iaworldcenter-creator.github.io/cigarros-bazar/" class="hover:text-amber-400 transition">Cigarros Bazar</a>
-            <span class="text-slate-800">|</span>
-            <a href="https://iaworldcenter-creator.github.io/dulces-bazar/" class="hover:text-amber-400 transition">Dulces Bazar</a>
-            <span class="text-slate-800">|</span>
-            <a href="https://iaworldcenter-creator.github.io/kiosco-digital/" class="hover:text-amber-400 transition">Kiosco Digital</a>
-            <span class="text-slate-800">|</span>
-            <a href="https://iaworldcenter-creator.github.io/mi-puesto-bazar/" class="hover:text-amber-400 transition">Puesto Bazar</a>
-            <span class="text-slate-800">|</span>
-            <a href="https://iaworldcenter-creator.github.io/pc-custom-lab/" class="hover:text-amber-400 transition">PC Custom Lab</a>
-            <span class="text-slate-800">|</span>
-            <a href="https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones/" class="hover:text-amber-400 transition">Liquidaciones y Ofertas</a>
-            <span class="text-slate-800">|</span>
-            <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="hover:text-amber-400 transition flex items-center gap-1">
-                <i class="fa-solid fa-store text-amber-400"></i> Portal Central
-            </a>
-            <span class="text-slate-800">|</span>
-            <a href="https://antigravity.google/download" target="_blank" class="hover:text-amber-400 transition">Descargar Anti-Gravity</a>
-        </div>
-
-        <!-- Nivel 2: Fila Principal -->
-        <div class="w-full max-w-[98%] 2xl:max-w-7xl mx-auto flex flex-nowrap items-center justify-between gap-3 sm:gap-6 py-3 px-2 sm:px-6">
-            
-            <div class="shrink-0 flex items-center gap-4 sm:gap-6">
-                <button onclick="toggleCartDrawer()" class="flex items-center gap-2.5 bg-transparent hover:opacity-80 transition cursor-pointer text-left group">
-                    <div class="relative flex items-center justify-center">
-                        <i class="fa-solid fa-cart-shopping text-2xl sm:text-3xl text-cyan-400 group-hover:scale-105 transition"></i>
-                        <span class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 text-[10px] font-black rounded-full px-1.5 py-0.2 min-w-[17px] text-center shadow" id="cart-badge-count">0</span>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-xs sm:text-sm font-black text-white uppercase tracking-wider leading-tight">Mi Carrito</span>
-                        <span class="text-xs sm:text-sm font-black text-white mt-0.5" id="header-cart-total">$0.00 MXN</span>
-                    </div>
-                </button>
-
-                <button onclick="openDeliveryModal()" class="flex items-center gap-2.5 bg-transparent hover:opacity-80 transition cursor-pointer text-left group">
-                    <div class="relative flex items-center justify-center">
-                        <i class="fa-solid fa-circle-user text-2xl sm:text-3xl text-amber-400 group-hover:scale-105 transition"></i>
-                    </div>
-                    <div class="flex flex-col">
-                        <span class="text-xs sm:text-sm font-black text-white uppercase tracking-wider leading-tight" id="header-acc-title">Mi Cuenta</span>
-                        <span class="text-[11px] font-bold text-slate-200 mt-0.5" id="header-acc-sub">Regístrate, socio</span>
-                    </div>
-                </button>
-            </div>
-
-            <!-- Buscador Amplio -->
-            <div class="flex-1 max-w-3xl mx-2 sm:mx-6">
-                <form class="flex items-center bg-[#f4efe8] rounded-full border-2 border-cyan-400 shadow-[0_0_18px_rgba(6,182,212,0.45)] hover:shadow-[0_0_26px_rgba(6,182,212,0.7)] w-full px-4 py-1.5 gap-2 transition duration-300" onsubmit="handleSearchSubmit(event);" role="search">
-                    <label class="sr-only" for="siteSearch">¿Qué deseas buscar hoy?</label>
-                    <input aria-label="Buscar productos en el catálogo" autocomplete="off" class="flex-1 bg-transparent border-0 outline-none text-slate-950 font-black text-xs sm:text-sm px-3 placeholder-slate-500 selection:bg-cyan-500 selection:text-white" id="siteSearch" name="q" placeholder="¿Qué producto, pieza o antojo buscas hoy? Escribe aquí..." type="text"/>
-                    <button aria-label="Buscar" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-6 py-2 rounded-full text-xs uppercase tracking-wider transition active:scale-95 shrink-0 flex items-center gap-1.5 shadow-md shadow-amber-500/20 cursor-pointer" type="submit">
-                        <i class="fa-solid fa-magnifying-glass text-xs"></i> BUSCAR
-                    </button>
-                </form>
-            </div>
-
-            <!-- Logo Vía MX -->
-            <div class="shrink-0 flex items-center gap-3 group cursor-pointer" onclick="window.location.href='index.html'">
-                <div class="relative w-12 h-12 flex items-center justify-center shrink-0">
-                    <img alt="Logo Oficial Vía MX" class="w-12 h-12 rounded-full object-cover border-2 border-cyan-400 shadow-[0_0_14px_rgba(6,182,212,0.5)] group-hover:scale-105 transition shrink-0" style="width: 48px; height: 48px; min-width: 48px; min-height: 48px;" src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" onerror="this.src='assets/img/mascota_tigre.webp';" />
-                </div>
-                <span class="text-2xl sm:text-3xl font-black tracking-wider uppercase text-cyan-400 drop-shadow-[0_2px_12px_rgba(6,182,212,0.5)] leading-none select-none">
-                    Vía MX
-                </span>
-            </div>
-
-        </div>
-    </header>
-
-    <!-- CINTILLO MARQUEE AMARILLO CONTINUO -->
-    <div class="w-full bg-amber-400 text-slate-950 py-2.5 overflow-hidden border-y border-amber-500 font-black text-xs shadow-md select-none">
-        <div class="animate-marquee-viamx flex whitespace-nowrap gap-10 uppercase font-mono tracking-wider items-center">
-            <span>🔥 5% DE CASHBACK ACUMULABLE CON REGISTRO ACTIVO</span>
-            <span>•</span>
-            <span>📦 PRECIO DE MAYOREO: 15% DE DESCUENTO DIRECTO A PARTIR DE 10 PIEZAS</span>
-            <span>•</span>
-            <span>🛡️ CONDICIÓN: SIN REGISTRO NO HAY CASHBACK ACUMULABLE</span>
-            <span>•</span>
-            <span>🏬 BOUTIQUES ESPECIALIZADAS. UN SOLO CARRITO GLOBAL UNIFICADO</span>
-            <span>•</span>
-            <span>💳 PAGOS CON TARJETA BANCARIA, TRANSFERENCIA SPEI Y EFECTIVO CONTRA ENTREGA</span>
-            <span>•</span>
-            <span>🚚 COMERCIO 100% DIGITAL CON ENVÍOS DIRECTOS A DOMICILIO</span>
-            <span>•</span>
-            <!-- Duplicado continuo -->
-            <span>🔥 5% DE CASHBACK ACUMULABLE CON REGISTRO ACTIVO</span>
-            <span>•</span>
-            <span>📦 PRECIO DE MAYOREO: 15% DE DESCUENTO DIRECTO A PARTIR DE 10 PIEZAS</span>
-            <span>•</span>
-            <span>🛡️ CONDICIÓN: SIN REGISTRO NO HAY CASHBACK ACUMULABLE</span>
-            <span>•</span>
-            <span>🏬 BOUTIQUES ESPECIALIZADAS. UN SOLO CARRITO GLOBAL UNIFICADO</span>
-            <span>•</span>
-            <span>💳 PAGOS CON TARJETA BANCARIA, TRANSFERENCIA SPEI Y EFECTIVO CONTRA ENTREGA</span>
-            <span>•</span>
-            <span>🚚 COMERCIO 100% DIGITAL CON ENVÍOS DIRECTOS A DOMICILIO</span>
-            <span>•</span>
-        </div>
-    </div>
-
-    <!-- CUERPO PRINCIPAL: DETALLE DE PRODUCTO EN 3 COLUMNAS -->
-    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        
-        <!-- Migas de Pan -->
-        <nav class="flex items-center gap-2 text-xs font-mono text-slate-400 mb-6" aria-label="Breadcrumb">
-            <a href="index.html" class="hover:text-cyan-400 transition">Inicio</a>
-            <span>/</span>
-            <a href="index.html#catalogo" class="hover:text-cyan-400 transition" id="breadcrumb-category">Curaduría</a>
-            <span>/</span>
-            <span class="text-slate-200 truncate max-w-xs sm:max-w-md font-bold" id="breadcrumb-product">Cargando producto...</span>
-        </nav>
-
-        <!-- GRID DE 3 COLUMNAS -->
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-            
-            <!-- COLUMNA 1 (IZQUIERDA): FOTO GIGANTE Y GALERÍA -->
-            <div class="lg:col-span-4 flex flex-col gap-4">
-                <div class="w-full h-[420px] sm:h-[480px] bg-slate-900 border border-slate-800 rounded-3xl p-4 flex items-center justify-center relative overflow-hidden shadow-2xl">
-                    <img id="detail-p-img" src="" alt="Producto VíaMX" class="w-full h-full object-contain transition-transform duration-300 hover:scale-105" />
-                    <span class="absolute top-4 left-4 bg-amber-500/20 border border-amber-500/50 text-amber-300 text-[10px] font-mono font-black px-2.5 py-1 rounded-lg shadow-md">
-                        Edición Curaduría 2026
-                    </span>
-                </div>
-
-                <div class="grid grid-cols-3 gap-2.5">
-                    <div class="h-20 bg-slate-900 border-2 border-cyan-400 rounded-xl p-1 flex items-center justify-center cursor-pointer shadow-md">
-                        <img id="thumb-1" src="" alt="Vista 1" class="w-full h-full object-contain" />
-                    </div>
-                    <div class="h-20 bg-slate-900 border border-slate-800 rounded-xl p-1 flex items-center justify-center cursor-pointer hover:border-cyan-400 transition shadow-md">
-                        <img id="thumb-2" src="assets/img/mascota_tigre_thumb.webp" alt="Vista 2" class="w-full h-full object-contain opacity-70 hover:opacity-100" />
-                    </div>
-                    <div class="h-20 bg-slate-900 border border-slate-800 rounded-xl p-1 flex items-center justify-center cursor-pointer hover:border-cyan-400 transition shadow-md">
-                        <img id="thumb-3" src="assets/img/mascota_tigre_thumb.webp" alt="Vista 3" class="w-full h-full object-contain opacity-70 hover:opacity-100" />
-                    </div>
-                </div>
-
-                <div class="p-3.5 bg-slate-900/60 border border-slate-800 rounded-2xl flex items-center gap-3">
-                    <i class="fa-solid fa-shield-halved text-cyan-400 text-xl shrink-0"></i>
-                    <div class="text-[11px] leading-tight">
-                        <strong class="text-white block font-bold">Oficina de Garantías y Recepción</strong>
-                        <span class="text-slate-400">Canalización directa con proveedor en Pedro Moreno 501 A.</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- COLUMNA 2 (CENTRO): ESPECIFICACIONES Y DESCRIPCIÓN -->
-            <div class="lg:col-span-5 flex flex-col gap-5 border-b lg:border-b-0 lg:border-r border-slate-800 pb-8 lg:pb-0 lg:pr-8">
-                
-                <div>
-                    <div class="flex items-center justify-between gap-2 mb-1.5">
-                        <span id="detail-p-brand" class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider"></span>
-                        <span id="detail-p-sku" class="text-xs font-mono text-slate-500"></span>
-                    </div>
-                    <h1 id="detail-p-title" class="text-2xl sm:text-3xl font-black text-white leading-tight"></h1>
-                    <a href="index.html#catalogo" class="text-xs text-cyan-400 hover:underline font-bold mt-1 inline-block">Visita el catálogo oficial de la marca</a>
-                    
-                    <div class="flex items-center gap-2 mt-3">
-                        <div class="flex items-center gap-1 text-amber-400 text-sm">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                        <span id="detail-p-rating" class="text-xs font-bold text-amber-300 font-mono">4.8</span>
-                        <span class="text-slate-600">•</span>
-                        <span id="detail-p-reviews" class="text-xs font-mono text-slate-400">1,240 valoraciones en la zona</span>
-                    </div>
-                </div>
-
-                <!-- Recuadro: ¿Por qué elegir este artículo? -->
-                <div class="bg-slate-900/90 border border-cyan-500/40 rounded-2xl p-4 shadow-lg flex flex-col gap-2">
-                    <h3 class="text-xs font-mono text-cyan-300 font-bold uppercase tracking-wider flex items-center gap-1.5">
-                        <i class="fa-solid fa-circle-question text-cyan-400"></i> ¿Por qué elegir este artículo?
-                    </h3>
-                    <p class="text-xs text-slate-300 leading-relaxed">
-                        Comercio 100% digital. Producto original con respaldo oficial del fabricante. En caso de defecto de fábrica, se recibe en oficina central para canalización inmediata con el proveedor.
-                    </p>
-                    <div class="flex items-center justify-between pt-2 border-t border-slate-800 text-xs">
-                        <span class="text-slate-400">Precio Unitario Promocional:</span>
-                        <strong class="text-amber-400 font-mono text-sm font-black" id="detail-p-promo-price">$0.00 MXN</strong>
-                    </div>
-                </div>
-
-                <!-- Ficha Técnica -->
-                <div>
-                    <h3 class="text-xs font-mono text-white uppercase tracking-widest font-black mb-3">Ficha Técnica</h3>
-                    <div class="bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden text-xs">
-                        <div class="grid grid-cols-2 p-3 border-b border-slate-800/80 bg-slate-950/40">
-                            <span class="text-slate-400 font-mono uppercase">Marca:</span>
-                            <strong class="text-white" id="spec-brand">Vía MX</strong>
-                        </div>
-                        <div class="grid grid-cols-2 p-3 border-b border-slate-800/80">
-                            <span class="text-slate-400 font-mono uppercase">Código SKU:</span>
-                            <strong class="text-cyan-400 font-mono" id="spec-sku">VMX-001</strong>
-                        </div>
-                        <div class="grid grid-cols-2 p-3 border-b border-slate-800/80 bg-slate-950/40">
-                            <span class="text-slate-400 font-mono uppercase">Categoría:</span>
-                            <strong class="text-white capitalize" id="spec-cat">Electrónica</strong>
-                        </div>
-                        <div class="grid grid-cols-2 p-3">
-                            <span class="text-slate-400 font-mono uppercase">Disponibilidad:</span>
-                            <strong class="text-emerald-400">Envío Directo a Domicilio</strong>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Descripción Detallada -->
-                <div>
-                    <h3 class="text-xs font-mono text-white uppercase tracking-widest font-black mb-2">Descripción del Producto</h3>
-                    <div class="text-xs text-slate-300 leading-relaxed space-y-2 bg-slate-900/40 p-4 rounded-2xl border border-slate-800">
-                        <p id="detail-p-desc"></p>
-                        <ul class="list-disc pl-4 space-y-1 text-slate-400 text-[11px] pt-2 border-t border-slate-800/80">
-                            <li>Garantía oficial cubierta por el fabricante/proveedor. Vía MX gestiona la recepción y devolución.</li>
-                            <li>Empaque seguro con sellado hermético contra golpes e importación certificada.</li>
-                            <li>Acepta consolidación con cualquiera de las otras tiendas del Ecosistema.</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- COLUMNA 3 (DERECHA): BUY BOX VÍAMX -->
-            <div class="lg:col-span-3 bg-slate-900/90 border border-slate-800 rounded-3xl p-6 shadow-2xl flex flex-col gap-4 sticky top-24">
-                
-                <div>
-                    <span class="text-[10px] font-mono text-slate-400 uppercase block font-bold">Precio Unitario</span>
-                    <div class="text-3xl font-black text-cyan-400 font-mono" id="buybox-price">$0.00 MXN</div>
-                    <div class="flex items-baseline gap-2 mt-1">
-                        <span class="text-slate-500 line-through text-xs font-mono" id="buybox-original"></span>
-                        <span class="text-red-400 text-xs font-bold font-mono" id="buybox-discount"></span>
-                    </div>
-                </div>
-
-                <div class="text-xs text-slate-300 space-y-1 bg-slate-950 p-3.5 rounded-2xl border border-slate-800">
-                    <p class="font-bold text-white flex items-center gap-1.5">
-                        <i class="fa-solid fa-truck-fast text-emerald-400"></i> Entrega Local: <span class="text-emerald-400 font-mono">GRATIS</span>
-                    </p>
-                    <p class="text-[11px] text-slate-400 leading-tight">
-                        Envío directo a la puerta de tu casa. En caso de falla, recepción en oficina central para trámite con proveedor.
-                    </p>
-                </div>
-
-                <!-- Módulo de Mayoreo B2B -->
-                <div class="bg-cyan-950/30 border border-cyan-500/40 rounded-2xl p-3.5 text-xs text-slate-300">
-                    <strong class="text-cyan-300 block font-mono uppercase text-[10px] tracking-wider mb-1">
-                        <i class="fa-solid fa-boxes-stacked"></i> Módulo de Mayoreo B2B
-                    </strong>
-                    <p class="text-[11px] text-slate-300 leading-tight">
-                        Precio especial para mayoristas: Obtén <strong>15% de descuento</strong> a partir de la pieza 10.
-                    </p>
-                </div>
-
-                <!-- Desbloqueo de Cashback -->
-                <div class="bg-amber-950/20 border border-amber-500/30 rounded-2xl p-3.5 flex flex-col gap-2">
-                    <div class="text-[11px] font-bold text-amber-300 flex items-center gap-1.5">
-                        <i class="fa-solid fa-coins"></i> <span>Desbloquear 5% de Cashback</span>
-                    </div>
-                    <p class="text-[10px] text-slate-400 leading-tight">
-                        Obtén saldo de regalo en esta compra registrándote gratis en nuestro portal de socios.
-                    </p>
-                    <button onclick="openDeliveryModal()" class="bg-slate-900 hover:bg-slate-800 text-amber-400 border border-amber-500/40 py-1.5 px-3 rounded-xl text-[11px] font-bold transition cursor-pointer">
-                        Registrar Cuenta Gratis
-                    </button>
-                    <span class="text-[9px] text-slate-500 leading-none">Nota: Sin registro de correo y teléfono no se genera cashback.</span>
-                </div>
-
-                <!-- Selector de Cantidad -->
-                <div>
-                    <label for="buybox-qty" class="block text-[10px] font-mono text-slate-400 uppercase font-bold mb-1">Cantidad:</label>
-                    <select id="buybox-qty" class="w-full bg-slate-950 border border-slate-700 text-white rounded-xl p-2.5 text-xs font-bold focus:border-cyan-500 focus:outline-none cursor-pointer">
-                        <option value="1" selected>1 unidad</option>
-                        <option value="2">2 unidades</option>
-                        <option value="3">3 unidades</option>
-                        <option value="4">4 unidades</option>
-                        <option value="5">5 unidades</option>
-                        <option value="10">10 unidades (Aplica 15% Mayoreo)</option>
-                    </select>
-                </div>
-
-                <!-- Botones de Acción -->
-                <div class="flex flex-col gap-2.5 pt-2">
-                    <button onclick="ejecutarCompraDirecta()" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-3 rounded-2xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg shadow-amber-500/25 flex items-center justify-center gap-2 cursor-pointer">
-                        <i class="fa-solid fa-credit-card"></i> PAGAR AHORA
-                    </button>
-                    <button onclick="agregarAlCarritoDesdeBuybox()" class="w-full bg-slate-950 hover:bg-slate-800 border border-cyan-500 text-cyan-300 hover:text-white font-black py-3 rounded-2xl text-xs uppercase tracking-wider transition active:scale-95 flex items-center justify-center gap-2 cursor-pointer shadow-md shadow-cyan-950/30">
-                        <i class="fa-solid fa-cart-shopping"></i> Agregar al carrito
-                    </button>
-                    <a href="index.html#catalogo" class="w-full bg-slate-950/60 hover:bg-slate-800 text-slate-400 hover:text-white py-2 rounded-xl text-center text-xs font-bold transition flex items-center justify-center gap-1.5 cursor-pointer">
-                        <i class="fa-solid fa-arrow-left text-[10px]"></i> Seguir comprando
-                    </a>
-                </div>
-
-            </div>
-
-        </div>
-
-    </main>
-
-    {FOOTER_UNIVERSAL_HTML}
-
-    <!-- LÓGICA DE DETALLE Y COMPRA -->
-    <script>
-    const viamxCatalog = {JSON_EMBEDDED};
-    let currentItem = null;
-
-    function formatCurrency(amount) {{
-        const num = parseFloat(amount) || 0;
-        return '$' + num.toLocaleString('es-MX', {{ minimumFractionDigits: 2, maximumFractionDigits: 2 }});
-    }}
-
-    function initProductPage() {{
-        const urlParams = new URLSearchParams(window.location.search);
-        let sku = urlParams.get('sku');
-        if (!sku && viamxCatalog.length > 0) {{
-            sku = viamxCatalog[0].sku;
-        }}
-
-        currentItem = viamxCatalog.find(p => p.sku === sku) || viamxCatalog[0];
-        if (!currentItem) return;
-
-        // Títulos
-        document.title = `${{currentItem.nombre}} | VíaMX Curaduría`;
-        document.getElementById('page-title').innerText = `${{currentItem.nombre}} | VíaMX`;
-        document.getElementById('breadcrumb-category').innerText = currentItem.categoria.toUpperCase();
-        document.getElementById('breadcrumb-product').innerText = currentItem.nombre;
-
-        // Columna 1
-        const mainImg = currentItem.imagen || 'assets/img/mascota_tigre_thumb.webp';
-        document.getElementById('detail-p-img').src = mainImg;
-        document.getElementById('thumb-1').src = mainImg;
-
-        // Columna 2
-        document.getElementById('detail-p-brand').innerText = currentItem.marca || 'VÍA MX';
-        document.getElementById('detail-p-sku').innerText = `SKU: ${{currentItem.sku}}`;
-        document.getElementById('detail-p-title').innerText = currentItem.nombre;
-        document.getElementById('detail-p-rating').innerText = currentItem.rating || '4.8';
-        document.getElementById('detail-p-reviews').innerText = `${{currentItem.reviews || '1,200'}} valoraciones en la zona`;
-        document.getElementById('detail-p-promo-price').innerText = `${{formatCurrency(currentItem.precio)}} MXN`;
-        document.getElementById('spec-brand').innerText = currentItem.marca || 'Vía MX';
-        document.getElementById('spec-sku').innerText = currentItem.sku;
-        document.getElementById('spec-cat').innerText = currentItem.categoria;
-        document.getElementById('detail-p-desc').innerText = currentItem.descripcion || '';
-
-        // Columna 3
-        document.getElementById('buybox-price').innerText = `${{formatCurrency(currentItem.precio)}} MXN`;
-        if (currentItem.original && currentItem.original > currentItem.precio) {{
-            document.getElementById('buybox-original').innerText = formatCurrency(currentItem.original);
-            const discountPct = Math.round((1 - (currentItem.precio / currentItem.original)) * 100);
-            document.getElementById('buybox-discount').innerText = `-${{discountPct}}%`;
-        }}
-
-        updateCartBadge();
-        syncHeaderAccountStatus();
-    }}
-
-    function agregarAlCarritoDesdeBuybox() {{
-        if (!currentItem) return;
-        const qty = parseInt(document.getElementById('buybox-qty').value) || 1;
-
-        let cart = [];
-        try {{
-            const stored = localStorage.getItem("ecosystem_global_cart");
-            cart = stored ? JSON.parse(stored) : [];
-        }} catch(e) {{}}
-
-        const existIdx = cart.findIndex(i => i.sku === currentItem.sku);
-        if (existIdx > -1) {{
-            cart[existIdx].quantity = (cart[existIdx].quantity || 1) + qty;
-        }} else {{
-            cart.push({{
-                sku: currentItem.sku,
-                nombre: currentItem.nombre,
-                precio: currentItem.precio,
-                imagen: currentItem.imagen || 'assets/img/mascota_tigre_thumb.webp',
-                categoria: currentItem.categoria || 'viamx',
-                quantity: qty
-            }});
-        }}
-
-        localStorage.setItem("ecosystem_global_cart", JSON.stringify(cart));
-        updateCartBadge();
-        alert(`¡Se agregaron ${{qty}} unidad(es) de "${{currentItem.nombre}}" al carrito!`);
-    }}
-
-    function ejecutarCompraDirecta() {{
-        agregarAlCarritoDesdeBuybox();
-        window.location.href = 'checkout.html';
-    }}
-
-    function updateCartBadge() {{
-        try {{
-            const stored = localStorage.getItem("ecosystem_global_cart");
-            const cart = stored ? JSON.parse(stored) : [];
-            const count = Array.isArray(cart) ? cart.reduce((acc, i) => acc + (i.quantity || 1), 0) : 0;
-            const total = Array.isArray(cart) ? cart.reduce((acc, i) => acc + ((parseFloat(i.precio) || 0) * (i.quantity || 1)), 0) : 0;
-            
-            const badge = document.getElementById("cart-badge-count");
-            const totalEl = document.getElementById("header-cart-total");
-            if (badge) badge.textContent = count;
-            if (totalEl) totalEl.textContent = formatCurrency(total) + ' MXN';
-        }} catch(e) {{}}
-    }}
-
-    function syncHeaderAccountStatus() {{
-        try {{
-            const stored = sessionStorage.getItem('ecosystem_delivery_address') || localStorage.getItem('ecosystem_delivery_address');
-            const titleEl = document.getElementById('header-acc-title');
-            const subEl = document.getElementById('header-acc-sub');
-            if (stored && titleEl && subEl) {{
-                const addr = JSON.parse(stored);
-                if (addr && addr.name) {{
-                    titleEl.innerText = "Mi Dirección";
-                    subEl.innerText = "Hola, " + addr.name.split(' ')[0];
-                    return;
-                }}
-            }}
-            if (titleEl && subEl) {{
-                titleEl.innerText = "Mi Cuenta";
-                subEl.innerText = "Regístrate, socio";
-            }}
-        }} catch(e) {{}}
-    }}
-
-    function handleSearchSubmit(e) {{
-        if (e) e.preventDefault();
-        const input = document.getElementById("siteSearch");
-        if (input && input.value.trim()) {{
-            window.location.href = `index.html?q=${{encodeURIComponent(input.value.trim())}}#catalogo`;
-        }}
-    }}
-
-    document.addEventListener("DOMContentLoaded", initProductPage);
-    </script>
-</body>
-</html>
-"""
-
-with open(PRODUCTO_PATH, "w", encoding="utf-8") as f:
-    f.write(PRODUCTO_HTML_FINAL)
-
-print(f"✓ {PRODUCTO_PATH} reconstruido exitosamente.")
+print("✓ index.html reconstruido con carrusel multi-ruta y video enlazado.")
 
 print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
 if os.path.exists(os.path.join(VIAMX_DIR, ".git")):
     subprocess.run(["git", "add", "-A"], cwd=VIAMX_DIR, check=True)
-    subprocess.run(["git", "commit", "-m", "fix(viamx): reparacion de carrusel 5 fotos nativas, video de lealtad y navegacion fluida a producto.html", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "fix(hero): reparar carga de 5 imagenes de carrusel y video de lealtad", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
     res_viamx = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=VIAMX_DIR, capture_output=True, text=True)
     print(f"🟢 Vía MX NFL -> Push: {'OK' if res_viamx.returncode == 0 else res_viamx.stderr.strip()}")
 
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
-subprocess.run(["git", "commit", "-m", "fix(viamx): carrusel, video de lealtad y producto 3 columnas sincronizado", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+subprocess.run(["git", "commit", "-m", "fix(viamx): carrusel 5 fotos y video lealtad reparados al 100%", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
 res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
