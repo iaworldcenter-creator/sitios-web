@@ -23,13 +23,9 @@
     @font-face { font-family: 'Font Awesome 6 Brands'; font-display: swap; }
     body { font-display: swap; }
     
-    .hero-slider-container {
-        min-height: 600px;
-    }
+    .hero-slider-container { min-height: 720px; } @media (min-width: 640px) { .hero-slider-container { min-height: 800px; } }
     @media (min-width: 640px) {
-        .hero-slider-container {
-            min-height: 650px;
-        }
+        .hero-slider-container { min-height: 720px; } @media (min-width: 640px) { .hero-slider-container { min-height: 800px; } }
     }
 
     </style>
@@ -136,7 +132,7 @@
 <!-- ========================================================================
      HERO SLIDER (ÚNICO Y LIMPIO - 5 FOTOS FAMILIA TIGRE - 5S / 1S TRANSICIÓN)
      ======================================================================== -->
-<div class="relative w-full h-[600px] sm:h-[650px] min-h-[600px] sm:min-h-[650px] overflow-hidden border-b border-slate-800 bg-slate-950 select-none">
+<div class="relative w-full h-[720px] sm:h-[800px] min-h-[720px] sm:min-h-[800px] overflow-hidden border-b border-slate-800 bg-slate-950 select-none">
     <!-- Contenedor de las 5 Diapositivas -->
     <div class="relative w-full h-full" id="hero-slider">
         <div class="hero-slide active absolute inset-0 w-full h-full opacity-100 transition-opacity duration-1000 ease-in-out z-10 bg-cover bg-center" style="background-image: url('assets/img/carucel (1).jpeg');"></div>
