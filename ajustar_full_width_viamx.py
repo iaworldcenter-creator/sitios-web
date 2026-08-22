@@ -20,35 +20,34 @@ with open(INDEX_PATH, "r", encoding="utf-8") as f:
     html = f.read()
 
 print("=" * 70)
-print("EXPANDIENDO ALTURA Y PROPORCIÓN DEL CARRUSEL EN VÍA MX")
+print("EXPANDIENDO IMÁGENES AL 100% DE ANCHO (EDGE-TO-EDGE) EN VÍA MX")
 print("=" * 70)
 
-# Ajuste fino: Altura a 76vh (min 640px, max 840px) + scale(1.03) para llenar pantalla sin mutilar
-NUEVO_SLIDER_EXPANDIDO = """
+NUEVO_SLIDER_FULL_WIDTH = """
     <!-- ========================================================================
-         HERO SLIDER SECTION (EXPANDIDO EN PANTALLA - FOTOS 100% COMPLETAS)
+         HERO SLIDER SECTION (COBERTURA TOTAL DE PANTALLA: IZQUIERDA A DERECHA)
          ======================================================================== -->
-    <div id="hero-slider-container" style="position: relative; width: 100%; height: 76vh; min-height: 640px; max-height: 840px; overflow: hidden; background: radial-gradient(ellipse at center, #0f172a 0%, #020617 100%); border-bottom: 1px solid #1e293b; user-select: none;">
+    <div id="hero-slider-container" style="position: relative; width: 100%; height: 560px; max-height: 65vh; overflow: hidden; background-color: #020617; border-bottom: 1px solid #1e293b; user-select: none;">
         <div id="hero-slider" style="position: relative; width: 100%; height: 100%;">
             <!-- Slide 1 -->
-            <div class="hero-slide active" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; z-index: 10; transition: opacity 2000ms ease-in-out; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/carucel (1).jpeg" alt="Familia Tigre 1" style="width: 100%; height: 100%; object-fit: contain; object-position: center; transform: scale(1.03);" />
+            <div class="hero-slide active" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; z-index: 10; transition: opacity 2000ms ease-in-out;">
+                <img src="assets/img/carucel (1).jpeg" alt="Familia Tigre 1" style="width: 100%; height: 100%; object-fit: fill; display: block;" />
             </div>
             <!-- Slide 2 -->
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/carucel (2).jpeg" alt="Familia Tigre 2" style="width: 100%; height: 100%; object-fit: contain; object-position: center; transform: scale(1.03);" />
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out;">
+                <img src="assets/img/carucel (2).jpeg" alt="Familia Tigre 2" style="width: 100%; height: 100%; object-fit: fill; display: block;" />
             </div>
             <!-- Slide 3 -->
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/carucel (3).jpeg" alt="Familia Tigre 3" style="width: 100%; height: 100%; object-fit: contain; object-position: center; transform: scale(1.03);" />
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out;">
+                <img src="assets/img/carucel (3).jpeg" alt="Familia Tigre 3" style="width: 100%; height: 100%; object-fit: fill; display: block;" />
             </div>
             <!-- Slide 4 -->
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/carucel (4).jpeg" alt="Familia Tigre 4" style="width: 100%; height: 100%; object-fit: contain; object-position: center; transform: scale(1.03);" />
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out;">
+                <img src="assets/img/carucel (4).jpeg" alt="Familia Tigre 4" style="width: 100%; height: 100%; object-fit: fill; display: block;" />
             </div>
             <!-- Slide 5 -->
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out; display: flex; align-items: center; justify-content: center;">
-                <img src="assets/img/carucel (5).jpeg" alt="Familia Tigre 5" style="width: 100%; height: 100%; object-fit: contain; object-position: center; transform: scale(1.03);" />
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out;">
+                <img src="assets/img/carucel (5).jpeg" alt="Familia Tigre 5" style="width: 100%; height: 100%; object-fit: fill; display: block;" />
             </div>
         </div>
 
@@ -61,7 +60,7 @@ NUEVO_SLIDER_EXPANDIDO = """
         </button>
 
         <!-- Indicadores Inferiores (5 Dots) -->
-        <div style="position: absolute; bottom: 24px; left: 0; right: 0; z-index: 20; display: flex; justify-content: center; align-items: center; gap: 10px;">
+        <div style="position: absolute; bottom: 20px; left: 0; right: 0; z-index: 20; display: flex; justify-content: center; align-items: center; gap: 10px;">
             <button type="button" aria-label="Foto 1" class="hero-dot" onclick="goToSlide(0)" style="width: 32px; height: 10px; border-radius: 9999px; background-color: #22d3ee; border: none; cursor: pointer; transition: all 0.4s; box-shadow: 0 0 10px rgba(34,211,238,0.6);"></button>
             <button type="button" aria-label="Foto 2" class="hero-dot" onclick="goToSlide(1)" style="width: 12px; height: 10px; border-radius: 9999px; background-color: #475569; border: none; cursor: pointer; transition: all 0.4s;"></button>
             <button type="button" aria-label="Foto 3" class="hero-dot" onclick="goToSlide(2)" style="width: 12px; height: 10px; border-radius: 9999px; background-color: #475569; border: none; cursor: pointer; transition: all 0.4s;"></button>
@@ -71,29 +70,28 @@ NUEVO_SLIDER_EXPANDIDO = """
     </div>
 """
 
-# Reemplazar el contenedor del slider previo
+# Reemplazo del bloque del carrusel
 pattern = re.compile(r'<!--\s*=+\s*HERO SLIDER[\s\S]*?<\/div>\s*<\/div>', re.IGNORECASE)
 if pattern.search(html):
-    html = pattern.sub(NUEVO_SLIDER_EXPANDIDO.strip(), html, count=1)
+    html = pattern.sub(NUEVO_SLIDER_FULL_WIDTH.strip(), html, count=1)
 else:
-    # Búsqueda por ID
     pattern_id = re.compile(r'<div id="hero-slider-container"[\s\S]*?<\/div>\s*<\/div>', re.IGNORECASE)
     if pattern_id.search(html):
-        html = pattern_id.sub(NUEVO_SLIDER_EXPANDIDO.strip(), html, count=1)
+        html = pattern_id.sub(NUEVO_SLIDER_FULL_WIDTH.strip(), html, count=1)
 
 with open(INDEX_PATH, "w", encoding="utf-8") as f:
     f.write(html)
 
-print("✓ Altura expandida a 76vh aplicada exitosamente.")
+print("✓ Cobertura total de pantalla (de izquierda a derecha) aplicada.")
 
 print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
 if os.path.exists(os.path.join(VIAMX_DIR, ".git")):
     subprocess.run(["git", "add", "-A"], cwd=VIAMX_DIR, check=True)
-    subprocess.run(["git", "commit", "-m", "style(hero): expandir altura a 76vh para mayor cobertura de pantalla", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "style(hero): cobertura total de izquierda a derecha sin barras laterales", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
     res_viamx = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=VIAMX_DIR, capture_output=True, text=True)
     print(f"🟢 Vía MX NFL -> Push: {'OK' if res_viamx.returncode == 0 else res_viamx.stderr.strip()}")
 
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
-subprocess.run(["git", "commit", "-m", "style(viamx): carrusel expandido en pantalla", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+subprocess.run(["git", "commit", "-m", "style(viamx): carrusel full width edge-to-edge", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
 res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
