@@ -770,17 +770,36 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
-                <!-- Contenedor reservado para Video / Media -->
+                <!-- Contenedor de Video Interactivo con Enlaces a Gemini y Anti-Gravity -->
                 <div class="lg:col-span-5 flex flex-col items-center text-center">
-                    <div class="relative w-72 h-72 sm:w-[352px] sm:h-[352px] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-950">
-                        <div class="w-full h-full object-cover overflow-hidden" id="video-container-viamx">
-                            <img src="assets/img/mascota_tigre_thumb.webp" alt="Club de Socios Vía MX" class="w-full h-full object-cover rounded-2xl" loading="lazy" decoding="async" width="352" height="352" />
+                    <div class="relative w-full max-w-[380px] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-950 flex flex-col">
+                        
+                        <!-- Video en Bucle Automático -->
+                        <div class="relative w-full h-80 sm:h-96 overflow-hidden bg-slate-950" id="video-container-viamx">
+                            <video autoplay muted loop playsinline preload="auto" class="w-full h-full object-cover" id="viamx-loyalty-video">
+                                <source src="assets/img/Tigers_walking_in_department_store_202608220510.mp4" type="video/mp4" />
+                                <source src="Tigers_walking_in_department_store_202608220510.mp4" type="video/mp4" />
+                                <img src="assets/img/mascota_tigre_thumb.webp" alt="Club de Socios Vía MX" class="w-full h-full object-cover" />
+                            </video>
                         </div>
-                        <div class="absolute bottom-0 inset-x-0 bg-slate-950/85 border-t border-slate-800 p-3 z-10">
-                            <span class="text-[10px] text-slate-400 font-mono tracking-wider">
-                                <i class="fa-solid fa-wand-magic-sparkles text-cyan-400 mr-1"></i> Ecosistema Anti-Gravity & Vía MX
-                            </span>
+
+                        <!-- Barra Inferior de Créditos y Botones Interactivos -->
+                        <div class="w-full bg-slate-950/95 border-t border-slate-800/90 p-3.5 flex flex-col gap-2.5 z-10">
+                            <div class="text-[11px] font-mono text-slate-300 font-bold flex items-center justify-center gap-1.5">
+                                <i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i>
+                                <span>Sitio creado con Gemini y desarrollado por Anti-Gravity</span>
+                            </div>
+                            
+                            <div class="grid grid-cols-2 gap-2">
+                                <a href="https://gemini.google.com" target="_blank" rel="noopener" class="bg-slate-900 hover:bg-slate-800 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-bold py-2 px-2 rounded-xl text-[11px] flex items-center justify-center gap-1.5 transition active:scale-95 shadow-sm cursor-pointer" title="Suscribirse a Google Gemini">
+                                    <i class="fa-solid fa-sparkles text-cyan-400"></i> Suscribirse a Gemini
+                                </a>
+                                <a href="https://antigravity.google/download" target="_blank" rel="noopener" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-2 px-2 rounded-xl text-[11px] flex items-center justify-center gap-1.5 transition active:scale-95 shadow-md shadow-amber-500/20 cursor-pointer" title="Descargar Anti-Gravity">
+                                    <i class="fa-solid fa-download text-slate-950"></i> Bajar Anti-Gravity
+                                </a>
+                            </div>
                         </div>
+
                     </div>
                 </div>
 
@@ -1230,6 +1249,22 @@
         document.getElementById('form-lealtad-viamx').reset();
     }
     
+    
+    // Inicialización del video de la familia tigre en tienda departamental
+    function initLoyaltyVideo() {
+        const vid = document.getElementById('viamx-loyalty-video');
+        if (vid) {
+            vid.muted = true;
+            vid.loop = true;
+            vid.playbackRate = 0.85;
+            const playPromise = vid.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(() => {});
+            }
+        }
+    }
+    document.addEventListener('DOMContentLoaded', initLoyaltyVideo);
+
     </script>
 </body>
 </html>
