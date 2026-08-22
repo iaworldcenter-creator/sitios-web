@@ -990,7 +990,7 @@
         }
 
         grid.innerHTML = pageItems.map(item => `
-            <div onclick="window.location.href='producto.html?sku=' + encodeURIComponent(item.sku)" class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 rounded-2xl p-3.5 flex flex-col justify-between transition duration-300 shadow-xl group hover:shadow-cyan-950/20 cursor-pointer">
+            <div onclick="openProductDetail('${item.sku}', event)" class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 rounded-2xl p-3.5 flex flex-col justify-between transition duration-300 shadow-xl group hover:shadow-cyan-950/20 cursor-pointer">
                 <div>
                     <!-- Imagen -->
                     <div class="w-full h-44 overflow-hidden rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-center mb-3 p-1.5 relative">
@@ -1112,6 +1112,16 @@
         const catSec = document.getElementById("catalogo");
         if (catSec) catSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+    
+    window.openProductDetail = function(sku, event) {
+        if (event && (event.target.closest('button') || event.target.closest('a'))) {
+            return;
+        }
+        if (sku) {
+            window.location.href = 'producto.html?sku=' + encodeURIComponent(sku);
+        }
+    };
 
     function addToCart(sku) {
         try {
