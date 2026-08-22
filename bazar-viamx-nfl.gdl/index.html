@@ -164,31 +164,46 @@
         </div>
     </header>
 
-<!-- HERO SLIDER (5 FOTOS LIMPIAS FAMILIA TIGRE - 5S INTERVALO + 2S FADE) -->
-<div class="relative w-full h-[520px] sm:h-[600px] md:h-[700px] lg:h-[780px] overflow-hidden border-b border-slate-800 bg-slate-950 select-none" id="hero-slider-container">
-    <div class="relative w-full h-full" id="hero-slider">
-        <div class="hero-slide active absolute inset-0 w-full h-full opacity-100 z-10 transition-opacity duration-[2000ms] ease-in-out bg-cover bg-center" style="background-image: url('assets/img/carucel (1).jpeg');"></div>
-        <div class="hero-slide absolute inset-0 w-full h-full opacity-0 z-0 transition-opacity duration-[2000ms] ease-in-out bg-cover bg-center" style="background-image: url('assets/img/carucel (2).jpeg');"></div>
-        <div class="hero-slide absolute inset-0 w-full h-full opacity-0 z-0 transition-opacity duration-[2000ms] ease-in-out bg-cover bg-center" style="background-image: url('assets/img/carucel (3).jpeg');"></div>
-        <div class="hero-slide absolute inset-0 w-full h-full opacity-0 z-0 transition-opacity duration-[2000ms] ease-in-out bg-cover bg-center" style="background-image: url('assets/img/carucel (4).jpeg');"></div>
-        <div class="hero-slide absolute inset-0 w-full h-full opacity-0 z-0 transition-opacity duration-[2000ms] ease-in-out bg-cover bg-center" style="background-image: url('assets/img/carucel (5).jpeg');"></div>
+<!-- HERO SLIDER SECTION (5 FOTOS FAMILIA TIGRE - 5S INTERVALO + 2S FADE) -->
+<div id="hero-slider-container" style="position: relative; width: 100%; height: 620px; overflow: hidden; background-color: #020617; border-bottom: 1px solid #1e293b; user-select: none;">
+    <div id="hero-slider" style="position: relative; width: 100%; height: 100%;">
+        <!-- Slide 1 -->
+        <div class="hero-slide active" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; z-index: 10; transition: opacity 2000ms ease-in-out;">
+            <img src="assets/img/carucel (1).jpeg" alt="Familia Tigre 1" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+        </div>
+        <!-- Slide 2 -->
+        <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out;">
+            <img src="assets/img/carucel (2).jpeg" alt="Familia Tigre 2" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+        </div>
+        <!-- Slide 3 -->
+        <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out;">
+            <img src="assets/img/carucel (3).jpeg" alt="Familia Tigre 3" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+        </div>
+        <!-- Slide 4 -->
+        <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out;">
+            <img src="assets/img/carucel (4).jpeg" alt="Familia Tigre 4" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+        </div>
+        <!-- Slide 5 -->
+        <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 2000ms ease-in-out;">
+            <img src="assets/img/carucel (5).jpeg" alt="Familia Tigre 5" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" />
+        </div>
     </div>
 
     <!-- Controles Izquierda / Derecha -->
-    <button type="button" aria-label="Anterior" class="absolute left-4 sm:left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-slate-950/70 hover:bg-cyan-500 hover:text-slate-950 text-white border border-slate-700 transition flex items-center justify-center shadow-2xl cursor-pointer backdrop-blur-md" onclick="prevSlide()">
-        <i class="fa-solid fa-chevron-left text-lg"></i>
+    <button type="button" aria-label="Anterior" onclick="prevSlide()" style="position: absolute; left: 24px; top: 50%; transform: translateY(-50%); z-index: 20; width: 48px; height: 48px; border-radius: 9999px; background-color: rgba(2, 6, 23, 0.7); color: #ffffff; border: 1px solid #334155; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.5); backdrop-filter: blur(8px); transition: all 0.3s;">
+        <i class="fa-solid fa-chevron-left" style="font-size: 18px;"></i>
     </button>
-    <button type="button" aria-label="Siguiente" class="absolute right-4 sm:right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-slate-950/70 hover:bg-cyan-500 hover:text-slate-950 text-white border border-slate-700 transition flex items-center justify-center shadow-2xl cursor-pointer backdrop-blur-md" onclick="nextSlide()">
-        <i class="fa-solid fa-chevron-right text-lg"></i>
+    <button type="button" aria-label="Siguiente" onclick="nextSlide()" style="position: absolute; right: 24px; top: 50%; transform: translateY(-50%); z-index: 20; width: 48px; height: 48px; border-radius: 9999px; background-color: rgba(2, 6, 23, 0.7); color: #ffffff; border: 1px solid #334155; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.5); backdrop-filter: blur(8px); transition: all 0.3s;">
+        <i class="fa-solid fa-chevron-right" style="font-size: 18px;"></i>
     </button>
 
-    <!-- 5 Indicadores Inferiores -->
-    <div class="absolute bottom-6 left-0 right-0 z-20 flex justify-center items-center gap-3">
-        <button type="button" aria-label="Foto 1" class="hero-dot bg-cyan-400 w-8 shadow-lg shadow-cyan-500/50 h-3 rounded-full transition-all duration-500 cursor-pointer" onclick="goToSlide(0)"></button>
-        <button type="button" aria-label="Foto 2" class="hero-dot bg-slate-600/80 w-3 h-3 rounded-full transition-all duration-500 cursor-pointer" onclick="goToSlide(1)"></button>
-        <button type="button" aria-label="Foto 3" class="hero-dot bg-slate-600/80 w-3 h-3 rounded-full transition-all duration-500 cursor-pointer" onclick="goToSlide(2)"></button>
-        <button type="button" aria-label="Foto 4" class="hero-dot bg-slate-600/80 w-3 h-3 rounded-full transition-all duration-500 cursor-pointer" onclick="goToSlide(3)"></button>
-        <button type="button" aria-label="Foto 5" class="hero-dot bg-slate-600/80 w-3 h-3 rounded-full transition-all duration-500 cursor-pointer" onclick="goToSlide(4)"></button>
+    <!-- Indicadores Inferiores (5 Dots) -->
+    <div style="position: absolute; bottom: 24px; left: 0; right: 0; z-index: 20; display: flex; justify-content: center; align-items: center; gap: 10px;">
+        <button type="button" aria-label="Foto 1" class="hero-dot" onclick="goToSlide(0)" style="width: 32px; height: 10px; border-radius: 9999px; background-color: #22d3ee; border: none; cursor: pointer; transition: all 0.4s; box-shadow: 0 0 10px rgba(34,211,238,0.6);"></button>
+        <button type="button" aria-label="Foto 2" class="hero-dot" onclick="goToSlide(1)" style="width: 12px; height: 10px; border-radius: 9999px; background-color: #475569; border: none; cursor: pointer; transition: all 0.4s;"></button>
+        <button type="button" aria-label="Foto 3" class="hero-dot" onclick="goToSlide(2)" style="width: 12px; height: 10px; border-radius: 9999px; background-color: #475569; border: none; cursor: pointer; transition: all 0.4s;"></button>
+        <button type="button" aria-label="Foto 4" class="hero-dot" onclick="goToSlide(3)" style="width: 12px; height: 10px; border-radius: 9999px; background-color: #475569; border: none; cursor: pointer; transition: all 0.4s;"></button>
+        <button type="button" aria-label="Foto 5" class="hero-dot" onclick="goToSlide(4)" style="width: 12px; height: 10px; border-radius: 9999px; background-color: #475569; border: none; cursor: pointer; transition: all 0.4s;"></button>
     </div>
 </div>
 
@@ -373,6 +388,7 @@
     });
     </script>
 
+
 <script id="viamx-slider-clean-script">
 window.currentSlideIndex = 0;
 window.sliderAutoInterval = null;
@@ -382,28 +398,32 @@ window.showSlide = function(index) {
     const dots = document.querySelectorAll('.hero-dot');
     if (!slides || slides.length === 0) return;
 
+    // Desvanecer slide anterior
     const current = slides[window.currentSlideIndex];
     if (current) {
-        current.classList.remove('active', 'opacity-100', 'z-10');
-        current.classList.add('opacity-0', 'z-0');
+        current.style.opacity = '0';
+        current.style.zIndex = '0';
     }
     const currentDot = dots[window.currentSlideIndex];
     if (currentDot) {
-        currentDot.classList.remove('bg-cyan-400', 'w-8', 'shadow-lg', 'shadow-cyan-500/50');
-        currentDot.classList.add('bg-slate-600/80', 'w-3');
+        currentDot.style.width = '12px';
+        currentDot.style.backgroundColor = '#475569';
+        currentDot.style.boxShadow = 'none';
     }
 
     window.currentSlideIndex = (index + slides.length) % slides.length;
 
+    // Mostrar nuevo slide
     const next = slides[window.currentSlideIndex];
     if (next) {
-        next.classList.remove('opacity-0', 'z-0');
-        next.classList.add('active', 'opacity-100', 'z-10');
+        next.style.opacity = '1';
+        next.style.zIndex = '10';
     }
     const nextDot = dots[window.currentSlideIndex];
     if (nextDot) {
-        nextDot.classList.remove('bg-slate-600/80', 'w-3');
-        nextDot.classList.add('bg-cyan-400', 'w-8', 'shadow-lg', 'shadow-cyan-500/50');
+        nextDot.style.width = '32px';
+        nextDot.style.backgroundColor = '#22d3ee';
+        nextDot.style.boxShadow = '0 0 10px rgba(34,211,238,0.6)';
     }
     window.resetSliderInterval();
 };
