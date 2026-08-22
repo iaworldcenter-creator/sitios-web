@@ -1,4 +1,26 @@
-<!DOCTYPE html>
+﻿import os
+import re
+import subprocess
+
+BASE_DIR = r"E:\sitios web"
+VIAMX_DIR = os.path.join(BASE_DIR, "bazar-viamx-nfl.gdl")
+
+if not os.path.exists(VIAMX_DIR):
+    alt = os.path.join(BASE_DIR, "bazar-viamx-NFL.GDL")
+    if os.path.exists(alt):
+        VIAMX_DIR = alt
+
+INDEX_PATH = os.path.join(VIAMX_DIR, "index.html")
+
+if not os.path.exists(INDEX_PATH):
+    print(f"[Error] No se encontró {INDEX_PATH}")
+    exit(1)
+
+print("=" * 70)
+print("CORRIGIENDO ENCUADRE COMPLETO DE FOTOS (FAMILIA TIGRE) EN VÍA MX")
+print("=" * 70)
+
+COMPLETE_INDEX_HTML = """<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -301,4 +323,21 @@
     </script>
 
 </body>
-</html>
+</html>"""
+
+with open(INDEX_PATH, "w", encoding="utf-8") as f:
+    f.write(COMPLETE_INDEX_HTML)
+
+print("✓ Estructura HTML reparada y encuadre 100% visible aplicado en index.html")
+
+print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
+if os.path.exists(os.path.join(VIAMX_DIR, ".git")):
+    subprocess.run(["git", "add", "-A"], cwd=VIAMX_DIR, check=True)
+    subprocess.run(["git", "commit", "-m", "fix(layout): carrusel con fotos 100% visibles sin recortes y catalogo reparado", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
+    res_viamx = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=VIAMX_DIR, capture_output=True, text=True)
+    print(f"🟢 Vía MX NFL -> Push: {'OK' if res_viamx.returncode == 0 else res_viamx.stderr.strip()}")
+
+subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
+subprocess.run(["git", "commit", "-m", "fix(viamx): fotos completas familia tigre sin recortes", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
+print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
