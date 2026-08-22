@@ -69,7 +69,6 @@
         <!-- Nivel 2: Fila Principal -->
         <div class="w-full max-w-[98%] 2xl:max-w-7xl mx-auto flex flex-nowrap items-center justify-between gap-3 sm:gap-6 py-3 px-2 sm:px-6">
             
-            <!-- Extremo Izquierdo -->
             <div class="shrink-0 flex items-center gap-4 sm:gap-6">
                 <button onclick="toggleCartDrawer()" class="flex items-center gap-2.5 bg-transparent hover:opacity-80 transition cursor-pointer text-left group">
                     <div class="relative flex items-center justify-center">
@@ -93,7 +92,7 @@
                 </button>
             </div>
 
-            <!-- Centro: Buscador Amplio -->
+            <!-- Buscador Amplio -->
             <div class="flex-1 max-w-3xl mx-2 sm:mx-6">
                 <form class="flex items-center bg-[#f4efe8] rounded-full border-2 border-cyan-400 shadow-[0_0_18px_rgba(6,182,212,0.45)] hover:shadow-[0_0_26px_rgba(6,182,212,0.7)] w-full px-4 py-1.5 gap-2 transition duration-300" onsubmit="handleSearchSubmit(event);" role="search">
                     <label class="sr-only" for="siteSearch">¿Qué deseas buscar hoy?</label>
@@ -104,7 +103,7 @@
                 </form>
             </div>
 
-            <!-- Extremo Derecho: Logo Vía MX -->
+            <!-- Logo Vía MX -->
             <div class="shrink-0 flex items-center gap-3 group cursor-pointer" onclick="window.location.href='index.html'">
                 <div class="relative w-12 h-12 flex items-center justify-center shrink-0">
                     <img alt="Logo Oficial Vía MX" class="w-12 h-12 rounded-full object-cover border-2 border-cyan-400 shadow-[0_0_14px_rgba(6,182,212,0.5)] group-hover:scale-105 transition shrink-0" style="width: 48px; height: 48px; min-width: 48px; min-height: 48px;" src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" onerror="this.src='assets/img/mascota_tigre.webp';" />
@@ -117,16 +116,32 @@
         </div>
     </header>
 
-    <!-- HERO SLIDER (720PX) -->
+    <!-- HERO SLIDER REPARADO (5 IMÁGENES NATIVAS - 720PX - COBERTURA COMPLETA) -->
     <div id="hero-slider-container" style="position: relative; width: 100%; height: 720px; min-height: 720px; overflow: hidden; background-color: #020617; border-bottom: 1px solid #1e293b; user-select: none;">
         <div id="hero-slider" style="position: relative; width: 100%; height: 100%;">
-            <div class="hero-slide active" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; z-index: 10; transition: opacity 1000ms ease-in-out; background-image: url('assets/img/carucel (1).jpeg'); background-size: cover; background-position: center;"></div>
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out; background-image: url('assets/img/carucel (2).jpeg'); background-size: cover; background-position: center;"></div>
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out; background-image: url('assets/img/carucel (3).jpeg'); background-size: cover; background-position: center;"></div>
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out; background-image: url('assets/img/carucel (4).jpeg'); background-size: cover; background-position: center;"></div>
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out; background-image: url('assets/img/carucel (5).jpeg'); background-size: cover; background-position: center;"></div>
+            <!-- Slide 1 -->
+            <div class="hero-slide active" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; z-index: 10; transition: opacity 1000ms ease-in-out;">
+                <img src="assets/img/carucel (1).jpeg" alt="Familia Tigre 1" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (1).jpeg';" />
+            </div>
+            <!-- Slide 2 -->
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
+                <img src="assets/img/carucel (2).jpeg" alt="Familia Tigre 2" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (2).jpeg';" />
+            </div>
+            <!-- Slide 3 -->
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
+                <img src="assets/img/carucel (3).jpeg" alt="Familia Tigre 3" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (3).jpeg';" />
+            </div>
+            <!-- Slide 4 -->
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
+                <img src="assets/img/carucel (4).jpeg" alt="Familia Tigre 4" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (4).jpeg';" />
+            </div>
+            <!-- Slide 5 -->
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
+                <img src="assets/img/carucel (5).jpeg" alt="Familia Tigre 5" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (5).jpeg';" />
+            </div>
         </div>
 
+        <!-- Controles Izquierda / Derecha -->
         <button type="button" aria-label="Anterior" onclick="prevSlide()" style="position: absolute; left: 24px; top: 50%; transform: translateY(-50%); z-index: 20; width: 48px; height: 48px; border-radius: 9999px; background-color: rgba(2, 6, 23, 0.75); color: #ffffff; border: 1px solid #334155; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.5); backdrop-filter: blur(8px); transition: all 0.3s;">
             <i class="fa-solid fa-chevron-left" style="font-size: 18px;"></i>
         </button>
@@ -134,6 +149,7 @@
             <i class="fa-solid fa-chevron-right" style="font-size: 18px;"></i>
         </button>
 
+        <!-- Indicadores Inferiores -->
         <div class="hero-slider-dots" style="position: absolute; bottom: 28px; left: 0; right: 0; z-index: 20; display: flex; justify-content: center; align-items: center; gap: 10px;">
             <button type="button" aria-label="Foto 1" class="hero-dot" onclick="goToSlide(0)" style="min-width: 44px; min-height: 44px; padding: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: none;"><span style="width: 32px; height: 10px; border-radius: 9999px; background-color: #22d3ee; display: block; box-shadow: 0 0 10px rgba(34,211,238,0.6); transition: all 0.3s;"></span></button>
             <button type="button" aria-label="Foto 2" class="hero-dot" onclick="goToSlide(1)" style="min-width: 44px; min-height: 44px; padding: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: none;"><span style="width: 12px; height: 10px; border-radius: 9999px; background-color: #64748b; display: block; transition: all 0.3s;"></span></button>
@@ -762,7 +778,7 @@
         </div>
     </main>
 
-    <!-- PROGRAMA DE LEALTAD & RECOMPENSAS (CLUB DE SOCIOS VÍAMX) -->
+    <!-- PROGRAMA DE LEALTAD & RECOMPENSAS CON VIDEO REPARADO -->
     <section class="py-16 bg-slate-900/60 border-t border-slate-800 overflow-hidden" id="lealtad">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -827,12 +843,12 @@
     </section>
 
     
-    <!-- FOOTER UNIVERSAL HOMOLOGADO (3 COLUMNAS CON REDES COMPLETAS) -->
+    <!-- FOOTER UNIVERSAL HOMOLOGADO (3 COLUMNAS CON REDES SOCIALES COMPLETAS) -->
     <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 text-slate-400 text-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-slate-800/80">
                 
-                <!-- COLUMNA 1: CONTACTO LOCAL COMPLETO -->
+                <!-- COLUMNA 1: CONTACTO LOCAL -->
                 <div class="flex flex-col gap-3">
                     <h3 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
                         <i class="fa-solid fa-location-dot text-amber-400"></i> Contacto Local
@@ -1175,7 +1191,7 @@
         document.getElementById('form-lealtad-viamx').reset();
     }
 
-    // Carrusel Principal
+    // Carrusel Principal Robusto con control de opacidad explícito
     window.currentSlide = 0;
     window.sliderInterval = null;
 
@@ -1232,12 +1248,26 @@
         window.showSlide(index);
     };
 
+    function initLoyaltyVideo() {
+        const vid = document.getElementById('viamx-loyalty-video');
+        if (vid) {
+            vid.muted = true;
+            vid.loop = true;
+            vid.playbackRate = 0.85;
+            const playPromise = vid.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(() => {});
+            }
+        }
+    }
+
     document.addEventListener("DOMContentLoaded", () => {
         renderCatalogPage(1);
         updateCartBadge();
         syncHeaderAccountStatus();
         window.showSlide(0);
         window.resetSliderInterval();
+        initLoyaltyVideo();
     });
     </script>
 </body>

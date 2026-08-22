@@ -1,6 +1,8 @@
 ﻿import os
+import re
 import json
 import subprocess
+import shutil
 
 BASE_DIR = r"E:\sitios web"
 VIAMX_DIR = os.path.join(BASE_DIR, "bazar-viamx-nfl.gdl")
@@ -14,97 +16,36 @@ INDEX_PATH = os.path.join(VIAMX_DIR, "index.html")
 PRODUCTO_PATH = os.path.join(VIAMX_DIR, "producto.html")
 CATALOG_PATH = os.path.join(VIAMX_DIR, "catalog.json")
 
-print("=" * 70)
-print("CONFIGURANDO NAVEGACIÓN DIRECTA A PRODUCTO.HTML (3 COLS + MARQUEE CONTINUO)")
-print("=" * 70)
+print("=" * 75)
+print("REPARANDO VISUALIZACIÓN DE CARRUSEL (5 FOTOS) Y VIDEO EN VÍA MX")
+print("=" * 75)
 
-# Pool de imágenes representativas del ecosistema
-IMG_POOL = [
-    "assets/img/mascota_tigre_thumb.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/Female_technician_assembling_gam_202608041518_thumb.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_mantenimiento_thumb.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_blanco_pecera.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/fuente_modular.webp",
-    "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp"
-]
+# Verificar y localizar archivos de carrusel y video en el disco
+assets_img_dir = os.path.join(VIAMX_DIR, "assets", "img")
+os.makedirs(assets_img_dir, exist_ok=True)
 
-MARCAS = ["Sony", "Samsung", "LG", "Panasonic", "Amazon", "Anker", "JBL", "Xiaomi", "Motorola", "AXIDUN", "Bosch", "Apple", "Philips", "Tefal", "Cuisinart", "Craftsman", "Arduino", "DeWalt", "Sennheiser", "Stanley"]
+# Buscar video en el monorepo y copiarlo a assets/img si no está presente
+video_filename = "Tigers_walking_in_department_store_202608220510.mp4"
+target_video_path = os.path.join(assets_img_dir, video_filename)
 
-NOMBRES_BASE = [
-    ("Pantalla Smart TV 55 Pulgadas 4K UHD HDR10+", 7999.00, 11499.00, "electronica", "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda y 4 puertos HDMI 2.1."),
-    ("Refrigerador Inverter No Frost 14 Pies Cúbicos Acero", 11899.00, 15999.00, "lineablanca", "Refrigerador de doble puerta con tecnología Digital Inverter de alta eficiencia energética clase A++, congelador rápido Multi Air Flow y dispensador exterior."),
-    ("Bocina Inteligente con Asistente Virtual y Audio HD", 999.00, 1299.00, "smarthome", "Bocina compacta de sonido envolvente de 360 grados con micrófono de largo alcance y cancelación de eco."),
-    ("Smartphone 5G Desbloqueado 256GB / 8GB RAM Cámara 108MP", 4899.00, 6499.00, "telefonia", "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower."),
-    ("Laptop Ultra Slim 15.6 Pulgadas Core i7 16GB RAM 512GB SSD", 14500.00, 18900.00, "computacion", "Equipo portátil para desarrollo y productividad con teclado retroiluminado, chasis de aluminio pulido y lector biométrico."),
-    ("Freidora de Aire Digital 6.5 Litros con 12 Programas Touch", 1499.00, 2199.00, "cocina", "Freidora de aire caliente con canastilla antiadherente libre de BPA, circulación de calor 360° para cocinar con 85% menos grasa."),
-    ("Juego de Herramientas de Mecánica y Precisión 168 Piezas", 899.00, 1299.00, "herramientas", "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión."),
-    ("Kit de Desarrollo y Robótica con Microcontrolador y Sensores", 580.00, 750.00, "maker", "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores."),
-    ("Set de 6 Copas de Cristal Cortado de Lujo para Vino Tinto", 749.00, 1050.00, "cristaleria", "Copas artesanales de cristal sin plomo con borde ultra fino cortado en frío."),
-    ("Chamarra Rompevientos Térmica Edición Especial NFL", 1350.00, 1890.00, "moda", "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia."),
-    ("Tenis Deportivos con Amortiguación de Aire para Entrenamiento", 1199.00, 1699.00, "calzado", "Calzado ligero con suela de tracción antiderrapante y tejido transpirable."),
-    ("Regadera de Lluvia Cuadrada 10 Pulgadas Acero Inoxidable", 489.00, 699.00, "bano", "Cabezal de ducha con boquillas de silicona anticalcáreas y brazo extensor cromado."),
-    ("Sillón Reclinable Ergonómico Tipo Reposet Cuero Sintético", 3890.00, 5200.00, "hogar", "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados."),
-    ("Lámpara de Escritorio LED Regulable con Carga Inalámbrica", 420.00, 599.00, "iluminacion", "Lámpara con 5 tonos de luz, temporizador de apagado y base cargadora Qi."),
-    ("Reloj Cronógrafo de Cuarzo para Caballero en Acero Negro", 1250.00, 1800.00, "joyeria", "Reloj con fechador automático, bisel taquimétrico y resistencia al agua 5 ATM."),
-    ("Kit de Mancuernas Ajustables 20kg con Barra de Extensión", 1100.00, 1550.00, "deportes", "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa."),
-    ("Rasuradora Eléctrica Multifuncional 5 en 1 Wet & Dry", 530.00, 780.00, "belleza", "Máquina afeitadora recargable por USB con cabezales intercambiables para barba, nariz y cuerpo."),
-    ("Drone Plegable con Doble Cámara 4K y Transmisión WiFi FPV", 1699.00, 2400.00, "juguetes", "Dron con despegue y aterrizaje de un solo botón, modo retención de altitud y 2 baterías incluidas."),
-    ("Cámara de Tablero Dashcam 4K Delantera y Trasera para Auto", 980.00, 1400.00, "automotriz", "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle."),
-    ("Lote de Remate Electrónica y Accesorios Varios B2B", 2490.00, 3800.00, "oportunidades", "Paquete con artículos de oportunidad grado A con garantía y respaldo oficial del fabricante.")
-]
+if not os.path.exists(target_video_path):
+    for root, _, files in os.walk(BASE_DIR):
+        if video_filename in files:
+            source_video = os.path.join(root, video_filename)
+            shutil.copy2(source_video, target_video_path)
+            print(f"✓ Video copiado a {target_video_path}")
+            break
 
-productos_200 = []
-for page_idx in range(1, 11):
-    for item_idx in range(20):
-        base_tpl = NOMBRES_BASE[item_idx % len(NOMBRES_BASE)]
-        marca = MARCAS[(page_idx + item_idx) % len(MARCAS)]
-        img = IMG_POOL[(page_idx * 3 + item_idx) % len(IMG_POOL)]
-        
-        factor_precio = 1.0 + ((page_idx - 1) * 0.05) + ((item_idx % 4) * 0.02)
-        precio_final = round(base_tpl[1] * factor_precio, 2)
-        precio_orig = round(base_tpl[2] * factor_precio, 2)
-        
-        if item_idx % 3 == 0:
-            desc = base_tpl[4] + f" Respaldado por {marca} con envío 100% digital a la puerta de tu hogar y 5% de cashback."
-        elif item_idx % 3 == 1:
-            desc = base_tpl[4]
-        else:
-            desc = f"Artículo de importación directa marca {marca}. Comercio 100% digital con entrega garantizada."
-
-        sku_str = f"VMX-P{page_idx:02d}-{item_idx+1:03d}"
-        rating_str = f"{4.2 + ((item_idx % 8) * 0.1):.1f}"
-        rev_count = f"{100 + (page_idx * 150) + (item_idx * 43)}"
-
-        prod = {
-            "sku": sku_str,
-            "nombre": f"{base_tpl[0]} {marca} (Mod. {page_idx}{item_idx:02d})",
-            "precio": precio_final,
-            "original": precio_orig,
-            "categoria": base_tpl[3],
-            "marca": marca,
-            "rating": rating_str,
-            "reviews": rev_count,
-            "descripcion": desc,
-            "imagen": img,
-            "page": page_idx
-        }
-        productos_200.append(prod)
-
-with open(CATALOG_PATH, "w", encoding="utf-8") as f:
-    json.dump(productos_200, f, indent=4, ensure_ascii=False)
+# Cargar catálogo de 200 productos
+if os.path.exists(CATALOG_PATH):
+    with open(CATALOG_PATH, "r", encoding="utf-8") as f:
+        productos_200 = json.load(f)
+else:
+    productos_200 = []
 
 JSON_EMBEDDED = json.dumps(productos_200, ensure_ascii=False)
 
-# Departamentos con submenús
+# 30 Departamentos
 departamentos_menu = [
     {"id": "electronica", "nombre": "Electrónica & Audio", "icon": "fa-headphones", "subs": ["Pantallas y Smart TV", "Estéreos y Bocinas", "Barras de Sonido RGB", "Audífonos In-Ear", "Audífonos de Diadema", "Bocinas Portátiles"]},
     {"id": "lineablanca", "nombre": "Línea Blanca & Climas", "icon": "fa-snowflake", "subs": ["Refrigeradores Inverter", "Lavadoras y Secadoras", "Aires Acondicionados", "Estufas y Hornos", "Hornos de Microondas", "Dispensadores de Agua"]},
@@ -174,12 +115,12 @@ for d in departamentos_menu:
 dept_sidebar_html += "</div>"
 
 FOOTER_UNIVERSAL_HTML = """
-    <!-- FOOTER UNIVERSAL HOMOLOGADO (3 COLUMNAS CON REDES COMPLETAS) -->
+    <!-- FOOTER UNIVERSAL HOMOLOGADO (3 COLUMNAS CON REDES SOCIALES COMPLETAS) -->
     <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 text-slate-400 text-xs">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-slate-800/80">
                 
-                <!-- COLUMNA 1: CONTACTO LOCAL COMPLETO -->
+                <!-- COLUMNA 1: CONTACTO LOCAL -->
                 <div class="flex flex-col gap-3">
                     <h3 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
                         <i class="fa-solid fa-location-dot text-amber-400"></i> Contacto Local
@@ -283,9 +224,9 @@ FOOTER_UNIVERSAL_HTML = """
 """
 
 # =========================================================================
-# 1. ENSAMBLAJE DE INDEX.HTML
+# RECONSTRUCCIÓN ROBUSTA DE INDEX.HTML (CON 5 IMÁGENES NATIVAS EN EL CARRUSEL)
 # =========================================================================
-INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
+INDEX_HTML_FINAL = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -356,7 +297,6 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
         <!-- Nivel 2: Fila Principal -->
         <div class="w-full max-w-[98%] 2xl:max-w-7xl mx-auto flex flex-nowrap items-center justify-between gap-3 sm:gap-6 py-3 px-2 sm:px-6">
             
-            <!-- Extremo Izquierdo -->
             <div class="shrink-0 flex items-center gap-4 sm:gap-6">
                 <button onclick="toggleCartDrawer()" class="flex items-center gap-2.5 bg-transparent hover:opacity-80 transition cursor-pointer text-left group">
                     <div class="relative flex items-center justify-center">
@@ -380,7 +320,7 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
                 </button>
             </div>
 
-            <!-- Centro: Buscador Amplio -->
+            <!-- Buscador Amplio -->
             <div class="flex-1 max-w-3xl mx-2 sm:mx-6">
                 <form class="flex items-center bg-[#f4efe8] rounded-full border-2 border-cyan-400 shadow-[0_0_18px_rgba(6,182,212,0.45)] hover:shadow-[0_0_26px_rgba(6,182,212,0.7)] w-full px-4 py-1.5 gap-2 transition duration-300" onsubmit="handleSearchSubmit(event);" role="search">
                     <label class="sr-only" for="siteSearch">¿Qué deseas buscar hoy?</label>
@@ -391,7 +331,7 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
                 </form>
             </div>
 
-            <!-- Extremo Derecho: Logo Vía MX -->
+            <!-- Logo Vía MX -->
             <div class="shrink-0 flex items-center gap-3 group cursor-pointer" onclick="window.location.href='index.html'">
                 <div class="relative w-12 h-12 flex items-center justify-center shrink-0">
                     <img alt="Logo Oficial Vía MX" class="w-12 h-12 rounded-full object-cover border-2 border-cyan-400 shadow-[0_0_14px_rgba(6,182,212,0.5)] group-hover:scale-105 transition shrink-0" style="width: 48px; height: 48px; min-width: 48px; min-height: 48px;" src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" onerror="this.src='assets/img/mascota_tigre.webp';" />
@@ -404,16 +344,32 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
         </div>
     </header>
 
-    <!-- HERO SLIDER (720PX) -->
+    <!-- HERO SLIDER REPARADO (5 IMÁGENES NATIVAS - 720PX - COBERTURA COMPLETA) -->
     <div id="hero-slider-container" style="position: relative; width: 100%; height: 720px; min-height: 720px; overflow: hidden; background-color: #020617; border-bottom: 1px solid #1e293b; user-select: none;">
         <div id="hero-slider" style="position: relative; width: 100%; height: 100%;">
-            <div class="hero-slide active" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; z-index: 10; transition: opacity 1000ms ease-in-out; background-image: url('assets/img/carucel (1).jpeg'); background-size: cover; background-position: center;"></div>
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out; background-image: url('assets/img/carucel (2).jpeg'); background-size: cover; background-position: center;"></div>
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out; background-image: url('assets/img/carucel (3).jpeg'); background-size: cover; background-position: center;"></div>
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out; background-image: url('assets/img/carucel (4).jpeg'); background-size: cover; background-position: center;"></div>
-            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out; background-image: url('assets/img/carucel (5).jpeg'); background-size: cover; background-position: center;"></div>
+            <!-- Slide 1 -->
+            <div class="hero-slide active" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; z-index: 10; transition: opacity 1000ms ease-in-out;">
+                <img src="assets/img/carucel (1).jpeg" alt="Familia Tigre 1" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (1).jpeg';" />
+            </div>
+            <!-- Slide 2 -->
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
+                <img src="assets/img/carucel (2).jpeg" alt="Familia Tigre 2" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (2).jpeg';" />
+            </div>
+            <!-- Slide 3 -->
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
+                <img src="assets/img/carucel (3).jpeg" alt="Familia Tigre 3" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (3).jpeg';" />
+            </div>
+            <!-- Slide 4 -->
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
+                <img src="assets/img/carucel (4).jpeg" alt="Familia Tigre 4" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (4).jpeg';" />
+            </div>
+            <!-- Slide 5 -->
+            <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
+                <img src="assets/img/carucel (5).jpeg" alt="Familia Tigre 5" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.src='carucel (5).jpeg';" />
+            </div>
         </div>
 
+        <!-- Controles Izquierda / Derecha -->
         <button type="button" aria-label="Anterior" onclick="prevSlide()" style="position: absolute; left: 24px; top: 50%; transform: translateY(-50%); z-index: 20; width: 48px; height: 48px; border-radius: 9999px; background-color: rgba(2, 6, 23, 0.75); color: #ffffff; border: 1px solid #334155; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 10px 25px rgba(0,0,0,0.5); backdrop-filter: blur(8px); transition: all 0.3s;">
             <i class="fa-solid fa-chevron-left" style="font-size: 18px;"></i>
         </button>
@@ -421,6 +377,7 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
             <i class="fa-solid fa-chevron-right" style="font-size: 18px;"></i>
         </button>
 
+        <!-- Indicadores Inferiores -->
         <div class="hero-slider-dots" style="position: absolute; bottom: 28px; left: 0; right: 0; z-index: 20; display: flex; justify-content: center; align-items: center; gap: 10px;">
             <button type="button" aria-label="Foto 1" class="hero-dot" onclick="goToSlide(0)" style="min-width: 44px; min-height: 44px; padding: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: none;"><span style="width: 32px; height: 10px; border-radius: 9999px; background-color: #22d3ee; display: block; box-shadow: 0 0 10px rgba(34,211,238,0.6); transition: all 0.3s;"></span></button>
             <button type="button" aria-label="Foto 2" class="hero-dot" onclick="goToSlide(1)" style="min-width: 44px; min-height: 44px; padding: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: none;"><span style="width: 12px; height: 10px; border-radius: 9999px; background-color: #64748b; display: block; transition: all 0.3s;"></span></button>
@@ -501,7 +458,7 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
         </div>
     </main>
 
-    <!-- PROGRAMA DE LEALTAD & RECOMPENSAS (CLUB DE SOCIOS VÍAMX) -->
+    <!-- PROGRAMA DE LEALTAD & RECOMPENSAS CON VIDEO REPARADO -->
     <section class="py-16 bg-slate-900/60 border-t border-slate-800 overflow-hidden" id="lealtad">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -807,7 +764,7 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
         document.getElementById('form-lealtad-viamx').reset();
     }}
 
-    // Carrusel Principal
+    // Carrusel Principal Robusto con control de opacidad explícito
     window.currentSlide = 0;
     window.sliderInterval = null;
 
@@ -864,12 +821,26 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
         window.showSlide(index);
     }};
 
+    function initLoyaltyVideo() {{
+        const vid = document.getElementById('viamx-loyalty-video');
+        if (vid) {{
+            vid.muted = true;
+            vid.loop = true;
+            vid.playbackRate = 0.85;
+            const playPromise = vid.play();
+            if (playPromise && typeof playPromise.catch === 'function') {{
+                playPromise.catch(() => {{}});
+            }}
+        }}
+    }}
+
     document.addEventListener("DOMContentLoaded", () => {{
         renderCatalogPage(1);
         updateCartBadge();
         syncHeaderAccountStatus();
         window.showSlide(0);
         window.resetSliderInterval();
+        initLoyaltyVideo();
     }});
     </script>
 </body>
@@ -877,14 +848,14 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
 """
 
 with open(INDEX_PATH, "w", encoding="utf-8") as f:
-    f.write(INDEX_HTML_CLEAN)
+    f.write(INDEX_HTML_FINAL)
 
-print(f"✓ {INDEX_PATH} reconstruido y conectado a producto.html.")
+print(f"✓ {INDEX_PATH} reconstruido exitosamente.")
 
 # =========================================================================
-# 2. ENSAMBLAJE DE PRODUCTO.HTML (PÁGINA DEDICADA 3 COLS + MARQUEE CONTINUO)
+# RECONSTRUCCIÓN DE PRODUCTO.HTML (PÁGINA DEDICADA 3 COLS + MARQUEE CONTINUO)
 # =========================================================================
-PRODUCTO_HTML_CLEAN = f"""<!DOCTYPE html>
+PRODUCTO_HTML_FINAL = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -1307,11 +1278,11 @@ PRODUCTO_HTML_CLEAN = f"""<!DOCTYPE html>
             cart[existIdx].quantity = (cart[existIdx].quantity || 1) + qty;
         }} else {{
             cart.push({{
-                sku: item.sku,
-                nombre: item.nombre,
-                precio: item.precio,
-                imagen: item.imagen || 'assets/img/mascota_tigre_thumb.webp',
-                categoria: item.categoria || 'viamx',
+                sku: currentItem.sku,
+                nombre: currentItem.nombre,
+                precio: currentItem.precio,
+                imagen: currentItem.imagen || 'assets/img/mascota_tigre_thumb.webp',
+                categoria: currentItem.categoria || 'viamx',
                 quantity: qty
             }});
         }}
@@ -1375,18 +1346,18 @@ PRODUCTO_HTML_CLEAN = f"""<!DOCTYPE html>
 """
 
 with open(PRODUCTO_PATH, "w", encoding="utf-8") as f:
-    f.write(PRODUCTO_HTML_CLEAN)
+    f.write(PRODUCTO_HTML_FINAL)
 
-print(f"✓ {PRODUCTO_PATH} generado con la estructura en 3 columnas y marquee amarillo continuo.")
+print(f"✓ {PRODUCTO_PATH} reconstruido exitosamente.")
 
 print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
 if os.path.exists(os.path.join(VIAMX_DIR, ".git")):
     subprocess.run(["git", "add", "-A"], cwd=VIAMX_DIR, check=True)
-    subprocess.run(["git", "commit", "-m", "fix(viamx): reestructuracion total index limpio con redes sociales y producto.html en 3 columnas", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "fix(viamx): reparacion de carrusel 5 fotos nativas, video de lealtad y navegacion fluida a producto.html", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
     res_viamx = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=VIAMX_DIR, capture_output=True, text=True)
     print(f"🟢 Vía MX NFL -> Push: {'OK' if res_viamx.returncode == 0 else res_viamx.stderr.strip()}")
 
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
-subprocess.run(["git", "commit", "-m", "fix(viamx): despliegue sincronizado de index y producto 3 columnas", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+subprocess.run(["git", "commit", "-m", "fix(viamx): carrusel, video de lealtad y producto 3 columnas sincronizado", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
 res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
