@@ -15,10 +15,10 @@ PRODUCTO_PATH = os.path.join(VIAMX_DIR, "producto.html")
 CATALOG_PATH = os.path.join(VIAMX_DIR, "catalog.json")
 
 print("=" * 70)
-print("REESTRUCTURACIÓN MAESTRA DE VÍA MX: INDEX.HTML Y PRODUCTO.HTML")
+print("CONFIGURANDO NAVEGACIÓN DIRECTA A PRODUCTO.HTML (3 COLS + MARQUEE CONTINUO)")
 print("=" * 70)
 
-# Pool de imágenes variadas del ecosistema
+# Pool de imágenes representativas del ecosistema
 IMG_POOL = [
     "assets/img/mascota_tigre_thumb.webp",
     "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp",
@@ -40,14 +40,14 @@ IMG_POOL = [
 MARCAS = ["Sony", "Samsung", "LG", "Panasonic", "Amazon", "Anker", "JBL", "Xiaomi", "Motorola", "AXIDUN", "Bosch", "Apple", "Philips", "Tefal", "Cuisinart", "Craftsman", "Arduino", "DeWalt", "Sennheiser", "Stanley"]
 
 NOMBRES_BASE = [
-    ("Pantalla Smart TV 55 Pulgadas 4K UHD HDR10+", 7999.00, 11499.00, "electronica", "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, WiFi 6 y 4 puertos HDMI 2.1."),
-    ("Refrigerador Inverter No Frost 14 Pies Cúbicos Acero", 11899.00, 15999.00, "lineablanca", "Refrigerador de doble puerta con tecnología Digital Inverter de alta eficiencia energética clase A++, congelador rápido y dispensador exterior."),
-    ("Bocina Inteligente con Asistente Virtual y Audio HD", 999.00, 1299.00, "smarthome", "Bocina compacta de sonido envolvente de 360 grados, micrófono de largo alcance con cancelación de ruido."),
-    ("Smartphone 5G Desbloqueado 256GB / 8GB RAM Cámara 108MP", 4899.00, 6499.00, "telefonia", "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz y batería de 5000mAh con carga rápida 67W."),
+    ("Pantalla Smart TV 55 Pulgadas 4K UHD HDR10+", 7999.00, 11499.00, "electronica", "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda y 4 puertos HDMI 2.1."),
+    ("Refrigerador Inverter No Frost 14 Pies Cúbicos Acero", 11899.00, 15999.00, "lineablanca", "Refrigerador de doble puerta con tecnología Digital Inverter de alta eficiencia energética clase A++, congelador rápido Multi Air Flow y dispensador exterior."),
+    ("Bocina Inteligente con Asistente Virtual y Audio HD", 999.00, 1299.00, "smarthome", "Bocina compacta de sonido envolvente de 360 grados con micrófono de largo alcance y cancelación de eco."),
+    ("Smartphone 5G Desbloqueado 256GB / 8GB RAM Cámara 108MP", 4899.00, 6499.00, "telefonia", "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower."),
     ("Laptop Ultra Slim 15.6 Pulgadas Core i7 16GB RAM 512GB SSD", 14500.00, 18900.00, "computacion", "Equipo portátil para desarrollo y productividad con teclado retroiluminado, chasis de aluminio pulido y lector biométrico."),
     ("Freidora de Aire Digital 6.5 Litros con 12 Programas Touch", 1499.00, 2199.00, "cocina", "Freidora de aire caliente con canastilla antiadherente libre de BPA, circulación de calor 360° para cocinar con 85% menos grasa."),
     ("Juego de Herramientas de Mecánica y Precisión 168 Piezas", 899.00, 1299.00, "herramientas", "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión."),
-    ("Kit de Desarrollo y Robótica con Microcontrolador y Sensores", 580.00, 750.00, "maker", "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor y sensores."),
+    ("Kit de Desarrollo y Robótica con Microcontrolador y Sensores", 580.00, 750.00, "maker", "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores."),
     ("Set de 6 Copas de Cristal Cortado de Lujo para Vino Tinto", 749.00, 1050.00, "cristaleria", "Copas artesanales de cristal sin plomo con borde ultra fino cortado en frío."),
     ("Chamarra Rompevientos Térmica Edición Especial NFL", 1350.00, 1890.00, "moda", "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia."),
     ("Tenis Deportivos con Amortiguación de Aire para Entrenamiento", 1199.00, 1699.00, "calzado", "Calzado ligero con suela de tracción antiderrapante y tejido transpirable."),
@@ -59,7 +59,7 @@ NOMBRES_BASE = [
     ("Rasuradora Eléctrica Multifuncional 5 en 1 Wet & Dry", 530.00, 780.00, "belleza", "Máquina afeitadora recargable por USB con cabezales intercambiables para barba, nariz y cuerpo."),
     ("Drone Plegable con Doble Cámara 4K y Transmisión WiFi FPV", 1699.00, 2400.00, "juguetes", "Dron con despegue y aterrizaje de un solo botón, modo retención de altitud y 2 baterías incluidas."),
     ("Cámara de Tablero Dashcam 4K Delantera y Trasera para Auto", 980.00, 1400.00, "automotriz", "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle."),
-    ("Lote de Remate Electrónica y Accesorios Varios B2B", 2490.00, 3800.00, "oportunidades", "Paquete con artículos de oportunidad grado A con garantía y respaldo de fabricante.")
+    ("Lote de Remate Electrónica y Accesorios Varios B2B", 2490.00, 3800.00, "oportunidades", "Paquete con artículos de oportunidad grado A con garantía y respaldo oficial del fabricante.")
 ]
 
 productos_200 = []
@@ -104,6 +104,7 @@ with open(CATALOG_PATH, "w", encoding="utf-8") as f:
 
 JSON_EMBEDDED = json.dumps(productos_200, ensure_ascii=False)
 
+# Departamentos con submenús
 departamentos_menu = [
     {"id": "electronica", "nombre": "Electrónica & Audio", "icon": "fa-headphones", "subs": ["Pantallas y Smart TV", "Estéreos y Bocinas", "Barras de Sonido RGB", "Audífonos In-Ear", "Audífonos de Diadema", "Bocinas Portátiles"]},
     {"id": "lineablanca", "nombre": "Línea Blanca & Climas", "icon": "fa-snowflake", "subs": ["Refrigeradores Inverter", "Lavadoras y Secadoras", "Aires Acondicionados", "Estufas y Hornos", "Hornos de Microondas", "Dispensadores de Agua"]},
@@ -282,7 +283,7 @@ FOOTER_UNIVERSAL_HTML = """
 """
 
 # =========================================================================
-# 1. ENSAMBLAJE DE INDEX.HTML (LIMPIO AL 100%)
+# 1. ENSAMBLAJE DE INDEX.HTML
 # =========================================================================
 INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
 <html lang="es">
@@ -420,7 +421,7 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
             <i class="fa-solid fa-chevron-right" style="font-size: 18px;"></i>
         </button>
 
-        <div class="hero-slider-dots" style="position: absolute; bottom: 28px; left: 0; right: 0; z-index: 20; display: flex; justify-content: center; align-items: gap: 10px;">
+        <div class="hero-slider-dots" style="position: absolute; bottom: 28px; left: 0; right: 0; z-index: 20; display: flex; justify-content: center; align-items: center; gap: 10px;">
             <button type="button" aria-label="Foto 1" class="hero-dot" onclick="goToSlide(0)" style="min-width: 44px; min-height: 44px; padding: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: none;"><span style="width: 32px; height: 10px; border-radius: 9999px; background-color: #22d3ee; display: block; box-shadow: 0 0 10px rgba(34,211,238,0.6); transition: all 0.3s;"></span></button>
             <button type="button" aria-label="Foto 2" class="hero-dot" onclick="goToSlide(1)" style="min-width: 44px; min-height: 44px; padding: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: none;"><span style="width: 12px; height: 10px; border-radius: 9999px; background-color: #64748b; display: block; transition: all 0.3s;"></span></button>
             <button type="button" aria-label="Foto 3" class="hero-dot" onclick="goToSlide(2)" style="min-width: 44px; min-height: 44px; padding: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: none;"><span style="width: 12px; height: 10px; border-radius: 9999px; background-color: #64748b; display: block; transition: all 0.3s;"></span></button>
@@ -878,10 +879,10 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
 with open(INDEX_PATH, "w", encoding="utf-8") as f:
     f.write(INDEX_HTML_CLEAN)
 
-print(f"✓ {INDEX_PATH} generado sin residuos y con footer de 3 columnas completo.")
+print(f"✓ {INDEX_PATH} reconstruido y conectado a producto.html.")
 
 # =========================================================================
-# 2. ENSAMBLAJE DE PRODUCTO.HTML (3 COLUMNAS INDEPENDIENTES + MARQUEE)
+# 2. ENSAMBLAJE DE PRODUCTO.HTML (PÁGINA DEDICADA 3 COLS + MARQUEE CONTINUO)
 # =========================================================================
 PRODUCTO_HTML_CLEAN = f"""<!DOCTYPE html>
 <html lang="es">
@@ -1306,11 +1307,11 @@ PRODUCTO_HTML_CLEAN = f"""<!DOCTYPE html>
             cart[existIdx].quantity = (cart[existIdx].quantity || 1) + qty;
         }} else {{
             cart.push({{
-                sku: currentItem.sku,
-                nombre: currentItem.nombre,
-                precio: currentItem.precio,
-                imagen: currentItem.imagen || 'assets/img/mascota_tigre_thumb.webp',
-                categoria: currentItem.categoria || 'viamx',
+                sku: item.sku,
+                nombre: item.nombre,
+                precio: item.precio,
+                imagen: item.imagen || 'assets/img/mascota_tigre_thumb.webp',
+                categoria: item.categoria || 'viamx',
                 quantity: qty
             }});
         }}
