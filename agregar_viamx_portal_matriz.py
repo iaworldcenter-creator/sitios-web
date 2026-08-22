@@ -1,4 +1,20 @@
-<!DOCTYPE html>
+﻿import os
+import re
+import subprocess
+
+BASE_DIR = r"E:\sitios web"
+
+# Identificar rutas del portal matriz
+portal_paths = [
+    os.path.join(BASE_DIR, "index.html"),
+    os.path.join(BASE_DIR, "sitios-web", "index.html")
+]
+
+print("=" * 75)
+print("INTEGRANDO VÍA MX CURADURÍA COMO 8.ª BOUTIQUE EN EL PORTAL MATRIZ")
+print("=" * 75)
+
+PORTAL_8_BOUTIQUES_HTML = """<!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
     <meta charset="UTF-8" />
@@ -389,3 +405,24 @@
     </script>
 </body>
 </html>
+"""
+
+# Actualizar ambos archivos
+for path in portal_paths:
+    if os.path.exists(os.path.dirname(path)) or os.path.exists(path):
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(PORTAL_8_BOUTIQUES_HTML)
+        print(f"✓ Portal actualizado con 8 boutiques en: {path}")
+
+print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
+sitios_web_repo = os.path.join(BASE_DIR, "sitios-web")
+if os.path.exists(os.path.join(sitios_web_repo, ".git")):
+    subprocess.run(["git", "add", "-A"], cwd=sitios_web_repo, check=True)
+    subprocess.run(["git", "commit", "-m", "feat(portal): integrar Via MX Curaduria como 8va boutique completando reticula 4x2", "--allow-empty"], cwd=sitios_web_repo, capture_output=True)
+    res_sub = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=sitios_web_repo, capture_output=True, text=True)
+    print(f"🟢 Submódulo sitios-web -> Push: {'OK' if res_sub.returncode == 0 else res_sub.stderr.strip()}")
+
+subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
+subprocess.run(["git", "commit", "-m", "feat(portal): reticula simetrica de 8 boutiques con Via MX Curaduria desplegada", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
+print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
