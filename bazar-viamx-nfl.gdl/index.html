@@ -7,10 +7,8 @@
     <title>VíaMX | Curaduría y Boutique Internacional</title>
     <meta name="description" content="Boutique oficial VíaMX en Guadalajara Centro. Curaduría de artículos selectos e importaciones dentro del ecosistema Anti-Gravity. Pedro Moreno 501 A.">
     
-    <!-- Preload del Logo LCP -->
     <link rel="preload" as="image" href="assets/img/mascota_tigre_thumb.webp" fetchpriority="high">
     
-    <!-- Tipografías & Estilos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="assets/css/tailwind-built.css?v=1.1.0" />
@@ -70,7 +68,7 @@
             <a href="https://antigravity.google/download" target="_blank" class="hover:text-amber-400 transition">Descargar Anti-Gravity</a>
         </div>
 
-        <!-- Nivel 2: Fila Principal en UNA SOLA LÍNEA -->
+        <!-- Nivel 2: Fila Principal (Izquierda: Carrito/Cuenta, Centro: Buscador Amplio, Derecha: Vía MX) -->
         <div class="w-full max-w-[98%] 2xl:max-w-7xl mx-auto flex flex-nowrap items-center justify-between gap-3 sm:gap-6 py-3 px-2 sm:px-6">
             
             <!-- 1. EXTREMO IZQUIERDO: Mi Carrito y Mi Cuenta -->
@@ -154,77 +152,637 @@
     </div>
 
     <!-- ========================================================================
-         CATÁLOGO PRINCIPAL EN GRID DE 8 COLUMNAS SIMÉTRICAS (TIPO AMAZON / B2B)
+         CATÁLOGO PRINCIPAL EN GRID EXACTO DE 8 COLUMNAS SIMÉTRICAS
          ======================================================================== -->
     <main class="flex-1 w-full py-16 bg-slate-900/90 border-t border-slate-800 text-slate-100" id="catalogo">
-        <div class="w-full px-4 sm:px-6 lg:px-8">
+        <div class="w-full px-2 sm:px-4 lg:px-8">
             
-            <!-- Encabezado de Sección -->
+            <!-- Encabezado de Sección Centrado -->
             <div class="text-center mb-12">
                 <span class="text-xs font-mono text-cyan-400 uppercase tracking-widest block mb-2">// VíaMX Curaduría Selecta & Boutique Internacional</span>
                 <h2 class="text-3xl sm:text-4xl font-black text-white">Catálogo de Oportunidades & Electrónica 2026</h2>
                 <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl mx-auto">Selección de artículos garantizados, electrónica de consumo, herramientas y oportunidades de importación directa en Guadalajara Centro.</p>
             </div>
 
-            <!-- GRID VIRTUAL DE 8 COLUMNAS SIMÉTRICAS -->
-            <div class="grid grid-cols-8 gap-6">
+            <!-- GRID MAESTRO DE 8 COLUMNAS SIMÉTRICAS -->
+            <div class="grid grid-cols-8 gap-4 sm:gap-6">
                 
                 <!-- COLUMNA 1: Margen Izquierdo Vacío -->
                 <div class="hidden lg:block col-span-1"></div>
 
-                <!-- COLUMNA 2: Sidebar de Departamentos y Divisiones -->
-                <aside class="col-span-8 lg:col-span-1 w-full bg-slate-950/90 border border-slate-800 rounded-2xl p-4 lg:p-5 shadow-xl sticky lg:top-24 top-16 z-30 self-start flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-4 lg:gap-6 whitespace-nowrap lg:whitespace-normal scrollbar-none items-center lg:items-stretch">
-                    <h3 class="text-sm font-black text-white hidden lg:flex items-center gap-2 border-b border-slate-800 pb-3">
-                        <i class="fa-solid fa-layer-group text-amber-400"></i> Departamentos
-                    </h3>
-                    
-                    <div class="flex flex-row lg:flex-col gap-2 lg:gap-1.5 w-full">
-                        <button onclick="filterByDept('todos', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 cursor-pointer">
-                            <i class="fa-solid fa-border-all text-[11px]"></i> Todos los Artículos
-                        </button>
-                        <button onclick="filterByDept('electronica', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-headphones text-[11px] text-cyan-400"></i> Electrónica & Audio
-                        </button>
-                        <button onclick="filterByDept('smarthome', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-robot text-[11px] text-amber-400"></i> Smart Home & Alexa
-                        </button>
-                        <button onclick="filterByDept('herramientas', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-screwdriver-wrench text-[11px] text-emerald-400"></i> Herramientas Pro
-                        </button>
-                        <button onclick="filterByDept('maker', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-microchip text-[11px] text-purple-400"></i> Maker & Arduino
-                        </button>
-                        <button onclick="filterByDept('telefonia', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-mobile-screen text-[11px] text-blue-400"></i> Telefonía Móvil
-                        </button>
-                        <button onclick="filterByDept('lineablanca', this)" class="dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer">
-                            <i class="fa-solid fa-tv text-[11px] text-pink-400"></i> Video & TV Abierta
-                        </button>
+                <!-- COLUMNA 2: Sidebar de 30 Departamentos con Submenús Flyout on Hover -->
+                <aside class="col-span-8 lg:col-span-1 w-full bg-slate-950/95 border border-slate-800 rounded-3xl p-3 sm:p-4 shadow-2xl sticky lg:top-24 top-16 z-30 self-start flex flex-row lg:flex-col overflow-x-auto lg:overflow-visible gap-4 lg:gap-2 whitespace-nowrap lg:whitespace-normal scrollbar-none items-center lg:items-stretch">
+                    <div class="border-b border-slate-800 pb-3 mb-2 hidden lg:flex items-center justify-between">
+                        <h3 class="text-xs font-mono font-black text-white uppercase tracking-wider flex items-center gap-2">
+                            <i class="fa-solid fa-layer-group text-amber-400"></i> Departamentos
+                        </h3>
+                        <span class="text-[9px] font-mono text-slate-500">30 Áreas</span>
                     </div>
+                    
+                    
+    <div class="flex flex-row lg:flex-col gap-1.5 w-full pr-1">
+        <div class="relative group/dept">
+            <button onclick="filterByDept('todos', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 cursor-pointer">
+                <span class="flex items-center gap-2 truncate"><i class="fa-solid fa-border-all text-cyan-400 w-4 text-center"></i> Todos los Artículos</span>
+                <span class="text-[10px] font-mono text-cyan-400 font-bold hidden lg:inline">20</span>
+            </button>
+        </div>
 
-                    <div class="pt-4 border-t border-slate-800 hidden lg:block">
+        <div class="relative group/dept">
+            <button onclick="filterByDept('electronica', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-headphones text-cyan-400 w-4 text-center"></i> Electrónica & Audio</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-headphones"></i> Electrónica & Audio
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Pantallas y Smart TV')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Pantallas y Smart TV</a><a href="#catalogo" onclick="handleSearch('Estéreos y Bocinas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Estéreos y Bocinas</a><a href="#catalogo" onclick="handleSearch('Barras de Sonido RGB')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Barras de Sonido RGB</a><a href="#catalogo" onclick="handleSearch('Audífonos In-Ear')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Audífonos In-Ear</a><a href="#catalogo" onclick="handleSearch('Audífonos de Diadema')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Audífonos de Diadema</a><a href="#catalogo" onclick="handleSearch('Bocinas Portátiles')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Bocinas Portátiles</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('lineablanca', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-snowflake text-cyan-400 w-4 text-center"></i> Línea Blanca & Climas</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-snowflake"></i> Línea Blanca & Climas
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Refrigeradores Inverter')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Refrigeradores Inverter</a><a href="#catalogo" onclick="handleSearch('Lavadoras y Secadoras')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Lavadoras y Secadoras</a><a href="#catalogo" onclick="handleSearch('Aires Acondicionados')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Aires Acondicionados</a><a href="#catalogo" onclick="handleSearch('Estufas y Hornos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Estufas y Hornos</a><a href="#catalogo" onclick="handleSearch('Hornos de Microondas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Hornos de Microondas</a><a href="#catalogo" onclick="handleSearch('Dispensadores de Agua')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Dispensadores de Agua</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('smarthome', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-robot text-cyan-400 w-4 text-center"></i> Smart Home & Domótica</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-robot"></i> Smart Home & Domótica
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Bocinas Alexa y Echo')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Bocinas Alexa y Echo</a><a href="#catalogo" onclick="handleSearch('Focos Inteligentes RGB')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Focos Inteligentes RGB</a><a href="#catalogo" onclick="handleSearch('Cámaras de Seguridad WiFi')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cámaras de Seguridad WiFi</a><a href="#catalogo" onclick="handleSearch('Cerraduras Digitales')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cerraduras Digitales</a><a href="#catalogo" onclick="handleSearch('Enchufes Programables')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Enchufes Programables</a><a href="#catalogo" onclick="handleSearch('Sensores de Movimiento')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Sensores de Movimiento</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('telefonia', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-mobile-screen text-cyan-400 w-4 text-center"></i> Telefonía & Celulares</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-mobile-screen"></i> Telefonía & Celulares
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Smartphones Desbloqueados')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Smartphones Desbloqueados</a><a href="#catalogo" onclick="handleSearch('Power Banks Carga Rápida')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Power Banks Carga Rápida</a><a href="#catalogo" onclick="handleSearch('Cargadores y Cables USB-C')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cargadores y Cables USB-C</a><a href="#catalogo" onclick="handleSearch('Fundas de Alta Protección')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Fundas de Alta Protección</a><a href="#catalogo" onclick="handleSearch('Smartwatches y Bandas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Smartwatches y Bandas</a><a href="#catalogo" onclick="handleSearch('Soportes de Escritorio')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Soportes de Escritorio</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('computacion', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-laptop text-cyan-400 w-4 text-center"></i> Computación & Laptops</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-laptop"></i> Computación & Laptops
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Laptops Gamer y Trabajo')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Laptops Gamer y Trabajo</a><a href="#catalogo" onclick="handleSearch('Monitores Curvos y Planos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Monitores Curvos y Planos</a><a href="#catalogo" onclick="handleSearch('Teclados Mecánicos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Teclados Mecánicos</a><a href="#catalogo" onclick="handleSearch('Mouse Ergonómicos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Mouse Ergonómicos</a><a href="#catalogo" onclick="handleSearch('Discos SSD y M.2')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Discos SSD y M.2</a><a href="#catalogo" onclick="handleSearch('Memorias RAM DDR4/DDR5')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Memorias RAM DDR4/DDR5</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('cocina', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-kitchen-set text-cyan-400 w-4 text-center"></i> Cocina & Electrodomésticos</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-kitchen-set"></i> Cocina & Electrodomésticos
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Freidoras de Aire (Air Fryers)')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Freidoras de Aire (Air Fryers)</a><a href="#catalogo" onclick="handleSearch('Licuadoras de Alta Potencia')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Licuadoras de Alta Potencia</a><a href="#catalogo" onclick="handleSearch('Cafeteras Espresso y Goteo')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cafeteras Espresso y Goteo</a><a href="#catalogo" onclick="handleSearch('Batidoras de Inmersión')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Batidoras de Inmersión</a><a href="#catalogo" onclick="handleSearch('Tostadores Eléctricos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Tostadores Eléctricos</a><a href="#catalogo" onclick="handleSearch('Parrillas de Inducción')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Parrillas de Inducción</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('herramientas', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-screwdriver-wrench text-cyan-400 w-4 text-center"></i> Herramientas & Ferretería</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-screwdriver-wrench"></i> Herramientas & Ferretería
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Kits de Destornilladores 117 en 1')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Kits de Destornilladores 117 en 1</a><a href="#catalogo" onclick="handleSearch('Cautines y Soldadura 80W')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cautines y Soldadura 80W</a><a href="#catalogo" onclick="handleSearch('Multímetros Digitales')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Multímetros Digitales</a><a href="#catalogo" onclick="handleSearch('Taladros Inalámbricos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Taladros Inalámbricos</a><a href="#catalogo" onclick="handleSearch('Juegos de Llaves y Dados')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Juegos de Llaves y Dados</a><a href="#catalogo" onclick="handleSearch('Cajas de Herramientas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cajas de Herramientas</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('maker', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-microchip text-cyan-400 w-4 text-center"></i> Maker & Robótica Arduino</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-microchip"></i> Maker & Robótica Arduino
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Placas Arduino Uno y R3')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Placas Arduino Uno y R3</a><a href="#catalogo" onclick="handleSearch('Kits de Electrónica y Protoboard')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Kits de Electrónica y Protoboard</a><a href="#catalogo" onclick="handleSearch('Sensores de Ultrasonido y Gas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Sensores de Ultrasonido y Gas</a><a href="#catalogo" onclick="handleSearch('Servomotores y Drivers')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Servomotores y Drivers</a><a href="#catalogo" onclick="handleSearch('Cables Jumper y Pines')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cables Jumper y Pines</a><a href="#catalogo" onclick="handleSearch('Módulos ESP32 y Bluetooth')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Módulos ESP32 y Bluetooth</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('cristaleria', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-wine-glass text-cyan-400 w-4 text-center"></i> Cristalería & Vajillas</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-wine-glass"></i> Cristalería & Vajillas
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Copas de Cristal de Lujo')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Copas de Cristal de Lujo</a><a href="#catalogo" onclick="handleSearch('Juegos de Vasos Térmicos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Juegos de Vasos Térmicos</a><a href="#catalogo" onclick="handleSearch('Vajillas de Cerámica Fina')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Vajillas de Cerámica Fina</a><a href="#catalogo" onclick="handleSearch('Decantadores de Vino')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Decantadores de Vino</a><a href="#catalogo" onclick="handleSearch('Jarras de Vidrio Borosilicato')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Jarras de Vidrio Borosilicato</a><a href="#catalogo" onclick="handleSearch('Cubiertos de Acero Inoxidable')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cubiertos de Acero Inoxidable</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('moda', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-shirt text-cyan-400 w-4 text-center"></i> Ropa & Moda Internacional</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-shirt"></i> Ropa & Moda Internacional
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Jerseys Deportivos Oficiales')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Jerseys Deportivos Oficiales</a><a href="#catalogo" onclick="handleSearch('Chamarras y Rompevientos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Chamarras y Rompevientos</a><a href="#catalogo" onclick="handleSearch('Sudaderas Urbanas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Sudaderas Urbanas</a><a href="#catalogo" onclick="handleSearch('Playeras de Algodón Premium')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Playeras de Algodón Premium</a><a href="#catalogo" onclick="handleSearch('Pantalones y Joggers')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Pantalones y Joggers</a><a href="#catalogo" onclick="handleSearch('Gorras y Sombreros')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Gorras y Sombreros</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('calzado', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-shoe-prints text-cyan-400 w-4 text-center"></i> Calzado & Sneakers</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-shoe-prints"></i> Calzado & Sneakers
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Tenis Urbanos y Deportivos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Tenis Urbanos y Deportivos</a><a href="#catalogo" onclick="handleSearch('Botas de Trabajo y Senderismo')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Botas de Trabajo y Senderismo</a><a href="#catalogo" onclick="handleSearch('Zapatos Casuales de Piel')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Zapatos Casuales de Piel</a><a href="#catalogo" onclick="handleSearch('Sandalias Confort')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Sandalias Confort</a><a href="#catalogo" onclick="handleSearch('Plantillas Ortopédicas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Plantillas Ortopédicas</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('bano', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-shower text-cyan-400 w-4 text-center"></i> Baño & Grifería</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-shower"></i> Baño & Grifería
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Regaderas Tipo Lluvia')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Regaderas Tipo Lluvia</a><a href="#catalogo" onclick="handleSearch('Monolandos y Grifos Modernos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Monolandos y Grifos Modernos</a><a href="#catalogo" onclick="handleSearch('Espejos Touch con Luz LED')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Espejos Touch con Luz LED</a><a href="#catalogo" onclick="handleSearch('Accesorios de Acero Negro')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Accesorios de Acero Negro</a><a href="#catalogo" onclick="handleSearch('Toalleros y Repisas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Toalleros y Repisas</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('hogar', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-couch text-cyan-400 w-4 text-center"></i> Hogar, Muebles & Sala</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-couch"></i> Hogar, Muebles & Sala
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Sillones Reclinables')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Sillones Reclinables</a><a href="#catalogo" onclick="handleSearch('Mesas de Centro Elevables')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Mesas de Centro Elevables</a><a href="#catalogo" onclick="handleSearch('Lámparas de Pie Modernas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Lámparas de Pie Modernas</a><a href="#catalogo" onclick="handleSearch('Estantes y Libreros')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Estantes y Libreros</a><a href="#catalogo" onclick="handleSearch('Cuadros y Arte Decorativo')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cuadros y Arte Decorativo</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('iluminacion', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-lightbulb text-cyan-400 w-4 text-center"></i> Iluminación & Neón Flex</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-lightbulb"></i> Iluminación & Neón Flex
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Letreros Neón Personalizados')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Letreros Neón Personalizados</a><a href="#catalogo" onclick="handleSearch('Tiras LED RGBIC Inteligentes')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Tiras LED RGBIC Inteligentes</a><a href="#catalogo" onclick="handleSearch('Lámparas de Escritorio Regulables')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Lámparas de Escritorio Regulables</a><a href="#catalogo" onclick="handleSearch('Reflectores Solares LED')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Reflectores Solares LED</a><a href="#catalogo" onclick="handleSearch('Focos Vintage Edison')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Focos Vintage Edison</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('joyeria', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-gem text-cyan-400 w-4 text-center"></i> Joyería & Relojería</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-gem"></i> Joyería & Relojería
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Relojes Automáticos de Lujo')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Relojes Automáticos de Lujo</a><a href="#catalogo" onclick="handleSearch('Cadenas de Plata 925')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cadenas de Plata 925</a><a href="#catalogo" onclick="handleSearch('Pulseras de Cuero Trenzado')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Pulseras de Cuero Trenzado</a><a href="#catalogo" onclick="handleSearch('Anillos de Titanio')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Anillos de Titanio</a><a href="#catalogo" onclick="handleSearch('Estuches Organizadores')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Estuches Organizadores</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('deportes', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-dumbbell text-cyan-400 w-4 text-center"></i> Deportes & Fitness</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-dumbbell"></i> Deportes & Fitness
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Balones Coleccionables NFL')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Balones Coleccionables NFL</a><a href="#catalogo" onclick="handleSearch('Mancuernas y Pesas Rusas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Mancuernas y Pesas Rusas</a><a href="#catalogo" onclick="handleSearch('Bandas de Resistencia Pro')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Bandas de Resistencia Pro</a><a href="#catalogo" onclick="handleSearch('Tapetes de Yoga Antideslizantes')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Tapetes de Yoga Antideslizantes</a><a href="#catalogo" onclick="handleSearch('Cilindros Térmicos de Agua')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cilindros Térmicos de Agua</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('belleza', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-wand-magic text-cyan-400 w-4 text-center"></i> Belleza & Cuidado Personal</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-wand-magic"></i> Belleza & Cuidado Personal
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Rasuradoras Profesionales')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Rasuradoras Profesionales</a><a href="#catalogo" onclick="handleSearch('Secadoras de Pelo Iónicas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Secadoras de Pelo Iónicas</a><a href="#catalogo" onclick="handleSearch('Cepillos Alaciadores')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cepillos Alaciadores</a><a href="#catalogo" onclick="handleSearch('Masajeadores Cervicales')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Masajeadores Cervicales</a><a href="#catalogo" onclick="handleSearch('Cuidado Facial y Skincare')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cuidado Facial y Skincare</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('juguetes', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-gamepad text-cyan-400 w-4 text-center"></i> Juguetes & Coleccionables</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-gamepad"></i> Juguetes & Coleccionables
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Figuras de Acción y Anime')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Figuras de Acción y Anime</a><a href="#catalogo" onclick="handleSearch('Autos de Colección a Escala')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Autos de Colección a Escala</a><a href="#catalogo" onclick="handleSearch('Juegos de Mesa y Estrategia')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Juegos de Mesa y Estrategia</a><a href="#catalogo" onclick="handleSearch('Bloques de Construcción')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Bloques de Construcción</a><a href="#catalogo" onclick="handleSearch('Drones con Cámara HD')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Drones con Cámara HD</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('automotriz', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-car text-cyan-400 w-4 text-center"></i> Automotriz & Accesorios</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-car"></i> Automotriz & Accesorios
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Cámaras Dashcam 4K')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cámaras Dashcam 4K</a><a href="#catalogo" onclick="handleSearch('Transmisores FM Bluetooth')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Transmisores FM Bluetooth</a><a href="#catalogo" onclick="handleSearch('Soportes Magnéticos para Auto')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Soportes Magnéticos para Auto</a><a href="#catalogo" onclick="handleSearch('Aspiradoras Portátiles 12V')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Aspiradoras Portátiles 12V</a><a href="#catalogo" onclick="handleSearch('Arrancadores de Batería')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Arrancadores de Batería</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('bebes', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-baby text-cyan-400 w-4 text-center"></i> Bebés & Maternidad</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-baby"></i> Bebés & Maternidad
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Monitores de Video para Bebé')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Monitores de Video para Bebé</a><a href="#catalogo" onclick="handleSearch('Esterilizadores de Biberones')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Esterilizadores de Biberones</a><a href="#catalogo" onclick="handleSearch('Sillas de Seguridad para Auto')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Sillas de Seguridad para Auto</a><a href="#catalogo" onclick="handleSearch('Juguetes de Estimulación')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Juguetes de Estimulación</a><a href="#catalogo" onclick="handleSearch('Mochilas Pañaleras Térmicas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Mochilas Pañaleras Térmicas</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('mascotas', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-paw text-cyan-400 w-4 text-center"></i> Mascotas & Accesorios</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-paw"></i> Mascotas & Accesorios
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Comederos Automáticos WiFi')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Comederos Automáticos WiFi</a><a href="#catalogo" onclick="handleSearch('Fuentes de Agua para Gatos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Fuentes de Agua para Gatos</a><a href="#catalogo" onclick="handleSearch('Camas Térmicas para Perros')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Camas Térmicas para Perros</a><a href="#catalogo" onclick="handleSearch('Arneses y Correas Tácticas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Arneses y Correas Tácticas</a><a href="#catalogo" onclick="handleSearch('Juguetes Interactivos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Juguetes Interactivos</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('oficina', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-briefcase text-cyan-400 w-4 text-center"></i> Oficina & Papelería</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-briefcase"></i> Oficina & Papelería
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Sillas Ergonómicas Ejecutivas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Sillas Ergonómicas Ejecutivas</a><a href="#catalogo" onclick="handleSearch('Organizadores de Escritorio')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Organizadores de Escritorio</a><a href="#catalogo" onclick="handleSearch('Destructoras de Documentos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Destructoras de Documentos</a><a href="#catalogo" onclick="handleSearch('Plumas Ejecutivas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Plumas Ejecutivas</a><a href="#catalogo" onclick="handleSearch('Pizarrones Blancos Magnéticos')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Pizarrones Blancos Magnéticos</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('musica', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-guitar text-cyan-400 w-4 text-center"></i> Instrumentos Musicales</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-guitar"></i> Instrumentos Musicales
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Guitarras Eléctricas y Acústicas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Guitarras Eléctricas y Acústicas</a><a href="#catalogo" onclick="handleSearch('Teclados y Sintetizadores')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Teclados y Sintetizadores</a><a href="#catalogo" onclick="handleSearch('Micrófonos de Condensador')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Micrófonos de Condensador</a><a href="#catalogo" onclick="handleSearch('Interfaces de Audio USB')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Interfaces de Audio USB</a><a href="#catalogo" onclick="handleSearch('Soportes y Fundas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Soportes y Fundas</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('jardineria', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-seedling text-cyan-400 w-4 text-center"></i> Jardinería & Exteriores</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-seedling"></i> Jardinería & Exteriores
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Luces Solares para Jardín')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Luces Solares para Jardín</a><a href="#catalogo" onclick="handleSearch('Mangueras Retráctiles 30m')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Mangueras Retráctiles 30m</a><a href="#catalogo" onclick="handleSearch('Macetas Autorriego')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Macetas Autorriego</a><a href="#catalogo" onclick="handleSearch('Herramientas de Poda y Cuidado')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Herramientas de Poda y Cuidado</a><a href="#catalogo" onclick="handleSearch('Fumigadores Manuales')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Fumigadores Manuales</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('gourmet', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-martini-glass-citrus text-cyan-400 w-4 text-center"></i> Vinos & Coctelería Gourmet</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-martini-glass-citrus"></i> Vinos & Coctelería Gourmet
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Cavas Enfriadoras de Vino')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cavas Enfriadoras de Vino</a><a href="#catalogo" onclick="handleSearch('Sacacorchos Eléctricos USB')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Sacacorchos Eléctricos USB</a><a href="#catalogo" onclick="handleSearch('Kits de Barman y Coctelería')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Kits de Barman y Coctelería</a><a href="#catalogo" onclick="handleSearch('Vasos Térmicos y Shakers')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Vasos Térmicos y Shakers</a><a href="#catalogo" onclick="handleSearch('Hieleras de Acero Doble Pared')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Hieleras de Acero Doble Pared</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('fotografia', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-camera text-cyan-400 w-4 text-center"></i> Fotografía & Video Pro</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-camera"></i> Fotografía & Video Pro
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Aros de Luz LED 18 Pulgadas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Aros de Luz LED 18 Pulgadas</a><a href="#catalogo" onclick="handleSearch('Trípodes Profesionales 2m')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Trípodes Profesionales 2m</a><a href="#catalogo" onclick="handleSearch('Micrófonos Inalámbricos Lavalier')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Micrófonos Inalámbricos Lavalier</a><a href="#catalogo" onclick="handleSearch('Gimbals Estabilizadores 3 Ejes')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Gimbals Estabilizadores 3 Ejes</a><a href="#catalogo" onclick="handleSearch('Fondos Verdes y Softboxes')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Fondos Verdes y Softboxes</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('seguridad', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-shield-halved text-cyan-400 w-4 text-center"></i> Seguridad & Vigilancia</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-shield-halved"></i> Seguridad & Vigilancia
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Cámaras PTZ 360 Exterior')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cámaras PTZ 360 Exterior</a><a href="#catalogo" onclick="handleSearch('Alarmas Vecinales con Sirena')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Alarmas Vecinales con Sirena</a><a href="#catalogo" onclick="handleSearch('Cajas Fuertes Digitales')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cajas Fuertes Digitales</a><a href="#catalogo" onclick="handleSearch('Intercomunicadores con Video')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Intercomunicadores con Video</a><a href="#catalogo" onclick="handleSearch('Sensores de Apertura Puerta/Ventana')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Sensores de Apertura Puerta/Ventana</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('camping', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-campground text-cyan-400 w-4 text-center"></i> Camping & Aventura</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-campground"></i> Camping & Aventura
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Casas de Campaña Impermeables')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Casas de Campaña Impermeables</a><a href="#catalogo" onclick="handleSearch('Lámparas de Campamento LED')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Lámparas de Campamento LED</a><a href="#catalogo" onclick="handleSearch('Mochilas Militares 50L')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Mochilas Militares 50L</a><a href="#catalogo" onclick="handleSearch('Navajas Multiusos Suizas')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Navajas Multiusos Suizas</a><a href="#catalogo" onclick="handleSearch('Colchones Inflables con Bomba')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Colchones Inflables con Bomba</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('salud', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-heart-pulse text-cyan-400 w-4 text-center"></i> Salud & Cuidado Médico</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-heart-pulse"></i> Salud & Cuidado Médico
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Baumanómetros Digitales de Brazo')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Baumanómetros Digitales de Brazo</a><a href="#catalogo" onclick="handleSearch('Oxímetros de Pulso Pediátrico/Adulto')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Oxímetros de Pulso Pediátrico/Adulto</a><a href="#catalogo" onclick="handleSearch('Termómetros Infrarrojos Sin Contacto')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Termómetros Infrarrojos Sin Contacto</a><a href="#catalogo" onclick="handleSearch('Básculas Inteligentes con App')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Básculas Inteligentes con App</a><a href="#catalogo" onclick="handleSearch('Nebulizadores Portátiles')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Nebulizadores Portátiles</a>
+                </div>
+            </div>
+        </div>
+    
+        <div class="relative group/dept">
+            <button onclick="filterByDept('oportunidades', this)" class="dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer">
+                <span class="flex items-center gap-2.5 truncate"><i class="fa-solid fa-tags text-cyan-400 w-4 text-center"></i> Liquidaciones & Remates B2B</span>
+                <i class="fa-solid fa-chevron-right text-[9px] text-slate-500 group-hover/dept:text-cyan-400 group-hover/dept:translate-x-1 transition hidden lg:inline"></i>
+            </button>
+            <!-- Menú Flotante Flyout al pasar el ratón (Hover) -->
+            <div class="hidden lg:group-hover/dept:flex flex-col absolute left-full top-0 ml-2.5 w-64 bg-slate-950/98 border-2 border-cyan-500/60 rounded-2xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl animate-in fade-in duration-200">
+                <div class="border-b border-slate-800 pb-2 mb-2">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block flex items-center gap-1.5">
+                        <i class="fa-solid fa-tags"></i> Liquidaciones & Remates B2B
+                    </span>
+                    <span class="text-[10px] text-slate-400 font-semibold">Subcategorías & Modelos</span>
+                </div>
+                <div class="flex flex-col gap-1 max-h-64 overflow-y-auto pr-1">
+                    <a href="#catalogo" onclick="handleSearch('Lotes de Importación Directa')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Lotes de Importación Directa</a><a href="#catalogo" onclick="handleSearch('Remates de Almacén Guadalajara')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Remates de Almacén Guadalajara</a><a href="#catalogo" onclick="handleSearch('Artículos de Exposición Grado A')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Artículos de Exposición Grado A</a><a href="#catalogo" onclick="handleSearch('Cajas Sorpresa de Electrónica')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Cajas Sorpresa de Electrónica</a><a href="#catalogo" onclick="handleSearch('Ofertas Exclusivas al Mayoreo')" class="text-xs text-slate-300 hover:text-cyan-300 hover:bg-slate-900/90 px-3 py-1.5 rounded-lg transition flex items-center gap-2"><i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> Ofertas Exclusivas al Mayoreo</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+                    <div class="pt-4 border-t border-slate-800 hidden lg:block mt-2">
                         <span class="text-[10px] font-mono text-slate-400 uppercase tracking-wider block mb-1">Garantía Local</span>
                         <p class="text-[11px] text-slate-300 leading-relaxed font-semibold">
-                            Revisión y entrega directa en Pedro Moreno 501 A.
+                            Revisión y entrega física directa en Pedro Moreno 501 A.
                         </p>
                     </div>
                 </aside>
 
-                <!-- COLUMNAS 3 A 7: Cuadrícula de Productos (5 columnas interiores) -->
+                <!-- COLUMNAS 3 A 7: Cuadrícula de 5 Columnas de Productos (Tipo Amazon) -->
                 <div class="col-span-8 lg:col-span-5">
                     
+                    <!-- Barra de Conteo y Garantía -->
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 pb-3 border-b border-slate-800">
                         <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider" id="catalog-count-text">
                             Mostrando 20 artículos disponibles
                         </span>
                         <div class="flex items-center gap-2 text-xs text-slate-400 font-mono">
-                            <i class="fa-solid fa-shield-check text-emerald-400"></i> Pago Seguro & 5% Cashback
+                            <i class="fa-solid fa-shield-check text-emerald-400"></i> Pago Seguro & 5% Cashback Acumulable
                         </div>
                     </div>
 
-                    <!-- Cuadrícula Dinámica -->
-                    <div id="catalog-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                        <!-- Poblado síncronamente desde JavaScript -->
+                    <!-- CUADRÍCULA INTERIOR DE 5 COLUMNAS EN DESKTOP (TIPO AMAZON) -->
+                    <div id="catalog-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+                        <!-- Se poblará síncronamente desde JavaScript -->
                     </div>
 
                 </div>
@@ -259,7 +817,7 @@
          BASE DE DATOS SÍNCRONA, LÓGICA DE TIENDA Y CARRUSEL
          ======================================================================== -->
     <script>
-    const viamxCatalog = [{"sku": "VMX-EL-001", "nombre": "Sony Audífonos Inalámbricos On-Ear WH-CH520 (Hasta 50h)", "precio": 699.0, "categoria": "electronica", "marca": "Sony", "descripcion": "Audífonos de diadema Bluetooth con hasta 50 horas de batería, carga rápida y conexión multipunto.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-002", "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Negro)", "precio": 999.0, "categoria": "smarthome", "marca": "Amazon", "descripcion": "Bocina inteligente compacta de sonido envolvente con asistente virtual Alexa integrado.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-003", "nombre": "1 Hora Bocina Bluetooth Portátil 5W (Radio FM / MicroSD)", "precio": 141.99, "categoria": "electronica", "marca": "1 Hora", "descripcion": "Mini bocina inalámbrica de 5W con 25 horas de reproducción, radio FM y ranura MicroSD.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-HR-004", "nombre": "Juego de Destornilladores de Precisión 117 en 1 AXIDUN", "precio": 149.0, "categoria": "herramientas", "marca": "AXIDUN", "descripcion": "Kit magnético profesional de puntas intercambiables para electrónica y celulares.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-005", "nombre": "INIU Power Bank 20000mAh 22.5W Carga Rápida", "precio": 599.99, "categoria": "electronica", "marca": "INIU", "descripcion": "Batería externa de alta capacidad con display digital LED y puertos USB-C de carga veloz.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-006", "nombre": "Amazon Echo Dot (5ta Gen) Bocina Alexa (Negro)", "precio": 1699.0, "categoria": "smarthome", "marca": "Amazon", "descripcion": "Bocina inteligente con audio de alta fidelidad, voces nítidas y control domótico.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-007", "nombre": "Amazon Echo Pop Bocina Alexa (Lavanda)", "precio": 999.0, "categoria": "smarthome", "marca": "Amazon", "descripcion": "Altavoz compacto con sonido direccional en acabado lavanda con Alexa integrada.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-008", "nombre": "Skullcandy Dime 3 Auriculares In-Ear Inalámbricos", "precio": 447.0, "categoria": "electronica", "marca": "Skullcandy", "descripcion": "Auriculares True Wireless compactos con micrófono, resistencia al agua IPX4 y estuche.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-009", "nombre": "Soundcore by Anker V20i Audífonos Open-Ear", "precio": 498.98, "categoria": "electronica", "marca": "Anker", "descripcion": "Audífonos ergonómicos de oído abierto con sonido ultra claro para jornadas prolongadas.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-010", "nombre": "Soundcore by Anker P30i con Cancelación de Ruido", "precio": 537.98, "categoria": "electronica", "marca": "Anker", "descripcion": "Auriculares inalámbricos con cancelación activa de ruido híbrida y graves profundos.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-011", "nombre": "AXIDUN Barra de Sonido RGB Estéreo Bluetooth 5.0", "precio": 298.0, "categoria": "electronica", "marca": "AXIDUN", "descripcion": "Soundbar para escritorio con iluminación dinámica RGB y conexión Bluetooth 5.0.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-HR-012", "nombre": "Kit de Soldadura Electrónica 80W LCD Regulable", "precio": 349.99, "categoria": "herramientas", "marca": "Tech Tool", "descripcion": "Cautín profesional de 80W con display digital LCD y control térmico 180°C - 520°C.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-013", "nombre": "ISTENTINFY Kit Electrónica Protoboard Arduino Uno", "precio": 262.24, "categoria": "maker", "marca": "Arduino Compatible", "descripcion": "Set de prototipado con cables jumper, LEDs, resistencias y botones para proyectos.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-014", "nombre": "JBL Tune 520BT Audífonos Diadema Pure Bass (Negro)", "precio": 699.0, "categoria": "electronica", "marca": "JBL", "descripcion": "Audífonos Bluetooth con sonido Pure Bass y hasta 57 horas continuas de autonomía.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-015", "nombre": "FANDBO Multicontacto Extensión 12 en 1 (USB-C / CA)", "precio": 263.11, "categoria": "electronica", "marca": "FANDBO", "descripcion": "Estación de energía con 8 tomas CA, puertos USB de carga rápida y cable de 1.5m.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-016", "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Blanco)", "precio": 999.0, "categoria": "smarthome", "marca": "Amazon", "descripcion": "Bocina inteligente compacta en elegante color blanco con asistente Alexa y audio HD.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-017", "nombre": "Uplayteck Antena TV Digital Interior HDTV 1080P/4K", "precio": 220.15, "categoria": "lineablanca", "marca": "Uplayteck", "descripcion": "Antena para sintonización abierta en alta definición 1080P/4K con amplificador.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-018", "nombre": "Motorola Moto G06 Azul (4GB RAM / 256GB)", "precio": 2368.0, "categoria": "telefonia", "marca": "Motorola", "descripcion": "Smartphone desbloqueado con 256GB de almacenamiento interno y batería de larga duración.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-019", "nombre": "Kit de Robótica y Electrónica Compatible Arduino R3", "precio": 544.0, "categoria": "maker", "marca": "Maker Pro", "descripcion": "Kit de componentes y módulos de aprendizaje para robótica con microcontrolador R3.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-020", "nombre": "Qiilu Altavoces Estéreo USB de Escritorio", "precio": 209.0, "categoria": "electronica", "marca": "Qiilu", "descripcion": "Par de bocinas compactas para PC/laptop con alimentación USB y audio 3.5mm.", "imagen": "assets/img/mascota_tigre_thumb.webp"}];
+    const viamxCatalog = [{"sku": "VMX-EL-001", "nombre": "Sony Audífonos Inalámbricos On-Ear WH-CH520", "precio": 699.0, "original": 1177.0, "categoria": "electronica", "marca": "Sony", "rating": "4.8", "reviews": "9.7k", "descripcion": "Audífonos Bluetooth con hasta 50h de batería, carga rápida y conexión multipunto.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-002", "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Negro)", "precio": 999.0, "original": 999.0, "categoria": "smarthome", "marca": "Amazon", "rating": "4.8", "reviews": "30.6k", "descripcion": "Bocina inteligente compacta de sonido envolvente con asistente Alexa integrado.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-003", "nombre": "1 Hora Bocina Bluetooth Portátil 5W (Radio FM/SD)", "precio": 141.99, "original": 169.99, "categoria": "electronica", "marca": "1 Hora", "rating": "4.6", "reviews": "2.4k", "descripcion": "Mini bocina inalámbrica de 5W con 25h de reproducción continua y ranura MicroSD.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-HR-004", "nombre": "Juego de Destornilladores de Precisión 117 en 1 AXIDUN", "precio": 149.0, "original": 199.0, "categoria": "herramientas", "marca": "AXIDUN", "rating": "4.6", "reviews": "7.3k", "descripcion": "Kit magnético profesional de puntas intercambiables para electrónica y celulares.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-005", "nombre": "INIU Power Bank 20000mAh 22.5W Carga Rápida", "precio": 599.99, "original": 699.99, "categoria": "electronica", "marca": "INIU", "rating": "4.7", "reviews": "82.8k", "descripcion": "Batería externa con display digital LED y puertos USB-C de entrega de energía veloz.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-006", "nombre": "Amazon Echo Dot (5ta Gen) Bocina Alexa (Negro)", "precio": 1699.0, "original": 1699.0, "categoria": "smarthome", "marca": "Amazon", "rating": "4.8", "reviews": "48.6k", "descripcion": "Bocina inteligente con audio HD, voces nítidas y control de dispositivos del hogar.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-007", "nombre": "Amazon Echo Pop Bocina Alexa (Lavanda)", "precio": 999.0, "original": 999.0, "categoria": "smarthome", "marca": "Amazon", "rating": "4.8", "reviews": "30.6k", "descripcion": "Altavoz compacto con sonido direccional en color lavanda con Alexa integrada.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-008", "nombre": "Skullcandy Dime 3 Auriculares In-Ear Inalámbricos", "precio": 447.0, "original": 749.0, "categoria": "electronica", "marca": "Skullcandy", "rating": "4.4", "reviews": "9.5k", "descripcion": "Auriculares True Wireless con micrófono, protección IPX4 y hasta 20h de batería.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-009", "nombre": "Soundcore by Anker V20i Audífonos Open-Ear", "precio": 498.98, "original": 899.0, "categoria": "electronica", "marca": "Anker", "rating": "4.5", "reviews": "17.6k", "descripcion": "Audífonos de diseño ergonómico de oído abierto con sonido nítido y confort total.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-010", "nombre": "Soundcore by Anker P30i Cancelación Activa de Ruido", "precio": 537.98, "original": 999.0, "categoria": "electronica", "marca": "Anker", "rating": "4.5", "reviews": "40.3k", "descripcion": "Auriculares con cancelación de ruido híbrida y estuche con soporte para smartphone.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-011", "nombre": "AXIDUN Barra de Sonido RGB Estéreo Bluetooth 5.0", "precio": 298.0, "original": 399.0, "categoria": "electronica", "marca": "AXIDUN", "rating": "4.3", "reviews": "1.4k", "descripcion": "Soundbar para escritorio con iluminación dinámica RGB y conexión Bluetooth 5.0.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-HR-012", "nombre": "Kit de Soldadura Electrónica 80W LCD Regulable", "precio": 349.99, "original": 429.0, "categoria": "herramientas", "marca": "Tech Tool", "rating": "4.1", "reviews": "161", "descripcion": "Cautín profesional de 80W con display digital LCD y rango térmico 180°C - 520°C.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-013", "nombre": "ISTENTINFY Kit Electrónica Protoboard Arduino Uno", "precio": 262.24, "original": 298.0, "categoria": "maker", "marca": "Arduino Comp", "rating": "4.7", "reviews": "191", "descripcion": "Set de prototipado con cables jumper, LEDs, resistencias y botones para proyectos.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-014", "nombre": "JBL Tune 520BT Audífonos Diadema Pure Bass", "precio": 699.0, "original": 999.0, "categoria": "electronica", "marca": "JBL", "rating": "4.8", "reviews": "11.5k", "descripcion": "Audífonos Bluetooth con sonido Pure Bass y hasta 57 horas continuas de batería.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-015", "nombre": "FANDBO Multicontacto Extensión 12 en 1 USB-C / CA", "precio": 263.11, "original": 298.99, "categoria": "electronica", "marca": "FANDBO", "rating": "4.7", "reviews": "985", "descripcion": "Estación de energía con 8 tomas CA, puertos USB de carga rápida y cable de 1.5m.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-016", "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Blanco)", "precio": 999.0, "original": 999.0, "categoria": "smarthome", "marca": "Amazon", "rating": "4.8", "reviews": "30.6k", "descripcion": "Bocina compacta en acabado blanco con asistente Alexa y audio HD en streaming.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-017", "nombre": "Uplayteck Antena TV Digital Interior HDTV 1080P/4K", "precio": 220.15, "original": 259.0, "categoria": "lineablanca", "marca": "Uplayteck", "rating": "4.2", "reviews": "3.7k", "descripcion": "Antena para sintonización abierta en alta definición 1080P/4K con amplificador.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-018", "nombre": "Motorola Moto G06 Azul (4GB RAM / 256GB)", "precio": 2368.0, "original": 2999.0, "categoria": "telefonia", "marca": "Motorola", "rating": "4.4", "reviews": "111", "descripcion": "Smartphone desbloqueado con 256GB de almacenamiento interno y batería de 5000mAh.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-019", "nombre": "Kit de Robótica y Electrónica Compatible Arduino R3", "precio": 544.0, "original": 598.0, "categoria": "maker", "marca": "Maker Pro", "rating": "4.7", "reviews": "4", "descripcion": "Kit de componentes y módulos de aprendizaje para robótica con microcontrolador R3.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-020", "nombre": "Qiilu Altavoces Estéreo USB de Escritorio", "precio": 209.0, "original": 209.0, "categoria": "electronica", "marca": "Qiilu", "rating": "3.0", "reviews": "1", "descripcion": "Par de bocinas compactas para PC/laptop con alimentación USB y audio auxiliar 3.5mm.", "imagen": "assets/img/mascota_tigre_thumb.webp"}];
     let currentFilteredCatalog = [...viamxCatalog];
 
     function formatCurrency(amount) {
@@ -280,34 +838,46 @@
         }
 
         grid.innerHTML = items.map(item => `
-            <div class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 rounded-2xl p-4 flex flex-col justify-between transition duration-300 shadow-xl group cursor-pointer hover:shadow-cyan-950/20">
+            <div class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 rounded-2xl p-3.5 flex flex-col justify-between transition duration-300 shadow-xl group cursor-pointer hover:shadow-cyan-950/20">
                 <div>
-                    <div class="w-full h-44 overflow-hidden rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-center mb-3 p-2 relative">
+                    <!-- Contenedor Imagen -->
+                    <div class="w-full h-36 sm:h-40 overflow-hidden rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-center mb-3 p-1.5 relative">
                         <img 
                             src="${item.imagen || 'assets/img/mascota_tigre_thumb.webp'}" 
                             alt="${item.nombre}" 
                             loading="lazy" 
                             decoding="async" 
-                            width="300" 
-                            height="300" 
+                            width="250" 
+                            height="250" 
                             class="w-full h-full object-contain group-hover:scale-105 transition duration-300" 
                             onerror="this.onerror=null;this.src='assets/img/mascota_tigre_thumb.webp';"
                         />
+                        <span class="absolute top-2 left-2 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-[9px] font-mono font-black px-1.5 py-0.5 rounded shadow">
+                            Oferta
+                        </span>
                     </div>
+
+                    <!-- Datos y Rating -->
                     <div class="flex items-center justify-between gap-1 mb-1">
                         <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block">${item.marca || 'Vía MX'}</span>
-                        <span class="text-[9px] font-mono text-slate-500 uppercase">${item.sku}</span>
+                        <div class="flex items-center gap-1 text-[10px] text-amber-400 font-bold">
+                            <i class="fa-solid fa-star text-[9px]"></i> ${item.rating || '4.8'}
+                        </div>
                     </div>
-                    <h4 class="text-white font-bold text-xs sm:text-sm mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${item.nombre}">${item.nombre}</h4>
-                    <p class="text-slate-400 text-xs mb-3 line-clamp-2 leading-relaxed font-normal">${item.descripcion || ''}</p>
+
+                    <!-- Título -->
+                    <h4 class="text-white font-bold text-xs mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${item.nombre}">${item.nombre}</h4>
+                    <p class="text-slate-400 text-[11px] mb-3 line-clamp-2 leading-tight font-normal">${item.descripcion || ''}</p>
                 </div>
-                <div class="flex justify-between items-center pt-3 border-t border-slate-800/80">
-                    <div>
-                        <span class="text-[9px] font-mono text-slate-400 block uppercase">Precio</span>
+
+                <!-- Precio y Botón de Compra -->
+                <div class="flex flex-col gap-2 pt-2.5 border-t border-slate-800/80">
+                    <div class="flex items-baseline justify-between">
                         <span class="text-amber-400 font-black text-sm sm:text-base font-mono">${formatCurrency(item.precio)}</span>
+                        ${item.original && item.original > item.precio ? `<span class="text-slate-500 line-through text-[10px] font-mono">$${item.original.toFixed(2)}</span>` : ''}
                     </div>
-                    <button onclick="addToCart('${item.sku}')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition active:scale-95 shadow-md shadow-cyan-500/20 cursor-pointer">
-                        <i class="fa-solid fa-cart-plus"></i> Agregar
+                    <button onclick="addToCart('${item.sku}')" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-2 rounded-xl text-xs flex items-center justify-center gap-1.5 transition active:scale-95 shadow-md shadow-amber-500/20 cursor-pointer">
+                        <i class="fa-solid fa-cart-plus"></i> Agregar al carrito
                     </button>
                 </div>
             </div>
@@ -316,10 +886,10 @@
 
     function filterByDept(dept, btn) {
         document.querySelectorAll('.dept-btn').forEach(b => {
-            b.className = "dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer";
+            b.className = "dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center justify-between cursor-pointer";
         });
         if (btn) {
-            btn.className = "dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 cursor-pointer";
+            btn.className = "dept-btn w-full text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center justify-between bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 cursor-pointer";
         }
 
         if (dept === 'todos') {
@@ -328,6 +898,12 @@
             currentFilteredCatalog = viamxCatalog.filter(i => i.categoria === dept);
         }
         renderCatalog(currentFilteredCatalog);
+    }
+
+    function handleSearch(q) {
+        const input = document.getElementById("siteSearch");
+        if (input) input.value = q;
+        handleSearchSubmit();
     }
 
     function handleSearchSubmit(e) {
@@ -375,7 +951,7 @@
             
             localStorage.setItem("ecosystem_global_cart", JSON.stringify(cart));
             updateCartBadge();
-            alert(`"${item.nombre}" agregado al carrito con éxito.`);
+            alert(`"${item.nombre}" agregado al carrito.`);
         } catch(e) {}
     }
 
