@@ -12,67 +12,42 @@ if not os.path.exists(VIAMX_DIR):
     if os.path.exists(alt):
         VIAMX_DIR = alt
 
-INDEX_PATH = os.path.join(VIAMX_DIR, "index.html")
-PRODUCTO_PATH = os.path.join(VIAMX_DIR, "producto.html")
-CATALOG_PATH = os.path.join(VIAMX_DIR, "catalog.json")
 IMG_DIR = os.path.join(VIAMX_DIR, "assets", "img")
 os.makedirs(IMG_DIR, exist_ok=True)
 
+INDEX_PATH = os.path.join(VIAMX_DIR, "index.html")
+PRODUCTO_PATH = os.path.join(VIAMX_DIR, "producto.html")
+CATALOG_PATH = os.path.join(VIAMX_DIR, "catalog.json")
+
 print("=" * 75)
-print("LOCALIZANDO Y NORMALIZANDO ASSETS MULTIMEDIA (FOTOS TIGRE + VIDEO)")
+print("NORMALIZANDO ARCHIVOS Y REPARANDO CARRUSEL Y VIDEO EN VÍA MX")
 print("=" * 75)
 
-# 1. Búsqueda y normalización de las 5 fotos de la familia tigre
+# 1. Normalizar las 5 fotos del carrusel en assets/img/
 for i in range(1, 6):
-    target_clean_name = f"carucel_{i}.jpeg"
-    target_space_name = f"carucel ({i}).jpeg"
-    target_clean_path = os.path.join(IMG_DIR, target_clean_name)
-    target_space_path = os.path.join(IMG_DIR, target_space_name)
+    source_space = os.path.join(IMG_DIR, f"carucel ({i}).jpeg")
+    source_space_jpg = os.path.join(IMG_DIR, f"carucel ({i}).jpg")
+    target_clean = os.path.join(IMG_DIR, f"carucel_{i}.jpeg")
+    target_clean_jpg = os.path.join(IMG_DIR, f"carucel_{i}.jpg")
 
-    found_path = None
-    # Buscar en VIAMX_DIR y monorepo
-    for root, _, files in os.walk(BASE_DIR):
-        for f in files:
-            f_lower = f.lower()
-            if (f_lower == f"carucel ({i}).jpeg" or f_lower == f"carucel ({i}).jpg" or 
-                f_lower == f"carucel_{i}.jpeg" or f_lower == f"carucel_{i}.jpg" or
-                f_lower == f"carousel ({i}).jpeg" or f_lower == f"carousel ({i}).jpg" or
-                f_lower == f"carucel{i}.jpeg" or f_lower == f"carucel{i}.jpg"):
-                found_path = os.path.join(root, f)
-                break
-        if found_path:
-            break
+    if os.path.exists(source_space):
+        shutil.copy2(source_space, target_clean)
+        shutil.copy2(source_space, target_clean_jpg)
+        print(f"✓ carucel ({i}).jpeg -> normalizado como carucel_{i}.jpeg")
+    elif os.path.exists(source_space_jpg):
+        shutil.copy2(source_space_jpg, target_clean)
+        shutil.copy2(source_space_jpg, target_clean_jpg)
+        print(f"✓ carucel ({i}).jpg -> normalizado como carucel_{i}.jpeg")
 
-    if found_path:
-        shutil.copy2(found_path, target_clean_path)
-        shutil.copy2(found_path, target_space_path)
-        print(f"✓ Foto {i} normalizada en: assets/img/{target_clean_name}")
-    else:
-        # Si no existe, usar la mascota como fallback temporal
-        mascota_path = os.path.join(IMG_DIR, "mascota_tigre_thumb.webp")
-        if os.path.exists(mascota_path):
-            shutil.copy2(mascota_path, target_clean_path)
-            shutil.copy2(mascota_path, target_space_path)
+# 2. Normalizar el video de lealtad
+video_original = os.path.join(IMG_DIR, "Tigers_walking_in_department_store_202608220510.mp4")
+video_clean = os.path.join(IMG_DIR, "loyalty_video.mp4")
+video_root = os.path.join(VIAMX_DIR, "Tigers_walking_in_department_store_202608220510.mp4")
 
-# 2. Búsqueda y normalización del video de lealtad
-video_name = "Tigers_walking_in_department_store_202608220510.mp4"
-target_video_img = os.path.join(IMG_DIR, video_name)
-target_video_root = os.path.join(VIAMX_DIR, video_name)
-target_video_clean = os.path.join(IMG_DIR, "loyalty_video.mp4")
-
-found_video = None
-for root, _, files in os.walk(BASE_DIR):
-    if video_name in files:
-        found_video = os.path.join(root, video_name)
-        break
-
-if found_video:
-    shutil.copy2(found_video, target_video_img)
-    shutil.copy2(found_video, target_video_root)
-    shutil.copy2(found_video, target_video_clean)
-    print(f"✓ Video localizado y copiado a: assets/img/{video_name}")
-else:
-    print(f"⚠️ Video no encontrado en {BASE_DIR}. Se configurará fallback seguro.")
+if os.path.exists(video_original):
+    shutil.copy2(video_original, video_clean)
+    shutil.copy2(video_original, video_root)
+    print("✓ Video de lealtad normalizado como loyalty_video.mp4")
 
 # 3. Cargar catálogo de 200 productos
 if os.path.exists(CATALOG_PATH):
@@ -262,9 +237,9 @@ FOOTER_UNIVERSAL_HTML = """
 """
 
 # =========================================================================
-# 5. GENERAR INDEX.HTML CON CARRUSEL DIRECTO Y VIDEO ENLAZADO
+# RECONSTRUCCIÓN FINAL DE INDEX.HTML
 # =========================================================================
-INDEX_HTML_CONTENT = f"""<!DOCTYPE html>
+INDEX_HTML_FINAL = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -382,28 +357,28 @@ INDEX_HTML_CONTENT = f"""<!DOCTYPE html>
         </div>
     </header>
 
-    <!-- HERO SLIDER CON CARGA MULTI-RUTA (720PX - COBERTURA TOTAL) -->
+    <!-- HERO SLIDER REPARADO CON RUTAS DIRECTAS Y MULTI-FORMATO -->
     <div id="hero-slider-container" style="position: relative; width: 100%; height: 720px; min-height: 720px; overflow: hidden; background-color: #020617; border-bottom: 1px solid #1e293b; user-select: none;">
         <div id="hero-slider" style="position: relative; width: 100%; height: 100%;">
             <!-- Slide 1 -->
             <div class="hero-slide active" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 1; z-index: 10; transition: opacity 1000ms ease-in-out;">
-                <img src="assets/img/carucel_1.jpeg" alt="Familia Tigre 1" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.onerror=null; this.src='assets/img/carucel (1).jpeg';" />
+                <img src="assets/img/carucel_1.jpeg" alt="Familia Tigre 1" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;" onerror="this.onerror=null; this.src='assets/img/carucel (1).jpeg';" />
             </div>
             <!-- Slide 2 -->
             <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
-                <img src="assets/img/carucel_2.jpeg" alt="Familia Tigre 2" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.onerror=null; this.src='assets/img/carucel (2).jpeg';" />
+                <img src="assets/img/carucel_2.jpeg" alt="Familia Tigre 2" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;" onerror="this.onerror=null; this.src='assets/img/carucel (2).jpeg';" />
             </div>
             <!-- Slide 3 -->
             <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
-                <img src="assets/img/carucel_3.jpeg" alt="Familia Tigre 3" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.onerror=null; this.src='assets/img/carucel (3).jpeg';" />
+                <img src="assets/img/carucel_3.jpeg" alt="Familia Tigre 3" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;" onerror="this.onerror=null; this.src='assets/img/carucel (3).jpeg';" />
             </div>
             <!-- Slide 4 -->
             <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
-                <img src="assets/img/carucel_4.jpeg" alt="Familia Tigre 4" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.onerror=null; this.src='assets/img/carucel (4).jpeg';" />
+                <img src="assets/img/carucel_4.jpeg" alt="Familia Tigre 4" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;" onerror="this.onerror=null; this.src='assets/img/carucel (4).jpeg';" />
             </div>
             <!-- Slide 5 -->
             <div class="hero-slide" style="position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; z-index: 0; transition: opacity 1000ms ease-in-out;">
-                <img src="assets/img/carucel_5.jpeg" alt="Familia Tigre 5" style="width: 100%; height: 100%; object-fit: cover; object-position: center;" onerror="this.onerror=null; this.src='assets/img/carucel (5).jpeg';" />
+                <img src="assets/img/carucel_5.jpeg" alt="Familia Tigre 5" style="width: 100%; height: 100%; object-fit: cover; object-position: center; display: block;" onerror="this.onerror=null; this.src='assets/img/carucel (5).jpeg';" />
             </div>
         </div>
 
@@ -496,7 +471,7 @@ INDEX_HTML_CONTENT = f"""<!DOCTYPE html>
         </div>
     </main>
 
-    <!-- PROGRAMA DE LEALTAD CON VIDEO FUNCIONAL -->
+    <!-- PROGRAMA DE LEALTAD CON VIDEO Y BOTONES DIRECTOS -->
     <section class="py-16 bg-slate-900/60 border-t border-slate-800 overflow-hidden" id="lealtad">
         <div class="max-w-7xl mx-auto px-4 sm:px-6">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -505,7 +480,7 @@ INDEX_HTML_CONTENT = f"""<!DOCTYPE html>
                 <div class="lg:col-span-5 flex flex-col items-center text-center">
                     <div class="relative w-full max-w-[380px] rounded-3xl overflow-hidden border border-slate-800 shadow-2xl bg-slate-950 flex flex-col">
                         <div class="relative w-full h-80 sm:h-96 overflow-hidden bg-slate-950" id="video-container-viamx">
-                            <video autoplay muted loop playsinline preload="auto" class="w-full h-full object-cover" id="viamx-loyalty-video" poster="assets/img/mascota_tigre_thumb.webp">
+                            <video src="assets/img/Tigers_walking_in_department_store_202608220510.mp4" autoplay muted loop playsinline preload="auto" class="w-full h-full object-cover" id="viamx-loyalty-video" poster="assets/img/mascota_tigre_thumb.webp">
                                 <source src="assets/img/Tigers_walking_in_department_store_202608220510.mp4" type="video/mp4" />
                                 <source src="assets/img/loyalty_video.mp4" type="video/mp4" />
                                 <source src="Tigers_walking_in_department_store_202608220510.mp4" type="video/mp4" />
@@ -603,6 +578,7 @@ INDEX_HTML_CONTENT = f"""<!DOCTYPE html>
         grid.innerHTML = pageItems.map(item => `
             <div onclick="window.location.href='producto.html?sku=' + encodeURIComponent(item.sku)" class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 rounded-2xl p-3.5 flex flex-col justify-between transition duration-300 shadow-xl group hover:shadow-cyan-950/20 cursor-pointer">
                 <div>
+                    <!-- Imagen -->
                     <div class="w-full h-44 overflow-hidden rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-center mb-3 p-1.5 relative">
                         <img 
                             src="${{item.imagen || 'assets/img/mascota_tigre_thumb.webp'}}" 
@@ -619,6 +595,7 @@ INDEX_HTML_CONTENT = f"""<!DOCTYPE html>
                         </span>
                     </div>
 
+                    <!-- Marca & Rating -->
                     <div class="flex items-center justify-between gap-1 mb-1">
                         <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block truncate">${{item.marca || 'Vía MX'}}</span>
                         <div class="flex items-center gap-1 text-[10px] text-amber-400 font-bold shrink-0">
@@ -632,11 +609,13 @@ INDEX_HTML_CONTENT = f"""<!DOCTYPE html>
                 </div>
 
                 <div>
+                    <!-- Precio -->
                     <div class="flex items-baseline justify-between pt-2.5 border-t border-slate-800/80 mb-2.5">
                         <span class="text-amber-400 font-black text-sm sm:text-base font-mono">${{formatCurrency(item.precio)}}</span>
                         ${{item.original && item.original > item.precio ? `<span class="text-slate-500 line-through text-[10px] font-mono">$${{item.original.toFixed(2)}}</span>` : ''}}
                     </div>
 
+                    <!-- Botones -->
                     <div class="grid grid-cols-2 gap-1.5">
                         <button onclick="event.stopPropagation(); addToCart('${{item.sku}}')" class="bg-slate-900 hover:bg-slate-800 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-bold py-2 px-1 rounded-xl text-[11px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer shadow-sm" title="Agregar al carrito">
                             <i class="fa-solid fa-cart-plus text-xs"></i> <span class="truncate">Carrito</span>
@@ -796,7 +775,7 @@ INDEX_HTML_CONTENT = f"""<!DOCTYPE html>
         document.getElementById('form-lealtad-viamx').reset();
     }}
 
-    // Carrusel Principal
+    // Control del Carrusel con estilos explícitos
     window.currentSlide = 0;
     window.sliderInterval = null;
 
@@ -880,14 +859,14 @@ INDEX_HTML_CONTENT = f"""<!DOCTYPE html>
 """
 
 with open(INDEX_PATH, "w", encoding="utf-8") as f:
-    f.write(INDEX_HTML_CONTENT)
+    f.write(INDEX_HTML_FINAL)
 
-print("✓ index.html reconstruido con carrusel multi-ruta y video enlazado.")
+print(f"✓ index.html reconstruido con carrusel reparado y video funcional.")
 
 print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
 if os.path.exists(os.path.join(VIAMX_DIR, ".git")):
     subprocess.run(["git", "add", "-A"], cwd=VIAMX_DIR, check=True)
-    subprocess.run(["git", "commit", "-m", "fix(hero): reparar carga de 5 imagenes de carrusel y video de lealtad", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "fix(hero): normalizar archivos multimedia carucel(1-5) y video lealtad para visualizacion inmediata", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
     res_viamx = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=VIAMX_DIR, capture_output=True, text=True)
     print(f"🟢 Vía MX NFL -> Push: {'OK' if res_viamx.returncode == 0 else res_viamx.stderr.strip()}")
 
