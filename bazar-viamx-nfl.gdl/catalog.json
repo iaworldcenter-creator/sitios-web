@@ -8,7 +8,7 @@
         "marca": "Samsung",
         "rating": "4.2",
         "reviews": "250",
-        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Samsung con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Samsung con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 1
     },
@@ -34,7 +34,7 @@
         "marca": "Panasonic",
         "rating": "4.4",
         "reviews": "336",
-        "descripcion": "Artículo de importación directa marca Panasonic. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Panasonic. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 1
     },
@@ -47,7 +47,7 @@
         "marca": "Amazon",
         "rating": "4.5",
         "reviews": "379",
-        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor de huellas bajo pantalla. Respaldado por Amazon con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor biométrico. Respaldado por Amazon con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 1
     },
@@ -73,7 +73,7 @@
         "marca": "JBL",
         "rating": "4.7",
         "reviews": "465",
-        "descripcion": "Artículo de importación directa marca JBL. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca JBL. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 1
     },
@@ -86,7 +86,7 @@
         "marca": "Xiaomi",
         "rating": "4.8",
         "reviews": "508",
-        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Xiaomi con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Xiaomi con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 1
     },
@@ -99,7 +99,7 @@
         "marca": "Motorola",
         "rating": "4.9",
         "reviews": "551",
-        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y guía de proyectos.",
+        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_blanco_pecera.webp",
         "page": 1
     },
@@ -112,7 +112,7 @@
         "marca": "AXIDUN",
         "rating": "4.2",
         "reviews": "594",
-        "descripcion": "Artículo de importación directa marca AXIDUN. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca AXIDUN. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 1
     },
@@ -125,7 +125,7 @@
         "marca": "Bosch",
         "rating": "4.3",
         "reviews": "637",
-        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Bosch con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Bosch con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 1
     },
@@ -151,7 +151,7 @@
         "marca": "Philips",
         "rating": "4.5",
         "reviews": "723",
-        "descripcion": "Artículo de importación directa marca Philips. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Philips. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 1
     },
@@ -164,7 +164,7 @@
         "marca": "Tefal",
         "rating": "4.6",
         "reviews": "766",
-        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Tefal con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Tefal con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 1
     },
@@ -190,7 +190,7 @@
         "marca": "Craftsman",
         "rating": "4.8",
         "reviews": "852",
-        "descripcion": "Artículo de importación directa marca Craftsman. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Craftsman. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 1
     },
@@ -203,7 +203,7 @@
         "marca": "Arduino",
         "rating": "4.9",
         "reviews": "895",
-        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Arduino con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Arduino con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 1
     },
@@ -229,7 +229,7 @@
         "marca": "Sennheiser",
         "rating": "4.3",
         "reviews": "981",
-        "descripcion": "Artículo de importación directa marca Sennheiser. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Sennheiser. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 1
     },
@@ -242,7 +242,7 @@
         "marca": "Stanley",
         "rating": "4.4",
         "reviews": "1024",
-        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Stanley con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Stanley con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 1
     },
@@ -255,7 +255,7 @@
         "marca": "Sony",
         "rating": "4.5",
         "reviews": "1067",
-        "descripcion": "Paquete con artículos de oportunidad grado A con garantía de tienda local.",
+        "descripcion": "Paquete con artículos de oportunidad grado A con garantía y respaldo de fabricante.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_mantenimiento_thumb.webp",
         "page": 1
     },
@@ -268,7 +268,7 @@
         "marca": "LG",
         "rating": "4.2",
         "reviews": "400",
-        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por LG con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por LG con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 2
     },
@@ -294,7 +294,7 @@
         "marca": "Amazon",
         "rating": "4.4",
         "reviews": "486",
-        "descripcion": "Artículo de importación directa marca Amazon. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Amazon. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 2
     },
@@ -307,7 +307,7 @@
         "marca": "Anker",
         "rating": "4.5",
         "reviews": "529",
-        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor de huellas bajo pantalla. Respaldado por Anker con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor biométrico. Respaldado por Anker con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 2
     },
@@ -333,7 +333,7 @@
         "marca": "Xiaomi",
         "rating": "4.7",
         "reviews": "615",
-        "descripcion": "Artículo de importación directa marca Xiaomi. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Xiaomi. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 2
     },
@@ -346,7 +346,7 @@
         "marca": "Motorola",
         "rating": "4.8",
         "reviews": "658",
-        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Motorola con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Motorola con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 2
     },
@@ -359,7 +359,7 @@
         "marca": "AXIDUN",
         "rating": "4.9",
         "reviews": "701",
-        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y guía de proyectos.",
+        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/fuente_modular.webp",
         "page": 2
     },
@@ -372,7 +372,7 @@
         "marca": "Bosch",
         "rating": "4.2",
         "reviews": "744",
-        "descripcion": "Artículo de importación directa marca Bosch. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Bosch. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 2
     },
@@ -385,7 +385,7 @@
         "marca": "Apple",
         "rating": "4.3",
         "reviews": "787",
-        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Apple con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Apple con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 2
     },
@@ -411,7 +411,7 @@
         "marca": "Tefal",
         "rating": "4.5",
         "reviews": "873",
-        "descripcion": "Artículo de importación directa marca Tefal. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Tefal. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 2
     },
@@ -424,7 +424,7 @@
         "marca": "Cuisinart",
         "rating": "4.6",
         "reviews": "916",
-        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Cuisinart con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Cuisinart con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 2
     },
@@ -450,7 +450,7 @@
         "marca": "Arduino",
         "rating": "4.8",
         "reviews": "1002",
-        "descripcion": "Artículo de importación directa marca Arduino. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Arduino. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 2
     },
@@ -463,7 +463,7 @@
         "marca": "DeWalt",
         "rating": "4.9",
         "reviews": "1045",
-        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por DeWalt con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por DeWalt con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 2
     },
@@ -489,7 +489,7 @@
         "marca": "Stanley",
         "rating": "4.3",
         "reviews": "1131",
-        "descripcion": "Artículo de importación directa marca Stanley. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Stanley. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 2
     },
@@ -502,7 +502,7 @@
         "marca": "Sony",
         "rating": "4.4",
         "reviews": "1174",
-        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Sony con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Sony con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 2
     },
@@ -515,7 +515,7 @@
         "marca": "Samsung",
         "rating": "4.5",
         "reviews": "1217",
-        "descripcion": "Paquete con artículos de oportunidad grado A con garantía de tienda local.",
+        "descripcion": "Paquete con artículos de oportunidad grado A con garantía y respaldo de fabricante.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_blanco_pecera.webp",
         "page": 2
     },
@@ -528,7 +528,7 @@
         "marca": "Panasonic",
         "rating": "4.2",
         "reviews": "550",
-        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Panasonic con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Panasonic con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 3
     },
@@ -554,7 +554,7 @@
         "marca": "Anker",
         "rating": "4.4",
         "reviews": "636",
-        "descripcion": "Artículo de importación directa marca Anker. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Anker. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 3
     },
@@ -567,7 +567,7 @@
         "marca": "JBL",
         "rating": "4.5",
         "reviews": "679",
-        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor de huellas bajo pantalla. Respaldado por JBL con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor biométrico. Respaldado por JBL con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 3
     },
@@ -593,7 +593,7 @@
         "marca": "Motorola",
         "rating": "4.7",
         "reviews": "765",
-        "descripcion": "Artículo de importación directa marca Motorola. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Motorola. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 3
     },
@@ -606,7 +606,7 @@
         "marca": "AXIDUN",
         "rating": "4.8",
         "reviews": "808",
-        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por AXIDUN con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por AXIDUN con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 3
     },
@@ -619,7 +619,7 @@
         "marca": "Bosch",
         "rating": "4.9",
         "reviews": "851",
-        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y guía de proyectos.",
+        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp",
         "page": 3
     },
@@ -632,7 +632,7 @@
         "marca": "Apple",
         "rating": "4.2",
         "reviews": "894",
-        "descripcion": "Artículo de importación directa marca Apple. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Apple. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 3
     },
@@ -645,7 +645,7 @@
         "marca": "Philips",
         "rating": "4.3",
         "reviews": "937",
-        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Philips con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Philips con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 3
     },
@@ -671,7 +671,7 @@
         "marca": "Cuisinart",
         "rating": "4.5",
         "reviews": "1023",
-        "descripcion": "Artículo de importación directa marca Cuisinart. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Cuisinart. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 3
     },
@@ -684,7 +684,7 @@
         "marca": "Craftsman",
         "rating": "4.6",
         "reviews": "1066",
-        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Craftsman con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Craftsman con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 3
     },
@@ -710,7 +710,7 @@
         "marca": "DeWalt",
         "rating": "4.8",
         "reviews": "1152",
-        "descripcion": "Artículo de importación directa marca DeWalt. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca DeWalt. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 3
     },
@@ -723,7 +723,7 @@
         "marca": "Sennheiser",
         "rating": "4.9",
         "reviews": "1195",
-        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Sennheiser con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Sennheiser con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 3
     },
@@ -749,7 +749,7 @@
         "marca": "Sony",
         "rating": "4.3",
         "reviews": "1281",
-        "descripcion": "Artículo de importación directa marca Sony. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Sony. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 3
     },
@@ -762,7 +762,7 @@
         "marca": "Samsung",
         "rating": "4.4",
         "reviews": "1324",
-        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Samsung con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Samsung con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 3
     },
@@ -775,7 +775,7 @@
         "marca": "LG",
         "rating": "4.5",
         "reviews": "1367",
-        "descripcion": "Paquete con artículos de oportunidad grado A con garantía de tienda local.",
+        "descripcion": "Paquete con artículos de oportunidad grado A con garantía y respaldo de fabricante.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/fuente_modular.webp",
         "page": 3
     },
@@ -788,7 +788,7 @@
         "marca": "Amazon",
         "rating": "4.2",
         "reviews": "700",
-        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Amazon con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Amazon con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 4
     },
@@ -814,7 +814,7 @@
         "marca": "JBL",
         "rating": "4.4",
         "reviews": "786",
-        "descripcion": "Artículo de importación directa marca JBL. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca JBL. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 4
     },
@@ -827,7 +827,7 @@
         "marca": "Xiaomi",
         "rating": "4.5",
         "reviews": "829",
-        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor de huellas bajo pantalla. Respaldado por Xiaomi con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor biométrico. Respaldado por Xiaomi con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 4
     },
@@ -853,7 +853,7 @@
         "marca": "AXIDUN",
         "rating": "4.7",
         "reviews": "915",
-        "descripcion": "Artículo de importación directa marca AXIDUN. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca AXIDUN. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 4
     },
@@ -866,7 +866,7 @@
         "marca": "Bosch",
         "rating": "4.8",
         "reviews": "958",
-        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Bosch con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Bosch con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 4
     },
@@ -879,7 +879,7 @@
         "marca": "Apple",
         "rating": "4.9",
         "reviews": "1001",
-        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y guía de proyectos.",
+        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/Female_technician_assembling_gam_202608041518_thumb.webp",
         "page": 4
     },
@@ -892,7 +892,7 @@
         "marca": "Philips",
         "rating": "4.2",
         "reviews": "1044",
-        "descripcion": "Artículo de importación directa marca Philips. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Philips. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 4
     },
@@ -905,7 +905,7 @@
         "marca": "Tefal",
         "rating": "4.3",
         "reviews": "1087",
-        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Tefal con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Tefal con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 4
     },
@@ -931,7 +931,7 @@
         "marca": "Craftsman",
         "rating": "4.5",
         "reviews": "1173",
-        "descripcion": "Artículo de importación directa marca Craftsman. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Craftsman. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 4
     },
@@ -944,7 +944,7 @@
         "marca": "Arduino",
         "rating": "4.6",
         "reviews": "1216",
-        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Arduino con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Arduino con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 4
     },
@@ -970,7 +970,7 @@
         "marca": "Sennheiser",
         "rating": "4.8",
         "reviews": "1302",
-        "descripcion": "Artículo de importación directa marca Sennheiser. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Sennheiser. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 4
     },
@@ -983,7 +983,7 @@
         "marca": "Stanley",
         "rating": "4.9",
         "reviews": "1345",
-        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Stanley con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Stanley con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 4
     },
@@ -1009,7 +1009,7 @@
         "marca": "Samsung",
         "rating": "4.3",
         "reviews": "1431",
-        "descripcion": "Artículo de importación directa marca Samsung. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Samsung. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 4
     },
@@ -1022,7 +1022,7 @@
         "marca": "LG",
         "rating": "4.4",
         "reviews": "1474",
-        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por LG con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por LG con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 4
     },
@@ -1035,7 +1035,7 @@
         "marca": "Panasonic",
         "rating": "4.5",
         "reviews": "1517",
-        "descripcion": "Paquete con artículos de oportunidad grado A con garantía de tienda local.",
+        "descripcion": "Paquete con artículos de oportunidad grado A con garantía y respaldo de fabricante.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp",
         "page": 4
     },
@@ -1048,7 +1048,7 @@
         "marca": "Anker",
         "rating": "4.2",
         "reviews": "850",
-        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Anker con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Anker con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 5
     },
@@ -1074,7 +1074,7 @@
         "marca": "Xiaomi",
         "rating": "4.4",
         "reviews": "936",
-        "descripcion": "Artículo de importación directa marca Xiaomi. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Xiaomi. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 5
     },
@@ -1087,7 +1087,7 @@
         "marca": "Motorola",
         "rating": "4.5",
         "reviews": "979",
-        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor de huellas bajo pantalla. Respaldado por Motorola con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor biométrico. Respaldado por Motorola con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 5
     },
@@ -1113,7 +1113,7 @@
         "marca": "Bosch",
         "rating": "4.7",
         "reviews": "1065",
-        "descripcion": "Artículo de importación directa marca Bosch. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Bosch. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 5
     },
@@ -1126,7 +1126,7 @@
         "marca": "Apple",
         "rating": "4.8",
         "reviews": "1108",
-        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Apple con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Apple con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 5
     },
@@ -1139,7 +1139,7 @@
         "marca": "Philips",
         "rating": "4.9",
         "reviews": "1151",
-        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y guía de proyectos.",
+        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_mantenimiento_thumb.webp",
         "page": 5
     },
@@ -1152,7 +1152,7 @@
         "marca": "Tefal",
         "rating": "4.2",
         "reviews": "1194",
-        "descripcion": "Artículo de importación directa marca Tefal. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Tefal. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 5
     },
@@ -1165,7 +1165,7 @@
         "marca": "Cuisinart",
         "rating": "4.3",
         "reviews": "1237",
-        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Cuisinart con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Cuisinart con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 5
     },
@@ -1191,7 +1191,7 @@
         "marca": "Arduino",
         "rating": "4.5",
         "reviews": "1323",
-        "descripcion": "Artículo de importación directa marca Arduino. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Arduino. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 5
     },
@@ -1204,7 +1204,7 @@
         "marca": "DeWalt",
         "rating": "4.6",
         "reviews": "1366",
-        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por DeWalt con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por DeWalt con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 5
     },
@@ -1230,7 +1230,7 @@
         "marca": "Stanley",
         "rating": "4.8",
         "reviews": "1452",
-        "descripcion": "Artículo de importación directa marca Stanley. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Stanley. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 5
     },
@@ -1243,7 +1243,7 @@
         "marca": "Sony",
         "rating": "4.9",
         "reviews": "1495",
-        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Sony con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Sony con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 5
     },
@@ -1269,7 +1269,7 @@
         "marca": "LG",
         "rating": "4.3",
         "reviews": "1581",
-        "descripcion": "Artículo de importación directa marca LG. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca LG. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 5
     },
@@ -1282,7 +1282,7 @@
         "marca": "Panasonic",
         "rating": "4.4",
         "reviews": "1624",
-        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Panasonic con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Panasonic con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 5
     },
@@ -1295,7 +1295,7 @@
         "marca": "Amazon",
         "rating": "4.5",
         "reviews": "1667",
-        "descripcion": "Paquete con artículos de oportunidad grado A con garantía de tienda local.",
+        "descripcion": "Paquete con artículos de oportunidad grado A con garantía y respaldo de fabricante.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/Female_technician_assembling_gam_202608041518_thumb.webp",
         "page": 5
     },
@@ -1308,7 +1308,7 @@
         "marca": "JBL",
         "rating": "4.2",
         "reviews": "1000",
-        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por JBL con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por JBL con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 6
     },
@@ -1334,7 +1334,7 @@
         "marca": "Motorola",
         "rating": "4.4",
         "reviews": "1086",
-        "descripcion": "Artículo de importación directa marca Motorola. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Motorola. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 6
     },
@@ -1347,7 +1347,7 @@
         "marca": "AXIDUN",
         "rating": "4.5",
         "reviews": "1129",
-        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor de huellas bajo pantalla. Respaldado por AXIDUN con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor biométrico. Respaldado por AXIDUN con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 6
     },
@@ -1373,7 +1373,7 @@
         "marca": "Apple",
         "rating": "4.7",
         "reviews": "1215",
-        "descripcion": "Artículo de importación directa marca Apple. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Apple. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 6
     },
@@ -1386,7 +1386,7 @@
         "marca": "Philips",
         "rating": "4.8",
         "reviews": "1258",
-        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Philips con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Philips con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 6
     },
@@ -1399,7 +1399,7 @@
         "marca": "Tefal",
         "rating": "4.9",
         "reviews": "1301",
-        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y guía de proyectos.",
+        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_blanco_pecera.webp",
         "page": 6
     },
@@ -1412,7 +1412,7 @@
         "marca": "Cuisinart",
         "rating": "4.2",
         "reviews": "1344",
-        "descripcion": "Artículo de importación directa marca Cuisinart. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Cuisinart. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 6
     },
@@ -1425,7 +1425,7 @@
         "marca": "Craftsman",
         "rating": "4.3",
         "reviews": "1387",
-        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Craftsman con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Craftsman con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 6
     },
@@ -1451,7 +1451,7 @@
         "marca": "DeWalt",
         "rating": "4.5",
         "reviews": "1473",
-        "descripcion": "Artículo de importación directa marca DeWalt. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca DeWalt. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 6
     },
@@ -1464,7 +1464,7 @@
         "marca": "Sennheiser",
         "rating": "4.6",
         "reviews": "1516",
-        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Sennheiser con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Sennheiser con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 6
     },
@@ -1490,7 +1490,7 @@
         "marca": "Sony",
         "rating": "4.8",
         "reviews": "1602",
-        "descripcion": "Artículo de importación directa marca Sony. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Sony. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 6
     },
@@ -1503,7 +1503,7 @@
         "marca": "Samsung",
         "rating": "4.9",
         "reviews": "1645",
-        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Samsung con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Samsung con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 6
     },
@@ -1529,7 +1529,7 @@
         "marca": "Panasonic",
         "rating": "4.3",
         "reviews": "1731",
-        "descripcion": "Artículo de importación directa marca Panasonic. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Panasonic. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 6
     },
@@ -1542,7 +1542,7 @@
         "marca": "Amazon",
         "rating": "4.4",
         "reviews": "1774",
-        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Amazon con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Amazon con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 6
     },
@@ -1555,7 +1555,7 @@
         "marca": "Anker",
         "rating": "4.5",
         "reviews": "1817",
-        "descripcion": "Paquete con artículos de oportunidad grado A con garantía de tienda local.",
+        "descripcion": "Paquete con artículos de oportunidad grado A con garantía y respaldo de fabricante.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_mantenimiento_thumb.webp",
         "page": 6
     },
@@ -1568,7 +1568,7 @@
         "marca": "Xiaomi",
         "rating": "4.2",
         "reviews": "1150",
-        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Xiaomi con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Xiaomi con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 7
     },
@@ -1594,7 +1594,7 @@
         "marca": "AXIDUN",
         "rating": "4.4",
         "reviews": "1236",
-        "descripcion": "Artículo de importación directa marca AXIDUN. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca AXIDUN. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 7
     },
@@ -1607,7 +1607,7 @@
         "marca": "Bosch",
         "rating": "4.5",
         "reviews": "1279",
-        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor de huellas bajo pantalla. Respaldado por Bosch con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor biométrico. Respaldado por Bosch con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 7
     },
@@ -1633,7 +1633,7 @@
         "marca": "Philips",
         "rating": "4.7",
         "reviews": "1365",
-        "descripcion": "Artículo de importación directa marca Philips. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Philips. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 7
     },
@@ -1646,7 +1646,7 @@
         "marca": "Tefal",
         "rating": "4.8",
         "reviews": "1408",
-        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Tefal con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Tefal con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 7
     },
@@ -1659,7 +1659,7 @@
         "marca": "Cuisinart",
         "rating": "4.9",
         "reviews": "1451",
-        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y guía de proyectos.",
+        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/fuente_modular.webp",
         "page": 7
     },
@@ -1672,7 +1672,7 @@
         "marca": "Craftsman",
         "rating": "4.2",
         "reviews": "1494",
-        "descripcion": "Artículo de importación directa marca Craftsman. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Craftsman. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 7
     },
@@ -1685,7 +1685,7 @@
         "marca": "Arduino",
         "rating": "4.3",
         "reviews": "1537",
-        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Arduino con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Arduino con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 7
     },
@@ -1711,7 +1711,7 @@
         "marca": "Sennheiser",
         "rating": "4.5",
         "reviews": "1623",
-        "descripcion": "Artículo de importación directa marca Sennheiser. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Sennheiser. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 7
     },
@@ -1724,7 +1724,7 @@
         "marca": "Stanley",
         "rating": "4.6",
         "reviews": "1666",
-        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Stanley con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Stanley con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 7
     },
@@ -1750,7 +1750,7 @@
         "marca": "Samsung",
         "rating": "4.8",
         "reviews": "1752",
-        "descripcion": "Artículo de importación directa marca Samsung. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Samsung. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 7
     },
@@ -1763,7 +1763,7 @@
         "marca": "LG",
         "rating": "4.9",
         "reviews": "1795",
-        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por LG con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por LG con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 7
     },
@@ -1789,7 +1789,7 @@
         "marca": "Amazon",
         "rating": "4.3",
         "reviews": "1881",
-        "descripcion": "Artículo de importación directa marca Amazon. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Amazon. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 7
     },
@@ -1802,7 +1802,7 @@
         "marca": "Anker",
         "rating": "4.4",
         "reviews": "1924",
-        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Anker con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Anker con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 7
     },
@@ -1815,7 +1815,7 @@
         "marca": "JBL",
         "rating": "4.5",
         "reviews": "1967",
-        "descripcion": "Paquete con artículos de oportunidad grado A con garantía de tienda local.",
+        "descripcion": "Paquete con artículos de oportunidad grado A con garantía y respaldo de fabricante.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_blanco_pecera.webp",
         "page": 7
     },
@@ -1828,7 +1828,7 @@
         "marca": "Motorola",
         "rating": "4.2",
         "reviews": "1300",
-        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Motorola con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Motorola con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 8
     },
@@ -1854,7 +1854,7 @@
         "marca": "Bosch",
         "rating": "4.4",
         "reviews": "1386",
-        "descripcion": "Artículo de importación directa marca Bosch. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Bosch. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 8
     },
@@ -1867,7 +1867,7 @@
         "marca": "Apple",
         "rating": "4.5",
         "reviews": "1429",
-        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor de huellas bajo pantalla. Respaldado por Apple con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor biométrico. Respaldado por Apple con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 8
     },
@@ -1893,7 +1893,7 @@
         "marca": "Tefal",
         "rating": "4.7",
         "reviews": "1515",
-        "descripcion": "Artículo de importación directa marca Tefal. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Tefal. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 8
     },
@@ -1906,7 +1906,7 @@
         "marca": "Cuisinart",
         "rating": "4.8",
         "reviews": "1558",
-        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Cuisinart con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Cuisinart con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 8
     },
@@ -1919,7 +1919,7 @@
         "marca": "Craftsman",
         "rating": "4.9",
         "reviews": "1601",
-        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y guía de proyectos.",
+        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp",
         "page": 8
     },
@@ -1932,7 +1932,7 @@
         "marca": "Arduino",
         "rating": "4.2",
         "reviews": "1644",
-        "descripcion": "Artículo de importación directa marca Arduino. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Arduino. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 8
     },
@@ -1945,7 +1945,7 @@
         "marca": "DeWalt",
         "rating": "4.3",
         "reviews": "1687",
-        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por DeWalt con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por DeWalt con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 8
     },
@@ -1971,7 +1971,7 @@
         "marca": "Stanley",
         "rating": "4.5",
         "reviews": "1773",
-        "descripcion": "Artículo de importación directa marca Stanley. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Stanley. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 8
     },
@@ -1984,7 +1984,7 @@
         "marca": "Sony",
         "rating": "4.6",
         "reviews": "1816",
-        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Sony con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Sony con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 8
     },
@@ -2010,7 +2010,7 @@
         "marca": "LG",
         "rating": "4.8",
         "reviews": "1902",
-        "descripcion": "Artículo de importación directa marca LG. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca LG. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 8
     },
@@ -2023,7 +2023,7 @@
         "marca": "Panasonic",
         "rating": "4.9",
         "reviews": "1945",
-        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Panasonic con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Panasonic con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 8
     },
@@ -2049,7 +2049,7 @@
         "marca": "Anker",
         "rating": "4.3",
         "reviews": "2031",
-        "descripcion": "Artículo de importación directa marca Anker. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Anker. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 8
     },
@@ -2062,7 +2062,7 @@
         "marca": "JBL",
         "rating": "4.4",
         "reviews": "2074",
-        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por JBL con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por JBL con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 8
     },
@@ -2075,7 +2075,7 @@
         "marca": "Xiaomi",
         "rating": "4.5",
         "reviews": "2117",
-        "descripcion": "Paquete con artículos de oportunidad grado A con garantía de tienda local.",
+        "descripcion": "Paquete con artículos de oportunidad grado A con garantía y respaldo de fabricante.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/fuente_modular.webp",
         "page": 8
     },
@@ -2088,7 +2088,7 @@
         "marca": "AXIDUN",
         "rating": "4.2",
         "reviews": "1450",
-        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por AXIDUN con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por AXIDUN con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 9
     },
@@ -2114,7 +2114,7 @@
         "marca": "Apple",
         "rating": "4.4",
         "reviews": "1536",
-        "descripcion": "Artículo de importación directa marca Apple. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Apple. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 9
     },
@@ -2127,7 +2127,7 @@
         "marca": "Philips",
         "rating": "4.5",
         "reviews": "1579",
-        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor de huellas bajo pantalla. Respaldado por Philips con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor biométrico. Respaldado por Philips con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 9
     },
@@ -2153,7 +2153,7 @@
         "marca": "Cuisinart",
         "rating": "4.7",
         "reviews": "1665",
-        "descripcion": "Artículo de importación directa marca Cuisinart. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Cuisinart. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 9
     },
@@ -2166,7 +2166,7 @@
         "marca": "Craftsman",
         "rating": "4.8",
         "reviews": "1708",
-        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Craftsman con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Craftsman con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 9
     },
@@ -2179,7 +2179,7 @@
         "marca": "Arduino",
         "rating": "4.9",
         "reviews": "1751",
-        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y guía de proyectos.",
+        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/Female_technician_assembling_gam_202608041518_thumb.webp",
         "page": 9
     },
@@ -2192,7 +2192,7 @@
         "marca": "DeWalt",
         "rating": "4.2",
         "reviews": "1794",
-        "descripcion": "Artículo de importación directa marca DeWalt. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca DeWalt. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 9
     },
@@ -2205,7 +2205,7 @@
         "marca": "Sennheiser",
         "rating": "4.3",
         "reviews": "1837",
-        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Sennheiser con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Sennheiser con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 9
     },
@@ -2231,7 +2231,7 @@
         "marca": "Sony",
         "rating": "4.5",
         "reviews": "1923",
-        "descripcion": "Artículo de importación directa marca Sony. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Sony. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 9
     },
@@ -2244,7 +2244,7 @@
         "marca": "Samsung",
         "rating": "4.6",
         "reviews": "1966",
-        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Samsung con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por Samsung con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 9
     },
@@ -2270,7 +2270,7 @@
         "marca": "Panasonic",
         "rating": "4.8",
         "reviews": "2052",
-        "descripcion": "Artículo de importación directa marca Panasonic. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Panasonic. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 9
     },
@@ -2283,7 +2283,7 @@
         "marca": "Amazon",
         "rating": "4.9",
         "reviews": "2095",
-        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Amazon con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Amazon con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 9
     },
@@ -2309,7 +2309,7 @@
         "marca": "JBL",
         "rating": "4.3",
         "reviews": "2181",
-        "descripcion": "Artículo de importación directa marca JBL. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca JBL. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 9
     },
@@ -2322,7 +2322,7 @@
         "marca": "Xiaomi",
         "rating": "4.4",
         "reviews": "2224",
-        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Xiaomi con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Xiaomi con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 9
     },
@@ -2335,7 +2335,7 @@
         "marca": "Motorola",
         "rating": "4.5",
         "reviews": "2267",
-        "descripcion": "Paquete con artículos de oportunidad grado A con garantía de tienda local.",
+        "descripcion": "Paquete con artículos de oportunidad grado A con garantía y respaldo de fabricante.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp",
         "page": 9
     },
@@ -2348,7 +2348,7 @@
         "marca": "Bosch",
         "rating": "4.2",
         "reviews": "1600",
-        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Bosch con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos. Respaldado por Bosch con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 10
     },
@@ -2374,7 +2374,7 @@
         "marca": "Philips",
         "rating": "4.4",
         "reviews": "1686",
-        "descripcion": "Artículo de importación directa marca Philips. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Philips. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 10
     },
@@ -2387,7 +2387,7 @@
         "marca": "Tefal",
         "rating": "4.5",
         "reviews": "1729",
-        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor de huellas bajo pantalla. Respaldado por Tefal con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor biométrico. Respaldado por Tefal con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 10
     },
@@ -2413,7 +2413,7 @@
         "marca": "Craftsman",
         "rating": "4.7",
         "reviews": "1815",
-        "descripcion": "Artículo de importación directa marca Craftsman. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Craftsman. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp",
         "page": 10
     },
@@ -2426,7 +2426,7 @@
         "marca": "Arduino",
         "rating": "4.8",
         "reviews": "1858",
-        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Arduino con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión. Respaldado por Arduino con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp",
         "page": 10
     },
@@ -2439,7 +2439,7 @@
         "marca": "DeWalt",
         "rating": "4.9",
         "reviews": "1901",
-        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y guía de proyectos.",
+        "descripcion": "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_mantenimiento_thumb.webp",
         "page": 10
     },
@@ -2452,7 +2452,7 @@
         "marca": "Sennheiser",
         "rating": "4.2",
         "reviews": "1944",
-        "descripcion": "Artículo de importación directa marca Sennheiser. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Sennheiser. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp",
         "page": 10
     },
@@ -2465,7 +2465,7 @@
         "marca": "Stanley",
         "rating": "4.3",
         "reviews": "1987",
-        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Stanley con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia. Respaldado por Stanley con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp",
         "page": 10
     },
@@ -2491,7 +2491,7 @@
         "marca": "Samsung",
         "rating": "4.5",
         "reviews": "2073",
-        "descripcion": "Artículo de importación directa marca Samsung. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Samsung. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp",
         "page": 10
     },
@@ -2504,7 +2504,7 @@
         "marca": "LG",
         "rating": "4.6",
         "reviews": "2116",
-        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por LG con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Sillón de confort con sistema de masaje vibratorio de 8 puntos y portavasos integrados. Respaldado por LG con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp",
         "page": 10
     },
@@ -2530,7 +2530,7 @@
         "marca": "Amazon",
         "rating": "4.8",
         "reviews": "2202",
-        "descripcion": "Artículo de importación directa marca Amazon. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Amazon. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp",
         "page": 10
     },
@@ -2543,7 +2543,7 @@
         "marca": "Anker",
         "rating": "4.9",
         "reviews": "2245",
-        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Anker con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Discos de vinil rellenos con tuercas de seguridad antideslizantes para entrenamiento en casa. Respaldado por Anker con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "assets/img/mascota_tigre_thumb.webp",
         "page": 10
     },
@@ -2569,7 +2569,7 @@
         "marca": "Xiaomi",
         "rating": "4.3",
         "reviews": "2331",
-        "descripcion": "Artículo de importación directa marca Xiaomi. Entrega garantizada 48h en Pedro Moreno 501 A.",
+        "descripcion": "Artículo de importación directa marca Xiaomi. Envío seguro a la puerta de tu hogar.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp",
         "page": 10
     },
@@ -2582,7 +2582,7 @@
         "marca": "Motorola",
         "rating": "4.4",
         "reviews": "2374",
-        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Motorola con servicio técnico y 5% de cashback en Guadalajara Centro.",
+        "descripcion": "Grabadora para parabrisas con sensor nocturno, sensor de impacto G-Sensor y grabación en bucle. Respaldado por Motorola con envío 100% digital a domicilio y 5% de cashback.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp",
         "page": 10
     },
@@ -2595,7 +2595,7 @@
         "marca": "AXIDUN",
         "rating": "4.5",
         "reviews": "2417",
-        "descripcion": "Paquete con artículos de oportunidad grado A con garantía de tienda local.",
+        "descripcion": "Paquete con artículos de oportunidad grado A con garantía y respaldo de fabricante.",
         "imagen": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/Female_technician_assembling_gam_202608041518_thumb.webp",
         "page": 10
     }
