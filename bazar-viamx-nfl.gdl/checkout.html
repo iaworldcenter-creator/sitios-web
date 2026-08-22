@@ -771,5 +771,30 @@
         </div>
     </footer>
     
+
+<script id="account-status-sync">
+function syncHeaderAccountStatus() {
+    try {
+        const stored = sessionStorage.getItem('ecosystem_delivery_address') || localStorage.getItem('ecosystem_delivery_address');
+        const titleEl = document.getElementById('header-acc-title');
+        const subEl = document.getElementById('header-acc-sub');
+        if (stored && titleEl && subEl) {
+            const addr = JSON.parse(stored);
+            if (addr && addr.name) {
+                titleEl.innerText = "Mi Dirección";
+                subEl.innerText = "Hola, " + addr.name.split(' ')[0];
+                return;
+            }
+        }
+        if (titleEl && subEl) {
+            titleEl.innerText = "Mi Cuenta";
+            subEl.innerText = "Regístrate, socio";
+        }
+    } catch(e) {}
+}
+document.addEventListener('DOMContentLoaded', syncHeaderAccountStatus);
+window.addEventListener('storage', syncHeaderAccountStatus);
+</script>
+
 </body>
 </html>
