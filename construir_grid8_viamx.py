@@ -1,4 +1,212 @@
-<!DOCTYPE html>
+﻿import os
+import json
+import subprocess
+
+BASE_DIR = r"E:\sitios web"
+VIAMX_DIR = os.path.join(BASE_DIR, "bazar-viamx-nfl.gdl")
+
+if not os.path.exists(VIAMX_DIR):
+    alt = os.path.join(BASE_DIR, "bazar-viamx-NFL.GDL")
+    if os.path.exists(alt):
+        VIAMX_DIR = alt
+
+INDEX_PATH = os.path.join(VIAMX_DIR, "index.html")
+CATALOG_PATH = os.path.join(VIAMX_DIR, "catalog.json")
+
+print("=" * 70)
+print("INTEGRANDO ESTRUCTURA DE 8 COLUMNAS Y 20 PRODUCTOS SÍNCRONOS EN VÍA MX")
+print("=" * 70)
+
+productos_data = [
+    {
+        "sku": "VMX-EL-001",
+        "nombre": "Sony Audífonos Inalámbricos On-Ear WH-CH520 (Hasta 50h)",
+        "precio": 699.00,
+        "categoria": "electronica",
+        "marca": "Sony",
+        "descripcion": "Audífonos de diadema Bluetooth con hasta 50 horas de batería, carga rápida y conexión multipunto.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-002",
+        "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Negro)",
+        "precio": 999.00,
+        "categoria": "smarthome",
+        "marca": "Amazon",
+        "descripcion": "Bocina inteligente compacta de sonido envolvente con asistente virtual Alexa integrado.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-003",
+        "nombre": "1 Hora Bocina Bluetooth Portátil 5W (Radio FM / MicroSD)",
+        "precio": 141.99,
+        "categoria": "electronica",
+        "marca": "1 Hora",
+        "descripcion": "Mini bocina inalámbrica de 5W con 25 horas de reproducción, radio FM y ranura MicroSD.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-HR-004",
+        "nombre": "Juego de Destornilladores de Precisión 117 en 1 AXIDUN",
+        "precio": 149.00,
+        "categoria": "herramientas",
+        "marca": "AXIDUN",
+        "descripcion": "Kit magnético profesional de puntas intercambiables para electrónica y celulares.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-005",
+        "nombre": "INIU Power Bank 20000mAh 22.5W Carga Rápida",
+        "precio": 599.99,
+        "categoria": "electronica",
+        "marca": "INIU",
+        "descripcion": "Batería externa de alta capacidad con display digital LED y puertos USB-C de carga veloz.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-006",
+        "nombre": "Amazon Echo Dot (5ta Gen) Bocina Alexa (Negro)",
+        "precio": 1699.00,
+        "categoria": "smarthome",
+        "marca": "Amazon",
+        "descripcion": "Bocina inteligente con audio de alta fidelidad, voces nítidas y control domótico.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-007",
+        "nombre": "Amazon Echo Pop Bocina Alexa (Lavanda)",
+        "precio": 999.00,
+        "categoria": "smarthome",
+        "marca": "Amazon",
+        "descripcion": "Altavoz compacto con sonido direccional en acabado lavanda con Alexa integrada.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-008",
+        "nombre": "Skullcandy Dime 3 Auriculares In-Ear Inalámbricos",
+        "precio": 447.00,
+        "categoria": "electronica",
+        "marca": "Skullcandy",
+        "descripcion": "Auriculares True Wireless compactos con micrófono, resistencia al agua IPX4 y estuche.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-009",
+        "nombre": "Soundcore by Anker V20i Audífonos Open-Ear",
+        "precio": 498.98,
+        "categoria": "electronica",
+        "marca": "Anker",
+        "descripcion": "Audífonos ergonómicos de oído abierto con sonido ultra claro para jornadas prolongadas.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-010",
+        "nombre": "Soundcore by Anker P30i con Cancelación de Ruido",
+        "precio": 537.98,
+        "categoria": "electronica",
+        "marca": "Anker",
+        "descripcion": "Auriculares inalámbricos con cancelación activa de ruido híbrida y graves profundos.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-011",
+        "nombre": "AXIDUN Barra de Sonido RGB Estéreo Bluetooth 5.0",
+        "precio": 298.00,
+        "categoria": "electronica",
+        "marca": "AXIDUN",
+        "descripcion": "Soundbar para escritorio con iluminación dinámica RGB y conexión Bluetooth 5.0.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-HR-012",
+        "nombre": "Kit de Soldadura Electrónica 80W LCD Regulable",
+        "precio": 349.99,
+        "categoria": "herramientas",
+        "marca": "Tech Tool",
+        "descripcion": "Cautín profesional de 80W con display digital LCD y control térmico 180°C - 520°C.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-013",
+        "nombre": "ISTENTINFY Kit Electrónica Protoboard Arduino Uno",
+        "precio": 262.24,
+        "categoria": "maker",
+        "marca": "Arduino Compatible",
+        "descripcion": "Set de prototipado con cables jumper, LEDs, resistencias y botones para proyectos.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-014",
+        "nombre": "JBL Tune 520BT Audífonos Diadema Pure Bass (Negro)",
+        "precio": 699.00,
+        "categoria": "electronica",
+        "marca": "JBL",
+        "descripcion": "Audífonos Bluetooth con sonido Pure Bass y hasta 57 horas continuas de autonomía.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-015",
+        "nombre": "FANDBO Multicontacto Extensión 12 en 1 (USB-C / CA)",
+        "precio": 263.11,
+        "categoria": "electronica",
+        "marca": "FANDBO",
+        "descripcion": "Estación de energía con 8 tomas CA, puertos USB de carga rápida y cable de 1.5m.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-016",
+        "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Blanco)",
+        "precio": 999.00,
+        "categoria": "smarthome",
+        "marca": "Amazon",
+        "descripcion": "Bocina inteligente compacta en elegante color blanco con asistente Alexa y audio HD.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-017",
+        "nombre": "Uplayteck Antena TV Digital Interior HDTV 1080P/4K",
+        "precio": 220.15,
+        "categoria": "lineablanca",
+        "marca": "Uplayteck",
+        "descripcion": "Antena para sintonización abierta en alta definición 1080P/4K con amplificador.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-018",
+        "nombre": "Motorola Moto G06 Azul (4GB RAM / 256GB)",
+        "precio": 2368.00,
+        "categoria": "telefonia",
+        "marca": "Motorola",
+        "descripcion": "Smartphone desbloqueado con 256GB de almacenamiento interno y batería de larga duración.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-019",
+        "nombre": "Kit de Robótica y Electrónica Compatible Arduino R3",
+        "precio": 544.00,
+        "categoria": "maker",
+        "marca": "Maker Pro",
+        "descripcion": "Kit de componentes y módulos de aprendizaje para robótica con microcontrolador R3.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    },
+    {
+        "sku": "VMX-EL-020",
+        "nombre": "Qiilu Altavoces Estéreo USB de Escritorio",
+        "precio": 209.00,
+        "categoria": "electronica",
+        "marca": "Qiilu",
+        "descripcion": "Par de bocinas compactas para PC/laptop con alimentación USB y audio 3.5mm.",
+        "imagen": "assets/img/mascota_tigre_thumb.webp"
+    }
+]
+
+# Guardar catalog.json
+with open(CATALOG_PATH, "w", encoding="utf-8") as f:
+    json.dump(productos_data, f, indent=4, ensure_ascii=False)
+
+JSON_EMBEDDED = json.dumps(productos_data, ensure_ascii=False)
+
+INDEX_COMPLETO = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -18,15 +226,15 @@
     <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
     
     <style>
-    @font-face { font-family: 'FontAwesome'; font-display: swap; }
-    @font-face { font-family: 'Font Awesome 6 Free'; font-display: swap; }
-    @font-face { font-family: 'Font Awesome 6 Brands'; font-display: swap; }
-    body { font-display: swap; }
+    @font-face {{ font-family: 'FontAwesome'; font-display: swap; }}
+    @font-face {{ font-family: 'Font Awesome 6 Free'; font-display: swap; }}
+    @font-face {{ font-family: 'Font Awesome 6 Brands'; font-display: swap; }}
+    body {{ font-display: swap; }}
     </style>
     
     <script>
-    window.addEventListener('error', function(e) { e.preventDefault(); return true; }, true);
-    window.addEventListener('unhandledrejection', function(e) { e.preventDefault(); });
+    window.addEventListener('error', function(e) {{ e.preventDefault(); return true; }}, true);
+    window.addEventListener('unhandledrejection', function(e) {{ e.preventDefault(); }});
     </script>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased overflow-x-hidden min-h-screen flex flex-col justify-between">
@@ -38,7 +246,7 @@
         
         <!-- Nivel 1: Barra Superior Deslizable Universal -->
         <div class="w-full bg-slate-950 border-b border-slate-900 py-3 px-4 flex items-center justify-start md:justify-center overflow-x-auto whitespace-nowrap gap-4 text-xs font-bold text-slate-300" style="scrollbar-width: none; -ms-overflow-style: none;">
-            <style>::-webkit-scrollbar { display: none; }</style>
+            <style>::-webkit-scrollbar {{ display: none; }}</style>
             <a href="https://gemini.google.com" target="_blank" class="hover:text-amber-400 transition flex items-center gap-1">
                 <i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i> Iniciar sesión con Google Gemini
             </a>
@@ -259,33 +467,33 @@
          BASE DE DATOS SÍNCRONA, LÓGICA DE TIENDA Y CARRUSEL
          ======================================================================== -->
     <script>
-    const viamxCatalog = [{"sku": "VMX-EL-001", "nombre": "Sony Audífonos Inalámbricos On-Ear WH-CH520 (Hasta 50h)", "precio": 699.0, "categoria": "electronica", "marca": "Sony", "descripcion": "Audífonos de diadema Bluetooth con hasta 50 horas de batería, carga rápida y conexión multipunto.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-002", "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Negro)", "precio": 999.0, "categoria": "smarthome", "marca": "Amazon", "descripcion": "Bocina inteligente compacta de sonido envolvente con asistente virtual Alexa integrado.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-003", "nombre": "1 Hora Bocina Bluetooth Portátil 5W (Radio FM / MicroSD)", "precio": 141.99, "categoria": "electronica", "marca": "1 Hora", "descripcion": "Mini bocina inalámbrica de 5W con 25 horas de reproducción, radio FM y ranura MicroSD.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-HR-004", "nombre": "Juego de Destornilladores de Precisión 117 en 1 AXIDUN", "precio": 149.0, "categoria": "herramientas", "marca": "AXIDUN", "descripcion": "Kit magnético profesional de puntas intercambiables para electrónica y celulares.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-005", "nombre": "INIU Power Bank 20000mAh 22.5W Carga Rápida", "precio": 599.99, "categoria": "electronica", "marca": "INIU", "descripcion": "Batería externa de alta capacidad con display digital LED y puertos USB-C de carga veloz.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-006", "nombre": "Amazon Echo Dot (5ta Gen) Bocina Alexa (Negro)", "precio": 1699.0, "categoria": "smarthome", "marca": "Amazon", "descripcion": "Bocina inteligente con audio de alta fidelidad, voces nítidas y control domótico.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-007", "nombre": "Amazon Echo Pop Bocina Alexa (Lavanda)", "precio": 999.0, "categoria": "smarthome", "marca": "Amazon", "descripcion": "Altavoz compacto con sonido direccional en acabado lavanda con Alexa integrada.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-008", "nombre": "Skullcandy Dime 3 Auriculares In-Ear Inalámbricos", "precio": 447.0, "categoria": "electronica", "marca": "Skullcandy", "descripcion": "Auriculares True Wireless compactos con micrófono, resistencia al agua IPX4 y estuche.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-009", "nombre": "Soundcore by Anker V20i Audífonos Open-Ear", "precio": 498.98, "categoria": "electronica", "marca": "Anker", "descripcion": "Audífonos ergonómicos de oído abierto con sonido ultra claro para jornadas prolongadas.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-010", "nombre": "Soundcore by Anker P30i con Cancelación de Ruido", "precio": 537.98, "categoria": "electronica", "marca": "Anker", "descripcion": "Auriculares inalámbricos con cancelación activa de ruido híbrida y graves profundos.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-011", "nombre": "AXIDUN Barra de Sonido RGB Estéreo Bluetooth 5.0", "precio": 298.0, "categoria": "electronica", "marca": "AXIDUN", "descripcion": "Soundbar para escritorio con iluminación dinámica RGB y conexión Bluetooth 5.0.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-HR-012", "nombre": "Kit de Soldadura Electrónica 80W LCD Regulable", "precio": 349.99, "categoria": "herramientas", "marca": "Tech Tool", "descripcion": "Cautín profesional de 80W con display digital LCD y control térmico 180°C - 520°C.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-013", "nombre": "ISTENTINFY Kit Electrónica Protoboard Arduino Uno", "precio": 262.24, "categoria": "maker", "marca": "Arduino Compatible", "descripcion": "Set de prototipado con cables jumper, LEDs, resistencias y botones para proyectos.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-014", "nombre": "JBL Tune 520BT Audífonos Diadema Pure Bass (Negro)", "precio": 699.0, "categoria": "electronica", "marca": "JBL", "descripcion": "Audífonos Bluetooth con sonido Pure Bass y hasta 57 horas continuas de autonomía.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-015", "nombre": "FANDBO Multicontacto Extensión 12 en 1 (USB-C / CA)", "precio": 263.11, "categoria": "electronica", "marca": "FANDBO", "descripcion": "Estación de energía con 8 tomas CA, puertos USB de carga rápida y cable de 1.5m.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-016", "nombre": "Amazon Echo Pop Bocina Inteligente Alexa (Blanco)", "precio": 999.0, "categoria": "smarthome", "marca": "Amazon", "descripcion": "Bocina inteligente compacta en elegante color blanco con asistente Alexa y audio HD.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-017", "nombre": "Uplayteck Antena TV Digital Interior HDTV 1080P/4K", "precio": 220.15, "categoria": "lineablanca", "marca": "Uplayteck", "descripcion": "Antena para sintonización abierta en alta definición 1080P/4K con amplificador.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-018", "nombre": "Motorola Moto G06 Azul (4GB RAM / 256GB)", "precio": 2368.0, "categoria": "telefonia", "marca": "Motorola", "descripcion": "Smartphone desbloqueado con 256GB de almacenamiento interno y batería de larga duración.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-019", "nombre": "Kit de Robótica y Electrónica Compatible Arduino R3", "precio": 544.0, "categoria": "maker", "marca": "Maker Pro", "descripcion": "Kit de componentes y módulos de aprendizaje para robótica con microcontrolador R3.", "imagen": "assets/img/mascota_tigre_thumb.webp"}, {"sku": "VMX-EL-020", "nombre": "Qiilu Altavoces Estéreo USB de Escritorio", "precio": 209.0, "categoria": "electronica", "marca": "Qiilu", "descripcion": "Par de bocinas compactas para PC/laptop con alimentación USB y audio 3.5mm.", "imagen": "assets/img/mascota_tigre_thumb.webp"}];
+    const viamxCatalog = {JSON_EMBEDDED};
     let currentFilteredCatalog = [...viamxCatalog];
 
-    function formatCurrency(amount) {
+    function formatCurrency(amount) {{
         const num = parseFloat(amount) || 0;
-        return '$' + num.toLocaleString('es-MX', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    }
+        return '$' + num.toLocaleString('es-MX', {{ minimumFractionDigits: 2, maximumFractionDigits: 2 }});
+    }}
 
-    function renderCatalog(items) {
+    function renderCatalog(items) {{
         const grid = document.getElementById("catalog-grid");
         const countText = document.getElementById("catalog-count-text");
         if (!grid) return;
         
-        if (countText) countText.textContent = `Mostrando ${items.length} artículo(s) disponibles`;
+        if (countText) countText.textContent = `Mostrando ${{items.length}} artículo(s) disponibles`;
 
-        if (!items || items.length === 0) {
+        if (!items || items.length === 0) {{
             grid.innerHTML = '<div class="col-span-full text-center text-slate-400 text-sm py-12 bg-slate-950/60 rounded-2xl border border-slate-800"><i class="fa-solid fa-magnifying-glass text-3xl mb-2 text-slate-600 block"></i>No se encontraron artículos con ese criterio de búsqueda.</div>';
             return;
-        }
+        }}
 
         grid.innerHTML = items.map(item => `
             <div class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 rounded-2xl p-4 flex flex-col justify-between transition duration-300 shadow-xl group cursor-pointer hover:shadow-cyan-950/20">
                 <div>
                     <div class="w-full h-44 overflow-hidden rounded-xl bg-slate-900 border border-slate-800/80 flex items-center justify-center mb-3 p-2 relative">
                         <img 
-                            src="${item.imagen || 'assets/img/mascota_tigre_thumb.webp'}" 
-                            alt="${item.nombre}" 
+                            src="${{item.imagen || 'assets/img/mascota_tigre_thumb.webp'}}" 
+                            alt="${{item.nombre}}" 
                             loading="lazy" 
                             decoding="async" 
                             width="300" 
@@ -295,63 +503,63 @@
                         />
                     </div>
                     <div class="flex items-center justify-between gap-1 mb-1">
-                        <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block">${item.marca || 'Vía MX'}</span>
-                        <span class="text-[9px] font-mono text-slate-500 uppercase">${item.sku}</span>
+                        <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-wider block">${{item.marca || 'Vía MX'}}</span>
+                        <span class="text-[9px] font-mono text-slate-500 uppercase">${{item.sku}}</span>
                     </div>
-                    <h4 class="text-white font-bold text-xs sm:text-sm mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${item.nombre}">${item.nombre}</h4>
-                    <p class="text-slate-400 text-xs mb-3 line-clamp-2 leading-relaxed font-normal">${item.descripcion || ''}</p>
+                    <h4 class="text-white font-bold text-xs sm:text-sm mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${{item.nombre}}">${{item.nombre}}</h4>
+                    <p class="text-slate-400 text-xs mb-3 line-clamp-2 leading-relaxed font-normal">${{item.descripcion || ''}}</p>
                 </div>
                 <div class="flex justify-between items-center pt-3 border-t border-slate-800/80">
                     <div>
                         <span class="text-[9px] font-mono text-slate-400 block uppercase">Precio</span>
-                        <span class="text-amber-400 font-black text-sm sm:text-base font-mono">${formatCurrency(item.precio)}</span>
+                        <span class="text-amber-400 font-black text-sm sm:text-base font-mono">${{formatCurrency(item.precio)}}</span>
                     </div>
-                    <button onclick="addToCart('${item.sku}')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition active:scale-95 shadow-md shadow-cyan-500/20 cursor-pointer">
+                    <button onclick="addToCart('${{item.sku}}')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3.5 py-2 rounded-xl text-xs flex items-center gap-1.5 transition active:scale-95 shadow-md shadow-cyan-500/20 cursor-pointer">
                         <i class="fa-solid fa-cart-plus"></i> Agregar
                     </button>
                 </div>
             </div>
         `).join('');
-    }
+    }}
 
-    function filterByDept(dept, btn) {
-        document.querySelectorAll('.dept-btn').forEach(b => {
+    function filterByDept(dept, btn) {{
+        document.querySelectorAll('.dept-btn').forEach(b => {{
             b.className = "dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold text-slate-300 hover:text-white hover:bg-slate-900 border border-transparent transition flex items-center gap-2 cursor-pointer";
-        });
-        if (btn) {
+        }});
+        if (btn) {{
             btn.className = "dept-btn text-left px-3 py-2 rounded-xl text-xs font-bold transition flex items-center gap-2 bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 cursor-pointer";
-        }
+        }}
 
-        if (dept === 'todos') {
+        if (dept === 'todos') {{
             currentFilteredCatalog = [...viamxCatalog];
-        } else {
+        }} else {{
             currentFilteredCatalog = viamxCatalog.filter(i => i.categoria === dept);
-        }
+        }}
         renderCatalog(currentFilteredCatalog);
-    }
+    }}
 
-    function handleSearchSubmit(e) {
+    function handleSearchSubmit(e) {{
         if (e) e.preventDefault();
         const input = document.getElementById("siteSearch");
         if (!input) return;
         
         const q = input.value.toLowerCase().trim();
         let filtered = viamxCatalog;
-        if (q) {
+        if (q) {{
             filtered = filtered.filter(i => 
                 (i.nombre || '').toLowerCase().includes(q) || 
                 (i.descripcion || '').toLowerCase().includes(q) ||
                 (i.marca || '').toLowerCase().includes(q) ||
                 (i.sku || '').toLowerCase().includes(q)
             );
-        }
+        }}
         renderCatalog(filtered);
         const catSec = document.getElementById("catalogo");
-        if (catSec) catSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+        if (catSec) catSec.scrollIntoView({{ behavior: 'smooth', block: 'start' }});
+    }}
 
-    function addToCart(sku) {
-        try {
+    function addToCart(sku) {{
+        try {{
             const item = viamxCatalog.find(i => i.sku === sku);
             if (!item) return;
             
@@ -360,27 +568,27 @@
             if (!Array.isArray(cart)) cart = [];
             
             const existIdx = cart.findIndex(i => i.sku === sku);
-            if (existIdx > -1) {
+            if (existIdx > -1) {{
                 cart[existIdx].quantity = (cart[existIdx].quantity || 1) + 1;
-            } else {
-                cart.push({
+            }} else {{
+                cart.push({{
                     sku: item.sku,
                     nombre: item.nombre,
                     precio: item.precio,
                     imagen: item.imagen || 'assets/img/mascota_tigre_thumb.webp',
                     categoria: item.categoria || 'viamx',
                     quantity: 1
-                });
-            }
+                }});
+            }}
             
             localStorage.setItem("ecosystem_global_cart", JSON.stringify(cart));
             updateCartBadge();
-            alert(`"${item.nombre}" agregado al carrito con éxito.`);
-        } catch(e) {}
-    }
+            alert(`"${{item.nombre}}" agregado al carrito con éxito.`);
+        }} catch(e) {{}}
+    }}
 
-    function updateCartBadge() {
-        try {
+    function updateCartBadge() {{
+        try {{
             const stored = localStorage.getItem("ecosystem_global_cart");
             const cart = stored ? JSON.parse(stored) : [];
             const count = Array.isArray(cart) ? cart.reduce((acc, i) => acc + (i.quantity || 1), 0) : 0;
@@ -390,93 +598,111 @@
             const totalEl = document.getElementById("header-cart-total");
             if (badge) badge.textContent = count;
             if (totalEl) totalEl.textContent = formatCurrency(total) + ' MXN';
-        } catch(e) {}
-    }
+        }} catch(e) {{}}
+    }}
 
-    function syncHeaderAccountStatus() {
-        try {
+    function syncHeaderAccountStatus() {{
+        try {{
             const stored = sessionStorage.getItem('ecosystem_delivery_address') || localStorage.getItem('ecosystem_delivery_address');
             const titleEl = document.getElementById('header-acc-title');
             const subEl = document.getElementById('header-acc-sub');
-            if (stored && titleEl && subEl) {
+            if (stored && titleEl && subEl) {{
                 const addr = JSON.parse(stored);
-                if (addr && addr.name) {
+                if (addr && addr.name) {{
                     titleEl.innerText = "Mi Dirección";
                     subEl.innerText = "Hola, " + addr.name.split(' ')[0];
                     return;
-                }
-            }
-            if (titleEl && subEl) {
+                }}
+            }}
+            if (titleEl && subEl) {{
                 titleEl.innerText = "Mi Cuenta";
                 subEl.innerText = "Regístrate, socio";
-            }
-        } catch(e) {}
-    }
+            }}
+        }} catch(e) {{}}
+    }}
 
     // Control del Carrusel
     window.currentSlide = 0;
     window.sliderInterval = null;
 
-    window.showSlide = function(index) {
+    window.showSlide = function(index) {{
         const slides = document.querySelectorAll('.hero-slide');
         const dots = document.querySelectorAll('.hero-dot span');
         if (slides.length === 0) return;
         
         const current = slides[window.currentSlide];
-        if (current) {
+        if (current) {{
             current.style.opacity = '0';
             current.style.zIndex = '0';
-        }
+        }}
         const currentDot = dots[window.currentSlide];
-        if (currentDot) {
+        if (currentDot) {{
             currentDot.style.width = '12px';
             currentDot.style.backgroundColor = '#64748b';
             currentDot.style.boxShadow = 'none';
-        }
+        }}
         
         window.currentSlide = (index + slides.length) % slides.length;
         
         const next = slides[window.currentSlide];
-        if (next) {
+        if (next) {{
             next.style.opacity = '1';
             next.style.zIndex = '10';
-        }
+        }}
         const nextDot = dots[window.currentSlide];
-        if (nextDot) {
+        if (nextDot) {{
             nextDot.style.width = '32px';
             nextDot.style.backgroundColor = '#22d3ee';
             nextDot.style.boxShadow = '0 0 10px rgba(34,211,238,0.6)';
-        }
+        }}
         window.resetSliderInterval();
-    };
+    }};
 
-    window.resetSliderInterval = function() {
+    window.resetSliderInterval = function() {{
         if (window.sliderInterval) clearInterval(window.sliderInterval);
         if (window.innerWidth < 640) return;
-        window.sliderInterval = setInterval(() => {
+        window.sliderInterval = setInterval(() => {{
             window.nextSlide();
-        }, 5000);
-    };
+        }}, 5000);
+    }};
 
-    window.nextSlide = function() {
+    window.nextSlide = function() {{
         window.showSlide(window.currentSlide + 1);
-    };
+    }};
 
-    window.prevSlide = function() {
+    window.prevSlide = function() {{
         window.showSlide(window.currentSlide - 1);
-    };
+    }};
 
-    window.goToSlide = function(index) {
+    window.goToSlide = function(index) {{
         window.showSlide(index);
-    };
+    }};
 
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {{
         renderCatalog(viamxCatalog);
         updateCartBadge();
         syncHeaderAccountStatus();
         window.showSlide(0);
         window.resetSliderInterval();
-    });
+    }});
     </script>
 </body>
 </html>
+"""
+
+with open(INDEX_PATH, "w", encoding="utf-8") as f:
+    f.write(INDEX_COMPLETO)
+
+print(f"✓ index.html reconstruido con Grid de 8 columnas y 20 productos síncronos.")
+
+print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
+if os.path.exists(os.path.join(VIAMX_DIR, ".git")):
+    subprocess.run(["git", "add", "-A"], cwd=VIAMX_DIR, check=True)
+    subprocess.run(["git", "commit", "-m", "feat(catalog): grid de 8 columnas y carga sincrona de 20 articulos con departamentos", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
+    res_viamx = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=VIAMX_DIR, capture_output=True, text=True)
+    print(f"🟢 Vía MX NFL -> Push: {'OK' if res_viamx.returncode == 0 else res_viamx.stderr.strip()}")
+
+subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
+subprocess.run(["git", "commit", "-m", "feat(viamx): grid simetrico 8 columnas y 20 productos visibles de inmediato", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
+print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
