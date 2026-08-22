@@ -73,7 +73,7 @@
             <a href="https://antigravity.google/download" target="_blank" class="hover:text-amber-400 transition">Descargar Anti-Gravity</a>
         </div>
 
-        <!-- Nivel 2: Fila Principal en UNA SOLA LÍNEA (Izquierda: Carrito/Cuenta, Centro: Buscador Full, Derecha: Vía MX) -->
+        <!-- Nivel 2: Fila Principal en UNA SOLA LÍNEA (Izquierda: Carrito/Cuenta, Centro: Buscador Hueso Refinado, Derecha: Vía MX) -->
     <div class="w-full max-w-[98%] 2xl:max-w-7xl mx-auto flex flex-nowrap items-center justify-between gap-3 sm:gap-6 py-3 px-2 sm:px-6">
         
         <!-- 1. EXTREMO IZQUIERDO: Mi Carrito y Mi Cuenta -->
@@ -102,12 +102,12 @@
             </button>
         </div>
 
-        <!-- 2. CENTRO: Buscador Expandido al Máximo Disponible -->
-        <div class="flex-1 min-w-[180px] mx-1 sm:mx-3">
-            <form class="flex items-center bg-slate-950/90 rounded-full border-2 border-cyan-400 shadow-[0_0_18px_rgba(6,182,212,0.45)] hover:shadow-[0_0_26px_rgba(6,182,212,0.75)] w-full px-3.5 py-1.5 gap-2 transition duration-300" onsubmit="handleSearchSubmit(event);" role="search">
+        <!-- 2. CENTRO: Buscador Acortado 20% con Fondo Color Hueso Suave y Texto Persuasivo -->
+        <div class="flex-1 max-w-xl mx-3 sm:mx-8">
+            <form class="flex items-center bg-[#f4efe8] rounded-full border-2 border-cyan-400 shadow-[0_0_16px_rgba(6,182,212,0.45)] hover:shadow-[0_0_24px_rgba(6,182,212,0.7)] w-full px-3 py-1 gap-2 transition duration-300" onsubmit="handleSearchSubmit(event);" role="search">
                 <label class="sr-only" for="siteSearch">¿Qué deseas buscar hoy?</label>
-                <input aria-label="Buscar productos en el catálogo" autocomplete="off" class="flex-1 bg-transparent border-0 outline-none text-white font-bold text-xs px-3 placeholder-slate-400" id="siteSearch" name="q" placeholder="¿Qué producto, artículo o curaduría buscas hoy? Escribe aquí..." type="text"/>
-                <button aria-label="Buscar" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-4 sm:px-6 py-2 rounded-full text-xs uppercase tracking-wider transition active:scale-95 shrink-0 flex items-center gap-1.5 shadow-md shadow-amber-500/20 cursor-pointer" type="submit">
+                <input aria-label="Buscar productos en el catálogo" autocomplete="off" class="flex-1 bg-transparent border-0 outline-none text-slate-950 font-black text-xs px-3 placeholder-slate-500 selection:bg-cyan-500 selection:text-white" id="siteSearch" name="q" placeholder="Escribe aquí lo que buscas... ¡Encuentra tu pieza ideal hoy!" type="text"/>
+                <button aria-label="Buscar" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-5 py-2 rounded-full text-xs uppercase tracking-wider transition active:scale-95 shrink-0 flex items-center gap-1.5 shadow-md shadow-amber-500/20 cursor-pointer" type="submit">
                     <i class="fa-solid fa-magnifying-glass text-xs"></i> BUSCAR
                 </button>
             </form>

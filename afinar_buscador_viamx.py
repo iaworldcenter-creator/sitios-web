@@ -11,11 +11,11 @@ if not os.path.exists(VIAMX_DIR):
         VIAMX_DIR = alt
 
 print("=" * 70)
-print("HOMOLOGANDO CABECERA DE VÍA MX EN 2 NIVELES ESTRICTOS")
+print("AFINANDO BARRA DE BÚSQUEDA (COLOR HUESO + ANCHO REFINADO) EN VÍA MX")
 print("=" * 70)
 
 NIVEL_2_HEADER = """
-    <!-- Nivel 2: Fila Principal en UNA SOLA LÍNEA (Izquierda: Carrito/Cuenta, Centro: Buscador Full, Derecha: Vía MX) -->
+    <!-- Nivel 2: Fila Principal en UNA SOLA LÍNEA (Izquierda: Carrito/Cuenta, Centro: Buscador Hueso Refinado, Derecha: Vía MX) -->
     <div class="w-full max-w-[98%] 2xl:max-w-7xl mx-auto flex flex-nowrap items-center justify-between gap-3 sm:gap-6 py-3 px-2 sm:px-6">
         
         <!-- 1. EXTREMO IZQUIERDO: Mi Carrito y Mi Cuenta -->
@@ -44,12 +44,12 @@ NIVEL_2_HEADER = """
             </button>
         </div>
 
-        <!-- 2. CENTRO: Buscador Expandido al Máximo Disponible -->
-        <div class="flex-1 min-w-[180px] mx-1 sm:mx-3">
-            <form class="flex items-center bg-slate-950/90 rounded-full border-2 border-cyan-400 shadow-[0_0_18px_rgba(6,182,212,0.45)] hover:shadow-[0_0_26px_rgba(6,182,212,0.75)] w-full px-3.5 py-1.5 gap-2 transition duration-300" onsubmit="handleSearchSubmit(event);" role="search">
+        <!-- 2. CENTRO: Buscador Acortado 20% con Fondo Color Hueso Suave y Texto Persuasivo -->
+        <div class="flex-1 max-w-xl mx-3 sm:mx-8">
+            <form class="flex items-center bg-[#f4efe8] rounded-full border-2 border-cyan-400 shadow-[0_0_16px_rgba(6,182,212,0.45)] hover:shadow-[0_0_24px_rgba(6,182,212,0.7)] w-full px-3 py-1 gap-2 transition duration-300" onsubmit="handleSearchSubmit(event);" role="search">
                 <label class="sr-only" for="siteSearch">¿Qué deseas buscar hoy?</label>
-                <input aria-label="Buscar productos en el catálogo" autocomplete="off" class="flex-1 bg-transparent border-0 outline-none text-white font-bold text-xs px-3 placeholder-slate-400" id="siteSearch" name="q" placeholder="¿Qué producto, artículo o curaduría buscas hoy? Escribe aquí..." type="text"/>
-                <button aria-label="Buscar" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-4 sm:px-6 py-2 rounded-full text-xs uppercase tracking-wider transition active:scale-95 shrink-0 flex items-center gap-1.5 shadow-md shadow-amber-500/20 cursor-pointer" type="submit">
+                <input aria-label="Buscar productos en el catálogo" autocomplete="off" class="flex-1 bg-transparent border-0 outline-none text-slate-950 font-black text-xs px-3 placeholder-slate-500 selection:bg-cyan-500 selection:text-white" id="siteSearch" name="q" placeholder="Escribe aquí lo que buscas... ¡Encuentra tu pieza ideal hoy!" type="text"/>
+                <button aria-label="Buscar" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-5 py-2 rounded-full text-xs uppercase tracking-wider transition active:scale-95 shrink-0 flex items-center gap-1.5 shadow-md shadow-amber-500/20 cursor-pointer" type="submit">
                     <i class="fa-solid fa-magnifying-glass text-xs"></i> BUSCAR
                 </button>
             </form>
@@ -68,32 +68,6 @@ NIVEL_2_HEADER = """
     </div>
 """
 
-JS_ACCOUNT_SYNC = """
-<script id="account-status-sync">
-function syncHeaderAccountStatus() {
-    try {
-        const stored = sessionStorage.getItem('ecosystem_delivery_address') || localStorage.getItem('ecosystem_delivery_address');
-        const titleEl = document.getElementById('header-acc-title');
-        const subEl = document.getElementById('header-acc-sub');
-        if (stored && titleEl && subEl) {
-            const addr = JSON.parse(stored);
-            if (addr && addr.name) {
-                titleEl.innerText = "Mi Dirección";
-                subEl.innerText = "Hola, " + addr.name.split(' ')[0];
-                return;
-            }
-        }
-        if (titleEl && subEl) {
-            titleEl.innerText = "Mi Cuenta";
-            subEl.innerText = "Regístrate, socio";
-        }
-    } catch(e) {}
-}
-document.addEventListener('DOMContentLoaded', syncHeaderAccountStatus);
-window.addEventListener('storage', syncHeaderAccountStatus);
-</script>
-"""
-
 files_to_update = ["index.html", "producto.html", "checkout.html"]
 
 for filename in files_to_update:
@@ -104,7 +78,7 @@ for filename in files_to_update:
     with open(filepath, "r", encoding="utf-8") as f:
         html = f.read()
 
-    # Reemplazar el nivel 2 asegurando una sola línea horizontal
+    # Reemplazar el nivel 2 asegurando las nuevas medidas y colores
     if "<!-- Nivel 2:" in html:
         html = re.sub(
             r'<!-- Nivel 2:[\s\S]*?<\/header>',
@@ -114,29 +88,25 @@ for filename in files_to_update:
         )
     else:
         html = re.sub(
-            r'(<div class="w-full max-w-7xl mx-auto flex[\s\S]*?<\/header>)',
+            r'(<div class="w-full max-w-[^"]* mx-auto flex[\s\S]*?<\/header>)',
             f'{NIVEL_2_HEADER.strip()}\n</header>',
             html,
             flags=re.IGNORECASE
         )
 
-    # Inyectar script de sincronización de cuenta si no existe
-    if 'id="account-status-sync"' not in html:
-        html = html.replace("</body>", f"{JS_ACCOUNT_SYNC}\n</body>")
-
     with open(filepath, "w", encoding="utf-8") as f:
         f.write(html)
 
-    print(f"  ✓ {os.path.basename(VIAMX_DIR)}/{filename} alineado en una sola línea horizontal.")
+    print(f"  ✓ {os.path.basename(VIAMX_DIR)}/{filename} actualizado.")
 
 print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
 if os.path.exists(os.path.join(VIAMX_DIR, ".git")):
     subprocess.run(["git", "add", "-A"], cwd=VIAMX_DIR, check=True)
-    subprocess.run(["git", "commit", "-m", "style(header): estructura estricta en 2 niveles, linea unica continua con buscador full y cuenta dinamica", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "style(header): buscador color hueso acortado 20% y placeholder de conversion", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
     res_viamx = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=VIAMX_DIR, capture_output=True, text=True)
     print(f"🟢 Vía MX NFL -> Push: {'OK' if res_viamx.returncode == 0 else res_viamx.stderr.strip()}")
 
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
-subprocess.run(["git", "commit", "-m", "style(viamx): linea unica de cabecera en 2 niveles", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+subprocess.run(["git", "commit", "-m", "style(viamx): barra de busqueda refinada color hueso", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
 res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
