@@ -15,10 +15,10 @@ PRODUCTO_PATH = os.path.join(VIAMX_DIR, "producto.html")
 CATALOG_PATH = os.path.join(VIAMX_DIR, "catalog.json")
 
 print("=" * 70)
-print("REESTRUCTURANDO VÍA MX: CATÁLOGO MAESTRO Y PÁGINA PRODUCTO.HTML (3 COLS)")
+print("REESTRUCTURACIÓN MAESTRA DE VÍA MX: INDEX.HTML Y PRODUCTO.HTML")
 print("=" * 70)
 
-# Pool de imágenes variadas provenientes del ecosistema
+# Pool de imágenes variadas del ecosistema
 IMG_POOL = [
     "assets/img/mascota_tigre_thumb.webp",
     "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp",
@@ -40,14 +40,14 @@ IMG_POOL = [
 MARCAS = ["Sony", "Samsung", "LG", "Panasonic", "Amazon", "Anker", "JBL", "Xiaomi", "Motorola", "AXIDUN", "Bosch", "Apple", "Philips", "Tefal", "Cuisinart", "Craftsman", "Arduino", "DeWalt", "Sennheiser", "Stanley"]
 
 NOMBRES_BASE = [
-    ("Pantalla Smart TV 55 Pulgadas 4K UHD HDR10+", 7999.00, 11499.00, "electronica", "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, conectividad WiFi 6 de doble banda, 4 puertos HDMI 2.1 ideales para consolas de última generación y sonido Dolby Atmos."),
-    ("Refrigerador Inverter No Frost 14 Pies Cúbicos Acero", 11899.00, 15999.00, "lineablanca", "Refrigerador de doble puerta con tecnología Digital Inverter de alta eficiencia energética clase A++, congelador de enfriamiento rápido Multi Air Flow y dispensador exterior."),
-    ("Bocina Inteligente con Asistente Virtual y Audio HD", 999.00, 1299.00, "smarthome", "Bocina compacta de sonido envolvente de 360 grados con micrófono de largo alcance y cancelación de eco."),
-    ("Smartphone 5G Desbloqueado 256GB / 8GB RAM Cámara 108MP", 4899.00, 6499.00, "telefonia", "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz, batería de 5000mAh con carga rápida 67W TurboPower y sensor biométrico."),
+    ("Pantalla Smart TV 55 Pulgadas 4K UHD HDR10+", 7999.00, 11499.00, "electronica", "Pantalla de 55 pulgadas con panel LED 4K ultra nítido, tasa de 120Hz nativa, asistente por voz compatible con Alexa y Google Assistant, WiFi 6 y 4 puertos HDMI 2.1."),
+    ("Refrigerador Inverter No Frost 14 Pies Cúbicos Acero", 11899.00, 15999.00, "lineablanca", "Refrigerador de doble puerta con tecnología Digital Inverter de alta eficiencia energética clase A++, congelador rápido y dispensador exterior."),
+    ("Bocina Inteligente con Asistente Virtual y Audio HD", 999.00, 1299.00, "smarthome", "Bocina compacta de sonido envolvente de 360 grados, micrófono de largo alcance con cancelación de ruido."),
+    ("Smartphone 5G Desbloqueado 256GB / 8GB RAM Cámara 108MP", 4899.00, 6499.00, "telefonia", "Teléfono libre de fábrica con procesador Octa-Core de 2.8GHz, pantalla AMOLED 120Hz y batería de 5000mAh con carga rápida 67W."),
     ("Laptop Ultra Slim 15.6 Pulgadas Core i7 16GB RAM 512GB SSD", 14500.00, 18900.00, "computacion", "Equipo portátil para desarrollo y productividad con teclado retroiluminado, chasis de aluminio pulido y lector biométrico."),
     ("Freidora de Aire Digital 6.5 Litros con 12 Programas Touch", 1499.00, 2199.00, "cocina", "Freidora de aire caliente con canastilla antiadherente libre de BPA, circulación de calor 360° para cocinar con 85% menos grasa."),
     ("Juego de Herramientas de Mecánica y Precisión 168 Piezas", 899.00, 1299.00, "herramientas", "Maletín rígido con matraca de liberación rápida, dados milimétricos, destornilladores magnéticos y pinzas de presión con tratamiento anticorrosión."),
-    ("Kit de Desarrollo y Robótica con Microcontrolador y Sensores", 580.00, 750.00, "maker", "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor, cableado jumper y sensores."),
+    ("Kit de Desarrollo y Robótica con Microcontrolador y Sensores", 580.00, 750.00, "maker", "Kit educativo que incluye tarjeta programable compatible, protoboard, display LCD 16x2, servomotor y sensores."),
     ("Set de 6 Copas de Cristal Cortado de Lujo para Vino Tinto", 749.00, 1050.00, "cristaleria", "Copas artesanales de cristal sin plomo con borde ultra fino cortado en frío."),
     ("Chamarra Rompevientos Térmica Edición Especial NFL", 1350.00, 1890.00, "moda", "Prenda ligera con forro polar interior repelente al agua con bolsillos sellados contra lluvia."),
     ("Tenis Deportivos con Amortiguación de Aire para Entrenamiento", 1199.00, 1699.00, "calzado", "Calzado ligero con suela de tracción antiderrapante y tejido transpirable."),
@@ -74,11 +74,11 @@ for page_idx in range(1, 11):
         precio_orig = round(base_tpl[2] * factor_precio, 2)
         
         if item_idx % 3 == 0:
-            desc = base_tpl[4] + f" Respaldado por {marca} con envío 100% digital a domicilio y 5% de cashback."
+            desc = base_tpl[4] + f" Respaldado por {marca} con envío 100% digital a la puerta de tu hogar y 5% de cashback."
         elif item_idx % 3 == 1:
             desc = base_tpl[4]
         else:
-            desc = f"Artículo de importación directa marca {marca}. Envío seguro a la puerta de tu hogar."
+            desc = f"Artículo de importación directa marca {marca}. Comercio 100% digital con entrega garantizada."
 
         sku_str = f"VMX-P{page_idx:02d}-{item_idx+1:03d}"
         rating_str = f"{4.2 + ((item_idx % 8) * 0.1):.1f}"
@@ -104,7 +104,6 @@ with open(CATALOG_PATH, "w", encoding="utf-8") as f:
 
 JSON_EMBEDDED = json.dumps(productos_200, ensure_ascii=False)
 
-# 30 Departamentos con Submenús Flyout
 departamentos_menu = [
     {"id": "electronica", "nombre": "Electrónica & Audio", "icon": "fa-headphones", "subs": ["Pantallas y Smart TV", "Estéreos y Bocinas", "Barras de Sonido RGB", "Audífonos In-Ear", "Audífonos de Diadema", "Bocinas Portátiles"]},
     {"id": "lineablanca", "nombre": "Línea Blanca & Climas", "icon": "fa-snowflake", "subs": ["Refrigeradores Inverter", "Lavadoras y Secadoras", "Aires Acondicionados", "Estufas y Hornos", "Hornos de Microondas", "Dispensadores de Agua"]},
@@ -173,7 +172,118 @@ for d in departamentos_menu:
 
 dept_sidebar_html += "</div>"
 
-# 1. GENERAR INDEX.HTML COMPLETAMENTE LIMPIO Y SIN RESIDUOS
+FOOTER_UNIVERSAL_HTML = """
+    <!-- FOOTER UNIVERSAL HOMOLOGADO (3 COLUMNAS CON REDES COMPLETAS) -->
+    <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 text-slate-400 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-slate-800/80">
+                
+                <!-- COLUMNA 1: CONTACTO LOCAL COMPLETO -->
+                <div class="flex flex-col gap-3">
+                    <h3 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-location-dot text-amber-400"></i> Contacto Local
+                    </h3>
+                    <p class="flex items-start gap-2 text-slate-300">
+                        <i class="fa-solid fa-map-pin text-slate-400 mt-0.5 shrink-0"></i>
+                        <span>Oficina Administrativa & Centro de Garantías: Pedro Moreno 501 A, Guadalajara Centro (CP 44100)</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <i class="fa-solid fa-phone text-cyan-400 shrink-0"></i>
+                        <span>Teléfono Fijo: <a href="tel:3336136348" class="text-slate-200 hover:text-cyan-400 font-mono">(33) 3613 6348</a></span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-400 shrink-0 text-sm"></i>
+                        <span>WhatsApp: <a href="https://wa.me/523337271440" target="_blank" rel="noopener" class="text-slate-200 hover:text-emerald-400 font-mono">+52 33 3727 1440</a></span>
+                    </p>
+                    
+                    <div class="flex flex-col gap-1.5 pt-2 border-t border-slate-900 text-[11px] text-slate-400">
+                        <a href="https://www.facebook.com/profile.php?id=61593020515115" target="_blank" rel="noopener" class="hover:text-blue-400 transition flex items-center gap-2">
+                            <i class="fa-brands fa-facebook text-blue-500 w-4 text-center"></i> Facebook: Vía MX Curaduría
+                        </a>
+                        <a href="https://www.instagram.com/pccustomlab/" target="_blank" rel="noopener" class="hover:text-pink-400 transition flex items-center gap-2">
+                            <i class="fa-brands fa-instagram text-pink-500 w-4 text-center"></i> Instagram: @pccustomlab
+                        </a>
+                        <a href="https://www.youtube.com/@IAWorldCenter" target="_blank" rel="noopener" class="hover:text-red-400 transition flex items-center gap-2">
+                            <i class="fa-brands fa-youtube text-red-500 w-4 text-center"></i> YouTube: IA World Center
+                        </a>
+                        <a href="https://t.me/pc_custom_lab" target="_blank" rel="noopener" class="hover:text-cyan-400 transition flex items-center gap-2">
+                            <i class="fa-brands fa-telegram text-cyan-400 w-4 text-center"></i> Telegram: pc_custom_lab
+                        </a>
+                        <a href="mailto:iaworldcenter@gmail.com" class="hover:text-amber-400 transition flex items-center gap-2">
+                            <i class="fa-solid fa-envelope text-amber-400 w-4 text-center"></i> Correo: iaworldcenter@gmail.com
+                        </a>
+                    </div>
+                </div>
+
+                <!-- COLUMNA 2: POLÍTICAS DE COMPRA -->
+                <div class="flex flex-col gap-3">
+                    <h3 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-shield-halved text-cyan-400"></i> Políticas de Compra
+                    </h3>
+                    <div class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-rotate-left text-amber-400 mt-1 shrink-0"></i>
+                        <div>
+                            <strong class="text-slate-200 block text-xs">Recepción de Devoluciones y Garantías:</strong>
+                            <span class="text-slate-400 text-[11px] leading-relaxed">Recepción de artículos con falla en oficina administrativa (Pedro Moreno 501 A) para trámite directo de garantía y reembolso con el proveedor oficial.</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-certificate text-emerald-400 mt-1 shrink-0"></i>
+                        <div>
+                            <strong class="text-slate-200 block text-xs">Garantía Certificada por Proveedor:</strong>
+                            <span class="text-slate-400 text-[11px] leading-relaxed">Productos 100% originales con respaldo de fábrica y reemplazo inmediato por defecto.</span>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-2.5">
+                        <i class="fa-solid fa-cookie-bite text-slate-400 mt-1 shrink-0"></i>
+                        <div>
+                            <strong class="text-slate-200 block text-xs">Políticas de Cookies:</strong>
+                            <span class="text-slate-400 text-[11px] leading-relaxed">Usadas exclusivamente para mantener activa la sesión de tu carrito y mejorar el servicio.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COLUMNA 3: AHORRO Y CASHBACK -->
+                <div class="flex flex-col gap-3">
+                    <h3 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
+                        <i class="fa-solid fa-coins text-emerald-400"></i> Ahorro y Cashback
+                    </h3>
+                    <p class="text-slate-300 font-bold flex items-center gap-2">
+                        <i class="fa-solid fa-piggy-bank text-amber-400 text-base shrink-0"></i>
+                        <span>5% de Cashback en cada compra de forma directa.</span>
+                    </p>
+                    <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-900/60 p-3 rounded-xl border border-slate-800/80">
+                        <strong class="text-slate-300 block mb-1">Aclaración Importante:</strong>
+                        El cashback es acumulable únicamente con registro activo. Si quieres obtener cashback, tienes que mantener tu suscripción a nuestra newsletter activa.
+                    </p>
+                    <div class="pt-2 text-[10px] font-mono text-slate-400 flex items-center gap-2">
+                        <i class="fa-solid fa-robot text-cyan-400"></i>
+                        <span>Potenciado por el software de Anti-Gravity Copilot.</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- COPYRIGHT INFERIOR -->
+            <div class="pt-8 text-center text-slate-400 text-[11px] flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2">
+                    <img src="assets/img/mascota_tigre_thumb.webp" alt="Vía MX" width="20" height="20" class="rounded-full">
+                    <span class="text-white font-bold">Vía MX Curaduría Internacional</span>
+                </div>
+                <p>© 2026 Vía MX — Ecosistema Anti-Gravity & Alfa. Pedro Moreno 501 A, Guadalajara Centro. Todos los derechos reservados.</p>
+                <div class="flex items-center gap-4 text-slate-300">
+                    <a href="checkout.html" class="hover:text-cyan-400">Checkout</a>
+                    <span>•</span>
+                    <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="hover:text-cyan-400">Portal Central</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+"""
+
+# =========================================================================
+# 1. ENSAMBLAJE DE INDEX.HTML (LIMPIO AL 100%)
+# =========================================================================
 INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
@@ -245,7 +355,7 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
         <!-- Nivel 2: Fila Principal -->
         <div class="w-full max-w-[98%] 2xl:max-w-7xl mx-auto flex flex-nowrap items-center justify-between gap-3 sm:gap-6 py-3 px-2 sm:px-6">
             
-            <!-- Extremo Izquierdo: Carrito y Cuenta -->
+            <!-- Extremo Izquierdo -->
             <div class="shrink-0 flex items-center gap-4 sm:gap-6">
                 <button onclick="toggleCartDrawer()" class="flex items-center gap-2.5 bg-transparent hover:opacity-80 transition cursor-pointer text-left group">
                     <div class="relative flex items-center justify-center">
@@ -310,7 +420,7 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
             <i class="fa-solid fa-chevron-right" style="font-size: 18px;"></i>
         </button>
 
-        <div class="hero-slider-dots" style="position: absolute; bottom: 28px; left: 0; right: 0; z-index: 20; display: flex; justify-content: center; align-items: center; gap: 10px;">
+        <div class="hero-slider-dots" style="position: absolute; bottom: 28px; left: 0; right: 0; z-index: 20; display: flex; justify-content: center; align-items: gap: 10px;">
             <button type="button" aria-label="Foto 1" class="hero-dot" onclick="goToSlide(0)" style="min-width: 44px; min-height: 44px; padding: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: none;"><span style="width: 32px; height: 10px; border-radius: 9999px; background-color: #22d3ee; display: block; box-shadow: 0 0 10px rgba(34,211,238,0.6); transition: all 0.3s;"></span></button>
             <button type="button" aria-label="Foto 2" class="hero-dot" onclick="goToSlide(1)" style="min-width: 44px; min-height: 44px; padding: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: none;"><span style="width: 12px; height: 10px; border-radius: 9999px; background-color: #64748b; display: block; transition: all 0.3s;"></span></button>
             <button type="button" aria-label="Foto 3" class="hero-dot" onclick="goToSlide(2)" style="min-width: 44px; min-height: 44px; padding: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; background: transparent; border: none;"><span style="width: 12px; height: 10px; border-radius: 9999px; background-color: #64748b; display: block; transition: all 0.3s;"></span></button>
@@ -367,7 +477,7 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
                         </div>
                     </div>
 
-                    <!-- CUADRÍCULA DE 5 COLUMNAS INTERIORES (AL DAR CLIC NAVEGA A PRODUCTO.HTML) -->
+                    <!-- CUADRÍCULA DE 5 COLUMNAS INTERIORES -->
                     <div id="catalog-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
                         <!-- Poblado síncronamente -->
                     </div>
@@ -454,63 +564,7 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
         </div>
     </section>
 
-    <!-- FOOTER UNIVERSAL HOMOLOGADO (3 COLUMNAS) -->
-    <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 text-slate-400 text-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-slate-800/80">
-                <div class="flex flex-col gap-3">
-                    <h3 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-location-dot text-amber-400"></i> Contacto Local
-                    </h3>
-                    <p class="flex items-start gap-2 text-slate-300">
-                        <i class="fa-solid fa-map-pin text-slate-400 mt-0.5 shrink-0"></i>
-                        <span>Oficina Administrativa & Centro de Garantías: Pedro Moreno 501 A, Guadalajara Centro (CP 44100)</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <i class="fa-solid fa-phone text-cyan-400 shrink-0"></i>
-                        <span>Teléfono Fijo: <a href="tel:3336136348" class="text-slate-200 hover:text-cyan-400 font-mono">(33) 3613 6348</a></span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-emerald-400 shrink-0 text-sm"></i>
-                        <span>WhatsApp: <a href="https://wa.me/523337271440" target="_blank" rel="noopener" class="text-slate-200 hover:text-emerald-400 font-mono">+52 33 3727 1440</a></span>
-                    </p>
-                </div>
-                <div class="flex flex-col gap-3">
-                    <h3 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-cyan-400"></i> Políticas de Compra
-                    </h3>
-                    <p class="text-slate-400 text-[11px] leading-relaxed">
-                        <strong class="text-slate-200 block text-xs">Recepción de Devoluciones y Garantías:</strong>
-                        Recepción de artículos con falla en oficina administrativa (Pedro Moreno 501 A) para trámite directo de garantía y reembolso con el proveedor oficial.
-                    </p>
-                </div>
-                <div class="flex flex-col gap-3">
-                    <h3 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-coins text-emerald-400"></i> Ahorro y Cashback
-                    </h3>
-                    <p class="text-slate-300 font-bold flex items-center gap-2">
-                        <i class="fa-solid fa-piggy-bank text-amber-400 text-base shrink-0"></i>
-                        <span>5% de Cashback en cada compra de forma directa.</span>
-                    </p>
-                    <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-900/60 p-3 rounded-xl border border-slate-800/80">
-                        El cashback es acumulable únicamente con registro activo. Si quieres obtener cashback, tienes que mantener tu suscripción a nuestra newsletter activa.
-                    </p>
-                </div>
-            </div>
-            <div class="pt-8 text-center text-slate-400 text-[11px] flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="flex items-center gap-2">
-                    <img src="assets/img/mascota_tigre_thumb.webp" alt="Vía MX" width="20" height="20" class="rounded-full">
-                    <span class="text-white font-bold">Vía MX Curaduría Internacional</span>
-                </div>
-                <p>© 2026 Vía MX — Ecosistema Anti-Gravity & Alfa. Pedro Moreno 501 A, Guadalajara Centro. Todos los derechos reservados.</p>
-                <div class="flex items-center gap-4 text-slate-300">
-                    <a href="checkout.html" class="hover:text-cyan-400">Checkout</a>
-                    <span>•</span>
-                    <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="hover:text-cyan-400">Portal Central</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {FOOTER_UNIVERSAL_HTML}
 
     <!-- SCRIPT DE TIENDA Y NAVEGACIÓN DIRECTA A PRODUCTO.HTML -->
     <script>
@@ -824,10 +878,12 @@ INDEX_HTML_CLEAN = f"""<!DOCTYPE html>
 with open(INDEX_PATH, "w", encoding="utf-8") as f:
     f.write(INDEX_HTML_CLEAN)
 
-print(f"✓ {INDEX_PATH} limpiado al 100% y vinculado a producto.html.")
+print(f"✓ {INDEX_PATH} generado sin residuos y con footer de 3 columnas completo.")
 
-# 2. GENERAR PRODUCTO.HTML CON LA ESTRUCTURA EN 3 COLUMNAS Y MARQUEE AMARILLO
-PRODUCTO_HTML_3COLS = f"""<!DOCTYPE html>
+# =========================================================================
+# 2. ENSAMBLAJE DE PRODUCTO.HTML (3 COLUMNAS INDEPENDIENTES + MARQUEE)
+# =========================================================================
+PRODUCTO_HTML_CLEAN = f"""<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -1178,63 +1234,7 @@ PRODUCTO_HTML_3COLS = f"""<!DOCTYPE html>
 
     </main>
 
-    <!-- FOOTER UNIVERSAL HOMOLOGADO -->
-    <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 text-slate-400 text-xs">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-slate-800/80">
-                <div class="flex flex-col gap-3">
-                    <h3 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-location-dot text-amber-400"></i> Contacto Local
-                    </h3>
-                    <p class="flex items-start gap-2 text-slate-300">
-                        <i class="fa-solid fa-map-pin text-slate-400 mt-0.5 shrink-0"></i>
-                        <span>Oficina Administrativa & Centro de Garantías: Pedro Moreno 501 A, Guadalajara Centro (CP 44100)</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <i class="fa-solid fa-phone text-cyan-400 shrink-0"></i>
-                        <span>Teléfono Fijo: <a href="tel:3336136348" class="text-slate-200 hover:text-cyan-400 font-mono">(33) 3613 6348</a></span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-emerald-400 shrink-0 text-sm"></i>
-                        <span>WhatsApp: <a href="https://wa.me/523337271440" target="_blank" rel="noopener" class="text-slate-200 hover:text-emerald-400 font-mono">+52 33 3727 1440</a></span>
-                    </p>
-                </div>
-                <div class="flex flex-col gap-3">
-                    <h3 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-cyan-400"></i> Políticas de Compra
-                    </h3>
-                    <p class="text-slate-400 text-[11px] leading-relaxed">
-                        <strong class="text-slate-200 block text-xs">Recepción de Devoluciones y Garantías:</strong>
-                        Recepción de artículos con falla en oficina administrativa (Pedro Moreno 501 A) para trámite directo de garantía y reembolso con el proveedor oficial.
-                    </p>
-                </div>
-                <div class="flex flex-col gap-3">
-                    <h3 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2">
-                        <i class="fa-solid fa-coins text-emerald-400"></i> Ahorro y Cashback
-                    </h3>
-                    <p class="text-slate-300 font-bold flex items-center gap-2">
-                        <i class="fa-solid fa-piggy-bank text-amber-400 text-base shrink-0"></i>
-                        <span>5% de Cashback en cada compra de forma directa.</span>
-                    </p>
-                    <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-900/60 p-3 rounded-xl border border-slate-800/80">
-                        El cashback es acumulable únicamente con registro activo en nuestro portal central.
-                    </p>
-                </div>
-            </div>
-            <div class="pt-8 text-center text-slate-400 text-[11px] flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div class="flex items-center gap-2">
-                    <img src="assets/img/mascota_tigre_thumb.webp" alt="Vía MX" width="20" height="20" class="rounded-full">
-                    <span class="text-white font-bold">Vía MX Curaduría Internacional</span>
-                </div>
-                <p>© 2026 Vía MX — Ecosistema Anti-Gravity & Alfa. Pedro Moreno 501 A, Guadalajara Centro. Todos los derechos reservados.</p>
-                <div class="flex items-center gap-4 text-slate-300">
-                    <a href="checkout.html" class="hover:text-cyan-400">Checkout</a>
-                    <span>•</span>
-                    <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="hover:text-cyan-400">Portal Central</a>
-                </div>
-            </div>
-        </div>
-    </footer>
+    {FOOTER_UNIVERSAL_HTML}
 
     <!-- LÓGICA DE DETALLE Y COMPRA -->
     <script>
@@ -1374,18 +1374,18 @@ PRODUCTO_HTML_3COLS = f"""<!DOCTYPE html>
 """
 
 with open(PRODUCTO_PATH, "w", encoding="utf-8") as f:
-    f.write(PRODUCTO_HTML_3COLS)
+    f.write(PRODUCTO_HTML_CLEAN)
 
 print(f"✓ {PRODUCTO_PATH} generado con la estructura en 3 columnas y marquee amarillo continuo.")
 
 print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
 if os.path.exists(os.path.join(VIAMX_DIR, ".git")):
     subprocess.run(["git", "add", "-A"], cwd=VIAMX_DIR, check=True)
-    subprocess.run(["git", "commit", "-m", "fix(layout): purgar lineas residuales en index y activar pagina independiente producto.html en 3 columnas", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "fix(viamx): reestructuracion total index limpio con redes sociales y producto.html en 3 columnas", "--allow-empty"], cwd=VIAMX_DIR, capture_output=True)
     res_viamx = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=VIAMX_DIR, capture_output=True, text=True)
     print(f"🟢 Vía MX NFL -> Push: {'OK' if res_viamx.returncode == 0 else res_viamx.stderr.strip()}")
 
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
-subprocess.run(["git", "commit", "-m", "fix(viamx): pagina independiente producto.html 3 columnas y marquee continuo desplegado", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+subprocess.run(["git", "commit", "-m", "fix(viamx): despliegue sincronizado de index y producto 3 columnas", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
 res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
