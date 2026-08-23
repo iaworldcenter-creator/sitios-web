@@ -8,10 +8,10 @@ portal_paths = [
 ]
 
 print("=" * 75)
-print("REESTRUCTURANDO PORTAL BAZAR NFL.GDL: GRID DE 8 COLUMNAS Y FLYOUT CON COMPRA DUAL")
+print("REESTRUCTURANDO PORTAL BAZAR NFL.GDL: RETÍCULA SIMÉTRICA 1 + 1 + 5 + 1 = 8 COLS")
 print("=" * 75)
 
-PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
+PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
     <meta charset="UTF-8" />
@@ -41,7 +41,7 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
     <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
         
         <!-- Nivel 1: Barra de Utilidades -->
-        <div class="max-w-[98%] 2xl:max-w-[1700px] mx-auto px-4 py-2 flex items-center justify-between text-xs border-b border-slate-800/80">
+        <div class="max-w-[99%] 2xl:max-w-[1900px] mx-auto px-4 py-2 flex items-center justify-between text-xs border-b border-slate-800/80">
             <div class="flex items-center gap-2">
                 <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-[10px] uppercase">
                     Portal Matriz Guadalajara
@@ -61,15 +61,15 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
         </div>
 
         <!-- Nivel 2: Identidad Oficial + Súper-Barra Blanca + Carrito -->
-        <div class="max-w-[98%] 2xl:max-w-[1700px] mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="max-w-[99%] 2xl:max-w-[1900px] mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
             
             <!-- Logo del Tigre + BAZAR NFL.GDL + Domicilio (Clic desliza al footer) -->
-            <div class="flex items-center gap-3 cursor-pointer shrink-0" onclick="document.getElementById('pie-de-pagina').scrollIntoView({ behavior: 'smooth' });">
+            <div class="flex items-center gap-3.5 cursor-pointer shrink-0" onclick="document.getElementById('pie-de-pagina').scrollIntoView({ behavior: 'smooth' });">
                 <div class="relative w-12 h-12 flex items-center justify-center">
                     <img 
                         src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" 
                         alt="Logo Tigre BAZAR NFL.GDL" 
-                        class="w-12 h-12 rounded-full object-cover border-2 border-amber-400 shadow-[0_0_14px_rgba(251,191,36,0.45)]"
+                        class="w-12 h-12 rounded-full object-cover border-2 border-amber-400 shadow-[0_0_15px_rgba(251,191,36,0.5)]"
                         onerror="this.src='assets/img/mascota_tigre_thumb.webp';"
                     />
                 </div>
@@ -82,7 +82,7 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
             </div>
 
             <!-- Súper-Buscador Blanco con Compra Inmediata en Dropdown -->
-            <div class="flex-1 max-w-2xl w-full relative">
+            <div class="flex-1 max-w-3xl w-full relative">
                 <div class="flex items-center bg-white rounded-full border-2 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.35)] px-4 py-1.5 gap-2">
                     <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
                     <input 
@@ -122,23 +122,25 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
     </header>
 
     <!-- ========================================================================
-         2. CUERPO PRINCIPAL: GRID SIMÉTRICO DE 8 COLUMNAS EXPANDIDO
+         2. CUERPO PRINCIPAL: RETÍCULA SIMÉTRICA DE 8 COLUMNAS (1 + 1 + 5 + 1)
          ======================================================================== -->
-    <main class="w-full max-w-[98%] 2xl:max-w-[1700px] mx-auto px-2 sm:px-4 py-8 flex-1">
+    <main class="w-full max-w-[99%] 2xl:max-w-[1900px] mx-auto px-2 sm:px-4 py-8 flex-1">
         
-        <div class="grid grid-cols-1 lg:grid-cols-8 gap-6 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-8 gap-5 items-start">
             
-            <!-- COLUMNA 1: Margen Izquierdo Vacío de Equilibrio Visual -->
+            <!-- COLUMNA 1: Margen Izquierdo Simétrico -->
             <div class="hidden lg:block lg:col-span-1"></div>
 
             <!-- COLUMNA 2: SIDEBAR CON NUESTRAS 7 BOUTIQUES ("COMPRAS RÁPIDAS") + FLYOUT -->
-            <aside class="col-span-1 lg:col-span-2 w-full bg-slate-900/90 border border-slate-800 rounded-3xl p-4 shadow-2xl relative" id="portal-sidebar-root">
+            <aside class="col-span-1 lg:col-span-1 w-full bg-slate-900/90 border border-slate-800 rounded-3xl p-3 sm:p-4 shadow-2xl relative" id="portal-sidebar-root">
                 
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
-                    <h3 class="font-mono text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
+                    <h3 class="font-mono text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5 truncate">
                         <i class="fa-solid fa-layer-group text-amber-400"></i> Nuestras 7 Boutiques
                     </h3>
-                    <span class="text-[9px] font-mono text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-500/30 px-2 py-0.5 rounded">
+                </div>
+                <div class="mb-3">
+                    <span class="text-[9px] font-mono text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-500/30 px-2 py-0.5 rounded block text-center uppercase tracking-wider">
                         Compras Rápidas
                     </span>
                 </div>
@@ -148,7 +150,7 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
                 </nav>
 
                 <!-- VENTANA FLYOUT LATERAL CON TÍTULOS EN 2 LÍNEAS Y BOTONES DOBLES (CARRITO + COMPRAR) -->
-                <div id="sidebar-flyout-panel" class="hidden lg:absolute left-full top-0 ml-3 w-[440px] bg-slate-900/98 border-2 border-cyan-400 rounded-3xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl slide-right">
+                <div id="sidebar-flyout-panel" class="hidden lg:absolute left-full top-0 ml-3 w-[450px] bg-slate-900/98 border-2 border-cyan-400 rounded-3xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl slide-right">
                     <div class="flex justify-between items-center border-b border-slate-800 pb-2.5 mb-2.5">
                         <div>
                             <span id="flyout-boutique-tag" class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">BOUTIQUE</span>
@@ -169,10 +171,13 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
 
             </aside>
 
-            <!-- COLUMNAS 3 A 8: ESCAPARATE DE 7 SECCIONES X 5 PRODUCTOS DE ALTO RENDIMIENTO -->
+            <!-- COLUMNAS 3 A 7 (5 COLS): ESCAPARATE DE 7 SECCIONES X 5 PRODUCTOS AMPLIOS -->
             <section class="col-span-1 lg:col-span-5 w-full flex flex-col gap-8" id="showcase-container">
-                <!-- 7 Secciones departamentales inyectadas dinámicamente -->
+                <!-- 7 Secciones departamentales inyectadas dinámicamente con ancho expandido -->
             </section>
+
+            <!-- COLUMNA 8: Margen Derecho Simétrico -->
+            <div class="hidden lg:block lg:col-span-1"></div>
 
         </div>
 
@@ -181,7 +186,7 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
     <!-- ========================================================================
          3. LOS 3 PILARES UBICADOS JUSTO ANTES DEL PIE DE PÁGINA
          ======================================================================== -->
-    <section class="max-w-[98%] 2xl:max-w-[1700px] mx-auto px-4 py-8 w-full border-t border-slate-800/80">
+    <section class="max-w-[99%] 2xl:max-w-[1900px] mx-auto px-4 py-8 w-full border-t border-slate-800/80">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-2xl flex items-center gap-3.5">
                 <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-lg shrink-0">
@@ -262,7 +267,7 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
          5. PIE DE PÁGINA UNIVERSAL
          ======================================================================== -->
     <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 text-slate-400 text-xs" id="pie-de-pagina">
-        <div class="max-w-[98%] 2xl:max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[99%] 2xl:max-w-[1900px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-slate-800/80">
                 
                 <!-- COLUMNA 1: CONTACTO LOCAL -->
@@ -500,22 +505,22 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
                 <button 
                     onmouseenter="handleSidebarHover('${b.id}', this)"
                     onclick="window.location.href='${b.url}'"
-                    class="w-full text-left p-3 rounded-2xl bg-slate-950/60 hover:bg-slate-800 border border-slate-800/80 hover:${b.border} flex justify-between items-center transition group cursor-pointer"
+                    class="w-full text-left p-2.5 sm:p-3 rounded-2xl bg-slate-950/60 hover:bg-slate-800 border border-slate-800/80 hover:${b.border} flex justify-between items-center transition group cursor-pointer"
                 >
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid ${b.icon} ${b.color} w-5 text-center text-base"></i>
-                        <div>
-                            <strong class="text-white text-xs block group-hover:text-cyan-300">${b.name}</strong>
-                            <span class="text-[10px] text-slate-400 block truncate max-w-[170px]">${b.desc}</span>
+                    <div class="flex items-center gap-2.5 min-w-0">
+                        <i class="fa-solid ${b.icon} ${b.color} w-4 text-center text-sm shrink-0"></i>
+                        <div class="min-w-0">
+                            <strong class="text-white text-xs block group-hover:text-cyan-300 truncate">${b.name}</strong>
+                            <span class="text-[9px] text-slate-400 block truncate">${b.tag}</span>
                         </div>
                     </div>
-                    <i class="fa-solid fa-chevron-right text-[10px] text-slate-600 group-hover:${b.color} transition group-hover:translate-x-0.5"></i>
+                    <i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:${b.color} transition group-hover:translate-x-0.5 shrink-0"></i>
                 </button>
             </div>
         `).join('');
     }
 
-    // FLYOUT LATERAL CON TÍTULOS DE 2 LÍNEAS COMPLETAS Y BOTONES DOBLES (CARRITO + COMPRAR)
+    // FLYOUT LATERAL CON TÍTULOS EN 2 LÍNEAS COMPLETAS Y BOTONES DOBLES (CARRITO + COMPRAR)
     function handleSidebarHover(boutiqueId, element) {
         clearTimeout(flyoutTimeout);
         const b = boutiquesConfig.find(item => item.id === boutiqueId);
@@ -571,7 +576,7 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
     });
 
     // ------------------------------------------------------------------------
-    // RENDERIZAR ESCAPARATE DE 7 SECCIONES X 5 PRODUCTOS CADA UNA
+    // RENDERIZAR ESCAPARATE DE 7 SECCIONES X 5 PRODUCTOS DE ANCHO EXPANDIDO
     // ------------------------------------------------------------------------
     function renderShowcase() {
         const container = document.getElementById("showcase-container");
@@ -602,7 +607,7 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
                         </a>
                     </div>
 
-                    <!-- Fila de 5 Productos Asimétricos y Espaciosos -->
+                    <!-- Fila de 5 Productos Asimétricos, Anchos y Espaciosos -->
                     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5">
                         ${products.map(p => `
                             <div class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 hover:shadow-[0_4px_20px_rgba(6,182,212,0.15)] rounded-2xl p-3 flex flex-col justify-between transition group">
@@ -885,21 +890,22 @@ PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
 </html>
 """
 
+# Guardar archivo en ambas ubicaciones
 for path in portal_paths:
     if os.path.exists(os.path.dirname(path)) or os.path.exists(path):
         with open(path, "w", encoding="utf-8") as f:
-            f.write(PORTAL_MATRIZ_V2_HTML)
+            f.write(PORTAL_MATRIZ_8COLS_HTML)
         print(f"✓ Portal Matriz actualizado en: {path}")
 
 print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
 sitios_web_repo = os.path.join(BASE_DIR, "sitios-web")
 if os.path.exists(os.path.join(sitios_web_repo, ".git")):
     subprocess.run(["git", "add", "-A"], cwd=sitios_web_repo, check=True)
-    subprocess.run(["git", "commit", "-m", "feat(matriz): grid de 8 columnas simetrico, Compras Rapidas y flyout con compra dual", "--allow-empty"], cwd=sitios_web_repo, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "refactor(matriz): reticula simetrica 8 columnas (1+1+5+1) con tarjetas expandidas de 5 productos", "--allow-empty"], cwd=sitios_web_repo, capture_output=True)
     res_sub = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=sitios_web_repo, capture_output=True, text=True)
     print(f"🟢 Submódulo sitios-web -> Push: {'OK' if res_sub.returncode == 0 else res_sub.stderr.strip()}")
 
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
-subprocess.run(["git", "commit", "-m", "feat(ecosistema): Grid de 8 columnas simetrico y compras inmediatas en flyout desplegados", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+subprocess.run(["git", "commit", "-m", "refactor(ecosistema): BAZAR NFL.GDL con reticula simetrica 8 cols y compras rapidas desplegado", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
 res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
