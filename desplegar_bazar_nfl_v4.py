@@ -8,10 +8,10 @@ portal_paths = [
 ]
 
 print("=" * 75)
-print("DESPLEGANDO BAZAR NFL.GDL: SIDEBAR PROPORCIONAL, TARJETAS +10%, SIN MARCOS Y SWIPE MÓVIL")
+print("DESPLEGANDO BAZAR NFL.GDL: PRECIOS DE ALTO CONTRASTE Y BLOQUES GEMINI / ANTI-GRAVITY")
 print("=" * 75)
 
-PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
+PORTAL_MATRIZ_V4_HTML = """<!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
     <meta charset="UTF-8" />
@@ -102,7 +102,7 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
                     </button>
                 </div>
 
-                <!-- Dropdown de Autocompletado con Compra Directa -->
+                <!-- Dropdown de Autocompletado con Precios Contrastados y Compra Directa -->
                 <div id="master-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2 flex flex-col gap-1.5 max-h-96 overflow-y-auto no-scrollbar"></div>
             </div>
 
@@ -122,13 +122,13 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
     </header>
 
     <!-- ========================================================================
-         2. CUERPO PRINCIPAL: SIDEBAR PROPORCIONAL + ESCAPARATE EXPANDIDO
+         2. CUERPO PRINCIPAL: SIDEBAR + CRÉDITOS GEMINI/ANTIGRAVITY + ESCAPARATE
          ======================================================================== -->
     <main class="w-full max-w-[99%] 2xl:max-w-[1850px] mx-auto px-2 sm:px-4 py-8 flex-1">
         
         <div class="flex flex-col lg:flex-row gap-8 items-start justify-center">
             
-            <!-- COLUMNA LATERAL: NUESTRAS 7 BOUTIQUES (TAMAÑO PROPORCIONAL RESTAURADO 340px-380px) -->
+            <!-- COLUMNA LATERAL: NUESTRAS 7 BOUTIQUES + TARJETAS DE GOOGLE GEMINI Y ANTI-GRAVITY -->
             <aside class="w-full lg:w-[340px] xl:w-[370px] shrink-0 bg-slate-900/90 rounded-3xl p-5 shadow-2xl relative" id="portal-sidebar-root">
                 
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3.5 mb-3.5">
@@ -143,12 +143,45 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
                     </span>
                 </div>
 
-                <!-- Lista de Boutiques con Proporción Espaciosa -->
+                <!-- Lista de Boutiques -->
                 <nav class="flex flex-col gap-2" id="sidebar-boutiques-list">
                     <!-- Inyectado por JavaScript -->
                 </nav>
 
-                <!-- VENTANA FLYOUT LATERAL CON TÍTULOS EN 2 LÍNEAS Y BOTONES DOBLES (CARRITO + COMPRAR) -->
+                <!-- BLOQUE DE RECONOCIMIENTO Y DESCARGA: GOOGLE GEMINI & ANTI-GRAVITY -->
+                <div class="mt-5 pt-5 border-t border-slate-800 flex flex-col gap-3">
+                    
+                    <!-- Tarjeta Oficial Gemini AI -->
+                    <div class="bg-gradient-to-b from-slate-950 to-slate-900 border border-cyan-500/40 rounded-2xl p-4 flex flex-col gap-2.5 shadow-lg relative overflow-hidden">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-cyan-400 text-sm"></i>
+                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-cyan-300">Creado por Google Gemini</span>
+                        </div>
+                        <p class="text-[11px] text-slate-300 leading-snug font-medium">
+                            Este sitio fue concebido y programado con la Inteligencia Artificial de Google Gemini.
+                        </p>
+                        <a href="https://gemini.google.com" target="_blank" rel="noopener noreferrer" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-2.5 rounded-xl text-xs text-center uppercase tracking-wider transition active:scale-95 shadow-md flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="fa-solid fa-sparkles text-xs"></i> Suscribirse a Gemini
+                        </a>
+                    </div>
+
+                    <!-- Tarjeta Oficial Anti-Gravity -->
+                    <div class="bg-gradient-to-b from-slate-950 to-slate-900 border border-amber-500/40 rounded-2xl p-4 flex flex-col gap-2.5 shadow-lg relative overflow-hidden">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-robot text-amber-400 text-sm"></i>
+                            <span class="text-[10px] font-mono font-bold uppercase tracking-wider text-amber-300">Desarrollado por Anti-Gravity</span>
+                        </div>
+                        <p class="text-[11px] text-slate-300 leading-snug font-medium">
+                            Desarrollado, compilado y desplegado por el software de Anti-Gravity Copilot.
+                        </p>
+                        <a href="https://antigravity.google/download" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-2.5 rounded-xl text-xs text-center uppercase tracking-wider transition active:scale-95 shadow-md flex items-center justify-center gap-2 cursor-pointer">
+                            <i class="fa-solid fa-download text-xs text-slate-950"></i> Bajar Anti-Gravity Gratis
+                        </a>
+                    </div>
+
+                </div>
+
+                <!-- VENTANA FLYOUT LATERAL CON TÍTULOS EN 2 LÍNEAS Y BOTONES DOBLES -->
                 <div id="sidebar-flyout-panel" class="hidden lg:absolute left-full top-0 ml-3.5 w-[460px] bg-slate-900/98 border-2 border-cyan-400 rounded-3xl p-5 shadow-[0_12px_45px_rgba(6,182,212,0.4)] z-50 backdrop-blur-xl slide-right">
                     <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-3">
                         <div>
@@ -169,7 +202,7 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
 
             </aside>
 
-            <!-- ESCAPARATE DE 7 SECCIONES X 5 PRODUCTOS (+10% TAMAÑO / SIN MARCOS / SWIPE MÓVIL) -->
+            <!-- ESCAPARATE DE 7 SECCIONES X 5 PRODUCTOS (PRECIOS DE ALTO CONTRASTE + SWIPE MÓVIL) -->
             <section class="flex-1 w-full flex flex-col gap-8 min-w-0" id="showcase-container">
                 <!-- 7 Secciones departamentales inyectadas dinámicamente -->
             </section>
@@ -358,7 +391,7 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
     </footer>
 
     <!-- ========================================================================
-         6. MOTOR JAVASCRIPT: CATÁLOGO DE 35 PRODUCTOS CON SWIPE MÓVIL Y FLYOUT
+         6. MOTOR JAVASCRIPT: CATÁLOGO CON PRECIOS DE ALTO CONTRASTE Y COMPARATIVA
          ======================================================================== -->
     <script>
     const boutiquesConfig = [
@@ -443,8 +476,8 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
         { sku: "VMX-005", boutiqueId: "viamx", nombre: "Smartphone 5G Desbloqueado 256GB / 8GB RAM Cámara 108MP", marca: "Motorola", precio: 4899.00, original: 6499.00, desc: "Pantalla AMOLED 120Hz con batería de 5000mAh y carga turbo rápida de 68W.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp", tokens: ["celular", "telefono", "smartphone", "motorola", "5g"] },
 
         // 3. Cigarros Bazar
-        { sku: "CIG-001", boutiqueId: "cigarros", nombre: "Cigarros Marlboro Gold Original (Cajetilla 20)", marca: "Marlboro", precio: 82.00, original: 85.00, desc: "Sabor suave y filtro blanco balanceado de importación nacional.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["cigarros", "marlboro", "gold", "tabaco", "cajetilla"] },
-        { sku: "CIG-002", boutiqueId: "cigarros", nombre: "Cigarros Benson & Hedges Black Switch (Cajetilla 20)", marca: "Benson & Hedges", precio: 88.00, original: 92.00, desc: "Cápsula de sabor mentolado premium con tabaco curado de alta calidad.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["cigarros", "benson", "hedges", "mentolados", "tabaco"] },
+        { sku: "CIG-001", boutiqueId: "cigarros", nombre: "Cigarros Marlboro Gold Original (Cajetilla 20)", marca: "Marlboro", precio: 82.00, original: 95.00, desc: "Sabor suave y filtro blanco balanceado de importación nacional.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["cigarros", "marlboro", "gold", "tabaco", "cajetilla"] },
+        { sku: "CIG-002", boutiqueId: "cigarros", nombre: "Cigarros Benson & Hedges Black Switch (Cajetilla 20)", marca: "Benson & Hedges", precio: 88.00, original: 105.00, desc: "Cápsula de sabor mentolado premium con tabaco curado de alta calidad.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["cigarros", "benson", "hedges", "mentolados", "tabaco"] },
         { sku: "CIG-003", boutiqueId: "cigarros", nombre: "Puro Habanos Cohiba Siglo VI Tubo Individual", marca: "Cohiba", precio: 850.00, original: 1100.00, desc: "Puro cubano hecho a mano con notas amaderadas y especiadas.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["puro", "cohiba", "siglo vi", "habano", "cuba"] },
         { sku: "CIG-004", boutiqueId: "cigarros", nombre: "Puro Romeo y Julieta Churchill en Tubo de Aluminio", marca: "Romeo y Julieta", precio: 620.00, original: 790.00, desc: "Vitola clásica Churchill de fortaleza media con tiro excelente.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["puro", "romeo y julieta", "churchill", "habano"] },
         { sku: "CIG-005", boutiqueId: "cigarros", nombre: "Encendedor de Colección Estilo Vintage a Gas Recargable", marca: "Clipper Pro", precio: 195.00, original: 260.00, desc: "Cuerpo metálico cepillado con piedra intercambiable y válvula de recarga.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["encendedor", "clipper", "fuego", "recargable", "gas"] },
@@ -452,9 +485,9 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
         // 4. Dulces Bazar
         { sku: "DUL-001", boutiqueId: "dulces", nombre: "Paleta Payaso Ricolino (Caja con 15 piezas)", marca: "Ricolino", precio: 245.00, original: 290.00, desc: "Malvavisco cubierto de chocolate con gomitas de colores tradicionales.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["paleta", "payaso", "ricolino", "dulces", "chocolate"] },
         { sku: "DUL-002", boutiqueId: "dulces", nombre: "Mazapán De La Rosa Gigante (Caja con 20 piezas)", marca: "De La Rosa", precio: 160.00, original: 195.00, desc: "El dulce tradicional mexicano de cacahuate tostado seleccionado.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["mazapan", "de la rosa", "cacahuate", "dulce", "dulces"] },
-        { sku: "DUL-003", boutiqueId: "dulces", nombre: "Rocaleta Sonrics con Centro de Goma (Bolsa 30 piezas)", marca: "Sonrics", precio: 185.00, original: 220.00, desc: "Caramelo con 4 capas de chile ácido y centro de chicle masticable.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["rocaleta", "sonrics", "chile", "paleta", "dulces"] },
+        { sku: "DUL-003", boutiqueId: "dulces", nombre: "Rocaleta Sonrics con Centro de Goma (Bolsa 30 piezas)", marca: "Sonrics", precio: 185.00, original: 230.00, desc: "Caramelo con 4 capas de chile ácido y centro de chicle masticable.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["rocaleta", "sonrics", "chile", "paleta", "dulces"] },
         { sku: "DUL-004", boutiqueId: "dulces", nombre: "Chocolates Finos Surtidos Artesanales Caja de Regalo", marca: "Turín", precio: 220.00, original: 280.00, desc: "Bombones de chocolate semiamargo rellenos de licor y crema de avellana.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["chocolate", "chocolates", "turin", "bombones", "regalo"] },
-        { sku: "DUL-005", boutiqueId: "dulces", nombre: "Cacahuates Japoneses con Ajo y Chile (Bolsa de 1 Kg)", marca: "Nipon", precio: 95.00, original: 120.00, desc: "Botana crujiente horneada ideal para reuniones y eventos familiares.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["cacahuates", "botana", "snacks", "japones", "nipon"] },
+        { sku: "DUL-005", boutiqueId: "dulces", nombre: "Cacahuates Japoneses con Ajo y Chile (Bolsa de 1 Kg)", marca: "Nipon", precio: 95.00, original: 130.00, desc: "Botana crujiente horneada ideal para reuniones y eventos familiares.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["cacahuates", "botana", "snacks", "japones", "nipon"] },
 
         // 5. Kiosco Digital
         { sku: "KIO-001", boutiqueId: "kiosco", nombre: "Suscripción Digital Anual Revista National Geographic", marca: "RBA", precio: 599.00, original: 850.00, desc: "12 ediciones digitales en alta definición + acceso al archivo fotográfico.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_plano_blanco.webp", tokens: ["revista", "national geographic", "natgeo", "digital", "ciencia"] },
@@ -562,7 +595,7 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
     });
 
     // ------------------------------------------------------------------------
-    // RENDERIZAR ESCAPARATE DE 7 SECCIONES (+10% TAMAÑO / SIN BORDES / SWIPE MÓVIL)
+    // RENDERIZAR ESCAPARATE DE 7 SECCIONES CON PRECIOS DE ALTO CONTRASTE
     // ------------------------------------------------------------------------
     function renderShowcase() {
         const container = document.getElementById("showcase-container");
@@ -573,7 +606,7 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
             return `
                 <div class="bg-slate-900/50 rounded-3xl p-5 shadow-2xl space-y-4">
                     
-                    <!-- Encabezado Departamental sin marcos duros -->
+                    <!-- Encabezado Departamental -->
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800/80 pb-3">
                         <div class="flex items-center gap-3">
                             <div class="w-10 h-10 rounded-xl bg-slate-950 flex items-center justify-center ${b.color} shadow">
@@ -593,54 +626,75 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
                         </a>
                     </div>
 
-                    <!-- Fila de 5 Productos +10% más grandes, sin marcos y con Swipe Horizontal en móviles -->
+                    <!-- Fila de 5 Productos con Precios de Alto Contraste y Swipe Móvil -->
                     <div class="flex lg:grid lg:grid-cols-5 overflow-x-auto lg:overflow-visible gap-4 pb-2 lg:pb-0 no-scrollbar snap-x snap-mandatory">
-                        ${products.map(p => `
-                            <div class="w-[215px] sm:w-[245px] lg:w-auto shrink-0 lg:shrink snap-start bg-slate-950/90 hover:bg-slate-950 rounded-2xl p-3.5 flex flex-col justify-between transition group shadow-xl hover:shadow-[0_8px_30px_rgba(6,182,212,0.2)]">
-                                <div>
-                                    <!-- Imagen Ampliada (+10%) sin bordes rígidos -->
-                                    <div class="w-full h-40 sm:h-44 overflow-hidden rounded-xl bg-slate-900 flex items-center justify-center p-2 relative mb-2.5 shadow-inner">
-                                        <img 
-                                            src="${p.img}" 
-                                            alt="${p.nombre}" 
-                                            class="w-full h-full object-contain group-hover:scale-105 transition duration-300"
-                                            onerror="this.onerror=null; this.src='assets/img/mascota_tigre_thumb.webp';"
-                                        />
-                                        <span class="absolute top-1.5 left-1.5 bg-amber-500/15 text-amber-400 text-[8px] font-mono font-black px-2 py-0.5 rounded shadow">
-                                            Directo
-                                        </span>
+                        ${products.map(p => {
+                            const discountPct = p.original ? Math.round((1 - (p.precio / p.original)) * 100) : 0;
+                            return `
+                                <div class="w-[220px] sm:w-[250px] lg:w-auto shrink-0 lg:shrink snap-start bg-slate-950/90 hover:bg-slate-950 rounded-2xl p-3.5 flex flex-col justify-between transition group shadow-xl hover:shadow-[0_8px_30px_rgba(6,182,212,0.2)]">
+                                    <div>
+                                        <!-- Imagen con Descuento Visible -->
+                                        <div class="w-full h-40 sm:h-44 overflow-hidden rounded-xl bg-slate-900 flex items-center justify-center p-2 relative mb-2.5 shadow-inner">
+                                            <img 
+                                                src="${p.img}" 
+                                                alt="${p.nombre}" 
+                                                class="w-full h-full object-contain group-hover:scale-105 transition duration-300"
+                                                onerror="this.onerror=null; this.src='assets/img/mascota_tigre_thumb.webp';"
+                                            />
+                                            ${discountPct > 0 ? `
+                                                <span class="absolute top-2 left-2 bg-red-600 text-white text-[9px] font-mono font-black px-2 py-0.5 rounded-md shadow-md uppercase tracking-wider">
+                                                    -${discountPct}% Ahorro
+                                                </span>
+                                            ` : `
+                                                <span class="absolute top-2 left-2 bg-amber-500/20 text-amber-300 text-[9px] font-mono font-black px-2 py-0.5 rounded-md shadow-md uppercase">
+                                                    Directo
+                                                </span>
+                                            `}
+                                        </div>
+
+                                        <!-- Marca & SKU -->
+                                        <div class="flex justify-between items-center text-[9px] font-mono mb-1">
+                                            <span class="text-cyan-400 font-bold uppercase truncate">${p.marca}</span>
+                                            <span class="text-slate-500 font-bold">${p.sku}</span>
+                                        </div>
+
+                                        <!-- Título y Descripción Asimétrica -->
+                                        <h4 class="text-white font-bold text-xs mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${p.nombre}">${p.nombre}</h4>
+                                        <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-2 mb-3 font-normal">${p.desc}</p>
                                     </div>
 
-                                    <!-- Marca & SKU -->
-                                    <div class="flex justify-between items-center text-[9px] font-mono mb-1">
-                                        <span class="text-cyan-400 font-bold uppercase truncate">${p.marca}</span>
-                                        <span class="text-slate-500">${p.sku}</span>
-                                    </div>
+                                    <div>
+                                        <!-- MÓDULO DE PRECIOS DE ALTO CONTRASTE (ANTES VS HOY) -->
+                                        <div class="pt-2.5 border-t border-slate-900 mb-2.5 flex flex-col gap-1">
+                                            ${p.original ? `
+                                                <div class="flex items-center justify-between gap-1 text-[11px] font-mono">
+                                                    <span class="text-slate-400 font-bold uppercase text-[10px]">Antes:</span>
+                                                    <span class="text-red-400 font-bold line-through bg-red-950/50 border border-red-500/40 px-1.5 py-0.2 rounded">
+                                                        $${p.original.toLocaleString('es-MX', { minimumFractionDigits: 2 })}
+                                                    </span>
+                                                </div>
+                                            ` : ''}
+                                            <div class="flex items-baseline justify-between">
+                                                <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase">Oferta:</span>
+                                                <span class="text-base sm:text-lg font-black font-mono text-amber-400">
+                                                    $${p.precio.toLocaleString('es-MX', { minimumFractionDigits: 2 })} <span class="text-[10px] text-amber-300/80 font-normal">MXN</span>
+                                                </span>
+                                            </div>
+                                        </div>
 
-                                    <!-- Título y Descripción Asimétrica Espaciosa -->
-                                    <h4 class="text-white font-bold text-xs mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${p.nombre}">${p.nombre}</h4>
-                                    <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-2 mb-3 font-normal">${p.desc}</p>
+                                        <!-- Botones Dobles Homologados -->
+                                        <div class="grid grid-cols-2 gap-1.5">
+                                            <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 text-cyan-300 font-bold py-2 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer shadow border border-cyan-500/30" title="Agregar a canasta">
+                                                <i class="fa-solid fa-cart-plus text-[10px]"></i> <span class="truncate">Carrito</span>
+                                            </button>
+                                            <button onclick="buyNowDirect('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-2 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow cursor-pointer" title="Comprar ahora">
+                                                <i class="fa-solid fa-bolt text-[10px]"></i> <span class="truncate">Comprar</span>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div>
-                                    <!-- Precio -->
-                                    <div class="flex items-baseline justify-between pt-2 border-t border-slate-900 mb-2.5">
-                                        <span class="text-amber-400 font-black font-mono text-sm sm:text-base">$${p.precio.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
-                                        ${p.original ? `<span class="text-slate-500 line-through text-[10px] font-mono">$${p.original.toFixed(2)}</span>` : ''}
-                                    </div>
-
-                                    <!-- Botones Dobles Homologados -->
-                                    <div class="grid grid-cols-2 gap-1.5">
-                                        <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 text-cyan-300 font-bold py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer shadow" title="Agregar a canasta">
-                                            <i class="fa-solid fa-cart-plus text-[10px]"></i> <span class="truncate">Carrito</span>
-                                        </button>
-                                        <button onclick="buyNowDirect('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow cursor-pointer" title="Comprar ahora">
-                                            <i class="fa-solid fa-bolt text-[10px]"></i> <span class="truncate">Comprar</span>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        `).join('')}
+                            `;
+                        }).join('')}
                     </div>
 
                 </div>
@@ -691,20 +745,23 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
         }
 
         box.innerHTML = matches.map(item => `
-            <div class="bg-slate-950 rounded-xl p-2.5 flex items-center justify-between gap-3 transition shadow">
+            <div class="bg-slate-950 rounded-xl p-2.5 flex items-center justify-between gap-3 transition shadow border border-slate-800/80">
                 <div class="flex items-center gap-2.5 min-w-0 flex-1">
-                    <img src="${item.img}" alt="${item.nombre}" class="w-8 h-8 object-contain rounded bg-slate-900 p-0.5 shrink-0" onerror="this.src='assets/img/mascota_tigre_thumb.webp';"/>
+                    <img src="${item.img}" alt="${item.nombre}" class="w-9 h-9 object-contain rounded-lg bg-slate-900 p-0.5 shrink-0" onerror="this.src='assets/img/mascota_tigre_thumb.webp';"/>
                     <div class="min-w-0">
-                        <span class="text-[9px] font-mono text-cyan-400 font-bold block">${item.sku}</span>
+                        <span class="text-[9px] font-mono text-cyan-400 font-bold block">${item.sku} &bull; ${item.marca}</span>
                         <h5 class="text-xs font-bold text-white truncate">${item.nombre}</h5>
-                        <span class="text-amber-400 font-mono font-bold text-xs">$${item.precio.toFixed(2)} MXN</span>
+                        <div class="flex items-center gap-2 mt-0.5">
+                            <span class="text-amber-400 font-mono font-bold text-xs">$${item.precio.toFixed(2)} MXN</span>
+                            ${item.original ? `<span class="text-[10px] font-mono text-red-400 line-through">$${item.original.toFixed(2)}</span>` : ''}
+                        </div>
                     </div>
                 </div>
                 <div class="flex items-center gap-1.5 shrink-0">
-                    <button onclick="addToCartDirect('${item.sku}', 1)" class="bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold px-2 py-1 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95 shadow" title="Sumar al carrito">
+                    <button onclick="addToCartDirect('${item.sku}', 1)" class="bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold px-2 py-1.5 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95 shadow" title="Sumar al carrito">
                         <i class="fa-solid fa-cart-plus"></i> <span class="hidden sm:inline">Carrito</span>
                     </button>
-                    <button onclick="buyNowDirect('${item.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95 shadow" title="Pagar ahora">
+                    <button onclick="buyNowDirect('${item.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-2.5 py-1.5 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95 shadow" title="Pagar ahora">
                         <i class="fa-solid fa-bolt"></i> <span>Comprar</span>
                     </button>
                 </div>
@@ -833,7 +890,7 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
         }
 
         container.innerHTML = cartStorage.map(item => `
-            <div class="bg-slate-950 rounded-2xl p-3 flex flex-col gap-2 text-xs shadow-md">
+            <div class="bg-slate-950 rounded-2xl p-3 flex flex-col gap-2 text-xs shadow-md border border-slate-800">
                 <div class="flex justify-between items-start gap-2">
                     <div class="min-w-0 flex-1">
                         <span class="font-mono text-[9px] text-cyan-400 font-bold block">${item.sku}</span>
@@ -873,21 +930,22 @@ PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
 </html>
 """
 
+# Guardar en ambas ubicaciones
 for path in portal_paths:
     if os.path.exists(os.path.dirname(path)) or os.path.exists(path):
         with open(path, "w", encoding="utf-8") as f:
-            f.write(PORTAL_MATRIZ_FINAL_HTML)
+            f.write(PORTAL_MATRIZ_V4_HTML)
         print(f"✓ Portal Matriz actualizado en: {path}")
 
 print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
 sitios_web_repo = os.path.join(BASE_DIR, "sitios-web")
 if os.path.exists(os.path.join(sitios_web_repo, ".git")):
     subprocess.run(["git", "add", "-A"], cwd=sitios_web_repo, check=True)
-    subprocess.run(["git", "commit", "-m", "feat(matriz): sidebar proporcional restaurado, tarjetas +10% sin marcos y swipe movil", "--allow-empty"], cwd=sitios_web_repo, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "feat(matriz): precios de alto contraste (antes vs oferta) y bloques de Google Gemini y Anti-Gravity", "--allow-empty"], cwd=sitios_web_repo, capture_output=True)
     res_sub = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=sitios_web_repo, capture_output=True, text=True)
     print(f"🟢 Submódulo sitios-web -> Push: {'OK' if res_sub.returncode == 0 else res_sub.stderr.strip()}")
 
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
-subprocess.run(["git", "commit", "-m", "feat(ecosistema): Portal BAZAR NFL.GDL final con tarjetas +10% sin marcos y swipe movil", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+subprocess.run(["git", "commit", "-m", "feat(ecosistema): Portal BAZAR NFL.GDL v4 con precios contrastados y reconocimiento oficial desplegado", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
 res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
