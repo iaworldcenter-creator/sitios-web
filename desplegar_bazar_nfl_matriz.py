@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+﻿import os
+import subprocess
+
+BASE_DIR = r"E:\sitios web"
+portal_paths = [
+    os.path.join(BASE_DIR, "index.html"),
+    os.path.join(BASE_DIR, "sitios-web", "index.html")
+]
+
+print("=" * 75)
+print("DESPLEGANDO PORTAL MATRIZ BAZAR NFL.GDL: ESCAPARATE DE 7 BOUTIQUES X 5 PRODUCTOS")
+print("=" * 75)
+
+PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
     <meta charset="UTF-8" />
@@ -855,3 +868,24 @@
     </script>
 </body>
 </html>
+"""
+
+# Guardar archivo en ambas ubicaciones
+for path in portal_paths:
+    if os.path.exists(os.path.dirname(path)) or os.path.exists(path):
+        with open(path, "w", encoding="utf-8") as f:
+            f.write(PORTAL_MATRIZ_HTML)
+        print(f"✓ Portal Matriz actualizado en: {path}")
+
+print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
+sitios_web_repo = os.path.join(BASE_DIR, "sitios-web")
+if os.path.exists(os.path.join(sitios_web_repo, ".git")):
+    subprocess.run(["git", "add", "-A"], cwd=sitios_web_repo, check=True)
+    subprocess.run(["git", "commit", "-m", "feat(matriz): BAZAR NFL.GDL con 7 escaparates x 5 productos, buscador multi-token y flyout", "--allow-empty"], cwd=sitios_web_repo, capture_output=True)
+    res_sub = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=sitios_web_repo, capture_output=True, text=True)
+    print(f"🟢 Submódulo sitios-web -> Push: {'OK' if res_sub.returncode == 0 else res_sub.stderr.strip()}")
+
+subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
+subprocess.run(["git", "commit", "-m", "feat(ecosistema): Portal BAZAR NFL.GDL desplegado en monorepo con 35 articulos y compra directa", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
+print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
