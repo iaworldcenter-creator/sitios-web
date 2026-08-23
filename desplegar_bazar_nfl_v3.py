@@ -8,16 +8,16 @@ portal_paths = [
 ]
 
 print("=" * 75)
-print("REESTRUCTURANDO PORTAL BAZAR NFL.GDL: RETÍCULA SIMÉTRICA 1 + 1 + 5 + 1 = 8 COLS")
+print("DESPLEGANDO BAZAR NFL.GDL: SIDEBAR PROPORCIONAL, TARJETAS +10%, SIN MARCOS Y SWIPE MÓVIL")
 print("=" * 75)
 
-PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
+PORTAL_MATRIZ_FINAL_HTML = """<!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BAZAR NFL.GDL | Ecosistema Comercial Pedro Moreno 501 A</title>
-    <meta name="description" content="Hub central BAZAR NFL.GDL: 7 boutiques especializadas en Pedro Moreno 501 A, Guadalajara Centro. Hardware, Pantallas, Tabacos, Dulces, Kiosco y Novedades con Carrito Global." />
+    <meta name="description" content="Hub central BAZAR NFL.GDL: 7 boutiques especializadas en Pedro Moreno 501 A, Guadalajara Centro. Hardware, Pantallas, Tabacos, Dulces, Kiosco y Novedades con Carrito Global y Envío Exprés el mismo día." />
     <meta name="google-site-verification" content="2xIPYIU_imoZjFogZhoFRuepS7PFhXQloOamPV7ex6Q" />
     
     <!-- Tailwind CSS y FontAwesome -->
@@ -36,17 +36,17 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950">
 
     <!-- ========================================================================
-         1. CABECERA: LOGO DEL TIGRE + MARCA BAZAR NFL.GDL + SCROLL A FOOTER
+         1. CABECERA: IDENTIDAD BAZAR NFL.GDL, LOGO DEL TIGRE Y PROMO EXPRÉS
          ======================================================================== -->
-    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
+    <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
         
-        <!-- Nivel 1: Barra de Utilidades -->
-        <div class="max-w-[99%] 2xl:max-w-[1900px] mx-auto px-4 py-2 flex items-center justify-between text-xs border-b border-slate-800/80">
+        <!-- Nivel 1: Barra Promocional de Envío Exprés y Sellos Tecnológicos -->
+        <div class="max-w-[99%] 2xl:max-w-[1850px] mx-auto px-4 py-2 flex items-center justify-between text-xs border-b border-slate-800/80">
             <div class="flex items-center gap-2">
-                <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-[10px] uppercase">
-                    Portal Matriz Guadalajara
+                <span class="px-2.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-[10px] uppercase">
+                    Envío Exprés El Mismo Día
                 </span>
-                <span class="text-slate-400 hidden sm:inline text-[11px]">7 Tiendas Especializadas • Un Solo Carrito Global con Entregas a Domicilio</span>
+                <span class="text-slate-300 hidden sm:inline text-[11px] font-semibold">Entregas directas a la puerta de tu domicilio en Guadalajara Centro y Zona Metropolitana</span>
             </div>
 
             <div class="flex items-center gap-3 font-bold text-[11px]">
@@ -61,10 +61,10 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
         </div>
 
         <!-- Nivel 2: Identidad Oficial + Súper-Barra Blanca + Carrito -->
-        <div class="max-w-[99%] 2xl:max-w-[1900px] mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="max-w-[99%] 2xl:max-w-[1850px] mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
             
-            <!-- Logo del Tigre + BAZAR NFL.GDL + Domicilio (Clic desliza al footer) -->
-            <div class="flex items-center gap-3.5 cursor-pointer shrink-0" onclick="document.getElementById('pie-de-pagina').scrollIntoView({ behavior: 'smooth' });">
+            <!-- Logo del Tigre + BAZAR NFL.GDL + Domicilio (Clic desliza al pie de página) -->
+            <div class="flex items-center gap-3.5 cursor-pointer shrink-0" onclick="document.getElementById('pie-de-pagina').scrollIntoView({ behavior: 'smooth' });" title="Ver información de contacto y domicilio">
                 <div class="relative w-12 h-12 flex items-center justify-center">
                     <img 
                         src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" 
@@ -83,7 +83,7 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
 
             <!-- Súper-Buscador Blanco con Compra Inmediata en Dropdown -->
             <div class="flex-1 max-w-3xl w-full relative">
-                <div class="flex items-center bg-white rounded-full border-2 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.35)] px-4 py-1.5 gap-2">
+                <div class="flex items-center bg-white rounded-full border-2 border-cyan-400 shadow-[0_0_22px_rgba(6,182,212,0.4)] px-4 py-1.5 gap-2">
                     <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
                     <input 
                         type="text" 
@@ -122,48 +122,46 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
     </header>
 
     <!-- ========================================================================
-         2. CUERPO PRINCIPAL: RETÍCULA SIMÉTRICA DE 8 COLUMNAS (1 + 1 + 5 + 1)
+         2. CUERPO PRINCIPAL: SIDEBAR PROPORCIONAL + ESCAPARATE EXPANDIDO
          ======================================================================== -->
-    <main class="w-full max-w-[99%] 2xl:max-w-[1900px] mx-auto px-2 sm:px-4 py-8 flex-1">
+    <main class="w-full max-w-[99%] 2xl:max-w-[1850px] mx-auto px-2 sm:px-4 py-8 flex-1">
         
-        <div class="grid grid-cols-1 lg:grid-cols-8 gap-5 items-start">
+        <div class="flex flex-col lg:flex-row gap-8 items-start justify-center">
             
-            <!-- COLUMNA 1: Margen Izquierdo Simétrico -->
-            <div class="hidden lg:block lg:col-span-1"></div>
-
-            <!-- COLUMNA 2: SIDEBAR CON NUESTRAS 7 BOUTIQUES ("COMPRAS RÁPIDAS") + FLYOUT -->
-            <aside class="col-span-1 lg:col-span-1 w-full bg-slate-900/90 border border-slate-800 rounded-3xl p-3 sm:p-4 shadow-2xl relative" id="portal-sidebar-root">
+            <!-- COLUMNA LATERAL: NUESTRAS 7 BOUTIQUES (TAMAÑO PROPORCIONAL RESTAURADO 340px-380px) -->
+            <aside class="w-full lg:w-[340px] xl:w-[370px] shrink-0 bg-slate-900/90 rounded-3xl p-5 shadow-2xl relative" id="portal-sidebar-root">
                 
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
-                    <h3 class="font-mono text-xs font-black text-white uppercase tracking-wider flex items-center gap-1.5 truncate">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3.5 mb-3.5">
+                    <h3 class="font-mono text-sm font-black text-white uppercase tracking-wider flex items-center gap-2 truncate">
                         <i class="fa-solid fa-layer-group text-amber-400"></i> Nuestras 7 Boutiques
                     </h3>
                 </div>
-                <div class="mb-3">
-                    <span class="text-[9px] font-mono text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-500/30 px-2 py-0.5 rounded block text-center uppercase tracking-wider">
+                
+                <div class="mb-3.5">
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-500/30 px-3 py-1 rounded-xl block text-center uppercase tracking-widest">
                         Compras Rápidas
                     </span>
                 </div>
 
-                <nav class="flex flex-col gap-1.5" id="sidebar-boutiques-list">
+                <!-- Lista de Boutiques con Proporción Espaciosa -->
+                <nav class="flex flex-col gap-2" id="sidebar-boutiques-list">
                     <!-- Inyectado por JavaScript -->
                 </nav>
 
                 <!-- VENTANA FLYOUT LATERAL CON TÍTULOS EN 2 LÍNEAS Y BOTONES DOBLES (CARRITO + COMPRAR) -->
-                <div id="sidebar-flyout-panel" class="hidden lg:absolute left-full top-0 ml-3 w-[450px] bg-slate-900/98 border-2 border-cyan-400 rounded-3xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl slide-right">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-2.5 mb-2.5">
+                <div id="sidebar-flyout-panel" class="hidden lg:absolute left-full top-0 ml-3.5 w-[460px] bg-slate-900/98 border-2 border-cyan-400 rounded-3xl p-5 shadow-[0_12px_45px_rgba(6,182,212,0.4)] z-50 backdrop-blur-xl slide-right">
+                    <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-3">
                         <div>
-                            <span id="flyout-boutique-tag" class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">BOUTIQUE</span>
+                            <span id="flyout-boutique-tag" class="text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300">BOUTIQUE</span>
                             <h4 id="flyout-boutique-title" class="text-xs font-black text-white mt-1">Compras Inmediatas</h4>
                         </div>
                         <span class="text-[10px] font-mono text-emerald-400 font-bold"><i class="fa-solid fa-bolt"></i> Compra Directa</span>
                     </div>
 
-                    <!-- Lista con Título Completo de 2 Líneas y Botones Dobles -->
-                    <div id="flyout-boutique-products" class="flex flex-col gap-2.5 max-h-[380px] overflow-y-auto pr-1 no-scrollbar"></div>
+                    <div id="flyout-boutique-products" class="flex flex-col gap-3 max-h-[400px] overflow-y-auto pr-1 no-scrollbar"></div>
 
-                    <div class="mt-3 pt-2.5 border-t border-slate-800 text-center">
-                        <a id="flyout-enter-link" href="#" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black py-2 rounded-xl text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow cursor-pointer">
+                    <div class="mt-4 pt-3 border-t border-slate-800 text-center">
+                        <a id="flyout-enter-link" href="#" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow cursor-pointer">
                             <span>Entrar a Boutique Completa</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
@@ -171,13 +169,10 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
 
             </aside>
 
-            <!-- COLUMNAS 3 A 7 (5 COLS): ESCAPARATE DE 7 SECCIONES X 5 PRODUCTOS AMPLIOS -->
-            <section class="col-span-1 lg:col-span-5 w-full flex flex-col gap-8" id="showcase-container">
-                <!-- 7 Secciones departamentales inyectadas dinámicamente con ancho expandido -->
+            <!-- ESCAPARATE DE 7 SECCIONES X 5 PRODUCTOS (+10% TAMAÑO / SIN MARCOS / SWIPE MÓVIL) -->
+            <section class="flex-1 w-full flex flex-col gap-8 min-w-0" id="showcase-container">
+                <!-- 7 Secciones departamentales inyectadas dinámicamente -->
             </section>
-
-            <!-- COLUMNA 8: Margen Derecho Simétrico -->
-            <div class="hidden lg:block lg:col-span-1"></div>
 
         </div>
 
@@ -186,9 +181,9 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
     <!-- ========================================================================
          3. LOS 3 PILARES UBICADOS JUSTO ANTES DEL PIE DE PÁGINA
          ======================================================================== -->
-    <section class="max-w-[99%] 2xl:max-w-[1900px] mx-auto px-4 py-8 w-full border-t border-slate-800/80">
+    <section class="max-w-[99%] 2xl:max-w-[1850px] mx-auto px-4 py-8 w-full border-t border-slate-800/80">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-2xl flex items-center gap-3.5">
+            <div class="p-4 bg-slate-900/60 rounded-2xl flex items-center gap-3.5 shadow-md">
                 <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-lg shrink-0">
                     <i class="fa-solid fa-truck-fast"></i>
                 </div>
@@ -198,7 +193,7 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
                 </div>
             </div>
 
-            <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-2xl flex items-center gap-3.5">
+            <div class="p-4 bg-slate-900/60 rounded-2xl flex items-center gap-3.5 shadow-md">
                 <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-lg shrink-0">
                     <i class="fa-solid fa-percent"></i>
                 </div>
@@ -208,7 +203,7 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
                 </div>
             </div>
 
-            <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-2xl flex items-center gap-3.5">
+            <div class="p-4 bg-slate-900/60 rounded-2xl flex items-center gap-3.5 shadow-md">
                 <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-lg shrink-0">
                     <i class="fa-solid fa-coins"></i>
                 </div>
@@ -237,7 +232,7 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
                 </div>
 
                 <!-- Progreso de Envío Gratis -->
-                <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 mb-4 space-y-2">
+                <div class="bg-slate-950 p-3.5 rounded-2xl mb-4 space-y-2 shadow-inner">
                     <div class="flex justify-between text-xs font-mono font-bold">
                         <span id="shipping-progress-text" class="text-slate-300">Progreso Envío Gratis:</span>
                         <span id="shipping-progress-pct" class="text-cyan-400">0%</span>
@@ -267,7 +262,7 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
          5. PIE DE PÁGINA UNIVERSAL
          ======================================================================== -->
     <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 text-slate-400 text-xs" id="pie-de-pagina">
-        <div class="max-w-[99%] 2xl:max-w-[1900px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[99%] 2xl:max-w-[1850px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-slate-800/80">
                 
                 <!-- COLUMNA 1: CONTACTO LOCAL -->
@@ -344,7 +339,7 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
                         <i class="fa-solid fa-piggy-bank text-amber-400 text-base shrink-0"></i>
                         <span>5% de Cashback en cada compra de forma directa.</span>
                     </p>
-                    <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-900/60 p-3 rounded-xl border border-slate-800/80">
+                    <p class="text-[11px] text-slate-400 leading-relaxed bg-slate-900/60 p-3 rounded-xl">
                         <strong class="text-slate-300 block mb-1">Aclaración Importante:</strong>
                         El cashback es acumulable únicamente con registro activo. Regístrate en nuestro portal para recibir beneficios acumulados y ofertas exclusivas.
                     </p>
@@ -363,7 +358,7 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
     </footer>
 
     <!-- ========================================================================
-         6. MOTOR JAVASCRIPT: CATÁLOGO DE 35 PRODUCTOS (7 X 5) + BÚSQUEDA Y FLYOUT
+         6. MOTOR JAVASCRIPT: CATÁLOGO DE 35 PRODUCTOS CON SWIPE MÓVIL Y FLYOUT
          ======================================================================== -->
     <script>
     const boutiquesConfig = [
@@ -373,7 +368,6 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
             tag: "TECNOLOGÍA",
             icon: "fa-microchip",
             color: "text-cyan-400",
-            border: "border-cyan-500/40",
             desc: "Hardware esencial para armar tu computadora de trabajo, gaming o inteligencia artificial.",
             url: "https://iaworldcenter-creator.github.io/pc-custom-lab/"
         },
@@ -383,7 +377,6 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
             tag: "DEPARTAMENTAL",
             icon: "fa-gem",
             color: "text-cyan-300",
-            border: "border-cyan-500/40",
             desc: "Pantallas 4K, refrigeradores, laptops slim y electrónica general de importación.",
             url: "https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/"
         },
@@ -393,7 +386,6 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
             tag: "TABACOS",
             icon: "fa-smoking",
             color: "text-amber-400",
-            border: "border-amber-500/40",
             desc: "Cigarros premium, puros habanos de colección, encendedores y accesorios selectos.",
             url: "https://iaworldcenter-creator.github.io/cigarros-bazar/"
         },
@@ -403,7 +395,6 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
             tag: "DULCERÍA",
             icon: "fa-candy-cane",
             color: "text-pink-400",
-            border: "border-pink-500/40",
             desc: "Paletas payaso, mazapanes, botanas saladas y confitería mexicana al mayoreo y menudeo.",
             url: "https://iaworldcenter-creator.github.io/dulces-bazar/"
         },
@@ -413,7 +404,6 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
             tag: "LECTURA",
             icon: "fa-newspaper",
             color: "text-indigo-400",
-            border: "border-indigo-500/40",
             desc: "Suscripciones digitales anuales a revistas de ciencia, tecnología, cultura y periódicos.",
             url: "https://iaworldcenter-creator.github.io/kiosco-digital/"
         },
@@ -423,7 +413,6 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
             tag: "NOVEDADES",
             icon: "fa-store",
             color: "text-emerald-400",
-            border: "border-emerald-500/40",
             desc: "Lentes inteligentes con audio, consolas retro portátiles, cables de carga y gadgets de conveniencia.",
             url: "https://iaworldcenter-creator.github.io/mi-puesto-bazar/"
         },
@@ -433,7 +422,6 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
             tag: "OUTLET B2B",
             icon: "fa-tags",
             color: "text-red-400",
-            border: "border-red-500/40",
             desc: "Excedentes de inventario, remates directos de bodega y lotes con hasta 50% de descuento.",
             url: "https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones-/"
         }
@@ -494,7 +482,7 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
     let flyoutTimeout = null;
 
     // ------------------------------------------------------------------------
-    // RENDERIZAR SIDEBAR IZQUIERDO ("COMPRAS RÁPIDAS") Y CONFIGURAR FLYOUT DUAL
+    // RENDERIZAR SIDEBAR PROPORCIONAL
     // ------------------------------------------------------------------------
     function renderSidebarBoutiques() {
         const container = document.getElementById("sidebar-boutiques-list");
@@ -505,22 +493,23 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
                 <button 
                     onmouseenter="handleSidebarHover('${b.id}', this)"
                     onclick="window.location.href='${b.url}'"
-                    class="w-full text-left p-2.5 sm:p-3 rounded-2xl bg-slate-950/60 hover:bg-slate-800 border border-slate-800/80 hover:${b.border} flex justify-between items-center transition group cursor-pointer"
+                    class="w-full text-left p-3.5 rounded-2xl bg-slate-950/70 hover:bg-slate-800/90 shadow-md flex justify-between items-center transition group cursor-pointer"
                 >
-                    <div class="flex items-center gap-2.5 min-w-0">
-                        <i class="fa-solid ${b.icon} ${b.color} w-4 text-center text-sm shrink-0"></i>
+                    <div class="flex items-center gap-3.5 min-w-0">
+                        <div class="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center ${b.color} shrink-0 shadow">
+                            <i class="fa-solid ${b.icon} text-sm"></i>
+                        </div>
                         <div class="min-w-0">
-                            <strong class="text-white text-xs block group-hover:text-cyan-300 truncate">${b.name}</strong>
-                            <span class="text-[9px] text-slate-400 block truncate">${b.tag}</span>
+                            <strong class="text-white text-xs block group-hover:text-cyan-300 truncate font-bold">${b.name}</strong>
+                            <span class="text-[10px] text-slate-400 block truncate font-medium">${b.desc}</span>
                         </div>
                     </div>
-                    <i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:${b.color} transition group-hover:translate-x-0.5 shrink-0"></i>
+                    <i class="fa-solid fa-chevron-right text-[10px] text-slate-600 group-hover:${b.color} transition group-hover:translate-x-0.5 shrink-0 ml-2"></i>
                 </button>
             </div>
         `).join('');
     }
 
-    // FLYOUT LATERAL CON TÍTULOS EN 2 LÍNEAS COMPLETAS Y BOTONES DOBLES (CARRITO + COMPRAR)
     function handleSidebarHover(boutiqueId, element) {
         clearTimeout(flyoutTimeout);
         const b = boutiquesConfig.find(item => item.id === boutiqueId);
@@ -536,26 +525,23 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
         title.innerText = `${b.name} — Compras Inmediatas`;
         enterLink.href = b.url;
 
-        // Obtener los primeros 3 productos de esa boutique
         const top3 = masterItems.filter(item => item.boutiqueId === boutiqueId).slice(0, 3);
 
         list.innerHTML = top3.map(p => `
-            <div class="bg-slate-950 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-3 flex flex-col gap-2 transition">
+            <div class="bg-slate-950 rounded-2xl p-3 flex flex-col gap-2 transition shadow-md">
                 <div class="flex items-start justify-between gap-2.5">
                     <div class="min-w-0 flex-1">
                         <span class="text-[9px] font-mono text-cyan-400 font-bold block">${p.sku} &bull; ${p.marca}</span>
-                        <!-- TÍTULO EN 2 LÍNEAS COMPLETAS SIN PUNTOS SUSPENSIVOS APRETADOS -->
                         <h5 class="text-xs font-bold text-white line-clamp-2 leading-snug mt-0.5">${p.nombre}</h5>
                     </div>
                     <span class="text-amber-400 font-mono font-black text-xs shrink-0">$${p.precio.toFixed(2)} MXN</span>
                 </div>
 
-                <!-- BOTONES DOBLES DE COMPRA DIRECTA EN EL FLYOUT -->
-                <div class="grid grid-cols-2 gap-1.5 pt-1.5 border-t border-slate-800/80">
-                    <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-bold py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer" title="Agregar a canasta">
+                <div class="grid grid-cols-2 gap-1.5 pt-1.5 border-t border-slate-900">
+                    <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 text-cyan-300 font-bold py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer shadow" title="Agregar a canasta">
                         <i class="fa-solid fa-cart-plus text-[9px]"></i> <span class="truncate">Carrito</span>
                     </button>
-                    <button onclick="buyNowDirect('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow-sm cursor-pointer" title="Comprar de inmediato">
+                    <button onclick="buyNowDirect('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow cursor-pointer" title="Comprar de inmediato">
                         <i class="fa-solid fa-bolt text-[9px]"></i> <span class="truncate">Comprar</span>
                     </button>
                 </div>
@@ -576,7 +562,7 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
     });
 
     // ------------------------------------------------------------------------
-    // RENDERIZAR ESCAPARATE DE 7 SECCIONES X 5 PRODUCTOS DE ANCHO EXPANDIDO
+    // RENDERIZAR ESCAPARATE DE 7 SECCIONES (+10% TAMAÑO / SIN BORDES / SWIPE MÓVIL)
     // ------------------------------------------------------------------------
     function renderShowcase() {
         const container = document.getElementById("showcase-container");
@@ -585,42 +571,42 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
         container.innerHTML = boutiquesConfig.map(b => {
             const products = masterItems.filter(p => p.boutiqueId === b.id);
             return `
-                <div class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-5 shadow-xl space-y-4">
+                <div class="bg-slate-900/50 rounded-3xl p-5 shadow-2xl space-y-4">
                     
-                    <!-- Encabezado Departamental -->
+                    <!-- Encabezado Departamental sin marcos duros -->
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800/80 pb-3">
                         <div class="flex items-center gap-3">
-                            <div class="w-9 h-9 rounded-xl bg-slate-800 border ${b.border} flex items-center justify-center ${b.color}">
-                                <i class="fa-solid ${b.icon} text-base"></i>
+                            <div class="w-10 h-10 rounded-xl bg-slate-950 flex items-center justify-center ${b.color} shadow">
+                                <i class="fa-solid ${b.icon} text-lg"></i>
                             </div>
                             <div>
                                 <div class="flex items-center gap-2">
                                     <h3 class="text-base font-black text-white">${b.name}</h3>
-                                    <span class="text-[9px] font-mono font-bold uppercase px-2 py-0.2 rounded bg-slate-800 text-slate-300 border border-slate-700">${b.tag}</span>
+                                    <span class="text-[9px] font-mono font-bold uppercase px-2 py-0.5 rounded bg-slate-950 text-slate-300">${b.tag}</span>
                                 </div>
-                                <p class="text-xs text-slate-400">${b.desc}</p>
+                                <p class="text-xs text-slate-400 font-medium">${b.desc}</p>
                             </div>
                         </div>
 
-                        <a href="${b.url}" class="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1.5 shrink-0 bg-slate-950 px-3.5 py-1.5 rounded-xl border border-slate-800 hover:border-cyan-500/40">
+                        <a href="${b.url}" class="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1.5 shrink-0 bg-slate-950 px-3.5 py-1.5 rounded-xl shadow">
                             <span>Ver todo en boutique</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
 
-                    <!-- Fila de 5 Productos Asimétricos, Anchos y Espaciosos -->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5">
+                    <!-- Fila de 5 Productos +10% más grandes, sin marcos y con Swipe Horizontal en móviles -->
+                    <div class="flex lg:grid lg:grid-cols-5 overflow-x-auto lg:overflow-visible gap-4 pb-2 lg:pb-0 no-scrollbar snap-x snap-mandatory">
                         ${products.map(p => `
-                            <div class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 hover:shadow-[0_4px_20px_rgba(6,182,212,0.15)] rounded-2xl p-3 flex flex-col justify-between transition group">
+                            <div class="w-[215px] sm:w-[245px] lg:w-auto shrink-0 lg:shrink snap-start bg-slate-950/90 hover:bg-slate-950 rounded-2xl p-3.5 flex flex-col justify-between transition group shadow-xl hover:shadow-[0_8px_30px_rgba(6,182,212,0.2)]">
                                 <div>
-                                    <!-- Imagen -->
-                                    <div class="w-full h-36 overflow-hidden rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center p-1.5 relative mb-2">
+                                    <!-- Imagen Ampliada (+10%) sin bordes rígidos -->
+                                    <div class="w-full h-40 sm:h-44 overflow-hidden rounded-xl bg-slate-900 flex items-center justify-center p-2 relative mb-2.5 shadow-inner">
                                         <img 
                                             src="${p.img}" 
                                             alt="${p.nombre}" 
                                             class="w-full h-full object-contain group-hover:scale-105 transition duration-300"
                                             onerror="this.onerror=null; this.src='assets/img/mascota_tigre_thumb.webp';"
                                         />
-                                        <span class="absolute top-1.5 left-1.5 bg-amber-500/15 border border-amber-500/40 text-amber-400 text-[8px] font-mono font-black px-1.5 py-0.2 rounded">
+                                        <span class="absolute top-1.5 left-1.5 bg-amber-500/15 text-amber-400 text-[8px] font-mono font-black px-2 py-0.5 rounded shadow">
                                             Directo
                                         </span>
                                     </div>
@@ -631,25 +617,25 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
                                         <span class="text-slate-500">${p.sku}</span>
                                     </div>
 
-                                    <!-- Título y Descripción Asimétrica -->
+                                    <!-- Título y Descripción Asimétrica Espaciosa -->
                                     <h4 class="text-white font-bold text-xs mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${p.nombre}">${p.nombre}</h4>
-                                    <p class="text-slate-400 text-[10px] leading-relaxed line-clamp-2 mb-2.5 font-normal">${p.desc}</p>
+                                    <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-2 mb-3 font-normal">${p.desc}</p>
                                 </div>
 
                                 <div>
                                     <!-- Precio -->
-                                    <div class="flex items-baseline justify-between pt-1.5 border-t border-slate-800/80 mb-2">
-                                        <span class="text-amber-400 font-black font-mono text-xs sm:text-sm">$${p.precio.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
-                                        ${p.original ? `<span class="text-slate-500 line-through text-[9px] font-mono">$${p.original.toFixed(2)}</span>` : ''}
+                                    <div class="flex items-baseline justify-between pt-2 border-t border-slate-900 mb-2.5">
+                                        <span class="text-amber-400 font-black font-mono text-sm sm:text-base">$${p.precio.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
+                                        ${p.original ? `<span class="text-slate-500 line-through text-[10px] font-mono">$${p.original.toFixed(2)}</span>` : ''}
                                     </div>
 
-                                    <!-- Botones Dobles -->
-                                    <div class="grid grid-cols-2 gap-1">
-                                        <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-bold py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer" title="Agregar a canasta">
-                                            <i class="fa-solid fa-cart-plus text-[9px]"></i> <span class="truncate">Carrito</span>
+                                    <!-- Botones Dobles Homologados -->
+                                    <div class="grid grid-cols-2 gap-1.5">
+                                        <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 text-cyan-300 font-bold py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer shadow" title="Agregar a canasta">
+                                            <i class="fa-solid fa-cart-plus text-[10px]"></i> <span class="truncate">Carrito</span>
                                         </button>
-                                        <button onclick="buyNowDirect('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow-sm cursor-pointer" title="Comprar ahora">
-                                            <i class="fa-solid fa-bolt text-[9px]"></i> <span class="truncate">Comprar</span>
+                                        <button onclick="buyNowDirect('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow cursor-pointer" title="Comprar ahora">
+                                            <i class="fa-solid fa-bolt text-[10px]"></i> <span class="truncate">Comprar</span>
                                         </button>
                                     </div>
                                 </div>
@@ -705,7 +691,7 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
         }
 
         box.innerHTML = matches.map(item => `
-            <div class="bg-slate-950 border border-slate-800 hover:border-cyan-500/50 rounded-xl p-2.5 flex items-center justify-between gap-3 transition">
+            <div class="bg-slate-950 rounded-xl p-2.5 flex items-center justify-between gap-3 transition shadow">
                 <div class="flex items-center gap-2.5 min-w-0 flex-1">
                     <img src="${item.img}" alt="${item.nombre}" class="w-8 h-8 object-contain rounded bg-slate-900 p-0.5 shrink-0" onerror="this.src='assets/img/mascota_tigre_thumb.webp';"/>
                     <div class="min-w-0">
@@ -714,12 +700,11 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
                         <span class="text-amber-400 font-mono font-bold text-xs">$${item.precio.toFixed(2)} MXN</span>
                     </div>
                 </div>
-                <!-- Botones Dobles Directos en el Desplegable de Búsqueda -->
                 <div class="flex items-center gap-1.5 shrink-0">
-                    <button onclick="addToCartDirect('${item.sku}', 1)" class="bg-slate-800 hover:bg-slate-700 border border-cyan-500/50 text-cyan-300 font-bold px-2 py-1 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95" title="Sumar al carrito">
+                    <button onclick="addToCartDirect('${item.sku}', 1)" class="bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold px-2 py-1 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95 shadow" title="Sumar al carrito">
                         <i class="fa-solid fa-cart-plus"></i> <span class="hidden sm:inline">Carrito</span>
                     </button>
-                    <button onclick="buyNowDirect('${item.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95 shadow-sm" title="Pagar ahora">
+                    <button onclick="buyNowDirect('${item.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95 shadow" title="Pagar ahora">
                         <i class="fa-solid fa-bolt"></i> <span>Comprar</span>
                     </button>
                 </div>
@@ -848,7 +833,7 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
         }
 
         container.innerHTML = cartStorage.map(item => `
-            <div class="bg-slate-950 border border-slate-800 rounded-2xl p-3 flex flex-col gap-2 text-xs shadow-md">
+            <div class="bg-slate-950 rounded-2xl p-3 flex flex-col gap-2 text-xs shadow-md">
                 <div class="flex justify-between items-start gap-2">
                     <div class="min-w-0 flex-1">
                         <span class="font-mono text-[9px] text-cyan-400 font-bold block">${item.sku}</span>
@@ -860,9 +845,8 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
                     </button>
                 </div>
 
-                <!-- Stepper de Cantidad -->
-                <div class="flex justify-between items-center pt-2 border-t border-slate-800/80">
-                    <div class="flex items-center gap-1 bg-slate-900 border border-slate-700/80 rounded-xl p-0.5">
+                <div class="flex justify-between items-center pt-2 border-t border-slate-900">
+                    <div class="flex items-center gap-1 bg-slate-900 rounded-xl p-0.5 shadow-inner">
                         <button onclick="changeItemQty('${item.sku}', -1)" class="w-6 h-6 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-black text-xs flex items-center justify-center transition active:scale-95 cursor-pointer">-</button>
                         <span class="w-8 text-center font-mono font-bold text-xs text-white">${item.quantity}</span>
                         <button onclick="changeItemQty('${item.sku}', 1)" class="w-6 h-6 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-black text-xs flex items-center justify-center transition active:scale-95 cursor-pointer">+</button>
@@ -878,7 +862,6 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
         syncCartState();
     }
 
-    // Inicializar componentes al cargar el DOM
     document.addEventListener("DOMContentLoaded", () => {
         renderSidebarBoutiques();
         renderShowcase();
@@ -890,22 +873,21 @@ PORTAL_MATRIZ_8COLS_HTML = """<!DOCTYPE html>
 </html>
 """
 
-# Guardar archivo en ambas ubicaciones
 for path in portal_paths:
     if os.path.exists(os.path.dirname(path)) or os.path.exists(path):
         with open(path, "w", encoding="utf-8") as f:
-            f.write(PORTAL_MATRIZ_8COLS_HTML)
+            f.write(PORTAL_MATRIZ_FINAL_HTML)
         print(f"✓ Portal Matriz actualizado en: {path}")
 
 print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
 sitios_web_repo = os.path.join(BASE_DIR, "sitios-web")
 if os.path.exists(os.path.join(sitios_web_repo, ".git")):
     subprocess.run(["git", "add", "-A"], cwd=sitios_web_repo, check=True)
-    subprocess.run(["git", "commit", "-m", "refactor(matriz): reticula simetrica 8 columnas (1+1+5+1) con tarjetas expandidas de 5 productos", "--allow-empty"], cwd=sitios_web_repo, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "feat(matriz): sidebar proporcional restaurado, tarjetas +10% sin marcos y swipe movil", "--allow-empty"], cwd=sitios_web_repo, capture_output=True)
     res_sub = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=sitios_web_repo, capture_output=True, text=True)
     print(f"🟢 Submódulo sitios-web -> Push: {'OK' if res_sub.returncode == 0 else res_sub.stderr.strip()}")
 
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
-subprocess.run(["git", "commit", "-m", "refactor(ecosistema): BAZAR NFL.GDL con reticula simetrica 8 cols y compras rapidas desplegado", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+subprocess.run(["git", "commit", "-m", "feat(ecosistema): Portal BAZAR NFL.GDL final con tarjetas +10% sin marcos y swipe movil", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
 res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
