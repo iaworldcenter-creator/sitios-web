@@ -8,10 +8,10 @@ portal_paths = [
 ]
 
 print("=" * 75)
-print("DESPLEGANDO PORTAL MATRIZ BAZAR NFL.GDL: ESCAPARATE DE 7 BOUTIQUES X 5 PRODUCTOS")
+print("REESTRUCTURANDO PORTAL BAZAR NFL.GDL: GRID DE 8 COLUMNAS Y FLYOUT CON COMPRA DUAL")
 print("=" * 75)
 
-PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
+PORTAL_MATRIZ_V2_HTML = """<!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
     <meta charset="UTF-8" />
@@ -36,17 +36,17 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950">
 
     <!-- ========================================================================
-         1. CABECERA CON MARCA BAZAR NFL.GDL, LOGO DEL TIGRE Y SCROLL A FOOTER
+         1. CABECERA: LOGO DEL TIGRE + MARCA BAZAR NFL.GDL + SCROLL A FOOTER
          ======================================================================== -->
     <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
         
         <!-- Nivel 1: Barra de Utilidades -->
-        <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-xs border-b border-slate-800/80">
+        <div class="max-w-[98%] 2xl:max-w-[1700px] mx-auto px-4 py-2 flex items-center justify-between text-xs border-b border-slate-800/80">
             <div class="flex items-center gap-2">
                 <span class="px-2 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-[10px] uppercase">
                     Portal Matriz Guadalajara
                 </span>
-                <span class="text-slate-400 hidden sm:inline text-[11px]">7 Tiendas Especializadas • Un Solo Carrito Global</span>
+                <span class="text-slate-400 hidden sm:inline text-[11px]">7 Tiendas Especializadas • Un Solo Carrito Global con Entregas a Domicilio</span>
             </div>
 
             <div class="flex items-center gap-3 font-bold text-[11px]">
@@ -61,27 +61,27 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
         </div>
 
         <!-- Nivel 2: Identidad Oficial + Súper-Barra Blanca + Carrito -->
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="max-w-[98%] 2xl:max-w-[1700px] mx-auto px-4 py-3 flex flex-col md:flex-row items-center justify-between gap-4">
             
-            <!-- Identidad: Logo del Tigre + BAZAR NFL.GDL + Domicilio (Scroll al pie) -->
+            <!-- Logo del Tigre + BAZAR NFL.GDL + Domicilio (Clic desliza al footer) -->
             <div class="flex items-center gap-3 cursor-pointer shrink-0" onclick="document.getElementById('pie-de-pagina').scrollIntoView({ behavior: 'smooth' });">
-                <div class="relative w-11 h-11 flex items-center justify-center">
+                <div class="relative w-12 h-12 flex items-center justify-center">
                     <img 
                         src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" 
                         alt="Logo Tigre BAZAR NFL.GDL" 
-                        class="w-11 h-11 rounded-full object-cover border-2 border-amber-400 shadow-[0_0_12px_rgba(251,191,36,0.4)]"
+                        class="w-12 h-12 rounded-full object-cover border-2 border-amber-400 shadow-[0_0_14px_rgba(251,191,36,0.45)]"
                         onerror="this.src='assets/img/mascota_tigre_thumb.webp';"
                     />
                 </div>
                 <div class="flex flex-col">
-                    <span class="font-black text-xl text-white tracking-wider uppercase leading-none">BAZAR NFL.GDL</span>
-                    <span class="text-[10px] font-mono text-cyan-400 uppercase tracking-tight mt-1 flex items-center gap-1 hover:underline">
+                    <span class="font-black text-2xl text-white tracking-wider uppercase leading-none">BAZAR NFL.GDL</span>
+                    <span class="text-[11px] font-mono text-cyan-400 uppercase tracking-tight mt-1 flex items-center gap-1 hover:underline">
                         <i class="fa-solid fa-location-dot text-amber-400"></i> Pedro Moreno 501 A, Guadalajara Centro
                     </span>
                 </div>
             </div>
 
-            <!-- Súper-Buscador Blanco Multi-Token con Compra Inmediata en el Dropdown -->
+            <!-- Súper-Buscador Blanco con Compra Inmediata en Dropdown -->
             <div class="flex-1 max-w-2xl w-full relative">
                 <div class="flex items-center bg-white rounded-full border-2 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.35)] px-4 py-1.5 gap-2">
                     <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
@@ -97,16 +97,16 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
                     <button onclick="clearMasterSearch()" id="clear-search-btn" class="hidden text-slate-400 hover:text-slate-600 text-xs px-2 font-bold cursor-pointer">
                         <i class="fa-solid fa-xmark"></i>
                     </button>
-                    <button onclick="executeMasterSearch()" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-5 py-2 rounded-full text-xs uppercase tracking-wider transition active:scale-95 shrink-0 shadow cursor-pointer">
+                    <button onclick="executeMasterSearch()" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-6 py-2 rounded-full text-xs uppercase tracking-wider transition active:scale-95 shrink-0 shadow cursor-pointer">
                         BUSCAR
                     </button>
                 </div>
 
-                <!-- Dropdown Reactivo con Compra Directa al Vuelo -->
+                <!-- Dropdown de Autocompletado con Compra Directa -->
                 <div id="master-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2 flex flex-col gap-1.5 max-h-96 overflow-y-auto no-scrollbar"></div>
             </div>
 
-            <!-- Canasta Unificada con Totalizador en Vivo -->
+            <!-- Canasta Unificada con Badge Dinámico -->
             <button onclick="toggleCartDrawer()" class="flex items-center gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-4 py-2.5 rounded-xl transition cursor-pointer active:scale-95 shadow shrink-0 group">
                 <div class="relative">
                     <i class="fa-solid fa-cart-shopping text-cyan-400 text-base group-hover:scale-110 transition"></i>
@@ -122,37 +122,43 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
     </header>
 
     <!-- ========================================================================
-         2. CONTENIDO PRINCIPAL: SIDEBAR CON FLYOUT + 7 SECCIONES DEPARTAMENTALES
+         2. CUERPO PRINCIPAL: GRID SIMÉTRICO DE 8 COLUMNAS EXPANDIDO
          ======================================================================== -->
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full">
+    <main class="w-full max-w-[98%] 2xl:max-w-[1700px] mx-auto px-2 sm:px-4 py-8 flex-1">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div class="grid grid-cols-1 lg:grid-cols-8 gap-6 items-start">
             
-            <!-- COLUMNA IZQUIERDA: MENÚ FLYOUT CON TOP 3 PRODUCTOS + ENTRAR A BOUTIQUE -->
-            <aside class="lg:col-span-3 w-full bg-slate-900/90 border border-slate-800 rounded-3xl p-4 shadow-2xl relative" id="portal-sidebar-root">
+            <!-- COLUMNA 1: Margen Izquierdo Vacío de Equilibrio Visual -->
+            <div class="hidden lg:block lg:col-span-1"></div>
+
+            <!-- COLUMNA 2: SIDEBAR CON NUESTRAS 7 BOUTIQUES ("COMPRAS RÁPIDAS") + FLYOUT -->
+            <aside class="col-span-1 lg:col-span-2 w-full bg-slate-900/90 border border-slate-800 rounded-3xl p-4 shadow-2xl relative" id="portal-sidebar-root">
                 
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
                     <h3 class="font-mono text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
                         <i class="fa-solid fa-layer-group text-amber-400"></i> Nuestras 7 Boutiques
                     </h3>
-                    <span class="text-[9px] font-mono text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-500/30 px-2 py-0.5 rounded">Acceso Rápido</span>
+                    <span class="text-[9px] font-mono text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-500/30 px-2 py-0.5 rounded">
+                        Compras Rápidas
+                    </span>
                 </div>
 
                 <nav class="flex flex-col gap-1.5" id="sidebar-boutiques-list">
                     <!-- Inyectado por JavaScript -->
                 </nav>
 
-                <!-- VENTANA FLYOUT LATERAL CON 3 MÁS VENDIDOS + ENTRAR A BOUTIQUE -->
-                <div id="sidebar-flyout-panel" class="hidden lg:absolute left-full top-0 ml-3 w-[390px] bg-slate-900/98 border-2 border-cyan-400 rounded-3xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl slide-right">
+                <!-- VENTANA FLYOUT LATERAL CON TÍTULOS EN 2 LÍNEAS Y BOTONES DOBLES (CARRITO + COMPRAR) -->
+                <div id="sidebar-flyout-panel" class="hidden lg:absolute left-full top-0 ml-3 w-[440px] bg-slate-900/98 border-2 border-cyan-400 rounded-3xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl slide-right">
                     <div class="flex justify-between items-center border-b border-slate-800 pb-2.5 mb-2.5">
                         <div>
                             <span id="flyout-boutique-tag" class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">BOUTIQUE</span>
-                            <h4 id="flyout-boutique-title" class="text-xs font-black text-white mt-1">Más Solicitados</h4>
+                            <h4 id="flyout-boutique-title" class="text-xs font-black text-white mt-1">Compras Inmediatas</h4>
                         </div>
                         <span class="text-[10px] font-mono text-emerald-400 font-bold"><i class="fa-solid fa-bolt"></i> Compra Directa</span>
                     </div>
 
-                    <div id="flyout-boutique-products" class="flex flex-col gap-2 max-h-[340px] overflow-y-auto pr-1 no-scrollbar"></div>
+                    <!-- Lista con Título Completo de 2 Líneas y Botones Dobles -->
+                    <div id="flyout-boutique-products" class="flex flex-col gap-2.5 max-h-[380px] overflow-y-auto pr-1 no-scrollbar"></div>
 
                     <div class="mt-3 pt-2.5 border-t border-slate-800 text-center">
                         <a id="flyout-enter-link" href="#" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-slate-950 font-black py-2 rounded-xl text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow cursor-pointer">
@@ -163,8 +169,8 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
 
             </aside>
 
-            <!-- COLUMNA DERECHA: ESCAPARATE DE 7 FILAS (5 ARTÍCULOS ESENCIALES POR BOUTIQUE) -->
-            <section class="lg:col-span-9 w-full flex flex-col gap-10" id="showcase-container">
+            <!-- COLUMNAS 3 A 8: ESCAPARATE DE 7 SECCIONES X 5 PRODUCTOS DE ALTO RENDIMIENTO -->
+            <section class="col-span-1 lg:col-span-5 w-full flex flex-col gap-8" id="showcase-container">
                 <!-- 7 Secciones departamentales inyectadas dinámicamente -->
             </section>
 
@@ -175,7 +181,7 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
     <!-- ========================================================================
          3. LOS 3 PILARES UBICADOS JUSTO ANTES DEL PIE DE PÁGINA
          ======================================================================== -->
-    <section class="max-w-7xl mx-auto px-4 py-8 w-full border-t border-slate-800/80">
+    <section class="max-w-[98%] 2xl:max-w-[1700px] mx-auto px-4 py-8 w-full border-t border-slate-800/80">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <div class="p-4 bg-slate-900/60 border border-slate-800 rounded-2xl flex items-center gap-3.5">
                 <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-lg shrink-0">
@@ -253,10 +259,10 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
     </div>
 
     <!-- ========================================================================
-         5. PIE DE PÁGINA UNIVERSAL (OBJETIVO DE SCROLL DEL DOMICILIO)
+         5. PIE DE PÁGINA UNIVERSAL
          ======================================================================== -->
     <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 text-slate-400 text-xs" id="pie-de-pagina">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-[98%] 2xl:max-w-[1700px] mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-10 pb-12 border-b border-slate-800/80">
                 
                 <!-- COLUMNA 1: CONTACTO LOCAL -->
@@ -355,7 +361,6 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
          6. MOTOR JAVASCRIPT: CATÁLOGO DE 35 PRODUCTOS (7 X 5) + BÚSQUEDA Y FLYOUT
          ======================================================================== -->
     <script>
-    // Directorio Oficial de las 7 Boutiques
     const boutiquesConfig = [
         {
             id: "pc-custom",
@@ -429,51 +434,50 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
         }
     ];
 
-    // Catálogo Maestro de 35 Artículos (Exactamente 5 por Boutique)
     const masterItems = [
-        // 1. PC Custom Lab (5 Piezas Esenciales para CPU)
+        // 1. PC Custom Lab (5 Piezas Esenciales)
         { sku: "PC-001", boutiqueId: "pc-custom", nombre: "Gabinete Micro-ATX con Fuente de Poder 500W Incluida", marca: "Acteck", precio: 1250.00, original: 1550.00, desc: "Chasis esbelto con fuente certificada, puertos USB 3.0 frontales y bahías para SSD.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_negro.webp", tokens: ["gabinete", "fuente", "pc", "chasis", "computadora"] },
         { sku: "PC-002", boutiqueId: "pc-custom", nombre: "Tarjeta Madre ASUS Prime B760M-A WiFi DDR5 LGA1700", marca: "ASUS", precio: 3400.00, original: 3950.00, desc: "Placa base con soporte para procesadores Intel Core 12va/13va/14va Gen y dual M.2 PCIe 4.0.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/motherboard_asus.webp", tokens: ["tarjeta madre", "motherboard", "asus", "lga1700", "placa"] },
         { sku: "PC-003", boutiqueId: "pc-custom", nombre: "Procesador Intel Core i5-14400F 10C/16T con Disipador", marca: "Intel", precio: 4350.00, original: 4990.00, desc: "10 núcleos híbridos de alto desempeño y enfriamiento stock silencioso de fábrica.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_intel_ultra.webp", tokens: ["procesador", "cpu", "intel", "i5", "14400f", "disipador"] },
         { sku: "PC-004", boutiqueId: "pc-custom", nombre: "Memoria RAM Kingston FURY Beast 16GB DDR5 5600MHz", marca: "Kingston", precio: 1250.00, original: 1500.00, desc: "Módulo individual DDR5 de alta velocidad con disipador de aluminio negro de bajo perfil.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/ram_caja.webp", tokens: ["ram", "kingston", "fury", "beast", "ddr5", "memoria", "16gb"] },
         { sku: "PC-005", boutiqueId: "pc-custom", nombre: "Disco Sólido SSD Kingston NV2 1TB NVMe M.2 PCIe 4.0", marca: "Kingston", precio: 1350.00, original: 1650.00, desc: "Almacenamiento ultra rápido de 3,500 MB/s de lectura para encendido y carga en segundos.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/disco_solido_m2.webp", tokens: ["ssd", "kingston", "nvme", "disco solido", "1tb", "m2"] },
 
-        // 2. Vía MX Boutique Departamental (5 Artículos Generales)
+        // 2. Vía MX Boutique Departamental
         { sku: "VMX-001", boutiqueId: "viamx", nombre: "Pantalla Smart TV 55 Pulgadas 4K UHD HDR10+ WiFi", marca: "Samsung", precio: 7999.00, original: 11499.00, desc: "Panel LED 4K ultra nítido con asistente de voz y 4 puertos HDMI 2.1.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp", tokens: ["pantalla", "smart tv", "samsung", "4k", "television"] },
         { sku: "VMX-002", boutiqueId: "viamx", nombre: "Refrigerador Inverter No Frost 14 Pies Cúbicos Acero", marca: "LG", precio: 11899.00, original: 15999.00, desc: "Doble puerta con compresor Digital Inverter de bajo consumo y despachador exterior.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp", tokens: ["refrigerador", "lg", "linea blanca", "inverter", "cocina"] },
         { sku: "VMX-003", boutiqueId: "viamx", nombre: "Freidora de Aire Digital 6.5 Litros con 12 Programas Touch", marca: "Tefal", precio: 1499.00, original: 2199.00, desc: "Canastilla antiadherente libre de BPA con circulación de calor envolvente 360 grados.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp", tokens: ["freidora", "aire", "airfryer", "tefal", "cocina", "electrodomestico"] },
         { sku: "VMX-004", boutiqueId: "viamx", nombre: "Laptop Ultra Slim 15.6 Pulgadas Core i7 16GB RAM 512GB SSD", marca: "Lenovo", precio: 14500.00, original: 18900.00, desc: "Chasis de aluminio ligero, teclado retroiluminado y lector de huella digital.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_mantenimiento_thumb.webp", tokens: ["laptop", "lenovo", "core i7", "computadora", "portatil"] },
         { sku: "VMX-005", boutiqueId: "viamx", nombre: "Smartphone 5G Desbloqueado 256GB / 8GB RAM Cámara 108MP", marca: "Motorola", precio: 4899.00, original: 6499.00, desc: "Pantalla AMOLED 120Hz con batería de 5000mAh y carga turbo rápida de 68W.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp", tokens: ["celular", "telefono", "smartphone", "motorola", "5g"] },
 
-        // 3. Cigarros Bazar (5 Tabacos, Puros y Encendedores)
+        // 3. Cigarros Bazar
         { sku: "CIG-001", boutiqueId: "cigarros", nombre: "Cigarros Marlboro Gold Original (Cajetilla 20)", marca: "Marlboro", precio: 82.00, original: 85.00, desc: "Sabor suave y filtro blanco balanceado de importación nacional.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["cigarros", "marlboro", "gold", "tabaco", "cajetilla"] },
         { sku: "CIG-002", boutiqueId: "cigarros", nombre: "Cigarros Benson & Hedges Black Switch (Cajetilla 20)", marca: "Benson & Hedges", precio: 88.00, original: 92.00, desc: "Cápsula de sabor mentolado premium con tabaco curado de alta calidad.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["cigarros", "benson", "hedges", "mentolados", "tabaco"] },
         { sku: "CIG-003", boutiqueId: "cigarros", nombre: "Puro Habanos Cohiba Siglo VI Tubo Individual", marca: "Cohiba", precio: 850.00, original: 1100.00, desc: "Puro cubano hecho a mano con notas amaderadas y especiadas.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["puro", "cohiba", "siglo vi", "habano", "cuba"] },
         { sku: "CIG-004", boutiqueId: "cigarros", nombre: "Puro Romeo y Julieta Churchill en Tubo de Aluminio", marca: "Romeo y Julieta", precio: 620.00, original: 790.00, desc: "Vitola clásica Churchill de fortaleza media con tiro excelente.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["puro", "romeo y julieta", "churchill", "habano"] },
         { sku: "CIG-005", boutiqueId: "cigarros", nombre: "Encendedor de Colección Estilo Vintage a Gas Recargable", marca: "Clipper Pro", precio: 195.00, original: 260.00, desc: "Cuerpo metálico cepillado con piedra intercambiable y válvula de recarga.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["encendedor", "clipper", "fuego", "recargable", "gas"] },
 
-        // 4. Dulces Bazar (5 Dulces, Botanas y Chocolates)
+        // 4. Dulces Bazar
         { sku: "DUL-001", boutiqueId: "dulces", nombre: "Paleta Payaso Ricolino (Caja con 15 piezas)", marca: "Ricolino", precio: 245.00, original: 290.00, desc: "Malvavisco cubierto de chocolate con gomitas de colores tradicionales.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["paleta", "payaso", "ricolino", "dulces", "chocolate"] },
         { sku: "DUL-002", boutiqueId: "dulces", nombre: "Mazapán De La Rosa Gigante (Caja con 20 piezas)", marca: "De La Rosa", precio: 160.00, original: 195.00, desc: "El dulce tradicional mexicano de cacahuate tostado seleccionado.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["mazapan", "de la rosa", "cacahuate", "dulce", "dulces"] },
         { sku: "DUL-003", boutiqueId: "dulces", nombre: "Rocaleta Sonrics con Centro de Goma (Bolsa 30 piezas)", marca: "Sonrics", precio: 185.00, original: 220.00, desc: "Caramelo con 4 capas de chile ácido y centro de chicle masticable.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["rocaleta", "sonrics", "chile", "paleta", "dulces"] },
         { sku: "DUL-004", boutiqueId: "dulces", nombre: "Chocolates Finos Surtidos Artesanales Caja de Regalo", marca: "Turín", precio: 220.00, original: 280.00, desc: "Bombones de chocolate semiamargo rellenos de licor y crema de avellana.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["chocolate", "chocolates", "turin", "bombones", "regalo"] },
         { sku: "DUL-005", boutiqueId: "dulces", nombre: "Cacahuates Japoneses con Ajo y Chile (Bolsa de 1 Kg)", marca: "Nipon", precio: 95.00, original: 120.00, desc: "Botana crujiente horneada ideal para reuniones y eventos familiares.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["cacahuates", "botana", "snacks", "japones", "nipon"] },
 
-        // 5. Kiosco Digital (5 Suscripciones y Revistas)
+        // 5. Kiosco Digital
         { sku: "KIO-001", boutiqueId: "kiosco", nombre: "Suscripción Digital Anual Revista National Geographic", marca: "RBA", precio: 599.00, original: 850.00, desc: "12 ediciones digitales en alta definición + acceso al archivo fotográfico.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_plano_blanco.webp", tokens: ["revista", "national geographic", "natgeo", "digital", "ciencia"] },
         { sku: "KIO-002", boutiqueId: "kiosco", nombre: "Suscripción Digital Revista Muy Interesante (1 Año)", marca: "Zinet", precio: 450.00, original: 620.00, desc: "Acceso total multidispositivo a reportajes de ciencia, historia e innovación.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_plano_blanco.webp", tokens: ["revista", "muy interesante", "ciencia", "tecnologia", "digital"] },
         { sku: "KIO-003", boutiqueId: "kiosco", nombre: "Suscripción Revista Conozca Más Digital Colección", marca: "Editorial Televisa", precio: 380.00, original: 490.00, desc: "Enciclopedia de curiosidades científicas, enigmas y avances médicos.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_plano_blanco.webp", tokens: ["revista", "conozca mas", "lectura", "cultura"] },
         { sku: "KIO-004", boutiqueId: "kiosco", nombre: "Paquete Digital Cómics Clásicos Restaurados (PDF HD)", marca: "Panini / Marvel", precio: 290.00, original: 420.00, desc: "Tomos históricos de superhéroes digitalizados en máxima resolución.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_plano_blanco.webp", tokens: ["comics", "marvel", "panini", "lectura", "comic"] },
         { sku: "KIO-005", boutiqueId: "kiosco", nombre: "Pase Mensual Prensa Digital y Periódicos de Guadalajara", marca: "El Informador / Mural", precio: 180.00, original: 240.00, desc: "Edición matutina completa disponible en tu celular desde las 6:00 AM.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_plano_blanco.webp", tokens: ["periodico", "noticias", "guadalajara", "prensa", "diario"] },
 
-        // 6. Mi Puesto Bazar (5 Novedades y Gadgets de Paso)
+        // 6. Mi Puesto Bazar
         { sku: "PUE-001", boutiqueId: "puesto", nombre: "Lentes Inteligentes Bluetooth con Audio y Micrófono", marca: "SmartVision", precio: 680.00, original: 950.00, desc: "Contesta llamadas, sube/baja volumen y escucha música con protección UV.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp", tokens: ["lentes", "inteligentes", "bluetooth", "audio", "musica"] },
         { sku: "PUE-002", boutiqueId: "puesto", nombre: "Consola Retro Portátil con 500 Juegos Clásicos y Pantalla a Color", marca: "Sup Game", precio: 290.00, original: 390.00, desc: "Batería recargable y salida para conectar a la televisión con cable AV.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gemini_thumb.webp", tokens: ["consola", "retro", "videojuegos", "juegos", "portatil"] },
         { sku: "PUE-003", boutiqueId: "puesto", nombre: "Cable de Carga Rápida USB-C a USB-C de 65W Reforzado", marca: "Baseus", precio: 120.00, original: 180.00, desc: "Cable trenzado de nailon de 2 metros compatible con celulares y laptops.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/fuente_modular.webp", tokens: ["cable", "cargador", "usb c", "carga rapida", "celular"] },
         { sku: "PUE-004", boutiqueId: "puesto", nombre: "Batería Portátil Power Bank 10,000mAh con Display Digital", marca: "Adata", precio: 340.00, original: 450.00, desc: "Carga hasta dos dispositivos simultáneamente con indicador LED de porcentaje.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp", tokens: ["bateria", "power bank", "cargador portatil", "10000mah"] },
         { sku: "PUE-005", boutiqueId: "puesto", nombre: "Smartwatch Deportivo con Monitor de Ritmo Cardíaco y Pasos", marca: "FitBand Pro", precio: 450.00, original: 650.00, desc: "Notificaciones de WhatsApp, llamadas y resistencia al agua IP67.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/Female_technician_assembling_gam_202608041518_thumb.webp", tokens: ["reloj", "smartwatch", "fitness", "deportivo", "pulsera"] },
 
-        // 7. Ofertas & Liquidaciones (5 Remates B2B y Outlets)
+        // 7. Ofertas & Liquidaciones
         { sku: "OFE-001", boutiqueId: "ofertas", nombre: "Lote de Remate Electrónica y Accesorios Varios Grado A", marca: "Sony / Varios", precio: 2490.00, original: 3800.00, desc: "Paquete surtido de oportunidad comercial con garantía y respaldo de tienda.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp", tokens: ["lote", "remate", "liquidacion", "oferta", "b2b"] },
         { sku: "OFE-002", boutiqueId: "ofertas", nombre: "Monitor Curvo 24 Pulgadas 144Hz Full HD de Exhibición", marca: "AOC", precio: 2100.00, original: 3200.00, desc: "Equipo de vitrina estética 10/10 con caja original y cables incluidos.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp", tokens: ["monitor", "curvo", "aoc", "144hz", "remate"] },
         { sku: "OFE-003", boutiqueId: "ofertas", nombre: "Kit de Herramientas Mecánicas 168 Piezas en Maletín Rígido", marca: "Stanley", precio: 899.00, original: 1299.00, desc: "Últimas piezas de importación con matraca y dados milimétricos al costo.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_muro.webp", tokens: ["herramientas", "stanley", "maletin", "dados", "oferta"] },
@@ -485,7 +489,7 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
     let flyoutTimeout = null;
 
     // ------------------------------------------------------------------------
-    // RENDERIZAR SIDEBAR IZQUIERDO Y CONFIGURAR FLYOUT AL PASAR EL RATÓN
+    // RENDERIZAR SIDEBAR IZQUIERDO ("COMPRAS RÁPIDAS") Y CONFIGURAR FLYOUT DUAL
     // ------------------------------------------------------------------------
     function renderSidebarBoutiques() {
         const container = document.getElementById("sidebar-boutiques-list");
@@ -511,6 +515,7 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
         `).join('');
     }
 
+    // FLYOUT LATERAL CON TÍTULOS DE 2 LÍNEAS COMPLETAS Y BOTONES DOBLES (CARRITO + COMPRAR)
     function handleSidebarHover(boutiqueId, element) {
         clearTimeout(flyoutTimeout);
         const b = boutiquesConfig.find(item => item.id === boutiqueId);
@@ -523,22 +528,32 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
         const enterLink = document.getElementById("flyout-enter-link");
 
         tag.innerText = b.tag;
-        title.innerText = `${b.name} — Más Pedidos`;
+        title.innerText = `${b.name} — Compras Inmediatas`;
         enterLink.href = b.url;
 
         // Obtener los primeros 3 productos de esa boutique
         const top3 = masterItems.filter(item => item.boutiqueId === boutiqueId).slice(0, 3);
 
         list.innerHTML = top3.map(p => `
-            <div class="bg-slate-950 border border-slate-800 hover:border-emerald-400/60 rounded-xl p-2.5 flex items-center justify-between gap-2.5 transition">
-                <div class="min-w-0 flex-1">
-                    <span class="text-[9px] font-mono text-cyan-400 font-bold block">${p.sku}</span>
-                    <h5 class="text-xs font-bold text-white truncate">${p.nombre}</h5>
-                    <span class="text-amber-400 font-mono font-bold text-xs">$${p.precio.toFixed(2)} MXN</span>
+            <div class="bg-slate-950 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-3 flex flex-col gap-2 transition">
+                <div class="flex items-start justify-between gap-2.5">
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[9px] font-mono text-cyan-400 font-bold block">${p.sku} &bull; ${p.marca}</span>
+                        <!-- TÍTULO EN 2 LÍNEAS COMPLETAS SIN PUNTOS SUSPENSIVOS APRETADOS -->
+                        <h5 class="text-xs font-bold text-white line-clamp-2 leading-snug mt-0.5">${p.nombre}</h5>
+                    </div>
+                    <span class="text-amber-400 font-mono font-black text-xs shrink-0">$${p.precio.toFixed(2)} MXN</span>
                 </div>
-                <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px] uppercase tracking-wider transition active:scale-90 flex items-center gap-1 shrink-0 cursor-pointer" title="Comprar al vuelo">
-                    <i class="fa-solid fa-plus-circle"></i> +1 Clic
-                </button>
+
+                <!-- BOTONES DOBLES DE COMPRA DIRECTA EN EL FLYOUT -->
+                <div class="grid grid-cols-2 gap-1.5 pt-1.5 border-t border-slate-800/80">
+                    <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-bold py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer" title="Agregar a canasta">
+                        <i class="fa-solid fa-cart-plus text-[9px]"></i> <span class="truncate">Carrito</span>
+                    </button>
+                    <button onclick="buyNowDirect('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow-sm cursor-pointer" title="Comprar de inmediato">
+                        <i class="fa-solid fa-bolt text-[9px]"></i> <span class="truncate">Comprar</span>
+                    </button>
+                </div>
             </div>
         `).join('');
 
@@ -567,11 +582,11 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
             return `
                 <div class="bg-slate-900/40 border border-slate-800/80 rounded-3xl p-5 shadow-xl space-y-4">
                     
-                    <!-- Encabezado de la Sección Departamental -->
+                    <!-- Encabezado Departamental -->
                     <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800/80 pb-3">
                         <div class="flex items-center gap-3">
-                            <div class="w-8 h-8 rounded-xl bg-slate-800 border ${b.border} flex items-center justify-center ${b.color}">
-                                <i class="fa-solid ${b.icon} text-sm"></i>
+                            <div class="w-9 h-9 rounded-xl bg-slate-800 border ${b.border} flex items-center justify-center ${b.color}">
+                                <i class="fa-solid ${b.icon} text-base"></i>
                             </div>
                             <div>
                                 <div class="flex items-center gap-2">
@@ -582,25 +597,25 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
                             </div>
                         </div>
 
-                        <a href="${b.url}" class="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1.5 shrink-0 bg-slate-950 px-3 py-1.5 rounded-xl border border-slate-800 hover:border-cyan-500/40">
+                        <a href="${b.url}" class="text-xs font-mono font-bold text-cyan-400 hover:text-cyan-300 transition flex items-center gap-1.5 shrink-0 bg-slate-950 px-3.5 py-1.5 rounded-xl border border-slate-800 hover:border-cyan-500/40">
                             <span>Ver todo en boutique</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
                         </a>
                     </div>
 
-                    <!-- Fila de 5 Productos Asimétricos y Limpios -->
-                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3">
+                    <!-- Fila de 5 Productos Asimétricos y Espaciosos -->
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-3.5">
                         ${products.map(p => `
                             <div class="bg-slate-950/90 border border-slate-800/90 hover:border-cyan-500/60 hover:shadow-[0_4px_20px_rgba(6,182,212,0.15)] rounded-2xl p-3 flex flex-col justify-between transition group">
                                 <div>
                                     <!-- Imagen -->
-                                    <div class="w-full h-32 overflow-hidden rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center p-1.5 relative mb-2">
+                                    <div class="w-full h-36 overflow-hidden rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-center p-1.5 relative mb-2">
                                         <img 
                                             src="${p.img}" 
                                             alt="${p.nombre}" 
                                             class="w-full h-full object-contain group-hover:scale-105 transition duration-300"
                                             onerror="this.onerror=null; this.src='assets/img/mascota_tigre_thumb.webp';"
                                         />
-                                        <span class="absolute top-1 left-1 bg-amber-500/15 border border-amber-500/40 text-amber-400 text-[8px] font-mono font-black px-1.5 py-0.2 rounded">
+                                        <span class="absolute top-1.5 left-1.5 bg-amber-500/15 border border-amber-500/40 text-amber-400 text-[8px] font-mono font-black px-1.5 py-0.2 rounded">
                                             Directo
                                         </span>
                                     </div>
@@ -612,8 +627,8 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
                                     </div>
 
                                     <!-- Título y Descripción Asimétrica -->
-                                    <h4 class="text-white font-bold text-xs mb-1 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${p.nombre}">${p.nombre}</h4>
-                                    <p class="text-slate-400 text-[10px] leading-tight line-clamp-2 mb-2 font-normal">${p.desc}</p>
+                                    <h4 class="text-white font-bold text-xs mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${p.nombre}">${p.nombre}</h4>
+                                    <p class="text-slate-400 text-[10px] leading-relaxed line-clamp-2 mb-2.5 font-normal">${p.desc}</p>
                                 </div>
 
                                 <div>
@@ -625,10 +640,10 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
 
                                     <!-- Botones Dobles -->
                                     <div class="grid grid-cols-2 gap-1">
-                                        <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-bold py-1 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer" title="Agregar a canasta">
+                                        <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-bold py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer" title="Agregar a canasta">
                                             <i class="fa-solid fa-cart-plus text-[9px]"></i> <span class="truncate">Carrito</span>
                                         </button>
-                                        <button onclick="buyNowDirect('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-1 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow-sm cursor-pointer" title="Comprar ahora">
+                                        <button onclick="buyNowDirect('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow-sm cursor-pointer" title="Comprar ahora">
                                             <i class="fa-solid fa-bolt text-[9px]"></i> <span class="truncate">Comprar</span>
                                         </button>
                                     </div>
@@ -870,22 +885,21 @@ PORTAL_MATRIZ_HTML = """<!DOCTYPE html>
 </html>
 """
 
-# Guardar archivo en ambas ubicaciones
 for path in portal_paths:
     if os.path.exists(os.path.dirname(path)) or os.path.exists(path):
         with open(path, "w", encoding="utf-8") as f:
-            f.write(PORTAL_MATRIZ_HTML)
+            f.write(PORTAL_MATRIZ_V2_HTML)
         print(f"✓ Portal Matriz actualizado en: {path}")
 
 print("\n=== DESPLEGANDO CAMBIOS A GITHUB PAGES ===")
 sitios_web_repo = os.path.join(BASE_DIR, "sitios-web")
 if os.path.exists(os.path.join(sitios_web_repo, ".git")):
     subprocess.run(["git", "add", "-A"], cwd=sitios_web_repo, check=True)
-    subprocess.run(["git", "commit", "-m", "feat(matriz): BAZAR NFL.GDL con 7 escaparates x 5 productos, buscador multi-token y flyout", "--allow-empty"], cwd=sitios_web_repo, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "feat(matriz): grid de 8 columnas simetrico, Compras Rapidas y flyout con compra dual", "--allow-empty"], cwd=sitios_web_repo, capture_output=True)
     res_sub = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=sitios_web_repo, capture_output=True, text=True)
     print(f"🟢 Submódulo sitios-web -> Push: {'OK' if res_sub.returncode == 0 else res_sub.stderr.strip()}")
 
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
-subprocess.run(["git", "commit", "-m", "feat(ecosistema): Portal BAZAR NFL.GDL desplegado en monorepo con 35 articulos y compra directa", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+subprocess.run(["git", "commit", "-m", "feat(ecosistema): Grid de 8 columnas simetrico y compras inmediatas en flyout desplegados", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
 res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
