@@ -1,0 +1,501 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio: Menú Lateral con Compra en 1 Clic | Venta Rápida 2026</title>
+    
+    <!-- Tailwind CSS y FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Animación de entrada de productos */
+        .slide-in-right { animation: slideRight 0.12s cubic-bezier(0, 0, 0.2, 1) forwards; }
+        @keyframes slideRight { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
+        
+        /* Efecto de destello en carrito al agregar */
+        .cart-pop { animation: popBadge 0.25s ease-in-out; }
+        @keyframes popBadge { 0% { transform: scale(1); } 50% { transform: scale(1.4); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- ========================================================================
+         CABECERA CON SÚPER-BARRA BLANCA Y CARRITO GLOBAL
+         ======================================================================== -->
+    <header class="w-full bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
+        
+        <!-- Barra superior ultra compacta -->
+        <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between text-xs border-b border-slate-800/80">
+            <div class="flex items-center gap-2">
+                <span class="px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono font-bold text-[10px] uppercase">
+                    Módulo de Compra en 1 Clic
+                </span>
+                <span class="text-slate-400 hidden sm:inline text-[11px]">Pasa el ratón &rarr; Compra al vuelo sin navegar páginas</span>
+            </div>
+            <div class="flex items-center gap-3 font-bold text-[11px]">
+                <a href="https://gemini.google.com" target="_blank" class="text-slate-300 hover:text-cyan-400 transition flex items-center gap-1">
+                    <i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i> Gemini AI
+                </a>
+                <span class="text-slate-700">|</span>
+                <a href="https://antigravity.google/download" target="_blank" class="text-slate-300 hover:text-amber-400 transition flex items-center gap-1">
+                    <i class="fa-solid fa-download text-amber-400"></i> Anti-Gravity
+                </a>
+            </div>
+        </div>
+
+        <!-- Fila de Búsqueda y Carrito -->
+        <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <div class="flex items-center gap-3 cursor-pointer" onclick="location.reload()">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-500 to-cyan-500 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-emerald-500/20">
+                    <i class="fa-solid fa-hand-pointer text-lg text-slate-950"></i>
+                </div>
+                <div>
+                    <span class="font-black text-lg text-white tracking-wider block leading-tight">FLYOUT STORE</span>
+                    <span class="text-[10px] font-mono text-emerald-400 uppercase tracking-widest block">Compra Directa en Menú</span>
+                </div>
+            </div>
+
+            <!-- Súper-Barra Blanca Inteligente -->
+            <div class="flex-1 max-w-2xl w-full relative">
+                <div class="flex items-center bg-white rounded-full border-2 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.35)] px-4 py-1.5 gap-2">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+                    <input 
+                        type="text" 
+                        id="fastSearch" 
+                        autocomplete="off"
+                        placeholder="Buscar por nombre, síntoma o SKU (ej. 'paleta', '4070', 'fumar', 'cautin')..." 
+                        class="flex-1 bg-transparent border-0 outline-none text-slate-950 font-bold text-sm placeholder-slate-400 selection:bg-cyan-500 selection:text-white"
+                        oninput="onSearchInput(event)"
+                    />
+                </div>
+            </div>
+
+            <!-- Carrito Deslizable -->
+            <button onclick="toggleCartDrawer()" class="flex items-center gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-4 py-2.5 rounded-xl transition cursor-pointer active:scale-95 shadow group">
+                <div class="relative">
+                    <i class="fa-solid fa-cart-shopping text-cyan-400 text-base group-hover:scale-110 transition"></i>
+                    <span id="cart-badge-count" class="absolute -top-2.5 -right-2.5 bg-amber-500 text-slate-950 font-mono font-black text-[10px] rounded-full w-5 h-5 flex items-center justify-center shadow">0</span>
+                </div>
+                <div class="flex flex-col text-left">
+                    <span class="text-[10px] font-mono text-slate-400 uppercase leading-none">Mi Canasta</span>
+                    <span id="cart-total-txt" class="text-xs font-mono font-bold text-amber-400">$0.00 MXN</span>
+                </div>
+            </button>
+
+        </div>
+    </header>
+
+    <!-- ========================================================================
+         CUERPO PRINCIPAL: SIDEBAR CON FLYOUT Y MATRIZ DE PRODUCTOS
+         ======================================================================== -->
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full flex flex-col lg:flex-row gap-8 items-start">
+        
+        <!-- COLUMNA IZQUIERDA: MENÚ LATERAL INTERACTIVO (TRIGGER + FLYOUT AUTOMÁTICO) -->
+        <aside class="w-full lg:w-80 shrink-0 relative" id="menu-interactive-root">
+            
+            <div class="bg-slate-900 border-2 border-slate-800 hover:border-cyan-500/40 rounded-3xl p-4 shadow-2xl transition">
+                
+                <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
+                    <h3 class="font-mono text-xs font-black text-cyan-400 uppercase tracking-wider flex items-center gap-2">
+                        <i class="fa-solid fa-list-check"></i> Menú de Compra Rápida
+                    </h3>
+                    <span class="text-[9px] font-mono text-slate-500">Pasa el ratón &darr;</span>
+                </div>
+
+                <!-- Lista de Categorías Principales (Disparadores de Hover) -->
+                <nav class="flex flex-col gap-1.5" id="category-triggers">
+                    
+                    <div class="category-trigger-row" data-cat="dulces">
+                        <button onmouseenter="handleCatHover('dulces', this)" class="w-full text-left px-3.5 py-3 rounded-2xl bg-slate-950/60 hover:bg-slate-800 border border-slate-800 hover:border-pink-500/50 flex justify-between items-center transition group cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-pink-500/10 border border-pink-500/30 flex items-center justify-center text-pink-400 group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-candy-cane text-xs"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-white font-bold text-xs block group-hover:text-pink-300">Dulces & Paletas</strong>
+                                    <span class="text-[10px] text-slate-400">Payaso, Rocaleta, Tutsi...</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-slate-600 group-hover:text-pink-400 text-xs transition group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+
+                    <div class="category-trigger-row" data-cat="hardware">
+                        <button onmouseenter="handleCatHover('hardware', this)" class="w-full text-left px-3.5 py-3 rounded-2xl bg-slate-950/60 hover:bg-slate-800 border border-slate-800 hover:border-cyan-500/50 flex justify-between items-center transition group cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-microchip text-xs"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-white font-bold text-xs block group-hover:text-cyan-300">Hardware & PC</strong>
+                                    <span class="text-[10px] text-slate-400">RTX 4070, Ryzen, RAM DDR5...</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-slate-600 group-hover:text-cyan-400 text-xs transition group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+
+                    <div class="category-trigger-row" data-cat="revistas">
+                        <button onmouseenter="handleCatHover('revistas', this)" class="w-full text-left px-3.5 py-3 rounded-2xl bg-slate-950/60 hover:bg-slate-800 border border-slate-800 hover:border-indigo-500/50 flex justify-between items-center transition group cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-newspaper text-xs"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-white font-bold text-xs block group-hover:text-indigo-300">Revistas Digitales</strong>
+                                    <span class="text-[10px] text-slate-400">NatGeo, Muy Interesante...</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-slate-600 group-hover:text-indigo-400 text-xs transition group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+
+                    <div class="category-trigger-row" data-cat="cigarros">
+                        <button onmouseenter="handleCatHover('cigarros', this)" class="w-full text-left px-3.5 py-3 rounded-2xl bg-slate-950/60 hover:bg-slate-800 border border-slate-800 hover:border-amber-500/50 flex justify-between items-center transition group cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-smoking text-xs"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-white font-bold text-xs block group-hover:text-amber-300">Tabacos & Puros</strong>
+                                    <span class="text-[10px] text-slate-400">Cohiba, Romeo y Julieta...</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-slate-600 group-hover:text-amber-400 text-xs transition group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+
+                    <div class="category-trigger-row" data-cat="herramientas">
+                        <button onmouseenter="handleCatHover('herramientas', this)" class="w-full text-left px-3.5 py-3 rounded-2xl bg-slate-950/60 hover:bg-slate-800 border border-slate-800 hover:border-emerald-500/50 flex justify-between items-center transition group cursor-pointer">
+                            <div class="flex items-center gap-3">
+                                <div class="w-7 h-7 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 group-hover:scale-110 transition">
+                                    <i class="fa-solid fa-screwdriver-wrench text-xs"></i>
+                                </div>
+                                <div>
+                                    <strong class="text-white font-bold text-xs block group-hover:text-emerald-300">Herramientas Pro</strong>
+                                    <span class="text-[10px] text-slate-400">Cautín 80W, Destornilladores...</span>
+                                </div>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-slate-600 group-hover:text-emerald-400 text-xs transition group-hover:translate-x-1"></i>
+                        </button>
+                    </div>
+
+                </nav>
+
+                <div class="mt-4 pt-3 border-t border-slate-800 text-[11px] text-slate-400 flex items-center gap-2">
+                    <i class="fa-solid fa-bolt text-amber-400"></i>
+                    <span>Compra directa sin cambiar de pantalla</span>
+                </div>
+            </div>
+
+            <!-- ====================================================================
+                 PANEL FLYOUT CON COMPRA EN 1 CLIC (SE ABRE LATERALMENTE AL VUELO)
+                 ==================================================================== -->
+            <div id="flyout-panel" class="hidden lg:absolute left-full top-0 ml-4 w-[420px] bg-slate-900/98 border-2 border-cyan-400 rounded-3xl p-5 shadow-[0_10px_40px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl slide-in-right">
+                
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-3">
+                    <div>
+                        <span id="flyout-badge" class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/40">CATEGORÍA</span>
+                        <h4 id="flyout-title" class="text-sm font-black text-white mt-1">Productos Disponibles</h4>
+                    </div>
+                    <span class="text-[10px] font-mono text-emerald-400 font-bold flex items-center gap-1">
+                        <i class="fa-solid fa-circle-check"></i> Stock Inmediato
+                    </span>
+                </div>
+
+                <!-- Lista de Artículos con Botón de Compra Directa -->
+                <div id="flyout-items-list" class="flex flex-col gap-2 max-h-[460px] overflow-y-auto pr-1 no-scrollbar">
+                    <!-- Inyectado dinámicamente -->
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- COLUMNA DERECHA: ESCENARIO PRINCIPAL (TABLA / CUADRÍCULA / RESULTADOS) -->
+        <section class="flex-1 w-full bg-slate-900/80 border border-slate-800 rounded-3xl p-6 shadow-2xl min-h-[500px]">
+            
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 border-b border-slate-800 pb-4 mb-6">
+                <div>
+                    <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-widest">// Vista General del Catálogo</span>
+                    <h3 class="text-lg font-black text-white mt-0.5" id="main-list-title">Todos los Artículos de Entrega Inmediata</h3>
+                </div>
+                <div class="text-xs font-mono text-slate-400">
+                    <i class="fa-solid fa-truck-fast text-emerald-400 mr-1"></i> Despacho Local Guadalajara
+                </div>
+            </div>
+
+            <!-- Contenedor Dinámico de la Tabla de Productos -->
+            <div id="main-product-container" class="w-full">
+                <!-- Se llena por JavaScript -->
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- ========================================================================
+         MODAL / DRAWER LATERAL DE CANASTA
+         ======================================================================== -->
+    <div id="cartDrawer" class="fixed inset-0 z-[200] hidden">
+        <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-slate-900 border-l border-slate-800 shadow-2xl flex flex-col justify-between p-6 z-10">
+            <div>
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+                    <h3 class="font-black text-white text-base flex items-center gap-2">
+                        <i class="fa-solid fa-cart-shopping text-cyan-400"></i> Tu Canasta Actual
+                    </h3>
+                    <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-white text-lg p-1 cursor-pointer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                <div id="cart-drawer-items" class="flex flex-col gap-2.5 overflow-y-auto max-h-[60vh] pr-1 no-scrollbar"></div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-4 flex flex-col gap-3">
+                <div class="flex justify-between items-baseline">
+                    <span class="text-xs text-slate-400 font-bold uppercase">Total del Pedido:</span>
+                    <span id="drawer-total-txt" class="text-xl font-mono font-black text-amber-400">$0.00 MXN</span>
+                </div>
+                <button onclick="alert('¡Compra rápida procesada exitosamente!')" class="w-full bg-gradient-to-r from-emerald-400 to-cyan-500 hover:from-emerald-300 hover:to-cyan-400 text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg shadow-emerald-500/20 cursor-pointer flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-credit-card"></i> Pagar Ahora en 1 Clic
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================
+         FOOTER
+         ======================================================================== -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <strong class="text-white block font-bold">Laboratorio de Arquitectura E-commerce</strong>
+                <span>Pedro Moreno 501 A, Guadalajara Centro.</span>
+            </div>
+            <div class="font-mono text-[11px] text-slate-300">
+                <span>Desarrollado con Gemini AI & Anti-Gravity</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================================================
+         MOTOR JAVASCRIPT: FLYOUT EN 1 CLIC + FÍSICA DE PUNTERO
+         ======================================================================== -->
+    <script>
+    // Base de datos de productos clasificados
+    const productsDB = [
+        // Dulces & Botanas
+        { sku: "DUL-001", nombre: "Paleta Payaso Ricolino (Caja 15 pzas)", cat: "dulces", catName: "Dulces & Paletas", precio: 245.00, stock: 120, specs: "Malvavisco con chocolate y gomitas", icon: "fa-candy-cane", color: "text-pink-400", bg: "bg-pink-500/10" },
+        { sku: "DUL-002", nombre: "Rocaleta Sonrics de Chile (Bolsa 30 pzas)", cat: "dulces", catName: "Dulces & Paletas", precio: 185.00, stock: 200, specs: "4 capas de chile con centro de goma", icon: "fa-candy-cane", color: "text-pink-400", bg: "bg-pink-500/10" },
+        { sku: "DUL-003", nombre: "Mazapán De La Rosa Gigante (Caja 20 pzas)", cat: "dulces", catName: "Dulces & Paletas", precio: 160.00, stock: 300, specs: "Cacahuate tostado tradicional", icon: "fa-candy-cane", color: "text-pink-400", bg: "bg-pink-500/10" },
+        { sku: "DUL-004", nombre: "Tutsi Pop Cereza con Chicle (Bolsa 40 pzas)", cat: "dulces", catName: "Dulces & Paletas", precio: 140.00, stock: 180, specs: "Paleta clásica de caramelo y chicle", icon: "fa-candy-cane", color: "text-pink-400", bg: "bg-pink-500/10" },
+
+        // Hardware & PC
+        { sku: "GPU-4070", nombre: "NVIDIA RTX 4070 Ti Super 16GB GDDR6X", cat: "hardware", catName: "Hardware & PC", precio: 17800.00, stock: 12, specs: "16GB GDDR6X, DLSS 3, Ray Tracing", icon: "fa-microchip", color: "text-cyan-400", bg: "bg-cyan-500/10" },
+        { sku: "CPU-7800X", nombre: "AMD Ryzen 7 7800X3D 8C/16T 96MB Cache", cat: "hardware", catName: "Hardware & PC", precio: 8900.00, stock: 24, specs: "El rey del gaming en AM5", icon: "fa-microchip", color: "text-cyan-400", bg: "bg-cyan-500/10" },
+        { sku: "RAM-32GB", nombre: "Kingston FURY Beast 32GB (2x16GB) DDR5", cat: "hardware", catName: "Hardware & PC", precio: 2450.00, stock: 50, specs: "6000MHz CL36 Intel XMP / AMD EXPO", icon: "fa-microchip", color: "text-cyan-400", bg: "bg-cyan-500/10" },
+        { sku: "SSD-2TB", nombre: "Samsung 990 PRO 2TB NVMe PCIe 4.0", cat: "hardware", catName: "Hardware & PC", precio: 3600.00, stock: 35, specs: "Velocidad extrema 7450 MB/s", icon: "fa-microchip", color: "text-cyan-400", bg: "bg-cyan-500/10" },
+
+        // Revistas Digitales
+        { sku: "REV-001", nombre: "Suscripción National Geographic Digital (1 Año)", cat: "revistas", catName: "Revistas Digitales", precio: 599.00, stock: 999, specs: "12 ediciones digitales en alta definición", icon: "fa-newspaper", color: "text-indigo-400", bg: "bg-indigo-500/10" },
+        { sku: "REV-002", nombre: "Suscripción Revista Muy Interesante Digital (1 Año)", cat: "revistas", catName: "Revistas Digitales", precio: 450.00, stock: 999, specs: "Acceso total a ciencia y tecnología", icon: "fa-newspaper", color: "text-indigo-400", bg: "bg-indigo-500/10" },
+
+        // Tabacos & Puros
+        { sku: "TAB-001", nombre: "Puro Cohiba Siglo VI Tubo Individual", cat: "cigarros", catName: "Tabacos & Puros", precio: 850.00, stock: 18, specs: "Hecho a mano en Cuba, fortaleza media", icon: "fa-smoking", color: "text-amber-400", bg: "bg-amber-500/10" },
+        { sku: "TAB-002", nombre: "Puro Romeo y Julieta Churchill", cat: "cigarros", catName: "Tabacos & Puros", precio: 620.00, stock: 25, specs: "Tripa larga, sabor amaderado suave", icon: "fa-smoking", color: "text-amber-400", bg: "bg-amber-500/10" },
+
+        // Herramientas Pro
+        { sku: "HRR-001", nombre: "Kit de Cautín Digital 80W Temperatura Regulable", cat: "herramientas", catName: "Herramientas Pro", precio: 480.00, stock: 40, specs: "Pantalla LCD 180°C - 520°C con accesorios", icon: "fa-screwdriver-wrench", color: "text-emerald-400", bg: "bg-emerald-500/10" },
+        { sku: "HRR-002", nombre: "Juego de Destornilladores de Precisión 117 en 1", cat: "herramientas", catName: "Herramientas Pro", precio: 220.00, stock: 85, specs: "Puntas magnéticas para celulares y electrónica", icon: "fa-screwdriver-wrench", color: "text-emerald-400", bg: "bg-emerald-500/10" }
+    ];
+
+    let cart = [];
+    let activeCat = null;
+    let flyoutTimeout = null;
+
+    // ------------------------------------------------------------------------
+    // FÍSICA DE HOVER INTENT & DISPARO DEL FLYOUT
+    // ------------------------------------------------------------------------
+    function handleCatHover(catKey, triggerElement) {
+        clearTimeout(flyoutTimeout);
+        activeCat = catKey;
+        
+        const flyout = document.getElementById("flyout-panel");
+        const title = document.getElementById("flyout-title");
+        const badge = document.getElementById("flyout-badge");
+        const list = document.getElementById("flyout-items-list");
+
+        const filtered = productsDB.filter(p => p.cat === catKey);
+        if (filtered.length === 0) return;
+
+        const catName = filtered[0].catName;
+        badge.innerText = catName.toUpperCase();
+        title.innerText = `Comprar ${catName} al Vuelo`;
+
+        // Renderizar items directamente con botón de compra en 1 clic
+        list.innerHTML = filtered.map(item => `
+            <div class="bg-slate-950/80 border border-slate-800 hover:border-emerald-400/60 rounded-2xl p-3 flex items-center justify-between gap-3 transition group">
+                <div class="flex items-center gap-2.5 min-w-0 flex-1">
+                    <div class="w-8 h-8 rounded-xl ${item.bg} border border-slate-700 flex items-center justify-center ${item.color} shrink-0">
+                        <i class="fa-solid ${item.icon} text-xs"></i>
+                    </div>
+                    <div class="min-w-0">
+                        <span class="text-[9px] font-mono text-cyan-400 font-bold block leading-none">${item.sku}</span>
+                        <h5 class="text-xs font-bold text-white truncate group-hover:text-cyan-300 mt-0.5">${item.nombre}</h5>
+                        <span class="text-[10px] text-slate-400 block truncate">${item.specs}</span>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col items-end shrink-0 gap-1">
+                    <span class="font-mono font-black text-xs text-amber-400">$${item.precio.toFixed(2)}</span>
+                    <button onclick="quickBuy('${item.sku}')" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px] uppercase tracking-wider transition active:scale-90 flex items-center gap-1 shadow-sm cursor-pointer" title="Agregar de inmediato">
+                        <i class="fa-solid fa-plus-circle"></i> +1 Clic
+                    </button>
+                </div>
+            </div>
+        `).join('');
+
+        flyout.classList.remove("hidden");
+    }
+
+    // Mantener abierto mientras el ratón esté en la raíz interactiva
+    const rootMenu = document.getElementById("menu-interactive-root");
+    rootMenu.addEventListener("mouseleave", () => {
+        flyoutTimeout = setTimeout(() => {
+            document.getElementById("flyout-panel").classList.add("hidden");
+        }, 300); // 300ms de gracia (física de tolerancia)
+    });
+
+    rootMenu.addEventListener("mouseenter", () => {
+        clearTimeout(flyoutTimeout);
+    });
+
+    // ------------------------------------------------------------------------
+    // FUNCIÓN DE COMPRA EN 1 CLIC DIRECTO
+    // ------------------------------------------------------------------------
+    function quickBuy(sku) {
+        const item = productsDB.find(p => p.sku === sku);
+        if (!item) return;
+
+        const exist = cart.find(i => i.sku === sku);
+        if (exist) {
+            exist.quantity++;
+        } else {
+            cart.push({ ...item, quantity: 1 });
+        }
+
+        updateCartState();
+
+        // Efecto visual pop en el badge del carrito
+        const badge = document.getElementById("cart-badge-count");
+        badge.classList.remove("cart-pop");
+        void badge.offsetWidth; // trigger reflow
+        badge.classList.add("cart-pop");
+    }
+
+    function updateCartState() {
+        const count = cart.reduce((sum, i) => sum + i.quantity, 0);
+        const total = cart.reduce((sum, i) => sum + (i.precio * i.quantity), 0);
+
+        document.getElementById("cart-badge-count").innerText = count;
+        document.getElementById("cart-total-txt").innerText = `$${total.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
+        document.getElementById("drawer-total-txt").innerText = `$${total.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
+
+        const drawerList = document.getElementById("cart-drawer-items");
+        if (cart.length === 0) {
+            drawerList.innerHTML = '<div class="text-center py-8 text-slate-500 text-xs">Tu canasta está vacía.</div>';
+            return;
+        }
+
+        drawerList.innerHTML = cart.map((i, idx) => `
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                    <span class="font-mono text-[9px] text-cyan-400 font-bold">${i.sku}</span>
+                    <h5 class="text-white font-bold line-clamp-1">${i.nombre}</h5>
+                    <span class="text-slate-400 text-[10px]">Cant: ${i.quantity} x $${i.precio.toFixed(2)}</span>
+                </div>
+                <div class="text-right">
+                    <span class="font-mono font-bold text-amber-400 block">$${(i.precio * i.quantity).toFixed(2)}</span>
+                    <button onclick="removeCartItem(${idx})" class="text-slate-500 hover:text-red-400 text-[10px] cursor-pointer">Quitar</button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function removeCartItem(idx) {
+        cart.splice(idx, 1);
+        updateCartState();
+    }
+
+    function toggleCartDrawer() {
+        document.getElementById("cartDrawer").classList.toggle("hidden");
+        updateCartState();
+    }
+
+    // ------------------------------------------------------------------------
+    // RENDERIZADO DEL CATÁLOGO EN ESCENARIO DERECHO
+    // ------------------------------------------------------------------------
+    function renderMainProducts(query = '') {
+        const container = document.getElementById("main-product-container");
+        const q = query.toLowerCase().trim();
+
+        const filtered = productsDB.filter(p => {
+            if (!q) return true;
+            return p.nombre.toLowerCase().includes(q) || p.sku.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q) || p.specs.toLowerCase().includes(q);
+        });
+
+        if (filtered.length === 0) {
+            container.innerHTML = `
+                <div class="text-center py-12 text-slate-400 space-y-3">
+                    <i class="fa-solid fa-magnifying-glass text-3xl text-amber-400 block"></i>
+                    <h4 class="text-white font-bold text-sm">No encontramos coincidencias para "${query}"</h4>
+                    <p class="text-xs text-slate-500">Usa el menú de la izquierda para ver productos con entrega garantizada.</p>
+                </div>
+            `;
+            return;
+        }
+
+        container.innerHTML = `
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                ${filtered.map(item => `
+                    <div class="bg-slate-950/90 border border-slate-800 hover:border-cyan-500/50 rounded-2xl p-4 flex flex-col justify-between shadow-xl transition group">
+                        <div>
+                            <div class="flex justify-between items-center text-[10px] font-mono mb-2">
+                                <span class="text-cyan-400 font-bold">${item.sku}</span>
+                                <span class="text-emerald-400 font-bold">Stock: ${item.stock}</span>
+                            </div>
+                            <h4 class="text-white font-bold text-xs mb-1 line-clamp-2 group-hover:text-cyan-300 transition">${item.nombre}</h4>
+                            <p class="text-slate-400 text-[11px] mb-3 leading-relaxed">${item.specs}</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-800/80 flex justify-between items-center">
+                            <div>
+                                <span class="text-[9px] font-mono text-slate-500 block uppercase">Precio</span>
+                                <span class="text-amber-400 font-black font-mono text-sm">$${item.precio.toFixed(2)}</span>
+                            </div>
+                            <button onclick="quickBuy('${item.sku}')" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-black px-3.5 py-1.5 rounded-xl text-xs transition active:scale-90 flex items-center gap-1.5 shadow cursor-pointer">
+                                <i class="fa-solid fa-cart-plus"></i> +1 Clic
+                            </button>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    function onSearchInput(e) {
+        renderMainProducts(e.target.value);
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        renderMainProducts();
+    });
+    </script>
+</body>
+</html>

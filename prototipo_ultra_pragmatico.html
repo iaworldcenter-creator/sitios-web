@@ -1,0 +1,768 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratorio E-commerce Ultra-Pragmático 2026 | Arquitectura Search-First</title>
+    
+    <!-- Tailwind CSS y FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Desactivar scrollbars visibles pero permitir scroll táctil */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Animación suave de aparición */
+        .fade-in { animation: fadeIn 0.15s ease-in-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950">
+
+    <!-- ========================================================================
+         1. CABECERA SEARCH-FIRST: UTILIDADES + SÚPER-BARRA BLANCA DE ALTO CONTRASTE
+         ======================================================================== -->
+    <header class="w-full bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
+        
+        <!-- Nivel 1: Barra de Utilidades Compacta y Respaldo Tecnológico -->
+        <div class="max-w-7xl mx-auto px-4 py-2 flex items-center justify-between gap-4 text-xs border-b border-slate-800/80">
+            <div class="flex items-center gap-3">
+                <span class="px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono font-bold text-[10px] uppercase">
+                    Prototipo Lab 2026
+                </span>
+                <span class="text-slate-400 hidden sm:inline text-[11px]">Arquitectura de Conversión en 10 Segundos</span>
+            </div>
+
+            <div class="flex items-center gap-3 font-bold text-[11px]">
+                <a href="https://gemini.google.com" target="_blank" class="text-slate-300 hover:text-cyan-400 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i> Gemini AI
+                </a>
+                <span class="text-slate-700">|</span>
+                <a href="https://antigravity.google/download" target="_blank" class="text-slate-300 hover:text-amber-400 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-download text-amber-400"></i> Anti-Gravity
+                </a>
+                <span class="text-slate-700">|</span>
+                <button onclick="alert('Atención al cliente: Pedro Moreno 501 A, Guadalajara Centro. Tel: (33) 3613 6348')" class="text-slate-300 hover:text-emerald-400 transition">
+                    <i class="fa-solid fa-phone text-emerald-400"></i> Soporte
+                </button>
+            </div>
+        </div>
+
+        <!-- Nivel 2: Fila Principal de Búsqueda y Navegación Rápida -->
+        <div class="max-w-7xl mx-auto px-4 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
+            
+            <!-- Marca y Menú Departamentos -->
+            <div class="flex items-center gap-4 w-full md:w-auto justify-between md:justify-start">
+                <div class="flex items-center gap-2.5 cursor-pointer" onclick="resetSearch()">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500 to-blue-600 flex items-center justify-center text-slate-950 font-black shadow-lg shadow-cyan-500/20">
+                        <i class="fa-solid fa-bolt text-lg text-white"></i>
+                    </div>
+                    <div>
+                        <span class="font-black text-lg text-white tracking-wider block leading-tight">VENTA RÁPIDA</span>
+                        <span class="text-[10px] font-mono text-cyan-400 uppercase tracking-widest block">Cero Fricción B2B/B2C</span>
+                    </div>
+                </div>
+
+                <!-- Botón Desplegable con Menú Biomecánico -->
+                <div class="relative" id="menu-container">
+                    <button id="mega-menu-trigger" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-3.5 py-2 rounded-xl text-xs flex items-center gap-2 border border-slate-700 transition cursor-pointer">
+                        <i class="fa-solid fa-bars text-cyan-400"></i> <span>Departamentos</span> <i class="fa-solid fa-chevron-down text-[10px] text-slate-400"></i>
+                    </button>
+
+                    <!-- Panel Flotante con Algoritmo de Triángulo Seguro -->
+                    <div id="mega-menu-panel" class="hidden absolute top-full left-0 mt-2 w-64 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2 text-xs flex flex-col gap-1">
+                        <div class="p-2 border-b border-slate-800 text-[10px] font-mono text-cyan-400 uppercase font-bold">Categorías de Entrega Rápida</div>
+                        <button onmouseenter="showSubmenu('cat-dulces', event)" class="menu-item w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800 flex justify-between items-center transition font-bold text-slate-200">
+                            <span><i class="fa-solid fa-candy-cane text-pink-400 mr-2"></i> Dulces & Botanas</span> <i class="fa-solid fa-chevron-right text-[10px] text-slate-500"></i>
+                        </button>
+                        <button onmouseenter="showSubmenu('cat-hardware', event)" class="menu-item w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800 flex justify-between items-center transition font-bold text-slate-200">
+                            <span><i class="fa-solid fa-microchip text-cyan-400 mr-2"></i> Hardware & PC</span> <i class="fa-solid fa-chevron-right text-[10px] text-slate-500"></i>
+                        </button>
+                        <button onmouseenter="showSubmenu('cat-cigarros', event)" class="menu-item w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800 flex justify-between items-center transition font-bold text-slate-200">
+                            <span><i class="fa-solid fa-smoking text-amber-400 mr-2"></i> Tabacos & Puros</span> <i class="fa-solid fa-chevron-right text-[10px] text-slate-500"></i>
+                        </button>
+                        <button onmouseenter="showSubmenu('cat-revistas', event)" class="menu-item w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800 flex justify-between items-center transition font-bold text-slate-200">
+                            <span><i class="fa-solid fa-newspaper text-indigo-400 mr-2"></i> Revistas Digitales</span> <i class="fa-solid fa-chevron-right text-[10px] text-slate-500"></i>
+                        </button>
+                        <button onmouseenter="showSubmenu('cat-herramientas', event)" class="menu-item w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800 flex justify-between items-center transition font-bold text-slate-200">
+                            <span><i class="fa-solid fa-screwdriver-wrench text-emerald-400 mr-2"></i> Herramientas Pro</span> <i class="fa-solid fa-chevron-right text-[10px] text-slate-500"></i>
+                        </button>
+
+                        <!-- Submenú Lateral Anidado (Flyout Panel) -->
+                        <div id="submenu-flyout" class="hidden absolute left-full top-0 ml-2 w-64 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl p-3 z-50 flex flex-col gap-1">
+                            <div id="submenu-content"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Centro: SÚPER-BARRA DE BÚSQUEDA BLANCA (MÁXIMA VISIBILIDAD & AUTOCOMPLETADO REACTIVO) -->
+            <div class="flex-1 max-w-2xl w-full relative">
+                <div class="flex items-center bg-white rounded-full border-2 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.4)] px-4 py-1.5 gap-2 transition focus-within:shadow-[0_0_25px_rgba(6,182,212,0.7)]">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+                    <input 
+                        type="text" 
+                        id="fastSearch" 
+                        autocomplete="off"
+                        spellcheck="false"
+                        placeholder="Escribe lo que buscas o tu síntoma (ej. 'dolor', 'paletas', 'GPU-001', 'soldar')..." 
+                        class="flex-1 bg-transparent border-0 outline-none text-slate-950 font-bold text-sm placeholder-slate-400 selection:bg-cyan-500 selection:text-white"
+                        oninput="onSearchInput(event)"
+                        onkeydown="onSearchKeyDown(event)"
+                    />
+                    <button onclick="clearSearch()" id="clear-search-btn" class="hidden text-slate-400 hover:text-slate-600 text-xs px-2 font-bold cursor-pointer" title="Limpiar">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                    <button onclick="executeSearch()" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-5 py-2 rounded-full text-xs uppercase tracking-wider transition active:scale-95 shrink-0 shadow cursor-pointer">
+                        BUSCAR
+                    </button>
+                </div>
+
+                <!-- Dropdown de Autocompletado Ergonómico (Looping + Copiado al Vuelo) -->
+                <div id="autocomplete-dropdown" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2 flex flex-col gap-1 max-h-80 overflow-y-auto no-scrollbar">
+                    <!-- Generado dinámicamente por JavaScript -->
+                </div>
+            </div>
+
+            <!-- Carrito Global & Checkout -->
+            <div class="flex items-center gap-3 shrink-0">
+                <button onclick="toggleCartDrawer()" class="flex items-center gap-2.5 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-4 py-2.5 rounded-xl transition cursor-pointer active:scale-95 shadow group">
+                    <div class="relative">
+                        <i class="fa-solid fa-cart-shopping text-cyan-400 text-base group-hover:scale-110 transition"></i>
+                        <span id="cart-badge-count" class="absolute -top-2.5 -right-2.5 bg-amber-500 text-slate-950 font-mono font-black text-[10px] rounded-full w-5 h-5 flex items-center justify-center shadow">0</span>
+                    </div>
+                    <div class="flex flex-col text-left">
+                        <span class="text-[10px] font-mono text-slate-400 uppercase leading-none">Canasta</span>
+                        <span id="cart-total-txt" class="text-xs font-mono font-bold text-amber-400">$0.00 MXN</span>
+                    </div>
+                </button>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ========================================================================
+         2. BARRA DE CONTROL DE VISTAS (TABLA ALTA DENSIDAD B2B VS CUADRÍCULA)
+         ======================================================================== -->
+    <section class="max-w-7xl mx-auto px-4 pt-6 pb-2 w-full flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+            <span class="text-[10px] font-mono text-cyan-400 uppercase tracking-widest font-bold block">// Catálogo de Alta Velocidad</span>
+            <h2 id="catalog-title" class="text-2xl font-black text-white">Catálogo Directo de Productos</h2>
+        </div>
+
+        <div class="flex items-center gap-2 bg-slate-900 border border-slate-800 p-1 rounded-xl">
+            <span class="text-xs font-mono text-slate-400 px-2 font-semibold">Modo de Vista:</span>
+            <button id="view-table-btn" onclick="setViewMode('table')" class="bg-cyan-500 text-slate-950 font-black px-3 py-1.5 rounded-lg text-xs transition flex items-center gap-1.5 cursor-pointer shadow">
+                <i class="fa-solid fa-table-list"></i> Tabla B2B
+            </button>
+            <button id="view-grid-btn" onclick="setViewMode('grid')" class="text-slate-300 hover:text-white font-bold px-3 py-1.5 rounded-lg text-xs transition flex items-center gap-1.5 cursor-pointer">
+                <i class="fa-solid fa-border-all"></i> Cuadrícula
+            </button>
+        </div>
+    </section>
+
+    <!-- ========================================================================
+         3. CONTENEDOR PRINCIPAL: RESULTADOS / MATRIZ DE PEDIDO RÁPIDO / ESTADO CERO
+         ======================================================================== -->
+    <main class="max-w-7xl mx-auto px-4 py-4 flex-1 w-full" id="main-stage">
+        
+        <!-- Contenedor Dinámico donde se inyectan los productos o la Red de Contención -->
+        <div id="catalog-container" class="w-full">
+            <!-- Renderizado dinámico vía JavaScript en <50ms -->
+        </div>
+
+    </main>
+
+    <!-- ========================================================================
+         4. CART DRAWER LATERAL (COMPRAS EN 1 CLIC SIN RECARGAR PÁGINA)
+         ======================================================================== -->
+    <div id="cartDrawer" class="fixed inset-0 z-[200] hidden">
+        <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
+        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-slate-900 border-l border-slate-800 shadow-2xl flex flex-col justify-between p-6 z-10">
+            <div>
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+                    <h3 class="font-black text-white text-base flex items-center gap-2">
+                        <i class="fa-solid fa-cart-shopping text-cyan-400"></i> Pedido Actual
+                    </h3>
+                    <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-white text-lg p-1 cursor-pointer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+                
+                <div id="cart-drawer-items" class="flex flex-col gap-2.5 overflow-y-auto max-h-[60vh] pr-1 no-scrollbar">
+                    <!-- Items del carrito -->
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-4 flex flex-col gap-3">
+                <div class="flex justify-between items-baseline">
+                    <span class="text-xs text-slate-400 font-bold uppercase">Total Estimado:</span>
+                    <span id="drawer-total-txt" class="text-xl font-mono font-black text-amber-400">$0.00 MXN</span>
+                </div>
+                <button onclick="alert('¡Compra rápida procesada con éxito! Redirigiendo a pasarela segura...')" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg shadow-amber-500/20 cursor-pointer flex items-center justify-center gap-2">
+                    <i class="fa-solid fa-credit-card"></i> Finalizar Compra Ahora
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================================
+         5. FOOTER CON RESPALDO Y ESCAPE HUMANO PERMANENTE
+         ======================================================================== -->
+    <footer class="bg-slate-900 border-t border-slate-800 py-8 text-xs text-slate-400 mt-12">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <div>
+                <strong class="text-white block font-bold">Ecosistema Comercial Pedro Moreno 501 A</strong>
+                <span>Guadalajara Centro, Jalisco. Tienda 100% Digital con Envíos a Domicilio.</span>
+            </div>
+            <div class="flex items-center gap-4 font-mono text-[11px]">
+                <a href="https://wa.me/523337271440" target="_blank" class="text-emerald-400 hover:underline flex items-center gap-1">
+                    <i class="fa-brands fa-whatsapp"></i> WhatsApp Directo
+                </a>
+                <span>•</span>
+                <span class="text-slate-300">Potenciado por Gemini & Anti-Gravity</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========================================================================
+         6. MOTOR JAVASCRIPT: LÓGICA SEARCH-FIRST, RRF, BIOMECÁNICA & FALLBACK
+         ======================================================================== -->
+    <script>
+    // ------------------------------------------------------------------------
+    // BASE DE DATOS LOCAL MULTICATEGORÍA CON MAPEO DE SÍNTOMAS / PROBLEMAS
+    // ------------------------------------------------------------------------
+    const masterCatalog = [
+        // Hardware
+        { sku: "GPU-4070", nombre: "NVIDIA RTX 4070 Ti Super 16GB GDDR6X", marca: "NVIDIA", cat: "hardware", catLabel: "Hardware & PC", precio: 17800.00, stock: 12, moq: 1, specs: "16GB GDDR6X, 256-bit, DLSS 3, 285W", sintomas: ["lento", "video", "render", "gaming 4k", "graficos", "juegos", "pantalla lenta"] },
+        { sku: "CPU-7800X", nombre: "AMD Ryzen 7 7800X3D 8C/16T 96MB Cache", marca: "AMD", cat: "hardware", catLabel: "Hardware & PC", precio: 8900.00, stock: 24, moq: 1, specs: "8 Cores, 16 Threads, 5.0GHz, 3D V-Cache", sintomas: ["cuello de botella", "procesador", "fps bajos", "lento", "cpu"] },
+        { sku: "RAM-32GB", nombre: "Kingston FURY Beast 32GB (2x16GB) DDR5 6000MHz", marca: "Kingston", cat: "hardware", catLabel: "Hardware & PC", precio: 2450.00, stock: 50, moq: 2, specs: "DDR5 6000MHz CL36 XMP/EXPO", sintomas: ["memoria llena", "se traba", "pantalla azul", "render pesado"] },
+        { sku: "SSD-2TB", nombre: "Samsung 990 PRO 2TB NVMe PCIe 4.0 (7450 MB/s)", marca: "Samsung", cat: "hardware", catLabel: "Hardware & PC", precio: 3600.00, stock: 35, moq: 1, specs: "7450 MB/s lectura, 6900 MB/s escritura", sintomas: ["disco lleno", "arranque lento", "poco espacio", "almacenamiento"] },
+        
+        // Dulces & Botanas
+        { sku: "DUL-001", nombre: "Paleta Payaso Ricolino Caja con 15 piezas", marca: "Ricolino", cat: "dulces", catLabel: "Dulces & Botanas", precio: 245.00, stock: 120, moq: 5, specs: "Malvavisco con chocolate y gomitas", sintomas: ["antojo", "dulce", "fiesta", "paletas", "regalo nino", "chocolate"] },
+        { sku: "DUL-002", nombre: "Rocaleta Sonrics Bolsa con 30 piezas", marca: "Sonrics", cat: "dulces", catLabel: "Dulces & Botanas", precio: 185.00, stock: 200, moq: 5, specs: "Caramelo macizo con 4 capas de chile y centro de goma", sintomas: ["antojo", "chile", "acido", "paletas", "botana"] },
+        { sku: "DUL-003", nombre: "Mazapán De La Rosa Gigante Caja con 20 piezas", marca: "De La Rosa", cat: "dulces", catLabel: "Dulces & Botanas", precio: 160.00, stock: 300, moq: 10, specs: "Cacahuate seleccionado estilo tradicional", sintomas: ["antojo", "cacahuate", "postre", "suave", "dulce"] },
+        { sku: "DUL-004", nombre: "Tutsi Pop Clásica Bolsa con 40 piezas", marca: "Tutsi", cat: "dulces", catLabel: "Dulces & Botanas", precio: 140.00, stock: 180, moq: 5, specs: "Paleta sabor cereza con centro de chicle", sintomas: ["antojo", "paletas", "chicle", "fiesta"] },
+
+        // Tabacos & Puros
+        { sku: "TAB-001", nombre: "Puro Cohiba Siglo VI Tubo Individual", marca: "Cohiba", cat: "cigarros", catLabel: "Tabacos & Puros", precio: 850.00, stock: 18, moq: 1, specs: "Hecho a mano en Cuba, Fortaleza Media", sintomas: ["fumar", "relajarse", "regalo ejecutivo", "puros", "celebracion"] },
+        { sku: "TAB-002", nombre: "Puro Romeo y Julieta Churchill", marca: "Romeo y Julieta", cat: "cigarros", catLabel: "Tabacos & Puros", precio: 620.00, stock: 25, moq: 1, specs: "Tripa larga, sabor amaderado suave", sintomas: ["fumar", "puros", "elegante", "tabaco"] },
+        { sku: "TAB-003", nombre: "Cortapuros de Doble Guillotina Acero Inox", marca: "Vía MX", cat: "cigarros", catLabel: "Tabacos & Puros", precio: 290.00, stock: 45, moq: 1, specs: "Cuchillas autoafilables de titanio", sintomas: ["cortar puro", "accesorio puro", "fumar"] },
+
+        // Revistas Digitales
+        { sku: "REV-001", nombre: "Suscripción Anual Revista National Geographic Digital", marca: "RBA", cat: "revistas", catLabel: "Revistas Digitales", precio: 599.00, stock: 999, moq: 1, specs: "12 Ediciones Digitales HD + Archivo Histórico", sintomas: ["lectura", "ciencia", "naturaleza", "aburrimiento", "estudio", "aprender"] },
+        { sku: "REV-002", nombre: "Suscripción Revista Muy Interesante Digital (1 Año)", marca: "Zinet", cat: "revistas", catLabel: "Revistas Digitales", precio: 450.00, stock: 999, moq: 1, specs: "Acceso ilimitado PDF + App móvil", sintomas: ["curiosidades", "tecnologia", "lectura", "ciencia"] },
+
+        // Herramientas Pro
+        { sku: "HRR-001", nombre: "Kit de Soldadura Digital 80W Temperatura Regulable", marca: "TechPro", cat: "herramientas", catLabel: "Herramientas Pro", precio: 480.00, stock: 40, moq: 1, specs: "Display LCD 180°C - 520°C con 5 puntas y estaño", sintomas: ["soldar", "reparar", "cautin", "electronica rota", "placa rota"] },
+        { sku: "HRR-002", nombre: "Juego de Destornilladores de Precisión 117 en 1", marca: "AXIDUN", cat: "herramientas", catLabel: "Herramientas Pro", precio: 220.00, stock: 85, moq: 2, specs: "Puntas magnéticas de acero CR-V para celulares y PC", sintomas: ["abrir celular", "tornillo pequeno", "desarmar", "reparar pc"] }
+    ];
+
+    let currentViewMode = 'table'; // 'table' o 'grid'
+    let currentQuery = '';
+    let cart = [];
+    let selectedSuggestionIndex = -1;
+    let originalTypingQuery = '';
+
+    // ------------------------------------------------------------------------
+    // 1. MOTOR DE BÚSQUEDA REACTIVO (<50ms) CON FUSIÓN SEMÁNTICA Y SÍNTOMAS
+    // ------------------------------------------------------------------------
+    function searchCatalog(query) {
+        if (!query || !query.trim()) return masterCatalog;
+        const q = query.toLowerCase().trim();
+        const tokens = q.split(/\s+/);
+
+        return masterCatalog.filter(item => {
+            const skuMatch = item.sku.toLowerCase().includes(q);
+            const nameMatch = tokens.every(t => item.nombre.toLowerCase().includes(t));
+            const brandMatch = item.marca.toLowerCase().includes(q);
+            const catMatch = item.cat.toLowerCase().includes(q) || item.catLabel.toLowerCase().includes(q);
+            const symptomMatch = item.sintomas && item.sintomas.some(s => s.toLowerCase().includes(q) || q.includes(s.toLowerCase()));
+
+            return skuMatch || nameMatch || brandMatch || catMatch || symptomMatch;
+        });
+    }
+
+    // ------------------------------------------------------------------------
+    // 2. ERGONOMÍA DE AUTOCOMPLETADO (Persistencia, Flechas, Loop y Copiado al Vuelo)
+    // ------------------------------------------------------------------------
+    function onSearchInput(e) {
+        const val = e.target.value;
+        originalTypingQuery = val;
+        currentQuery = val;
+        selectedSuggestionIndex = -1;
+
+        const clearBtn = document.getElementById("clear-search-btn");
+        if (clearBtn) clearBtn.classList.toggle("hidden", val.length === 0);
+
+        renderAutocomplete(val);
+        renderMainStage(val);
+    }
+
+    function renderAutocomplete(val) {
+        const dropdown = document.getElementById("autocomplete-dropdown");
+        if (!val || val.trim().length < 2) {
+            dropdown.classList.add("hidden");
+            return;
+        }
+
+        const results = searchCatalog(val).slice(0, 6);
+        if (results.length === 0) {
+            dropdown.classList.add("hidden");
+            return;
+        }
+
+        dropdown.innerHTML = results.map((item, idx) => `
+            <div id="sugg-item-${idx}" onclick="selectSuggestion('${item.nombre.replace(/'/g, "\\'")}')" class="sugg-row px-3 py-2 rounded-xl text-xs hover:bg-slate-800 flex justify-between items-center cursor-pointer transition">
+                <div class="flex items-center gap-2">
+                    <span class="font-mono text-[10px] text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-500/30 px-1.5 py-0.5 rounded">${item.sku}</span>
+                    <span class="text-white font-bold">${highlightMatch(item.nombre, val)}</span>
+                </div>
+                <span class="text-[10px] text-slate-400 font-mono">${item.catLabel}</span>
+            </div>
+        `).join('');
+
+        dropdown.classList.remove("hidden");
+    }
+
+    function highlightMatch(text, query) {
+        const idx = text.toLowerCase().indexOf(query.toLowerCase());
+        if (idx === -1) return text;
+        const before = text.substring(0, idx);
+        const match = text.substring(idx, idx + query.length);
+        const after = text.substring(idx + query.length);
+        return `${before}<strong class="text-amber-400 underline">${match}</strong>${after}`;
+    }
+
+    function onSearchKeyDown(e) {
+        const dropdown = document.getElementById("autocomplete-dropdown");
+        const rows = document.querySelectorAll(".sugg-row");
+        const input = document.getElementById("fastSearch");
+
+        if (e.key === "ArrowDown") {
+            e.preventDefault();
+            if (rows.length === 0) return;
+            selectedSuggestionIndex++;
+            if (selectedSuggestionIndex >= rows.length) {
+                // Loop de vuelta al input original
+                selectedSuggestionIndex = -1;
+                input.value = originalTypingQuery;
+            } else {
+                updateSuggestionHighlight(rows, input);
+            }
+        } else if (e.key === "ArrowUp") {
+            e.preventDefault();
+            if (rows.length === 0) return;
+            selectedSuggestionIndex--;
+            if (selectedSuggestionIndex < -1) {
+                selectedSuggestionIndex = rows.length - 1;
+            }
+            if (selectedSuggestionIndex === -1) {
+                input.value = originalTypingQuery;
+            } else {
+                updateSuggestionHighlight(rows, input);
+            }
+        } else if (e.key === "Enter") {
+            dropdown.classList.add("hidden");
+            executeSearch();
+        } else if (e.key === "Escape") {
+            dropdown.classList.add("hidden");
+            selectedSuggestionIndex = -1;
+        }
+    }
+
+    function updateSuggestionHighlight(rows, input) {
+        rows.forEach((r, i) => {
+            if (i === selectedSuggestionIndex) {
+                r.classList.add("bg-cyan-950/60", "border", "border-cyan-500/50");
+                // Copiado al vuelo sin ejecutar búsqueda
+                const cleanText = r.querySelector(".text-white").innerText;
+                input.value = cleanText;
+            } else {
+                r.classList.remove("bg-cyan-950/60", "border", "border-cyan-500/50");
+            }
+        });
+    }
+
+    function selectSuggestion(text) {
+        const input = document.getElementById("fastSearch");
+        input.value = text;
+        currentQuery = text;
+        document.getElementById("autocomplete-dropdown").classList.add("hidden");
+        executeSearch();
+    }
+
+    function executeSearch() {
+        const input = document.getElementById("fastSearch");
+        currentQuery = input.value;
+        document.getElementById("autocomplete-dropdown").classList.add("hidden");
+        renderMainStage(currentQuery);
+    }
+
+    function clearSearch() {
+        const input = document.getElementById("fastSearch");
+        input.value = '';
+        currentQuery = '';
+        originalTypingQuery = '';
+        document.getElementById("clear-search-btn").classList.add("hidden");
+        document.getElementById("autocomplete-dropdown").classList.add("hidden");
+        renderMainStage('');
+    }
+
+    function resetSearch() {
+        clearSearch();
+    }
+
+    // ------------------------------------------------------------------------
+    // 3. RENDERIZADO DEL ESCENARIO: TABLA DE ALTA DENSIDAD VS ESTADO CERO
+    // ------------------------------------------------------------------------
+    function renderMainStage(query) {
+        const container = document.getElementById("catalog-container");
+        const items = searchCatalog(query);
+
+        if (items.length === 0) {
+            renderZeroStateRecovery(container, query);
+            return;
+        }
+
+        if (currentViewMode === 'table') {
+            renderProductTable(container, items);
+        } else {
+            renderProductGrid(container, items);
+        }
+    }
+
+    function renderProductTable(container, items) {
+        container.innerHTML = `
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden shadow-2xl fade-in">
+                <div class="overflow-x-auto no-scrollbar">
+                    <table class="w-full text-left text-xs">
+                        <thead class="bg-slate-950/90 text-slate-400 font-mono uppercase text-[10px] border-b border-slate-800">
+                            <tr>
+                                <th class="p-3.5">SKU / Marca</th>
+                                <th class="p-3.5">Producto & Especificaciones Técnicas</th>
+                                <th class="p-3.5">Disponibilidad</th>
+                                <th class="p-3.5 text-right">Precio Unitario</th>
+                                <th class="p-3.5 text-center">Escala Mayoreo</th>
+                                <th class="p-3.5 text-center">Cantidad & Compra</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-800/60 font-medium">
+                            ${items.map(item => `
+                                <tr class="hover:bg-slate-800/40 transition">
+                                    <td class="p-3.5 font-mono">
+                                        <span class="text-cyan-400 font-bold block">${item.sku}</span>
+                                        <span class="text-slate-500 text-[10px] uppercase">${item.marca}</span>
+                                    </td>
+                                    <td class="p-3.5 max-w-sm">
+                                        <strong class="text-white text-xs block mb-0.5 leading-snug">${item.nombre}</strong>
+                                        <span class="text-slate-400 text-[11px] block leading-relaxed">${item.specs}</span>
+                                    </td>
+                                    <td class="p-3.5">
+                                        <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> ${item.stock} en Stock
+                                        </span>
+                                    </td>
+                                    <td class="p-3.5 text-right font-mono">
+                                        <span class="text-sm font-black text-amber-400">$${item.precio.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
+                                        <span class="text-[9px] text-slate-500 block">MXN + IVA</span>
+                                    </td>
+                                    <td class="p-3.5 text-center">
+                                        <span class="px-2 py-1 rounded bg-cyan-950/40 border border-cyan-500/30 text-cyan-300 font-mono text-[10px] font-bold block">
+                                            15% Mayoreo (10+ pzas)
+                                        </span>
+                                    </td>
+                                    <td class="p-3.5 text-center">
+                                        <div class="flex items-center justify-center gap-2">
+                                            <input type="number" id="qty-${item.sku}" min="${item.moq}" value="${item.moq}" class="w-14 bg-slate-950 border border-slate-700 text-white text-center font-mono font-bold text-xs rounded-lg py-1.5 focus:border-cyan-500 focus:outline-none" />
+                                            <button onclick="addToCartFromRow('${item.sku}')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3.5 py-1.5 rounded-lg text-xs transition active:scale-95 flex items-center gap-1 shadow cursor-pointer" title="Agregar al carrito">
+                                                <i class="fa-solid fa-cart-plus"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        `;
+    }
+
+    function renderProductGrid(container, items) {
+        container.innerHTML = `
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 fade-in">
+                ${items.map(item => `
+                    <div class="bg-slate-900 border border-slate-800 hover:border-cyan-500/60 rounded-2xl p-4 flex flex-col justify-between shadow-xl transition">
+                        <div>
+                            <div class="flex justify-between items-center text-[10px] font-mono mb-2">
+                                <span class="text-cyan-400 font-bold">${item.sku}</span>
+                                <span class="text-emerald-400 font-bold">Stock: ${item.stock}</span>
+                            </div>
+                            <h4 class="text-white font-bold text-xs mb-1 line-clamp-2">${item.nombre}</h4>
+                            <p class="text-slate-400 text-[11px] mb-3 leading-relaxed">${item.specs}</p>
+                        </div>
+                        <div class="pt-3 border-t border-slate-800/80 flex justify-between items-center">
+                            <div>
+                                <span class="text-[9px] font-mono text-slate-500 block uppercase">Precio Unitario</span>
+                                <span class="text-amber-400 font-black font-mono text-sm">$${item.precio.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
+                            </div>
+                            <button onclick="addToCartDirect('${item.sku}', 1)" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-1.5 rounded-xl text-xs transition active:scale-95 flex items-center gap-1 shadow cursor-pointer">
+                                <i class="fa-solid fa-cart-plus"></i> Comprar
+                            </button>
+                        </div>
+                    </div>
+                `).join('')}
+            </div>
+        `;
+    }
+
+    // ------------------------------------------------------------------------
+    // 4. RED DE CONTENCIÓN ANTE ESTADO CERO (5 PILARES METODOLÓGICOS)
+    // ------------------------------------------------------------------------
+    function renderZeroStateRecovery(container, query) {
+        container.innerHTML = `
+            <div class="bg-slate-900/90 border-2 border-dashed border-amber-500/40 rounded-3xl p-8 max-w-4xl mx-auto shadow-2xl fade-in text-center space-y-8">
+                
+                <!-- Pilar 1: Empatía y Claridad del Estado Cero -->
+                <div class="space-y-2">
+                    <div class="w-16 h-16 rounded-full bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-2xl mx-auto mb-3">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+                    <h3 class="text-xl font-black text-white">No encontramos coincidencias exactas para "${query}"</h3>
+                    <p class="text-slate-300 text-xs sm:text-sm max-w-lg mx-auto">
+                        No te preocupes, nuestro catálogo cuenta con miles de refacciones y soluciones directas. Activa una de nuestras opciones de rescate:
+                    </p>
+                </div>
+
+                <!-- Pilar 2: Atajos a Categorías Taxonómicas -->
+                <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 text-left space-y-2">
+                    <span class="text-[10px] font-mono text-cyan-400 uppercase font-bold tracking-wider block">
+                        <i class="fa-solid fa-layer-group"></i> 1. Explora por Departamentos Oficiales:
+                    </span>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="filterByDept('hardware')" class="px-3 py-1.5 bg-slate-900 hover:bg-cyan-500/20 border border-slate-700 hover:border-cyan-400 rounded-xl text-xs text-slate-200 font-bold transition">
+                            <i class="fa-solid fa-microchip text-cyan-400 mr-1"></i> Hardware & PC
+                        </button>
+                        <button onclick="filterByDept('dulces')" class="px-3 py-1.5 bg-slate-900 hover:bg-pink-500/20 border border-slate-700 hover:border-pink-400 rounded-xl text-xs text-slate-200 font-bold transition">
+                            <i class="fa-solid fa-candy-cane text-pink-400 mr-1"></i> Dulces & Paletas
+                        </button>
+                        <button onclick="filterByDept('cigarros')" class="px-3 py-1.5 bg-slate-900 hover:bg-amber-500/20 border border-slate-700 hover:border-amber-400 rounded-xl text-xs text-slate-200 font-bold transition">
+                            <i class="fa-solid fa-smoking text-amber-400 mr-1"></i> Tabacos & Puros
+                        </button>
+                        <button onclick="filterByDept('herramientas')" class="px-3 py-1.5 bg-slate-900 hover:bg-emerald-500/20 border border-slate-700 hover:border-emerald-400 rounded-xl text-xs text-slate-200 font-bold transition">
+                            <i class="fa-solid fa-screwdriver-wrench text-emerald-400 mr-1"></i> Herramientas Pro
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Pilar 3 & 4: Productos Más Vendidos / Tendencias de Rescate -->
+                <div class="text-left space-y-3">
+                    <span class="text-[10px] font-mono text-amber-400 uppercase font-bold tracking-wider block">
+                        <i class="fa-solid fa-fire"></i> 2. Artículos Más Solicitados en Guadalajara Centro:
+                    </span>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                        ${masterCatalog.slice(0, 3).map(item => `
+                            <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex flex-col justify-between">
+                                <div>
+                                    <span class="text-[9px] font-mono text-cyan-400 font-bold uppercase">${item.sku}</span>
+                                    <h5 class="text-white font-bold text-xs line-clamp-1">${item.nombre}</h5>
+                                </div>
+                                <div class="flex justify-between items-center mt-2 pt-2 border-t border-slate-800/80">
+                                    <span class="text-xs font-mono font-black text-amber-400">$${item.precio.toFixed(2)}</span>
+                                    <button onclick="addToCartDirect('${item.sku}', 1)" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-2 py-1 rounded text-[10px] font-black transition">
+                                        Agregar
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+
+                <!-- Pilar 5: VÍA DE ESCAPE HUMANO DIRECTO (LEAD CAPTURE) -->
+                <div class="bg-gradient-to-r from-cyan-950/40 via-slate-950 to-blue-950/40 border border-cyan-500/40 p-5 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-left">
+                    <div>
+                        <strong class="text-white text-sm block font-black">¿No encuentras la pieza o producto exacto?</strong>
+                        <span class="text-slate-300 text-xs">Un asesor de Pedro Moreno 501 A cotiza tu producto con proveedores en 5 minutos.</span>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                        <a href="https://wa.me/523337271440?text=Hola,%20busco%20la%20siguiente%20pieza:%20${encodeURIComponent(query)}" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-black px-4 py-2.5 rounded-xl text-xs flex items-center gap-1.5 shadow transition active:scale-95">
+                            <i class="fa-brands fa-whatsapp text-sm"></i> Pedir por WhatsApp
+                        </a>
+                        <a href="tel:3336136348" class="bg-slate-800 hover:bg-slate-700 text-white font-bold px-3.5 py-2.5 rounded-xl text-xs transition">
+                            <i class="fa-solid fa-phone"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        `;
+    }
+
+    // ------------------------------------------------------------------------
+    // 5. BIOMECÁNICA DEL MENÚ (ALGORITMO DE TRIÁNGULO SEGURO / FLYOUT)
+    // ------------------------------------------------------------------------
+    const menuData = {
+        'cat-dulces': [
+            { label: "Paletas Payaso (Cajas)", query: "Paleta Payaso" },
+            { label: "Rocaletas de Chile (Bolsas)", query: "Rocaleta" },
+            { label: "Mazapanes De La Rosa", query: "Mazapan" },
+            { label: "Tutsi Pop de Cereza", query: "Tutsi" }
+        ],
+        'cat-hardware': [
+            { label: "Tarjetas de Video RTX 4000", query: "RTX" },
+            { label: "Procesadores Ryzen 7000", query: "Ryzen" },
+            { label: "Memorias RAM DDR5", query: "DDR5" },
+            { label: "Discos SSD NVMe 2TB", query: "Samsung" }
+        ],
+        'cat-cigarros': [
+            { label: "Puros Cohiba Siglo VI", query: "Cohiba" },
+            { label: "Romeo y Julieta Churchill", query: "Romeo" },
+            { label: "Cortapuros de Titanio", query: "Cortapuros" }
+        ],
+        'cat-revistas': [
+            { label: "National Geographic Digital", query: "National Geographic" },
+            { label: "Muy Interesante Suscripción", query: "Muy Interesante" }
+        ],
+        'cat-herramientas': [
+            { label: "Cautines Digitales 80W", query: "Soldadura" },
+            { label: "Kits de Precisión 117 en 1", query: "Destornilladores" }
+        ]
+    };
+
+    const trigger = document.getElementById("mega-menu-trigger");
+    const panel = document.getElementById("mega-menu-panel");
+    const flyout = document.getElementById("submenu-flyout");
+
+    trigger.addEventListener("mouseenter", () => { panel.classList.remove("hidden"); });
+    document.getElementById("menu-container").addEventListener("mouseleave", () => {
+        panel.classList.add("hidden");
+        flyout.classList.add("hidden");
+    });
+
+    function showSubmenu(catKey, event) {
+        const items = menuData[catKey] || [];
+        const content = document.getElementById("submenu-content");
+        
+        content.innerHTML = items.map(it => `
+            <a href="javascript:void(0)" onclick="selectCategoryQuery('${it.query}')" class="px-3 py-1.5 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-cyan-300 font-bold text-xs flex items-center gap-2 transition">
+                <i class="fa-solid fa-chevron-right text-[8px] text-cyan-400"></i> ${it.label}
+            </a>
+        `).join('');
+
+        flyout.classList.remove("hidden");
+    }
+
+    function selectCategoryQuery(q) {
+        const input = document.getElementById("fastSearch");
+        input.value = q;
+        currentQuery = q;
+        panel.classList.add("hidden");
+        flyout.classList.add("hidden");
+        executeSearch();
+    }
+
+    function filterByDept(cat) {
+        const items = masterCatalog.filter(i => i.cat === cat);
+        const container = document.getElementById("catalog-container");
+        if (currentViewMode === 'table') {
+            renderProductTable(container, items);
+        } else {
+            renderProductGrid(container, items);
+        }
+    }
+
+    // ------------------------------------------------------------------------
+    // 6. GESTIÓN DEL CARRITO EN TIEMPO REAL (SIN RECARGA DE PÁGINA)
+    // ------------------------------------------------------------------------
+    function addToCartFromRow(sku) {
+        const qtyInput = document.getElementById(`qty-${sku}`);
+        const qty = qtyInput ? parseInt(qtyInput.value) || 1 : 1;
+        addToCartDirect(sku, qty);
+    }
+
+    function addToCartDirect(sku, qty) {
+        const item = masterCatalog.find(i => i.sku === sku);
+        if (!item) return;
+
+        const existIdx = cart.findIndex(i => i.sku === sku);
+        if (existIdx > -1) {
+            cart[existIdx].quantity += qty;
+        } else {
+            cart.push({ ...item, quantity: qty });
+        }
+
+        updateCartUI();
+        alert(`¡Agregado al carrito: ${qty}x ${item.nombre}!`);
+    }
+
+    function updateCartUI() {
+        const totalCount = cart.reduce((sum, i) => sum + i.quantity, 0);
+        const totalMoney = cart.reduce((sum, i) => {
+            // Aplicar 15% de mayoreo si lleva 10+ piezas
+            const price = (i.quantity >= 10) ? (i.precio * 0.85) : i.precio;
+            return sum + (price * i.quantity);
+        }, 0);
+
+        document.getElementById("cart-badge-count").innerText = totalCount;
+        document.getElementById("cart-total-txt").innerText = `$${totalMoney.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
+        document.getElementById("drawer-total-txt").innerText = `$${totalMoney.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
+
+        const drawerItems = document.getElementById("cart-drawer-items");
+        if (cart.length === 0) {
+            drawerItems.innerHTML = '<div class="text-center py-8 text-slate-500 text-xs">Tu canasta está vacía.</div>';
+            return;
+        }
+
+        drawerItems.innerHTML = cart.map((i, idx) => `
+            <div class="bg-slate-950 border border-slate-800 rounded-xl p-3 flex justify-between items-center text-xs">
+                <div>
+                    <span class="font-mono text-[10px] text-cyan-400 font-bold">${i.sku}</span>
+                    <h5 class="text-white font-bold line-clamp-1">${i.nombre}</h5>
+                    <span class="text-slate-400 text-[10px]">Cant: ${i.quantity} ${i.quantity >= 10 ? '<span class="text-cyan-400 font-bold">(15% Mayoreo Aplicado)</span>' : ''}</span>
+                </div>
+                <div class="text-right">
+                    <span class="font-mono font-bold text-amber-400 block">$${((i.quantity >= 10 ? i.precio * 0.85 : i.precio) * i.quantity).toFixed(2)}</span>
+                    <button onclick="removeItem(${idx})" class="text-slate-500 hover:text-red-400 text-[10px] cursor-pointer">Quitar</button>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function removeItem(idx) {
+        cart.splice(idx, 1);
+        updateCartUI();
+    }
+
+    function toggleCartDrawer() {
+        const drawer = document.getElementById("cartDrawer");
+        drawer.classList.toggle("hidden");
+        updateCartUI();
+    }
+
+    function setViewMode(mode) {
+        currentViewMode = mode;
+        const btnTable = document.getElementById("view-table-btn");
+        const btnGrid = document.getElementById("view-grid-btn");
+
+        if (mode === 'table') {
+            btnTable.className = "bg-cyan-500 text-slate-950 font-black px-3 py-1.5 rounded-lg text-xs transition flex items-center gap-1.5 cursor-pointer shadow";
+            btnGrid.className = "text-slate-300 hover:text-white font-bold px-3 py-1.5 rounded-lg text-xs transition flex items-center gap-1.5 cursor-pointer";
+        } else {
+            btnGrid.className = "bg-cyan-500 text-slate-950 font-black px-3 py-1.5 rounded-lg text-xs transition flex items-center gap-1.5 cursor-pointer shadow";
+            btnTable.className = "text-slate-300 hover:text-white font-bold px-3 py-1.5 rounded-lg text-xs transition flex items-center gap-1.5 cursor-pointer";
+        }
+
+        renderMainStage(currentQuery);
+    }
+
+    // Inicializar al cargar el documento
+    document.addEventListener("DOMContentLoaded", () => {
+        renderMainStage('');
+    });
+    </script>
+</body>
+</html>
