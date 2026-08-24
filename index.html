@@ -307,7 +307,7 @@
                         ${products.map(p => {
                             const discountPct = p.original ? Math.round((1 - (p.precio / p.original)) * 100) : 0;
                             return `
-                                <div class="min-w-[240px] w-[240px] sm:w-[260px] lg:w-auto shrink-0 lg:shrink snap-start bg-slate-950/90 hover:bg-slate-950 rounded-2xl p-3.5 flex flex-col justify-between transition group shadow-xl hover:shadow-[0_8px_30px_rgba(6,182,212,0.2)]">
+                                <div class="min-w-[240px] min-w-[240px] w-[240px] sm:w-[260px] lg:w-auto shrink-0 lg:shrink snap-start bg-slate-950/90 hover:bg-slate-950 rounded-2xl p-3.5 flex flex-col justify-between transition group shadow-xl hover:shadow-[0_8px_30px_rgba(6,182,212,0.2)]">
                                     <div>
                                         <div class="w-full h-40 sm:h-44 overflow-hidden rounded-xl bg-slate-900 flex items-center justify-center p-2 relative mb-2.5 shadow-inner">
                                             <img src="${p.img}" alt="${p.nombre}" class="w-full h-full object-contain group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
