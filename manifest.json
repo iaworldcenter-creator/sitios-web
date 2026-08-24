@@ -1,0 +1,22 @@
+﻿{
+  "name": "BAZAR NFL.GDL - Refacciones & Pedidos B2B",
+  "short_name": "BazarNFL",
+  "description": "App oficial de pedidos rápidos y refacciones para talleres y técnicos en Guadalajara.",
+  "start_url": "./app.html",
+  "display": "standalone",
+  "background_color": "#020617",
+  "theme_color": "#0f172a",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp",
+      "sizes": "192x192",
+      "type": "image/webp"
+    },
+    {
+      "src": "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp",
+      "sizes": "512x512",
+      "type": "image/webp"
+    }
+  ]
+}

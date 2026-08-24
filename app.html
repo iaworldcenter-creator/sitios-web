@@ -1,0 +1,354 @@
+﻿<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>BAZAR NFL App | Portal B2B Técnicos & Talleres GDL</title>
+    
+    <!-- PWA & Mobile Web App Tags -->
+    <link rel="manifest" href="./manifest.json" />
+    <meta name="theme-color" content="#0f172a" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="BazarNFL" />
+    <link rel="apple-touch-icon" href="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" />
+
+    <!-- Tailwind CSS y FontAwesome -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .cart-pop { animation: popBadge 0.25s ease-in-out; }
+        @keyframes popBadge { 0% { transform: scale(1); } 50% { transform: scale(1.35); } 100% { transform: scale(1); } }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950 pb-20 select-none">
+
+    <!-- CABECERA MÓVIL FIJA CON LOGO DEL TIGRE Y CARRITO RÁPIDO -->
+    <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 px-4 py-3 shadow-xl">
+        <div class="max-w-md mx-auto flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2.5">
+                <img 
+                    src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" 
+                    alt="Logo Tigre App" 
+                    class="w-10 h-10 rounded-full object-cover border-2 border-amber-400 shadow-md"
+                />
+                <div>
+                    <div class="flex items-center gap-1.5">
+                        <span class="font-black text-lg text-white tracking-wider leading-none">BAZAR NFL</span>
+                        <span class="bg-cyan-500/20 text-cyan-300 font-mono font-bold text-[9px] px-1.5 py-0.2 rounded border border-cyan-500/40">APP B2B</span>
+                    </div>
+                    <span class="text-[10px] font-mono text-slate-400 block leading-tight">Pedro Moreno 501 A • GDL</span>
+                </div>
+            </div>
+
+            <!-- Botón Canasta -->
+            <button onclick="toggleCartModal()" class="relative bg-slate-800 border border-slate-700 p-2.5 rounded-2xl text-cyan-400 active:scale-90 transition shadow">
+                <i class="fa-solid fa-cart-shopping text-base"></i>
+                <span id="app-cart-badge" class="absolute -top-1.5 -right-1.5 bg-amber-500 text-slate-950 font-mono font-black text-[10px] rounded-full w-5 h-5 flex items-center justify-center shadow">0</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- CUERPO PRINCIPAL DE LA APP -->
+    <main class="max-w-md mx-auto w-full px-4 py-4 space-y-4 flex-1">
+        
+        <!-- BANNER PROMO B2B -->
+        <div class="bg-gradient-to-r from-cyan-950/60 via-slate-900 to-blue-950/60 border border-cyan-500/30 p-3.5 rounded-3xl flex items-center justify-between gap-3 shadow-lg">
+            <div class="space-y-0.5">
+                <span class="text-[9px] font-mono font-bold text-amber-400 uppercase tracking-wider block">Red de Talleres & Técnicos</span>
+                <h2 class="text-sm font-black text-white leading-tight">Entrega Exprés de Refacciones en GDL</h2>
+            </div>
+            <button onclick="installPWA()" id="install-pwa-btn" class="hidden shrink-0 bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-3 py-1.5 rounded-xl text-[10px] uppercase tracking-wider transition active:scale-95 shadow">
+                <i class="fa-solid fa-download mr-1"></i> Instalar
+            </button>
+        </div>
+
+        <!-- CALCULADORA DINÁMICA DE ENVÍO LOCAL -->
+        <div class="bg-slate-900 border border-slate-800 p-4 rounded-3xl shadow-xl space-y-3">
+            <div class="flex items-center justify-between">
+                <span class="text-xs font-mono font-bold text-white flex items-center gap-1.5">
+                    <i class="fa-solid fa-motorcycle text-amber-400"></i> Cotizar Flete Local
+                </span>
+                <span id="shipping-rate-badge" class="text-xs font-mono font-black text-emerald-400 bg-emerald-950/40 px-2 py-0.5 rounded-lg border border-emerald-500/30">$15.00 MXN</span>
+            </div>
+
+            <!-- Selector de Zonas -->
+            <select id="shippingZoneSelect" onchange="updateShippingZone()" class="w-full bg-slate-950 border border-slate-800 rounded-2xl px-3.5 py-2 text-xs font-bold text-slate-200 outline-none focus:border-cyan-400">
+                <option value="15">Zona 1: Centro / Calzada / Chapultepec ($15 MXN)</option>
+                <option value="35">Zona 2: Zapopan / Tlaquepaque / Minerva ($35 MXN)</option>
+                <option value="50">Zona 3: Tonalá / Tlajomulco Periférico ($50 MXN)</option>
+            </select>
+            <p class="text-[10px] text-slate-400 leading-tight">
+                💡 <strong class="text-slate-300">Tip de Ahorro:</strong> En compras mayores a <strong>$1,500 MXN</strong> o de <strong>10+ piezas</strong>, tu flete es <strong>$0.00 (Gratis)</strong>.
+            </p>
+        </div>
+
+        <!-- SÚPER-BUSCADOR SEARCH-FIRST MÓVIL -->
+        <div class="relative">
+            <div class="flex items-center bg-white rounded-2xl px-3.5 py-2 gap-2 shadow-lg border-2 border-cyan-400">
+                <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+                <input 
+                    type="text" 
+                    id="mobileSearchInput" 
+                    placeholder="Escribe pieza, SKU o falla (ej. RAM, 4070, fuente, lente)..." 
+                    class="flex-1 bg-transparent border-0 outline-none text-slate-950 font-bold text-xs placeholder-slate-400"
+                    oninput="onMobileSearch(event)"
+                />
+            </div>
+        </div>
+
+        <!-- CATÁLOGO MÓVIL DE REFACCIONES Y NOVEDADES -->
+        <div class="space-y-2">
+            <div class="flex justify-between items-center px-1">
+                <span class="text-xs font-mono font-bold text-slate-400 uppercase" id="mobile-catalog-count">Refacciones Disponibles</span>
+                <span class="text-[10px] font-mono text-cyan-400 font-bold">Entrega Hoy Mismo</span>
+            </div>
+
+            <div id="mobile-product-list" class="space-y-2.5">
+                <!-- Tarjetas inyectadas dinámicamente -->
+            </div>
+        </div>
+
+    </main>
+
+    <!-- BARRA INFERIOR FIJA TIPO APP NATIVA (BOTTOM NAV) -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/98 backdrop-blur border-t border-slate-800 px-6 py-2.5 z-40">
+        <div class="max-w-md mx-auto flex items-center justify-between text-xs font-bold">
+            <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
+                <i class="fa-solid fa-house text-base"></i>
+                <span class="text-[9px] font-mono">Matriz</span>
+            </a>
+            <button onclick="location.reload()" class="flex flex-col items-center gap-1 text-cyan-400">
+                <i class="fa-solid fa-bolt text-base"></i>
+                <span class="text-[9px] font-mono">B2B App</span>
+            </button>
+            <a href="https://wa.me/523337271440?text=Hola,%20solicito%20cotizaci%C3%B3n%20de%20refacciones%20para%20taller" target="_blank" class="flex flex-col items-center gap-1 text-emerald-400">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span class="text-[9px] font-mono">WhatsApp</span>
+            </a>
+            <button onclick="toggleCartModal()" class="flex flex-col items-center gap-1 text-amber-400">
+                <i class="fa-solid fa-bag-shopping text-base"></i>
+                <span class="text-[9px] font-mono">Pedido</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- MODAL DE PEDIDO Y CHECKOUT MÓVIL -->
+    <div id="appCartModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="toggleCartModal()"></div>
+        <div class="absolute bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-900 border-t-2 border-cyan-500 rounded-t-3xl p-5 shadow-2xl flex flex-col justify-between max-h-[85vh] z-10">
+            <div>
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-3">
+                    <h3 class="font-black text-white text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-clipboard-list text-cyan-400"></i> Resumen de Pedido de Taller
+                    </h3>
+                    <button onclick="toggleCartModal()" class="text-slate-400 hover:text-white p-1">
+                        <i class="fa-solid fa-xmark text-lg"></i>
+                    </button>
+                </div>
+
+                <div id="modal-cart-items" class="flex flex-col gap-2 overflow-y-auto max-h-[40vh] pr-1 no-scrollbar"></div>
+            </div>
+
+            <div class="border-t border-slate-800 pt-3.5 space-y-2 mt-3">
+                <div class="flex justify-between text-xs font-mono">
+                    <span class="text-slate-400">Subtotal Artículos:</span>
+                    <span id="modal-subtotal-txt" class="text-white font-bold">$0.00 MXN</span>
+                </div>
+                <div class="flex justify-between text-xs font-mono">
+                    <span class="text-slate-400">Flete Local Calculado:</span>
+                    <span id="modal-shipping-txt" class="text-emerald-400 font-bold">$15.00 MXN</span>
+                </div>
+                <div class="flex justify-between text-sm font-mono pt-1 border-t border-slate-800/80">
+                    <strong class="text-white">Total a Pagar:</strong>
+                    <strong id="modal-total-txt" class="text-amber-400 font-black text-base">$0.00 MXN</strong>
+                </div>
+
+                <button onclick="sendOrderViaWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-3 rounded-2xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg shadow-emerald-600/30 flex items-center justify-center gap-2 cursor-pointer">
+                    <i class="fa-brands fa-whatsapp text-sm"></i> Enviar Pedido a Despacho por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOTOR JS DE LA APP MÓVIL -->
+    <script>
+    const appProducts = [
+        { sku: "PC-001", nombre: "Gabinete Micro-ATX con Fuente 500W", precio: 1250.00, original: 1550.00, desc: "Fuente certificada, puertos USB 3.0 para armado rápido.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_negro.webp", tokens: ["gabinete", "fuente", "pc"] },
+        { sku: "PC-002", nombre: "Tarjeta Madre ASUS Prime B760M-A WiFi DDR5", precio: 3400.00, original: 3950.00, desc: "Soporte Intel Core 12va/13va/14va Gen, dual M.2 PCIe 4.0.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/motherboard_asus.webp", tokens: ["tarjeta madre", "asus", "placa"] },
+        { sku: "PC-004", nombre: "RAM Kingston FURY Beast 16GB DDR5 5600MHz", precio: 1250.00, original: 1500.00, desc: "Disipador de aluminio negro de bajo perfil.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/ram_caja.webp", tokens: ["ram", "kingston", "fury", "ddr5"] },
+        { sku: "PC-005", nombre: "SSD Kingston NV2 1TB NVMe PCIe 4.0", precio: 1350.00, original: 1650.00, desc: "3,500 MB/s de lectura rápida para ensamble.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/disco_solido_m2.webp", tokens: ["ssd", "kingston", "nvme", "disco"] },
+        { sku: "PUE-001", nombre: "Lentes Inteligentes Bluetooth con Audio", precio: 680.00, original: 950.00, desc: "Contesta llamadas y música con protección UV.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp", tokens: ["lentes", "bluetooth", "audio"] },
+        { sku: "PUE-003", nombre: "Cable USB-C a USB-C 65W Reforzado 2M", precio: 120.00, original: 180.00, desc: "Carga rápida para laptops y smartphones.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/fuente_modular.webp", tokens: ["cable", "cargador", "usb c"] },
+        { sku: "DUL-001", nombre: "Paleta Payaso Ricolino (Caja 15 piezas)", precio: 245.00, original: 290.00, desc: "Malvavisco con chocolate y gomitas.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp", tokens: ["paleta", "dulces", "chocolate"] }
+    ];
+
+    let currentShippingCost = 15;
+    let deferredPrompt;
+
+    function renderMobileList(items = appProducts) {
+        const container = document.getElementById("mobile-product-list");
+        if (!container) return;
+
+        container.innerHTML = items.map(p => {
+            const discountPct = p.original ? Math.round((1 - (p.precio / p.original)) * 100) : 0;
+            return `
+                <div class="bg-slate-900 border border-slate-800 rounded-2xl p-3 flex items-center justify-between gap-3 shadow-md">
+                    <img src="${p.img}" alt="${p.nombre}" class="w-14 h-14 object-contain rounded-xl bg-slate-950 p-1 shrink-0" onerror="this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
+                    <div class="min-w-0 flex-1">
+                        <span class="text-[9px] font-mono text-cyan-400 font-bold block">${p.sku}</span>
+                        <h4 class="text-xs font-bold text-white line-clamp-1">${p.nombre}</h4>
+                        <div class="flex items-baseline gap-2 mt-0.5">
+                            <span class="text-amber-400 font-mono font-black text-xs">$${p.precio.toFixed(2)}</span>
+                            ${p.original ? `<span class="text-[10px] font-mono text-red-400 line-through">$${p.original.toFixed(2)}</span>` : ''}
+                        </div>
+                    </div>
+                    <button onclick="addToCartApp('${p.sku}')" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black p-2.5 rounded-xl text-xs active:scale-90 transition shadow shrink-0">
+                        <i class="fa-solid fa-plus"></i>
+                    </button>
+                </div>
+            `;
+        }).join('');
+    }
+
+    function onMobileSearch(e) {
+        const q = e.target.value.toLowerCase().trim();
+        const filtered = appProducts.filter(p => {
+            const searchStr = `${p.sku} ${p.nombre} ${(p.tokens || []).join(' ')}`.toLowerCase();
+            return searchStr.includes(q);
+        });
+        renderMobileList(q ? filtered : appProducts);
+    }
+
+    function updateShippingZone() {
+        const select = document.getElementById("shippingZoneSelect");
+        currentShippingCost = parseFloat(select.value) || 15;
+        document.getElementById("shipping-rate-badge").innerText = `$${currentShippingCost.toFixed(2)} MXN`;
+        syncAppCart();
+    }
+
+    function addToCartApp(sku) {
+        const item = appProducts.find(p => p.sku === sku);
+        if (!item) return;
+
+        let cart = [];
+        try {
+            const raw = localStorage.getItem('ecosystem_global_cart');
+            if (raw) cart = JSON.parse(raw);
+        } catch(e) {}
+
+        const exist = cart.find(i => i.sku === sku);
+        if (exist) {
+            exist.quantity = (parseInt(exist.quantity) || 1) + 1;
+        } else {
+            cart.push({ ...item, quantity: 1 });
+        }
+
+        localStorage.setItem('ecosystem_global_cart', JSON.stringify(cart));
+        syncAppCart();
+
+        const badge = document.getElementById("app-cart-badge");
+        badge.classList.remove("cart-pop");
+        void badge.offsetWidth;
+        badge.classList.add("cart-pop");
+    }
+
+    function syncAppCart() {
+        let cart = [];
+        try {
+            const raw = localStorage.getItem('ecosystem_global_cart');
+            if (raw) cart = JSON.parse(raw);
+        } catch(e) {}
+
+        const count = cart.reduce((sum, i) => sum + (parseInt(i.quantity) || 0), 0);
+        const subtotal = cart.reduce((sum, i) => sum + ((parseFloat(i.precio) || 0) * (parseInt(i.quantity) || 0)), 0);
+        const isFreeShipping = subtotal >= 1500 || count >= 10;
+        const shippingFinal = isFreeShipping ? 0 : (subtotal > 0 ? currentShippingCost : 0);
+        const total = subtotal + shippingFinal;
+
+        document.getElementById("app-cart-badge").innerText = count;
+        document.getElementById("modal-subtotal-txt").innerText = `$${subtotal.toFixed(2)} MXN`;
+        document.getElementById("modal-shipping-txt").innerText = isFreeShipping ? "GRATIS ($0.00)" : `$${shippingFinal.toFixed(2)} MXN`;
+        document.getElementById("modal-total-txt").innerText = `$${total.toFixed(2)} MXN`;
+
+        const container = document.getElementById("modal-cart-items");
+        if (!container) return;
+
+        if (cart.length === 0) {
+            container.innerHTML = '<div class="text-center py-6 text-slate-500 text-xs">Sin artículos en la orden.</div>';
+            return;
+        }
+
+        container.innerHTML = cart.map(i => `
+            <div class="bg-slate-950 p-2.5 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+                <div>
+                    <strong class="text-white block truncate max-w-[200px]">${i.nombre}</strong>
+                    <span class="text-slate-400 text-[10px]">Cant: ${i.quantity} x $${parseFloat(i.precio).toFixed(2)}</span>
+                </div>
+                <span class="text-amber-400 font-mono font-bold">$${(parseFloat(i.precio) * parseInt(i.quantity)).toFixed(2)}</span>
+            </div>
+        `).join('');
+    }
+
+    function toggleCartModal() {
+        document.getElementById("appCartModal").classList.toggle("hidden");
+        syncAppCart();
+    }
+
+    function sendOrderViaWhatsApp() {
+        let cart = [];
+        try {
+            const raw = localStorage.getItem('ecosystem_global_cart');
+            if (raw) cart = JSON.parse(raw);
+        } catch(e) {}
+
+        if (cart.length === 0) {
+            alert('Agrega al menos una refacción a tu orden.');
+            return;
+        }
+
+        const subtotal = cart.reduce((sum, i) => sum + ((parseFloat(i.precio) || 0) * (parseInt(i.quantity) || 0)), 0);
+        const shipping = subtotal >= 1500 ? 0 : currentShippingCost;
+        const total = subtotal + shipping;
+
+        let msg = `🛠️ *NUEVO PEDIDO B2B - TALLER GDL*%0A📍 *Origen:* Pedro Moreno 501 A%0A%0A`;
+        cart.forEach(i => {
+            msg += `• *${i.quantity}x* ${i.nombre} ($${(parseFloat(i.precio)*parseInt(i.quantity)).toFixed(2)})%0A`;
+        });
+        msg += `%0A📦 *Flete Local:* ${shipping === 0 ? 'GRATIS' : '$' + shipping.toFixed(2) + ' MXN'}`;
+        msg += `%0A💰 *TOTAL:* $${total.toFixed(2)} MXN%0A%0A_Favor de confirmar despacho exprés._`;
+
+        window.open(`https://wa.me/523337271440?text=${msg}`, '_blank');
+    }
+
+    // Instalación PWA
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        const btn = document.getElementById('install-pwa-btn');
+        if (btn) btn.classList.remove('hidden');
+    });
+
+    function installPWA() {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            deferredPrompt.userChoice.then(() => {
+                deferredPrompt = null;
+            });
+        }
+    }
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js').catch(() => {});
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        renderMobileList();
+        syncAppCart();
+    });
+    </script>
+</body>
+</html>
