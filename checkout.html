@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout Seguro | Despacho Uber Flash & Envío Nacional Pedro Moreno 501 A</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950">
+
+    <header class="bg-slate-900 border-b border-slate-800 px-4 py-3 sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto flex items-center justify-between">
+            <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="flex items-center gap-3">
+                <img src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" class="w-10 h-10 rounded-full border-2 border-amber-400" />
+                <span class="font-black text-lg text-white uppercase">BAZAR NFL.GDL</span>
+            </a>
+            <span class="text-xs font-mono text-emerald-400 flex items-center gap-1">
+                <i class="fa-solid fa-lock"></i> Checkout Blindado SPEI
+            </span>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-8 flex-1 w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        
+        <!-- FORMULARIO DE ENVÍO Y ZONA UBER -->
+        <div class="md:col-span-7 bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
+            <h2 class="text-base font-black text-white flex items-center gap-2 border-b border-slate-800 pb-3">
+                <i class="fa-solid fa-location-dot text-amber-400"></i> 1. Datos de Entrega en Guadalajara
+            </h2>
+
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block text-slate-400 font-bold mb-1">Nombre Completo o Razón Social del Taller:</label>
+                    <input type="text" id="custName" placeholder="Ej. Taller Electrónico Silva / Juan Pérez" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400" />
+                </div>
+                <div>
+                    <label class="block text-slate-400 font-bold mb-1">Dirección Exacta con Entre Calles:</label>
+                    <input type="text" id="custAddress" placeholder="Calle, Número, Colonia y Referencias" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400" />
+                </div>
+                <div>
+                    <label class="block text-slate-400 font-bold mb-1">Zona de Reparto Uber Flash:</label>
+                    <select id="checkoutZoneSelect" onchange="calculateTotals()" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-bold">
+                        <option value="35">Zona 1 (0-2.5 km): Centro / Calzada / Chapultepec ($35 MXN)</option>
+                        <option value="52">Zona 2 (2.5-5 km): Zapopan / Minerva / Tlaquepaque ($52 MXN)</option>
+                        <option value="75">Zona 3 (5+ km): Periférico / Tonalá / Tlajomulco ($75 MXN)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- PIN DE SEGURIDAD GENERADO -->
+            <div class="p-4 bg-slate-950 border border-emerald-500/40 rounded-2xl flex items-center justify-between">
+                <div>
+                    <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase block">Código PIN de Entrega Uber:</span>
+                    <span id="checkout-pin" class="text-2xl font-mono font-black text-white tracking-widest">----</span>
+                </div>
+                <i class="fa-solid fa-shield-check text-2xl text-emerald-400"></i>
+            </div>
+        </div>
+
+        <!-- RESUMEN DE COMPRA Y DATOS SPEI -->
+        <div class="md:col-span-5 bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-xl space-y-4">
+            <h2 class="text-base font-black text-white flex items-center gap-2 border-b border-slate-800 pb-3">
+                <i class="fa-solid fa-receipt text-cyan-400"></i> 2. Resumen y Pago SPEI
+            </h2>
+
+            <div id="checkout-items" class="space-y-2 max-h-40 overflow-y-auto no-scrollbar text-xs"></div>
+
+            <div class="space-y-1.5 text-xs font-mono pt-3 border-t border-slate-800">
+                <div class="flex justify-between text-slate-400">
+                    <span>Subtotal:</span>
+                    <span id="chk-subtotal" class="text-white font-bold">$0.00 MXN</span>
+                </div>
+                <div class="flex justify-between text-slate-400">
+                    <span>Flete Uber Flash:</span>
+                    <span id="chk-shipping" class="text-amber-400 font-bold">$35.00 MXN</span>
+                </div>
+                <div class="flex justify-between text-sm font-bold text-white pt-2 border-t border-slate-800">
+                    <span>Total a Transferir:</span>
+                    <span id="chk-total" class="text-emerald-400 font-black text-base">$0.00 MXN</span>
+                </div>
+            </div>
+
+            <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-[11px] font-mono space-y-1">
+                <span class="text-slate-400 block text-[10px]">CLABE para Transferencia:</span>
+                <strong class="text-cyan-300 block text-xs">0123 2001 5824 9382 10</strong>
+                <span class="text-slate-500 text-[10px] block">BBVA México • Pedro Moreno 501 A</span>
+            </div>
+
+            <button onclick="finishCheckout()" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+                <i class="fa-brands fa-whatsapp text-sm text-slate-950"></i> Confirmar con Comprobante
+            </button>
+        </div>
+
+    </main>
+
+    <script>
+    let generatedPin = Math.floor(1000 + Math.random() * 9000).toString();
+    document.getElementById("checkout-pin").innerText = generatedPin;
+
+    function getCart() {
+        try {
+            const raw = localStorage.getItem('ecosystem_global_cart');
+            return raw ? JSON.parse(raw) : [];
+        } catch(e) { return []; }
+    }
+
+    function calculateTotals() {
+        const cart = getCart();
+        const subtotal = cart.reduce((sum, i) => sum + ((parseFloat(i.precio) || 0) * (parseInt(i.quantity) || 0)), 0);
+        const count = cart.reduce((sum, i) => sum + (parseInt(i.quantity) || 0), 0);
+        const zoneCost = parseFloat(document.getElementById("checkoutZoneSelect").value) || 35;
+        const isFree = subtotal >= 1500 || count >= 10;
+        const shipping = isFree ? 0 : (subtotal > 0 ? zoneCost : 0);
+        const total = subtotal + shipping;
+
+        document.getElementById("chk-subtotal").innerText = `$${subtotal.toFixed(2)} MXN`;
+        document.getElementById("chk-shipping").innerText = isFree ? "GRATIS ($0.00)" : `$${shipping.toFixed(2)} MXN`;
+        document.getElementById("chk-total").innerText = `$${total.toFixed(2)} MXN`;
+
+        const container = document.getElementById("checkout-items");
+        if (cart.length === 0) {
+            container.innerHTML = '<span class="text-slate-500 text-center block py-4">Tu canasta está vacía.</span>';
+            return;
+        }
+        container.innerHTML = cart.map(i => `
+            <div class="flex justify-between items-center bg-slate-950 p-2 rounded-lg">
+                <span class="truncate max-w-[180px]">${i.nombre} (x${i.quantity})</span>
+                <span class="font-mono text-amber-400 font-bold">$${(parseFloat(i.precio)*parseInt(i.quantity)).toFixed(2)}</span>
+            </div>
+        `).join('');
+    }
+
+    function finishCheckout() {
+        const name = document.getElementById("custName").value.trim();
+        const address = document.getElementById("custAddress").value.trim();
+        const cart = getCart();
+
+        if (cart.length === 0) { alert('Tu canasta está vacía.'); return; }
+        if (!name || !address) { alert('Por favor ingresa tu nombre y dirección completa para el repartidor de Uber.'); return; }
+
+        const subtotal = cart.reduce((sum, i) => sum + ((parseFloat(i.precio) || 0) * (parseInt(i.quantity) || 0)), 0);
+        const zoneCost = parseFloat(document.getElementById("checkoutZoneSelect").value) || 35;
+        const shipping = subtotal >= 1500 ? 0 : zoneCost;
+        const total = subtotal + shipping;
+
+        let msg = `🛵 *NUEVA ORDEN WEB BAZAR NFL - DESPACHO UBER FLASH*%0A`;
+        msg += `👤 *Cliente / Taller:* ${name}%0A`;
+        msg += `📍 *Dirección Entrega:* ${address}%0A`;
+        msg += `🔐 *PIN Uber:* ${generatedPin}%0A%0A`;
+        msg += `📦 *ARTÍCULOS:*%0A`;
+        cart.forEach(i => {
+            msg += `• *${i.quantity}x* ${i.nombre} ($${(parseFloat(i.precio)*parseInt(i.quantity)).toFixed(2)})%0A`;
+        });
+        msg += `%0A💰 *TOTAL SPEI:* $${total.toFixed(2)} MXN%0A%0A`;
+        msg += `_Adjunto comprobante de pago bancario para enviar la moto._`;
+
+        window.open(`https://wa.me/523337271440?text=${msg}`, '_blank');
+    }
+
+    document.addEventListener("DOMContentLoaded", calculateTotals);
+    </script>
+</body>
+</html>
