@@ -279,6 +279,15 @@
         `).join('');
     }
 
+    
+    function scrollCarousel(id, direction) {
+        const el = document.getElementById(id);
+        if (el) {
+            const amount = el.clientWidth * 0.85;
+            el.scrollBy({ left: direction * amount, behavior: 'smooth' });
+        }
+    }
+        
     function renderShowcase() {
         const container = document.getElementById("showcase-container");
         if (!container) return;
