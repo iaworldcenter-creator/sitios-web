@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BAZAR NFL.GDL | Ecosistema Comercial Pedro Moreno 501 A</title>
-    <meta name="description" content="Hub central BAZAR NFL.GDL: 7 boutiques especializadas en Pedro Moreno 501 A, Guadalajara Centro. Hardware, Pantallas, Tabacos, Dulces, Kiosco y Novedades con Carrito Global y Envío Exprés." />
+    <meta name="description" content="Hub central BAZAR NFL.GDL: 7 boutiques en Pedro Moreno 501 A, Guadalajara Centro con Cotizador Uber Flash y Carrito Unificado." />
     
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
@@ -24,7 +24,7 @@
                 <span class="px-2.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-bold text-[10px] uppercase">
                     Envío Exprés El Mismo Día
                 </span>
-                <span class="text-slate-300 hidden sm:inline text-[11px] font-semibold">Guadalajara Centro • Carrito Unificado</span>
+                <span class="text-slate-300 hidden xl:inline text-[11px] font-semibold">Guadalajara Centro • Carrito Unificado</span>
             </div>
 
             
@@ -88,9 +88,61 @@
     </header>
 
     <main class="w-full max-w-[99%] 2xl:max-w-[1850px] mx-auto px-2 sm:px-4 py-8 flex-1">
+        
+        <!-- COTIZADOR UBER COMPLETO EN EL PORTAL MATRIZ -->
+        
+<div class="bg-slate-900 border border-slate-800 p-4 rounded-3xl shadow-xl space-y-3 mb-6">
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+        <span class="text-xs font-mono font-bold text-white flex items-center gap-1.5">
+            <i class="fa-brands fa-uber text-white"></i> Cotizar Envío Uber Flash a tu Domicilio
+        </span>
+        <span id="shipping-rate-badge" class="text-xs font-mono font-bold text-slate-400 bg-slate-950 px-2.5 py-1 rounded-lg border border-slate-800">
+            Pendiente Cotizar
+        </span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 text-xs">
+        <div>
+            <label class="text-[10px] font-mono text-slate-400 block mb-0.5">Calle / Avenida:</label>
+            <input type="text" id="inputCalle" placeholder="Ej. Av. Juárez, Hidalgo..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white outline-none focus:border-cyan-400" />
+        </div>
+        <div>
+            <label class="text-[10px] font-mono text-slate-400 block mb-0.5">Núm. Exterior / Interior:</label>
+            <input type="text" id="inputNum" placeholder="Ej. #501 int A" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white outline-none focus:border-cyan-400" />
+        </div>
+        <div>
+            <label class="text-[10px] font-mono text-slate-400 block mb-0.5">Colonia / Barrio:</label>
+            <input type="text" id="inputColonia" placeholder="Ej. Americana, Centro..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white outline-none focus:border-cyan-400" />
+        </div>
+        <div>
+            <label class="text-[10px] font-mono text-slate-400 block mb-0.5">Municipio / Zona:</label>
+            <select id="selectMunicipio" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white outline-none focus:border-cyan-400 font-medium">
+                <option value="">-- Selecciona Municipio --</option>
+                <option value="guadalajara">Guadalajara (Centro / Alrededores)</option>
+                <option value="zapopan">Zapopan (Minerva / Providencia / Poniente)</option>
+                <option value="tlaquepaque">Tlaquepaque (Centro / Alamo)</option>
+                <option value="tonala">Tonalá (Oriente / Periférico)</option>
+                <option value="tlajomulco">Tlajomulco de Zúñiga (Zona Sur / Payuca)</option>
+                <option value="elsalto">El Salto / Aeropuerto</option>
+            </select>
+        </div>
+    </div>
+
+    <div id="address-error-box" class="hidden p-2.5 rounded-xl bg-amber-950/60 border border-amber-500/50 text-amber-300 text-xs font-mono leading-tight"></div>
+
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
+        <span id="distance-calc-info" class="text-[11px] font-mono text-slate-400">
+            <i class="fa-solid fa-location-dot text-amber-400 mr-1"></i> Despacho directo desde Pedro Moreno 501 A
+        </span>
+        <button onclick="quoteShippingUniversal()" class="w-full sm:w-auto bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black px-6 py-2.5 rounded-xl text-xs uppercase tracking-wider transition active:scale-95 shadow cursor-pointer flex items-center justify-center gap-1.5">
+            <i class="fa-solid fa-calculator text-xs"></i> <span>Cotizar Flete de Envío</span>
+        </button>
+    </div>
+</div>
+
+
         <div class="flex flex-col lg:flex-row gap-8 items-start justify-center">
             
-            <!-- SIDEBAR PROPORCIONAL -->
             <aside class="w-full lg:w-[340px] xl:w-[370px] shrink-0 bg-slate-900/90 rounded-3xl p-5 shadow-2xl relative" id="portal-sidebar-root">
                 <div class="flex items-center justify-between border-b border-slate-800 pb-3.5 mb-3.5">
                     <h3 class="font-mono text-sm font-black text-white uppercase tracking-wider flex items-center gap-2 truncate">
@@ -105,47 +157,49 @@
 
                 <nav class="flex flex-col gap-2" id="sidebar-boutiques-list"></nav>
 
-                <!-- UN SOLO CÓDIGO QR -->
+                <!-- CÓDIGO QR PERSUASIVO -->
                 
-                <div class="mt-4 p-4 bg-slate-950 border-2 border-cyan-400 rounded-3xl shadow-[0_0_25px_rgba(6,182,212,0.25)] text-center space-y-3">
-                    <div class="flex items-center justify-center gap-2">
-                        <i class="fa-solid fa-qrcode text-cyan-400 text-lg"></i>
-                        <span class="text-xs font-mono font-black text-white uppercase tracking-wider">App Móvil para Talleres</span>
-                    </div>
+<div class="mt-4 p-4 bg-slate-950 border-2 border-cyan-400 rounded-3xl shadow-[0_0_25px_rgba(6,182,212,0.25)] text-center space-y-3">
+    <div class="flex items-center justify-center gap-2">
+        <i class="fa-solid fa-mobile-screen text-cyan-400 text-lg"></i>
+        <span class="text-xs font-mono font-black text-white uppercase tracking-wider">App Móvil Pedidos Rápidos</span>
+    </div>
 
-                    <div class="w-44 h-44 mx-auto bg-white p-2.5 rounded-2xl shadow-xl flex items-center justify-center">
-                        <img 
-                            src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A//iaworldcenter-creator.github.io/sitios-web/app.html&margin=1" 
-                            alt="Código QR App BAZAR NFL" 
-                            class="w-full h-full object-contain rounded-lg"
-                            onerror="this.onerror=null; this.src='https://quickchart.io/qr?text=https%3A//iaworldcenter-creator.github.io/sitios-web/app.html&size=300';"
-                        />
-                    </div>
+    <div class="w-44 h-44 mx-auto bg-white p-2.5 rounded-2xl shadow-xl flex items-center justify-center">
+        <img 
+            src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A//iaworldcenter-creator.github.io/sitios-web/app.html&margin=1" 
+            alt="Código QR App BAZAR NFL" 
+            class="w-full h-full object-contain rounded-lg"
+            onerror="this.onerror=null; this.src='https://quickchart.io/qr?text=https%3A//iaworldcenter-creator.github.io/sitios-web/app.html&size=300';"
+        />
+    </div>
 
-                    <p class="text-[11px] text-slate-300 leading-snug font-medium">
-                        Apunta con la cámara de tu celular a este código para abrir e instalar la App en tu teléfono.
-                    </p>
+    <div class="space-y-1">
+        <strong class="text-xs text-amber-400 block font-bold uppercase">Entrega Directa a tu Domicilio</strong>
+        <p class="text-[11px] text-slate-300 leading-snug">
+            Utiliza nuestra App oficial para que tus compras lleguen volando a la puerta de tu casa o taller.
+        </p>
+    </div>
 
-                    <div class="flex flex-col gap-2 pt-1">
-                        <a href="https://iaworldcenter-creator.github.io/sitios-web/app.html" target="_blank" class="flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-emerald-400 py-2.5 px-3 rounded-xl text-left transition shadow group">
-                            <i class="fa-brands fa-google-play text-xl text-emerald-400 group-hover:scale-110 transition"></i>
-                            <div>
-                                <span class="text-[8px] font-mono text-slate-400 block uppercase leading-none">Disponible vía Web / PWA</span>
-                                <strong class="text-xs text-white block leading-none font-bold">Instalar en Android</strong>
-                            </div>
-                        </a>
-                        <a href="https://iaworldcenter-creator.github.io/sitios-web/app.html" target="_blank" class="flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-cyan-400 py-2.5 px-3 rounded-xl text-left transition shadow group">
-                            <i class="fa-brands fa-apple text-2xl text-white group-hover:scale-110 transition"></i>
-                            <div>
-                                <span class="text-[8px] font-mono text-slate-400 block uppercase leading-none">Compatible con iPhone</span>
-                                <strong class="text-xs text-white block leading-none font-bold">Instalar en iOS / Apple</strong>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+    <div class="flex flex-col gap-2 pt-1">
+        <a href="https://iaworldcenter-creator.github.io/sitios-web/app.html" target="_blank" class="flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-emerald-400 py-2.5 px-3 rounded-xl text-left transition shadow group">
+            <i class="fa-brands fa-google-play text-xl text-emerald-400 group-hover:scale-110 transition"></i>
+            <div>
+                <span class="text-[8px] font-mono text-slate-400 block uppercase leading-none">Disponible vía Web / PWA</span>
+                <strong class="text-xs text-white block leading-none font-bold">Instalar en Android</strong>
+            </div>
+        </a>
+        <a href="https://iaworldcenter-creator.github.io/sitios-web/app.html" target="_blank" class="flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-cyan-400 py-2.5 px-3 rounded-xl text-left transition shadow group">
+            <i class="fa-brands fa-apple text-2xl text-white group-hover:scale-110 transition"></i>
+            <div>
+                <span class="text-[8px] font-mono text-slate-400 block uppercase leading-none">Compatible con iPhone</span>
+                <strong class="text-xs text-white block leading-none font-bold">Instalar en iOS / Apple</strong>
+            </div>
+        </a>
+    </div>
+</div>
 
 
-                <!-- TARJETAS DE GEMINI Y ANTI-GRAVITY -->
                 <div class="mt-5 pt-5 border-t border-slate-800 flex flex-col gap-3">
                     <div class="bg-gradient-to-b from-slate-950 to-slate-900 border border-cyan-500/40 rounded-2xl p-4 flex flex-col gap-2 shadow-lg">
                         <div class="flex items-center gap-2">
@@ -164,45 +218,12 @@
                         <a href="https://antigravity.google/download" target="_blank" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black py-2 rounded-xl text-xs text-center uppercase tracking-wider transition active:scale-95 shadow">Bajar Anti-Gravity Gratis</a>
                     </div>
                 </div>
-
-                <div id="sidebar-flyout-panel" class="hidden lg:absolute left-full top-0 ml-3.5 w-[460px] bg-slate-900/98 border-2 border-cyan-400 rounded-3xl p-5 shadow-[0_12px_45px_rgba(6,182,212,0.4)] z-50 backdrop-blur-xl">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-3">
-                        <div>
-                            <span id="flyout-boutique-tag" class="text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded bg-cyan-500/20 text-cyan-300">BOUTIQUE</span>
-                            <h4 id="flyout-boutique-title" class="text-xs font-black text-white mt-1">Compras Inmediatas</h4>
-                        </div>
-                        <span class="text-[10px] font-mono text-emerald-400 font-bold"><i class="fa-solid fa-bolt"></i> Compra Directa</span>
-                    </div>
-                    <div id="flyout-boutique-products" class="flex flex-col gap-3 max-h-[400px] overflow-y-auto pr-1 no-scrollbar"></div>
-                    <div class="mt-4 pt-3 border-t border-slate-800 text-center">
-                        <a id="flyout-enter-link" href="#" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow">
-                            <span>Entrar a Boutique Completa</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </a>
-                    </div>
-                </div>
             </aside>
 
-            <!-- ESCAPARATE DE 7 SECCIONES CON SWIPE HORIZONTAL EN MÓVILES -->
+            <!-- ESCAPARATE DE 7 SECCIONES CON CARRUSEL DE 2 PRODUCTOS EN MÓVIL + FLECHAS -->
             <section class="flex-1 w-full flex flex-col gap-8 min-w-0" id="showcase-container"></section>
         </div>
     </main>
-
-    <section class="max-w-[99%] 2xl:max-w-[1850px] mx-auto px-4 py-8 w-full border-t border-slate-800/80">
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <div class="p-4 bg-slate-900/60 rounded-2xl flex items-center gap-3.5 shadow-md">
-                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400 text-lg shrink-0"><i class="fa-solid fa-truck-fast"></i></div>
-                <div><strong class="text-white text-xs block font-bold">Envío Gratis Local</strong><span class="text-slate-400 text-[11px]">En compras desde $1,500 MXN</span></div>
-            </div>
-            <div class="p-4 bg-slate-900/60 rounded-2xl flex items-center gap-3.5 shadow-md">
-                <div class="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 text-lg shrink-0"><i class="fa-solid fa-percent"></i></div>
-                <div><strong class="text-white text-xs block font-bold">15% Mayoreo B2B</strong><span class="text-slate-400 text-[11px]">Automático en 10 o más piezas</span></div>
-            </div>
-            <div class="p-4 bg-slate-900/60 rounded-2xl flex items-center gap-3.5 shadow-md">
-                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 text-lg shrink-0"><i class="fa-solid fa-coins"></i></div>
-                <div><strong class="text-white text-xs block font-bold">5% Cashback</strong><span class="text-slate-400 text-[11px]">Acumulable con registro activo</span></div>
-            </div>
-        </div>
-    </section>
 
     <footer class="bg-slate-950 border-t border-slate-900 pt-16 pb-8 text-slate-400 text-xs" id="pie-de-pagina">
         <div class="max-w-[99%] 2xl:max-w-[1850px] mx-auto px-4 sm:px-6 lg:px-8">
@@ -210,16 +231,16 @@
                 <div class="flex flex-col gap-3">
                     <h4 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2"><i class="fa-solid fa-location-dot text-amber-400"></i> Contacto Local</h4>
                     <p class="flex items-start gap-2 text-slate-300"><i class="fa-solid fa-map-pin text-slate-500 mt-0.5 shrink-0"></i><span>Pedro Moreno 501 A, Guadalajara Centro, Jalisco (CP 44100)</span></p>
-                    <p class="flex items-center gap-2"><i class="fa-solid fa-phone text-cyan-400 shrink-0"></i><span>Teléfono Fijo: <a href="tel:3336136348" class="text-slate-200 hover:text-cyan-400 font-mono">(33) 3613 6348</a></span></p>
+                    <p class="flex items-center gap-2"><i class="fa-solid fa-phone text-cyan-400 shrink-0"></i><span>Teléfono: <a href="tel:3336136348" class="text-slate-200 hover:text-cyan-400 font-mono">(33) 3613 6348</a></span></p>
                     <p class="flex items-center gap-2"><i class="fa-brands fa-whatsapp text-emerald-400 shrink-0 text-sm"></i><span>WhatsApp: <a href="https://wa.me/523337271440" target="_blank" class="text-slate-200 hover:text-emerald-400 font-mono">+52 33 3727 1440</a></span></p>
                 </div>
                 <div class="flex flex-col gap-3">
                     <h4 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2"><i class="fa-solid fa-shield-halved text-cyan-400"></i> Políticas de Compra</h4>
-                    <p class="text-[11px] text-slate-400">Devoluciones en tienda dentro de las 48 horas con empaque íntegro. Soporte técnico y garantía local.</p>
+                    <p class="text-[11px] text-slate-400">Devoluciones en tienda dentro de las 48 horas con empaque íntegro. Soporte técnico local y reemplazo inmediato.</p>
                 </div>
                 <div class="flex flex-col gap-3">
                     <h4 class="text-sm font-black text-white uppercase tracking-wider mb-1 flex items-center gap-2"><i class="fa-solid fa-coins text-emerald-400"></i> Ahorro y Cashback</h4>
-                    <p class="text-slate-300 font-bold">5% de Cashback acumulable en compras consolidadas.</p>
+                    <p class="text-slate-300 font-bold">5% de Cashback en cada compra de forma directa.</p>
                 </div>
             </div>
             <div class="pt-8 text-center text-slate-500 text-[11px]">
@@ -228,7 +249,6 @@
         </div>
     </footer>
 
-    <!-- SCRIPT DEL MOTOR DEL PORTAL -->
     <script>
     const boutiquesConfig = [
         { id: "pc-custom", name: "PC Custom Lab", tag: "TECNOLOGÍA", icon: "fa-microchip", color: "text-cyan-400", desc: "Hardware esencial, GPUs NVIDIA RTX y procesadores.", url: "https://iaworldcenter-creator.github.io/pc-custom-lab/" },
@@ -244,23 +264,62 @@
         { sku: "PC-001", boutiqueId: "pc-custom", nombre: "Gabinete Micro-ATX con Fuente 500W Incluida", marca: "Acteck", precio: 1250.00, original: 1550.00, desc: "Chasis esbelto con fuente certificada y USB 3.0.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_negro.webp", tokens: ["gabinete", "fuente", "pc"] },
         { sku: "PC-002", boutiqueId: "pc-custom", nombre: "Tarjeta Madre ASUS Prime B760M-A WiFi DDR5", marca: "ASUS", precio: 3400.00, original: 3950.00, desc: "Soporte Intel 12va/13va/14va Gen y dual M.2.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/motherboard_asus.webp", tokens: ["tarjeta madre", "asus", "placa"] },
         { sku: "PC-003", boutiqueId: "pc-custom", nombre: "Procesador Intel Core i5-14400F 10C/16T Disipador", marca: "Intel", precio: 4350.00, original: 4990.00, desc: "10 núcleos híbridos de alto desempeño.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_intel_ultra.webp", tokens: ["procesador", "cpu", "intel"] },
-        { sku: "PC-004", boutiqueId: "pc-custom", nombre: "Memoria RAM Kingston FURY Beast 16GB DDR5", marca: "Kingston", precio: 1250.00, original: 1500.00, desc: "Disipador térmico de aluminio negro de bajo perfil.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/ram_caja.webp", tokens: ["ram", "kingston", "fury"] },
-        { sku: "PC-005", boutiqueId: "pc-custom", nombre: "Disco Sólido SSD Kingston NV2 1TB NVMe PCIe 4.0", marca: "Kingston", precio: 1350.00, original: 1650.00, desc: "3,500 MB/s lectura para encendido al instante.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/disco_solido_m2.webp", tokens: ["ssd", "kingston", "nvme"] },
+        { sku: "PC-004", boutiqueId: "pc-custom", nombre: "Memoria RAM Kingston FURY Beast 16GB DDR5", marca: "Kingston", precio: 1250.00, original: 1500.00, desc: "Disipador de aluminio negro de bajo perfil.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/ram_caja.webp", tokens: ["ram", "kingston", "fury"] },
+        { sku: "PC-005", boutiqueId: "pc-custom", nombre: "Disco Sólido SSD Kingston NV2 1TB NVMe PCIe 4.0", marca: "Kingston", precio: 1350.00, original: 1650.00, desc: "3,500 MB/s lectura ultra rápida.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/disco_solido_m2.webp", tokens: ["ssd", "kingston", "nvme"] },
         
         { sku: "VMX-001", boutiqueId: "viamx", nombre: "Pantalla Smart TV 55 Pulgadas 4K UHD HDR10+", marca: "Samsung", precio: 7999.00, original: 11499.00, desc: "Panel LED 4K con asistente de voz y HDMI 2.1.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp", tokens: ["pantalla", "smart tv", "samsung"] },
         { sku: "VMX-002", boutiqueId: "viamx", nombre: "Refrigerador Inverter No Frost 14 Pies Cúbicos", marca: "LG", precio: 11899.00, original: 15999.00, desc: "Doble puerta con compresor Inverter bajo consumo.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_warehouse_thumb.webp", tokens: ["refrigerador", "lg", "linea blanca"] },
         { sku: "VMX-003", boutiqueId: "viamx", nombre: "Freidora de Aire Digital 6.5L con 12 Programas", marca: "Tefal", precio: 1499.00, original: 2199.00, desc: "Canastilla antiadherente con calor envolvente 360.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/slider_ia_human_thumb.webp", tokens: ["freidora", "aire", "airfryer"] },
-        { sku: "VMX-004", boutiqueId: "viamx", nombre: "Laptop Ultra Slim 15.6 Pulgadas Core i7 16GB RAM", marca: "Lenovo", precio: 14500.00, original: 18900.00, desc: "Chasis de aluminio ligero y lector de huella.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_mantenimiento_thumb.webp", tokens: ["laptop", "lenovo", "core i7"] },
-        { sku: "VMX-005", boutiqueId: "viamx", nombre: "Smartphone 5G Desbloqueado 256GB / 8GB RAM", marca: "Motorola", precio: 4899.00, original: 6499.00, desc: "Pantalla AMOLED 120Hz con batería de 5000mAh.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp", tokens: ["celular", "telefono", "smartphone"] },
 
         { sku: "CIG-001", boutiqueId: "cigarros", nombre: "Cigarros Marlboro Gold Original (Cajetilla 20)", marca: "Marlboro", precio: 82.00, original: 95.00, desc: "Sabor suave y filtro blanco balanceado.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["cigarros", "marlboro", "gold"] },
         { sku: "CIG-003", boutiqueId: "cigarros", nombre: "Puro Habanos Cohiba Siglo VI Tubo Individual", marca: "Cohiba", precio: 850.00, original: 1100.00, desc: "Puro cubano hecho a mano con notas amaderadas.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["puro", "cohiba", "siglo vi"] },
-        { sku: "CIG-005", boutiqueId: "cigarros", nombre: "Encendedor Vintage Recargable a Gas Clipper", marca: "Clipper Pro", precio: 195.00, original: 260.00, desc: "Cuerpo metálico cepillado con piedra intercambiable.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["encendedor", "clipper", "gas"] },
 
         { sku: "DUL-001", boutiqueId: "dulces", nombre: "Paleta Payaso Ricolino (Caja 15 piezas)", marca: "Ricolino", precio: 245.00, original: 290.00, desc: "Malvavisco con chocolate y gomitas.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp", tokens: ["paleta", "payaso", "ricolino"] },
-        { sku: "DUL-002", boutiqueId: "dulces", nombre: "Mazapán De La Rosa Gigante (Caja 20 piezas)", marca: "De La Rosa", precio: 160.00, original: 195.00, desc: "Dulce tradicional de cacahuate tostado.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp", tokens: ["mazapan", "de la rosa"] },
-        { sku: "DUL-003", boutiqueId: "dulces", nombre: "Rocaleta Sonrics con Centro de Goma (Bolsa 30)", marca: "Sonrics", precio: 185.00, original: 230.00, desc: "Caramelo con 4 capas de chile ácido y chicle.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp", tokens: ["rocaleta", "sonrics", "chile"] }
+        { sku: "DUL-002", boutiqueId: "dulces", nombre: "Mazapán De La Rosa Gigante (Caja 20 piezas)", marca: "De La Rosa", precio: 160.00, original: 195.00, desc: "Dulce tradicional de cacahuate tostado.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp", tokens: ["mazapan", "de la rosa"] }
     ];
+
+    function scrollCarousel(id, direction) {
+        const el = document.getElementById(id);
+        if (el) {
+            const amount = el.clientWidth * 0.85;
+            el.scrollBy({ left: direction * amount, behavior: 'smooth' });
+        }
+    }
+
+    function quoteShippingUniversal() {
+        const calle = document.getElementById("inputCalle").value.trim();
+        const num = document.getElementById("inputNum").value.trim();
+        const col = document.getElementById("inputColonia").value.trim();
+        const mun = document.getElementById("selectMunicipio").value;
+        const errBox = document.getElementById("address-error-box");
+        const badge = document.getElementById("shipping-rate-badge");
+
+        if (!calle) { showErr("⚠️ Falta escribir la calle o avenida."); return; }
+        if (!num) { showErr("⚠️ Falta el número exterior / interior de tu domicilio o taller."); return; }
+        if (!col) { showErr("⚠️ Falta la colonia o barrio."); return; }
+        if (!mun) { showErr("⚠️ Falta seleccionar el municipio."); return; }
+
+        errBox.classList.add("hidden");
+        let rate = 35;
+        let dist = "1.8 km (Guadalajara Centro)";
+
+        if (mun === "zapopan") { rate = 52; dist = "4.8 km (Zapopan/Poniente)"; }
+        else if (mun === "tlaquepaque") { rate = 48; dist = "4.5 km (Tlaquepaque)"; }
+        else if (mun === "tonala") { rate = 70; dist = "9.2 km (Tonalá)"; }
+        else if (mun === "tlajomulco") { rate = 125; dist = "18.5 km (Tlajomulco Sur/Payuca)"; }
+        else if (mun === "elsalto") { rate = 135; dist = "21.0 km (El Salto)"; }
+
+        badge.innerText = `$${rate.toFixed(2)} MXN`;
+        badge.className = "text-xs font-mono font-black text-emerald-400 bg-emerald-950/60 px-3 py-1 rounded-lg border border-emerald-500/40";
+        document.getElementById("distance-calc-info").innerHTML = `🛵 <strong class="text-emerald-400">Uber Flash:</strong> ${calle} #${num}, Col. ${col} (~${dist})`;
+        localStorage.setItem("user_last_shipping_quote", JSON.stringify({ rate, calle, num, col, mun, dist }));
+    }
+
+    function showErr(msg) {
+        const box = document.getElementById("address-error-box");
+        box.innerText = msg;
+        box.classList.remove("hidden");
+    }
 
     function renderSidebarBoutiques() {
         const container = document.getElementById("sidebar-boutiques-list");
@@ -279,15 +338,6 @@
         `).join('');
     }
 
-    
-    function scrollCarousel(id, direction) {
-        const el = document.getElementById(id);
-        if (el) {
-            const amount = el.clientWidth * 0.85;
-            el.scrollBy({ left: direction * amount, behavior: 'smooth' });
-        }
-    }
-        
     function renderShowcase() {
         const container = document.getElementById("showcase-container");
         if (!container) return;
@@ -295,6 +345,7 @@
         container.innerHTML = boutiquesConfig.map(b => {
             const products = masterItems.filter(p => p.boutiqueId === b.id);
             if (products.length === 0) return '';
+            const carouselId = `carousel-${b.id}`;
 
             return `
                 <div class="bg-slate-900/50 rounded-3xl p-5 shadow-2xl space-y-4">
@@ -311,46 +362,49 @@
                         </a>
                     </div>
 
-                    <!-- FILA CON SWIPE TÁCTIL EN MÓVILES (HORIZONTAL) -->
-                    <div class="flex flex-row overflow-x-auto flex-nowrap lg:grid lg:grid-cols-5 lg:overflow-visible lg:overflow-visible gap-4 pb-2 lg:pb-0 no-scrollbar snap-x snap-mandatory">
-                        ${products.map(p => {
-                            const discountPct = p.original ? Math.round((1 - (p.precio / p.original)) * 100) : 0;
-                            return `
-                                <div class="min-w-[240px] min-w-[240px] w-[240px] sm:w-[260px] lg:w-auto shrink-0 lg:shrink snap-start bg-slate-950/90 hover:bg-slate-950 rounded-2xl p-3.5 flex flex-col justify-between transition group shadow-xl hover:shadow-[0_8px_30px_rgba(6,182,212,0.2)]">
-                                    <div>
-                                        <div class="w-full h-40 sm:h-44 overflow-hidden rounded-xl bg-slate-900 flex items-center justify-center p-2 relative mb-2.5 shadow-inner">
-                                            <img src="${p.img}" alt="${p.nombre}" class="w-full h-full object-contain group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
-                                            ${discountPct > 0 ? `<span class="absolute top-2 left-2 bg-red-600 text-white text-[9px] font-mono font-black px-2 py-0.5 rounded-md shadow-md uppercase tracking-wider">-${discountPct}% Ahorro</span>` : `<span class="absolute top-2 left-2 bg-amber-500/20 text-amber-300 text-[9px] font-mono font-black px-2 py-0.5 rounded-md shadow-md uppercase">Directo</span>`}
-                                        </div>
-                                        <div class="flex justify-between items-center text-[9px] font-mono mb-1">
-                                            <span class="text-cyan-400 font-bold uppercase truncate">${p.marca}</span>
-                                            <span class="text-slate-500 font-bold">${p.sku}</span>
-                                        </div>
-                                        <h4 class="text-white font-bold text-xs mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${p.nombre}">${p.nombre}</h4>
-                                        <p class="text-slate-400 text-[11px] leading-relaxed line-clamp-2 mb-3 font-normal">${p.desc}</p>
-                                    </div>
+                    <!-- CARRUSEL DE 2 PRODUCTOS EN MÓVIL CON FLECHAS FLOTANTES -->
+                    <div class="relative">
+                        <button onclick="scrollCarousel('${carouselId}', -1)" class="lg:hidden absolute -left-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-slate-900 border border-cyan-400 text-cyan-300 flex items-center justify-center shadow-lg active:scale-90">
+                            <i class="fa-solid fa-chevron-left text-xs"></i>
+                        </button>
 
-                                    <div>
-                                        <div class="pt-2.5 border-t border-slate-900 mb-2.5 flex flex-col gap-1">
-                                            ${p.original ? `<div class="flex items-center justify-between gap-1 text-[11px] font-mono"><span class="text-slate-400 font-bold uppercase text-[10px]">Antes:</span><span class="text-red-400 font-bold line-through bg-red-950/50 border border-red-500/40 px-1.5 py-0.2 rounded">$${p.original.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span></div>` : ''}
-                                            <div class="flex items-baseline justify-between">
-                                                <span class="text-[10px] font-mono text-emerald-400 font-bold uppercase">Oferta:</span>
-                                                <span class="text-base sm:text-lg font-black font-mono text-amber-400">$${p.precio.toLocaleString('es-MX', { minimumFractionDigits: 2 })} <span class="text-[10px] text-amber-300/80 font-normal">MXN</span></span>
+                        <div id="${carouselId}" class="flex flex-row overflow-x-auto flex-nowrap lg:grid lg:grid-cols-5 lg:overflow-visible gap-3 pb-3 lg:pb-0 no-scrollbar snap-x snap-mandatory scroll-smooth px-1">
+                            ${products.map(p => {
+                                const discountPct = p.original ? Math.round((1 - (p.precio / p.original)) * 100) : 0;
+                                return `
+                                    <div class="w-[calc(50%-6px)] min-w-[155px] max-w-[210px] lg:w-auto lg:max-w-none shrink-0 snap-start bg-slate-950/90 hover:bg-slate-950 rounded-2xl p-3 flex flex-col justify-between transition group shadow-xl hover:shadow-[0_8px_30px_rgba(6,182,212,0.2)]">
+                                        <div>
+                                            <div class="w-full h-32 sm:h-40 overflow-hidden rounded-xl bg-slate-900 flex items-center justify-center p-2 relative mb-2 shadow-inner">
+                                                <img src="${p.img}" alt="${p.nombre}" class="w-full h-full object-contain group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
+                                                ${discountPct > 0 ? `<span class="absolute top-1 left-1 bg-red-600 text-white text-[8px] font-mono font-black px-1.5 py-0.2 rounded shadow">-${discountPct}%</span>` : `<span class="absolute top-1 left-1 bg-amber-500/20 text-amber-300 text-[8px] font-mono font-black px-1.5 py-0.2 rounded">Directo</span>`}
+                                            </div>
+                                            <span class="text-[8px] font-mono text-cyan-400 font-bold block truncate">${p.marca} &bull; ${p.sku}</span>
+                                            <h4 class="text-xs font-bold text-white mb-1 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${p.nombre}">${p.nombre}</h4>
+                                        </div>
+
+                                        <div>
+                                            <div class="pt-2 border-t border-slate-900 mb-2 flex flex-col">
+                                                ${p.original ? `<span class="text-[9px] font-mono text-red-400 line-through">$${p.original.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>` : ''}
+                                                <span class="text-sm sm:text-base font-black font-mono text-amber-400">$${p.precio.toLocaleString('es-MX', { minimumFractionDigits: 2 })} <span class="text-[9px] text-amber-300/80 font-normal">MXN</span></span>
+                                            </div>
+
+                                            <div class="grid grid-cols-2 gap-1">
+                                                <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 text-cyan-300 font-bold py-1.5 px-1 rounded-lg text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow border border-cyan-500/30" title="Carrito">
+                                                    <i class="fa-solid fa-cart-plus text-[10px]"></i> <span class="hidden sm:inline">Carrito</span>
+                                                </button>
+                                                <button onclick="buyNowDirect('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black py-1.5 px-1 rounded-lg text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow" title="Comprar">
+                                                    <i class="fa-solid fa-bolt text-[10px]"></i> <span class="hidden sm:inline">Comprar</span>
+                                                </button>
                                             </div>
                                         </div>
-
-                                        <div class="grid grid-cols-1 gap-2">
-                                            <button onclick="addToCartDirect('${p.sku}', 1)" class="w-full bg-slate-900 hover:bg-slate-800 text-cyan-300 font-bold py-2 px-2 rounded-xl text-[11px] flex items-center justify-center gap-1.5 transition active:scale-95 cursor-pointer shadow border border-cyan-500/30">
-                                                <i class="fa-solid fa-cart-plus text-xs"></i> <span>Agregar al Carrito</span>
-                                            </button>
-                                            <button onclick="buyNowDirect('${p.sku}')" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black py-2 px-2 rounded-xl text-[11px] flex items-center justify-center gap-1.5 transition active:scale-95 shadow cursor-pointer">
-                                                <i class="fa-solid fa-bag-shopping text-xs"></i> <span>Comprar Ahora</span>
-                                            </button>
-                                        </div>
                                     </div>
-                                </div>
-                            `;
-                        }).join('')}
+                                `;
+                            }).join('')}
+                        </div>
+
+                        <button onclick="scrollCarousel('${carouselId}', 1)" class="lg:hidden absolute -right-2 top-1/2 -translate-y-1/2 z-20 w-8 h-8 rounded-full bg-slate-900 border border-cyan-400 text-cyan-300 flex items-center justify-center shadow-lg active:scale-90">
+                            <i class="fa-solid fa-chevron-right text-xs"></i>
+                        </button>
                     </div>
                 </div>
             `;
@@ -376,10 +430,7 @@
 
     function renderMasterAutocomplete(val) {
         const box = document.getElementById("master-autocomplete-box");
-        if (!val || val.trim().length < 1) {
-            box.classList.add("hidden");
-            return;
-        }
+        if (!val || val.trim().length < 1) { box.classList.add("hidden"); return; }
         const matches = searchMultiToken(val).slice(0, 6);
         if (matches.length === 0) {
             box.innerHTML = `<div class="p-3 text-center text-slate-400 text-xs">No hay coincidencias para "${val}"</div>`;
@@ -387,18 +438,15 @@
             return;
         }
         box.innerHTML = matches.map(item => `
-            <div class="bg-slate-950 rounded-xl p-2.5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 transition shadow border border-slate-800/80">
-                <div class="flex items-center gap-2.5 min-w-0 flex-1">
-                    <img src="${item.img}" alt="${item.nombre}" class="w-10 h-10 object-contain rounded-lg bg-slate-900 p-0.5 shrink-0" onerror="this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';"/>
-                    <div class="min-w-0">
-                        <span class="text-[9px] font-mono text-cyan-400 font-bold block">${item.sku} &bull; ${item.marca}</span>
-                        <h5 class="text-xs font-bold text-white truncate">${item.nombre}</h5>
-                        <span class="text-amber-400 font-mono font-bold text-xs">$${item.precio.toFixed(2)} MXN</span>
-                    </div>
+            <div class="bg-slate-950 rounded-xl p-2.5 flex items-center justify-between gap-2 border border-slate-800">
+                <div class="min-w-0 flex-1">
+                    <span class="text-[9px] font-mono text-cyan-400 font-bold block">${item.sku} &bull; ${item.marca}</span>
+                    <h5 class="text-xs font-bold text-white truncate">${item.nombre}</h5>
+                    <span class="text-amber-400 font-mono font-bold text-xs">$${item.precio.toFixed(2)} MXN</span>
                 </div>
-                <div class="flex items-center gap-2 w-full sm:w-auto justify-end shrink-0">
-                    <button onclick="addToCartDirect('${item.sku}', 1)" class="bg-slate-800 hover:bg-slate-700 text-cyan-300 font-bold px-3 py-1.5 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95 shadow border border-cyan-500/30"><i class="fa-solid fa-cart-plus"></i> Agregar</button>
-                    <button onclick="buyNowDirect('${item.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black px-3.5 py-1.5 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95 shadow"><i class="fa-solid fa-bag-shopping"></i> Comprar Ahora</button>
+                <div class="flex items-center gap-1.5 shrink-0">
+                    <button onclick="addToCartDirect('${item.sku}', 1)" class="bg-slate-800 text-cyan-300 px-2.5 py-1 rounded-lg text-[10px] border border-cyan-500/30"><i class="fa-solid fa-cart-plus"></i></button>
+                    <button onclick="buyNowDirect('${item.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black px-3 py-1 rounded-lg text-[10px]">Comprar</button>
                 </div>
             </div>
         `).join('');
@@ -406,15 +454,13 @@
     }
 
     function clearMasterSearch() {
-        const input = document.getElementById("masterSearchInput");
-        input.value = '';
+        document.getElementById("masterSearchInput").value = '';
         document.getElementById("clear-search-btn").classList.add("hidden");
         document.getElementById("master-autocomplete-box").classList.add("hidden");
     }
 
     function executeMasterSearch() {
-        const input = document.getElementById("masterSearchInput");
-        renderMasterAutocomplete(input.value);
+        document.getElementById("master-autocomplete-box").classList.add("hidden");
     }
 
     function addToCartDirect(sku, qty = 1) {
@@ -426,19 +472,12 @@
             if (raw) cartStorage = JSON.parse(raw);
         } catch(e) {}
         const exist = cartStorage.find(i => i.sku === sku);
-        if (exist) {
-            exist.quantity = (parseInt(exist.quantity) || 1) + qty;
-        } else {
-            cartStorage.push({ ...item, quantity: qty });
-        }
+        if (exist) { exist.quantity = (parseInt(exist.quantity) || 1) + qty; }
+        else { cartStorage.push({ ...item, quantity: qty }); }
         localStorage.setItem('ecosystem_global_cart', JSON.stringify(cartStorage));
         syncCartState();
         const badge = document.getElementById("portal-cart-badge");
-        if (badge) {
-            badge.classList.remove("cart-pop");
-            void badge.offsetWidth;
-            badge.classList.add("cart-pop");
-        }
+        if (badge) { badge.classList.remove("cart-pop"); void badge.offsetWidth; badge.classList.add("cart-pop"); }
     }
 
     function buyNowDirect(sku) {
