@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>BAZAR NFL App | Despacho B2B Uber Flash & Refacciones</title>
+    <title>BAZAR NFL App | Portal B2B & Cashback Pedro Moreno 501 A</title>
     
     <link rel="manifest" href="./manifest.json" />
     <meta name="theme-color" content="#0f172a" />
@@ -19,88 +19,35 @@
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         .cart-pop { animation: popBadge 0.25s ease-in-out; }
         @keyframes popBadge { 0% { transform: scale(1); } 50% { transform: scale(1.35); } 100% { transform: scale(1); } }
-        .fade-in { animation: fadeIn 0.15s ease-in-out forwards; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950 pb-20 select-none">
 
-    <!-- CABECERA FIJA -->
-    <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 px-4 py-3 shadow-xl">
-        <div class="max-w-md mx-auto flex items-center justify-between gap-3">
-            <div class="flex items-center gap-2.5">
-                <img src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" alt="Logo Tigre App" class="w-10 h-10 rounded-full object-cover border-2 border-amber-400 shadow-md" />
+    <!-- CABECERA MÓVIL CON MI CUENTA -->
+    <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 px-3 py-2.5 shadow-xl">
+        <div class="max-w-md mx-auto flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2">
+                <img src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" alt="Logo Tigre App" class="w-9 h-9 rounded-full object-cover border border-amber-400" />
                 <div>
-                    <div class="flex items-center gap-1.5">
-                        <span class="font-black text-lg text-white tracking-wider leading-none">BAZAR NFL</span>
-                        <span class="bg-cyan-500/20 text-cyan-300 font-mono font-bold text-[9px] px-1.5 py-0.2 rounded border border-cyan-500/40">APP B2B</span>
-                    </div>
-                    <span class="text-[10px] font-mono text-slate-400 block leading-tight">Pedro Moreno 501 A • GDL</span>
+                    <span class="font-black text-sm text-white block leading-none">BAZAR NFL</span>
+                    <span class="text-[9px] font-mono text-cyan-400 block leading-tight">Pedro Moreno 501 A</span>
                 </div>
             </div>
 
-            <button onclick="toggleCartModal()" class="relative bg-slate-800 border border-slate-700 p-2.5 rounded-2xl text-cyan-400 active:scale-90 transition shadow">
-                <i class="fa-solid fa-cart-shopping text-base"></i>
-                <span id="app-cart-badge" class="absolute -top-1.5 -right-1.5 bg-amber-500 text-slate-950 font-mono font-black text-[10px] rounded-full w-5 h-5 flex items-center justify-center shadow">0</span>
+            <!-- Botón Mi Cuenta -->
+            <button id="header-account-btn" onclick="toggleAccountModal()" class="cursor-pointer active:scale-95 transition"></button>
+
+            <!-- Botón Canasta -->
+            <button onclick="toggleCartModal()" class="relative bg-slate-800 border border-slate-700 p-2 rounded-xl text-cyan-400 active:scale-90 transition shadow">
+                <i class="fa-solid fa-cart-shopping text-sm"></i>
+                <span id="app-cart-badge" class="absolute -top-1.5 -right-1.5 bg-amber-500 text-slate-950 font-mono font-black text-[9px] rounded-full w-4 h-4 flex items-center justify-center shadow">0</span>
             </button>
         </div>
     </header>
 
-    <main class="max-w-md mx-auto w-full px-4 py-4 space-y-4 flex-1">
+    <main class="max-w-md mx-auto w-full px-3 py-3 space-y-3.5 flex-1">
         
-        <!-- 1. COTIZADOR POR DOMICILIO CON VALIDACIÓN ESTRICTA -->
-        <div class="bg-slate-900 border border-slate-800 p-4 rounded-3xl shadow-xl space-y-3">
-            <div class="flex items-center justify-between">
-                <span class="text-xs font-mono font-bold text-white flex items-center gap-1.5">
-                    <i class="fa-brands fa-uber text-white"></i> Cotizador de Flete Uber
-                </span>
-                <span id="shipping-rate-badge" class="text-xs font-mono font-bold text-slate-400 bg-slate-950 px-2.5 py-0.5 rounded-lg border border-slate-800">Pendiente Cotizar</span>
-            </div>
-
-            <!-- Formulario de Datos Obligatorios -->
-            <div class="space-y-2 text-xs">
-                <div>
-                    <label class="text-[10px] font-mono text-slate-400 block mb-0.5">Calle / Avenida:</label>
-                    <input type="text" id="inputCalle" placeholder="Ej. Av. Hidalgo, Pedro Moreno, Colón..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white outline-none focus:border-cyan-400" />
-                </div>
-                <div class="grid grid-cols-2 gap-2">
-                    <div>
-                        <label class="text-[10px] font-mono text-slate-400 block mb-0.5">Núm. Exterior / Interior:</label>
-                        <input type="text" id="inputNum" placeholder="Ej. #501 int A" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white outline-none focus:border-cyan-400" />
-                    </div>
-                    <div>
-                        <label class="text-[10px] font-mono text-slate-400 block mb-0.5">Colonia / Barrio:</label>
-                        <input type="text" id="inputColonia" placeholder="Ej. Americana, Centro..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white outline-none focus:border-cyan-400" />
-                    </div>
-                </div>
-                <div>
-                    <label class="text-[10px] font-mono text-slate-400 block mb-0.5">Municipio / Zona Conurbada:</label>
-                    <select id="selectMunicipio" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2 text-white outline-none focus:border-cyan-400 font-medium">
-                        <option value="">-- Selecciona tu Municipio --</option>
-                        <option value="guadalajara">Guadalajara (Centro / Alrededores)</option>
-                        <option value="zapopan">Zapopan (Minerva / Providencia / Poniente)</option>
-                        <option value="tlaquepaque">Tlaquepaque (Centro / Alamo)</option>
-                        <option value="tonala">Tonalá (Oriente / Periférico)</option>
-                        <option value="tlajomulco">Tlajomulco de Zúñiga (Zona Sur / Payuca)</option>
-                        <option value="elsalto">El Salto / Aeropuerto</option>
-                    </select>
-                </div>
-
-                <!-- Caja de Alertas de Validación -->
-                <div id="address-error-box" class="hidden p-2 rounded-xl bg-amber-950/60 border border-amber-500/50 text-amber-300 text-[11px] font-mono leading-tight"></div>
-
-                <button onclick="quoteShipping()" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black py-2.5 rounded-xl text-xs uppercase tracking-wider transition active:scale-95 shadow cursor-pointer flex items-center justify-center gap-1.5">
-                    <i class="fa-solid fa-calculator text-xs"></i> <span>Cotizar Flete de Envío</span>
-                </button>
-            </div>
-
-            <div class="flex items-center justify-between text-[10px] font-mono text-slate-400 pt-1 border-t border-slate-800">
-                <span id="distance-calc-info">Origen: Pedro Moreno 501 A</span>
-                <span class="text-emerald-400 font-bold">Gratis desde $1,500 MXN</span>
-            </div>
-        </div>
-
-        <!-- 2. SÚPER-BUSCADOR -->
+        <!-- SÚPER-BUSCADOR -->
         <div class="relative">
             <div class="flex items-center bg-white rounded-2xl px-3.5 py-2 gap-2 shadow-lg border-2 border-cyan-400">
                 <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
@@ -110,8 +57,8 @@
             <div id="mobile-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-40 p-2.5 flex flex-col gap-2 max-h-80 overflow-y-auto no-scrollbar"></div>
         </div>
 
-        <!-- 3. NUESTRAS 7 BOUTIQUES (DESPLEGABLE TOP 3) -->
-        <div class="space-y-2.5">
+        <!-- 7 BOUTIQUES -->
+        <div class="space-y-2">
             <div class="flex justify-between items-center px-1">
                 <span class="text-xs font-mono font-bold text-white uppercase flex items-center gap-1.5">
                     <i class="fa-solid fa-layer-group text-amber-400"></i> Nuestras 7 Boutiques
@@ -121,20 +68,19 @@
             <div class="grid grid-cols-1 gap-2" id="boutiques-accordion-list"></div>
         </div>
 
-        <!-- 4. CATÁLOGO CON SWIPE DE 2 PRODUCTOS + FLECHAS FLOTANTES (< y >) -->
-        <div class="space-y-2 pt-2">
+        <!-- CARRUSEL 2 PRODUCTOS CON FLECHAS -->
+        <div class="space-y-2 pt-1">
             <div class="flex justify-between items-center px-1">
                 <span class="text-xs font-mono font-bold text-slate-400 uppercase">Catálogo de Entrega Inmediata</span>
                 <span class="text-[10px] font-mono text-cyan-400 font-bold">Desliza a los lados &rarr;</span>
             </div>
 
-            <div class="relative group">
+            <div class="relative">
                 <button onclick="scrollCarousel('mobile-product-carousel', -1)" class="absolute -left-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-slate-900/95 border border-cyan-400 text-cyan-300 flex items-center justify-center shadow-lg active:scale-90">
                     <i class="fa-solid fa-chevron-left text-[10px]"></i>
                 </button>
                 
                 <div id="mobile-product-carousel" class="flex flex-row overflow-x-auto flex-nowrap gap-2.5 pb-2 no-scrollbar snap-x snap-mandatory scroll-smooth px-1">
-                    <!-- 2 productos exactos en pantalla inyectados dinámicamente -->
                 </div>
 
                 <button onclick="scrollCarousel('mobile-product-carousel', 1)" class="absolute -right-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-slate-900/95 border border-cyan-400 text-cyan-300 flex items-center justify-center shadow-lg active:scale-90">
@@ -151,10 +97,10 @@
             <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
                 <i class="fa-solid fa-house text-base"></i><span class="text-[9px] font-mono">Matriz</span>
             </a>
-            <button onclick="location.reload()" class="flex flex-col items-center gap-1 text-cyan-400">
-                <i class="fa-solid fa-motorcycle text-base"></i><span class="text-[9px] font-mono">Uber Flash</span>
+            <button onclick="toggleAccountModal()" class="flex flex-col items-center gap-1 text-emerald-400">
+                <i class="fa-solid fa-user-check text-base"></i><span class="text-[9px] font-mono">Mi Cuenta</span>
             </button>
-            <a href="https://wa.me/523337271440" target="_blank" class="flex flex-col items-center gap-1 text-emerald-400">
+            <a href="https://wa.me/523337271440" target="_blank" class="flex flex-col items-center gap-1 text-cyan-400">
                 <i class="fa-brands fa-whatsapp text-base"></i><span class="text-[9px] font-mono">Atención</span>
             </a>
             <button onclick="toggleCartModal()" class="flex flex-col items-center gap-1 text-amber-400">
@@ -162,6 +108,108 @@
             </button>
         </div>
     </nav>
+
+    
+<!-- MODAL FLOTANTE: MI CUENTA / DOMICILIO & CASHBACK -->
+<div id="accountModal" class="fixed inset-0 z-[300] hidden">
+    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="toggleAccountModal()"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-lg bg-slate-900 border-2 border-cyan-400 rounded-3xl shadow-2xl p-5 sm:p-6 z-10 max-h-[90vh] overflow-y-auto no-scrollbar space-y-4">
+        
+        <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+            <div>
+                <span class="text-[10px] font-mono text-amber-400 uppercase font-bold tracking-widest block">Beneficio Exclusivo</span>
+                <h3 class="font-black text-white text-base sm:text-lg flex items-center gap-2">
+                    <i class="fa-solid fa-address-card text-cyan-400"></i> Mi Cuenta & Domicilio de Entrega
+                </h3>
+            </div>
+            <button onclick="toggleAccountModal()" class="text-slate-400 hover:text-white p-1 text-lg cursor-pointer">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Banner Explicativo de Cashback -->
+        <div class="p-3 bg-gradient-to-r from-emerald-950/60 to-slate-950 border border-emerald-500/40 rounded-2xl space-y-1">
+            <div class="flex items-center gap-2 text-emerald-400 text-xs font-bold font-mono">
+                <i class="fa-solid fa-coins text-sm"></i>
+                <span>5% DE CASHBACK EN CADA PEDIDO</span>
+            </div>
+            <p class="text-[11px] text-slate-300 leading-tight">
+                <strong>Importante:</strong> Llena todos tus datos completos (Nombre, WhatsApp, Correo y Domicilio) para activar tu <strong>5% de Cashback acumulable</strong> y habilitar entregas directas con Uber Flash.
+            </p>
+        </div>
+
+        <!-- Formulario de Cuenta y Dirección -->
+        <div class="space-y-3 text-xs">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div>
+                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Nombre Completo / Taller:</label>
+                    <input type="text" id="accName" placeholder="Ej. Juan Pérez / Taller Silva" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+                </div>
+                <div>
+                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">WhatsApp de Contacto:</label>
+                    <input type="tel" id="accPhone" placeholder="Ej. 33 3727 1440" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium font-mono" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <div class="sm:col-span-2">
+                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Correo Electrónico:</label>
+                    <input type="email" id="accEmail" placeholder="tu_correo@ejemplo.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+                </div>
+                <div>
+                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Código Postal:</label>
+                    <input type="text" id="accCP" placeholder="Ej. 44100" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-mono font-bold" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <div class="sm:col-span-2">
+                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Calle / Avenida:</label>
+                    <input type="text" id="accCalle" placeholder="Ej. Av. Juárez, Hidalgo..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+                </div>
+                <div>
+                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Núm. Ext / Int:</label>
+                    <input type="text" id="accNum" placeholder="Ej. #501 int A" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div>
+                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Colonia / Barrio:</label>
+                    <input type="text" id="accColonia" placeholder="Ej. Americana, Centro, Vallarta..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+                </div>
+                <div>
+                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Municipio / Zona:</label>
+                    <select id="accMunicipio" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium">
+                        <option value="">-- Selecciona Municipio --</option>
+                        <option value="guadalajara">Guadalajara (Centro / Alrededores)</option>
+                        <option value="zapopan">Zapopan (Minerva / Providencia / Poniente)</option>
+                        <option value="tlaquepaque">Tlaquepaque (Centro / Alamo)</option>
+                        <option value="tonala">Tonalá (Oriente / Periférico)</option>
+                        <option value="tlajomulco">Tlajomulco de Zúñiga (Zona Sur / Payuca)</option>
+                        <option value="elsalto">El Salto / Aeropuerto</option>
+                    </select>
+                </div>
+            </div>
+
+            <div>
+                <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Referencias de Entrega (Opcional):</label>
+                <input type="text" id="accRef" placeholder="Ej. Portón blanco, entre calle Galeana y Colón" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+            </div>
+
+            <!-- Caja de Estado / Alerta -->
+            <div id="accAlertBox" class="hidden p-3 rounded-xl text-xs font-mono leading-tight"></div>
+        </div>
+
+        <div class="pt-2 border-t border-slate-800 flex flex-col sm:flex-row gap-2">
+            <button onclick="saveUserProfile()" class="flex-1 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+                <i class="fa-solid fa-floppy-disk text-sm"></i> <span>Guardar Domicilio & Activar Cashback</span>
+            </button>
+        </div>
+
+    </div>
+</div>
+
 
     <!-- MODAL DE CHECKOUT -->
     <div id="appCartModal" class="fixed inset-0 z-50 hidden">
@@ -189,7 +237,7 @@
             </div>
             <div class="border-t border-slate-800 pt-3 space-y-2 mt-3">
                 <div class="flex justify-between text-xs font-mono"><span class="text-slate-400">Subtotal:</span><span id="modal-subtotal-txt" class="text-white font-bold">$0.00 MXN</span></div>
-                <div class="flex justify-between text-xs font-mono"><span class="text-slate-400">Flete Cotizado:</span><span id="modal-shipping-txt" class="text-amber-400 font-bold">Por Cotizar</span></div>
+                <div class="flex justify-between text-xs font-mono"><span class="text-slate-400">Flete Cotizado:</span><span id="modal-shipping-txt" class="text-amber-400 font-bold">$35.00 MXN</span></div>
                 <div class="flex justify-between text-sm font-mono pt-1 border-t border-slate-800"><strong class="text-white">Total SPEI:</strong><strong id="modal-total-txt" class="text-emerald-400 font-black text-base">$0.00 MXN</strong></div>
                 <button onclick="sendOrderViaWhatsApp()" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 text-slate-950 font-black py-3 rounded-2xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer">
                     <i class="fa-brands fa-whatsapp text-sm text-slate-950"></i> Mandar Comprobante SPEI & Despachar
@@ -210,69 +258,128 @@
     ];
 
     const appProducts = [
-        { sku: "PC-001", boutiqueId: "pc-custom", nombre: "Gabinete Micro-ATX con Fuente 500W", marca: "Acteck", precio: 1250.00, original: 1550.00, desc: "Fuente certificada, USB 3.0 para taller.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_negro.webp", tokens: ["gabinete", "fuente", "pc"], sales: 95 },
-        { sku: "PC-002", boutiqueId: "pc-custom", nombre: "Tarjeta Madre ASUS Prime B760M-A WiFi DDR5", marca: "ASUS", precio: 3400.00, original: 3950.00, desc: "Soporte Intel 12va/13va/14va Gen, dual M.2.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/motherboard_asus.webp", tokens: ["tarjeta madre", "asus", "placa"], sales: 82 },
-        { sku: "PC-004", boutiqueId: "pc-custom", nombre: "RAM Kingston FURY Beast 16GB DDR5 5600MHz", marca: "Kingston", precio: 1250.00, original: 1500.00, desc: "Disipador de aluminio de bajo perfil.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/ram_caja.webp", tokens: ["ram", "kingston", "fury", "ddr5"], sales: 140 },
-        { sku: "PC-005", boutiqueId: "pc-custom", nombre: "SSD Kingston NV2 1TB NVMe PCIe 4.0", marca: "Kingston", precio: 1350.00, original: 1650.00, desc: "3,500 MB/s lectura ultra rápida.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/disco_solido_m2.webp", tokens: ["ssd", "kingston", "nvme", "disco"], sales: 110 },
-        { sku: "VMX-001", boutiqueId: "viamx", nombre: "Pantalla Smart TV 55 Pulgadas 4K UHD", marca: "Samsung", precio: 7999.00, original: 11499.00, desc: "Panel LED 4K con asistente de voz.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp", tokens: ["pantalla", "smart tv", "samsung"], sales: 70 },
-        { sku: "CIG-001", boutiqueId: "cigarros", nombre: "Cigarros Marlboro Gold Original (20)", marca: "Marlboro", precio: 82.00, original: 95.00, desc: "Sabor suave de importación.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["cigarros", "marlboro"], sales: 210 },
-        { sku: "DUL-001", boutiqueId: "dulces", nombre: "Paleta Payaso Ricolino (Caja 15 piezas)", marca: "Ricolino", precio: 245.00, original: 290.00, desc: "Malvavisco con chocolate y gomitas.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp", tokens: ["paleta", "dulces"], sales: 180 },
-        { sku: "PUE-001", boutiqueId: "puesto", nombre: "Lentes Inteligentes Bluetooth con Audio", marca: "SmartVision", precio: 680.00, original: 950.00, desc: "Llamadas y música con protección UV.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp", tokens: ["lentes", "bluetooth"], sales: 115 }
+        { sku: "PC-001", boutiqueId: "pc-custom", nombre: "Gabinete Micro-ATX con Fuente 500W", marca: "Acteck", precio: 1250.00, original: 1550.00, desc: "Fuente certificada, USB 3.0 para taller.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_negro.webp", tokens: ["gabinete", "fuente", "pc"] },
+        { sku: "PC-002", boutiqueId: "pc-custom", nombre: "Tarjeta Madre ASUS Prime B760M-A WiFi DDR5", marca: "ASUS", precio: 3400.00, original: 3950.00, desc: "Soporte Intel 12va/13va/14va Gen, dual M.2.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/motherboard_asus.webp", tokens: ["tarjeta madre", "asus", "placa"] },
+        { sku: "PC-004", boutiqueId: "pc-custom", nombre: "RAM Kingston FURY Beast 16GB DDR5 5600MHz", marca: "Kingston", precio: 1250.00, original: 1500.00, desc: "Disipador de aluminio de bajo perfil.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/ram_caja.webp", tokens: ["ram", "kingston", "fury", "ddr5"] },
+        { sku: "PC-005", boutiqueId: "pc-custom", nombre: "SSD Kingston NV2 1TB NVMe PCIe 4.0", marca: "Kingston", precio: 1350.00, original: 1650.00, desc: "3,500 MB/s lectura ultra rápida.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/disco_solido_m2.webp", tokens: ["ssd", "kingston", "nvme", "disco"] },
+        { sku: "VMX-001", boutiqueId: "viamx", nombre: "Pantalla Smart TV 55 Pulgadas 4K UHD", marca: "Samsung", precio: 7999.00, original: 11499.00, desc: "Panel LED 4K con asistente de voz.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp", tokens: ["pantalla", "smart tv", "samsung"] },
+        { sku: "CIG-001", boutiqueId: "cigarros", nombre: "Cigarros Marlboro Gold Original (20)", marca: "Marlboro", precio: 82.00, original: 95.00, desc: "Sabor suave de importación.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["cigarros", "marlboro"] },
+        { sku: "DUL-001", boutiqueId: "dulces", nombre: "Paleta Payaso Ricolino (Caja 15 piezas)", marca: "Ricolino", precio: 245.00, original: 290.00, desc: "Malvavisco con chocolate y gomitas.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp", tokens: ["paleta", "dulces"] },
+        { sku: "PUE-001", boutiqueId: "puesto", nombre: "Lentes Inteligentes Bluetooth con Audio", marca: "SmartVision", precio: 680.00, original: 950.00, desc: "Llamadas y música con protección UV.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp", tokens: ["lentes", "bluetooth"] }
     ];
 
-    let currentShippingCost = null;
     let generatedPIN = "";
     let activeBoutiqueId = null;
 
-    // VALIDACIÓN ESTRICTA DEL DOMICILIO Y CÁLCULO DE FLETE UBER FLASH
-    function quoteShipping() {
-        const calle = document.getElementById("inputCalle").value.trim();
-        const num = document.getElementById("inputNum").value.trim();
-        const colonia = document.getElementById("inputColonia").value.trim();
-        const municipio = document.getElementById("selectMunicipio").value;
-        const errorBox = document.getElementById("address-error-box");
-        const badge = document.getElementById("shipping-rate-badge");
+    
+function getSavedProfile() {
+    try {
+        const raw = localStorage.getItem('bazar_user_profile');
+        return raw ? JSON.parse(raw) : null;
+    } catch(e) { return null; }
+}
 
-        if (!calle) {
-            showError("⚠️ Falta escribir la calle o avenida.");
-            return;
-        }
-        if (!num) {
-            showError("⚠️ Falta el número exterior / interior de la casa o taller.");
-            return;
-        }
-        if (!colonia) {
-            showError("⚠️ Falta la colonia o barrio.");
-            return;
-        }
-        if (!municipio) {
-            showError("⚠️ Falta seleccionar el municipio.");
-            return;
-        }
+function updateAccountBadgeUI() {
+    const profile = getSavedProfile();
+    const btn = document.getElementById("header-account-btn");
+    if (!btn) return;
 
-        errorBox.classList.add("hidden");
-        let rate = 35;
-        let dist = "2.1 km";
+    if (profile && profile.isComplete) {
+        btn.innerHTML = `
+            <div class="flex items-center gap-2 bg-emerald-950/60 border border-emerald-500/50 px-3 py-1.5 rounded-xl text-emerald-300 text-xs font-mono font-bold shadow-md hover:bg-emerald-900/60 transition">
+                <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+                <div class="flex flex-col text-left">
+                    <span class="text-[9px] text-emerald-400 leading-none uppercase">5% Cashback Activo</span>
+                    <span class="text-white text-[11px] leading-tight truncate max-w-[120px] sm:max-w-[180px]">${profile.name || 'Mi Cuenta'}</span>
+                </div>
+            </div>
+        `;
+    } else {
+        btn.innerHTML = `
+            <div class="flex items-center gap-2 bg-slate-800/90 hover:bg-slate-700 border border-cyan-500/40 px-3 py-1.5 rounded-xl text-white text-xs font-mono font-bold shadow-md transition">
+                <i class="fa-solid fa-user-plus text-cyan-400 text-sm"></i>
+                <div class="flex flex-col text-left">
+                    <span class="text-[9px] text-amber-400 leading-none uppercase">5% Cashback</span>
+                    <span class="text-slate-200 text-[11px] leading-tight">Registra tu Domicilio</span>
+                </div>
+            </div>
+        `;
+    }
+}
 
-        if (municipio === "zapopan") { rate = 52; dist = "4.8 km (Zapopan/Poniente)"; }
-        else if (municipio === "tlaquepaque") { rate = 48; dist = "4.5 km (Tlaquepaque)"; }
-        else if (municipio === "tonala") { rate = 70; dist = "9.2 km (Tonalá)"; }
-        else if (municipio === "tlajomulco") { rate = 125; dist = "18.5 km (Tlajomulco Sur/Payuca)"; }
-        else if (municipio === "elsalto") { rate = 135; dist = "21.0 km (El Salto)"; }
-        else { rate = 35; dist = "1.8 km (Guadalajara Centro)"; }
+function toggleAccountModal() {
+    const modal = document.getElementById("accountModal");
+    if (!modal) return;
+    modal.classList.toggle("hidden");
 
-        currentShippingCost = rate;
-        badge.innerText = `$${rate.toFixed(2)} MXN`;
-        badge.className = "text-xs font-mono font-black text-emerald-400 bg-emerald-950/60 px-2.5 py-1 rounded-lg border border-emerald-500/40";
-        document.getElementById("distance-calc-info").innerHTML = `🛵 <strong class="text-emerald-400">Uber Flash:</strong> ${calle} #${num}, Col. ${colonia} (~${dist})`;
-        syncAppCart();
+    if (!modal.classList.contains("hidden")) {
+        loadProfileIntoModal();
+    }
+}
+
+function loadProfileIntoModal() {
+    const p = getSavedProfile() || {};
+    document.getElementById("accName").value = p.name || '';
+    document.getElementById("accPhone").value = p.phone || '';
+    document.getElementById("accEmail").value = p.email || '';
+    document.getElementById("accCP").value = p.cp || '';
+    document.getElementById("accCalle").value = p.calle || '';
+    document.getElementById("accNum").value = p.num || '';
+    document.getElementById("accColonia").value = p.colonia || '';
+    document.getElementById("accMunicipio").value = p.municipio || '';
+    document.getElementById("accRef").value = p.ref || '';
+
+    const alertBox = document.getElementById("accAlertBox");
+    if (p.isComplete) {
+        alertBox.className = "p-3 rounded-xl text-xs font-mono leading-tight bg-emerald-950/60 border border-emerald-500/50 text-emerald-300 block";
+        alertBox.innerHTML = '🎉 <strong>¡Felicidades!</strong> Tu perfil está completo y tienes <strong>5% de Cashback activo</strong> en todas tus compras.';
+    } else {
+        alertBox.className = "hidden";
+    }
+}
+
+function saveUserProfile() {
+    const name = document.getElementById("accName").value.trim();
+    const phone = document.getElementById("accPhone").value.trim();
+    const email = document.getElementById("accEmail").value.trim();
+    const cp = document.getElementById("accCP").value.trim();
+    const calle = document.getElementById("accCalle").value.trim();
+    const num = document.getElementById("accNum").value.trim();
+    const colonia = document.getElementById("accColonia").value.trim();
+    const municipio = document.getElementById("accMunicipio").value;
+    const ref = document.getElementById("accRef").value.trim();
+    const alertBox = document.getElementById("accAlertBox");
+
+    if (!name || !phone || !email || !cp || !calle || !num || !colonia || !municipio) {
+        alertBox.className = "p-3 rounded-xl text-xs font-mono leading-tight bg-amber-950/70 border border-amber-500/60 text-amber-300 block";
+        alertBox.innerHTML = '⚠️ <strong>Perfil Incompleto:</strong> Para acumular tu 5% de Cashback y habilitar envíos Uber Flash, es obligatorio llenar todos los campos de contacto y domicilio.';
+        return;
     }
 
-    function showError(msg) {
-        const box = document.getElementById("address-error-box");
-        box.innerText = msg;
-        box.classList.remove("hidden");
-    }
+    let rate = 35;
+    let dist = "1.8 km (Guadalajara Centro)";
+    if (municipio === "zapopan") { rate = 52; dist = "4.8 km (Zapopan)"; }
+    else if (municipio === "tlaquepaque") { rate = 48; dist = "4.5 km (Tlaquepaque)"; }
+    else if (municipio === "tonala") { rate = 70; dist = "9.2 km (Tonalá)"; }
+    else if (municipio === "tlajomulco") { rate = 125; dist = "18.5 km (Tlajomulco Sur/Payuca)"; }
+    else if (municipio === "elsalto") { rate = 135; dist = "21.0 km (El Salto)"; }
+
+    const profile = {
+        name, phone, email, cp, calle, num, colonia, municipio, ref,
+        rate, dist, isComplete: true, updatedAt: new Date().toISOString()
+    };
+
+    localStorage.setItem('bazar_user_profile', JSON.stringify(profile));
+    updateAccountBadgeUI();
+
+    alertBox.className = "p-3 rounded-xl text-xs font-mono leading-tight bg-emerald-950/60 border border-emerald-500/50 text-emerald-300 block";
+    alertBox.innerHTML = '🎉 <strong>¡Domicilio Guardado Exitosamente!</strong> Tu 5% de Cashback está activo. El costo estimado de flete Uber Flash a tu zona es de <strong>$' + rate.toFixed(2) + ' MXN</strong>.';
+
+    setTimeout(() => {
+        toggleAccountModal();
+    }, 1200);
+}
+
 
     function scrollCarousel(id, direction) {
         const el = document.getElementById(id);
@@ -282,7 +389,6 @@
         }
     }
 
-    // RENDERIZAR CARRUSEL DE EXACTAMENTE 2 PRODUCTOS EN PANTALLA
     function renderMobileList(items = appProducts) {
         const container = document.getElementById("mobile-product-carousel");
         if (!container) return;
@@ -344,7 +450,7 @@
                     </button>
 
                     ${isOpen ? `
-                        <div class="p-3 bg-slate-950 border-t border-slate-800/80 space-y-2 fade-in">
+                        <div class="p-3 bg-slate-950 border-t border-slate-800/80 space-y-2">
                             ${top3.map(p => `
                                 <div class="bg-slate-900 rounded-xl p-2 flex items-center justify-between gap-2 border border-slate-800">
                                     <img src="${p.img}" alt="${p.nombre}" class="w-10 h-10 object-contain rounded bg-slate-950 p-0.5 shrink-0" onerror="this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
@@ -451,13 +557,16 @@
         } catch(e) {}
         const count = cart.reduce((sum, i) => sum + (parseInt(i.quantity) || 0), 0);
         const subtotal = cart.reduce((sum, i) => sum + ((parseFloat(i.precio) || 0) * (parseInt(i.quantity) || 0)), 0);
+        
+        const profile = getSavedProfile();
+        const shippingRate = profile && profile.rate ? profile.rate : 35;
         const isFree = subtotal >= 1500 || count >= 10;
-        const shippingFinal = isFree ? 0 : (currentShippingCost !== null ? currentShippingCost : 0);
+        const shippingFinal = isFree ? 0 : (subtotal > 0 ? shippingRate : 0);
         const total = subtotal + shippingFinal;
 
         document.getElementById("app-cart-badge").innerText = count;
         document.getElementById("modal-subtotal-txt").innerText = `$${subtotal.toFixed(2)} MXN`;
-        document.getElementById("modal-shipping-txt").innerText = isFree ? "GRATIS ($0.00)" : (currentShippingCost !== null ? `$${shippingFinal.toFixed(2)} MXN` : "Pendiente Cotizar");
+        document.getElementById("modal-shipping-txt").innerText = isFree ? "GRATIS ($0.00)" : `$${shippingFinal.toFixed(2)} MXN`;
         document.getElementById("modal-total-txt").innerText = `$${total.toFixed(2)} MXN`;
 
         const container = document.getElementById("modal-cart-items");
@@ -488,24 +597,24 @@
         } catch(e) {}
         if (cart.length === 0) { alert('Agrega al menos un artículo a tu orden.'); return; }
 
-        const calle = document.getElementById("inputCalle").value.trim();
-        const num = document.getElementById("inputNum").value.trim();
-        const col = document.getElementById("inputColonia").value.trim();
-        const mun = document.getElementById("selectMunicipio").value;
-
-        if (!calle || !num || !col || !mun) {
-            alert('Por favor cotiza primero tu domicilio completo (Calle, Número, Colonia y Municipio).');
+        const profile = getSavedProfile();
+        if (!profile || !profile.isComplete) {
+            alert('Por favor registra primero tu domicilio en "Mi Cuenta" para activar tu 5% de Cashback y habilitar entrega Uber Flash.');
+            toggleAccountModal();
             return;
         }
 
         const subtotal = cart.reduce((sum, i) => sum + ((parseFloat(i.precio) || 0) * (parseInt(i.quantity) || 0)), 0);
-        const shipping = subtotal >= 1500 ? 0 : (currentShippingCost || 35);
+        const shipping = subtotal >= 1500 ? 0 : profile.rate;
         const total = subtotal + shipping;
 
         let msg = `🛵 *ORDEN DESPACHO UBER FLASH - BAZAR NFL*%0A`;
+        msg += `👤 *Cliente:* ${profile.name} (${profile.phone})%0A`;
         msg += `📍 *Origen:* Pedro Moreno 501 A, GDL Centro%0A`;
-        msg += `🏠 *Destino:* ${calle} #${num}, Col. ${col}, ${mun.toUpperCase()}%0A`;
-        msg += `🔐 *PIN Uber:* ${generatedPIN}%0A%0A`;
+        msg += `🏠 *Destino:* ${profile.calle} #${profile.num}, Col. ${profile.colonia}, CP ${profile.cp}, ${profile.municipio.toUpperCase()}%0A`;
+        if (profile.ref) msg += `📌 *Ref:* ${profile.ref}%0A`;
+        msg += `🔐 *PIN Uber:* ${generatedPIN}%0A`;
+        msg += `🎁 *Cashback Activo:* 5%%0A%0A`;
         msg += `📦 *PRODUCTOS:*%0A`;
         cart.forEach(i => {
             msg += `• *${i.quantity}x* ${i.nombre} ($${(parseFloat(i.precio)*parseInt(i.quantity)).toFixed(2)})%0A`;
@@ -519,6 +628,7 @@
     }
 
     document.addEventListener("DOMContentLoaded", () => {
+        updateAccountBadgeUI();
         renderMobileList();
         renderBoutiquesAccordions();
         syncAppCart();
