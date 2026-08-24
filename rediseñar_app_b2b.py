@@ -1,4 +1,13 @@
-<!DOCTYPE html>
+﻿import os
+import subprocess
+
+BASE_DIR = r"E:\sitios web"
+
+print("=" * 80)
+print("REESTRUCTURANDO APP MÓVIL: COTIZADOR POR DOMICILIO + 7 BOUTIQUES + ZERO-SEARCH RECOVERY")
+print("=" * 80)
+
+APP_REDESIGN_HTML = """<!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
     <meta charset="UTF-8" />
@@ -708,7 +717,7 @@
     }
 
     function showiOSInstallGuide() {
-        alert('📲 Para instalar en iPhone / iPad:\n\n1. Toca el botón de Compartir (icono de caja con flecha arriba).\n2. Desliza hacia abajo y selecciona "Agregar a la pantalla de inicio".\n3. ¡Listo! Tendrás el icono del Tigre en tu teléfono.');
+        alert('📲 Para instalar en iPhone / iPad:\\n\\n1. Toca el botón de Compartir (icono de caja con flecha arriba).\\n2. Desliza hacia abajo y selecciona \"Agregar a la pantalla de inicio\".\\n3. ¡Listo! Tendrás el icono del Tigre en tu teléfono.');
     }
 
     let deferredPrompt;
@@ -722,7 +731,7 @@
             deferredPrompt.prompt();
             deferredPrompt.userChoice.then(() => { deferredPrompt = null; });
         } else {
-            alert('Abre el menú de tu navegador y selecciona "Instalar aplicación" o "Agregar a la pantalla principal".');
+            alert('Abre el menú de tu navegador y selecciona \"Instalar aplicación\" o \"Agregar a la pantalla principal\".');
         }
     }
 
@@ -734,3 +743,30 @@
     </script>
 </body>
 </html>
+"""
+
+# Guardar en la raíz y en sitios-web
+paths = [
+    os.path.join(BASE_DIR, "app.html"),
+    os.path.join(BASE_DIR, "sitios-web", "app.html")
+]
+
+for p in paths:
+    if os.path.exists(os.path.dirname(p)):
+        with open(p, "w", encoding="utf-8") as f:
+            f.write(APP_REDESIGN_HTML)
+        print(f"✓ App reestructurada guardada en: {p}")
+
+# Desplegar a GitHub Pages
+print("\n=== DESPLEGANDO APP REDISEÑADA A GITHUB PAGES ===")
+sitios_repo = os.path.join(BASE_DIR, "sitios-web")
+if os.path.exists(os.path.join(sitios_repo, ".git")):
+    subprocess.run(["git", "add", "-A"], cwd=sitios_repo, check=True)
+    subprocess.run(["git", "commit", "-m", "feat(app): cotizador por domicilio real, 7 boutiques desplegables y zero-search recovery", "--allow-empty"], cwd=sitios_repo, capture_output=True)
+    res_sub = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=sitios_repo, capture_output=True, text=True)
+    print(f"🟢 Submódulo sitios-web -> Push: {'OK' if res_sub.returncode == 0 else res_sub.stderr.strip()}")
+
+subprocess.run(["git", "add", "-A"], cwd=BASE_DIR, check=True)
+subprocess.run(["git", "commit", "-m", "feat(ecosistema): App PWA con cotizador por domicilio, top 3 boutiques y zero-search recovery desplegada", "--allow-empty"], cwd=BASE_DIR, capture_output=True)
+res_root = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
+print(f"🟢 Monorepositorio Central -> Push: {'OK' if res_root.returncode == 0 else res_root.stderr.strip()}")
