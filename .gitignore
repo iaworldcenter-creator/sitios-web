@@ -1,4 +1,4 @@
-﻿.aider*
+.aider*
 *.bak
 __pycache__/
 *.pyc
@@ -9,3 +9,10 @@ dulces-bazar/
 kiosco-digital/
 mi-puesto-bazar/
 ofertas-y-liquidaciones/
+
+# Variables de entorno y llaves privadas
+.env
+.env.*
+*.token
+credentials.json
+
