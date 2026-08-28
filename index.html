@@ -323,83 +323,137 @@ if ('serviceWorker' in navigator) {
         </div>
     </header>
 
-    <main class="w-full max-w-[99%] 2xl:max-w-[1850px] mx-auto px-2 sm:px-4 py-6 flex-1">
-        <div class="flex flex-col lg:flex-row gap-8 items-start justify-center">
+        <main class="w-full max-w-[99%] 2xl:max-w-[1850px] mx-auto px-2 sm:px-4 py-4 flex-1">
+        
+        <!-- CONTENEDOR PRINCIPAL: SIDEBAR FILTROS (IZQUIERDA) + CATÁLOGO COMPLETO (DERECHA) -->
+        <div class="flex flex-col lg:flex-row gap-6 items-start justify-center">
             
-            <aside class="w-full lg:w-[340px] xl:w-[370px] shrink-0 bg-slate-900/90 rounded-3xl p-5 shadow-2xl relative" id="portal-sidebar-root">
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3.5 mb-3.5">
-                    <h3 class="font-mono text-sm font-black text-white uppercase tracking-wider flex items-center gap-2 truncate">
-                        <i class="fa-solid fa-layer-group text-amber-400"></i> Nuestras 7 Boutiques
-                    </h3>
-                </div>
-                <div class="mb-3.5">
-                    <span class="text-[10px] font-mono text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-500/30 px-3 py-1 rounded-xl block text-center uppercase tracking-widest">
-                        Compras Rápidas
-                    </span>
-                </div>
-
-                <nav class="flex flex-col gap-2" id="sidebar-boutiques-list"></nav>
-
-                
-<div class="mt-4 p-4 bg-slate-950 border-2 border-cyan-400 rounded-3xl shadow-[0_0_25px_rgba(6,182,212,0.25)] text-center space-y-3">
-    <div class="flex items-center justify-center gap-2">
-        <i class="fa-solid fa-mobile-screen text-cyan-400 text-lg"></i>
-        <span class="text-xs font-mono font-black text-white uppercase tracking-wider">App Móvil Pedidos Rápidos</span>
-    </div>
-    <div class="w-44 h-44 mx-auto bg-white p-2.5 rounded-2xl shadow-xl flex items-center justify-center shrink-0 aspect-square">
-        <img 
-            src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https%3A//iaworldcenter-creator.github.io/sitios-web/app.html&margin=1" 
-            alt="Código QR App BAZAR NFL" 
-            class="w-full h-full object-contain rounded-lg"
-            onerror="this.onerror=null; this.src='https://quickchart.io/qr?text=https%3A//iaworldcenter-creator.github.io/sitios-web/app.html&size=300';"
-        />
-    </div>
-    <div class="space-y-1">
-        <strong class="text-xs text-amber-400 block font-bold uppercase">Entrega Directa a tu Domicilio</strong>
-        <p class="text-[11px] text-slate-300 leading-snug">Utiliza nuestra App oficial para que tus compras lleguen volando a la puerta de tu casa o taller.</p>
-    </div>
-    <div class="flex flex-col gap-2 pt-1">
-        <a href="https://iaworldcenter-creator.github.io/sitios-web/app.html" target="_blank" class="flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-emerald-400 py-2.5 px-3 rounded-xl text-left transition shadow group">
-            <i class="fa-brands fa-google-play text-xl text-emerald-400 group-hover:scale-110 transition"></i>
-            <div>
-                <span class="text-[8px] font-mono text-slate-400 block uppercase leading-none">Disponible vía Web / PWA</span>
-                <strong class="text-xs text-white block leading-none font-bold">Instalar en Android</strong>
-            </div>
-        </a>
-        <a href="https://iaworldcenter-creator.github.io/sitios-web/app.html" target="_blank" class="flex items-center justify-center gap-3 bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-cyan-400 py-2.5 px-3 rounded-xl text-left transition shadow group">
-            <i class="fa-brands fa-apple text-2xl text-white group-hover:scale-110 transition"></i>
-            <div>
-                <span class="text-[8px] font-mono text-slate-400 block uppercase leading-none">Compatible con iPhone</span>
-                <strong class="text-xs text-white block leading-none font-bold">Instalar en iOS / Apple</strong>
-            </div>
-        </a>
-    </div>
-</div>
-
-
-                <div class="mt-5 pt-5 border-t border-slate-800 flex flex-col gap-3">
-                    <div class="bg-gradient-to-b from-slate-950 to-slate-900 border border-cyan-500/40 rounded-2xl p-4 flex flex-col gap-2 shadow-lg">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-wand-magic-sparkles text-cyan-400 text-sm"></i>
-                            <span class="text-[10px] font-mono font-bold uppercase text-cyan-300">Creado por Google Gemini</span>
-                        </div>
-                        <p class="text-[11px] text-slate-300 leading-snug">Concebido y programado con la Inteligencia Artificial de Google Gemini.</p>
-                        <a href="https://gemini.google.com" target="_blank" class="w-full bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black py-2 rounded-xl text-xs text-center uppercase tracking-wider transition active:scale-95 shadow">Suscribirse a Gemini</a>
-                    </div>
-                    <div class="bg-gradient-to-b from-slate-950 to-slate-900 border border-amber-500/40 rounded-2xl p-4 flex flex-col gap-2 shadow-lg">
-                        <div class="flex items-center gap-2">
-                            <i class="fa-solid fa-robot text-amber-400 text-sm"></i>
-                            <span class="text-[10px] font-mono font-bold uppercase text-amber-300">Desarrollado por Anti-Gravity</span>
-                        </div>
-                        <p class="text-[11px] text-slate-300 leading-snug">Desarrollado, compilado y desplegado por Anti-Gravity Copilot.</p>
-                        <a href="https://antigravity.google/download" target="_blank" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black py-2 rounded-xl text-xs text-center uppercase tracking-wider transition active:scale-95 shadow">Bajar Anti-Gravity Gratis</a>
-                    </div>
-                </div>
+            <!-- 1. BARRA LATERAL IZQUIERDA (FILTROS DE BÚSQUEDA Y FACETS) -->
+            <aside class="w-full lg:w-[280px] xl:w-[310px] shrink-0 bg-slate-900/90 rounded-3xl p-4 sm:p-5 shadow-2xl border border-slate-800" id="boutique-sidebar-root">
+                <!-- Inyectado dinámicamente por JS con estilo idéntico a la referencia CT -->
             </aside>
 
-            <!-- ESCAPARATE DE LAS 7 BOUTIQUES COMPLETAS -->
-            <section class="flex-1 w-full flex flex-col gap-8 min-w-0" id="showcase-container"></section>
+            <!-- 2. ÁREA DE CATÁLOGO PRINCIPAL (DERECHA, ANCHO COMPLETO) -->
+            <section class="flex-1 min-w-0 w-full flex flex-col gap-4">
+                
+                <!-- BANNER PROMOCIONAL SUPERIOR -->
+                <div class="w-full rounded-2xl overflow-hidden bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 border border-cyan-500/30 p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+                    <div class="flex items-center gap-3.5">
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/20 border border-cyan-400 flex items-center justify-center text-cyan-300 text-2xl shrink-0">
+                            <i class="fa-solid fa-bolt"></i>
+                        </div>
+                        <div>
+                            <span class="text-[10px] font-mono text-cyan-400 font-bold uppercase tracking-widest block">Distribución Directa Oficial</span>
+                            <h3 class="text-white font-bold text-sm sm:text-base">Precios de Mayoreo y Entrega Inmediata en Guadalajara</h3>
+                        </div>
+                    </div>
+                    <button onclick="document.getElementById('boutiqueSearchInput').focus()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-black px-4 py-2 rounded-xl text-xs uppercase font-mono tracking-wider shadow-lg shadow-cyan-500/30 transition active:scale-95 cursor-pointer shrink-0">
+                        Explorar Catálogo
+                    </button>
+                </div>
+
+                <!-- BARRA DE CONTROL SUPERIOR (RESULTADOS + VISTAS + PAGINACIÓN 1..7...N + ORDEN) -->
+                <div class="p-3.5 sm:p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-3">
+                    <div>
+                        <h2 class="text-sm sm:text-base font-black text-white font-mono uppercase tracking-wide" id="section-title">
+                            Resultados de Búsqueda
+                        </h2>
+                        <span class="results-count-text text-xs font-mono text-cyan-400 font-bold" id="results-count-txt">
+                            Mostrando 1 - 20 Productos
+                        </span>
+                    </div>
+
+                    <!-- CONTROLES A LA DERECHA: SELECTOR VISTA + PAGINACIÓN ARRIBA + ORDENAR -->
+                    <div class="flex items-center gap-3 flex-wrap justify-between w-full md:w-auto">
+                        <!-- Iconos Vista Grid / List -->
+                        <div class="bg-slate-950 p-1 rounded-xl border border-slate-800 flex items-center gap-1">
+                            <button onclick="setCatalogView('list')" title="Vista Listado Horizontal" aria-label="Vista Listado" class="btn-view-toggle-list p-2 rounded-lg bg-slate-900 border border-slate-800 text-slate-400 hover:text-white transition cursor-pointer">
+                                <i class="fa-solid fa-list-ul text-sm"></i>
+                            </button>
+                            <button onclick="setCatalogView('grid')" title="Vista Cuadrícula / Grupos" aria-label="Vista Cuadrícula" class="btn-view-toggle-grid p-2 rounded-lg bg-cyan-500 text-slate-950 font-black shadow-lg shadow-cyan-500/30 transition cursor-pointer">
+                                <i class="fa-solid fa-table-cells text-sm"></i>
+                            </button>
+                        </div>
+
+                        <!-- Paginación 1..7...N Arriba -->
+                        <div class="pagination-controls-container">
+                            <!-- Inyectado por JS -->
+                        </div>
+
+                        <!-- Selector Ordenar por -->
+                        <div class="hidden xl:flex items-center gap-1.5 text-xs font-mono text-slate-400">
+                            <span>Ordenar:</span>
+                            <select onchange="onSortChange(event)" class="bg-slate-950 border border-slate-800 text-slate-200 rounded-lg px-2 py-1 text-xs font-mono cursor-pointer">
+                                <option value="existencia">Existencia</option>
+                                <option value="precio_asc">Precio: Menor a Mayor</option>
+                                <option value="precio_desc">Precio: Mayor a Menor</option>
+                                <option value="nombre">Nombre A-Z</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CONTENEDOR DE PRODUCTOS (GRID DE 5 COLUMNAS EN ESCRITORIO, 2 EN MÓVIL, O LISTA HORIZONTAL) -->
+                <div id="products-grid-container" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 gap-3 sm:gap-4 pb-2">
+                    <!-- Inyectado por JS -->
+                </div>
+
+                <!-- PAGINACIÓN NUMÉRICA INFERIOR 1..7 ... N -->
+                <div class="pagination-controls-container p-4 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-xl flex justify-center items-center">
+                    <!-- Inyectado por JS -->
+                </div>
+
+            </section>
         </div>
+
+        <!-- BANNER INFERIOR DE CONVERSIÓN: CÓDIGO QR APP + DESCARGAS GOOGLE GEMINI & ANTI-GRAVITY (ANCHO COMPLETO AL FINAL) -->
+        <div class="mt-10 pt-8 border-t border-slate-800 grid grid-cols-1 md:grid-cols-3 gap-5">
+            <!-- 1. Código QR App Oficial -->
+            <div class="p-5 bg-slate-950 border-2 border-cyan-400 rounded-3xl shadow-[0_0_25px_rgba(6,182,212,0.25)] text-center flex flex-col justify-between items-center gap-3">
+                <div class="flex items-center gap-2 text-white font-mono font-black text-xs uppercase tracking-wider">
+                    <i class="fa-solid fa-mobile-screen text-cyan-400 text-lg"></i>
+                    <span>App Móvil Pedidos Rápidos</span>
+                </div>
+                <div class="w-36 h-36 bg-white p-2 rounded-2xl shadow-xl flex items-center justify-center aspect-square shrink-0">
+                    <img src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/codigo_qr_bazar_nfl.png" alt="Código QR App BAZAR NFL" width="144" height="144" loading="lazy" decoding="async" class="w-full h-full object-contain rounded-lg" onerror="this.onerror=null;this.src='https://quickchart.io/qr?text=https%3A//iaworldcenter-creator.github.io/sitios-web/app.html&size=300';" />
+                </div>
+                <p class="text-[11px] text-slate-300">Escanea con tu cámara para pedir por Uber Flash con código PIN.</p>
+                <a href="https://iaworldcenter-creator.github.io/sitios-web/app.html" target="_blank" class="w-full bg-slate-900 hover:bg-slate-800 border border-slate-700 hover:border-emerald-400 text-white font-bold py-2 rounded-xl text-xs flex items-center justify-center gap-2 transition">
+                    <i class="fa-brands fa-google-play text-emerald-400"></i> <span>Abrir App Oficial</span>
+                </a>
+            </div>
+
+            <!-- 2. Tarjeta Google Gemini AI -->
+            <div class="bg-gradient-to-b from-slate-950 to-slate-900 border border-cyan-500/40 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-xl">
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2 text-cyan-300 font-mono font-bold text-xs uppercase">
+                        <i class="fa-solid fa-wand-magic-sparkles text-cyan-400 text-base"></i>
+                        <span>Creado con Google Gemini</span>
+                    </div>
+                    <h4 class="text-white font-bold text-sm">Inteligencia Artificial para tu Negocio</h4>
+                    <p class="text-slate-300 text-xs leading-relaxed">Concebido y programado con la IA más avanzada de Google para crear tiendas de ultra velocidad.</p>
+                </div>
+                <a href="https://gemini.google.com" target="_blank" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 text-white font-bold py-2 rounded-xl text-xs text-center flex items-center justify-center gap-2 transition">
+                    <i class="fa-solid fa-robot"></i> <span>Suscribir a Google Gemini</span>
+                </a>
+            </div>
+
+            <!-- 3. Tarjeta Anti-Gravity -->
+            <div class="bg-gradient-to-b from-slate-950 to-slate-900 border border-amber-500/40 rounded-3xl p-5 flex flex-col justify-between gap-3 shadow-xl">
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2 text-amber-300 font-mono font-bold text-xs uppercase">
+                        <i class="fa-solid fa-laptop-code text-amber-400 text-base"></i>
+                        <span>Desarrollado por Anti-Gravity</span>
+                    </div>
+                    <h4 class="text-white font-bold text-sm">Agente Autónomo de Ingeniería de Software</h4>
+                    <p class="text-slate-300 text-xs leading-relaxed">Desarrollado, optimizado y desplegado por Anti-Gravity Copilot. Crea tus propias páginas gratis.</p>
+                </div>
+                <a href="https://github.com" target="_blank" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black py-2 rounded-xl text-xs text-center flex items-center justify-center gap-2 transition">
+                    <i class="fa-brands fa-github"></i> <span>Descarga Anti-Gravity Gratis</span>
+                </a>
+            </div>
+        </div>
+
     </main>
 
     
