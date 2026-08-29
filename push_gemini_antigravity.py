@@ -12,7 +12,7 @@ if os.path.exists(lock_file):
 
 print("Staging and pushing pc-custom-lab...")
 subprocess.run(["git", "add", "-A"], cwd=PC_DIR)
-subprocess.run(["git", "commit", "-m", "feat(search): motor de busqueda universal bilingue (raton/mouse, teclado/keyboard, UPS/regulador), cache buster fresco y triple respaldo"], cwd=PC_DIR)
+subprocess.run(["git", "commit", "-m", "feat(branding): integracion de botones Suscribete a Gemini y Descargar y Prueba Anti-Gravity en cabecera y barra lateral con triple respaldo"], cwd=PC_DIR)
 p1 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=PC_DIR, capture_output=True, text=True)
 print(f" -> pc-custom-lab push code: {p1.returncode}")
 
@@ -24,7 +24,7 @@ if os.path.exists(lock_root):
 
 print("Staging Root Monorepo...")
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR)
-subprocess.run(["git", "commit", "-m", "fix(ecosistema): sincronizacion de motor universal bilingue y triple respaldo"], cwd=BASE_DIR)
+subprocess.run(["git", "commit", "-m", "fix(ecosistema): sincronizacion de botones Gemini y Anti-Gravity y triple respaldo"], cwd=BASE_DIR)
 p2 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f" -> root monorepo push code: {p2.returncode}")
 print("=== PUSH FINALIZADO CON ÉXITO ===")
