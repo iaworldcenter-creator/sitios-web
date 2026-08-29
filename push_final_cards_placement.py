@@ -12,7 +12,7 @@ if os.path.exists(lock_file):
 
 print("Staging and pushing pc-custom-lab...")
 subprocess.run(["git", "add", "-A"], cwd=PC_DIR)
-subprocess.run(["git", "commit", "-m", "feat(ux): sidebar sticky en desktop/TV, botones Google Play y App Store en tarjeta QR, y tarjetas oficiales Gemini y Anti-Gravity"], cwd=PC_DIR)
+subprocess.run(["git", "commit", "-m", "fix(ui): colocacion exacta de tarjetas Gemini AI y Anti-Gravity debajo del codigo QR de la app movil con version v=20260829_1040"], cwd=PC_DIR)
 p1 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=PC_DIR, capture_output=True, text=True)
 print(f" -> pc-custom-lab push code: {p1.returncode}")
 
@@ -24,7 +24,7 @@ if os.path.exists(lock_root):
 
 print("Staging Root Monorepo...")
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR)
-subprocess.run(["git", "commit", "-m", "fix(ecosistema): sincronizacion de sidebar sticky, botones Google Play / App Store y tarjetas Gemini / Anti-Gravity"], cwd=BASE_DIR)
+subprocess.run(["git", "commit", "-m", "fix(ecosistema): sincronizacion de tarjetas Gemini y Anti-Gravity debajo del codigo QR en PC Custom Lab"], cwd=BASE_DIR)
 p2 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f" -> root monorepo push code: {p2.returncode}")
 print("=== PUSH FINALIZADO CON ÉXITO ===")
