@@ -12,7 +12,7 @@ if os.path.exists(lock_file):
 
 print("Staging and pushing pc-custom-lab...")
 subprocess.run(["git", "add", "-A"], cwd=PC_DIR)
-subprocess.run(["git", "commit", "-m", "fix(checkout): reparacion de script de checkout, visualizacion de foto grande, controles de cantidad (+ / - / basurero), descuento mayoreo y desglose economico"], cwd=PC_DIR)
+subprocess.run(["git", "commit", "-m", "fix(catalog): reordenamiento estricto de Fuentes de Poder: 1. Fuentes Modulares y 80 Plus, 2. Fuentes ATX con cables, 3. Gabinetes con fuente y traslado de ventiladores a enfriamiento"], cwd=PC_DIR)
 p1 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=PC_DIR, capture_output=True, text=True)
 print(f" -> pc-custom-lab push code: {p1.returncode}")
 
@@ -24,7 +24,7 @@ if os.path.exists(lock_root):
 
 print("Staging Root Monorepo...")
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR)
-subprocess.run(["git", "commit", "-m", "fix(ecosistema): reparacion de renderizado de checkout y controles en PC Custom Lab"], cwd=BASE_DIR)
+subprocess.run(["git", "commit", "-m", "fix(ecosistema): sincronizacion de catalogo y reordenamiento de Fuentes de Poder en PC Custom Lab"], cwd=BASE_DIR)
 p2 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f" -> root monorepo push code: {p2.returncode}")
 print("=== PUSH FINALIZADO CON ÉXITO ===")
