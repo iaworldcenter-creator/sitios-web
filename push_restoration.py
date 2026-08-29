@@ -30,7 +30,7 @@ if os.path.exists(lock_file):
 
 print("Staging and pushing pc-custom-lab...")
 subprocess.run(["git", "add", "-A"], cwd=PC_DIR)
-subprocess.run(["git", "commit", "-m", "fix(styles): restauracion oficial de Tailwind CSS CDN, dataset 16139 memoria completa, navegacion reactiva y estilos clasicos de marca"], cwd=PC_DIR)
+subprocess.run(["git", "commit", "-m", "fix(architecture): restauracion integral del diseno original, 24 departamentos, 16139 productos en memoria, auto-scroll fluido y navegacion total"], cwd=PC_DIR)
 p1 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=PC_DIR, capture_output=True, text=True)
 print(f" -> pc-custom-lab push code: {p1.returncode}")
 
@@ -42,7 +42,7 @@ if os.path.exists(lock_root):
 
 print("Staging Root Monorepo...")
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR)
-subprocess.run(["git", "commit", "-m", "fix(ecosistema): correccion universal de carga de Tailwind CSS y navegacion reactiva en todos los sitios"], cwd=BASE_DIR)
+subprocess.run(["git", "commit", "-m", "fix(matriz): restauracion del portal Matriz intacto y sincronizacion de PC Custom Lab"], cwd=BASE_DIR)
 p2 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f" -> root monorepo push code: {p2.returncode}")
 print("=== PUSH FINALIZADO CON ÉXITO ===")
