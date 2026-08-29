@@ -1,967 +1,967 @@
 <!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>BAZAR NFL.GDL | App</title>
-    <meta name="description" content="Portal matriz del ecosistema comercial en Guadalajara Centro (Pedro Moreno 501 A). Acceso a todas las tiendas especializadas con envíos el mismo día.">
-    <link rel="canonical" href="https://iaworldcenter-creator.github.io/sitios-web/app.html">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#030712">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>BAZAR NFL.GDL | App</title>
+  <meta name="description" content="Portal matriz del ecosistema comercial en Guadalajara Centro (Pedro Moreno 501 A). Acceso a todas las tiendas especializadas con envíos el mismo día.">
+  <link rel="canonical" href="https://iaworldcenter-creator.github.io/sitios-web/app.html">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#030712">
 
-    <!-- SEGURIDAD PERIMETRAL: CSP, COOP, X-CONTENT-TYPE & REFERRER POLICY -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; img-src 'self' https: data: blob:; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com data:; connect-src 'self' https: data: blob:; frame-ancestors 'self';">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <!-- SEGURIDAD PERIMETRAL: CSP, COOP, X-CONTENT-TYPE & REFERRER POLICY -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; img-src 'self' https: data: blob:; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com data:; connect-src 'self' https: data: blob:; ">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
-    <!-- OPTIMIZACIÓN DE CONEXIONES -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preconnect" href="https://static.ctonline.mx" crossorigin>
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://static.ctonline.mx">
+  <!-- OPTIMIZACIÓN DE CONEXIONES -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://static.ctonline.mx" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://static.ctonline.mx">
 
-    <!-- PRECARGA PRIORITARIA DE FUENTES WOFF2 (AHORRO 90ms LIGHTHOUSE) -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <!-- PRECARGA PRIORITARIA DE FUENTES WOFF2 (AHORRO 90ms LIGHTHOUSE) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
-    <!-- FONT AWESOME ESTILOS CON font-display: swap ASIGNADO Y ANULACIÓN MÉTRICA -->
-    <style>
-        @font-face {
-            font-family: 'Font Awesome 6 Free';
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Font Awesome 6 Brands';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Font Awesome 6 Free';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2') format('woff2');
-        }
+  <!-- FONT AWESOME ESTILOS CON font-display: swap ASIGNADO Y ANULACIÓN MÉTRICA -->
+  <style>
+    @font-face {
+      font-family: 'Font Awesome 6 Free';
+      font-style: normal;
+      font-weight: 900;
+      font-display: swap;
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Font Awesome 6 Brands';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Font Awesome 6 Free';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2') format('woff2');
+    }
 
-        @font-face {
-            font-family: 'Primary-Architect-Font';
-            src: local('Segoe UI'), local('SF Pro Text'), local('Roboto'), local('Helvetica Neue'), local('Arial');
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Fallback-Engineered';
-            src: local('Arial');
-            ascent-override: 92%;
-            descent-override: 18%;
-            line-gap-override: 0%;
-            size-adjust: 97%;
-        }
-        :root {
-            font-family: 'Primary-Architect-Font', 'Fallback-Engineered', system-ui, -apple-system, sans-serif;
-        }
-        body {
-            margin: 0;
-            background-color: #030712;
-            color: #f8fafc;
-            min-height: 100vh;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-        }
+    @font-face {
+      font-family: 'Primary-Architect-Font';
+      src: local('Segoe UI'), local('SF Pro Text'), local('Roboto'), local('Helvetica Neue'), local('Arial');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Fallback-Engineered';
+      src: local('Arial');
+      ascent-override: 92%;
+      descent-override: 18%;
+      line-gap-override: 0%;
+      size-adjust: 97%;
+    }
+    :root {
+      font-family: 'Primary-Architect-Font', 'Fallback-Engineered', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      margin: 0;
+      background-color: #030712;
+      color: #f8fafc;
+      min-height: 100vh;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        /* Contención dimensional estricta (CLS = 0.000) */
-        .product-img-wrapper, .responsive-media {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            contain: layout paint;
-            content-visibility: auto;
-            contain-intrinsic-size: auto 240px;
-        }
-        .product-img-wrapper img, .responsive-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            aspect-ratio: 1 / 1;
-        }
+    /* Contención dimensional estricta (CLS = 0.000) */
+    .product-img-wrapper, .responsive-media {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      contain: layout paint;
+      content-visibility: auto;
+      contain-intrinsic-size: auto 240px;
+    }
+    .product-img-wrapper img, .responsive-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      aspect-ratio: 1 / 1;
+    }
 
-        /* Áreas táctiles WCAG 2.2 AA (Mínimo 48x48px en interactivos móviles) */
-        button, a, select, input, .btn-action, .touch-target {
-            min-height: 48px;
-            min-width: 48px;
-            touch-action: manipulation;
-        }
-        .action-button-icon {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .action-button-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 48px;
-            min-height: 48px;
-            width: 100%;
-            height: 100%;
-        }
+    /* Áreas táctiles WCAG 2.2 AA (Mínimo 48x48px en interactivos móviles) */
+    button, a, select, input, .btn-action, .touch-target {
+      min-height: 48px;
+      min-width: 48px;
+      touch-action: manipulation;
+    }
+    .action-button-icon {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .action-button-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 48px;
+      min-height: 48px;
+      width: 100%;
+      height: 100%;
+    }
 
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-        .hidden { display: none !important; }
-    </style>
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .hidden { display: none !important; }
+  </style>
 
-    <!-- FONT AWESOME CSS DIFERIDO -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <!-- FONT AWESOME CSS DIFERIDO -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
-    <!-- TAILWIND CSS COMPILADO O CDN ASÍNCRONO -->
-    <link rel="preload" href="./assets/css/tailwind-built.css" as="style" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com';" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="./assets/css/tailwind-built.css"></noscript>
+  <!-- TAILWIND CSS COMPILADO O CDN ASÍNCRONO -->
+  <link rel="preload" href="./assets/css/tailwind-built.css" as="style" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com';" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="./assets/css/tailwind-built.css"></noscript>
 
-    <!-- CAPTURA GLOBAL DE ERRORES Y BLINDAJE DE CONSOLA (LIGHTHOUSE CLEAN CONSOLE) -->
-    <script>
-        window.addEventListener('error', function(e) {
-            if (e.target && (e.target.tagName === 'IMG' || e.target.tagName === 'SCRIPT')) {
-                e.preventDefault();
-            }
-        }, true);
-        window.addEventListener('unhandledrejection', function(e) {
-            e.preventDefault();
+  <!-- CAPTURA GLOBAL DE ERRORES Y BLINDAJE DE CONSOLA (LIGHTHOUSE CLEAN CONSOLE) -->
+  <script>
+    window.addEventListener('error', function(e) {
+      if (e.target && (e.target.tagName === 'IMG' || e.target.tagName === 'SCRIPT')) {
+        e.preventDefault();
+      }
+    }, true);
+    window.addEventListener('unhandledrejection', function(e) {
+      e.preventDefault();
+    });
+
+    if (window.trustedTypes && window.trustedTypes.createPolicy) {
+      try {
+        window.trustedTypesPolicy = window.trustedTypes.createPolicy('default', {
+          createHTML: function(s) { return s; },
+          createScript: function(s) { return s; },
+          createScriptURL: function(s) { return s; }
         });
+      } catch(err) {}
+    }
 
-        if (window.trustedTypes && window.trustedTypes.createPolicy) {
-            try {
-                window.trustedTypesPolicy = window.trustedTypes.createPolicy('default', {
-                    createHTML: function(s) { return s; },
-                    createScript: function(s) { return s; },
-                    createScriptURL: function(s) { return s; }
-                });
-            } catch(err) {}
-        }
-
-        if ('modelContext' in navigator && navigator.modelContext && navigator.modelContext.registerTool) {
-            try {
-                navigator.modelContext.registerTool({
-                    name: 'search_catalog',
-                    description: 'Busca productos en el catálogo comercial.',
-                    inputSchema: {
-                        type: 'object',
-                        properties: { query: { type: 'string', description: 'Término de búsqueda' } },
-                        required: ['query']
-                    },
-                    execute: async ({ query }) => {
-                        return { status: 'success', message: 'Búsqueda ejecutada' };
-                    }
-                });
-            } catch(e) {}
-        }
-    </script>
+    if ('modelContext' in navigator && navigator.modelContext && navigator.modelContext.registerTool) {
+      try {
+        navigator.modelContext.registerTool({
+          name: 'search_catalog',
+          description: 'Busca productos en el catálogo comercial.',
+          inputSchema: {
+            type: 'object',
+            properties: { query: { type: 'string', description: 'Término de búsqueda' } },
+            required: ['query']
+          },
+          execute: async ({ query }) => {
+            return { status: 'success', message: 'Búsqueda ejecutada' };
+          }
+        });
+      } catch(e) {}
+    }
+  </script>
 
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950 pb-20 select-none">
 
-    <!-- CABECERA MÓVIL CON MI CUENTA -->
-                <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
-        <!-- LÍNEA 1: Barra Horizontal de Ecosistema con Neón Activo & Touch Scroll -->
-        <div class="w-full border-b border-slate-800/80 bg-slate-950/90 px-2 sm:px-4 py-1.5 flex items-center justify-between gap-2 text-xs overflow-hidden">
-            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar whitespace-nowrap flex-1 py-0.5 scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
-                <span class="px-2.5 py-1 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-black text-[10px] uppercase shrink-0">
-                    ⚡ Envío Exprés El Mismo Día
-                </span>
-                <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="px-3.5 py-1 rounded-xl bg-amber-500/20 border-2 border-amber-400 text-amber-300 shadow-[0_0_18px_rgba(251,191,36,0.8)] text-xs font-black flex items-center gap-1.5 shrink-0 scale-105 transition"><i class="fa-solid fa-house text-[11px]"></i> Matriz</a>
-                <a href="https://iaworldcenter-creator.github.io/pc-custom-lab/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-microchip text-[11px]"></i> PC Custom</a>
-                <a href="https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-300 text-cyan-200 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-gem text-[11px]"></i> Vía MX</a>
-                <a href="https://iaworldcenter-creator.github.io/cigarros-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-amber-500 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-smoking text-[11px]"></i> Cigarros</a>
-                <a href="https://iaworldcenter-creator.github.io/dulces-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-pink-500 text-pink-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-candy-cane text-[11px]"></i> Dulces</a>
-                <a href="https://iaworldcenter-creator.github.io/kiosco-digital/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500 text-indigo-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-newspaper text-[11px]"></i> Kiosco</a>
-                <a href="https://iaworldcenter-creator.github.io/mi-puesto-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-emerald-500 text-emerald-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-store text-[11px]"></i> Mi Puesto</a>
-                <a href="https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones-/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-red-500 text-red-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-tags text-[11px]"></i> Liquidaciones</a>
-                <span class="text-slate-700 shrink-0">|</span>
-                <a href="https://gemini.google.com" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i> Gemini AI</a>
-                <a href="https://antigravity.google/download" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-amber-400 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-download text-amber-400"></i> Anti-Gravity</a>
-            </div>
-            <div class="shrink-0 flex items-center pl-1 border-l border-slate-800">
-                <button id="header-account-btn" onclick="toggleAccountModal()" aria-label="Mi Cuenta, Domicilio y Cashback" title="Mi Cuenta y Cashback" class="cursor-pointer active:scale-95 transition"></button>
-            </div>
+  <!-- CABECERA MÓVIL CON MI CUENTA -->
+        <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
+    <!-- LÍNEA 1: Barra Horizontal de Ecosistema con Neón Activo & Touch Scroll -->
+    <div class="w-full border-b border-slate-800/80 bg-slate-950/90 px-2 sm:px-4 py-1.5 flex items-center justify-between gap-2 text-xs overflow-hidden">
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar whitespace-nowrap flex-1 py-0.5 scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+        <span class="px-2.5 py-1 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-black text-[10px] uppercase shrink-0">
+          ⚡ Envío Exprés El Mismo Día
+        </span>
+        <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="px-3.5 py-1 rounded-xl bg-amber-500/20 border-2 border-amber-400 text-amber-300 shadow-[0_0_18px_rgba(251,191,36,0.8)] text-xs font-black flex items-center gap-1.5 shrink-0 scale-105 transition"><i class="fa-solid fa-house text-[11px]"></i> Matriz</a>
+        <a href="https://iaworldcenter-creator.github.io/pc-custom-lab/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-microchip text-[11px]"></i> PC Custom</a>
+        <a href="https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-300 text-cyan-200 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-gem text-[11px]"></i> Vía MX</a>
+        <a href="https://iaworldcenter-creator.github.io/cigarros-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-amber-500 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-smoking text-[11px]"></i> Cigarros</a>
+        <a href="https://iaworldcenter-creator.github.io/dulces-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-pink-500 text-pink-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-candy-cane text-[11px]"></i> Dulces</a>
+        <a href="https://iaworldcenter-creator.github.io/kiosco-digital/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500 text-indigo-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-newspaper text-[11px]"></i> Kiosco</a>
+        <a href="https://iaworldcenter-creator.github.io/mi-puesto-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-emerald-500 text-emerald-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-store text-[11px]"></i> Mi Puesto</a>
+        <a href="https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones-/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-red-500 text-red-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-tags text-[11px]"></i> Liquidaciones</a>
+        <span class="text-slate-700 shrink-0">|</span>
+        <a href="https://gemini.google.com" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i> Gemini AI</a>
+        <a href="https://antigravity.google/download" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-amber-400 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-download text-amber-400"></i> Anti-Gravity</a>
+      </div>
+      <div class="shrink-0 flex items-center pl-1 border-l border-slate-800">
+        <button id="header-account-btn" onclick="toggleAccountModal()" aria-label="Mi Cuenta, Domicilio y Cashback" title="Mi Cuenta y Cashback" class="cursor-pointer active:scale-95 transition"></button>
+      </div>
+    </div>
+
+    <!-- LÍNEA 2: Barra Principal con Buscador Blanco + H1 Tienda + Canasta -->
+    <div class="max-w-[99%] 2xl:max-w-[1850px] mx-auto px-2 sm:px-4 py-2.5 flex flex-row items-center justify-between gap-2 sm:gap-4">
+      
+      <!-- Logo y Marca Oficial con H1 -->
+      <div class="flex items-center gap-2.5 cursor-pointer shrink-0" onclick="document.getElementById('pie-de-pagina').scrollIntoView({ behavior: 'smooth' });">
+        <div class="relative w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
+          <img src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" alt="Logo BAZAR NFL.GDL" width="44" height="44" fetchpriority="high" decoding="async" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full object-cover border-2 border-amber-400 shadow-[0_0_18px_rgba(251,191,36,0.8)] shrink-0" onerror="this.onerror=null;this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
         </div>
-
-        <!-- LÍNEA 2: Barra Principal con Buscador Blanco + H1 Tienda + Canasta -->
-        <div class="max-w-[99%] 2xl:max-w-[1850px] mx-auto px-2 sm:px-4 py-2.5 flex flex-row items-center justify-between gap-2 sm:gap-4">
-            
-            <!-- Logo y Marca Oficial con H1 -->
-            <div class="flex items-center gap-2.5 cursor-pointer shrink-0" onclick="document.getElementById('pie-de-pagina').scrollIntoView({ behavior: 'smooth' });">
-                <div class="relative w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
-                    <img src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" alt="Logo BAZAR NFL.GDL" width="44" height="44" fetchpriority="high" decoding="async" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full object-cover border-2 border-amber-400 shadow-[0_0_18px_rgba(251,191,36,0.8)] shrink-0" onerror="this.onerror=null;this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
-                </div>
-                <div class="flex flex-col min-w-0">
-                    <h1 class="font-black text-xs sm:text-lg text-white tracking-wider uppercase leading-tight truncate max-w-[110px] sm:max-w-none">BAZAR NFL.GDL</h1>
-                    <span class="text-[8px] sm:text-[10px] font-mono text-amber-400 uppercase tracking-tight flex items-center gap-0.5 truncate">
-                        <i class="fa-solid fa-location-dot text-amber-400"></i> Pedro Moreno 501 A
-                    </span>
-                </div>
-            </div>
-
-            <!-- Buscador Search-First Blanco con Botón BUSCAR -->
-            <div class="flex-1 min-w-0 relative">
-                <div class="flex items-center bg-white rounded-full border-2 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.35)] px-3 sm:px-4 py-1 gap-2">
-                    <i class="fa-solid fa-magnifying-glass text-slate-500 text-sm shrink-0"></i>
-                    <input type="text" id="boutiqueSearchInput" name="q" aria-label="Buscar en BAZAR NFL.GDL" autocomplete="off" spellcheck="false" placeholder="Busca, encuentra y compra rápido en las 7 boutiques..." class="flex-1 min-w-0 bg-transparent border-0 outline-none text-slate-950 font-bold text-xs sm:text-sm placeholder-slate-400" oninput="typeof onBoutiqueSearch==='function'?onBoutiqueSearch(event):typeof onMasterSearch==='function'?onMasterSearch(event):null" />
-                    <button onclick="typeof clearBoutiqueSearch==='function'?clearBoutiqueSearch():typeof clearMasterSearch==='function'?clearMasterSearch():null" id="clear-search-btn" aria-label="Limpiar búsqueda" class="hidden text-slate-400 hover:text-slate-700 text-xs px-1 font-bold cursor-pointer shrink-0"><i class="fa-solid fa-xmark"></i></button>
-                    <button onclick="typeof executeBoutiqueSearch==='function'?executeBoutiqueSearch():typeof executeMasterSearch==='function'?executeMasterSearch():null" aria-label="Buscar" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black px-3.5 sm:px-6 py-1.5 rounded-full text-[10px] sm:text-xs uppercase tracking-wider transition active:scale-95 shrink-0 shadow cursor-pointer">BUSCAR</button>
-                </div>
-                <div id="boutique-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2.5 flex flex-col gap-2 max-h-96 overflow-y-auto no-scrollbar"></div>
-                <div id="master-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2.5 flex flex-col gap-2 max-h-96 overflow-y-auto no-scrollbar"></div>
-            </div>
-
-            <!-- Canasta / Carrito con Total en Vivo -->
-            <button onclick="toggleCartDrawer()" aria-label="Abrir canasta de compras" title="Ver Carrito" class="flex items-center gap-2 sm:gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-3 sm:px-4 py-2 rounded-xl transition cursor-pointer active:scale-95 shadow shrink-0 group">
-                <div class="relative">
-                    <i class="fa-solid fa-cart-shopping text-amber-400 text-sm sm:text-base group-hover:scale-110 transition"></i>
-                    <span id="boutique-cart-badge" class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 font-mono font-black text-[9px] rounded-full w-4 h-4 flex items-center justify-center shadow">0</span>
-                    <span id="portal-cart-badge" class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 font-mono font-black text-[9px] rounded-full w-4 h-4 flex items-center justify-center shadow hidden">0</span>
-                </div>
-                <div class="flex flex-col text-left">
-                    <span class="text-[9px] font-mono text-slate-400 uppercase leading-none hidden sm:inline">Canasta</span>
-                    <span id="boutique-cart-total" class="text-xs font-mono font-bold text-amber-400">$0.00 MXN</span>
-                    <span id="portal-cart-total" class="text-xs font-mono font-bold text-amber-400 hidden">$0.00 MXN</span>
-                </div>
-            </button>
+        <div class="flex flex-col min-w-0">
+          <h1 class="font-black text-xs sm:text-lg text-white tracking-wider uppercase leading-tight truncate max-w-[110px] sm:max-w-none">BAZAR NFL.GDL</h1>
+          <span class="text-[8px] sm:text-[10px] font-mono text-amber-400 uppercase tracking-tight flex items-center gap-0.5 truncate">
+            <i class="fa-solid fa-location-dot text-amber-400"></i> Pedro Moreno 501 A
+          </span>
         </div>
-    </header>
+      </div>
 
-    <main class="max-w-md mx-auto w-full px-3 py-3 space-y-3.5 flex-1">
-        
-        <!-- SÚPER-BUSCADOR -->
+      <!-- Buscador Search-First Blanco con Botón BUSCAR -->
+      <div class="flex-1 min-w-0 relative">
+        <div class="flex items-center bg-white rounded-full border-2 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.35)] px-3 sm:px-4 py-1 gap-2">
+          <i class="fa-solid fa-magnifying-glass text-slate-500 text-sm shrink-0"></i>
+          <input type="text" id="boutiqueSearchInput" name="q" aria-label="Buscar en BAZAR NFL.GDL" autocomplete="off" spellcheck="false" placeholder="Busca, encuentra y compra rápido en las 7 boutiques..." class="flex-1 min-w-0 bg-transparent border-0 outline-none text-slate-950 font-bold text-xs sm:text-sm placeholder-slate-400" oninput="typeof onBoutiqueSearch==='function'?onBoutiqueSearch(event):typeof onMasterSearch==='function'?onMasterSearch(event):null" />
+          <button onclick="typeof clearBoutiqueSearch==='function'?clearBoutiqueSearch():typeof clearMasterSearch==='function'?clearMasterSearch():null" id="clear-search-btn" aria-label="Limpiar búsqueda" class="hidden text-slate-400 hover:text-slate-700 text-xs px-1 font-bold cursor-pointer shrink-0"><i class="fa-solid fa-xmark"></i></button>
+          <button onclick="typeof executeBoutiqueSearch==='function'?executeBoutiqueSearch():typeof executeMasterSearch==='function'?executeMasterSearch():null" aria-label="Buscar" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black px-3.5 sm:px-6 py-1.5 rounded-full text-[10px] sm:text-xs uppercase tracking-wider transition active:scale-95 shrink-0 shadow cursor-pointer">BUSCAR</button>
+        </div>
+        <div id="boutique-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2.5 flex flex-col gap-2 max-h-96 overflow-y-auto no-scrollbar"></div>
+        <div id="master-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2.5 flex flex-col gap-2 max-h-96 overflow-y-auto no-scrollbar"></div>
+      </div>
+
+      <!-- Canasta / Carrito con Total en Vivo -->
+      <button onclick="toggleCartDrawer()" aria-label="Abrir canasta de compras" title="Ver Carrito" class="flex items-center gap-2 sm:gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-3 sm:px-4 py-2 rounded-xl transition cursor-pointer active:scale-95 shadow shrink-0 group">
         <div class="relative">
-            <div class="flex items-center bg-white rounded-2xl px-3.5 py-2 gap-2 shadow-lg border-2 border-cyan-400">
-                <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
-                <input type="text" id="mobileSearchInput" autocomplete="off" placeholder="Busca pieza, SKU o falla (ej. RAM, 4070, paleta)..." class="flex-1 bg-transparent border-0 outline-none text-slate-950 font-bold text-xs placeholder-slate-400" oninput="onMobileSearch(event)" />
-                <button onclick="clearMobileSearch()" id="clear-search-btn" class="hidden text-slate-400 hover:text-slate-600 text-xs px-1 font-bold"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <div id="mobile-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-40 p-2.5 flex flex-col gap-2 max-h-80 overflow-y-auto no-scrollbar"></div>
+          <i class="fa-solid fa-cart-shopping text-amber-400 text-sm sm:text-base group-hover:scale-110 transition"></i>
+          <span id="boutique-cart-badge" class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 font-mono font-black text-[9px] rounded-full w-4 h-4 flex items-center justify-center shadow">0</span>
+          <span id="portal-cart-badge" class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 font-mono font-black text-[9px] rounded-full w-4 h-4 flex items-center justify-center shadow hidden">0</span>
         </div>
-
-        <!-- 7 BOUTIQUES -->
-        <div class="space-y-2">
-            <div class="flex justify-between items-center px-1">
-                <span class="text-xs font-mono font-bold text-white uppercase flex items-center gap-1.5">
-                    <i class="fa-solid fa-layer-group text-amber-400"></i> Nuestras 7 Boutiques
-                </span>
-                <span class="text-[9px] font-mono text-cyan-400 font-bold">Toca para ver top 3</span>
-            </div>
-            <div class="grid grid-cols-1 gap-2" id="boutiques-accordion-list"></div>
+        <div class="flex flex-col text-left">
+          <span class="text-[9px] font-mono text-slate-400 uppercase leading-none hidden sm:inline">Canasta</span>
+          <span id="boutique-cart-total" class="text-xs font-mono font-bold text-amber-400">$0.00 MXN</span>
+          <span id="portal-cart-total" class="text-xs font-mono font-bold text-amber-400 hidden">$0.00 MXN</span>
         </div>
+      </button>
+    </div>
+  </header>
 
-        <!-- CARRUSEL 2 PRODUCTOS CON FLECHAS -->
-        <div class="space-y-2 pt-1">
-            <div class="flex justify-between items-center px-1">
-                <span class="text-xs font-mono font-bold text-slate-400 uppercase">Catálogo de Entrega Inmediata</span>
-                <span class="text-[10px] font-mono text-cyan-400 font-bold">Desliza a los lados &rarr;</span>
-            </div>
-
-            <div class="relative">
-                <button onclick="scrollCarousel('mobile-product-carousel', -1)" class="absolute -left-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-slate-900/95 border border-cyan-400 text-cyan-300 flex items-center justify-center shadow-lg active:scale-90">
-                    <i class="fa-solid fa-chevron-left text-[10px]"></i>
-                </button>
-                
-                <div id="mobile-product-carousel" class="flex flex-row overflow-x-auto flex-nowrap gap-2.5 pb-2 no-scrollbar snap-x snap-mandatory scroll-smooth px-1">
-                </div>
-
-                <button onclick="scrollCarousel('mobile-product-carousel', 1)" class="absolute -right-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-slate-900/95 border border-cyan-400 text-cyan-300 flex items-center justify-center shadow-lg active:scale-90">
-                    <i class="fa-solid fa-chevron-right text-[10px]"></i>
-                </button>
-            </div>
-        </div>
-
-    </main>
-
-    <!-- BARRA INFERIOR -->
-    <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/98 backdrop-blur border-t border-slate-800 px-6 py-2.5 z-40">
-        <div class="max-w-md mx-auto flex items-center justify-between text-xs font-bold">
-            <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
-                <i class="fa-solid fa-house text-base"></i><span class="text-[9px] font-mono">Matriz</span>
-            </a>
-            <button onclick="toggleAccountModal()" class="flex flex-col items-center gap-1 text-emerald-400">
-                <i class="fa-solid fa-user-check text-base"></i><span class="text-[9px] font-mono">Mi Cuenta</span>
-            </button>
-            <a href="https://wa.me/523337271440" target="_blank" class="flex flex-col items-center gap-1 text-cyan-400">
-                <i class="fa-brands fa-whatsapp text-base"></i><span class="text-[9px] font-mono">Atención</span>
-            </a>
-            <button onclick="toggleCartModal()" class="flex flex-col items-center gap-1 text-amber-400">
-                <i class="fa-solid fa-bag-shopping text-base"></i><span class="text-[9px] font-mono">Mi Pedido</span>
-            </button>
-        </div>
-    </nav>
-
+  <main class="max-w-md mx-auto w-full px-3 py-3 space-y-3.5 flex-1">
     
+    <!-- SÚPER-BUSCADOR -->
+    <div class="relative">
+      <div class="flex items-center bg-white rounded-2xl px-3.5 py-2 gap-2 shadow-lg border-2 border-cyan-400">
+        <i class="fa-solid fa-magnifying-glass text-slate-400 text-sm"></i>
+        <input type="text" id="mobileSearchInput" autocomplete="off" placeholder="Busca pieza, SKU o falla (ej. RAM, 4070, paleta)..." class="flex-1 bg-transparent border-0 outline-none text-slate-950 font-bold text-xs placeholder-slate-400" oninput="onMobileSearch(event)" />
+        <button onclick="clearMobileSearch()" id="clear-search-btn" class="hidden text-slate-400 hover:text-slate-600 text-xs px-1 font-bold"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="mobile-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-40 p-2.5 flex flex-col gap-2 max-h-80 overflow-y-auto no-scrollbar"></div>
+    </div>
+
+    <!-- 7 BOUTIQUES -->
+    <div class="space-y-2">
+      <div class="flex justify-between items-center px-1">
+        <span class="text-xs font-mono font-bold text-white uppercase flex items-center gap-1.5">
+          <i class="fa-solid fa-layer-group text-amber-400"></i> Nuestras 7 Boutiques
+        </span>
+        <span class="text-[9px] font-mono text-cyan-400 font-bold">Toca para ver top 3</span>
+      </div>
+      <div class="grid grid-cols-1 gap-2" id="boutiques-accordion-list"></div>
+    </div>
+
+    <!-- CARRUSEL 2 PRODUCTOS CON FLECHAS -->
+    <div class="space-y-2 pt-1">
+      <div class="flex justify-between items-center px-1">
+        <span class="text-xs font-mono font-bold text-slate-400 uppercase">Catálogo de Entrega Inmediata</span>
+        <span class="text-[10px] font-mono text-cyan-400 font-bold">Desliza a los lados &rarr;</span>
+      </div>
+
+      <div class="relative">
+        <button onclick="scrollCarousel('mobile-product-carousel', -1)" class="absolute -left-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-slate-900/95 border border-cyan-400 text-cyan-300 flex items-center justify-center shadow-lg active:scale-90">
+          <i class="fa-solid fa-chevron-left text-[10px]"></i>
+        </button>
+        
+        <div id="mobile-product-carousel" class="flex flex-row overflow-x-auto flex-nowrap gap-2.5 pb-2 no-scrollbar snap-x snap-mandatory scroll-smooth px-1">
+        </div>
+
+        <button onclick="scrollCarousel('mobile-product-carousel', 1)" class="absolute -right-2 top-1/2 -translate-y-1/2 z-20 w-7 h-7 rounded-full bg-slate-900/95 border border-cyan-400 text-cyan-300 flex items-center justify-center shadow-lg active:scale-90">
+          <i class="fa-solid fa-chevron-right text-[10px]"></i>
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- BARRA INFERIOR -->
+  <nav class="fixed bottom-0 left-0 right-0 bg-slate-900/98 backdrop-blur border-t border-slate-800 px-6 py-2.5 z-40">
+    <div class="max-w-md mx-auto flex items-center justify-between text-xs font-bold">
+      <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="flex flex-col items-center gap-1 text-slate-400 hover:text-amber-400 transition">
+        <i class="fa-solid fa-house text-base"></i><span class="text-[9px] font-mono">Matriz</span>
+      </a>
+      <button onclick="toggleAccountModal()" class="flex flex-col items-center gap-1 text-emerald-400">
+        <i class="fa-solid fa-user-check text-base"></i><span class="text-[9px] font-mono">Mi Cuenta</span>
+      </button>
+      <a href="https://wa.me/523337271440" target="_blank" class="flex flex-col items-center gap-1 text-cyan-400">
+        <i class="fa-brands fa-whatsapp text-base"></i><span class="text-[9px] font-mono">Atención</span>
+      </a>
+      <button onclick="toggleCartModal()" class="flex flex-col items-center gap-1 text-amber-400">
+        <i class="fa-solid fa-bag-shopping text-base"></i><span class="text-[9px] font-mono">Mi Pedido</span>
+      </button>
+    </div>
+  </nav>
+
+  
 <!-- MODAL FLOTANTE: MI CUENTA / DOMICILIO & CASHBACK -->
 <div id="accountModal" class="fixed inset-0 z-[300] hidden">
-    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="toggleAccountModal()"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-lg bg-slate-900 border-2 border-cyan-400 rounded-3xl shadow-2xl p-5 sm:p-6 z-10 max-h-[90vh] overflow-y-auto no-scrollbar space-y-4">
-        
-        <div class="flex justify-between items-start border-b border-slate-800 pb-3">
-            <div>
-                <span class="text-[10px] font-mono text-amber-400 uppercase font-bold tracking-widest block">Beneficio Exclusivo</span>
-                <h3 class="font-black text-white text-base sm:text-lg flex items-center gap-2">
-                    <i class="fa-solid fa-address-card text-cyan-400"></i> Mi Cuenta & Domicilio de Entrega
-                </h3>
-            </div>
-            <button onclick="toggleAccountModal()" class="text-slate-400 hover:text-white p-1 text-lg cursor-pointer">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-
-        <!-- Banner Explicativo de Cashback -->
-        <div class="p-3 bg-gradient-to-r from-emerald-950/60 to-slate-950 border border-emerald-500/40 rounded-2xl space-y-1">
-            <div class="flex items-center gap-2 text-emerald-400 text-xs font-bold font-mono">
-                <i class="fa-solid fa-coins text-sm"></i>
-                <span>5% DE CASHBACK EN CADA PEDIDO</span>
-            </div>
-            <p class="text-[11px] text-slate-300 leading-tight">
-                <strong>Importante:</strong> Llena todos tus datos completos (Nombre, WhatsApp, Correo y Domicilio) para activar tu <strong>5% de Cashback acumulable</strong> y habilitar entregas directas con Uber Flash.
-            </p>
-        </div>
-
-        <!-- Formulario de Cuenta y Dirección -->
-        <div class="space-y-3 text-xs">
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                <div>
-                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Nombre Completo / Taller:</label>
-                    <input type="text" id="accName" placeholder="Ej. Juan Pérez / Taller Silva" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
-                </div>
-                <div>
-                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">WhatsApp de Contacto:</label>
-                    <input type="tel" id="accPhone" placeholder="Ej. 33 3727 1440" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium font-mono" />
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                <div class="sm:col-span-2">
-                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Correo Electrónico:</label>
-                    <input type="email" id="accEmail" placeholder="tu_correo@ejemplo.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
-                </div>
-                <div>
-                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Código Postal:</label>
-                    <input type="text" id="accCP" placeholder="Ej. 44100" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-mono font-bold" />
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                <div class="sm:col-span-2">
-                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Calle / Avenida:</label>
-                    <input type="text" id="accCalle" placeholder="Ej. Av. Juárez, Hidalgo..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
-                </div>
-                <div>
-                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Núm. Ext / Int:</label>
-                    <input type="text" id="accNum" placeholder="Ej. #501 int A" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
-                <div>
-                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Colonia / Barrio:</label>
-                    <input type="text" id="accColonia" placeholder="Ej. Americana, Centro, Vallarta..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
-                </div>
-                <div>
-                    <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Municipio / Zona:</label>
-                    <select id="accMunicipio" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium">
-                        <option value="">-- Selecciona Municipio --</option>
-                        <option value="guadalajara">Guadalajara (Centro / Alrededores)</option>
-                        <option value="zapopan">Zapopan (Minerva / Providencia / Poniente)</option>
-                        <option value="tlaquepaque">Tlaquepaque (Centro / Alamo)</option>
-                        <option value="tonala">Tonalá (Oriente / Periférico)</option>
-                        <option value="tlajomulco">Tlajomulco de Zúñiga (Zona Sur / Payuca)</option>
-                        <option value="elsalto">El Salto / Aeropuerto</option>
-                    </select>
-                </div>
-            </div>
-
-            <div>
-                <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Referencias de Entrega (Opcional):</label>
-                <input type="text" id="accRef" placeholder="Ej. Portón blanco, entre calle Galeana y Colón" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
-            </div>
-
-            <!-- Caja de Estado / Alerta -->
-            <div id="accAlertBox" class="hidden p-3 rounded-xl text-xs font-mono leading-tight"></div>
-        </div>
-
-        <div class="pt-2 border-t border-slate-800 flex flex-col sm:flex-row gap-2">
-            <button onclick="saveUserProfile()" class="flex-1 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer">
-                <i class="fa-solid fa-floppy-disk text-sm"></i> <span>Guardar Domicilio & Activar Cashback</span>
-            </button>
-        </div>
-
+  <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="toggleAccountModal()"></div>
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95%] max-w-lg bg-slate-900 border-2 border-cyan-400 rounded-3xl shadow-2xl p-5 sm:p-6 z-10 max-h-[90vh] overflow-y-auto no-scrollbar space-y-4">
+    
+    <div class="flex justify-between items-start border-b border-slate-800 pb-3">
+      <div>
+        <span class="text-[10px] font-mono text-amber-400 uppercase font-bold tracking-widest block">Beneficio Exclusivo</span>
+        <h3 class="font-black text-white text-base sm:text-lg flex items-center gap-2">
+          <i class="fa-solid fa-address-card text-cyan-400"></i> Mi Cuenta & Domicilio de Entrega
+        </h3>
+      </div>
+      <button onclick="toggleAccountModal()" class="text-slate-400 hover:text-white p-1 text-lg cursor-pointer">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
+
+    <!-- Banner Explicativo de Cashback -->
+    <div class="p-3 bg-gradient-to-r from-emerald-950/60 to-slate-950 border border-emerald-500/40 rounded-2xl space-y-1">
+      <div class="flex items-center gap-2 text-emerald-400 text-xs font-bold font-mono">
+        <i class="fa-solid fa-coins text-sm"></i>
+        <span>5% DE CASHBACK EN CADA PEDIDO</span>
+      </div>
+      <p class="text-[11px] text-slate-300 leading-tight">
+        <strong>Importante:</strong> Llena todos tus datos completos (Nombre, WhatsApp, Correo y Domicilio) para activar tu <strong>5% de Cashback acumulable</strong> y habilitar entregas directas con Uber Flash.
+      </p>
+    </div>
+
+    <!-- Formulario de Cuenta y Dirección -->
+    <div class="space-y-3 text-xs">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <div>
+          <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Nombre Completo / Taller:</label>
+          <input type="text" id="accName" placeholder="Ej. Juan Pérez / Taller Silva" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+        </div>
+        <div>
+          <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">WhatsApp de Contacto:</label>
+          <input type="tel" id="accPhone" placeholder="Ej. 33 3727 1440" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium font-mono" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+        <div class="sm:col-span-2">
+          <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Correo Electrónico:</label>
+          <input type="email" id="accEmail" placeholder="tu_correo@ejemplo.com" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+        </div>
+        <div>
+          <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Código Postal:</label>
+          <input type="text" id="accCP" placeholder="Ej. 44100" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-mono font-bold" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+        <div class="sm:col-span-2">
+          <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Calle / Avenida:</label>
+          <input type="text" id="accCalle" placeholder="Ej. Av. Juárez, Hidalgo..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+        </div>
+        <div>
+          <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Núm. Ext / Int:</label>
+          <input type="text" id="accNum" placeholder="Ej. #501 int A" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+        <div>
+          <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Colonia / Barrio:</label>
+          <input type="text" id="accColonia" placeholder="Ej. Americana, Centro, Vallarta..." class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+        </div>
+        <div>
+          <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Municipio / Zona:</label>
+          <select id="accMunicipio" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium">
+            <option value="">-- Selecciona Municipio --</option>
+            <option value="guadalajara">Guadalajara (Centro / Alrededores)</option>
+            <option value="zapopan">Zapopan (Minerva / Providencia / Poniente)</option>
+            <option value="tlaquepaque">Tlaquepaque (Centro / Alamo)</option>
+            <option value="tonala">Tonalá (Oriente / Periférico)</option>
+            <option value="tlajomulco">Tlajomulco de Zúñiga (Zona Sur / Payuca)</option>
+            <option value="elsalto">El Salto / Aeropuerto</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <label class="text-[10px] font-mono text-slate-400 font-bold block mb-1">Referencias de Entrega (Opcional):</label>
+        <input type="text" id="accRef" placeholder="Ej. Portón blanco, entre calle Galeana y Colón" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-2.5 text-white outline-none focus:border-cyan-400 font-medium" />
+      </div>
+
+      <!-- Caja de Estado / Alerta -->
+      <div id="accAlertBox" class="hidden p-3 rounded-xl text-xs font-mono leading-tight"></div>
+    </div>
+
+    <div class="pt-2 border-t border-slate-800 flex flex-col sm:flex-row gap-2">
+      <button onclick="saveUserProfile()" class="flex-1 bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+        <i class="fa-solid fa-floppy-disk text-sm"></i> <span>Guardar Domicilio & Activar Cashback</span>
+      </button>
+    </div>
+
+  </div>
 </div>
 
 
-    <!-- MODAL DE CHECKOUT -->
-    <div id="appCartModal" class="fixed inset-0 z-50 hidden">
-        <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="toggleCartModal()"></div>
-        <div class="absolute bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-900 border-t-2 border-emerald-400 rounded-t-3xl p-5 shadow-2xl flex flex-col justify-between max-h-[90vh] z-10">
-            <div>
-                <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-3">
-                    <h3 class="font-black text-white text-sm flex items-center gap-2">
-                        <i class="fa-solid fa-receipt text-cyan-400"></i> Despacho con Pago Previo SPEI
-                    </h3>
-                    <button onclick="toggleCartModal()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
-                </div>
-                <div id="modal-cart-items" class="flex flex-col gap-2 overflow-y-auto max-h-[25vh] pr-1 no-scrollbar"></div>
-                <div class="mt-3 p-3 bg-slate-950 rounded-2xl border border-emerald-500/40 flex items-center justify-between">
-                    <div>
-                        <span class="text-[9px] font-mono text-emerald-400 uppercase font-bold block">PIN de Entrega Uber:</span>
-                        <span id="delivery-pin-display" class="text-xl font-mono font-black text-white tracking-widest">----</span>
-                    </div>
-                    <span class="text-[9px] text-slate-400 max-w-[150px] text-right">Díctalo al chofer para recibir el paquete.</span>
-                </div>
-                <div class="mt-3 p-3 bg-slate-950 rounded-2xl border border-slate-800 space-y-1 text-xs font-mono">
-                    <div class="flex justify-between items-center"><span class="text-slate-400 text-[10px]">Banco:</span><strong class="text-white text-[11px]">BBVA México / STP</strong></div>
-                    <div class="flex justify-between items-center"><span class="text-slate-400 text-[10px]">CLABE:</span><span class="text-cyan-300 font-bold text-[11px]">0123 2001 5824 9382 10</span></div>
-                </div>
-            </div>
-            <div class="border-t border-slate-800 pt-3 space-y-2 mt-3">
-                <div class="flex justify-between text-xs font-mono"><span class="text-slate-400">Subtotal:</span><span id="modal-subtotal-txt" class="text-white font-bold">$0.00 MXN</span></div>
-                <div class="flex justify-between text-xs font-mono"><span class="text-slate-400">Flete Cotizado:</span><span id="modal-shipping-txt" class="text-amber-400 font-bold">$35.00 MXN</span></div>
-                <div class="flex justify-between text-sm font-mono pt-1 border-t border-slate-800"><strong class="text-white">Total SPEI:</strong><strong id="modal-total-txt" class="text-emerald-400 font-black text-base">$0.00 MXN</strong></div>
-                <button onclick="sendOrderViaWhatsApp()" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 text-slate-950 font-black py-3 rounded-2xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer">
-                    <i class="fa-brands fa-whatsapp text-sm text-slate-950"></i> Mandar Comprobante SPEI & Despachar
-                </button>
-            </div>
+  <!-- MODAL DE CHECKOUT -->
+  <div id="appCartModal" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onclick="toggleCartModal()"></div>
+    <div class="absolute bottom-0 left-0 right-0 max-w-md mx-auto bg-slate-900 border-t-2 border-emerald-400 rounded-t-3xl p-5 shadow-2xl flex flex-col justify-between max-h-[90vh] z-10">
+      <div>
+        <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-3">
+          <h3 class="font-black text-white text-sm flex items-center gap-2">
+            <i class="fa-solid fa-receipt text-cyan-400"></i> Despacho con Pago Previo SPEI
+          </h3>
+          <button onclick="toggleCartModal()" class="text-slate-400 hover:text-white p-1"><i class="fa-solid fa-xmark text-lg"></i></button>
         </div>
+        <div id="modal-cart-items" class="flex flex-col gap-2 overflow-y-auto max-h-[25vh] pr-1 no-scrollbar"></div>
+        <div class="mt-3 p-3 bg-slate-950 rounded-2xl border border-emerald-500/40 flex items-center justify-between">
+          <div>
+            <span class="text-[9px] font-mono text-emerald-400 uppercase font-bold block">PIN de Entrega Uber:</span>
+            <span id="delivery-pin-display" class="text-xl font-mono font-black text-white tracking-widest">----</span>
+          </div>
+          <span class="text-[9px] text-slate-400 max-w-[150px] text-right">Díctalo al chofer para recibir el paquete.</span>
+        </div>
+        <div class="mt-3 p-3 bg-slate-950 rounded-2xl border border-slate-800 space-y-1 text-xs font-mono">
+          <div class="flex justify-between items-center"><span class="text-slate-400 text-[10px]">Banco:</span><strong class="text-white text-[11px]">BBVA México / STP</strong></div>
+          <div class="flex justify-between items-center"><span class="text-slate-400 text-[10px]">CLABE:</span><span class="text-cyan-300 font-bold text-[11px]">0123 2001 5824 9382 10</span></div>
+        </div>
+      </div>
+      <div class="border-t border-slate-800 pt-3 space-y-2 mt-3">
+        <div class="flex justify-between text-xs font-mono"><span class="text-slate-400">Subtotal:</span><span id="modal-subtotal-txt" class="text-white font-bold">$0.00 MXN</span></div>
+        <div class="flex justify-between text-xs font-mono"><span class="text-slate-400">Flete Cotizado:</span><span id="modal-shipping-txt" class="text-amber-400 font-bold">$35.00 MXN</span></div>
+        <div class="flex justify-between text-sm font-mono pt-1 border-t border-slate-800"><strong class="text-white">Total SPEI:</strong><strong id="modal-total-txt" class="text-emerald-400 font-black text-base">$0.00 MXN</strong></div>
+        <button onclick="sendOrderViaWhatsApp()" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 text-slate-950 font-black py-3 rounded-2xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg flex items-center justify-center gap-2 cursor-pointer">
+          <i class="fa-brands fa-whatsapp text-sm text-slate-950"></i> Mandar Comprobante SPEI & Despachar
+        </button>
+      </div>
     </div>
+  </div>
 
-    <script>
-    const boutiquesConfig = [
-        { id: "pc-custom", name: "PC Custom Lab", tag: "HARDWARE & PC", icon: "fa-microchip", color: "text-cyan-400", url: "https://iaworldcenter-creator.github.io/pc-custom-lab/" },
-        { id: "viamx", name: "Vía MX Boutique", tag: "DEPARTAMENTAL", icon: "fa-gem", color: "text-cyan-300", url: "https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/" },
-        { id: "cigarros", name: "Cigarros Bazar", tag: "TABACOS & PUROS", icon: "fa-smoking", color: "text-amber-400", url: "https://iaworldcenter-creator.github.io/cigarros-bazar/" },
-        { id: "dulces", name: "Dulces Bazar", tag: "DULCERÍA & BOTANAS", icon: "fa-candy-cane", color: "text-pink-400", url: "https://iaworldcenter-creator.github.io/dulces-bazar/" },
-        { id: "kiosco", name: "Kiosco Digital", tag: "REVISTAS & PRENSA", icon: "fa-newspaper", color: "text-indigo-400", url: "https://iaworldcenter-creator.github.io/kiosco-digital/" },
-        { id: "puesto", name: "Mi Puesto Bazar", tag: "NOVEDADES & GADGETS", icon: "fa-store", color: "text-emerald-400", url: "https://iaworldcenter-creator.github.io/mi-puesto-bazar/" },
-        { id: "ofertas", name: "Ofertas & Liquidaciones", tag: "OUTLET DIRECTO B2B", icon: "fa-tags", color: "text-red-400", url: "https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones-/" }
-    ];
+  <script>
+  const boutiquesConfig = [
+    { id: "pc-custom", name: "PC Custom Lab", tag: "HARDWARE & PC", icon: "fa-microchip", color: "text-cyan-400", url: "https://iaworldcenter-creator.github.io/pc-custom-lab/" },
+    { id: "viamx", name: "Vía MX Boutique", tag: "DEPARTAMENTAL", icon: "fa-gem", color: "text-cyan-300", url: "https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/" },
+    { id: "cigarros", name: "Cigarros Bazar", tag: "TABACOS & PUROS", icon: "fa-smoking", color: "text-amber-400", url: "https://iaworldcenter-creator.github.io/cigarros-bazar/" },
+    { id: "dulces", name: "Dulces Bazar", tag: "DULCERÍA & BOTANAS", icon: "fa-candy-cane", color: "text-pink-400", url: "https://iaworldcenter-creator.github.io/dulces-bazar/" },
+    { id: "kiosco", name: "Kiosco Digital", tag: "REVISTAS & PRENSA", icon: "fa-newspaper", color: "text-indigo-400", url: "https://iaworldcenter-creator.github.io/kiosco-digital/" },
+    { id: "puesto", name: "Mi Puesto Bazar", tag: "NOVEDADES & GADGETS", icon: "fa-store", color: "text-emerald-400", url: "https://iaworldcenter-creator.github.io/mi-puesto-bazar/" },
+    { id: "ofertas", name: "Ofertas & Liquidaciones", tag: "OUTLET DIRECTO B2B", icon: "fa-tags", color: "text-red-400", url: "https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones-/" }
+  ];
 
-    const appProducts = [
-        { sku: "PC-001", boutiqueId: "pc-custom", nombre: "Gabinete Micro-ATX con Fuente 500W", marca: "Acteck", precio: 1250.00, original: 1550.00, desc: "Fuente certificada, USB 3.0 para taller.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_negro.webp", tokens: ["gabinete", "fuente", "pc"] },
-        { sku: "PC-002", boutiqueId: "pc-custom", nombre: "Tarjeta Madre ASUS Prime B760M-A WiFi DDR5", marca: "ASUS", precio: 3400.00, original: 3950.00, desc: "Soporte Intel 12va/13va/14va Gen, dual M.2.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/motherboard_asus.webp", tokens: ["tarjeta madre", "asus", "placa"] },
-        { sku: "PC-004", boutiqueId: "pc-custom", nombre: "RAM Kingston FURY Beast 16GB DDR5 5600MHz", marca: "Kingston", precio: 1250.00, original: 1500.00, desc: "Disipador de aluminio de bajo perfil.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/ram_caja.webp", tokens: ["ram", "kingston", "fury", "ddr5"] },
-        { sku: "PC-005", boutiqueId: "pc-custom", nombre: "SSD Kingston NV2 1TB NVMe PCIe 4.0", marca: "Kingston", precio: 1350.00, original: 1650.00, desc: "3,500 MB/s lectura ultra rápida.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/disco_solido_m2.webp", tokens: ["ssd", "kingston", "nvme", "disco"] },
-        { sku: "VMX-001", boutiqueId: "viamx", nombre: "Pantalla Smart TV 55 Pulgadas 4K UHD", marca: "Samsung", precio: 7999.00, original: 11499.00, desc: "Panel LED 4K con asistente de voz.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp", tokens: ["pantalla", "smart tv", "samsung"] },
-        { sku: "CIG-001", boutiqueId: "cigarros", nombre: "Cigarros Marlboro Gold Original (20)", marca: "Marlboro", precio: 82.00, original: 95.00, desc: "Sabor suave de importación.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["cigarros", "marlboro"] },
-        { sku: "DUL-001", boutiqueId: "dulces", nombre: "Paleta Payaso Ricolino (Caja 15 piezas)", marca: "Ricolino", precio: 245.00, original: 290.00, desc: "Malvavisco con chocolate y gomitas.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp", tokens: ["paleta", "dulces"] },
-        { sku: "PUE-001", boutiqueId: "puesto", nombre: "Lentes Inteligentes Bluetooth con Audio", marca: "SmartVision", precio: 680.00, original: 950.00, desc: "Llamadas y música con protección UV.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp", tokens: ["lentes", "bluetooth"] }
-    ];
+  const appProducts = [
+    { sku: "PC-001", boutiqueId: "pc-custom", nombre: "Gabinete Micro-ATX con Fuente 500W", marca: "Acteck", precio: 1250.00, original: 1550.00, desc: "Fuente certificada, USB 3.0 para taller.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gabinete_negro.webp", tokens: ["gabinete", "fuente", "pc"] },
+    { sku: "PC-002", boutiqueId: "pc-custom", nombre: "Tarjeta Madre ASUS Prime B760M-A WiFi DDR5", marca: "ASUS", precio: 3400.00, original: 3950.00, desc: "Soporte Intel 12va/13va/14va Gen, dual M.2.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/motherboard_asus.webp", tokens: ["tarjeta madre", "asus", "placa"] },
+    { sku: "PC-004", boutiqueId: "pc-custom", nombre: "RAM Kingston FURY Beast 16GB DDR5 5600MHz", marca: "Kingston", precio: 1250.00, original: 1500.00, desc: "Disipador de aluminio de bajo perfil.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/ram_caja.webp", tokens: ["ram", "kingston", "fury", "ddr5"] },
+    { sku: "PC-005", boutiqueId: "pc-custom", nombre: "SSD Kingston NV2 1TB NVMe PCIe 4.0", marca: "Kingston", precio: 1350.00, original: 1650.00, desc: "3,500 MB/s lectura ultra rápida.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/disco_solido_m2.webp", tokens: ["ssd", "kingston", "nvme", "disco"] },
+    { sku: "VMX-001", boutiqueId: "viamx", nombre: "Pantalla Smart TV 55 Pulgadas 4K UHD", marca: "Samsung", precio: 7999.00, original: 11499.00, desc: "Panel LED 4K con asistente de voz.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_curvo_negro.webp", tokens: ["pantalla", "smart tv", "samsung"] },
+    { sku: "CIG-001", boutiqueId: "cigarros", nombre: "Cigarros Marlboro Gold Original (20)", marca: "Marlboro", precio: 82.00, original: 95.00, desc: "Sabor suave de importación.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["cigarros", "marlboro"] },
+    { sku: "DUL-001", boutiqueId: "dulces", nombre: "Paleta Payaso Ricolino (Caja 15 piezas)", marca: "Ricolino", precio: 245.00, original: 290.00, desc: "Malvavisco con chocolate y gomitas.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp", tokens: ["paleta", "dulces"] },
+    { sku: "PUE-001", boutiqueId: "puesto", nombre: "Lentes Inteligentes Bluetooth con Audio", marca: "SmartVision", precio: 680.00, original: 950.00, desc: "Llamadas y música con protección UV.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_gamer_thumb.webp", tokens: ["lentes", "bluetooth"] }
+  ];
 
-    let generatedPIN = "";
-    let activeBoutiqueId = null;
+  let generatedPIN = "";
+  let activeBoutiqueId = null;
 
-    
+  
 function getSavedProfile() {
-    try {
-        const raw = localStorage.getItem('bazar_user_profile');
-        return raw ? JSON.parse(raw) : null;
-    } catch(e) { return null; }
+  try {
+    const raw = localStorage.getItem('bazar_user_profile');
+    return raw ? JSON.parse(raw) : null;
+  } catch(e) { return null; }
 }
 
 function updateAccountBadgeUI() {
-    const profile = getSavedProfile();
-    const btn = document.getElementById("header-account-btn");
-    if (!btn) return;
+  const profile = getSavedProfile();
+  const btn = document.getElementById("header-account-btn");
+  if (!btn) return;
 
-    if (profile && profile.isComplete) {
-        btn.innerHTML = `
-            <div class="flex items-center gap-2 bg-emerald-950/60 border border-emerald-500/50 px-3 py-1.5 rounded-xl text-emerald-300 text-xs font-mono font-bold shadow-md hover:bg-emerald-900/60 transition">
-                <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
-                <div class="flex flex-col text-left">
-                    <span class="text-[9px] text-emerald-400 leading-none uppercase">5% Cashback Activo</span>
-                    <span class="text-white text-[11px] leading-tight truncate max-w-[120px] sm:max-w-[180px]">${profile.name || 'Mi Cuenta'}</span>
-                </div>
-            </div>
-        `;
-    } else {
-        btn.innerHTML = `
-            <div class="flex items-center gap-2 bg-slate-800/90 hover:bg-slate-700 border border-cyan-500/40 px-3 py-1.5 rounded-xl text-white text-xs font-mono font-bold shadow-md transition">
-                <i class="fa-solid fa-user-plus text-cyan-400 text-sm"></i>
-                <div class="flex flex-col text-left">
-                    <span class="text-[9px] text-amber-400 leading-none uppercase">5% Cashback</span>
-                    <span class="text-slate-200 text-[11px] leading-tight">Registra tu Domicilio</span>
-                </div>
-            </div>
-        `;
-    }
+  if (profile && profile.isComplete) {
+    btn.innerHTML = `
+      <div class="flex items-center gap-2 bg-emerald-950/60 border border-emerald-500/50 px-3 py-1.5 rounded-xl text-emerald-300 text-xs font-mono font-bold shadow-md hover:bg-emerald-900/60 transition">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+        <div class="flex flex-col text-left">
+          <span class="text-[9px] text-emerald-400 leading-none uppercase">5% Cashback Activo</span>
+          <span class="text-white text-[11px] leading-tight truncate max-w-[120px] sm:max-w-[180px]">${profile.name || 'Mi Cuenta'}</span>
+        </div>
+      </div>
+    `;
+  } else {
+    btn.innerHTML = `
+      <div class="flex items-center gap-2 bg-slate-800/90 hover:bg-slate-700 border border-cyan-500/40 px-3 py-1.5 rounded-xl text-white text-xs font-mono font-bold shadow-md transition">
+        <i class="fa-solid fa-user-plus text-cyan-400 text-sm"></i>
+        <div class="flex flex-col text-left">
+          <span class="text-[9px] text-amber-400 leading-none uppercase">5% Cashback</span>
+          <span class="text-slate-200 text-[11px] leading-tight">Registra tu Domicilio</span>
+        </div>
+      </div>
+    `;
+  }
 }
 
 function toggleAccountModal() {
-    const modal = document.getElementById("accountModal");
-    if (!modal) return;
-    modal.classList.toggle("hidden");
+  const modal = document.getElementById("accountModal");
+  if (!modal) return;
+  modal.classList.toggle("hidden");
 
-    if (!modal.classList.contains("hidden")) {
-        loadProfileIntoModal();
-    }
+  if (!modal.classList.contains("hidden")) {
+    loadProfileIntoModal();
+  }
 }
 
 function loadProfileIntoModal() {
-    const p = getSavedProfile() || {};
-    document.getElementById("accName").value = p.name || '';
-    document.getElementById("accPhone").value = p.phone || '';
-    document.getElementById("accEmail").value = p.email || '';
-    document.getElementById("accCP").value = p.cp || '';
-    document.getElementById("accCalle").value = p.calle || '';
-    document.getElementById("accNum").value = p.num || '';
-    document.getElementById("accColonia").value = p.colonia || '';
-    document.getElementById("accMunicipio").value = p.municipio || '';
-    document.getElementById("accRef").value = p.ref || '';
+  const p = getSavedProfile() || {};
+  document.getElementById("accName").value = p.name || '';
+  document.getElementById("accPhone").value = p.phone || '';
+  document.getElementById("accEmail").value = p.email || '';
+  document.getElementById("accCP").value = p.cp || '';
+  document.getElementById("accCalle").value = p.calle || '';
+  document.getElementById("accNum").value = p.num || '';
+  document.getElementById("accColonia").value = p.colonia || '';
+  document.getElementById("accMunicipio").value = p.municipio || '';
+  document.getElementById("accRef").value = p.ref || '';
 
-    const alertBox = document.getElementById("accAlertBox");
-    if (p.isComplete) {
-        alertBox.className = "p-3 rounded-xl text-xs font-mono leading-tight bg-emerald-950/60 border border-emerald-500/50 text-emerald-300 block";
-        alertBox.innerHTML = '🎉 <strong>¡Felicidades!</strong> Tu perfil está completo y tienes <strong>5% de Cashback activo</strong> en todas tus compras.';
-    } else {
-        alertBox.className = "hidden";
-    }
+  const alertBox = document.getElementById("accAlertBox");
+  if (p.isComplete) {
+    alertBox.className = "p-3 rounded-xl text-xs font-mono leading-tight bg-emerald-950/60 border border-emerald-500/50 text-emerald-300 block";
+    alertBox.innerHTML = '🎉 <strong>¡Felicidades!</strong> Tu perfil está completo y tienes <strong>5% de Cashback activo</strong> en todas tus compras.';
+  } else {
+    alertBox.className = "hidden";
+  }
 }
 
 function saveUserProfile() {
-    const name = document.getElementById("accName").value.trim();
-    const phone = document.getElementById("accPhone").value.trim();
-    const email = document.getElementById("accEmail").value.trim();
-    const cp = document.getElementById("accCP").value.trim();
-    const calle = document.getElementById("accCalle").value.trim();
-    const num = document.getElementById("accNum").value.trim();
-    const colonia = document.getElementById("accColonia").value.trim();
-    const municipio = document.getElementById("accMunicipio").value;
-    const ref = document.getElementById("accRef").value.trim();
-    const alertBox = document.getElementById("accAlertBox");
+  const name = document.getElementById("accName").value.trim();
+  const phone = document.getElementById("accPhone").value.trim();
+  const email = document.getElementById("accEmail").value.trim();
+  const cp = document.getElementById("accCP").value.trim();
+  const calle = document.getElementById("accCalle").value.trim();
+  const num = document.getElementById("accNum").value.trim();
+  const colonia = document.getElementById("accColonia").value.trim();
+  const municipio = document.getElementById("accMunicipio").value;
+  const ref = document.getElementById("accRef").value.trim();
+  const alertBox = document.getElementById("accAlertBox");
 
-    if (!name || !phone || !email || !cp || !calle || !num || !colonia || !municipio) {
-        alertBox.className = "p-3 rounded-xl text-xs font-mono leading-tight bg-amber-950/70 border border-amber-500/60 text-amber-300 block";
-        alertBox.innerHTML = '⚠️ <strong>Perfil Incompleto:</strong> Para acumular tu 5% de Cashback y habilitar envíos Uber Flash, es obligatorio llenar todos los campos de contacto y domicilio.';
-        return;
-    }
+  if (!name || !phone || !email || !cp || !calle || !num || !colonia || !municipio) {
+    alertBox.className = "p-3 rounded-xl text-xs font-mono leading-tight bg-amber-950/70 border border-amber-500/60 text-amber-300 block";
+    alertBox.innerHTML = '⚠️ <strong>Perfil Incompleto:</strong> Para acumular tu 5% de Cashback y habilitar envíos Uber Flash, es obligatorio llenar todos los campos de contacto y domicilio.';
+    return;
+  }
 
-    let rate = 35;
-    let dist = "1.8 km (Guadalajara Centro)";
-    if (municipio === "zapopan") { rate = 52; dist = "4.8 km (Zapopan)"; }
-    else if (municipio === "tlaquepaque") { rate = 48; dist = "4.5 km (Tlaquepaque)"; }
-    else if (municipio === "tonala") { rate = 70; dist = "9.2 km (Tonalá)"; }
-    else if (municipio === "tlajomulco") { rate = 125; dist = "18.5 km (Tlajomulco Sur/Payuca)"; }
-    else if (municipio === "elsalto") { rate = 135; dist = "21.0 km (El Salto)"; }
+  let rate = 35;
+  let dist = "1.8 km (Guadalajara Centro)";
+  if (municipio === "zapopan") { rate = 52; dist = "4.8 km (Zapopan)"; }
+  else if (municipio === "tlaquepaque") { rate = 48; dist = "4.5 km (Tlaquepaque)"; }
+  else if (municipio === "tonala") { rate = 70; dist = "9.2 km (Tonalá)"; }
+  else if (municipio === "tlajomulco") { rate = 125; dist = "18.5 km (Tlajomulco Sur/Payuca)"; }
+  else if (municipio === "elsalto") { rate = 135; dist = "21.0 km (El Salto)"; }
 
-    const profile = {
-        name, phone, email, cp, calle, num, colonia, municipio, ref,
-        rate, dist, isComplete: true, updatedAt: new Date().toISOString()
-    };
+  const profile = {
+    name, phone, email, cp, calle, num, colonia, municipio, ref,
+    rate, dist, isComplete: true, updatedAt: new Date().toISOString()
+  };
 
-    localStorage.setItem('bazar_user_profile', JSON.stringify(profile));
-    updateAccountBadgeUI();
+  localStorage.setItem('bazar_user_profile', JSON.stringify(profile));
+  updateAccountBadgeUI();
 
-    alertBox.className = "p-3 rounded-xl text-xs font-mono leading-tight bg-emerald-950/60 border border-emerald-500/50 text-emerald-300 block";
-    alertBox.innerHTML = '🎉 <strong>¡Domicilio Guardado Exitosamente!</strong> Tu 5% de Cashback está activo. El costo estimado de flete Uber Flash a tu zona es de <strong>$' + rate.toFixed(2) + ' MXN</strong>.';
+  alertBox.className = "p-3 rounded-xl text-xs font-mono leading-tight bg-emerald-950/60 border border-emerald-500/50 text-emerald-300 block";
+  alertBox.innerHTML = '🎉 <strong>¡Domicilio Guardado Exitosamente!</strong> Tu 5% de Cashback está activo. El costo estimado de flete Uber Flash a tu zona es de <strong>$' + rate.toFixed(2) + ' MXN</strong>.';
 
-    setTimeout(() => {
-        toggleAccountModal();
-    }, 1200);
+  setTimeout(() => {
+    toggleAccountModal();
+  }, 1200);
 }
 
 
-    function scrollCarousel(id, direction) {
-        const el = document.getElementById(id);
-        if (el) {
-            const amount = el.clientWidth * 0.85;
-            el.scrollBy({ left: direction * amount, behavior: 'smooth' });
-        }
+  function scrollCarousel(id, direction) {
+    const el = document.getElementById(id);
+    if (el) {
+      const amount = el.clientWidth * 0.85;
+      el.scrollBy({ left: direction * amount, behavior: 'smooth' });
     }
+  }
 
-    function renderMobileList(items = appProducts) {
-        const container = document.getElementById("mobile-product-carousel");
-        if (!container) return;
+  function renderMobileList(items = appProducts) {
+    const container = document.getElementById("mobile-product-carousel");
+    if (!container) return;
 
-        container.innerHTML = items.map(p => {
-            const discountPct = p.original ? Math.round((1 - (p.precio / p.original)) * 100) : 0;
-            return `
-                <div class="w-[calc(50%-5px)] min-w-[155px] max-w-[185px] shrink-0 snap-start bg-slate-900 border border-slate-800 rounded-2xl p-2.5 flex flex-col justify-between shadow-md">
-                    <div>
-                        <div class="w-full h-32 overflow-hidden rounded-xl bg-slate-950 flex items-center justify-center p-1.5 relative mb-2 shadow-inner">
-                            <img src="${p.img}" alt="${p.nombre}" class="w-full h-full object-contain" onerror="this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
-                            ${discountPct > 0 ? `<span class="absolute top-1 left-1 bg-red-600 text-white text-[8px] font-mono font-bold px-1.5 py-0.2 rounded">-${discountPct}%</span>` : ''}
-                        </div>
-                        <span class="text-[8px] font-mono text-cyan-400 font-bold block truncate">${p.marca} &bull; ${p.sku}</span>
-                        <h4 class="text-xs font-bold text-white line-clamp-2 leading-snug mt-0.5" title="${p.nombre}">${p.nombre}</h4>
-                    </div>
-
-                    <div class="pt-1.5 border-t border-slate-800/80 mt-1.5 space-y-1.5">
-                        <div class="flex flex-col">
-                            ${p.original ? `<span class="text-[9px] font-mono text-red-400 line-through">$${p.original.toFixed(2)}</span>` : ''}
-                            <span class="text-amber-400 font-mono font-black text-xs">$${p.precio.toFixed(2)}</span>
-                        </div>
-                        <div class="grid grid-cols-2 gap-1">
-                            <button onclick="addToCartApp('${p.sku}')" class="bg-slate-800 text-cyan-300 p-1.5 rounded-lg text-[10px] flex items-center justify-center shadow border border-cyan-500/30 active:scale-90" title="Agregar">
-                                <i class="fa-solid fa-cart-plus"></i>
-                            </button>
-                            <button onclick="buyNowApp('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black p-1.5 rounded-lg text-[10px] flex items-center justify-center shadow active:scale-90">
-                                Comprar
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }).join('');
-    }
-
-    function renderBoutiquesAccordions() {
-        const container = document.getElementById("boutiques-accordion-list");
-        if (!container) return;
-
-        container.innerHTML = boutiquesConfig.map(b => {
-            const top3 = appProducts.filter(p => p.boutiqueId === b.id).slice(0, 3);
-            const isOpen = activeBoutiqueId === b.id;
-
-            return `
-                <div class="bg-slate-900 border ${isOpen ? 'border-cyan-400' : 'border-slate-800'} rounded-2xl overflow-hidden shadow-md">
-                    <button onclick="toggleBoutique('${b.id}')" class="w-full text-left p-3 flex items-center justify-between gap-3 bg-slate-950/60 hover:bg-slate-800/80 transition cursor-pointer">
-                        <div class="flex items-center gap-2.5 min-w-0">
-                            <div class="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center ${b.color} shrink-0 shadow"><i class="fa-solid ${b.icon} text-sm"></i></div>
-                            <div class="min-w-0">
-                                <strong class="text-xs font-bold text-white block truncate">${b.name}</strong>
-                                <span class="text-[9px] font-mono text-slate-400 block truncate">${b.tag}</span>
-                            </div>
-                        </div>
-                        <div class="flex items-center gap-2 shrink-0">
-                            <span class="text-[9px] font-mono font-bold text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded-lg border border-cyan-500/30">Top 3</span>
-                            <i class="fa-solid fa-chevron-${isOpen ? 'up' : 'down'} text-slate-500 text-xs"></i>
-                        </div>
-                    </button>
-
-                    ${isOpen ? `
-                        <div class="p-3 bg-slate-950 border-t border-slate-800/80 space-y-2">
-                            ${top3.map(p => `
-                                <div class="bg-slate-900 rounded-xl p-2 flex items-center justify-between gap-2 border border-slate-800">
-                                    <img src="${p.img}" alt="${p.nombre}" class="w-10 h-10 object-contain rounded bg-slate-950 p-0.5 shrink-0" onerror="this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
-                                    <div class="min-w-0 flex-1">
-                                        <h5 class="text-xs font-bold text-white line-clamp-1">${p.nombre}</h5>
-                                        <span class="text-amber-400 font-mono font-black text-xs">$${p.precio.toFixed(2)}</span>
-                                    </div>
-                                    <button onclick="addToCartApp('${p.sku}')" class="bg-slate-800 hover:bg-slate-700 text-cyan-300 p-2 rounded-lg text-xs border border-cyan-500/30"><i class="fa-solid fa-cart-plus"></i></button>
-                                </div>
-                            `).join('')}
-                            <div class="pt-1 text-center">
-                                <a href="${b.url}" class="text-[11px] font-mono font-bold text-cyan-400 hover:underline">Ir a boutique completa &rarr;</a>
-                            </div>
-                        </div>
-                    ` : ''}
-                </div>
-            `;
-        }).join('');
-    }
-
-    function toggleBoutique(id) {
-        activeBoutiqueId = activeBoutiqueId === id ? null : id;
-        renderBoutiquesAccordions();
-    }
-
-    function onMobileSearch(e) {
-        const q = e.target.value.toLowerCase().trim();
-        const box = document.getElementById("mobile-autocomplete-box");
-        const clearBtn = document.getElementById("clear-search-btn");
-        if (clearBtn) clearBtn.classList.toggle("hidden", q.length === 0);
-
-        if (!q) { box.classList.add("hidden"); return; }
-        const matches = appProducts.filter(p => `${p.sku} ${p.nombre} ${p.desc} ${(p.tokens||[]).join(' ')}`.toLowerCase().includes(q));
-
-        if (matches.length === 0) {
-            const best = appProducts.slice(0, 3);
-            box.innerHTML = `
-                <div class="p-2 space-y-1.5 text-xs text-center">
-                    <span class="text-white font-bold block">No hay coincidencias para "${q}"</span>
-                    <span class="text-[10px] text-amber-400 font-mono block">Te recomendamos los más pedidos:</span>
-                    ${best.map(i => `
-                        <div class="bg-slate-950 p-2 rounded-xl flex justify-between items-center text-left">
-                            <span class="truncate max-w-[180px] text-white font-bold">${i.nombre}</span>
-                            <button onclick="addToCartApp('${i.sku}')" class="bg-emerald-600 text-slate-950 font-black px-2 py-0.5 rounded text-[10px]">+1 Clic</button>
-                        </div>
-                    `).join('')}
-                </div>
-            `;
-            box.classList.remove("hidden");
-            return;
-        }
-
-        box.innerHTML = matches.slice(0, 5).map(item => `
-            <div class="bg-slate-950 rounded-xl p-2 flex items-center justify-between gap-2 border border-slate-800">
-                <div class="min-w-0 flex-1">
-                    <h5 class="text-xs font-bold text-white truncate">${item.nombre}</h5>
-                    <span class="text-amber-400 font-mono font-bold text-xs">$${item.precio.toFixed(2)}</span>
-                </div>
-                <button onclick="addToCartApp('${item.sku}')" class="bg-slate-800 text-cyan-300 p-1.5 rounded-lg text-xs border border-cyan-500/30"><i class="fa-solid fa-cart-plus"></i></button>
+    container.innerHTML = items.map(p => {
+      const discountPct = p.original ? Math.round((1 - (p.precio / p.original)) * 100) : 0;
+      return `
+        <div class="w-[calc(50%-5px)] min-w-[155px] max-w-[185px] shrink-0 snap-start bg-slate-900 border border-slate-800 rounded-2xl p-2.5 flex flex-col justify-between shadow-md">
+          <div>
+            <div class="w-full h-32 overflow-hidden rounded-xl bg-slate-950 flex items-center justify-center p-1.5 relative mb-2 shadow-inner">
+              <img src="${p.img}" alt="${p.nombre}" class="w-full h-full object-contain" onerror="this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
+              ${discountPct > 0 ? `<span class="absolute top-1 left-1 bg-red-600 text-white text-[8px] font-mono font-bold px-1.5 py-0.2 rounded">-${discountPct}%</span>` : ''}
             </div>
-        `).join('');
-        box.classList.remove("hidden");
-    }
+            <span class="text-[8px] font-mono text-cyan-400 font-bold block truncate">${p.marca} &bull; ${p.sku}</span>
+            <h4 class="text-xs font-bold text-white line-clamp-2 leading-snug mt-0.5" title="${p.nombre}">${p.nombre}</h4>
+          </div>
 
-    function clearMobileSearch() {
-        document.getElementById("mobileSearchInput").value = '';
-        document.getElementById("clear-search-btn").classList.add("hidden");
-        document.getElementById("mobile-autocomplete-box").classList.add("hidden");
-    }
-
-    function generatePIN() {
-        generatedPIN = Math.floor(1000 + Math.random() * 9000).toString();
-        const el = document.getElementById("delivery-pin-display");
-        if (el) el.innerText = generatedPIN;
-    }
-
-    function addToCartApp(sku) {
-        const item = appProducts.find(p => p.sku === sku);
-        if (!item) return;
-        let cart = [];
-        try {
-            const raw = localStorage.getItem('ecosystem_global_cart');
-            if (raw) cart = JSON.parse(raw);
-        } catch(e) {}
-        const exist = cart.find(i => i.sku === sku);
-        if (exist) { exist.quantity = (parseInt(exist.quantity) || 1) + 1; }
-        else { cart.push({ ...item, quantity: 1 }); }
-        localStorage.setItem('ecosystem_global_cart', JSON.stringify(cart));
-        syncAppCart();
-        const badge = document.getElementById("app-cart-badge");
-        if (badge) { badge.classList.remove("cart-pop"); void badge.offsetWidth; badge.classList.add("cart-pop"); }
-    }
-
-    function buyNowApp(sku) {
-        addToCartApp(sku);
-        toggleCartModal();
-    }
-
-    function syncAppCart() {
-        let cart = [];
-        try {
-            const raw = localStorage.getItem('ecosystem_global_cart');
-            if (raw) cart = JSON.parse(raw);
-        } catch(e) {}
-        const count = cart.reduce((sum, i) => sum + (parseInt(i.quantity) || 0), 0);
-        const subtotal = cart.reduce((sum, i) => sum + ((parseFloat(i.precio) || 0) * (parseInt(i.quantity) || 0)), 0);
-        
-        const profile = getSavedProfile();
-        const shippingRate = profile && profile.rate ? profile.rate : 35;
-        const isFree = subtotal >= 1500 || count >= 10;
-        const shippingFinal = isFree ? 0 : (subtotal > 0 ? shippingRate : 0);
-        const total = subtotal + shippingFinal;
-
-        document.getElementById("app-cart-badge").innerText = count;
-        document.getElementById("modal-subtotal-txt").innerText = `$${subtotal.toFixed(2)} MXN`;
-        document.getElementById("modal-shipping-txt").innerText = isFree ? "GRATIS ($0.00)" : `$${shippingFinal.toFixed(2)} MXN`;
-        document.getElementById("modal-total-txt").innerText = `$${total.toFixed(2)} MXN`;
-
-        const container = document.getElementById("modal-cart-items");
-        if (!container) return;
-        if (cart.length === 0) {
-            container.innerHTML = '<div class="text-center py-6 text-slate-500 text-xs">Sin artículos en la orden.</div>';
-            return;
-        }
-        container.innerHTML = cart.map(i => `
-            <div class="bg-slate-950 p-2 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
-                <span class="text-white truncate max-w-[180px]">${i.nombre} (x${i.quantity})</span>
-                <span class="text-amber-400 font-mono font-bold">$${(parseFloat(i.precio)*parseInt(i.quantity)).toFixed(2)}</span>
+          <div class="pt-1.5 border-t border-slate-800/80 mt-1.5 space-y-1.5">
+            <div class="flex flex-col">
+              ${p.original ? `<span class="text-[9px] font-mono text-red-400 line-through">$${p.original.toFixed(2)}</span>` : ''}
+              <span class="text-amber-400 font-mono font-black text-xs">$${p.precio.toFixed(2)}</span>
             </div>
-        `).join('');
-    }
-
-    function toggleCartModal() {
-        generatePIN();
-        document.getElementById("appCartModal").classList.toggle("hidden");
-        syncAppCart();
-    }
-
-    function sendOrderViaWhatsApp() {
-        let cart = [];
-        try {
-            const raw = localStorage.getItem('ecosystem_global_cart');
-            if (raw) cart = JSON.parse(raw);
-        } catch(e) {}
-        if (cart.length === 0) { alert('Agrega al menos un artículo a tu orden.'); return; }
-
-        const profile = getSavedProfile();
-        if (!profile || !profile.isComplete) {
-            alert('Por favor registra primero tu domicilio en "Mi Cuenta" para activar tu 5% de Cashback y habilitar entrega Uber Flash.');
-            toggleAccountModal();
-            return;
-        }
-
-        const subtotal = cart.reduce((sum, i) => sum + ((parseFloat(i.precio) || 0) * (parseInt(i.quantity) || 0)), 0);
-        const shipping = subtotal >= 1500 ? 0 : profile.rate;
-        const total = subtotal + shipping;
-
-        let msg = `🛵 *ORDEN DESPACHO UBER FLASH - BAZAR NFL*%0A`;
-        msg += `👤 *Cliente:* ${profile.name} (${profile.phone})%0A`;
-        msg += `📍 *Origen:* Pedro Moreno 501 A, GDL Centro%0A`;
-        msg += `🏠 *Destino:* ${profile.calle} #${profile.num}, Col. ${profile.colonia}, CP ${profile.cp}, ${profile.municipio.toUpperCase()}%0A`;
-        if (profile.ref) msg += `📌 *Ref:* ${profile.ref}%0A`;
-        msg += `🔐 *PIN Uber:* ${generatedPIN}%0A`;
-        msg += `🎁 *Cashback Activo:* 5%%0A%0A`;
-        msg += `📦 *PRODUCTOS:*%0A`;
-        cart.forEach(i => {
-            msg += `• *${i.quantity}x* ${i.nombre} ($${(parseFloat(i.precio)*parseInt(i.quantity)).toFixed(2)})%0A`;
-        });
-        msg += `%0A💵 *Subtotal:* $${subtotal.toFixed(2)} MXN`;
-        msg += `%0A🛵 *Flete Uber Flash:* ${shipping === 0 ? 'GRATIS' : '$' + shipping.toFixed(2) + ' MXN'}`;
-        msg += `%0A💰 *TOTAL SPEI:* $${total.toFixed(2)} MXN%0A%0A`;
-        msg += `_Adjunto comprobante de pago bancario para enviar la moto._`;
-
-        window.open(`https://wa.me/523337271440?text=${msg}`, '_blank');
-    }
-
-    document.addEventListener("DOMContentLoaded", () => {
-        updateAccountBadgeUI();
-        renderMobileList();
-        renderBoutiquesAccordions();
-        syncAppCart();
-    });
-    </script>
-    <script defer src="js/cart-engine.js"></script>
-    <script defer src="js/ux-engine.js"></script>
-    <script defer src="js/ecosystem-catalog-engine.js"></script>
-
-    <!-- FOOTER INSTITUCIONAL OFICIAL (LANDMARK: CONTENTINFO / H2) -->
-    <footer role="contentinfo" class="bg-slate-950 border-t border-slate-800 text-slate-300 text-xs mt-12 pt-10 pb-8" aria-label="Pie de página institucional" id="pie-de-pagina">
-        <h2 class="sr-only">Información Legal, Contacto y Garantías BAZAR NFL.GDL</h2>
-        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-slate-800/80">
-                
-                <!-- COLUMNA 1: CONTACTO Y REDES OFICIALES -->
-                <div class="space-y-3">
-                    <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
-                        <i class="fa-solid fa-location-dot text-cyan-400" aria-hidden="true"></i> Contacto y Redes Oficiales
-                    </h3>
-                    <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
-                        <p class="flex items-start gap-2">
-                            <i class="fa-solid fa-store text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></i>
-                            <span>Pedro Moreno 501 A, Guadalajara Centro, Jalisco (CP 44100)</span>
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <i class="fa-solid fa-phone text-cyan-400 shrink-0" aria-hidden="true"></i>
-                            <span>Teléfono Fijo: <strong>(33) 3653 6348</strong></span>
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-emerald-400 shrink-0" aria-hidden="true"></i>
-                            <span>WhatsApp: <a href="https://wa.me/523337271440" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" class="hover:text-emerald-300 font-bold text-white transition min-h-[44px] inline-flex items-center">+52 33 3727 1440</a></span>
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <i class="fa-solid fa-mobile-screen-button text-cyan-400 shrink-0" aria-hidden="true"></i>
-                            <span>Celular: <strong>+52 33 2865 2309</strong></span>
-                        </p>
-                    </div>
-
-                    <div class="pt-2 border-t border-slate-900 space-y-1.5 text-[10.5px]">
-                        <a href="https://www.facebook.com/profile.php?id=61593020515115" target="_blank" rel="noopener" aria-label="Perfil oficial de Facebook" class="text-slate-300 hover:text-blue-400 flex items-center gap-2 transition min-h-[44px]">
-                            <i class="fa-brands fa-facebook text-blue-500 w-4 text-center" aria-hidden="true"></i> <span>Facebook: <strong>BAZAR NFL.GDL</strong></span>
-                        </a>
-                        <a href="https://www.instagram.com/pccustomlab/" target="_blank" rel="noopener" aria-label="Perfil oficial de Instagram" class="text-slate-300 hover:text-pink-400 flex items-center gap-2 transition min-h-[44px]">
-                            <i class="fa-brands fa-instagram text-pink-500 w-4 text-center" aria-hidden="true"></i> <span>Instagram: <strong>@pccustomlab</strong></span>
-                        </a>
-                        <a href="https://www.youtube.com/@IAWorldCenter" target="_blank" rel="noopener" aria-label="Canal oficial de YouTube" class="text-slate-300 hover:text-red-400 flex items-center gap-2 transition min-h-[44px]">
-                            <i class="fa-brands fa-youtube text-red-500 w-4 text-center" aria-hidden="true"></i> <span>YouTube: <strong>IA World Center</strong></span>
-                        </a>
-                        <a href="https://t.me/pc_custom_lab" target="_blank" rel="noopener" aria-label="Canal oficial de Telegram" class="text-slate-300 hover:text-cyan-400 flex items-center gap-2 transition min-h-[44px]">
-                            <i class="fa-brands fa-telegram text-cyan-400 w-4 text-center" aria-hidden="true"></i> <span>Telegram: <strong>pc_custom_lab</strong></span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- COLUMNA 2: POLÍTICAS DE COMPRA, GARANTÍA Y SEGURIDAD DE ENVÍOS -->
-                <div class="space-y-3">
-                    <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i> Políticas de Compra & Seguridad
-                    </h3>
-                    <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
-                        <div class="bg-amber-950/40 border border-amber-500/40 p-2.5 rounded-xl space-y-1">
-                            <strong class="text-amber-300 flex items-center gap-1.5 font-mono text-[10.5px]">
-                                <i class="fa-solid fa-motorcycle text-amber-400"></i> LÍMITE DE ENVÍOS EXPRÉS ($2,000 MXN)
-                            </strong>
-                            <p class="text-slate-200 text-[10px]">
-                                Por seguridad y límites de seguro de transporte en motocicleta, el <strong>Envío Exprés El Mismo Día aplica únicamente para compras menores a $2,000 MXN</strong>.
-                            </p>
-                            <p class="text-amber-200 text-[10px] font-bold">
-                                Pedidos mayores a $2,000 MXN se despachan obligatoriamente vía Paquetería Asegurada con Firma de Recibido del comprador o retiro directo en mostrador.
-                            </p>
-                        </div>
-                        <p class="flex items-start gap-2">
-                            <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 shrink-0" aria-hidden="true"></i>
-                            <span><strong>Garantía Directa de 48 Horas:</strong> Reemplazo inmediato en mostrador presentando empaque original intacto.</span>
-                        </p>
-                        <p class="flex items-start gap-2">
-                            <i class="fa-solid fa-box-open text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></i>
-                            <span><strong>Garantía de Fábrica de 1 Año:</strong> Gestión técnica sin costo de fletes ni trámites adicionales.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- COLUMNA 3: AHORRO, CASHBACK Y DESPACHO LOCAL -->
-                <div class="space-y-3">
-                    <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
-                        <i class="fa-solid fa-coins text-emerald-400" aria-hidden="true"></i> Ahorro, Cashback & Despacho Local
-                    </h3>
-                    <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
-                        <div class="bg-slate-900/90 p-3 rounded-2xl border border-emerald-500/40 space-y-1">
-                            <div class="flex items-center gap-2 text-emerald-300 font-mono font-black text-xs">
-                                <i class="fa-solid fa-piggy-bank text-amber-400" aria-hidden="true"></i>
-                                <span>5% DE CASHBACK EN CADA COMPRA</span>
-                            </div>
-                            <p class="text-[10.5px] text-slate-300">
-                                Registra tu teléfono al ordenar para acumular saldo electrónico reutilizable en todas las boutiques.
-                            </p>
-                        </div>
-
-                        <div class="bg-slate-900/90 p-3 rounded-2xl border border-slate-800 space-y-1">
-                            <div class="flex items-center gap-2 text-cyan-300 font-mono font-bold text-xs">
-                                <i class="fa-solid fa-truck-fast text-cyan-400" aria-hidden="true"></i>
-                                <span>PAQUETERÍA ASEGURADA > $2,000 MXN</span>
-                            </div>
-                            <p class="text-[10.5px] text-slate-300">
-                                Envíos de alto valor protegidos con guía rastreable y firma de entrega obligatoria en destino.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="grid grid-cols-2 gap-1">
+              <button onclick="addToCartApp('${p.sku}')" class="bg-slate-800 text-cyan-300 p-1.5 rounded-lg text-[10px] flex items-center justify-center shadow border border-cyan-500/30 active:scale-90" title="Agregar">
+                <i class="fa-solid fa-cart-plus"></i>
+              </button>
+              <button onclick="buyNowApp('${p.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 text-slate-950 font-black p-1.5 rounded-lg text-[10px] flex items-center justify-center shadow active:scale-90">
+                Comprar
+              </button>
             </div>
-
-            <!-- CLÁUSULAS LEGALES, VIGENCIA Y CONDICIONES COMERCIALES (PROFECO / SAT) -->
-            <div class="pt-6 pb-2 text-[10.5px] text-slate-300 space-y-2 text-center font-mono leading-relaxed">
-                <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-xl max-w-5xl mx-auto space-y-1">
-                    <p class="text-amber-300 font-bold">
-                        <i class="fa-solid fa-calendar-check text-amber-400 mr-1" aria-hidden="true"></i>
-                        Vigencia de Precios y Promociones: Precios de lista y promociones de apertura (-25%) válidos del 24 al 29 de Agosto de 2026.
-                    </p>
-                    <p class="text-slate-300">
-                        <i class="fa-solid fa-triangle-exclamation text-amber-400 mr-1" aria-hidden="true"></i>
-                        Aviso Comercial: Precios exhibidos en Moneda Nacional (MXN) con IVA incluido. Precios sujetos a alza o cambio sin previo aviso por fluctuaciones cambiarias y existencias en almacén mayorista.
-                    </p>
-                    <p class="text-slate-300">
-                        Estructura comercial protegida con 20% de utilidad neta libre para cobertura de infraestructura tecnológica, licencias de inteligencia artificial, nómina, arrendamiento operativo y cumplimiento de obligaciones fiscales ante el SAT y PROFECO.
-                    </p>
-                </div>
-
-                <div class="pt-3 text-slate-400">
-                    © 2026 Ecosistema Comercial BAZAR NFL GDL & BAZAR NFL.GDL. Pedro Moreno 501 A, Guadalajara Centro, Jalisco. Todos los derechos reservados.
-                </div>
-            </div>
-
+          </div>
         </div>
-    </footer>
+      `;
+    }).join('');
+  }
+
+  function renderBoutiquesAccordions() {
+    const container = document.getElementById("boutiques-accordion-list");
+    if (!container) return;
+
+    container.innerHTML = boutiquesConfig.map(b => {
+      const top3 = appProducts.filter(p => p.boutiqueId === b.id).slice(0, 3);
+      const isOpen = activeBoutiqueId === b.id;
+
+      return `
+        <div class="bg-slate-900 border ${isOpen ? 'border-cyan-400' : 'border-slate-800'} rounded-2xl overflow-hidden shadow-md">
+          <button onclick="toggleBoutique('${b.id}')" class="w-full text-left p-3 flex items-center justify-between gap-3 bg-slate-950/60 hover:bg-slate-800/80 transition cursor-pointer">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <div class="w-8 h-8 rounded-xl bg-slate-900 flex items-center justify-center ${b.color} shrink-0 shadow"><i class="fa-solid ${b.icon} text-sm"></i></div>
+              <div class="min-w-0">
+                <strong class="text-xs font-bold text-white block truncate">${b.name}</strong>
+                <span class="text-[9px] font-mono text-slate-400 block truncate">${b.tag}</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+              <span class="text-[9px] font-mono font-bold text-cyan-400 bg-cyan-950/60 px-2 py-0.5 rounded-lg border border-cyan-500/30">Top 3</span>
+              <i class="fa-solid fa-chevron-${isOpen ? 'up' : 'down'} text-slate-500 text-xs"></i>
+            </div>
+          </button>
+
+          ${isOpen ? `
+            <div class="p-3 bg-slate-950 border-t border-slate-800/80 space-y-2">
+              ${top3.map(p => `
+                <div class="bg-slate-900 rounded-xl p-2 flex items-center justify-between gap-2 border border-slate-800">
+                  <img src="${p.img}" alt="${p.nombre}" class="w-10 h-10 object-contain rounded bg-slate-950 p-0.5 shrink-0" onerror="this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
+                  <div class="min-w-0 flex-1">
+                    <h5 class="text-xs font-bold text-white line-clamp-1">${p.nombre}</h5>
+                    <span class="text-amber-400 font-mono font-black text-xs">$${p.precio.toFixed(2)}</span>
+                  </div>
+                  <button onclick="addToCartApp('${p.sku}')" class="bg-slate-800 hover:bg-slate-700 text-cyan-300 p-2 rounded-lg text-xs border border-cyan-500/30"><i class="fa-solid fa-cart-plus"></i></button>
+                </div>
+              `).join('')}
+              <div class="pt-1 text-center">
+                <a href="${b.url}" class="text-[11px] font-mono font-bold text-cyan-400 hover:underline">Ir a boutique completa &rarr;</a>
+              </div>
+            </div>
+          ` : ''}
+        </div>
+      `;
+    }).join('');
+  }
+
+  function toggleBoutique(id) {
+    activeBoutiqueId = activeBoutiqueId === id ? null : id;
+    renderBoutiquesAccordions();
+  }
+
+  function onMobileSearch(e) {
+    const q = e.target.value.toLowerCase().trim();
+    const box = document.getElementById("mobile-autocomplete-box");
+    const clearBtn = document.getElementById("clear-search-btn");
+    if (clearBtn) clearBtn.classList.toggle("hidden", q.length === 0);
+
+    if (!q) { box.classList.add("hidden"); return; }
+    const matches = appProducts.filter(p => `${p.sku} ${p.nombre} ${p.desc} ${(p.tokens||[]).join(' ')}`.toLowerCase().includes(q));
+
+    if (matches.length === 0) {
+      const best = appProducts.slice(0, 3);
+      box.innerHTML = `
+        <div class="p-2 space-y-1.5 text-xs text-center">
+          <span class="text-white font-bold block">No hay coincidencias para "${q}"</span>
+          <span class="text-[10px] text-amber-400 font-mono block">Te recomendamos los más pedidos:</span>
+          ${best.map(i => `
+            <div class="bg-slate-950 p-2 rounded-xl flex justify-between items-center text-left">
+              <span class="truncate max-w-[180px] text-white font-bold">${i.nombre}</span>
+              <button onclick="addToCartApp('${i.sku}')" class="bg-emerald-600 text-slate-950 font-black px-2 py-0.5 rounded text-[10px]">+1 Clic</button>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      box.classList.remove("hidden");
+      return;
+    }
+
+    box.innerHTML = matches.slice(0, 5).map(item => `
+      <div class="bg-slate-950 rounded-xl p-2 flex items-center justify-between gap-2 border border-slate-800">
+        <div class="min-w-0 flex-1">
+          <h5 class="text-xs font-bold text-white truncate">${item.nombre}</h5>
+          <span class="text-amber-400 font-mono font-bold text-xs">$${item.precio.toFixed(2)}</span>
+        </div>
+        <button onclick="addToCartApp('${item.sku}')" class="bg-slate-800 text-cyan-300 p-1.5 rounded-lg text-xs border border-cyan-500/30"><i class="fa-solid fa-cart-plus"></i></button>
+      </div>
+    `).join('');
+    box.classList.remove("hidden");
+  }
+
+  function clearMobileSearch() {
+    document.getElementById("mobileSearchInput").value = '';
+    document.getElementById("clear-search-btn").classList.add("hidden");
+    document.getElementById("mobile-autocomplete-box").classList.add("hidden");
+  }
+
+  function generatePIN() {
+    generatedPIN = Math.floor(1000 + Math.random() * 9000).toString();
+    const el = document.getElementById("delivery-pin-display");
+    if (el) el.innerText = generatedPIN;
+  }
+
+  function addToCartApp(sku) {
+    const item = appProducts.find(p => p.sku === sku);
+    if (!item) return;
+    let cart = [];
+    try {
+      const raw = localStorage.getItem('ecosystem_global_cart');
+      if (raw) cart = JSON.parse(raw);
+    } catch(e) {}
+    const exist = cart.find(i => i.sku === sku);
+    if (exist) { exist.quantity = (parseInt(exist.quantity) || 1) + 1; }
+    else { cart.push({ ...item, quantity: 1 }); }
+    localStorage.setItem('ecosystem_global_cart', JSON.stringify(cart));
+    syncAppCart();
+    const badge = document.getElementById("app-cart-badge");
+    if (badge) { badge.classList.remove("cart-pop"); void badge.offsetWidth; badge.classList.add("cart-pop"); }
+  }
+
+  function buyNowApp(sku) {
+    addToCartApp(sku);
+    toggleCartModal();
+  }
+
+  function syncAppCart() {
+    let cart = [];
+    try {
+      const raw = localStorage.getItem('ecosystem_global_cart');
+      if (raw) cart = JSON.parse(raw);
+    } catch(e) {}
+    const count = cart.reduce((sum, i) => sum + (parseInt(i.quantity) || 0), 0);
+    const subtotal = cart.reduce((sum, i) => sum + ((parseFloat(i.precio) || 0) * (parseInt(i.quantity) || 0)), 0);
     
+    const profile = getSavedProfile();
+    const shippingRate = profile && profile.rate ? profile.rate : 35;
+    const isFree = subtotal >= 1500 || count >= 10;
+    const shippingFinal = isFree ? 0 : (subtotal > 0 ? shippingRate : 0);
+    const total = subtotal + shippingFinal;
+
+    document.getElementById("app-cart-badge").innerText = count;
+    document.getElementById("modal-subtotal-txt").innerText = `$${subtotal.toFixed(2)} MXN`;
+    document.getElementById("modal-shipping-txt").innerText = isFree ? "GRATIS ($0.00)" : `$${shippingFinal.toFixed(2)} MXN`;
+    document.getElementById("modal-total-txt").innerText = `$${total.toFixed(2)} MXN`;
+
+    const container = document.getElementById("modal-cart-items");
+    if (!container) return;
+    if (cart.length === 0) {
+      container.innerHTML = '<div class="text-center py-6 text-slate-500 text-xs">Sin artículos en la orden.</div>';
+      return;
+    }
+    container.innerHTML = cart.map(i => `
+      <div class="bg-slate-950 p-2 rounded-xl border border-slate-800 flex justify-between items-center text-xs">
+        <span class="text-white truncate max-w-[180px]">${i.nombre} (x${i.quantity})</span>
+        <span class="text-amber-400 font-mono font-bold">$${(parseFloat(i.precio)*parseInt(i.quantity)).toFixed(2)}</span>
+      </div>
+    `).join('');
+  }
+
+  function toggleCartModal() {
+    generatePIN();
+    document.getElementById("appCartModal").classList.toggle("hidden");
+    syncAppCart();
+  }
+
+  function sendOrderViaWhatsApp() {
+    let cart = [];
+    try {
+      const raw = localStorage.getItem('ecosystem_global_cart');
+      if (raw) cart = JSON.parse(raw);
+    } catch(e) {}
+    if (cart.length === 0) { alert('Agrega al menos un artículo a tu orden.'); return; }
+
+    const profile = getSavedProfile();
+    if (!profile || !profile.isComplete) {
+      alert('Por favor registra primero tu domicilio en "Mi Cuenta" para activar tu 5% de Cashback y habilitar entrega Uber Flash.');
+      toggleAccountModal();
+      return;
+    }
+
+    const subtotal = cart.reduce((sum, i) => sum + ((parseFloat(i.precio) || 0) * (parseInt(i.quantity) || 0)), 0);
+    const shipping = subtotal >= 1500 ? 0 : profile.rate;
+    const total = subtotal + shipping;
+
+    let msg = `🛵 *ORDEN DESPACHO UBER FLASH - BAZAR NFL*%0A`;
+    msg += `👤 *Cliente:* ${profile.name} (${profile.phone})%0A`;
+    msg += `📍 *Origen:* Pedro Moreno 501 A, GDL Centro%0A`;
+    msg += `🏠 *Destino:* ${profile.calle} #${profile.num}, Col. ${profile.colonia}, CP ${profile.cp}, ${profile.municipio.toUpperCase()}%0A`;
+    if (profile.ref) msg += `📌 *Ref:* ${profile.ref}%0A`;
+    msg += `🔐 *PIN Uber:* ${generatedPIN}%0A`;
+    msg += `🎁 *Cashback Activo:* 5%%0A%0A`;
+    msg += `📦 *PRODUCTOS:*%0A`;
+    cart.forEach(i => {
+      msg += `• *${i.quantity}x* ${i.nombre} ($${(parseFloat(i.precio)*parseInt(i.quantity)).toFixed(2)})%0A`;
+    });
+    msg += `%0A💵 *Subtotal:* $${subtotal.toFixed(2)} MXN`;
+    msg += `%0A🛵 *Flete Uber Flash:* ${shipping === 0 ? 'GRATIS' : '$' + shipping.toFixed(2) + ' MXN'}`;
+    msg += `%0A💰 *TOTAL SPEI:* $${total.toFixed(2)} MXN%0A%0A`;
+    msg += `_Adjunto comprobante de pago bancario para enviar la moto._`;
+
+    window.open(`https://wa.me/523337271440?text=${msg}`, '_blank');
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    updateAccountBadgeUI();
+    renderMobileList();
+    renderBoutiquesAccordions();
+    syncAppCart();
+  });
+  </script>
+  <script defer src="js/cart-engine.js"></script>
+  <script defer src="js/ux-engine.js"></script>
+  <script defer src="js/ecosystem-catalog-engine.js"></script>
+
+  <!-- FOOTER INSTITUCIONAL OFICIAL (LANDMARK: CONTENTINFO / H2) -->
+  <footer role="contentinfo" class="bg-slate-950 border-t border-slate-800 text-slate-300 text-xs mt-12 pt-10 pb-8" aria-label="Pie de página institucional" id="pie-de-pagina">
+    <h2 class="sr-only">Información Legal, Contacto y Garantías BAZAR NFL.GDL</h2>
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-slate-800/80">
+        
+        <!-- COLUMNA 1: CONTACTO Y REDES OFICIALES -->
+        <div class="space-y-3">
+          <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-location-dot text-cyan-400" aria-hidden="true"></i> Contacto y Redes Oficiales
+          </h3>
+          <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
+            <p class="flex items-start gap-2">
+              <i class="fa-solid fa-store text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></i>
+              <span>Pedro Moreno 501 A, Guadalajara Centro, Jalisco (CP 44100)</span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i class="fa-solid fa-phone text-cyan-400 shrink-0" aria-hidden="true"></i>
+              <span>Teléfono Fijo: <strong>(33) 3653 6348</strong></span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i class="fa-brands fa-whatsapp text-emerald-400 shrink-0" aria-hidden="true"></i>
+              <span>WhatsApp: <a href="https://wa.me/523337271440" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" class="hover:text-emerald-300 font-bold text-white transition min-h-[44px] inline-flex items-center">+52 33 3727 1440</a></span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-cyan-400 shrink-0" aria-hidden="true"></i>
+              <span>Celular: <strong>+52 33 2865 2309</strong></span>
+            </p>
+          </div>
+
+          <div class="pt-2 border-t border-slate-900 space-y-1.5 text-[10.5px]">
+            <a href="https://www.facebook.com/profile.php?id=61593020515115" target="_blank" rel="noopener" aria-label="Perfil oficial de Facebook" class="text-slate-300 hover:text-blue-400 flex items-center gap-2 transition min-h-[44px]">
+              <i class="fa-brands fa-facebook text-blue-500 w-4 text-center" aria-hidden="true"></i> <span>Facebook: <strong>BAZAR NFL.GDL</strong></span>
+            </a>
+            <a href="https://www.instagram.com/pccustomlab/" target="_blank" rel="noopener" aria-label="Perfil oficial de Instagram" class="text-slate-300 hover:text-pink-400 flex items-center gap-2 transition min-h-[44px]">
+              <i class="fa-brands fa-instagram text-pink-500 w-4 text-center" aria-hidden="true"></i> <span>Instagram: <strong>@pccustomlab</strong></span>
+            </a>
+            <a href="https://www.youtube.com/@IAWorldCenter" target="_blank" rel="noopener" aria-label="Canal oficial de YouTube" class="text-slate-300 hover:text-red-400 flex items-center gap-2 transition min-h-[44px]">
+              <i class="fa-brands fa-youtube text-red-500 w-4 text-center" aria-hidden="true"></i> <span>YouTube: <strong>IA World Center</strong></span>
+            </a>
+            <a href="https://t.me/pc_custom_lab" target="_blank" rel="noopener" aria-label="Canal oficial de Telegram" class="text-slate-300 hover:text-cyan-400 flex items-center gap-2 transition min-h-[44px]">
+              <i class="fa-brands fa-telegram text-cyan-400 w-4 text-center" aria-hidden="true"></i> <span>Telegram: <strong>pc_custom_lab</strong></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- COLUMNA 2: POLÍTICAS DE COMPRA, GARANTÍA Y SEGURIDAD DE ENVÍOS -->
+        <div class="space-y-3">
+          <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i> Políticas de Compra & Seguridad
+          </h3>
+          <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
+            <div class="bg-amber-950/40 border border-amber-500/40 p-2.5 rounded-xl space-y-1">
+              <strong class="text-amber-300 flex items-center gap-1.5 font-mono text-[10.5px]">
+                <i class="fa-solid fa-motorcycle text-amber-400"></i> LÍMITE DE ENVÍOS EXPRÉS ($2,000 MXN)
+              </strong>
+              <p class="text-slate-200 text-[10px]">
+                Por seguridad y límites de seguro de transporte en motocicleta, el <strong>Envío Exprés El Mismo Día aplica únicamente para compras menores a $2,000 MXN</strong>.
+              </p>
+              <p class="text-amber-200 text-[10px] font-bold">
+                Pedidos mayores a $2,000 MXN se despachan obligatoriamente vía Paquetería Asegurada con Firma de Recibido del comprador o retiro directo en mostrador.
+              </p>
+            </div>
+            <p class="flex items-start gap-2">
+              <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 shrink-0" aria-hidden="true"></i>
+              <span><strong>Garantía Directa de 48 Horas:</strong> Reemplazo inmediato en mostrador presentando empaque original intacto.</span>
+            </p>
+            <p class="flex items-start gap-2">
+              <i class="fa-solid fa-box-open text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></i>
+              <span><strong>Garantía de Fábrica de 1 Año:</strong> Gestión técnica sin costo de fletes ni trámites adicionales.</span>
+            </p>
+          </div>
+        </div>
+
+        <!-- COLUMNA 3: AHORRO, CASHBACK Y DESPACHO LOCAL -->
+        <div class="space-y-3">
+          <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-coins text-emerald-400" aria-hidden="true"></i> Ahorro, Cashback & Despacho Local
+          </h3>
+          <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
+            <div class="bg-slate-900/90 p-3 rounded-2xl border border-emerald-500/40 space-y-1">
+              <div class="flex items-center gap-2 text-emerald-300 font-mono font-black text-xs">
+                <i class="fa-solid fa-piggy-bank text-amber-400" aria-hidden="true"></i>
+                <span>5% DE CASHBACK EN CADA COMPRA</span>
+              </div>
+              <p class="text-[10.5px] text-slate-300">
+                Registra tu teléfono al ordenar para acumular saldo electrónico reutilizable en todas las boutiques.
+              </p>
+            </div>
+
+            <div class="bg-slate-900/90 p-3 rounded-2xl border border-slate-800 space-y-1">
+              <div class="flex items-center gap-2 text-cyan-300 font-mono font-bold text-xs">
+                <i class="fa-solid fa-truck-fast text-cyan-400" aria-hidden="true"></i>
+                <span>PAQUETERÍA ASEGURADA > $2,000 MXN</span>
+              </div>
+              <p class="text-[10.5px] text-slate-300">
+                Envíos de alto valor protegidos con guía rastreable y firma de entrega obligatoria en destino.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CLÁUSULAS LEGALES, VIGENCIA Y CONDICIONES COMERCIALES (PROFECO / SAT) -->
+      <div class="pt-6 pb-2 text-[10.5px] text-slate-300 space-y-2 text-center font-mono leading-relaxed">
+        <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-xl max-w-5xl mx-auto space-y-1">
+          <p class="text-amber-300 font-bold">
+            <i class="fa-solid fa-calendar-check text-amber-400 mr-1" aria-hidden="true"></i>
+            Vigencia de Precios y Promociones: Precios de lista y promociones de apertura (-25%) válidos del 24 al 29 de Agosto de 2026.
+          </p>
+          <p class="text-slate-300">
+            <i class="fa-solid fa-triangle-exclamation text-amber-400 mr-1" aria-hidden="true"></i>
+            Aviso Comercial: Precios exhibidos en Moneda Nacional (MXN) con IVA incluido. Precios sujetos a alza o cambio sin previo aviso por fluctuaciones cambiarias y existencias en almacén mayorista.
+          </p>
+          <p class="text-slate-300">
+            Estructura comercial protegida con 20% de utilidad neta libre para cobertura de infraestructura tecnológica, licencias de inteligencia artificial, nómina, arrendamiento operativo y cumplimiento de obligaciones fiscales ante el SAT y PROFECO.
+          </p>
+        </div>
+
+        <div class="pt-3 text-slate-400">
+          © 2026 Ecosistema Comercial BAZAR NFL GDL & BAZAR NFL.GDL. Pedro Moreno 501 A, Guadalajara Centro, Jalisco. Todos los derechos reservados.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+  
 </body>
 </html>

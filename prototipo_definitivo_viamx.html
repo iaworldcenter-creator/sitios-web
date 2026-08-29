@@ -1,986 +1,986 @@
 ﻿<!DOCTYPE html>
 <html lang="es" class="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <title>BAZAR NFL.GDL | Prototipo_Definitivo_Viamx</title>
-    <meta name="description" content="Portal matriz del ecosistema comercial en Guadalajara Centro (Pedro Moreno 501 A). Acceso a todas las tiendas especializadas con envíos el mismo día.">
-    <link rel="canonical" href="https://iaworldcenter-creator.github.io/sitios-web/prototipo_definitivo_viamx.html">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#030712">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>BAZAR NFL.GDL | Prototipo_Definitivo_Viamx</title>
+  <meta name="description" content="Portal matriz del ecosistema comercial en Guadalajara Centro (Pedro Moreno 501 A). Acceso a todas las tiendas especializadas con envíos el mismo día.">
+  <link rel="canonical" href="https://iaworldcenter-creator.github.io/sitios-web/prototipo_definitivo_viamx.html">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#030712">
 
-    <!-- SEGURIDAD PERIMETRAL: CSP, COOP, X-CONTENT-TYPE & REFERRER POLICY -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; img-src 'self' https: data: blob:; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com data:; connect-src 'self' https: data: blob:; frame-ancestors 'self';">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
-    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+  <!-- SEGURIDAD PERIMETRAL: CSP, COOP, X-CONTENT-TYPE & REFERRER POLICY -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' 'unsafe-eval' https: data: blob:; img-src 'self' https: data: blob:; font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com data:; connect-src 'self' https: data: blob:; ">
+  <meta http-equiv="X-Content-Type-Options" content="nosniff">
+  <meta http-equiv="Cross-Origin-Opener-Policy" content="same-origin">
+  <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
 
-    <!-- OPTIMIZACIÓN DE CONEXIONES -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-    <link rel="preconnect" href="https://static.ctonline.mx" crossorigin>
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://static.ctonline.mx">
+  <!-- OPTIMIZACIÓN DE CONEXIONES -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://static.ctonline.mx" crossorigin>
+  <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+  <link rel="dns-prefetch" href="https://static.ctonline.mx">
 
-    <!-- PRECARGA PRIORITARIA DE FUENTES WOFF2 (AHORRO 90ms LIGHTHOUSE) -->
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
-    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <!-- PRECARGA PRIORITARIA DE FUENTES WOFF2 (AHORRO 90ms LIGHTHOUSE) -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2" as="font" type="font/woff2" crossorigin="anonymous">
 
-    <!-- FONT AWESOME ESTILOS CON font-display: swap ASIGNADO Y ANULACIÓN MÉTRICA -->
-    <style>
-        @font-face {
-            font-family: 'Font Awesome 6 Free';
-            font-style: normal;
-            font-weight: 900;
-            font-display: swap;
-            src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Font Awesome 6 Brands';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2');
-        }
-        @font-face {
-            font-family: 'Font Awesome 6 Free';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2') format('woff2');
-        }
+  <!-- FONT AWESOME ESTILOS CON font-display: swap ASIGNADO Y ANULACIÓN MÉTRICA -->
+  <style>
+    @font-face {
+      font-family: 'Font Awesome 6 Free';
+      font-style: normal;
+      font-weight: 900;
+      font-display: swap;
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Font Awesome 6 Brands';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'Font Awesome 6 Free';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2') format('woff2');
+    }
 
-        @font-face {
-            font-family: 'Primary-Architect-Font';
-            src: local('Segoe UI'), local('SF Pro Text'), local('Roboto'), local('Helvetica Neue'), local('Arial');
-            font-display: swap;
-        }
-        @font-face {
-            font-family: 'Fallback-Engineered';
-            src: local('Arial');
-            ascent-override: 92%;
-            descent-override: 18%;
-            line-gap-override: 0%;
-            size-adjust: 97%;
-        }
-        :root {
-            font-family: 'Primary-Architect-Font', 'Fallback-Engineered', system-ui, -apple-system, sans-serif;
-        }
-        body {
-            margin: 0;
-            background-color: #030712;
-            color: #f8fafc;
-            min-height: 100vh;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-        }
+    @font-face {
+      font-family: 'Primary-Architect-Font';
+      src: local('Segoe UI'), local('SF Pro Text'), local('Roboto'), local('Helvetica Neue'), local('Arial');
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Fallback-Engineered';
+      src: local('Arial');
+      ascent-override: 92%;
+      descent-override: 18%;
+      line-gap-override: 0%;
+      size-adjust: 97%;
+    }
+    :root {
+      font-family: 'Primary-Architect-Font', 'Fallback-Engineered', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      margin: 0;
+      background-color: #030712;
+      color: #f8fafc;
+      min-height: 100vh;
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+    }
 
-        /* Contención dimensional estricta (CLS = 0.000) */
-        .product-img-wrapper, .responsive-media {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            contain: layout paint;
-            content-visibility: auto;
-            contain-intrinsic-size: auto 240px;
-        }
-        .product-img-wrapper img, .responsive-media img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            aspect-ratio: 1 / 1;
-        }
+    /* Contención dimensional estricta (CLS = 0.000) */
+    .product-img-wrapper, .responsive-media {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      contain: layout paint;
+      content-visibility: auto;
+      contain-intrinsic-size: auto 240px;
+    }
+    .product-img-wrapper img, .responsive-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      aspect-ratio: 1 / 1;
+    }
 
-        /* Áreas táctiles WCAG 2.2 AA (Mínimo 48x48px en interactivos móviles) */
-        button, a, select, input, .btn-action, .touch-target {
-            min-height: 48px;
-            min-width: 48px;
-            touch-action: manipulation;
-        }
-        .action-button-icon {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .action-button-icon::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 48px;
-            min-height: 48px;
-            width: 100%;
-            height: 100%;
-        }
+    /* Áreas táctiles WCAG 2.2 AA (Mínimo 48x48px en interactivos móviles) */
+    button, a, select, input, .btn-action, .touch-target {
+      min-height: 48px;
+      min-width: 48px;
+      touch-action: manipulation;
+    }
+    .action-button-icon {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .action-button-icon::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-width: 48px;
+      min-height: 48px;
+      width: 100%;
+      height: 100%;
+    }
 
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
-        .hidden { display: none !important; }
-    </style>
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+    .hidden { display: none !important; }
+  </style>
 
-    <!-- FONT AWESOME CSS DIFERIDO -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
-    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <!-- FONT AWESOME CSS DIFERIDO -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
 
-    <!-- TAILWIND CSS COMPILADO O CDN ASÍNCRONO -->
-    <link rel="preload" href="./assets/css/tailwind-built.css" as="style" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com';" onload="this.onload=null;this.rel='stylesheet'">
-    <noscript><link rel="stylesheet" href="./assets/css/tailwind-built.css"></noscript>
+  <!-- TAILWIND CSS COMPILADO O CDN ASÍNCRONO -->
+  <link rel="preload" href="./assets/css/tailwind-built.css" as="style" onerror="this.onerror=null; this.href='https://cdn.tailwindcss.com';" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="./assets/css/tailwind-built.css"></noscript>
 
-    <!-- CAPTURA GLOBAL DE ERRORES Y BLINDAJE DE CONSOLA (LIGHTHOUSE CLEAN CONSOLE) -->
-    <script>
-        window.addEventListener('error', function(e) {
-            if (e.target && (e.target.tagName === 'IMG' || e.target.tagName === 'SCRIPT')) {
-                e.preventDefault();
-            }
-        }, true);
-        window.addEventListener('unhandledrejection', function(e) {
-            e.preventDefault();
+  <!-- CAPTURA GLOBAL DE ERRORES Y BLINDAJE DE CONSOLA (LIGHTHOUSE CLEAN CONSOLE) -->
+  <script>
+    window.addEventListener('error', function(e) {
+      if (e.target && (e.target.tagName === 'IMG' || e.target.tagName === 'SCRIPT')) {
+        e.preventDefault();
+      }
+    }, true);
+    window.addEventListener('unhandledrejection', function(e) {
+      e.preventDefault();
+    });
+
+    if (window.trustedTypes && window.trustedTypes.createPolicy) {
+      try {
+        window.trustedTypesPolicy = window.trustedTypes.createPolicy('default', {
+          createHTML: function(s) { return s; },
+          createScript: function(s) { return s; },
+          createScriptURL: function(s) { return s; }
         });
+      } catch(err) {}
+    }
 
-        if (window.trustedTypes && window.trustedTypes.createPolicy) {
-            try {
-                window.trustedTypesPolicy = window.trustedTypes.createPolicy('default', {
-                    createHTML: function(s) { return s; },
-                    createScript: function(s) { return s; },
-                    createScriptURL: function(s) { return s; }
-                });
-            } catch(err) {}
-        }
-
-        if ('modelContext' in navigator && navigator.modelContext && navigator.modelContext.registerTool) {
-            try {
-                navigator.modelContext.registerTool({
-                    name: 'search_catalog',
-                    description: 'Busca productos en el catálogo comercial.',
-                    inputSchema: {
-                        type: 'object',
-                        properties: { query: { type: 'string', description: 'Término de búsqueda' } },
-                        required: ['query']
-                    },
-                    execute: async ({ query }) => {
-                        return { status: 'success', message: 'Búsqueda ejecutada' };
-                    }
-                });
-            } catch(e) {}
-        }
-    </script>
+    if ('modelContext' in navigator && navigator.modelContext && navigator.modelContext.registerTool) {
+      try {
+        navigator.modelContext.registerTool({
+          name: 'search_catalog',
+          description: 'Busca productos en el catálogo comercial.',
+          inputSchema: {
+            type: 'object',
+            properties: { query: { type: 'string', description: 'Término de búsqueda' } },
+            required: ['query']
+          },
+          execute: async ({ query }) => {
+            return { status: 'success', message: 'Búsqueda ejecutada' };
+          }
+        });
+      } catch(e) {}
+    }
+  </script>
 
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-slate-950">
 
-    <!-- ========================================================================
-         CABECERA CON SÚPER-BARRA BLANCA Y TOTALIZADOR EN VIVO
-         ======================================================================== -->
-                <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
-        <!-- LÍNEA 1: Barra Horizontal de Ecosistema con Neón Activo & Touch Scroll -->
-        <div class="w-full border-b border-slate-800/80 bg-slate-950/90 px-2 sm:px-4 py-1.5 flex items-center justify-between gap-2 text-xs overflow-hidden">
-            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar whitespace-nowrap flex-1 py-0.5 scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
-                <span class="px-2.5 py-1 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-black text-[10px] uppercase shrink-0">
-                    ⚡ Envío Exprés El Mismo Día
-                </span>
-                <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="px-3.5 py-1 rounded-xl bg-amber-500/20 border-2 border-amber-400 text-amber-300 shadow-[0_0_18px_rgba(251,191,36,0.8)] text-xs font-black flex items-center gap-1.5 shrink-0 scale-105 transition"><i class="fa-solid fa-house text-[11px]"></i> Matriz</a>
-                <a href="https://iaworldcenter-creator.github.io/pc-custom-lab/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-microchip text-[11px]"></i> PC Custom</a>
-                <a href="https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-300 text-cyan-200 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-gem text-[11px]"></i> Vía MX</a>
-                <a href="https://iaworldcenter-creator.github.io/cigarros-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-amber-500 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-smoking text-[11px]"></i> Cigarros</a>
-                <a href="https://iaworldcenter-creator.github.io/dulces-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-pink-500 text-pink-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-candy-cane text-[11px]"></i> Dulces</a>
-                <a href="https://iaworldcenter-creator.github.io/kiosco-digital/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500 text-indigo-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-newspaper text-[11px]"></i> Kiosco</a>
-                <a href="https://iaworldcenter-creator.github.io/mi-puesto-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-emerald-500 text-emerald-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-store text-[11px]"></i> Mi Puesto</a>
-                <a href="https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones-/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-red-500 text-red-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-tags text-[11px]"></i> Liquidaciones</a>
-                <span class="text-slate-700 shrink-0">|</span>
-                <a href="https://gemini.google.com" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i> Gemini AI</a>
-                <a href="https://antigravity.google/download" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-amber-400 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-download text-amber-400"></i> Anti-Gravity</a>
-            </div>
-            <div class="shrink-0 flex items-center pl-1 border-l border-slate-800">
-                <button id="header-account-btn" onclick="toggleAccountModal()" aria-label="Mi Cuenta, Domicilio y Cashback" title="Mi Cuenta y Cashback" class="cursor-pointer active:scale-95 transition"></button>
-            </div>
-        </div>
-
-        <!-- LÍNEA 2: Barra Principal con Buscador Blanco + H1 Tienda + Canasta -->
-        <div class="max-w-[99%] 2xl:max-w-[1850px] mx-auto px-2 sm:px-4 py-2.5 flex flex-row items-center justify-between gap-2 sm:gap-4">
-            
-            <!-- Logo y Marca Oficial con H1 -->
-            <div class="flex items-center gap-2.5 cursor-pointer shrink-0" onclick="document.getElementById('pie-de-pagina').scrollIntoView({ behavior: 'smooth' });">
-                <div class="relative w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
-                    <img src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" alt="Logo BAZAR NFL.GDL" width="44" height="44" fetchpriority="high" decoding="async" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full object-cover border-2 border-amber-400 shadow-[0_0_18px_rgba(251,191,36,0.8)] shrink-0" onerror="this.onerror=null;this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
-                </div>
-                <div class="flex flex-col min-w-0">
-                    <h1 class="font-black text-xs sm:text-lg text-white tracking-wider uppercase leading-tight truncate max-w-[110px] sm:max-w-none">BAZAR NFL.GDL</h1>
-                    <span class="text-[8px] sm:text-[10px] font-mono text-amber-400 uppercase tracking-tight flex items-center gap-0.5 truncate">
-                        <i class="fa-solid fa-location-dot text-amber-400"></i> Pedro Moreno 501 A
-                    </span>
-                </div>
-            </div>
-
-            <!-- Buscador Search-First Blanco con Botón BUSCAR -->
-            <div class="flex-1 min-w-0 relative">
-                <div class="flex items-center bg-white rounded-full border-2 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.35)] px-3 sm:px-4 py-1 gap-2">
-                    <i class="fa-solid fa-magnifying-glass text-slate-500 text-sm shrink-0"></i>
-                    <input type="text" id="boutiqueSearchInput" name="q" aria-label="Buscar en BAZAR NFL.GDL" autocomplete="off" spellcheck="false" placeholder="Busca, encuentra y compra rápido en las 7 boutiques..." class="flex-1 min-w-0 bg-transparent border-0 outline-none text-slate-950 font-bold text-xs sm:text-sm placeholder-slate-400" oninput="typeof onBoutiqueSearch==='function'?onBoutiqueSearch(event):typeof onMasterSearch==='function'?onMasterSearch(event):null" />
-                    <button onclick="typeof clearBoutiqueSearch==='function'?clearBoutiqueSearch():typeof clearMasterSearch==='function'?clearMasterSearch():null" id="clear-search-btn" aria-label="Limpiar búsqueda" class="hidden text-slate-400 hover:text-slate-700 text-xs px-1 font-bold cursor-pointer shrink-0"><i class="fa-solid fa-xmark"></i></button>
-                    <button onclick="typeof executeBoutiqueSearch==='function'?executeBoutiqueSearch():typeof executeMasterSearch==='function'?executeMasterSearch():null" aria-label="Buscar" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black px-3.5 sm:px-6 py-1.5 rounded-full text-[10px] sm:text-xs uppercase tracking-wider transition active:scale-95 shrink-0 shadow cursor-pointer">BUSCAR</button>
-                </div>
-                <div id="boutique-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2.5 flex flex-col gap-2 max-h-96 overflow-y-auto no-scrollbar"></div>
-                <div id="master-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2.5 flex flex-col gap-2 max-h-96 overflow-y-auto no-scrollbar"></div>
-            </div>
-
-            <!-- Canasta / Carrito con Total en Vivo -->
-            <button onclick="toggleCartDrawer()" aria-label="Abrir canasta de compras" title="Ver Carrito" class="flex items-center gap-2 sm:gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-3 sm:px-4 py-2 rounded-xl transition cursor-pointer active:scale-95 shadow shrink-0 group">
-                <div class="relative">
-                    <i class="fa-solid fa-cart-shopping text-amber-400 text-sm sm:text-base group-hover:scale-110 transition"></i>
-                    <span id="boutique-cart-badge" class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 font-mono font-black text-[9px] rounded-full w-4 h-4 flex items-center justify-center shadow">0</span>
-                    <span id="portal-cart-badge" class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 font-mono font-black text-[9px] rounded-full w-4 h-4 flex items-center justify-center shadow hidden">0</span>
-                </div>
-                <div class="flex flex-col text-left">
-                    <span class="text-[9px] font-mono text-slate-400 uppercase leading-none hidden sm:inline">Canasta</span>
-                    <span id="boutique-cart-total" class="text-xs font-mono font-bold text-amber-400">$0.00 MXN</span>
-                    <span id="portal-cart-total" class="text-xs font-mono font-bold text-amber-400 hidden">$0.00 MXN</span>
-                </div>
-            </button>
-        </div>
-    </header>
-
-    <!-- ========================================================================
-         CUERPO PRINCIPAL: SIDEBAR CON MICRO-BUSCADOR + CUADRÍCULA DE 5 COLUMNAS
-         ======================================================================== -->
-    <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full">
-        
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-            
-            <!-- COLUMNA IZQUIERDA (3 COLS): SIDEBAR CON FLYOUT Y "VER TODO" -->
-            <aside class="lg:col-span-3 w-full bg-slate-900/90 border border-slate-800 rounded-3xl p-4 shadow-2xl relative" id="sidebar-root">
-                
-                <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
-                    <h3 class="font-mono text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
-                        <i class="fa-solid fa-layer-group text-amber-400"></i> Departamentos
-                    </h3>
-                    <span class="text-[9px] font-mono text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-500/30 px-2 py-0.5 rounded">30 Áreas</span>
-                </div>
-
-                <!-- Micro-Buscador de Departamentos (Baymard UX) -->
-                <div class="mb-3 relative">
-                    <input 
-                        type="search" 
-                        id="deptMicroSearch" 
-                        placeholder="Filtrar departamentos..." 
-                        class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 outline-none focus:border-cyan-500 font-medium"
-                        oninput="onFilterDepartments(event)"
-                    />
-                    <i class="fa-solid fa-filter text-slate-600 text-[10px] absolute right-3 top-2.5 pointer-events-none"></i>
-                </div>
-
-                <!-- Botón de Ver Todos los Departamentos -->
-                <div class="mb-2">
-                    <button onclick="filterByDept('todos')" class="w-full text-left px-3 py-2 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/25 flex justify-between items-center transition font-bold text-xs cursor-pointer">
-                        <span class="flex items-center gap-2"><i class="fa-solid fa-border-all text-cyan-400 w-4 text-center"></i> Todos los Productos</span>
-                        <span class="text-[10px] font-mono text-cyan-400" id="total-count-badge">0</span>
-                    </button>
-                </div>
-
-                <!-- Lista de Departamentos -->
-                <nav class="flex flex-col gap-1 max-h-[520px] overflow-y-auto pr-1 no-scrollbar" id="dept-list-container">
-                    <!-- Inyectado dinámicamente -->
-                </nav>
-
-                <!-- VENTANA FLYOUT LATERAL CON COMPRA RÁPIDA + BOTÓN VER TODO -->
-                <div id="dept-flyout-panel" class="hidden lg:absolute left-full top-0 ml-3 w-[400px] bg-slate-900/98 border-2 border-cyan-400 rounded-3xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl slide-right">
-                    <div class="flex justify-between items-center border-b border-slate-800 pb-2.5 mb-2.5">
-                        <div>
-                            <span id="flyout-dept-badge" class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">DEPARTAMENTO</span>
-                            <h4 id="flyout-dept-title" class="text-xs font-black text-white mt-1">Destacados</h4>
-                        </div>
-                        <span class="text-[10px] font-mono text-emerald-400 font-bold"><i class="fa-solid fa-bolt"></i> Compra al Vuelo</span>
-                    </div>
-
-                    <div id="flyout-products-list" class="flex flex-col gap-2 max-h-[380px] overflow-y-auto pr-1 no-scrollbar"></div>
-
-                    <div class="mt-3 pt-2.5 border-t border-slate-800 text-center">
-                        <button onclick="viewAllInCurrentDept()" class="w-full bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-white font-bold py-2 rounded-xl text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow cursor-pointer">
-                            <span>Ver todos los artículos de este departamento</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                        </button>
-                    </div>
-                </div>
-
-            </aside>
-
-            <!-- COLUMNA DERECHA (9 COLS): CUADRÍCULA ASIMÉTRICA DE 5 COLUMNAS -->
-            <section class="lg:col-span-9 w-full flex flex-col gap-4">
-                
-                <!-- Barra de Conteo y Estado -->
-                <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
-                    <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider" id="results-count-txt">
-                        Mostrando artículos
-                    </span>
-                    <div class="flex items-center gap-2 text-xs text-slate-400 font-mono">
-                        <i class="fa-solid fa-truck-fast text-emerald-400"></i> Envío Directo • 5% Cashback
-                    </div>
-                </div>
-
-                <!-- CUADRÍCULA DE 5 COLUMNAS CON DESCRIPCIONES ASIMÉTRICAS Y RELIEVE SUAVE -->
-                <div id="products-grid-stage" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
-                    <!-- Inyectado dinámicamente -->
-                </div>
-
-            </section>
-
-        </div>
-
-    </main>
-
-    <!-- ========================================================================
-         CART DRAWER CON STEPPER COMPLETO (+ / - / ELIMINAR)
-         ======================================================================== -->
-    <div id="cartDrawer" class="fixed inset-0 z-[200] hidden">
-        <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
-        <div class="absolute right-0 top-0 h-full w-full max-w-md bg-slate-900 border-l border-slate-800 shadow-2xl flex flex-col justify-between p-6 z-10">
-            <div>
-                <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
-                    <h3 class="font-black text-white text-base flex items-center gap-2">
-                        <i class="fa-solid fa-cart-shopping text-cyan-400"></i> Tu Canasta de Compras
-                    </h3>
-                    <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-white text-lg p-1 cursor-pointer">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-
-                <!-- Barra de Envío Gratis ($1,500 MXN) -->
-                <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 mb-4 space-y-2">
-                    <div class="flex justify-between text-xs font-mono font-bold">
-                        <span id="shipping-progress-text" class="text-slate-300">Progreso de Envío Gratis:</span>
-                        <span id="shipping-progress-pct" class="text-cyan-400">0%</span>
-                    </div>
-                    <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
-                        <div id="shipping-progress-bar" class="h-full bg-gradient-to-r from-amber-400 to-emerald-400 transition-all duration-300 w-0"></div>
-                    </div>
-                    <span id="shipping-msg" class="text-[10px] text-slate-400 block leading-tight font-medium">Agrega $1,500.00 MXN para desbloquear envío local gratis.</span>
-                </div>
-                
-                <!-- Lista de Productos con Stepper (+ / -) y Bote de Basura -->
-                <div id="cart-items-container" class="flex flex-col gap-2.5 overflow-y-auto max-h-[45vh] pr-1 no-scrollbar"></div>
-            </div>
-
-            <div class="border-t border-slate-800 pt-4 flex flex-col gap-3">
-                <div class="flex justify-between items-baseline">
-                    <span class="text-xs text-slate-400 font-bold uppercase">Total a Pagar:</span>
-                    <span id="drawer-total-txt" class="text-xl font-mono font-black text-amber-400">$0.00 MXN</span>
-                </div>
-                <button onclick="alert('¡Compra rápida procesada exitosamente! Redirigiendo a pasarela segura...')" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg shadow-amber-500/20 cursor-pointer flex items-center justify-center gap-2">
-                    <i class="fa-solid fa-credit-card"></i> Pagar Ahora
-                </button>
-            </div>
-        </div>
+  <!-- ========================================================================
+     CABECERA CON SÚPER-BARRA BLANCA Y TOTALIZADOR EN VIVO
+     ======================================================================== -->
+        <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
+    <!-- LÍNEA 1: Barra Horizontal de Ecosistema con Neón Activo & Touch Scroll -->
+    <div class="w-full border-b border-slate-800/80 bg-slate-950/90 px-2 sm:px-4 py-1.5 flex items-center justify-between gap-2 text-xs overflow-hidden">
+      <div class="flex items-center gap-2 overflow-x-auto no-scrollbar whitespace-nowrap flex-1 py-0.5 scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
+        <span class="px-2.5 py-1 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-black text-[10px] uppercase shrink-0">
+          ⚡ Envío Exprés El Mismo Día
+        </span>
+        <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="px-3.5 py-1 rounded-xl bg-amber-500/20 border-2 border-amber-400 text-amber-300 shadow-[0_0_18px_rgba(251,191,36,0.8)] text-xs font-black flex items-center gap-1.5 shrink-0 scale-105 transition"><i class="fa-solid fa-house text-[11px]"></i> Matriz</a>
+        <a href="https://iaworldcenter-creator.github.io/pc-custom-lab/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-microchip text-[11px]"></i> PC Custom</a>
+        <a href="https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-300 text-cyan-200 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-gem text-[11px]"></i> Vía MX</a>
+        <a href="https://iaworldcenter-creator.github.io/cigarros-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-amber-500 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-smoking text-[11px]"></i> Cigarros</a>
+        <a href="https://iaworldcenter-creator.github.io/dulces-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-pink-500 text-pink-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-candy-cane text-[11px]"></i> Dulces</a>
+        <a href="https://iaworldcenter-creator.github.io/kiosco-digital/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500 text-indigo-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-newspaper text-[11px]"></i> Kiosco</a>
+        <a href="https://iaworldcenter-creator.github.io/mi-puesto-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-emerald-500 text-emerald-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-store text-[11px]"></i> Mi Puesto</a>
+        <a href="https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones-/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-red-500 text-red-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-tags text-[11px]"></i> Liquidaciones</a>
+        <span class="text-slate-700 shrink-0">|</span>
+        <a href="https://gemini.google.com" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i> Gemini AI</a>
+        <a href="https://antigravity.google/download" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-amber-400 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-download text-amber-400"></i> Anti-Gravity</a>
+      </div>
+      <div class="shrink-0 flex items-center pl-1 border-l border-slate-800">
+        <button id="header-account-btn" onclick="toggleAccountModal()" aria-label="Mi Cuenta, Domicilio y Cashback" title="Mi Cuenta y Cashback" class="cursor-pointer active:scale-95 transition"></button>
+      </div>
     </div>
 
-    <!-- ========================================================================
-         FOOTER UNIVERSAL
-         ======================================================================== -->
-        
-    <!-- FOOTER INSTITUCIONAL OFICIAL (LANDMARK: CONTENTINFO / H2) -->
-    <footer role="contentinfo" class="bg-slate-950 border-t border-slate-800 text-slate-300 text-xs mt-12 pt-10 pb-8" aria-label="Pie de página institucional" id="pie-de-pagina">
-        <h2 class="sr-only">Información Legal, Contacto y Garantías BAZAR NFL.GDL</h2>
-        <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-slate-800/80">
-                
-                <!-- COLUMNA 1: CONTACTO Y REDES OFICIALES -->
-                <div class="space-y-3">
-                    <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
-                        <i class="fa-solid fa-location-dot text-cyan-400" aria-hidden="true"></i> Contacto y Redes Oficiales
-                    </h3>
-                    <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
-                        <p class="flex items-start gap-2">
-                            <i class="fa-solid fa-store text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></i>
-                            <span>Pedro Moreno 501 A, Guadalajara Centro, Jalisco (CP 44100)</span>
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <i class="fa-solid fa-phone text-cyan-400 shrink-0" aria-hidden="true"></i>
-                            <span>Teléfono Fijo: <strong>(33) 3653 6348</strong></span>
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <i class="fa-brands fa-whatsapp text-emerald-400 shrink-0" aria-hidden="true"></i>
-                            <span>WhatsApp: <a href="https://wa.me/523337271440" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" class="hover:text-emerald-300 font-bold text-white transition min-h-[44px] inline-flex items-center">+52 33 3727 1440</a></span>
-                        </p>
-                        <p class="flex items-center gap-2">
-                            <i class="fa-solid fa-mobile-screen-button text-cyan-400 shrink-0" aria-hidden="true"></i>
-                            <span>Celular: <strong>+52 33 2865 2309</strong></span>
-                        </p>
-                    </div>
-
-                    <div class="pt-2 border-t border-slate-900 space-y-1.5 text-[10.5px]">
-                        <a href="https://www.facebook.com/profile.php?id=61593020515115" target="_blank" rel="noopener" aria-label="Perfil oficial de Facebook" class="text-slate-300 hover:text-blue-400 flex items-center gap-2 transition min-h-[44px]">
-                            <i class="fa-brands fa-facebook text-blue-500 w-4 text-center" aria-hidden="true"></i> <span>Facebook: <strong>BAZAR NFL.GDL</strong></span>
-                        </a>
-                        <a href="https://www.instagram.com/pccustomlab/" target="_blank" rel="noopener" aria-label="Perfil oficial de Instagram" class="text-slate-300 hover:text-pink-400 flex items-center gap-2 transition min-h-[44px]">
-                            <i class="fa-brands fa-instagram text-pink-500 w-4 text-center" aria-hidden="true"></i> <span>Instagram: <strong>@pccustomlab</strong></span>
-                        </a>
-                        <a href="https://www.youtube.com/@IAWorldCenter" target="_blank" rel="noopener" aria-label="Canal oficial de YouTube" class="text-slate-300 hover:text-red-400 flex items-center gap-2 transition min-h-[44px]">
-                            <i class="fa-brands fa-youtube text-red-500 w-4 text-center" aria-hidden="true"></i> <span>YouTube: <strong>IA World Center</strong></span>
-                        </a>
-                        <a href="https://t.me/pc_custom_lab" target="_blank" rel="noopener" aria-label="Canal oficial de Telegram" class="text-slate-300 hover:text-cyan-400 flex items-center gap-2 transition min-h-[44px]">
-                            <i class="fa-brands fa-telegram text-cyan-400 w-4 text-center" aria-hidden="true"></i> <span>Telegram: <strong>pc_custom_lab</strong></span>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- COLUMNA 2: POLÍTICAS DE COMPRA, GARANTÍA Y SEGURIDAD DE ENVÍOS -->
-                <div class="space-y-3">
-                    <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
-                        <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i> Políticas de Compra & Seguridad
-                    </h3>
-                    <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
-                        <div class="bg-amber-950/40 border border-amber-500/40 p-2.5 rounded-xl space-y-1">
-                            <strong class="text-amber-300 flex items-center gap-1.5 font-mono text-[10.5px]">
-                                <i class="fa-solid fa-motorcycle text-amber-400"></i> LÍMITE DE ENVÍOS EXPRÉS ($2,000 MXN)
-                            </strong>
-                            <p class="text-slate-200 text-[10px]">
-                                Por seguridad y límites de seguro de transporte en motocicleta, el <strong>Envío Exprés El Mismo Día aplica únicamente para compras menores a $2,000 MXN</strong>.
-                            </p>
-                            <p class="text-amber-200 text-[10px] font-bold">
-                                Pedidos mayores a $2,000 MXN se despachan obligatoriamente vía Paquetería Asegurada con Firma de Recibido del comprador o retiro directo en mostrador.
-                            </p>
-                        </div>
-                        <p class="flex items-start gap-2">
-                            <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 shrink-0" aria-hidden="true"></i>
-                            <span><strong>Garantía Directa de 48 Horas:</strong> Reemplazo inmediato en mostrador presentando empaque original intacto.</span>
-                        </p>
-                        <p class="flex items-start gap-2">
-                            <i class="fa-solid fa-box-open text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></i>
-                            <span><strong>Garantía de Fábrica de 1 Año:</strong> Gestión técnica sin costo de fletes ni trámites adicionales.</span>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- COLUMNA 3: AHORRO, CASHBACK Y DESPACHO LOCAL -->
-                <div class="space-y-3">
-                    <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
-                        <i class="fa-solid fa-coins text-emerald-400" aria-hidden="true"></i> Ahorro, Cashback & Despacho Local
-                    </h3>
-                    <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
-                        <div class="bg-slate-900/90 p-3 rounded-2xl border border-emerald-500/40 space-y-1">
-                            <div class="flex items-center gap-2 text-emerald-300 font-mono font-black text-xs">
-                                <i class="fa-solid fa-piggy-bank text-amber-400" aria-hidden="true"></i>
-                                <span>5% DE CASHBACK EN CADA COMPRA</span>
-                            </div>
-                            <p class="text-[10.5px] text-slate-300">
-                                Registra tu teléfono al ordenar para acumular saldo electrónico reutilizable en todas las boutiques.
-                            </p>
-                        </div>
-
-                        <div class="bg-slate-900/90 p-3 rounded-2xl border border-slate-800 space-y-1">
-                            <div class="flex items-center gap-2 text-cyan-300 font-mono font-bold text-xs">
-                                <i class="fa-solid fa-truck-fast text-cyan-400" aria-hidden="true"></i>
-                                <span>PAQUETERÍA ASEGURADA > $2,000 MXN</span>
-                            </div>
-                            <p class="text-[10.5px] text-slate-300">
-                                Envíos de alto valor protegidos con guía rastreable y firma de entrega obligatoria en destino.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <!-- CLÁUSULAS LEGALES, VIGENCIA Y CONDICIONES COMERCIALES (PROFECO / SAT) -->
-            <div class="pt-6 pb-2 text-[10.5px] text-slate-300 space-y-2 text-center font-mono leading-relaxed">
-                <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-xl max-w-5xl mx-auto space-y-1">
-                    <p class="text-amber-300 font-bold">
-                        <i class="fa-solid fa-calendar-check text-amber-400 mr-1" aria-hidden="true"></i>
-                        Vigencia de Precios y Promociones: Precios de lista y promociones de apertura (-25%) válidos del 24 al 29 de Agosto de 2026.
-                    </p>
-                    <p class="text-slate-300">
-                        <i class="fa-solid fa-triangle-exclamation text-amber-400 mr-1" aria-hidden="true"></i>
-                        Aviso Comercial: Precios exhibidos en Moneda Nacional (MXN) con IVA incluido. Precios sujetos a alza o cambio sin previo aviso por fluctuaciones cambiarias y existencias en almacén mayorista.
-                    </p>
-                    <p class="text-slate-300">
-                        Estructura comercial protegida con 20% de utilidad neta libre para cobertura de infraestructura tecnológica, licencias de inteligencia artificial, nómina, arrendamiento operativo y cumplimiento de obligaciones fiscales ante el SAT y PROFECO.
-                    </p>
-                </div>
-
-                <div class="pt-3 text-slate-400">
-                    © 2026 Ecosistema Comercial BAZAR NFL GDL & BAZAR NFL.GDL. Pedro Moreno 501 A, Guadalajara Centro, Jalisco. Todos los derechos reservados.
-                </div>
-            </div>
-
+    <!-- LÍNEA 2: Barra Principal con Buscador Blanco + H1 Tienda + Canasta -->
+    <div class="max-w-[99%] 2xl:max-w-[1850px] mx-auto px-2 sm:px-4 py-2.5 flex flex-row items-center justify-between gap-2 sm:gap-4">
+      
+      <!-- Logo y Marca Oficial con H1 -->
+      <div class="flex items-center gap-2.5 cursor-pointer shrink-0" onclick="document.getElementById('pie-de-pagina').scrollIntoView({ behavior: 'smooth' });">
+        <div class="relative w-9 h-9 sm:w-11 sm:h-11 flex items-center justify-center shrink-0">
+          <img src="https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp" alt="Logo BAZAR NFL.GDL" width="44" height="44" fetchpriority="high" decoding="async" class="w-9 h-9 sm:w-11 sm:h-11 rounded-full object-cover border-2 border-amber-400 shadow-[0_0_18px_rgba(251,191,36,0.8)] shrink-0" onerror="this.onerror=null;this.src='https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/mascota_tigre.webp';" />
         </div>
-    </footer>
+        <div class="flex flex-col min-w-0">
+          <h1 class="font-black text-xs sm:text-lg text-white tracking-wider uppercase leading-tight truncate max-w-[110px] sm:max-w-none">BAZAR NFL.GDL</h1>
+          <span class="text-[8px] sm:text-[10px] font-mono text-amber-400 uppercase tracking-tight flex items-center gap-0.5 truncate">
+            <i class="fa-solid fa-location-dot text-amber-400"></i> Pedro Moreno 501 A
+          </span>
+        </div>
+      </div>
+
+      <!-- Buscador Search-First Blanco con Botón BUSCAR -->
+      <div class="flex-1 min-w-0 relative">
+        <div class="flex items-center bg-white rounded-full border-2 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.35)] px-3 sm:px-4 py-1 gap-2">
+          <i class="fa-solid fa-magnifying-glass text-slate-500 text-sm shrink-0"></i>
+          <input type="text" id="boutiqueSearchInput" name="q" aria-label="Buscar en BAZAR NFL.GDL" autocomplete="off" spellcheck="false" placeholder="Busca, encuentra y compra rápido en las 7 boutiques..." class="flex-1 min-w-0 bg-transparent border-0 outline-none text-slate-950 font-bold text-xs sm:text-sm placeholder-slate-400" oninput="typeof onBoutiqueSearch==='function'?onBoutiqueSearch(event):typeof onMasterSearch==='function'?onMasterSearch(event):null" />
+          <button onclick="typeof clearBoutiqueSearch==='function'?clearBoutiqueSearch():typeof clearMasterSearch==='function'?clearMasterSearch():null" id="clear-search-btn" aria-label="Limpiar búsqueda" class="hidden text-slate-400 hover:text-slate-700 text-xs px-1 font-bold cursor-pointer shrink-0"><i class="fa-solid fa-xmark"></i></button>
+          <button onclick="typeof executeBoutiqueSearch==='function'?executeBoutiqueSearch():typeof executeMasterSearch==='function'?executeMasterSearch():null" aria-label="Buscar" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 text-slate-950 font-black px-3.5 sm:px-6 py-1.5 rounded-full text-[10px] sm:text-xs uppercase tracking-wider transition active:scale-95 shrink-0 shadow cursor-pointer">BUSCAR</button>
+        </div>
+        <div id="boutique-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2.5 flex flex-col gap-2 max-h-96 overflow-y-auto no-scrollbar"></div>
+        <div id="master-autocomplete-box" class="hidden absolute top-full left-0 right-0 mt-2 bg-slate-900 border-2 border-cyan-500/60 rounded-2xl shadow-2xl z-50 p-2.5 flex flex-col gap-2 max-h-96 overflow-y-auto no-scrollbar"></div>
+      </div>
+
+      <!-- Canasta / Carrito con Total en Vivo -->
+      <button onclick="toggleCartDrawer()" aria-label="Abrir canasta de compras" title="Ver Carrito" class="flex items-center gap-2 sm:gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-3 sm:px-4 py-2 rounded-xl transition cursor-pointer active:scale-95 shadow shrink-0 group">
+        <div class="relative">
+          <i class="fa-solid fa-cart-shopping text-amber-400 text-sm sm:text-base group-hover:scale-110 transition"></i>
+          <span id="boutique-cart-badge" class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 font-mono font-black text-[9px] rounded-full w-4 h-4 flex items-center justify-center shadow">0</span>
+          <span id="portal-cart-badge" class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 font-mono font-black text-[9px] rounded-full w-4 h-4 flex items-center justify-center shadow hidden">0</span>
+        </div>
+        <div class="flex flex-col text-left">
+          <span class="text-[9px] font-mono text-slate-400 uppercase leading-none hidden sm:inline">Canasta</span>
+          <span id="boutique-cart-total" class="text-xs font-mono font-bold text-amber-400">$0.00 MXN</span>
+          <span id="portal-cart-total" class="text-xs font-mono font-bold text-amber-400 hidden">$0.00 MXN</span>
+        </div>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========================================================================
+     CUERPO PRINCIPAL: SIDEBAR CON MICRO-BUSCADOR + CUADRÍCULA DE 5 COLUMNAS
+     ======================================================================== -->
+  <main class="max-w-7xl mx-auto px-4 py-8 flex-1 w-full">
     
-
-    <!-- ========================================================================
-         MOTOR JAVASCRIPT: BÚSQUEDA MULTI-TOKEN, STEPPER Y CUADRÍCULA ASIMÉTRICA
-         ======================================================================== -->
-    <script>
-    const departments = [
-        { id: "computacion", name: "Computación & Laptops", icon: "fa-laptop" },
-        { id: "electronica", name: "Electrónica & Audio", icon: "fa-headphones" },
-        { id: "dulces", name: "Dulcería & Botanas", icon: "fa-candy-cane" },
-        { id: "cigarros", name: "Tabacos & Puros", icon: "fa-smoking" },
-        { id: "herramientas", name: "Herramientas & Taller", icon: "fa-screwdriver-wrench" },
-        { id: "revistas", name: "Revistas & Libros Digitales", icon: "fa-newspaper" },
-        { id: "smarthome", name: "Smart Home & Domótica", icon: "fa-robot" },
-        { id: "telefonia", name: "Telefonía & Celulares", icon: "fa-mobile-screen" },
-        { id: "lineablanca", name: "Línea Blanca & Climas", icon: "fa-snowflake" },
-        { id: "cocina", name: "Cocina & Electrodomésticos", icon: "fa-kitchen-set" },
-        { id: "maker", name: "Robótica & Arduino", icon: "fa-microchip" },
-        { id: "cristaleria", name: "Cristalería & Vajillas", icon: "fa-wine-glass" },
-        { id: "moda", name: "Ropa & Moda Internacional", icon: "fa-shirt" },
-        { id: "calzado", name: "Calzado & Sneakers", icon: "fa-shoe-prints" },
-        { id: "bano", "name": "Baño & Grifería", icon: "fa-shower" },
-        { id: "hogar", "name": "Hogar & Muebles", icon: "fa-couch" },
-        { id: "iluminacion", "name": "Iluminación LED", icon: "fa-lightbulb" },
-        { id: "joyeria", "name": "Joyería & Relojería", icon: "fa-gem" },
-        { id: "deportes", "name": "Deportes & Fitness", icon: "fa-dumbbell" },
-        { id: "belleza", "name": "Belleza & Cuidado", icon: "fa-wand-magic" },
-        { id: "juguetes", "name": "Juguetes & Drones", icon: "fa-gamepad" },
-        { id: "automotriz", "name": "Automotriz & Dashcams", icon: "fa-car" },
-        { id: "bebes", "name": "Bebés & Maternidad", icon: "fa-baby" },
-        { id: "mascotas", "name": "Mascotas & Accesorios", icon: "fa-paw" },
-        { id: "oficina", "name": "Oficina & Papelería", icon: "fa-briefcase" },
-        { id: "musica", "name": "Instrumentos Musicales", icon: "fa-guitar" },
-        { id: "jardineria", "name": "Jardinería & Exteriores", icon: "fa-seedling" },
-        { id: "gourmet", "name": "Vinos & Coctelería", icon: "fa-martini-glass-citrus" },
-        { id: "fotografia", "name": "Fotografía & Video Pro", icon: "fa-camera" },
-        { id: "oportunidades", "name": "Liquidaciones & Remates", icon: "fa-tags" }
-    ];
-
-    // Base de datos de productos con descripciones asimétricas
-    const catalogDB = [
-        // Computación
-        { sku: "RAM-001", nombre: "Memoria RAM Kingston FURY Beast 32GB (2x16GB) DDR5 6000MHz", marca: "Kingston", cat: "computacion", precio: 2450.00, original: 2990.00, rating: 4.9, reviews: 142, desc: "Kit dual channel de alto rendimiento optimizado con perfiles Intel XMP 3.0 y AMD EXPO. Disipador de aluminio negro de perfil bajo.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/ram_caja.webp", tokens: ["ram", "kingston", "fury", "beast", "ddr5", "memoria", "6000mhz", "computadora"] },
-        { sku: "GPU-001", nombre: "Tarjeta de Video NVIDIA RTX 4070 Ti Super 16GB GDDR6X", marca: "NVIDIA", cat: "computacion", precio: 17800.00, original: 21500.00, rating: 4.8, reviews: 98, desc: "Arquitectura Ada Lovelace con 16GB GDDR6X, DLSS 3 y Ray Tracing.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp", tokens: ["gpu", "nvidia", "rtx", "4070", "ti", "tarjeta de video", "grafica", "gaming", "4k"] },
-        { sku: "CPU-001", nombre: "Procesador AMD Ryzen 7 7800X3D 8C/16T 96MB 3D V-Cache", marca: "AMD", cat: "computacion", precio: 8900.00, original: 10400.00, rating: 4.9, reviews: 310, desc: "El procesador definitivo para gaming con memoria caché vertical 3D apilada, 8 núcleos y 16 hilos en socket AM5 de última generación.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp", tokens: ["cpu", "amd", "ryzen", "7800x3d", "procesador", "gaming", "am5"] },
-        { sku: "SSD-001", nombre: "Disco Sólido SSD Samsung 990 PRO 2TB NVMe PCIe 4.0", marca: "Samsung", cat: "computacion", precio: 3600.00, original: 4200.00, rating: 4.8, reviews: 215, desc: "Velocidad de lectura secuencial de hasta 7,450 MB/s.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/disco_solido_m2.webp", tokens: ["ssd", "samsung", "990", "pro", "nvme", "disco", "m2", "almacenamiento", "2tb"] },
-
-        // Dulces & Botanas
-        { sku: "DUL-001", nombre: "Paleta Payaso Ricolino Caja con 15 piezas", marca: "Ricolino", cat: "dulces", precio: 245.00, original: 290.00, rating: 4.7, reviews: 450, desc: "Malvavisco suave cubierto con cobertura sabor a chocolate y gomitas de colores tradicionales en presentación de caja surtida para fiesta o mostrador.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["paleta", "payaso", "ricolino", "dulces", "chocolate", "gomitas", "antojo"] },
-        { sku: "DUL-002", nombre: "Rocaleta Sonrics de Chile Bolsa con 30 piezas", marca: "Sonrics", cat: "dulces", precio: 185.00, original: 220.00, rating: 4.8, reviews: 380, desc: "Caramelo macizo con 4 capas de chile ácido y centro de chicle.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["rocaleta", "sonrics", "chile", "dulces", "paleta", "chicle"] },
-        { sku: "DUL-003", nombre: "Mazapán De La Rosa Gigante Caja con 20 piezas", marca: "De La Rosa", cat: "dulces", precio: 160.00, original: 195.00, rating: 4.9, reviews: 620, desc: "El dulce tradicional mexicano por excelencia, elaborado con cacahuate tostado seleccionado.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["mazapan", "de la rosa", "cacahuate", "dulces", "tradicional"] },
-
-        // Tabacos & Puros
-        { sku: "TAB-001", nombre: "Puro Cohiba Siglo VI Tubo Individual", marca: "Cohiba", cat: "cigarros", precio: 850.00, original: 1100.00, rating: 4.9, reviews: 85, desc: "Puro cubano hecho a mano con hojas de tabaco seleccionadas de Vuelta Abajo. Notas amaderadas, cuero y frutos secos.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["puro", "cohiba", "siglo", "habano", "tabaco", "cigarro", "fumar"] },
-        { sku: "TAB-002", nombre: "Puro Romeo y Julieta Churchill", marca: "Romeo y Julieta", cat: "cigarros", precio: 620.00, original: 790.00, rating: 4.7, reviews: 64, desc: "Vitola Churchill de fortaleza media.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["puro", "romeo y julieta", "churchill", "habano", "tabaco"] },
-
-        // Herramientas Pro
-        { sku: "HRR-001", nombre: "Kit de Cautín Digital 80W Temperatura Regulable", marca: "TechPro", cat: "herramientas", precio: 480.00, original: 650.00, rating: 4.8, reviews: 112, desc: "Cautín profesional con display LCD de precisión (180°C - 520°C), calentador cerámico interno, 5 puntas de repuesto, base disipadora y estaño sin plomo.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp", tokens: ["cautin", "soldar", "soldadura", "herramientas", "reparacion", "electronica"] },
-        { sku: "HRR-002", nombre: "Juego de Destornilladores de Precisión 117 en 1", marca: "AXIDUN", cat: "herramientas", precio: 220.00, original: 310.00, rating: 4.7, reviews: 290, desc: "Estuche magnético compacto con puntas de acero cromo vanadio.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp", tokens: ["destornillador", "desarmador", "puntas", "precision", "herramientas", "tornillos"] },
-
-        // Revistas Digitales
-        { sku: "REV-001", nombre: "Suscripción Revista National Geographic Digital (1 Año)", marca: "RBA", cat: "revistas", precio: 599.00, original: 850.00, rating: 4.9, reviews: 520, desc: "12 ediciones digitales mensuales en alta resolución con infografías interactivas, reportajes de ciencia y acceso total al archivo histórico desde cualquier dispositivo.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_plano_blanco.webp", tokens: ["revista", "national geographic", "natgeo", "digital", "lectura", "ciencia", "naturaleza"] }
-    ];
-
-    let cart = [];
-    let activeDeptId = null;
-    let flyoutTimeout = null;
-
-    // ------------------------------------------------------------------------
-    // 1. RENDERIZADO DEL SIDEBAR DE DEPARTAMENTOS
-    // ------------------------------------------------------------------------
-    function renderDepartmentList(list = departments) {
-        const container = document.getElementById("dept-list-container");
-        const totalBadge = document.getElementById("total-count-badge");
-        if (totalBadge) totalBadge.innerText = catalogDB.length;
-        if (!container) return;
-
-        if (list.length === 0) {
-            container.innerHTML = '<span class="text-xs text-slate-500 py-4 block text-center">No hay departamentos con ese nombre.</span>';
-            return;
-        }
-
-        container.innerHTML = list.map(d => `
-            <div class="dept-row" data-id="${d.id}">
-                <button 
-                    onmouseenter="handleDeptHover('${d.id}', this)"
-                    onclick="filterByDept('${d.id}')"
-                    class="w-full text-left px-3 py-2 rounded-xl bg-slate-950/50 hover:bg-slate-800 border border-slate-800/80 hover:border-cyan-500/50 flex justify-between items-center transition group cursor-pointer"
-                >
-                    <span class="flex items-center gap-2.5 truncate text-xs font-bold text-slate-300 group-hover:text-white">
-                        <i class="fa-solid ${d.icon} text-cyan-400 w-4 text-center"></i>
-                        <span class="truncate">${d.name}</span>
-                    </span>
-                    <i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-cyan-400 transition group-hover:translate-x-0.5"></i>
-                </button>
-            </div>
-        `).join('');
-    }
-
-    function onFilterDepartments(e) {
-        const q = e.target.value.toLowerCase().trim();
-        const filtered = departments.filter(d => d.name.toLowerCase().includes(q));
-        renderDepartmentList(filtered);
-    }
-
-    // ------------------------------------------------------------------------
-    // 2. FLYOUT LATERAL CON ACCIÓN DIRECTA Y "VER TODO"
-    // ------------------------------------------------------------------------
-    function handleDeptHover(deptId, element) {
-        clearTimeout(flyoutTimeout);
-        activeDeptId = deptId;
-
-        const dept = departments.find(d => d.id === deptId);
-        if (!dept) return;
-
-        const flyout = document.getElementById("dept-flyout-panel");
-        const badge = document.getElementById("flyout-dept-badge");
-        const title = document.getElementById("flyout-dept-title");
-        const list = document.getElementById("flyout-products-list");
-
-        badge.innerText = dept.name.toUpperCase();
-        title.innerText = `Destacados: ${dept.name}`;
-
-        const items = catalogDB.filter(p => p.cat === deptId);
-
-        if (items.length === 0) {
-            list.innerHTML = `
-                <div class="py-6 text-center text-slate-500 text-xs">
-                    <span>Próximamente más artículos en este departamento.</span>
-                </div>
-            `;
-        } else {
-            list.innerHTML = items.map(p => `
-                <div class="bg-slate-950 border border-slate-800 hover:border-emerald-400/60 rounded-xl p-2.5 flex items-center justify-between gap-2.5 transition">
-                    <div class="min-w-0 flex-1">
-                        <span class="text-[9px] font-mono text-cyan-400 font-bold block">${p.sku}</span>
-                        <h5 class="text-xs font-bold text-white truncate">${p.nombre}</h5>
-                        <span class="text-amber-400 font-mono font-bold text-xs">$${p.precio.toFixed(2)} MXN</span>
-                    </div>
-                    <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px] uppercase tracking-wider transition active:scale-90 flex items-center gap-1 shrink-0 cursor-pointer" title="Comprar al vuelo">
-                        <i class="fa-solid fa-plus-circle"></i> +1 Clic
-                    </button>
-                </div>
-            `).join('');
-        }
-
-        flyout.classList.remove("hidden");
-    }
-
-    const sidebarRoot = document.getElementById("sidebar-root");
-    sidebarRoot.addEventListener("mouseleave", () => {
-        flyoutTimeout = setTimeout(() => {
-            document.getElementById("dept-flyout-panel").classList.add("hidden");
-        }, 300);
-    });
-    sidebarRoot.addEventListener("mouseenter", () => {
-        clearTimeout(flyoutTimeout);
-    });
-
-    function viewAllInCurrentDept() {
-        if (activeDeptId) {
-            filterByDept(activeDeptId);
-            document.getElementById("dept-flyout-panel").classList.add("hidden");
-        }
-    }
-
-    // ------------------------------------------------------------------------
-    // 3. BÚSQUEDA MULTI-TOKEN CON AUTOCOMPLETADO Y ACCIÓN DE COMPRA
-    // ------------------------------------------------------------------------
-    function searchMultiToken(query) {
-        if (!query || !query.trim()) return catalogDB;
-        const q = query.toLowerCase().trim();
-        const searchTokens = q.split(/\s+/).filter(t => t.length > 0);
-
-        return catalogDB.filter(item => {
-            const searchableText = `${item.sku} ${item.nombre} ${item.marca} ${item.desc} ${(item.tokens || []).join(' ')}`.toLowerCase();
-            return searchTokens.every(token => searchableText.includes(token));
-        });
-    }
-
-    function onGlobalSearch(e) {
-        const val = e.target.value;
-        const clearBtn = document.getElementById("clear-search-btn");
-        if (clearBtn) clearBtn.classList.toggle("hidden", val.length === 0);
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+      
+      <!-- COLUMNA IZQUIERDA (3 COLS): SIDEBAR CON FLYOUT Y "VER TODO" -->
+      <aside class="lg:col-span-3 w-full bg-slate-900/90 border border-slate-800 rounded-3xl p-4 shadow-2xl relative" id="sidebar-root">
         
-        renderAutocomplete(val);
-        renderProductsGrid(searchMultiToken(val));
-    }
+        <div class="flex items-center justify-between border-b border-slate-800 pb-3 mb-3">
+          <h3 class="font-mono text-xs font-black text-white uppercase tracking-wider flex items-center gap-2">
+            <i class="fa-solid fa-layer-group text-amber-400"></i> Departamentos
+          </h3>
+          <span class="text-[9px] font-mono text-cyan-400 font-bold bg-cyan-950/40 border border-cyan-500/30 px-2 py-0.5 rounded">30 Áreas</span>
+        </div>
 
-    function renderAutocomplete(val) {
-        const box = document.getElementById("autocomplete-box");
-        if (!val || val.trim().length < 2) {
-            box.classList.add("hidden");
-            return;
-        }
+        <!-- Micro-Buscador de Departamentos (Baymard UX) -->
+        <div class="mb-3 relative">
+          <input 
+            type="search" 
+            id="deptMicroSearch" 
+            placeholder="Filtrar departamentos..." 
+            class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-1.5 text-xs text-slate-200 outline-none focus:border-cyan-500 font-medium"
+            oninput="onFilterDepartments(event)"
+          />
+          <i class="fa-solid fa-filter text-slate-600 text-[10px] absolute right-3 top-2.5 pointer-events-none"></i>
+        </div>
 
-        const matches = searchMultiToken(val).slice(0, 5);
-        if (matches.length === 0) {
-            box.classList.add("hidden");
-            return;
-        }
+        <!-- Botón de Ver Todos los Departamentos -->
+        <div class="mb-2">
+          <button onclick="filterByDept('todos')" class="w-full text-left px-3 py-2 rounded-xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/25 flex justify-between items-center transition font-bold text-xs cursor-pointer">
+            <span class="flex items-center gap-2"><i class="fa-solid fa-border-all text-cyan-400 w-4 text-center"></i> Todos los Productos</span>
+            <span class="text-[10px] font-mono text-cyan-400" id="total-count-badge">0</span>
+          </button>
+        </div>
 
-        box.innerHTML = matches.map(item => `
-            <div class="bg-slate-950 border border-slate-800 hover:border-cyan-500/50 rounded-xl p-2.5 flex items-center justify-between gap-3 transition">
-                <div class="flex items-center gap-2.5 min-w-0 flex-1 cursor-pointer" onclick="selectAutocomplete('${item.nombre.replace(/'/g, "\\'")}')">
-                    <img src="${item.img}" alt="${item.nombre}" class="w-8 h-8 object-contain rounded bg-slate-900 p-0.5 shrink-0" onerror="this.src='assets/img/mascota_tigre_thumb.webp';"/>
-                    <div class="min-w-0">
-                        <span class="text-[9px] font-mono text-cyan-400 font-bold block">${item.sku}</span>
-                        <h5 class="text-xs font-bold text-white truncate hover:text-cyan-300">${item.nombre}</h5>
-                        <span class="text-amber-400 font-mono font-bold text-xs">$${item.precio.toFixed(2)} MXN</span>
-                    </div>
-                </div>
-                <!-- Botones Dobles Directos en el Autocomplete -->
-                <div class="flex items-center gap-1.5 shrink-0">
-                    <button onclick="event.stopPropagation(); addToCartDirect('${item.sku}', 1)" class="bg-slate-800 hover:bg-slate-700 border border-cyan-500/50 text-cyan-300 font-bold px-2 py-1 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95" title="Sumar a la canasta">
-                        <i class="fa-solid fa-cart-plus"></i> <span class="hidden sm:inline">Carrito</span>
-                    </button>
-                    <button onclick="event.stopPropagation(); buyNowDirect('${item.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95 shadow-sm" title="Ir a pagar">
-                        <i class="fa-solid fa-bolt"></i> <span>Comprar</span>
-                    </button>
-                </div>
+        <!-- Lista de Departamentos -->
+        <nav class="flex flex-col gap-1 max-h-[520px] overflow-y-auto pr-1 no-scrollbar" id="dept-list-container">
+          <!-- Inyectado dinámicamente -->
+        </nav>
+
+        <!-- VENTANA FLYOUT LATERAL CON COMPRA RÁPIDA + BOTÓN VER TODO -->
+        <div id="dept-flyout-panel" class="hidden lg:absolute left-full top-0 ml-3 w-[400px] bg-slate-900/98 border-2 border-cyan-400 rounded-3xl p-4 shadow-[0_10px_35px_rgba(6,182,212,0.35)] z-50 backdrop-blur-xl slide-right">
+          <div class="flex justify-between items-center border-b border-slate-800 pb-2.5 mb-2.5">
+            <div>
+              <span id="flyout-dept-badge" class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300">DEPARTAMENTO</span>
+              <h4 id="flyout-dept-title" class="text-xs font-black text-white mt-1">Destacados</h4>
             </div>
-        `).join('');
+            <span class="text-[10px] font-mono text-emerald-400 font-bold"><i class="fa-solid fa-bolt"></i> Compra al Vuelo</span>
+          </div>
 
-        box.classList.remove("hidden");
-    }
+          <div id="flyout-products-list" class="flex flex-col gap-2 max-h-[380px] overflow-y-auto pr-1 no-scrollbar"></div>
 
-    function selectAutocomplete(term) {
-        const input = document.getElementById("mainSearchInput");
-        input.value = term;
-        document.getElementById("autocomplete-box").classList.add("hidden");
-        renderProductsGrid(searchMultiToken(term));
-    }
+          <div class="mt-3 pt-2.5 border-t border-slate-800 text-center">
+            <button onclick="viewAllInCurrentDept()" class="w-full bg-slate-800 hover:bg-cyan-500 hover:text-slate-950 text-white font-bold py-2 rounded-xl text-xs uppercase tracking-wider transition flex items-center justify-center gap-2 shadow cursor-pointer">
+              <span>Ver todos los artículos de este departamento</span> <i class="fa-solid fa-arrow-right text-[10px]"></i>
+            </button>
+          </div>
+        </div>
 
-    function clearGlobalSearch() {
-        const input = document.getElementById("mainSearchInput");
-        input.value = '';
-        document.getElementById("clear-search-btn").classList.add("hidden");
-        document.getElementById("autocomplete-box").classList.add("hidden");
-        renderProductsGrid(catalogDB);
-    }
+      </aside>
 
-    function executeGlobalSearch() {
-        const input = document.getElementById("mainSearchInput");
-        document.getElementById("autocomplete-box").classList.add("hidden");
-        renderProductsGrid(searchMultiToken(input.value));
-    }
+      <!-- COLUMNA DERECHA (9 COLS): CUADRÍCULA ASIMÉTRICA DE 5 COLUMNAS -->
+      <section class="lg:col-span-9 w-full flex flex-col gap-4">
+        
+        <!-- Barra de Conteo y Estado -->
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 border-b border-slate-800 pb-3">
+          <span class="text-xs font-mono text-cyan-400 font-bold uppercase tracking-wider" id="results-count-txt">
+            Mostrando artículos
+          </span>
+          <div class="flex items-center gap-2 text-xs text-slate-400 font-mono">
+            <i class="fa-solid fa-truck-fast text-emerald-400"></i> Envío Directo • 5% Cashback
+          </div>
+        </div>
 
-    function resetToHome() {
-        clearGlobalSearch();
-    }
+        <!-- CUADRÍCULA DE 5 COLUMNAS CON DESCRIPCIONES ASIMÉTRICAS Y RELIEVE SUAVE -->
+        <div id="products-grid-stage" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3.5">
+          <!-- Inyectado dinámicamente -->
+        </div>
 
-    // ------------------------------------------------------------------------
-    // 4. CUADRÍCULA DE 5 COLUMNAS CON DESCRIPCIÓN ASIMÉTRICA Y RELIEVE SUAVE
-    // ------------------------------------------------------------------------
-    function renderProductsGrid(items) {
-        const stage = document.getElementById("products-grid-stage");
-        const countTxt = document.getElementById("results-count-txt");
+      </section>
 
-        if (countTxt) {
-            countTxt.innerText = `Mostrando ${items.length} de ${catalogDB.length} artículos`;
-        }
+    </div>
 
-        if (items.length === 0) {
-            stage.innerHTML = `
-                <div class="col-span-full py-16 text-center space-y-4 bg-slate-900/40 border border-slate-800 rounded-3xl p-8">
-                    <i class="fa-solid fa-magnifying-glass text-3xl text-amber-400 block"></i>
-                    <h4 class="text-lg font-black text-white">No encontramos coincidencias exactas</h4>
-                    <p class="text-xs text-slate-400 max-w-md mx-auto">Prueba con palabras clave como "RAM", "Kingston", "Paleta", "RTX" o selecciona un departamento a la izquierda.</p>
-                    <a href="https://wa.me/523337271440" target="_blank" class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl text-xs">
-                        <i class="fa-brands fa-whatsapp"></i> Solicitar cotización directa por WhatsApp
-                    </a>
-                </div>
-            `;
-            return;
-        }
+  </main>
 
-        // Tarjetas limpias de relieve suave sin marcos cuadrados pesados
-        stage.innerHTML = items.map(item => `
-            <div class="bg-slate-900/60 hover:bg-slate-900 border border-slate-800/80 hover:border-cyan-500/50 hover:shadow-[0_8px_25px_rgba(6,182,212,0.15)] rounded-2xl p-3 flex flex-col justify-between transition-all duration-200 group">
-                <div>
-                    <!-- Imagen de alta definición -->
-                    <div class="w-full h-40 overflow-hidden rounded-xl bg-slate-950/80 border border-slate-800/80 flex items-center justify-center p-1.5 relative mb-2.5">
-                        <img 
-                            src="${item.img || 'assets/img/mascota_tigre_thumb.webp'}" 
-                            alt="${item.nombre}" 
-                            class="w-full h-full object-contain group-hover:scale-105 transition duration-300"
-                            onerror="this.onerror=null; this.src='assets/img/mascota_tigre_thumb.webp';"
-                        />
-                        <span class="absolute top-1.5 left-1.5 bg-amber-500/15 border border-amber-500/40 text-amber-400 text-[8px] font-mono font-black px-1.5 py-0.2 rounded shadow">
-                            Oferta
-                        </span>
-                    </div>
+  <!-- ========================================================================
+     CART DRAWER CON STEPPER COMPLETO (+ / - / ELIMINAR)
+     ======================================================================== -->
+  <div id="cartDrawer" class="fixed inset-0 z-[200] hidden">
+    <div class="absolute inset-0 bg-slate-950/70 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
+    <div class="absolute right-0 top-0 h-full w-full max-w-md bg-slate-900 border-l border-slate-800 shadow-2xl flex flex-col justify-between p-6 z-10">
+      <div>
+        <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
+          <h3 class="font-black text-white text-base flex items-center gap-2">
+            <i class="fa-solid fa-cart-shopping text-cyan-400"></i> Tu Canasta de Compras
+          </h3>
+          <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-white text-lg p-1 cursor-pointer">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
 
-                    <!-- Marca & Rating -->
-                    <div class="flex items-center justify-between gap-1 mb-1">
-                        <span class="text-[9px] font-mono text-cyan-400 font-bold uppercase truncate">${item.marca}</span>
-                        <div class="flex items-center gap-1 text-[9px] text-amber-400 font-bold shrink-0">
-                            <i class="fa-solid fa-star text-[8px]"></i> ${item.rating}
-                            <span class="text-slate-500">(${item.reviews})</span>
-                        </div>
-                    </div>
+        <!-- Barra de Envío Gratis ($1,500 MXN) -->
+        <div class="bg-slate-950 p-3.5 rounded-2xl border border-slate-800 mb-4 space-y-2">
+          <div class="flex justify-between text-xs font-mono font-bold">
+            <span id="shipping-progress-text" class="text-slate-300">Progreso de Envío Gratis:</span>
+            <span id="shipping-progress-pct" class="text-cyan-400">0%</span>
+          </div>
+          <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+            <div id="shipping-progress-bar" class="h-full bg-gradient-to-r from-amber-400 to-emerald-400 transition-all duration-300 w-0"></div>
+          </div>
+          <span id="shipping-msg" class="text-[10px] text-slate-400 block leading-tight font-medium">Agrega $1,500.00 MXN para desbloquear envío local gratis.</span>
+        </div>
+        
+        <!-- Lista de Productos con Stepper (+ / -) y Bote de Basura -->
+        <div id="cart-items-container" class="flex flex-col gap-2.5 overflow-y-auto max-h-[45vh] pr-1 no-scrollbar"></div>
+      </div>
 
-                    <!-- Título -->
-                    <h4 class="text-white font-bold text-xs mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${item.nombre}">${item.nombre}</h4>
-                    
-                    <!-- Descripción Asimétrica Natural (sin alturas rígidas) -->
-                    <p class="text-slate-400 text-[11px] leading-relaxed mb-3 font-normal">${item.desc}</p>
-                    <p class="flex items-center gap-2"><span>📱 Celular: +52 33 2665 2109</span></p>
-                </div>
+      <div class="border-t border-slate-800 pt-4 flex flex-col gap-3">
+        <div class="flex justify-between items-baseline">
+          <span class="text-xs text-slate-400 font-bold uppercase">Total a Pagar:</span>
+          <span id="drawer-total-txt" class="text-xl font-mono font-black text-amber-400">$0.00 MXN</span>
+        </div>
+        <button onclick="alert('¡Compra rápida procesada exitosamente! Redirigiendo a pasarela segura...')" class="w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-3 rounded-xl text-xs uppercase tracking-wider transition active:scale-95 shadow-lg shadow-amber-500/20 cursor-pointer flex items-center justify-center gap-2">
+          <i class="fa-solid fa-credit-card"></i> Pagar Ahora
+        </button>
+      </div>
+    </div>
+  </div>
 
-                <div>
-                    <!-- Precio de Lista -->
-                    <div class="flex items-baseline justify-between pt-2 border-t border-slate-800/80 mb-2.5">
-                        <span class="text-amber-400 font-black font-mono text-xs sm:text-sm">$${item.precio.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
-                        ${item.original ? `<span class="text-slate-500 line-through text-[9px] font-mono">$${item.original.toFixed(2)}</span>` : ''}
-                    </div>
+  <!-- ========================================================================
+     FOOTER UNIVERSAL
+     ======================================================================== -->
+    
+  <!-- FOOTER INSTITUCIONAL OFICIAL (LANDMARK: CONTENTINFO / H2) -->
+  <footer role="contentinfo" class="bg-slate-950 border-t border-slate-800 text-slate-300 text-xs mt-12 pt-10 pb-8" aria-label="Pie de página institucional" id="pie-de-pagina">
+    <h2 class="sr-only">Información Legal, Contacto y Garantías BAZAR NFL.GDL</h2>
+    <div class="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-slate-800/80">
+        
+        <!-- COLUMNA 1: CONTACTO Y REDES OFICIALES -->
+        <div class="space-y-3">
+          <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-location-dot text-cyan-400" aria-hidden="true"></i> Contacto y Redes Oficiales
+          </h3>
+          <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
+            <p class="flex items-start gap-2">
+              <i class="fa-solid fa-store text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></i>
+              <span>Pedro Moreno 501 A, Guadalajara Centro, Jalisco (CP 44100)</span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i class="fa-solid fa-phone text-cyan-400 shrink-0" aria-hidden="true"></i>
+              <span>Teléfono Fijo: <strong>(33) 3653 6348</strong></span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i class="fa-brands fa-whatsapp text-emerald-400 shrink-0" aria-hidden="true"></i>
+              <span>WhatsApp: <a href="https://wa.me/523337271440" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp" class="hover:text-emerald-300 font-bold text-white transition min-h-[44px] inline-flex items-center">+52 33 3727 1440</a></span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-cyan-400 shrink-0" aria-hidden="true"></i>
+              <span>Celular: <strong>+52 33 2865 2309</strong></span>
+            </p>
+          </div>
 
-                    <!-- Botones Dobles Fieles a Vía MX -->
-                    <div class="grid grid-cols-2 gap-1.5">
-                        <button onclick="addToCartDirect('${item.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-bold py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer shadow-sm" title="Agregar al carrito">
-                            <i class="fa-solid fa-cart-plus text-[10px]"></i> <span class="truncate">Carrito</span>
-                        </button>
-                        <button onclick="buyNowDirect('${item.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow-sm cursor-pointer" title="Comprar de inmediato">
-                            <i class="fa-solid fa-bolt text-[10px]"></i> <span class="truncate">Comprar</span>
-                        </button>
-                    </div>
-                </div>
+          <div class="pt-2 border-t border-slate-900 space-y-1.5 text-[10.5px]">
+            <a href="https://www.facebook.com/profile.php?id=61593020515115" target="_blank" rel="noopener" aria-label="Perfil oficial de Facebook" class="text-slate-300 hover:text-blue-400 flex items-center gap-2 transition min-h-[44px]">
+              <i class="fa-brands fa-facebook text-blue-500 w-4 text-center" aria-hidden="true"></i> <span>Facebook: <strong>BAZAR NFL.GDL</strong></span>
+            </a>
+            <a href="https://www.instagram.com/pccustomlab/" target="_blank" rel="noopener" aria-label="Perfil oficial de Instagram" class="text-slate-300 hover:text-pink-400 flex items-center gap-2 transition min-h-[44px]">
+              <i class="fa-brands fa-instagram text-pink-500 w-4 text-center" aria-hidden="true"></i> <span>Instagram: <strong>@pccustomlab</strong></span>
+            </a>
+            <a href="https://www.youtube.com/@IAWorldCenter" target="_blank" rel="noopener" aria-label="Canal oficial de YouTube" class="text-slate-300 hover:text-red-400 flex items-center gap-2 transition min-h-[44px]">
+              <i class="fa-brands fa-youtube text-red-500 w-4 text-center" aria-hidden="true"></i> <span>YouTube: <strong>IA World Center</strong></span>
+            </a>
+            <a href="https://t.me/pc_custom_lab" target="_blank" rel="noopener" aria-label="Canal oficial de Telegram" class="text-slate-300 hover:text-cyan-400 flex items-center gap-2 transition min-h-[44px]">
+              <i class="fa-brands fa-telegram text-cyan-400 w-4 text-center" aria-hidden="true"></i> <span>Telegram: <strong>pc_custom_lab</strong></span>
+            </a>
+          </div>
+        </div>
+
+        <!-- COLUMNA 2: POLÍTICAS DE COMPRA, GARANTÍA Y SEGURIDAD DE ENVÍOS -->
+        <div class="space-y-3">
+          <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-shield-halved text-cyan-400" aria-hidden="true"></i> Políticas de Compra & Seguridad
+          </h3>
+          <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
+            <div class="bg-amber-950/40 border border-amber-500/40 p-2.5 rounded-xl space-y-1">
+              <strong class="text-amber-300 flex items-center gap-1.5 font-mono text-[10.5px]">
+                <i class="fa-solid fa-motorcycle text-amber-400"></i> LÍMITE DE ENVÍOS EXPRÉS ($2,000 MXN)
+              </strong>
+              <p class="text-slate-200 text-[10px]">
+                Por seguridad y límites de seguro de transporte en motocicleta, el <strong>Envío Exprés El Mismo Día aplica únicamente para compras menores a $2,000 MXN</strong>.
+              </p>
+              <p class="text-amber-200 text-[10px] font-bold">
+                Pedidos mayores a $2,000 MXN se despachan obligatoriamente vía Paquetería Asegurada con Firma de Recibido del comprador o retiro directo en mostrador.
+              </p>
             </div>
-        `).join('');
-    }
+            <p class="flex items-start gap-2">
+              <i class="fa-solid fa-circle-check text-emerald-400 mt-0.5 shrink-0" aria-hidden="true"></i>
+              <span><strong>Garantía Directa de 48 Horas:</strong> Reemplazo inmediato en mostrador presentando empaque original intacto.</span>
+            </p>
+            <p class="flex items-start gap-2">
+              <i class="fa-solid fa-box-open text-cyan-400 mt-0.5 shrink-0" aria-hidden="true"></i>
+              <span><strong>Garantía de Fábrica de 1 Año:</strong> Gestión técnica sin costo de fletes ni trámites adicionales.</span>
+            </p>
+          </div>
+        </div>
 
-    function filterByDept(deptId) {
-        if (deptId === 'todos') {
-            renderProductsGrid(catalogDB);
-        } else {
-            const filtered = catalogDB.filter(p => p.cat === deptId);
-            renderProductsGrid(filtered);
-        }
-    }
-
-    // ------------------------------------------------------------------------
-    // 5. GESTIÓN DEL CARRITO CON STEPPER (+ / - / BASURA)
-    // ------------------------------------------------------------------------
-    function addToCartDirect(sku, qty = 1) {
-        const item = catalogDB.find(p => p.sku === sku);
-        if (!item) return;
-
-        const exist = cart.find(i => i.sku === sku);
-        if (exist) {
-            exist.quantity += qty;
-        } else {
-            cart.push({ ...item, quantity: qty });
-        }
-
-        updateCartState();
-
-        const badge = document.getElementById("cart-badge");
-        badge.classList.remove("cart-pop");
-        void badge.offsetWidth;
-        badge.classList.add("cart-pop");
-    }
-
-    function buyNowDirect(sku) {
-        addToCartDirect(sku, 1);
-        toggleCartDrawer();
-    }
-
-    function changeItemQuantity(sku, delta) {
-        const item = cart.find(i => i.sku === sku);
-        if (!item) return;
-
-        item.quantity += delta;
-        if (item.quantity <= 0) {
-            cart = cart.filter(i => i.sku !== sku);
-        }
-        updateCartState();
-    }
-
-    function setItemQuantity(sku, value) {
-        const val = parseInt(value) || 0;
-        if (val <= 0) {
-            cart = cart.filter(i => i.sku !== sku);
-        } else {
-            const item = cart.find(i => i.sku === sku);
-            if (item) item.quantity = val;
-        }
-        updateCartState();
-    }
-
-    function deleteCartItem(sku) {
-        cart = cart.filter(i => i.sku !== sku);
-        updateCartState();
-    }
-
-    function updateCartState() {
-        const totalCount = cart.reduce((sum, i) => sum + i.quantity, 0);
-        const totalMoney = cart.reduce((sum, i) => sum + (i.precio * i.quantity), 0);
-
-        document.getElementById("cart-badge").innerText = totalCount;
-        document.getElementById("cart-total").innerText = `$${totalMoney.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
-        document.getElementById("drawer-total-txt").innerText = `$${totalMoney.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
-
-        // Cálculo de barra de envío gratis ($1,500 MXN)
-        const freeShippingGoal = 1500;
-        const progressPct = Math.min(100, Math.round((totalMoney / freeShippingGoal) * 100));
-        const progressBar = document.getElementById("shipping-progress-bar");
-        const progressPctTxt = document.getElementById("shipping-progress-pct");
-        const shippingMsg = document.getElementById("shipping-msg");
-
-        if (progressBar && progressPctTxt && shippingMsg) {
-            progressBar.style.width = `${progressPct}%`;
-            progressPctTxt.innerText = `${progressPct}%`;
-
-            if (totalMoney >= freeShippingGoal) {
-                shippingMsg.innerHTML = '🎉 <strong class="text-emerald-400">¡Felicidades! Tienes Envío Gratis Local desbloqueado.</strong>';
-            } else {
-                const diff = (freeShippingGoal - totalMoney).toFixed(2);
-                shippingMsg.innerText = `Agrega $${diff} MXN más para obtener Envío Gratis a tu domicilio.`;
-            }
-        }
-
-        const container = document.getElementById("cart-items-container");
-        if (cart.length === 0) {
-            container.innerHTML = '<div class="text-center py-8 text-slate-500 text-xs">Tu canasta está vacía.</div>';
-            return;
-        }
-
-        // Renderizado del Carrito con Stepper (+ / -) y Bote de Basura
-        container.innerHTML = cart.map(item => `
-            <div class="bg-slate-950 border border-slate-800 rounded-2xl p-3 flex flex-col gap-2.5 text-xs shadow-md">
-                <div class="flex justify-between items-start gap-2">
-                    <div class="min-w-0 flex-1">
-                        <span class="font-mono text-[9px] text-cyan-400 font-bold block">${item.sku}</span>
-                        <h5 class="text-white font-bold line-clamp-1 leading-snug">${item.nombre}</h5>
-                        <span class="text-amber-400 font-mono font-bold text-xs">$${item.precio.toFixed(2)} MXN c/u</span>
-                    </div>
-                    <button onclick="deleteCartItem('${item.sku}')" class="text-slate-500 hover:text-red-400 p-1 transition cursor-pointer" title="Eliminar del carrito">
-                        <i class="fa-solid fa-trash-can text-xs"></i>
-                    </button>
-                </div>
-
-                <!-- Stepper de Cantidad: [-] [Input] [+] y Subtotal -->
-                <div class="flex justify-between items-center pt-2 border-t border-slate-800/80">
-                    <div class="flex items-center gap-1 bg-slate-900 border border-slate-700/80 rounded-xl p-0.5">
-                        <button onclick="changeItemQuantity('${item.sku}', -1)" class="w-6 h-6 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-black text-xs flex items-center justify-center transition active:scale-95 cursor-pointer">-</button>
-                        <input 
-                            type="number" 
-                            min="1" 
-                            value="${item.quantity}" 
-                            onchange="setItemQuantity('${item.sku}', this.value)"
-                            class="w-10 bg-transparent border-0 text-center font-mono font-bold text-xs text-white outline-none"
-                        />
-                        <button onclick="changeItemQuantity('${item.sku}', 1)" class="w-6 h-6 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-black text-xs flex items-center justify-center transition active:scale-95 cursor-pointer">+</button>
-                    </div>
-                    <span class="font-mono font-black text-sm text-cyan-400">$${(item.precio * item.quantity).toFixed(2)} MXN</span>
-                </div>
+        <!-- COLUMNA 3: AHORRO, CASHBACK Y DESPACHO LOCAL -->
+        <div class="space-y-3">
+          <h3 class="font-bold text-cyan-300 uppercase tracking-wider text-xs font-mono flex items-center gap-2">
+            <i class="fa-solid fa-coins text-emerald-400" aria-hidden="true"></i> Ahorro, Cashback & Despacho Local
+          </h3>
+          <div class="space-y-2 text-slate-200 text-[11px] leading-relaxed">
+            <div class="bg-slate-900/90 p-3 rounded-2xl border border-emerald-500/40 space-y-1">
+              <div class="flex items-center gap-2 text-emerald-300 font-mono font-black text-xs">
+                <i class="fa-solid fa-piggy-bank text-amber-400" aria-hidden="true"></i>
+                <span>5% DE CASHBACK EN CADA COMPRA</span>
+              </div>
+              <p class="text-[10.5px] text-slate-300">
+                Registra tu teléfono al ordenar para acumular saldo electrónico reutilizable en todas las boutiques.
+              </p>
             </div>
-        `).join('');
+
+            <div class="bg-slate-900/90 p-3 rounded-2xl border border-slate-800 space-y-1">
+              <div class="flex items-center gap-2 text-cyan-300 font-mono font-bold text-xs">
+                <i class="fa-solid fa-truck-fast text-cyan-400" aria-hidden="true"></i>
+                <span>PAQUETERÍA ASEGURADA > $2,000 MXN</span>
+              </div>
+              <p class="text-[10.5px] text-slate-300">
+                Envíos de alto valor protegidos con guía rastreable y firma de entrega obligatoria en destino.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CLÁUSULAS LEGALES, VIGENCIA Y CONDICIONES COMERCIALES (PROFECO / SAT) -->
+      <div class="pt-6 pb-2 text-[10.5px] text-slate-300 space-y-2 text-center font-mono leading-relaxed">
+        <div class="bg-slate-900/60 border border-slate-800 p-3 rounded-xl max-w-5xl mx-auto space-y-1">
+          <p class="text-amber-300 font-bold">
+            <i class="fa-solid fa-calendar-check text-amber-400 mr-1" aria-hidden="true"></i>
+            Vigencia de Precios y Promociones: Precios de lista y promociones de apertura (-25%) válidos del 24 al 29 de Agosto de 2026.
+          </p>
+          <p class="text-slate-300">
+            <i class="fa-solid fa-triangle-exclamation text-amber-400 mr-1" aria-hidden="true"></i>
+            Aviso Comercial: Precios exhibidos en Moneda Nacional (MXN) con IVA incluido. Precios sujetos a alza o cambio sin previo aviso por fluctuaciones cambiarias y existencias en almacén mayorista.
+          </p>
+          <p class="text-slate-300">
+            Estructura comercial protegida con 20% de utilidad neta libre para cobertura de infraestructura tecnológica, licencias de inteligencia artificial, nómina, arrendamiento operativo y cumplimiento de obligaciones fiscales ante el SAT y PROFECO.
+          </p>
+        </div>
+
+        <div class="pt-3 text-slate-400">
+          © 2026 Ecosistema Comercial BAZAR NFL GDL & BAZAR NFL.GDL. Pedro Moreno 501 A, Guadalajara Centro, Jalisco. Todos los derechos reservados.
+        </div>
+      </div>
+
+    </div>
+  </footer>
+  
+
+  <!-- ========================================================================
+     MOTOR JAVASCRIPT: BÚSQUEDA MULTI-TOKEN, STEPPER Y CUADRÍCULA ASIMÉTRICA
+     ======================================================================== -->
+  <script>
+  const departments = [
+    { id: "computacion", name: "Computación & Laptops", icon: "fa-laptop" },
+    { id: "electronica", name: "Electrónica & Audio", icon: "fa-headphones" },
+    { id: "dulces", name: "Dulcería & Botanas", icon: "fa-candy-cane" },
+    { id: "cigarros", name: "Tabacos & Puros", icon: "fa-smoking" },
+    { id: "herramientas", name: "Herramientas & Taller", icon: "fa-screwdriver-wrench" },
+    { id: "revistas", name: "Revistas & Libros Digitales", icon: "fa-newspaper" },
+    { id: "smarthome", name: "Smart Home & Domótica", icon: "fa-robot" },
+    { id: "telefonia", name: "Telefonía & Celulares", icon: "fa-mobile-screen" },
+    { id: "lineablanca", name: "Línea Blanca & Climas", icon: "fa-snowflake" },
+    { id: "cocina", name: "Cocina & Electrodomésticos", icon: "fa-kitchen-set" },
+    { id: "maker", name: "Robótica & Arduino", icon: "fa-microchip" },
+    { id: "cristaleria", name: "Cristalería & Vajillas", icon: "fa-wine-glass" },
+    { id: "moda", name: "Ropa & Moda Internacional", icon: "fa-shirt" },
+    { id: "calzado", name: "Calzado & Sneakers", icon: "fa-shoe-prints" },
+    { id: "bano", "name": "Baño & Grifería", icon: "fa-shower" },
+    { id: "hogar", "name": "Hogar & Muebles", icon: "fa-couch" },
+    { id: "iluminacion", "name": "Iluminación LED", icon: "fa-lightbulb" },
+    { id: "joyeria", "name": "Joyería & Relojería", icon: "fa-gem" },
+    { id: "deportes", "name": "Deportes & Fitness", icon: "fa-dumbbell" },
+    { id: "belleza", "name": "Belleza & Cuidado", icon: "fa-wand-magic" },
+    { id: "juguetes", "name": "Juguetes & Drones", icon: "fa-gamepad" },
+    { id: "automotriz", "name": "Automotriz & Dashcams", icon: "fa-car" },
+    { id: "bebes", "name": "Bebés & Maternidad", icon: "fa-baby" },
+    { id: "mascotas", "name": "Mascotas & Accesorios", icon: "fa-paw" },
+    { id: "oficina", "name": "Oficina & Papelería", icon: "fa-briefcase" },
+    { id: "musica", "name": "Instrumentos Musicales", icon: "fa-guitar" },
+    { id: "jardineria", "name": "Jardinería & Exteriores", icon: "fa-seedling" },
+    { id: "gourmet", "name": "Vinos & Coctelería", icon: "fa-martini-glass-citrus" },
+    { id: "fotografia", "name": "Fotografía & Video Pro", icon: "fa-camera" },
+    { id: "oportunidades", "name": "Liquidaciones & Remates", icon: "fa-tags" }
+  ];
+
+  // Base de datos de productos con descripciones asimétricas
+  const catalogDB = [
+    // Computación
+    { sku: "RAM-001", nombre: "Memoria RAM Kingston FURY Beast 32GB (2x16GB) DDR5 6000MHz", marca: "Kingston", cat: "computacion", precio: 2450.00, original: 2990.00, rating: 4.9, reviews: 142, desc: "Kit dual channel de alto rendimiento optimizado con perfiles Intel XMP 3.0 y AMD EXPO. Disipador de aluminio negro de perfil bajo.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/ram_caja.webp", tokens: ["ram", "kingston", "fury", "beast", "ddr5", "memoria", "6000mhz", "computadora"] },
+    { sku: "GPU-001", nombre: "Tarjeta de Video NVIDIA RTX 4070 Ti Super 16GB GDDR6X", marca: "NVIDIA", cat: "computacion", precio: 17800.00, original: 21500.00, rating: 4.8, reviews: 98, desc: "Arquitectura Ada Lovelace con 16GB GDDR6X, DLSS 3 y Ray Tracing.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/gpu_nvidia.webp", tokens: ["gpu", "nvidia", "rtx", "4070", "ti", "tarjeta de video", "grafica", "gaming", "4k"] },
+    { sku: "CPU-001", nombre: "Procesador AMD Ryzen 7 7800X3D 8C/16T 96MB 3D V-Cache", marca: "AMD", cat: "computacion", precio: 8900.00, original: 10400.00, rating: 4.9, reviews: 310, desc: "El procesador definitivo para gaming con memoria caché vertical 3D apilada, 8 núcleos y 16 hilos en socket AM5 de última generación.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/cpu_amd_ryzen.webp", tokens: ["cpu", "amd", "ryzen", "7800x3d", "procesador", "gaming", "am5"] },
+    { sku: "SSD-001", nombre: "Disco Sólido SSD Samsung 990 PRO 2TB NVMe PCIe 4.0", marca: "Samsung", cat: "computacion", precio: 3600.00, original: 4200.00, rating: 4.8, reviews: 215, desc: "Velocidad de lectura secuencial de hasta 7,450 MB/s.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/disco_solido_m2.webp", tokens: ["ssd", "samsung", "990", "pro", "nvme", "disco", "m2", "almacenamiento", "2tb"] },
+
+    // Dulces & Botanas
+    { sku: "DUL-001", nombre: "Paleta Payaso Ricolino Caja con 15 piezas", marca: "Ricolino", cat: "dulces", precio: 245.00, original: 290.00, rating: 4.7, reviews: 450, desc: "Malvavisco suave cubierto con cobertura sabor a chocolate y gomitas de colores tradicionales en presentación de caja surtida para fiesta o mostrador.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["paleta", "payaso", "ricolino", "dulces", "chocolate", "gomitas", "antojo"] },
+    { sku: "DUL-002", nombre: "Rocaleta Sonrics de Chile Bolsa con 30 piezas", marca: "Sonrics", cat: "dulces", precio: 185.00, original: 220.00, rating: 4.8, reviews: 380, desc: "Caramelo macizo con 4 capas de chile ácido y centro de chicle.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["rocaleta", "sonrics", "chile", "dulces", "paleta", "chicle"] },
+    { sku: "DUL-003", nombre: "Mazapán De La Rosa Gigante Caja con 20 piezas", marca: "De La Rosa", cat: "dulces", precio: 160.00, original: 195.00, rating: 4.9, reviews: 620, desc: "El dulce tradicional mexicano por excelencia, elaborado con cacahuate tostado seleccionado.", img: "assets/img/mascota_tigre_thumb.webp", tokens: ["mazapan", "de la rosa", "cacahuate", "dulces", "tradicional"] },
+
+    // Tabacos & Puros
+    { sku: "TAB-001", nombre: "Puro Cohiba Siglo VI Tubo Individual", marca: "Cohiba", cat: "cigarros", precio: 850.00, original: 1100.00, rating: 4.9, reviews: 85, desc: "Puro cubano hecho a mano con hojas de tabaco seleccionadas de Vuelta Abajo. Notas amaderadas, cuero y frutos secos.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["puro", "cohiba", "siglo", "habano", "tabaco", "cigarro", "fumar"] },
+    { sku: "TAB-002", nombre: "Puro Romeo y Julieta Churchill", marca: "Romeo y Julieta", cat: "cigarros", precio: 620.00, original: 790.00, rating: 4.7, reviews: 64, desc: "Vitola Churchill de fortaleza media.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/tigre_corporativo_thumb.webp", tokens: ["puro", "romeo y julieta", "churchill", "habano", "tabaco"] },
+
+    // Herramientas Pro
+    { sku: "HRR-001", nombre: "Kit de Cautín Digital 80W Temperatura Regulable", marca: "TechPro", cat: "herramientas", precio: 480.00, original: 650.00, rating: 4.8, reviews: 112, desc: "Cautín profesional con display LCD de precisión (180°C - 520°C), calentador cerámico interno, 5 puntas de repuesto, base disipadora y estaño sin plomo.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/software_estante_madera.webp", tokens: ["cautin", "soldar", "soldadura", "herramientas", "reparacion", "electronica"] },
+    { sku: "HRR-002", nombre: "Juego de Destornilladores de Precisión 117 en 1", marca: "AXIDUN", cat: "herramientas", precio: 220.00, original: 310.00, rating: 4.7, reviews: 290, desc: "Estuche magnético compacto con puntas de acero cromo vanadio.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/perifericos_combo_1.webp", tokens: ["destornillador", "desarmador", "puntas", "precision", "herramientas", "tornillos"] },
+
+    // Revistas Digitales
+    { sku: "REV-001", nombre: "Suscripción Revista National Geographic Digital (1 Año)", marca: "RBA", cat: "revistas", precio: 599.00, original: 850.00, rating: 4.9, reviews: 520, desc: "12 ediciones digitales mensuales en alta resolución con infografías interactivas, reportajes de ciencia y acceso total al archivo histórico desde cualquier dispositivo.", img: "https://iaworldcenter-creator.github.io/pc-custom-lab/assets/img/catalog/monitor_plano_blanco.webp", tokens: ["revista", "national geographic", "natgeo", "digital", "lectura", "ciencia", "naturaleza"] }
+  ];
+
+  let cart = [];
+  let activeDeptId = null;
+  let flyoutTimeout = null;
+
+  // ------------------------------------------------------------------------
+  // 1. RENDERIZADO DEL SIDEBAR DE DEPARTAMENTOS
+  // ------------------------------------------------------------------------
+  function renderDepartmentList(list = departments) {
+    const container = document.getElementById("dept-list-container");
+    const totalBadge = document.getElementById("total-count-badge");
+    if (totalBadge) totalBadge.innerText = catalogDB.length;
+    if (!container) return;
+
+    if (list.length === 0) {
+      container.innerHTML = '<span class="text-xs text-slate-500 py-4 block text-center">No hay departamentos con ese nombre.</span>';
+      return;
     }
 
-    function toggleCartDrawer() {
-        document.getElementById("cartDrawer").classList.toggle("hidden");
-        updateCartState();
+    container.innerHTML = list.map(d => `
+      <div class="dept-row" data-id="${d.id}">
+        <button 
+          onmouseenter="handleDeptHover('${d.id}', this)"
+          onclick="filterByDept('${d.id}')"
+          class="w-full text-left px-3 py-2 rounded-xl bg-slate-950/50 hover:bg-slate-800 border border-slate-800/80 hover:border-cyan-500/50 flex justify-between items-center transition group cursor-pointer"
+        >
+          <span class="flex items-center gap-2.5 truncate text-xs font-bold text-slate-300 group-hover:text-white">
+            <i class="fa-solid ${d.icon} text-cyan-400 w-4 text-center"></i>
+            <span class="truncate">${d.name}</span>
+          </span>
+          <i class="fa-solid fa-chevron-right text-[9px] text-slate-600 group-hover:text-cyan-400 transition group-hover:translate-x-0.5"></i>
+        </button>
+      </div>
+    `).join('');
+  }
+
+  function onFilterDepartments(e) {
+    const q = e.target.value.toLowerCase().trim();
+    const filtered = departments.filter(d => d.name.toLowerCase().includes(q));
+    renderDepartmentList(filtered);
+  }
+
+  // ------------------------------------------------------------------------
+  // 2. FLYOUT LATERAL CON ACCIÓN DIRECTA Y "VER TODO"
+  // ------------------------------------------------------------------------
+  function handleDeptHover(deptId, element) {
+    clearTimeout(flyoutTimeout);
+    activeDeptId = deptId;
+
+    const dept = departments.find(d => d.id === deptId);
+    if (!dept) return;
+
+    const flyout = document.getElementById("dept-flyout-panel");
+    const badge = document.getElementById("flyout-dept-badge");
+    const title = document.getElementById("flyout-dept-title");
+    const list = document.getElementById("flyout-products-list");
+
+    badge.innerText = dept.name.toUpperCase();
+    title.innerText = `Destacados: ${dept.name}`;
+
+    const items = catalogDB.filter(p => p.cat === deptId);
+
+    if (items.length === 0) {
+      list.innerHTML = `
+        <div class="py-6 text-center text-slate-500 text-xs">
+          <span>Próximamente más artículos en este departamento.</span>
+        </div>
+      `;
+    } else {
+      list.innerHTML = items.map(p => `
+        <div class="bg-slate-950 border border-slate-800 hover:border-emerald-400/60 rounded-xl p-2.5 flex items-center justify-between gap-2.5 transition">
+          <div class="min-w-0 flex-1">
+            <span class="text-[9px] font-mono text-cyan-400 font-bold block">${p.sku}</span>
+            <h5 class="text-xs font-bold text-white truncate">${p.nombre}</h5>
+            <span class="text-amber-400 font-mono font-bold text-xs">$${p.precio.toFixed(2)} MXN</span>
+          </div>
+          <button onclick="addToCartDirect('${p.sku}', 1)" class="bg-emerald-600 hover:bg-emerald-500 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px] uppercase tracking-wider transition active:scale-90 flex items-center gap-1 shrink-0 cursor-pointer" title="Comprar al vuelo">
+            <i class="fa-solid fa-plus-circle"></i> +1 Clic
+          </button>
+        </div>
+      `).join('');
     }
 
-    // Inicializar al cargar el DOM
-    document.addEventListener("DOMContentLoaded", () => {
-        renderDepartmentList(departments);
-        renderProductsGrid(catalogDB);
-        updateCartState();
+    flyout.classList.remove("hidden");
+  }
+
+  const sidebarRoot = document.getElementById("sidebar-root");
+  sidebarRoot.addEventListener("mouseleave", () => {
+    flyoutTimeout = setTimeout(() => {
+      document.getElementById("dept-flyout-panel").classList.add("hidden");
+    }, 300);
+  });
+  sidebarRoot.addEventListener("mouseenter", () => {
+    clearTimeout(flyoutTimeout);
+  });
+
+  function viewAllInCurrentDept() {
+    if (activeDeptId) {
+      filterByDept(activeDeptId);
+      document.getElementById("dept-flyout-panel").classList.add("hidden");
+    }
+  }
+
+  // ------------------------------------------------------------------------
+  // 3. BÚSQUEDA MULTI-TOKEN CON AUTOCOMPLETADO Y ACCIÓN DE COMPRA
+  // ------------------------------------------------------------------------
+  function searchMultiToken(query) {
+    if (!query || !query.trim()) return catalogDB;
+    const q = query.toLowerCase().trim();
+    const searchTokens = q.split(/\s+/).filter(t => t.length > 0);
+
+    return catalogDB.filter(item => {
+      const searchableText = `${item.sku} ${item.nombre} ${item.marca} ${item.desc} ${(item.tokens || []).join(' ')}`.toLowerCase();
+      return searchTokens.every(token => searchableText.includes(token));
     });
-    </script>
-    <script defer src="js/cart-engine.js"></script>
-    <script defer src="js/ux-engine.js"></script>
-    <script defer src="js/ecosystem-catalog-engine.js"></script>
+  }
+
+  function onGlobalSearch(e) {
+    const val = e.target.value;
+    const clearBtn = document.getElementById("clear-search-btn");
+    if (clearBtn) clearBtn.classList.toggle("hidden", val.length === 0);
+    
+    renderAutocomplete(val);
+    renderProductsGrid(searchMultiToken(val));
+  }
+
+  function renderAutocomplete(val) {
+    const box = document.getElementById("autocomplete-box");
+    if (!val || val.trim().length < 2) {
+      box.classList.add("hidden");
+      return;
+    }
+
+    const matches = searchMultiToken(val).slice(0, 5);
+    if (matches.length === 0) {
+      box.classList.add("hidden");
+      return;
+    }
+
+    box.innerHTML = matches.map(item => `
+      <div class="bg-slate-950 border border-slate-800 hover:border-cyan-500/50 rounded-xl p-2.5 flex items-center justify-between gap-3 transition">
+        <div class="flex items-center gap-2.5 min-w-0 flex-1 cursor-pointer" onclick="selectAutocomplete('${item.nombre.replace(/'/g, "\\'")}')">
+          <img src="${item.img}" alt="${item.nombre}" class="w-8 h-8 object-contain rounded bg-slate-900 p-0.5 shrink-0" onerror="this.src='assets/img/mascota_tigre_thumb.webp';"/>
+          <div class="min-w-0">
+            <span class="text-[9px] font-mono text-cyan-400 font-bold block">${item.sku}</span>
+            <h5 class="text-xs font-bold text-white truncate hover:text-cyan-300">${item.nombre}</h5>
+            <span class="text-amber-400 font-mono font-bold text-xs">$${item.precio.toFixed(2)} MXN</span>
+          </div>
+        </div>
+        <!-- Botones Dobles Directos en el Autocomplete -->
+        <div class="flex items-center gap-1.5 shrink-0">
+          <button onclick="event.stopPropagation(); addToCartDirect('${item.sku}', 1)" class="bg-slate-800 hover:bg-slate-700 border border-cyan-500/50 text-cyan-300 font-bold px-2 py-1 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95" title="Sumar a la canasta">
+            <i class="fa-solid fa-cart-plus"></i> <span class="hidden sm:inline">Carrito</span>
+          </button>
+          <button onclick="event.stopPropagation(); buyNowDirect('${item.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black px-2.5 py-1 rounded-lg text-[10px] flex items-center gap-1 transition active:scale-95 shadow-sm" title="Ir a pagar">
+            <i class="fa-solid fa-bolt"></i> <span>Comprar</span>
+          </button>
+        </div>
+      </div>
+    `).join('');
+
+    box.classList.remove("hidden");
+  }
+
+  function selectAutocomplete(term) {
+    const input = document.getElementById("mainSearchInput");
+    input.value = term;
+    document.getElementById("autocomplete-box").classList.add("hidden");
+    renderProductsGrid(searchMultiToken(term));
+  }
+
+  function clearGlobalSearch() {
+    const input = document.getElementById("mainSearchInput");
+    input.value = '';
+    document.getElementById("clear-search-btn").classList.add("hidden");
+    document.getElementById("autocomplete-box").classList.add("hidden");
+    renderProductsGrid(catalogDB);
+  }
+
+  function executeGlobalSearch() {
+    const input = document.getElementById("mainSearchInput");
+    document.getElementById("autocomplete-box").classList.add("hidden");
+    renderProductsGrid(searchMultiToken(input.value));
+  }
+
+  function resetToHome() {
+    clearGlobalSearch();
+  }
+
+  // ------------------------------------------------------------------------
+  // 4. CUADRÍCULA DE 5 COLUMNAS CON DESCRIPCIÓN ASIMÉTRICA Y RELIEVE SUAVE
+  // ------------------------------------------------------------------------
+  function renderProductsGrid(items) {
+    const stage = document.getElementById("products-grid-stage");
+    const countTxt = document.getElementById("results-count-txt");
+
+    if (countTxt) {
+      countTxt.innerText = `Mostrando ${items.length} de ${catalogDB.length} artículos`;
+    }
+
+    if (items.length === 0) {
+      stage.innerHTML = `
+        <div class="col-span-full py-16 text-center space-y-4 bg-slate-900/40 border border-slate-800 rounded-3xl p-8">
+          <i class="fa-solid fa-magnifying-glass text-3xl text-amber-400 block"></i>
+          <h4 class="text-lg font-black text-white">No encontramos coincidencias exactas</h4>
+          <p class="text-xs text-slate-400 max-w-md mx-auto">Prueba con palabras clave como "RAM", "Kingston", "Paleta", "RTX" o selecciona un departamento a la izquierda.</p>
+          <a href="https://wa.me/523337271440" target="_blank" class="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-4 py-2 rounded-xl text-xs">
+            <i class="fa-brands fa-whatsapp"></i> Solicitar cotización directa por WhatsApp
+          </a>
+        </div>
+      `;
+      return;
+    }
+
+    // Tarjetas limpias de relieve suave sin marcos cuadrados pesados
+    stage.innerHTML = items.map(item => `
+      <div class="bg-slate-900/60 hover:bg-slate-900 border border-slate-800/80 hover:border-cyan-500/50 hover:shadow-[0_8px_25px_rgba(6,182,212,0.15)] rounded-2xl p-3 flex flex-col justify-between transition-all duration-200 group">
+        <div>
+          <!-- Imagen de alta definición -->
+          <div class="w-full h-40 overflow-hidden rounded-xl bg-slate-950/80 border border-slate-800/80 flex items-center justify-center p-1.5 relative mb-2.5">
+            <img 
+              src="${item.img || 'assets/img/mascota_tigre_thumb.webp'}" 
+              alt="${item.nombre}" 
+              class="w-full h-full object-contain group-hover:scale-105 transition duration-300"
+              onerror="this.onerror=null; this.src='assets/img/mascota_tigre_thumb.webp';"
+            />
+            <span class="absolute top-1.5 left-1.5 bg-amber-500/15 border border-amber-500/40 text-amber-400 text-[8px] font-mono font-black px-1.5 py-0.2 rounded shadow">
+              Oferta
+            </span>
+          </div>
+
+          <!-- Marca & Rating -->
+          <div class="flex items-center justify-between gap-1 mb-1">
+            <span class="text-[9px] font-mono text-cyan-400 font-bold uppercase truncate">${item.marca}</span>
+            <div class="flex items-center gap-1 text-[9px] text-amber-400 font-bold shrink-0">
+              <i class="fa-solid fa-star text-[8px]"></i> ${item.rating}
+              <span class="text-slate-500">(${item.reviews})</span>
+            </div>
+          </div>
+
+          <!-- Título -->
+          <h4 class="text-white font-bold text-xs mb-1.5 line-clamp-2 leading-snug group-hover:text-cyan-300 transition" title="${item.nombre}">${item.nombre}</h4>
+          
+          <!-- Descripción Asimétrica Natural (sin alturas rígidas) -->
+          <p class="text-slate-400 text-[11px] leading-relaxed mb-3 font-normal">${item.desc}</p>
+          <p class="flex items-center gap-2"><span>📱 Celular: +52 33 2665 2109</span></p>
+        </div>
+
+        <div>
+          <!-- Precio de Lista -->
+          <div class="flex items-baseline justify-between pt-2 border-t border-slate-800/80 mb-2.5">
+            <span class="text-amber-400 font-black font-mono text-xs sm:text-sm">$${item.precio.toLocaleString('es-MX', { minimumFractionDigits: 2 })}</span>
+            ${item.original ? `<span class="text-slate-500 line-through text-[9px] font-mono">$${item.original.toFixed(2)}</span>` : ''}
+          </div>
+
+          <!-- Botones Dobles Fieles a Vía MX -->
+          <div class="grid grid-cols-2 gap-1.5">
+            <button onclick="addToCartDirect('${item.sku}', 1)" class="bg-slate-900 hover:bg-slate-800 border border-cyan-500/50 hover:border-cyan-400 text-cyan-300 font-bold py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 cursor-pointer shadow-sm" title="Agregar al carrito">
+              <i class="fa-solid fa-cart-plus text-[10px]"></i> <span class="truncate">Carrito</span>
+            </button>
+            <button onclick="buyNowDirect('${item.sku}')" class="bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 font-black py-1.5 px-1 rounded-xl text-[10px] flex items-center justify-center gap-1 transition active:scale-95 shadow-sm cursor-pointer" title="Comprar de inmediato">
+              <i class="fa-solid fa-bolt text-[10px]"></i> <span class="truncate">Comprar</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function filterByDept(deptId) {
+    if (deptId === 'todos') {
+      renderProductsGrid(catalogDB);
+    } else {
+      const filtered = catalogDB.filter(p => p.cat === deptId);
+      renderProductsGrid(filtered);
+    }
+  }
+
+  // ------------------------------------------------------------------------
+  // 5. GESTIÓN DEL CARRITO CON STEPPER (+ / - / BASURA)
+  // ------------------------------------------------------------------------
+  function addToCartDirect(sku, qty = 1) {
+    const item = catalogDB.find(p => p.sku === sku);
+    if (!item) return;
+
+    const exist = cart.find(i => i.sku === sku);
+    if (exist) {
+      exist.quantity += qty;
+    } else {
+      cart.push({ ...item, quantity: qty });
+    }
+
+    updateCartState();
+
+    const badge = document.getElementById("cart-badge");
+    badge.classList.remove("cart-pop");
+    void badge.offsetWidth;
+    badge.classList.add("cart-pop");
+  }
+
+  function buyNowDirect(sku) {
+    addToCartDirect(sku, 1);
+    toggleCartDrawer();
+  }
+
+  function changeItemQuantity(sku, delta) {
+    const item = cart.find(i => i.sku === sku);
+    if (!item) return;
+
+    item.quantity += delta;
+    if (item.quantity <= 0) {
+      cart = cart.filter(i => i.sku !== sku);
+    }
+    updateCartState();
+  }
+
+  function setItemQuantity(sku, value) {
+    const val = parseInt(value) || 0;
+    if (val <= 0) {
+      cart = cart.filter(i => i.sku !== sku);
+    } else {
+      const item = cart.find(i => i.sku === sku);
+      if (item) item.quantity = val;
+    }
+    updateCartState();
+  }
+
+  function deleteCartItem(sku) {
+    cart = cart.filter(i => i.sku !== sku);
+    updateCartState();
+  }
+
+  function updateCartState() {
+    const totalCount = cart.reduce((sum, i) => sum + i.quantity, 0);
+    const totalMoney = cart.reduce((sum, i) => sum + (i.precio * i.quantity), 0);
+
+    document.getElementById("cart-badge").innerText = totalCount;
+    document.getElementById("cart-total").innerText = `$${totalMoney.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
+    document.getElementById("drawer-total-txt").innerText = `$${totalMoney.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
+
+    // Cálculo de barra de envío gratis ($1,500 MXN)
+    const freeShippingGoal = 1500;
+    const progressPct = Math.min(100, Math.round((totalMoney / freeShippingGoal) * 100));
+    const progressBar = document.getElementById("shipping-progress-bar");
+    const progressPctTxt = document.getElementById("shipping-progress-pct");
+    const shippingMsg = document.getElementById("shipping-msg");
+
+    if (progressBar && progressPctTxt && shippingMsg) {
+      progressBar.style.width = `${progressPct}%`;
+      progressPctTxt.innerText = `${progressPct}%`;
+
+      if (totalMoney >= freeShippingGoal) {
+        shippingMsg.innerHTML = '🎉 <strong class="text-emerald-400">¡Felicidades! Tienes Envío Gratis Local desbloqueado.</strong>';
+      } else {
+        const diff = (freeShippingGoal - totalMoney).toFixed(2);
+        shippingMsg.innerText = `Agrega $${diff} MXN más para obtener Envío Gratis a tu domicilio.`;
+      }
+    }
+
+    const container = document.getElementById("cart-items-container");
+    if (cart.length === 0) {
+      container.innerHTML = '<div class="text-center py-8 text-slate-500 text-xs">Tu canasta está vacía.</div>';
+      return;
+    }
+
+    // Renderizado del Carrito con Stepper (+ / -) y Bote de Basura
+    container.innerHTML = cart.map(item => `
+      <div class="bg-slate-950 border border-slate-800 rounded-2xl p-3 flex flex-col gap-2.5 text-xs shadow-md">
+        <div class="flex justify-between items-start gap-2">
+          <div class="min-w-0 flex-1">
+            <span class="font-mono text-[9px] text-cyan-400 font-bold block">${item.sku}</span>
+            <h5 class="text-white font-bold line-clamp-1 leading-snug">${item.nombre}</h5>
+            <span class="text-amber-400 font-mono font-bold text-xs">$${item.precio.toFixed(2)} MXN c/u</span>
+          </div>
+          <button onclick="deleteCartItem('${item.sku}')" class="text-slate-500 hover:text-red-400 p-1 transition cursor-pointer" title="Eliminar del carrito">
+            <i class="fa-solid fa-trash-can text-xs"></i>
+          </button>
+        </div>
+
+        <!-- Stepper de Cantidad: [-] [Input] [+] y Subtotal -->
+        <div class="flex justify-between items-center pt-2 border-t border-slate-800/80">
+          <div class="flex items-center gap-1 bg-slate-900 border border-slate-700/80 rounded-xl p-0.5">
+            <button onclick="changeItemQuantity('${item.sku}', -1)" class="w-6 h-6 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-black text-xs flex items-center justify-center transition active:scale-95 cursor-pointer">-</button>
+            <input 
+              type="number" 
+              min="1" 
+              value="${item.quantity}" 
+              onchange="setItemQuantity('${item.sku}', this.value)"
+              class="w-10 bg-transparent border-0 text-center font-mono font-bold text-xs text-white outline-none"
+            />
+            <button onclick="changeItemQuantity('${item.sku}', 1)" class="w-6 h-6 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white font-black text-xs flex items-center justify-center transition active:scale-95 cursor-pointer">+</button>
+          </div>
+          <span class="font-mono font-black text-sm text-cyan-400">$${(item.precio * item.quantity).toFixed(2)} MXN</span>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function toggleCartDrawer() {
+    document.getElementById("cartDrawer").classList.toggle("hidden");
+    updateCartState();
+  }
+
+  // Inicializar al cargar el DOM
+  document.addEventListener("DOMContentLoaded", () => {
+    renderDepartmentList(departments);
+    renderProductsGrid(catalogDB);
+    updateCartState();
+  });
+  </script>
+  <script defer src="js/cart-engine.js"></script>
+  <script defer src="js/ux-engine.js"></script>
+  <script defer src="js/ecosystem-catalog-engine.js"></script>
 </body>
 </html>

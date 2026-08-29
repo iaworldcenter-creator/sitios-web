@@ -9,9 +9,9 @@ if os.path.exists(lock_file):
     try: os.remove(lock_file)
     except: pass
 
-print("Staging and pushing all stores in pc-custom-lab...")
+print("Staging and pushing console fixes in pc-custom-lab...")
 subprocess.run(["git", "add", "-A"], cwd=PC_DIR)
-subprocess.run(["git", "commit", "-m", "perf(universal): aplicacion universal de fuentes woff2 swap, preload, anulación metrica, arbol WCAG 2.2 y seguridad CSP en todas las paginas de PC Custom Lab"], cwd=PC_DIR)
+subprocess.run(["git", "commit", "-m", "fix(console): eliminacion de los 2 errores de consola en Lighthouse - retiro de frame-ancestors en meta CSP e inicializacion sin fallo de red en dataset"], cwd=PC_DIR)
 p1 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=PC_DIR, capture_output=True, text=True)
 print(f" -> pc-custom-lab push code: {p1.returncode}")
 
@@ -22,7 +22,7 @@ if os.path.exists(lock_root):
 
 print("Staging Root Monorepo...")
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR)
-subprocess.run(["git", "commit", "-m", "perf(ecosistema): sincronizacion universal de todas las mejoras de rendimiento, tipografia, accesibilidad y footer en los 8 sitios"], cwd=BASE_DIR)
+subprocess.run(["git", "commit", "-m", "fix(ecosistema): eliminacion de frame-ancestors en meta CSP y blindaje de consola en los 8 sitios"], cwd=BASE_DIR)
 p2 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f" -> root monorepo push code: {p2.returncode}")
 print("=== PUSH FINALIZADO CON ÉXITO ===")
