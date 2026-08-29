@@ -9,9 +9,9 @@ if os.path.exists(lock_file):
     try: os.remove(lock_file)
     except: pass
 
-print("Staging and pushing checkout update in pc-custom-lab...")
-subprocess.run(["git", "add", "checkout.html"], cwd=PC_DIR)
-subprocess.run(["git", "commit", "-m", "feat(checkout): flujo de compra interactivo colapsable con fotos grandes, formas de pago (Tarjeta/SPEI/OXXO) y registro de leads CRM"], cwd=PC_DIR)
+print("Staging and pushing shipping policy update in pc-custom-lab...")
+subprocess.run(["git", "add", "index.html", "checkout.html"], cwd=PC_DIR)
+subprocess.run(["git", "commit", "-m", "legal(shipping): politica de envios exprés limitada a pedidos menores de $2,000 MXN, paqueteria blindada para pedidos mayores y footer institucional completo"], cwd=PC_DIR)
 p1 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=PC_DIR, capture_output=True, text=True)
 print(f" -> pc-custom-lab push code: {p1.returncode}")
 
@@ -22,7 +22,7 @@ if os.path.exists(lock_root):
 
 print("Staging Root Monorepo...")
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR)
-subprocess.run(["git", "commit", "-m", "feat(ecosistema): implementacion de nuevo checkout colapsable con fotos grandes y CRM en los 8 sitios"], cwd=BASE_DIR)
+subprocess.run(["git", "commit", "-m", "legal(ecosistema): implementacion universal de politica de envios $2000 MXN y footer institucional de 3 columnas en los 8 sitios"], cwd=BASE_DIR)
 p2 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f" -> root monorepo push code: {p2.returncode}")
 print("=== PUSH FINALIZADO CON ÉXITO ===")
