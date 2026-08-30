@@ -12,7 +12,7 @@ if os.path.exists(lock_file):
 
 print("Staging and pushing pc-custom-lab...")
 subprocess.run(["git", "add", "-A"], cwd=PC_DIR)
-subprocess.run(["git", "commit", "-m", "fix(pricing-hierarchy): correccion matematica de matriz financiera mayoreo (piso 20% garantizado: costo*1.20, promo costo*1.3125, lista costo*1.75), reordenamiento de Bloque 1 hardware de armado primero y chips de filtrado rapido para Cables y Audio"], cwd=PC_DIR)
+subprocess.run(["git", "commit", "-m", "feat(full-catalog): indexacion y restauracion del 100% integral de articulos (17,458 productos), servidores enterprise, procesadores Threadripper/EPYC, smartphones y accesorios para distribucion multicanal"], cwd=PC_DIR)
 p1 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=PC_DIR, capture_output=True, text=True)
 print(f" -> pc-custom-lab push code: {p1.returncode}")
 
@@ -24,7 +24,7 @@ if os.path.exists(lock_root):
 
 print("Staging Root Monorepo...")
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR)
-subprocess.run(["git", "commit", "-m", "fix(ecosistema): correccion financiera de mayoreo 20% piso garantizado, reordenamiento Bloque 1 y chips interactivos"], cwd=BASE_DIR)
+subprocess.run(["git", "commit", "-m", "feat(ecosistema): integracion del 100% de 17,458 productos indexados, servidores, celulares y repuestos"], cwd=BASE_DIR)
 p2 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f" -> root monorepo push code: {p2.returncode}")
 print("=== PUSH FINALIZADO CON ÉXITO ===")
