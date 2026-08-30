@@ -12,7 +12,7 @@ if os.path.exists(lock_file):
 
 print("Staging and pushing pc-custom-lab...")
 subprocess.run(["git", "add", "-A"], cwd=PC_DIR)
-subprocess.run(["git", "commit", "-m", "fix(images-800px): estandarizacion de imagenes a 800x800px (_800.jpg) para cumplimiento de politicas de Mercado Libre y generacion de archivo de reactivacion MLM"], cwd=PC_DIR)
+subprocess.run(["git", "commit", "-m", "fix(ml-hd): generacion de Fichas_tecnicas_CORREGIDAS_HD.xlsx con imagenes 800px y blindaje definitivo para reactivacion de publicaciones Mercado Libre"], cwd=PC_DIR)
 p1 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=PC_DIR, capture_output=True, text=True)
 print(f" -> pc-custom-lab push code: {p1.returncode}")
 
@@ -24,7 +24,7 @@ if os.path.exists(lock_root):
 
 print("Staging Root Monorepo...")
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR)
-subprocess.run(["git", "commit", "-m", "fix(ecosistema): migracion integral a imagenes de alta resolucion 800px (_800.jpg) y archivo de reactivacion masiva"], cwd=BASE_DIR)
+subprocess.run(["git", "commit", "-m", "fix(ecosistema): sincronizacion de Fichas_tecnicas_CORREGIDAS_HD y reactivacion MLM"], cwd=BASE_DIR)
 p2 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f" -> root monorepo push code: {p2.returncode}")
 print("=== PUSH FINALIZADO CON ÉXITO ===")
