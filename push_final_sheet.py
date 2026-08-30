@@ -12,7 +12,7 @@ if os.path.exists(lock_file):
 
 print("Staging and pushing pc-custom-lab...")
 subprocess.run(["git", "add", "-A"], cwd=PC_DIR)
-subprocess.run(["git", "commit", "-m", "chore(clean-data): depuracion total de archivos xlsx previos para reinicio limpio de publicacion Mercado Libre (10 categorias de ensamble)"], cwd=PC_DIR)
+subprocess.run(["git", "commit", "-m", "feat(mercadolibre-final): generacion de Publicar_PC_CUSTOM_FINAL.xlsx con 12 hojas de ensamble de PC, fotos 800px HD y margenes protegidos al +20% neto"], cwd=PC_DIR)
 p1 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=PC_DIR, capture_output=True, text=True)
 print(f" -> pc-custom-lab push code: {p1.returncode}")
 
@@ -24,7 +24,7 @@ if os.path.exists(lock_root):
 
 print("Staging Root Monorepo...")
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR)
-subprocess.run(["git", "commit", "-m", "chore(clean-data): depuracion y preparacion para nuevo lote de 10 categorias de ensamble"], cwd=BASE_DIR)
+subprocess.run(["git", "commit", "-m", "feat(mercadolibre-final): publicacion final PC Custom Lab 800px HD"], cwd=BASE_DIR)
 p2 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=BASE_DIR, capture_output=True, text=True)
 print(f" -> root monorepo push code: {p2.returncode}")
 print("=== PUSH FINALIZADO CON ÉXITO ===")
