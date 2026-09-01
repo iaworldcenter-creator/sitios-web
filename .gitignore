@@ -16,3 +16,8 @@ ofertas-y-liquidaciones/
 *.token
 credentials.json
 
+
+*.zip
+*.tar.gz
+*.tmp
+*.log
