@@ -21,3 +21,7 @@ credentials.json
 *.tar.gz
 *.tmp
 *.log
+
+backups/
+backups/
+**/node_modules/
