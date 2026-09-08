@@ -561,6 +561,10 @@
           <span>Subtotal Productos:</span>
           <span id="chk-subtotal" class="text-white font-bold text-sm">$0.00 MXN</span>
         </div>
+        <div class="flex justify-between text-slate-300 text-[11px]">
+          <span>IVA (16% Incluido):</span>
+          <span id="chk-iva" class="text-slate-300 font-mono">$0.00 MXN</span>
+        </div>
         <div class="flex justify-between items-center text-slate-300">
           <span class="flex items-center gap-1"><i class="fa-solid fa-key text-emerald-400"></i> PIN Chofer Uber:</span>
           <span id="chk-summary-pin" class="text-white font-mono font-black tracking-wider text-sm bg-slate-900 px-2 py-0.5 rounded border border-emerald-500/40">7453</span>
@@ -883,21 +887,35 @@
       });
     }
 
+    function parseCleanPrice(val) {
+      if (typeof val === 'number') return isNaN(val) ? 0 : val;
+      if (!val) return 0;
+      const clean = String(val).replace(/[^0-9.-]+/g, '');
+      const num = parseFloat(clean);
+      return isNaN(num) ? 0 : num;
+    }
+    window.parseCleanPrice = window.parseCleanPrice || parseCleanPrice;
+
     function getCartItems() {
       try {
-        const raw1 = localStorage.getItem('ecosystem_global_cart');
-        const raw2 = localStorage.getItem('cart_items');
         let items = [];
-        if (raw1) {
-          try { items = JSON.parse(raw1); } catch(e) {}
-        }
-        if ((!items || items.length === 0) && raw2) {
-          try { items = JSON.parse(raw2); } catch(e) {}
+        const keys = ['IAWC_MASTER_CART', 'ecosystem_global_cart', 'vectec_cart', 'cart_items', 'pc_custom_cart'];
+        for (const k of keys) {
+          const raw = localStorage.getItem(k);
+          if (raw) {
+            try {
+              const parsed = JSON.parse(raw);
+              if (Array.isArray(parsed) && parsed.length > 0) {
+                items = parsed;
+                break;
+              }
+            } catch(e) {}
+          }
         }
         if (!Array.isArray(items)) return [];
         return items.map(item => {
-          const price = parseFloat(item.price || item.precio || 0);
-          const qty = parseInt(item.quantity || item.qty || 1);
+          const price = parseCleanPrice(item.price || item.precio || 0);
+          const qty = parseInt(item.quantity || item.qty || 1) || 1;
           const stock = item.stock !== undefined ? parseInt(item.stock) : (item.stk !== undefined ? parseInt(item.stk) : 1);
           const isDisp = item.disponible !== false && item.d !== 0 && item.estado_comercial !== 'bajo_pedido' && item.est_com !== 'bajo_pedido' && stock > 0;
           return {
@@ -907,7 +925,7 @@
             precio: price,
             quantity: qty > 0 ? qty : 1,
             qty: qty > 0 ? qty : 1,
-            image: item.image || item.imagen || 'assets/img/hero_pc_cyberpunk.webp',
+            image: item.image || item.imagen || item.img || 'assets/img/hero_pc_cyberpunk.webp',
             stock: stock,
             stk: stock,
             disponible: isDisp,
@@ -921,8 +939,10 @@
 
     function saveCartItems(items) {
       try {
-        localStorage.setItem('ecosystem_global_cart', JSON.stringify(items));
-        localStorage.setItem('cart_items', JSON.stringify(items));
+        const json = JSON.stringify(items);
+        ['IAWC_MASTER_CART', 'ecosystem_global_cart', 'vectec_cart', 'cart_items', 'pc_custom_cart'].forEach(k => {
+          try { localStorage.setItem(k, json); } catch(e) {}
+        });
         window.dispatchEvent(new Event('storage'));
       } catch(e) {}
     }
@@ -1172,14 +1192,18 @@
         : '7453';
 
       const elSub = document.getElementById("chk-subtotal");
+      const elIva = document.getElementById("chk-iva");
       const elCash = document.getElementById("chk-cashback");
       const elShip = document.getElementById("chk-shipping");
       const elTot = document.getElementById("chk-total");
       const elPinSummary = document.getElementById("chk-summary-pin");
 
+      const subtotalSinIva = calc.subtotal / 1.16;
+      const iva = calc.subtotal - subtotalSinIva;
       const cashback = calc.subtotal * 0.05;
 
       if (elSub) elSub.innerText = `$${calc.subtotal.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
+      if (elIva) elIva.innerText = `$${iva.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
       if (elCash) elCash.innerText = `$${cashback.toLocaleString('es-MX', { minimumFractionDigits: 2 })} MXN`;
       
       if (elShip) {
@@ -1207,9 +1231,6 @@
       if (backordered.length > 0) {
         const backorderedNames = backordered.map(i => `• [${i.sku}] ${i.name}`).join('\n');
         alert(`⚠️ ACCIÓN BLOQUEADA: Tu canasta contiene artículos bajo pedido (sin stock inmediato):\n\n${backorderedNames}\n\nPor favor retíralos para continuar con la compra directa a domicilio, o comunícate con mostrador vía WhatsApp (+52 33 3727 1440) para programar su pedido especial.`);
-        return;
-      }
-        alert("⚠️ Tu carrito está vacío. Agrega productos antes de realizar tu pedido.");
         return;
       }
 

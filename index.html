@@ -318,31 +318,88 @@ if ('serviceWorker' in navigator) {
 }
 </script>
   <link rel="stylesheet" href="css/shared-flyout.css">
+  <link rel="stylesheet" href="css/shared-drawers-vectec.css">
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen flex flex-col justify-between overflow-x-hidden selection:bg-cyan-500 selection:text-slate-950">
 
                 <header class="bg-slate-900/95 backdrop-blur border-b border-slate-800 sticky top-0 z-50 shadow-2xl">
-        <!-- LÍNEA 1: Barra Horizontal de Ecosistema con Neón Activo & Touch Scroll -->
-        <div class="w-full border-b border-slate-800/80 bg-slate-950/90 px-2 sm:px-4 py-1.5 flex items-center justify-between gap-2 text-xs overflow-hidden">
-            <div class="flex items-center gap-2 overflow-x-auto no-scrollbar whitespace-nowrap flex-1 py-0.5 scroll-smooth" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
-                <span class="px-2.5 py-1 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono font-black text-[10px] uppercase shrink-0">
-                    ⚡ Envío Exprés El Mismo Día
-                </span>
-                <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="px-3.5 py-1 rounded-xl bg-amber-500/20 border-2 border-amber-400 text-amber-300 shadow-[0_0_18px_rgba(251,191,36,0.8)] text-xs font-black flex items-center gap-1.5 shrink-0 scale-105 transition"><i class="fa-solid fa-house text-[11px]"></i> Matriz</a>
-                <a href="https://iaworldcenter-creator.github.io/vectec/" title="VECTEC | Vector Tecnológico" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-microchip text-[11px]"></i> VECTEC</a>
-                <a href="https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-300 text-cyan-200 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-gem text-[11px]"></i> Vía MX</a>
-                <a href="https://iaworldcenter-creator.github.io/cigarros-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-amber-500 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-smoking text-[11px]"></i> Cigarros</a>
-                <a href="https://iaworldcenter-creator.github.io/dulces-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-pink-500 text-pink-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-candy-cane text-[11px]"></i> Dulces</a>
-                <a href="https://iaworldcenter-creator.github.io/kiosco-digital/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-indigo-500 text-indigo-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-newspaper text-[11px]"></i> Kiosco</a>
-                <a href="https://iaworldcenter-creator.github.io/mi-puesto-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-emerald-500 text-emerald-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-store text-[11px]"></i> Mi Puesto</a>
-                <a href="https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones-/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-red-500 text-red-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-tags text-[11px]"></i> Liquidaciones</a>
-                <span class="text-slate-700 shrink-0">|</span>
-                <a href="https://gemini.google.com" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i> Gemini AI</a>
-                <a href="https://antigravity.google/download" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-amber-400 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-download text-amber-400"></i> Anti-Gravity</a>
+        <!-- Línea 1: Desplazamiento Horizontal con Controles Móviles y Botón Neón Activo -->
+        <div class="relative w-full border-b border-slate-900/80 bg-slate-950">
+            <!-- Botón Desplazar Izquierda (Móvil) -->
+            <button 
+                type="button" 
+                id="btn-scroll-announcement-left"
+                aria-label="Desplazar izquierda"
+                onclick="document.getElementById('top-announcement-bar')?.scrollBy({ left: -180, behavior: 'smooth' })"
+                class="lg:hidden absolute left-0 top-0 bottom-0 z-20 px-2 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent text-cyan-400 hover:text-white flex items-center justify-center cursor-pointer pointer-events-none opacity-0 transition-opacity">
+                <i class="fa-solid fa-chevron-left text-xs drop-shadow"></i>
+            </button>
+
+            <div id="top-announcement-bar" class="w-full max-w-[1850px] mx-auto px-2 sm:px-4 py-2 flex items-center justify-between gap-2 overflow-x-auto no-scrollbar scroll-smooth min-h-[48px]" style="min-height: 48px;">
+                <!-- 1. DEPARTAMENTOS: PRIMER ELEMENTO DE LA BARRA DESLIZANTE (Disparador Gaveta Izquierda) -->
+                <button 
+                    type="button" 
+                    id="btn-mobile-departments" 
+                    onclick="window.toggleMobileDepartmentsDrawer(true)" 
+                    class="relative z-30 flex items-center gap-1.5 bg-gradient-to-r from-cyan-950 to-blue-950 hover:from-cyan-900 hover:to-blue-900 border border-cyan-400 text-cyan-300 hover:text-white px-3 py-1 rounded-xl font-mono text-xs font-black shadow-lg transition shrink-0 cursor-pointer"
+                    aria-label="Ver 67 Departamentos">
+                    <i class="fa-solid fa-layer-group text-cyan-400 text-xs"></i>
+                    <span class="text-[11px] uppercase tracking-wider">DEPARTAMENTOS</span>
+                </button>
+
+                <div class="flex items-center gap-2 shrink-0">
+                    <span class="text-[9px] sm:text-[10px] font-mono font-black text-amber-300 bg-amber-500/15 border border-amber-500/40 px-2.5 py-1 rounded-full uppercase tracking-wider flex items-center gap-1">
+                        <i class="fa-solid fa-motorcycle text-amber-400"></i> Envío Exprés el Mismo Día | > $2,000 MXN Paquetería Asegurada
+                    </span>
+                    <span class="text-[9px] sm:text-[10px] font-mono font-black text-cyan-300 bg-cyan-500/15 border border-cyan-500/40 px-2.5 py-1 rounded-full uppercase tracking-wider hidden md:flex items-center gap-1">
+                        <i class="fa-solid fa-triangle-exclamation text-amber-400"></i> Precios sujetos a cambio sin previo aviso
+                    </span>
+                    <!-- BOTÓN CONVERSOR DE MONEDA (MXN / USD) -->
+                    <div class="flex items-center bg-slate-900 border border-cyan-500/40 rounded-full p-0.5 text-[9px] sm:text-[10px] font-mono font-bold shadow">
+                        <span class="text-slate-400 px-1.5 flex items-center gap-1"><i class="fa-solid fa-coins text-amber-400"></i> Moneda:</span>
+                        <button id="currencyToggleMXN" onclick="window.setCurrencyDisplay('MXN')" class="px-2 py-0.5 rounded-full bg-cyan-500 text-slate-950 font-black transition cursor-pointer">🇲🇽 MXN</button>
+                        <button id="currencyToggleUSD" onclick="window.setCurrencyDisplay('USD')" class="px-2 py-0.5 rounded-full text-slate-300 hover:text-white transition cursor-pointer">🇺🇸 USD</button>
+                    </div>
+
+                    <!-- BOTÓN ACCESO DIRECTO CÓDIGO QR MÓVIL -->
+                    <button 
+                        type="button" 
+                        id="btn-top-qr"
+                        onclick="window.toggleQrModal(true)" 
+                        aria-label="Abrir Código QR Móvil" 
+                        title="Escanear Código QR Oficial"
+                        class="px-2.5 py-1 rounded-full bg-slate-900 hover:bg-slate-850 border border-cyan-500/40 text-cyan-300 hover:text-white text-[9px] sm:text-[10px] font-mono font-bold transition flex items-center gap-1 shrink-0 cursor-pointer">
+                        <i class="fa-solid fa-qrcode text-amber-400"></i> <span>Código QR</span>
+                    </button>
+                </div>
+                
+                <nav class="flex items-center gap-1.5 shrink-0 text-xs font-mono font-bold" aria-label="Ecosistema de Tiendas">
+                    <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="px-3 py-1 rounded-xl bg-cyan-500/20 border-2 border-cyan-300 text-cyan-200 shadow-[0_0_15px_rgba(103,232,249,0.7)] text-xs font-black flex items-center gap-1.5 shrink-0 scale-105 transition"><i class="fa-solid fa-house text-amber-400 text-[11px]"></i> Matriz</a>
+                <a href="https://iaworldcenter-creator.github.io/vectec/" class="px-2.5 py-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-microchip text-cyan-400 text-[11px]"></i> VECTEC</a>
+                <a href="https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/" class="px-2.5 py-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-gem text-cyan-300 text-[11px]"></i> Vía MX</a>
+                <a href="https://iaworldcenter-creator.github.io/cigarros-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-smoking text-amber-400 text-[11px]"></i> Cigarros</a>
+                <a href="https://iaworldcenter-creator.github.io/dulces-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-candy-cane text-pink-400 text-[11px]"></i> Dulces</a>
+                <a href="https://iaworldcenter-creator.github.io/kiosco-digital/" class="px-2.5 py-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-newspaper text-indigo-400 text-[11px]"></i> Kiosco</a>
+                <a href="https://iaworldcenter-creator.github.io/mi-puesto-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-store text-emerald-400 text-[11px]"></i> Mi Puesto</a>
+                <a href="https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones-/" class="px-2.5 py-1 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-tags text-red-400 text-[11px]"></i> Liquidaciones</a>
+                    <span class="text-slate-700 shrink-0">|</span>
+                    <a href="https://gemini.google.com" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition">
+                        <i class="fa-solid fa-wand-magic-sparkles text-cyan-400"></i> Gemini AI
+                    </a>
+                    <a href="https://antigravity.google/download" target="_blank" rel="noopener" class="px-2.5 py-1 rounded-xl bg-slate-950 border border-slate-800 hover:border-amber-400 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition">
+                        <i class="fa-solid fa-download text-amber-400"></i> Anti-Gravity
+                    </a>
+                </nav>
             </div>
-            <div class="shrink-0 flex items-center pl-1 border-l border-slate-800">
-                <button id="header-account-btn" onclick="toggleAccountModal()" aria-label="Mi Cuenta, Domicilio y Cashback" title="Mi Cuenta y Cashback" class="cursor-pointer active:scale-95 transition"></button>
-            </div>
+
+            <!-- Botón Desplazar Derecha (Móvil) -->
+            <button 
+                type="button" 
+                aria-label="Desplazar derecha"
+                onclick="document.getElementById('top-announcement-bar')?.scrollBy({ left: 180, behavior: 'smooth' })"
+                class="lg:hidden absolute right-0 top-0 bottom-0 z-20 px-2 bg-gradient-to-l from-slate-950 via-slate-950/80 to-transparent text-cyan-400 hover:text-white flex items-center justify-center cursor-pointer">
+                <i class="fa-solid fa-chevron-right text-xs drop-shadow"></i>
+            </button>
         </div>
 
         <!-- LÍNEA 2: Barra Principal con Buscador Blanco + H1 Tienda + Canasta -->
@@ -375,7 +432,7 @@ if ('serviceWorker' in navigator) {
 
             <!-- Canasta / Carrito con Total en Vivo -->
             <div id="vectec-flyout-container" class="shrink-0"></div>
-      <button onclick="toggleCartDrawer()" aria-label="Abrir canasta de compras" title="Ver Carrito" class="flex items-center gap-2 sm:gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-3 sm:px-4 py-2 rounded-xl transition cursor-pointer active:scale-95 shadow shrink-0 group">
+      <button onclick="window.toggleCartDrawer(true)" aria-label="Abrir canasta de compras" title="Ver Carrito" class="flex items-center gap-2 sm:gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-3 sm:px-4 py-2 rounded-xl transition cursor-pointer active:scale-95 shadow shrink-0 group">
                 <div class="relative">
                     <i class="fa-solid fa-cart-shopping text-amber-400 text-sm sm:text-base group-hover:scale-110 transition"></i>
                     <span id="boutique-cart-badge" class="absolute -top-2 -right-2 bg-amber-500 text-slate-950 font-mono font-black text-[9px] rounded-full w-4 h-4 flex items-center justify-center shadow">0</span>
@@ -1070,5 +1127,6 @@ function saveUserProfile() {
     <script defer src="js/shared-product-modal.js"></script>
     <script defer src="js/shared-instant-search.js"></script>
   <script defer src="js/shared-flyout.js"></script>
+  <script src="js/shared-drawers-vectec.js" defer></script>
 </body>
 </html>
