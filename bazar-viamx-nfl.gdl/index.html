@@ -262,7 +262,7 @@
           ⚡ Envío Exprés El Mismo Día
         </span>
         <a href="https://iaworldcenter-creator.github.io/sitios-web/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-amber-400 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-house text-[11px]"></i> Matriz</a>
-        <a href="https://iaworldcenter-creator.github.io/VECTEC/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-microchip text-[11px]"></i> PC Custom</a>
+        <a href="https://iaworldcenter-creator.github.io/vectec/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-cyan-400 text-cyan-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-microchip text-[11px]"></i> VECTEC</a>
         <a href="https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/" class="px-3.5 py-1 rounded-xl bg-cyan-500/20 border-2 border-cyan-300 text-cyan-200 shadow-[0_0_18px_rgba(103,232,249,0.8)] text-xs font-black flex items-center gap-1.5 shrink-0 scale-105 transition"><i class="fa-solid fa-gem text-[11px]"></i> Vía MX</a>
         <a href="https://iaworldcenter-creator.github.io/cigarros-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-amber-500 text-amber-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-smoking text-[11px]"></i> Cigarros</a>
         <a href="https://iaworldcenter-creator.github.io/dulces-bazar/" class="px-2.5 py-1 rounded-xl bg-slate-950/90 hover:bg-slate-900 border border-slate-800 hover:border-pink-500 text-pink-300 text-xs font-bold flex items-center gap-1.5 shrink-0 transition"><i class="fa-solid fa-candy-cane text-[11px]"></i> Dulces</a>
@@ -307,6 +307,7 @@
       </div>
 
       <!-- Canasta / Carrito con Total en Vivo -->
+      <div id="vectec-flyout-container" class="shrink-0"></div>
       <button onclick="toggleCartDrawer()" aria-label="Abrir canasta de compras" title="Ver Carrito" class="flex items-center gap-2 sm:gap-3 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white px-3 sm:px-4 py-2 rounded-xl transition cursor-pointer active:scale-95 shadow shrink-0 group">
         <div class="relative">
           <i class="fa-solid fa-cart-shopping text-cyan-300 text-sm sm:text-base group-hover:scale-110 transition"></i>
@@ -326,8 +327,6 @@
       <div class="max-w-[99%] 2xl:max-w-[1850px] mx-auto flex items-center justify-between gap-3 overflow-x-auto no-scrollbar" style="touch-action: pan-x; -webkit-overflow-scrolling: touch;">
         
         <!-- Menú Flyout Desplegable de Departamentos -->
-        <div id="vectec-flyout-container" class="shrink-0"></div>
-
         <!-- Pestañas de Departamentos (Macro-Agregador Multilínea) -->
         <nav class="flex items-center gap-1.5 overflow-x-auto no-scrollbar shrink-0 py-0.5" id="nav-departments-pills" aria-label="Navegación por Departamentos">
           <!-- 1. Departamento Activo: Tecnología & Cómputo VECTEC -->
@@ -390,9 +389,9 @@
         </div>
 
         <nav class="flex flex-col gap-2" id="sidebar-categories-list">
-          <!-- ACCESO DESTACADO A TECNOLOGÍA & CÓMPUTO VECTEC -->
+          <!-- ACCESO DESTACADO A TECNOLOGÍA & CÓMPUTO VECTEC (LOCAL SIN SALIDA) -->
           <div class="mb-3">
-            <a href="https://iaworldcenter-creator.github.io/vectec/" class="w-full text-left p-3.5 rounded-2xl bg-cyan-950/80 hover:bg-cyan-900 border-2 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.35)] flex justify-between items-center transition group cursor-pointer block">
+            <button type="button" onclick="handleTechSidebarClick(event)" class="w-full text-left p-3.5 rounded-2xl bg-cyan-950/80 hover:bg-cyan-900 border-2 border-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.35)] flex justify-between items-center transition group cursor-pointer block">
               <div class="flex items-center gap-3 min-w-0">
                 <div class="w-8 h-8 rounded-xl bg-cyan-900/90 flex items-center justify-center text-cyan-300 shrink-0 shadow border border-cyan-400/50">
                   <i class="fa-solid fa-microchip text-sm"></i>
@@ -402,8 +401,8 @@
                   <span class="text-[9px] text-cyan-200/90 block truncate font-mono">Aparador Hardware +17.5k Piezas</span>
                 </div>
               </div>
-              <i class="fa-solid fa-arrow-up-right-from-square text-[11px] text-cyan-400 group-hover:text-white group-hover:translate-x-0.5 transition shrink-0 ml-1"></i>
-            </a>
+              <i class="fa-solid fa-chevron-down text-[11px] text-cyan-400 group-hover:text-white group-hover:translate-y-0.5 transition shrink-0 ml-1"></i>
+            </button>
           </div>
 
           <button 
@@ -881,7 +880,11 @@
     const btnPrev = document.getElementById("btn-prev-page");
     const btnNext = document.getElementById("btn-next-page");
     if (btnPrev) btnPrev.disabled = (currentPage === 1);
-    if (btnNext) btnNext.disabled = (currentPage === totalPages);
+    if (btnNext) btnNext.disabled = (currentPage >= getTotalPages());
+  }
+
+  function getTotalPages() {
+    return Math.max(1, Math.ceil(filteredProducts.length / itemsPerPage));
   }
 
   function renderPagination() {
@@ -889,7 +892,8 @@
     if (!pagesContainer) return;
 
     let html = '';
-    for (let i = 1; i <= totalPages; i++) {
+    const maxP = getTotalPages();
+    for (let i = 1; i <= maxP; i++) {
       const isActive = (i === currentPage);
       html += `
         <button 
@@ -905,13 +909,66 @@
   }
 
   function changePage(page) {
-    if (page < 1 || page > totalPages || page === currentPage) return;
+    if (page < 1 || page > getTotalPages() || page === currentPage) return;
     renderAparadorPage(page);
     const grid = document.getElementById("products-grid-container");
     if (grid) {
       grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
   }
+
+  
+  function handleTechSidebarClick(e) {
+    if (e) e.preventDefault();
+    filterCategory('all');
+    const target = document.getElementById("products-grid-container");
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function selectDepartmentTab(tabId) {
+    if (tabId === 'tecnologia') {
+      filterCategory('all');
+    } else {
+      filterCategory(tabId);
+    }
+    const target = document.getElementById("products-grid-container");
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  window.filterByDepartment = function(deptId, deptName) {
+    const deptMapping = {
+      "procesadores": ["procesador", "cpu", "ryzen", "core i", "intel core", "amd"],
+      "tarjetas_video": ["tarjeta de video", "gpu", "rtx", "radeon", "geforce"],
+      "tarjetas_madre": ["motherboard", "tarjeta madre", "b650", "h610", "b760"],
+      "memorias_ram": ["ram", "ddr4", "ddr5", "dimm", "sodimm"],
+      "almacenamiento": ["ssd", "disco", "nvme", "m.2", "usb", "pendrive", "almacenamiento"],
+      "laptops_pcs": ["laptop", "computadora", "pc", "servidor"],
+      "monitores": ["monitor", "pantalla", "curvo", "display"],
+      "perifericos": ["teclado", "mouse", "diadema", "headset", "bocina", "auricular", "cable", "adaptador"],
+      "redes": ["switch", "router", "access point", "cctv", "camara", "dvr", "nvr", "cableado", "patch", "rack", "red", "switches_red", "routers_access_points", "cableado_estructurado", "camaras_seguridad_cctv", "grabadores_dvr_nvr"],
+      "gabinetes_fuentes": ["fuente", "gabinete", "chasis", "ventilador", "cooler", "no-break", "ups", "no_breaks_ups"]
+    };
+
+    const terms = deptMapping[deptId] || [deptId];
+    const matched = boutiqueProducts.filter(p => {
+      const blob = ((p.nombre || '') + ' ' + (p.categoria || '') + ' ' + (p.descripcion || '')).toLowerCase();
+      return terms.some(t => blob.includes(t.toLowerCase()));
+    });
+
+    if (matched.length > 0) {
+      filteredProducts = matched;
+      const countTxt = document.getElementById("results-count-txt");
+      if (countTxt) countTxt.innerText = `Mostrando ${matched.length} Productos en ${deptName}`;
+    } else {
+      filteredProducts = [...boutiqueProducts];
+      const countTxt = document.getElementById("results-count-txt");
+      if (countTxt) countTxt.innerText = `Catálogo General (200) - Especialidad Infraestructura & Redes B2B`;
+    }
+    currentPage = 1;
+    renderAparadorPage(1);
+    const targetEl = document.getElementById("products-grid-container");
+    if (targetEl) targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   function filterCategory(catName) {
     if (!catName || catName === 'all' || catName === 'Todos') {
