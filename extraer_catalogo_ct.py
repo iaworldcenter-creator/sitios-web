@@ -5,7 +5,7 @@ import re
 
 FILE_LISTA = r"D:\Descargas\lista3\TOL 082426\1308 LISTA DE PRECIOS DE CT TOL 082426.xlsx"
 FILE_CONFIG = r"D:\Descargas\lista3\TOL 082426\1308 CONFIGURACIONES TOL 082426.xlsx"
-GALLERY_DIR = r"E:\sitios web\pc-custom-lab\assets\gallery"
+GALLERY_DIR = r"E:\sitios web\VECTEC\assets\gallery"
 
 print("=" * 80)
 print("EXTRACTOR MAESTRO DE INVENTARIO CT INTERNACIONAL Y CONFIGURACIONES")
@@ -16,7 +16,7 @@ gallery_images = []
 if os.path.exists(GALLERY_DIR):
     gallery_images = [f for f in os.listdir(GALLERY_DIR) if f.endswith('.webp') or f.endswith('.png') or f.endswith('.jpg')]
 
-print(f"Total imágenes locales en galería PC Custom Lab: {len(gallery_images)}")
+print(f"Total imágenes locales en galería VECTEC: {len(gallery_images)}")
 
 # TIPO DE CAMBIO USD -> MXN (CT suele listar en USD antes de IVA o en MXN según hoja)
 TIPO_CAMBIO = 19.50
@@ -73,7 +73,7 @@ for sheet in xls.sheet_names:
 
                     # Asignar imagen
                     img_file = gallery_images[img_idx % len(gallery_images)] if gallery_images else "assets/img/fachada-oficial.webp"
-                    img_url = f"https://iaworldcenter-creator.github.io/pc-custom-lab/assets/gallery/{img_file}"
+                    img_url = f"https://iaworldcenter-creator.github.io/VECTEC/assets/gallery/{img_file}"
                     img_idx += 1
 
                     all_clean_products.append({
@@ -93,12 +93,12 @@ print(f"\n✅ Total productos limpios y únicos extraídos: {len(df_clean)}")
 print("\nDesglose por Categoría:")
 print(df_clean['categoria_ct'].value_counts())
 
-# Guardar CSV y JSON en pc-custom-lab y en catálogo general
-os.makedirs(r"E:\sitios web\pc-custom-lab\data", exist_ok=True)
-os.makedirs(r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\pc-custom-lab\data", exist_ok=True)
+# Guardar CSV y JSON en VECTEC y en catálogo general
+os.makedirs(r"E:\sitios web\VECTEC\data", exist_ok=True)
+os.makedirs(r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\VECTEC\data", exist_ok=True)
 
-csv_path = r"E:\sitios web\pc-custom-lab\data\catalogo_maestro_ct.csv"
-json_path = r"E:\sitios web\pc-custom-lab\data\catalogo_maestro_ct.json"
+csv_path = r"E:\sitios web\VECTEC\data\catalogo_maestro_ct.csv"
+json_path = r"E:\sitios web\VECTEC\data\catalogo_maestro_ct.json"
 
 df_clean.to_csv(csv_path, index=False, encoding='utf-8')
 with open(json_path, 'w', encoding='utf-8') as f:

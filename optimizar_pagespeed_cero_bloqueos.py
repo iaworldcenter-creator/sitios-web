@@ -2,7 +2,7 @@ import os
 import json
 import re
 
-BASE_DIR = r"E:\sitios web\pc-custom-lab"
+BASE_DIR = r"E:\sitios web\VECTEC"
 
 print("=" * 80, flush=True)
 print("OPTIMIZACIÓN TOTAL DE RENDIMIENTO: CERO SOLICITUDES BLOQUEANTES EN HEAD")
@@ -15,8 +15,8 @@ with open(os.path.join(BASE_DIR, "index.html"), "r", encoding="utf-8") as f:
 OPTIMIZED_NON_BLOCKING_HEAD = """<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC Custom Lab | Hardware Mayorista & Ensamble de Cómputo</title>
-    <meta name="description" content="Catálogo oficial de hardware mayorista PC Custom Lab, procesadores Intel/AMD, placas ASUS, tarjetas gráficas RTX y configuraciones armadas.">
+    <title>VECTEC | Hardware Mayorista & Ensamble de Cómputo</title>
+    <meta name="description" content="Catálogo oficial de hardware mayorista VECTEC, procesadores Intel/AMD, placas ASUS, tarjetas gráficas RTX y configuraciones armadas.">
     
     <!-- Preconexión DNS y CDN -->
     <link rel="preconnect" href="https://static.ctonline.mx" crossorigin>
@@ -60,7 +60,7 @@ with open(os.path.join(BASE_DIR, "index.html"), "w", encoding="utf-8") as f:
     f.write(html)
 
 # Sincronizar espejo a OneDrive C:
-BASE_DIR_C = r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\pc-custom-lab"
+BASE_DIR_C = r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\VECTEC"
 for root, dirs, files in os.walk(BASE_DIR):
     if '.git' in root or 'node_modules' in root: continue
     for file in files:

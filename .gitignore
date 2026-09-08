@@ -17,6 +17,7 @@ ofertas-y-liquidaciones/
 credentials.json
 
 
+
 *.zip
 *.tar.gz
 *.tmp
@@ -25,3 +26,5 @@ credentials.json
 backups/
 backups/
 **/node_modules/
+.venv/
+scratch/

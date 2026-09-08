@@ -2,7 +2,7 @@ import os
 import json
 import re
 
-BASE_DIR = r"E:\sitios web\pc-custom-lab"
+BASE_DIR = r"E:\sitios web\VECTEC"
 DATA_FILE = os.path.join(BASE_DIR, "data", "catalogo_maestro_ct.json")
 
 print("=" * 80, flush=True)
@@ -23,9 +23,9 @@ with open(os.path.join(BASE_DIR, "js", "ct-catalog-data.js"), "w", encoding="utf
 
 print(f"✅ Payload inicial ultraligero: {len(initial_items)} productos ({os.path.getsize(os.path.join(BASE_DIR, 'js', 'ct-catalog-data.js')) // 1024} KB).", flush=True)
 
-# 2. Agregar estilos específicos de PC Custom Lab a tailwind-built.css
+# 2. Agregar estilos específicos de VECTEC a tailwind-built.css
 custom_styles = """
-/* === PC CUSTOM LAB ESTILOS CRÍTICOS INLINE === */
+/* === VECTEC ESTILOS CRÍTICOS INLINE === */
 .no-scrollbar::-webkit-scrollbar { display: none !important; }
 .no-scrollbar { -ms-overflow-style: none !important; scrollbar-width: none !important; }
 .neon-glow-pc {
@@ -57,8 +57,8 @@ with open(os.path.join(BASE_DIR, "index.html"), "r", encoding="utf-8") as f:
 NEW_HEAD = """<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC Custom Lab | Hardware Mayorista & Ensamble de Cómputo</title>
-    <meta name="description" content="Catálogo oficial de hardware mayorista PC Custom Lab, procesadores Intel/AMD, placas ASUS, tarjetas gráficas RTX y configuraciones armadas.">
+    <title>VECTEC | Hardware Mayorista & Ensamble de Cómputo</title>
+    <meta name="description" content="Catálogo oficial de hardware mayorista VECTEC, procesadores Intel/AMD, placas ASUS, tarjetas gráficas RTX y configuraciones armadas.">
     
     <!-- Preconexión DNS y CDN -->
     <link rel="preconnect" href="https://static.ctonline.mx" crossorigin>
@@ -89,7 +89,7 @@ with open(os.path.join(BASE_DIR, "index.html"), "w", encoding="utf-8") as f:
     f.write(html)
 
 # 4. Espejo a OneDrive C:
-BASE_DIR_C = r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\pc-custom-lab"
+BASE_DIR_C = r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\VECTEC"
 for root, dirs, files in os.walk(BASE_DIR):
     if '.git' in root or 'node_modules' in root: continue
     for file in files:

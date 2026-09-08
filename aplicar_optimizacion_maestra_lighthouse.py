@@ -2,7 +2,7 @@ import os
 import json
 import re
 
-BASE_DIR = r"E:\sitios web\pc-custom-lab"
+BASE_DIR = r"E:\sitios web\VECTEC"
 INDEX_HTML = os.path.join(BASE_DIR, "index.html")
 ENGINE_JS = os.path.join(BASE_DIR, "js", "ct-exact-catalog-engine.js")
 CSS_FILE = os.path.join(BASE_DIR, "assets", "css", "tailwind-built.css")
@@ -71,8 +71,8 @@ HTML_OPTIMIZED = """<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC Custom Lab | Hardware Mayorista & Ensamble de Cómputo</title>
-    <meta name="description" content="Catálogo oficial de hardware mayorista PC Custom Lab, procesadores Intel/AMD, placas ASUS, tarjetas gráficas RTX y configuraciones armadas.">
+    <title>VECTEC | Hardware Mayorista & Ensamble de Cómputo</title>
+    <meta name="description" content="Catálogo oficial de hardware mayorista VECTEC, procesadores Intel/AMD, placas ASUS, tarjetas gráficas RTX y configuraciones armadas.">
     
     <!-- Preconexión DNS y CDN -->
     <link rel="preconnect" href="https://static.ctonline.mx" crossorigin>
@@ -91,7 +91,7 @@ HTML_OPTIMIZED = """<!DOCTYPE html>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased">
     <!-- H1 SEMÁNTICO PRINCIPAL DE LA TIENDA -->
-    <h1 class="sr-only">PC Custom Lab | Distribución Mayorista de Hardware y Ensamble de Cómputo</h1>
+    <h1 class="sr-only">VECTEC | Distribución Mayorista de Hardware y Ensamble de Cómputo</h1>
 
     <!-- CABECERA DE 2 LÍNEAS (MÓVIL Y ESCRITORIO) -->
     <header class="sticky top-0 z-50 bg-slate-950/95 backdrop-blur-md border-b border-slate-800 shadow-xl">
@@ -107,7 +107,7 @@ HTML_OPTIMIZED = """<!DOCTYPE html>
                 <a href="https://iaworldcenter-creator.github.io/sitios-web/" aria-label="Ir al portal matriz" class="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-800 transition min-h-[44px] flex items-center">
                     <i class="fa-solid fa-house text-amber-400 mr-1.5"></i> Matriz
                 </a>
-                <a href="https://iaworldcenter-creator.github.io/pc-custom-lab/" aria-label="Tienda activa PC Custom Lab" class="px-3 py-1.5 rounded-xl bg-cyan-950/80 text-cyan-300 font-black neon-glow-pc transition min-h-[44px] flex items-center">
+                <a href="https://iaworldcenter-creator.github.io/VECTEC/" aria-label="Tienda activa VECTEC" class="px-3 py-1.5 rounded-xl bg-cyan-950/80 text-cyan-300 font-black neon-glow-pc transition min-h-[44px] flex items-center">
                     <i class="fa-solid fa-microchip text-cyan-400 mr-1.5"></i> PC Custom
                 </a>
                 <a href="https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/" aria-label="Ir a boutique Vía MX" class="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-800 transition min-h-[44px] flex items-center">
@@ -133,12 +133,12 @@ HTML_OPTIMIZED = """<!DOCTYPE html>
 
         <!-- Línea 2: Logo + Barra de Búsqueda Blanca + Botón Carrito -->
         <div class="w-full max-w-[1850px] mx-auto px-2 sm:px-4 py-2.5 flex items-center justify-between gap-3">
-            <a href="index.html" aria-label="Ir a inicio de PC Custom Lab" class="flex items-center gap-2.5 shrink-0 group min-h-[48px]">
+            <a href="index.html" aria-label="Ir a inicio de VECTEC" class="flex items-center gap-2.5 shrink-0 group min-h-[48px]">
                 <div class="w-10 h-10 rounded-xl bg-slate-900 border border-cyan-500/40 p-1 flex items-center justify-center shrink-0">
-                    <img src="assets/img/mascota_tigre_thumb.webp" alt="Logo PC Custom Lab" width="36" height="36" class="w-full h-full object-contain" />
+                    <img src="assets/img/mascota_tigre_thumb.webp" alt="Logo VECTEC" width="36" height="36" class="w-full h-full object-contain" />
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-xs sm:text-sm font-black font-mono text-white tracking-wider uppercase group-hover:text-cyan-400 transition">PC CUSTOM LAB</span>
+                    <span class="text-xs sm:text-sm font-black font-mono text-white tracking-wider uppercase group-hover:text-cyan-400 transition">VECTEC</span>
                     <span class="text-[9px] font-mono text-slate-300 truncate hidden sm:block">Pedro Moreno 501 A, Guadalajara</span>
                 </div>
             </a>
@@ -271,9 +271,9 @@ HTML_OPTIMIZED = """<!DOCTYPE html>
 
     </main>
 
-    <!-- FOOTER OFICIAL PC CUSTOM LAB (H2: Pie de Página) -->
+    <!-- FOOTER OFICIAL VECTEC (H2: Pie de Página) -->
     <footer class="bg-slate-950 border-t border-slate-800 text-slate-300 text-xs mt-12 pt-10 pb-8" aria-label="Pie de página institucional">
-        <h2 class="sr-only">Información Legal, Contacto y Garantías PC Custom Lab</h2>
+        <h2 class="sr-only">Información Legal, Contacto y Garantías VECTEC</h2>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-slate-800/80">
@@ -312,7 +312,7 @@ HTML_OPTIMIZED = """<!DOCTYPE html>
                         <a href="https://www.youtube.com/@IAWorldCenter" target="_blank" rel="noopener" aria-label="Canal oficial de YouTube" class="text-slate-300 hover:text-red-400 flex items-center gap-2 transition">
                             <i class="fa-brands fa-youtube text-red-500 w-4 text-center" aria-hidden="true"></i> <span>YouTube: <strong>IA World Center</strong></span>
                         </a>
-                        <a href="https://t.me/pc_custom_lab" target="_blank" rel="noopener" aria-label="Canal oficial de Telegram" class="text-slate-300 hover:text-cyan-400 flex items-center gap-2 transition">
+                        <a href="https://t.me/vectec_gdl" target="_blank" rel="noopener" aria-label="Canal oficial de Telegram" class="text-slate-300 hover:text-cyan-400 flex items-center gap-2 transition">
                             <i class="fa-brands fa-telegram text-cyan-400 w-4 text-center" aria-hidden="true"></i> <span>Telegram: <strong>pc_custom_lab</strong></span>
                         </a>
                     </div>
@@ -386,7 +386,7 @@ HTML_OPTIMIZED = """<!DOCTYPE html>
                 </div>
 
                 <div class="pt-3 text-slate-400">
-                    © 2026 Ecosistema Comercial BAZAR NFL GDL & PC Custom Lab. Pedro Moreno 501 A, Guadalajara Centro, Jalisco. Todos los derechos reservados.
+                    © 2026 Ecosistema Comercial BAZAR NFL GDL & VECTEC. Pedro Moreno 501 A, Guadalajara Centro, Jalisco. Todos los derechos reservados.
                 </div>
             </div>
 
@@ -406,7 +406,7 @@ print("✅ index.html reescrito con estructura de encabezados perfecta (h1 -> h2
 
 # 3. ACTUALIZAR JS ENGINE PARA CERO CLS (DIMENSIONES FIJAS 300x300 Y ASPECT-RATIO), TAP TARGETS 48PX Y H3 EN TARJETAS
 ENGINE_JS_LIGHTHOUSE = """// =========================================================================
-// MOTOR ULTRA RÁPIDO PC CUSTOM LAB (LIGHTHOUSE 100/100 READY)
+// MOTOR ULTRA RÁPIDO VECTEC (LIGHTHOUSE 100/100 READY)
 // =========================================================================
 
 let currentViewStyle = 'grid'; // 'grid' (5x4) o 'list'
@@ -904,7 +904,7 @@ function renderSidebarFacets() {
                     
                     <div class="w-32 h-32 mx-auto bg-white p-2 rounded-xl shadow-md flex items-center justify-center mb-2">
                         <img 
-                            src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https://iaworldcenter-creator.github.io/pc-custom-lab/&color=0-0-0&bgcolor=255-255-255" 
+                            src="https://api.qrserver.com/v1/create-qr-code/?size=130x130&data=https://iaworldcenter-creator.github.io/VECTEC/&color=0-0-0&bgcolor=255-255-255" 
                             alt="Código QR de la App Oficial" 
                             width="128" 
                             height="128" 
@@ -1093,7 +1093,7 @@ window.openProductDetailModal = function(sku) {
         <div class="w-full flex justify-between items-center border-b border-slate-800 pb-3 mb-4">
             <div class="flex items-center gap-2">
                 <span class="text-xs font-mono font-bold text-cyan-300 bg-cyan-950/80 border border-cyan-500/40 px-3 py-1 rounded-full uppercase">
-                    Ficha Técnica Oficial PC Custom Lab
+                    Ficha Técnica Oficial VECTEC
                 </span>
                 <span class="text-xs font-mono text-slate-300">SKU: <strong>${sku}</strong></span>
             </div>
@@ -1470,7 +1470,7 @@ with open(ENGINE_JS, "w", encoding="utf-8") as f:
 print("✅ ct-exact-catalog-engine.js optimizado para Lighthouse 100/100.", flush=True)
 
 # 4. Sincronizar a OneDrive C:
-BASE_DIR_C = r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\pc-custom-lab"
+BASE_DIR_C = r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\VECTEC"
 for root, dirs, files in os.walk(BASE_DIR):
     if '.git' in root or 'node_modules' in root: continue
     for file in files:

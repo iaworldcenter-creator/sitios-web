@@ -3,18 +3,18 @@ import re
 import json
 
 BASE_DIR = r"E:\sitios web"
-PC_DIR = os.path.join(BASE_DIR, "pc-custom-lab")
+PC_DIR = os.path.join(BASE_DIR, "VECTEC")
 INDEX_HTML = os.path.join(PC_DIR, "index.html")
 ENGINE_JS = os.path.join(PC_DIR, "js", "ct-exact-catalog-engine.js")
 CATALOG_DATA_FILE = os.path.join(PC_DIR, "js", "ct-catalog-data.js")
 
 print("=" * 80, flush=True)
-print("1. AMPLIACIÓN DE CATEGORÍAS EN MÓVIL PARA PC CUSTOM LAB")
+print("1. AMPLIACIÓN DE CATEGORÍAS EN MÓVIL PARA VECTEC")
 print("=" * 80, flush=True)
 
-# 1. CSS PARA CATEGORÍAS MÁS GRANDES EN MÓVIL EN PC CUSTOM LAB
+# 1. CSS PARA CATEGORÍAS MÁS GRANDES EN MÓVIL EN VECTEC
 MOBILE_CATEGORIES_EXPANDED_CSS = """
-/* === AMPLIACIÓN DE CATEGORÍAS EN CELULAR (SOLO PC CUSTOM LAB) === */
+/* === AMPLIACIÓN DE CATEGORÍAS EN CELULAR (SOLO VECTEC) === */
 @media (max-width: 1023px) {
     #sidebar-facets-root {
         width: 100% !important;
@@ -83,9 +83,9 @@ js_content = re.sub(
 with open(ENGINE_JS, "w", encoding="utf-8") as f:
     f.write(js_content)
 
-print("✅ pc-custom-lab: js/ct-exact-catalog-engine.js actualizado con categorías grandes en móvil.", flush=True)
+print("✅ VECTEC: js/ct-exact-catalog-engine.js actualizado con categorías grandes en móvil.", flush=True)
 
-# 3. ACTUALIZAR INDEX.HTML DE PC CUSTOM LAB
+# 3. ACTUALIZAR INDEX.HTML DE VECTEC
 with open(INDEX_HTML, "r", encoding="utf-8") as f:
     html_content = f.read()
 
@@ -96,7 +96,7 @@ if "AMPLIACIÓN DE CATEGORÍAS EN CELULAR" not in html_content:
 with open(INDEX_HTML, "w", encoding="utf-8") as f:
     f.write(html_content)
 
-print("✅ pc-custom-lab/index.html: Estilos móviles de categorías ampliadas inyectados.", flush=True)
+print("✅ VECTEC/index.html: Estilos móviles de categorías ampliadas inyectados.", flush=True)
 
 # 4. APLICAR OPTIMIZACIONES ANTERIORES A TODAS LAS DEMÁS TIENDAS DEL ECOSISTEMA
 print("\n" + "=" * 80, flush=True)

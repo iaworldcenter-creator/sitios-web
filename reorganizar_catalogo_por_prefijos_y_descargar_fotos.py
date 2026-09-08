@@ -7,7 +7,7 @@ import openpyxl
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
 
-BASE_DIR = r"E:\sitios web\pc-custom-lab"
+BASE_DIR = r"E:\sitios web\VECTEC"
 CATEGORIES_DIR = os.path.join(BASE_DIR, "data", "categorias")
 IMG_BASE_DIR = os.path.join(BASE_DIR, "assets", "img", "catalog")
 os.makedirs(CATEGORIES_DIR, exist_ok=True)
@@ -303,7 +303,7 @@ with open(os.path.join(BASE_DIR, "js", "ct-exact-catalog-engine.js"), "w", encod
 print("✓ js/ct-exact-catalog-engine.js actualizado con filtro exacto de categoría.")
 
 # 8. Espejo a C:
-BASE_DIR_C = r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\pc-custom-lab"
+BASE_DIR_C = r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\VECTEC"
 for root, dirs, files in os.walk(BASE_DIR):
     if '.git' in root or 'node_modules' in root: continue
     for file in files:

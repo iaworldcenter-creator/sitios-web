@@ -1,5 +1,5 @@
 /**
- * UX & Fuzzy Search Engine v3.0 - PC Custom Lab & Ecosistema de Tiendas
+ * UX & Fuzzy Search Engine v3.0 - VECTEC & Ecosistema de Tiendas
  * Motor de Búsqueda Inteligente, Tolerante a Errores Ortográficos (Levenshtein),
  * Limpieza de Stopwords, Diccionario de Sinónimos y Live Autocomplete con Compra en 1 Clic.
  */
@@ -339,7 +339,7 @@ class HighConversionSearchEngine {
             const price = parseFloat(m.precio || m.price || m.Precio_Venta_Inauguracion_MXN || m.Precio_Lista_Original_MXN) || 0;
             const sku = m.sku || m.SKU || 'N/A';
             const brand = m.marca || m.brand || m.Marca || '';
-            const img = m.imagen || m.image || m.Imagen_Local || m.URL_CDN || `https://iaworldcenter-creator.github.io/pc-custom-lab/img/${sku}.jpg`;
+            const img = m.imagen || m.image || m.Imagen_Local || m.URL_CDN || `https://iaworldcenter-creator.github.io/VECTEC/img/${sku}.jpg`;
             const highlighted = title.replace(regex, '<mark style="background: rgba(56, 189, 248, 0.3); color: #38bdf8; border-radius: 2px; padding: 0 2px;">$1</mark>');
 
             return `

@@ -2,7 +2,7 @@ import os
 import json
 import re
 
-BASE_DIR = r"E:\sitios web\pc-custom-lab"
+BASE_DIR = r"E:\sitios web\VECTEC"
 INDEX_HTML = os.path.join(BASE_DIR, "index.html")
 ENGINE_JS = os.path.join(BASE_DIR, "js", "ct-exact-catalog-engine.js")
 CATALOG_DATA_FILE = os.path.join(BASE_DIR, "js", "ct-catalog-data.js")
@@ -144,8 +144,8 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PC Custom Lab | Hardware Mayorista & Ensamble de Cómputo</title>
-    <meta name="description" content="Catálogo oficial de hardware mayorista PC Custom Lab, procesadores Intel/AMD, placas ASUS, tarjetas gráficas RTX y configuraciones armadas.">
+    <title>VECTEC | Hardware Mayorista & Ensamble de Cómputo</title>
+    <meta name="description" content="Catálogo oficial de hardware mayorista VECTEC, procesadores Intel/AMD, placas ASUS, tarjetas gráficas RTX y configuraciones armadas.">
     
     <!-- Preconexión de alta prioridad a CDN y servidores de activos -->
     <link rel="preconnect" href="https://static.ctonline.mx" crossorigin>
@@ -164,7 +164,7 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans min-h-screen flex flex-col antialiased">
     <!-- H1 SEMÁNTICO PRINCIPAL (WCAG 2.2 / APCA COMPLIANT) -->
-    <h1 class="sr-only">PC Custom Lab | Distribución Mayorista de Hardware y Ensamble de Cómputo</h1>
+    <h1 class="sr-only">VECTEC | Distribución Mayorista de Hardware y Ensamble de Cómputo</h1>
 
     <!-- CABECERA DE 2 LÍNEAS (MÓVIL Y ESCRITORIO) -->
     <header class="sticky top-0 z-50 bg-slate-950/95 backdrop-blur-md border-b border-slate-800 shadow-xl">
@@ -180,7 +180,7 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
                 <a href="https://iaworldcenter-creator.github.io/sitios-web/" aria-label="Ir al portal matriz" class="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-800 transition min-h-[48px] min-w-[48px] flex items-center justify-center">
                     <i class="fa-solid fa-house text-amber-400 mr-1.5" aria-hidden="true"></i> Matriz
                 </a>
-                <a href="https://iaworldcenter-creator.github.io/pc-custom-lab/" aria-label="Tienda activa PC Custom Lab" class="px-3 py-1.5 rounded-xl bg-cyan-950/80 text-cyan-300 font-black neon-glow-pc transition min-h-[48px] min-w-[48px] flex items-center justify-center">
+                <a href="https://iaworldcenter-creator.github.io/VECTEC/" aria-label="Tienda activa VECTEC" class="px-3 py-1.5 rounded-xl bg-cyan-950/80 text-cyan-300 font-black neon-glow-pc transition min-h-[48px] min-w-[48px] flex items-center justify-center">
                     <i class="fa-solid fa-microchip text-cyan-400 mr-1.5" aria-hidden="true"></i> PC Custom
                 </a>
                 <a href="https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/" aria-label="Ir a boutique Vía MX" class="px-2.5 py-1.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 hover:text-white border border-slate-800 transition min-h-[48px] min-w-[48px] flex items-center justify-center">
@@ -206,12 +206,12 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
 
         <!-- Línea 2: Logo + Barra de Búsqueda Blanca + Botón Carrito -->
         <div class="w-full max-w-[1850px] mx-auto px-2 sm:px-4 py-2.5 flex items-center justify-between gap-3">
-            <a href="index.html" aria-label="Ir a inicio de PC Custom Lab" class="flex items-center gap-2.5 shrink-0 group min-h-[48px]">
+            <a href="index.html" aria-label="Ir a inicio de VECTEC" class="flex items-center gap-2.5 shrink-0 group min-h-[48px]">
                 <div class="w-10 h-10 rounded-xl bg-slate-900 border border-cyan-500/40 p-1 flex items-center justify-center shrink-0">
-                    <img src="assets/img/mascota_tigre_thumb.webp" alt="Logo PC Custom Lab" width="36" height="36" class="w-full h-full object-contain" />
+                    <img src="assets/img/mascota_tigre_thumb.webp" alt="Logo VECTEC" width="36" height="36" class="w-full h-full object-contain" />
                 </div>
                 <div class="flex flex-col">
-                    <span class="text-xs sm:text-sm font-black font-mono text-white tracking-wider uppercase group-hover:text-cyan-400 transition">PC CUSTOM LAB</span>
+                    <span class="text-xs sm:text-sm font-black font-mono text-white tracking-wider uppercase group-hover:text-cyan-400 transition">VECTEC</span>
                     <span class="text-[9px] font-mono text-slate-300 truncate hidden sm:block">Pedro Moreno 501 A, Guadalajara</span>
                 </div>
             </a>
@@ -344,9 +344,9 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
 
     </main>
 
-    <!-- FOOTER OFICIAL PC CUSTOM LAB (H2: Pie de Página) -->
+    <!-- FOOTER OFICIAL VECTEC (H2: Pie de Página) -->
     <footer class="bg-slate-950 border-t border-slate-800 text-slate-300 text-xs mt-12 pt-10 pb-8" aria-label="Pie de página institucional">
-        <h2 class="sr-only">Información Legal, Contacto y Garantías PC Custom Lab</h2>
+        <h2 class="sr-only">Información Legal, Contacto y Garantías VECTEC</h2>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-10 border-b border-slate-800/80">
@@ -385,7 +385,7 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
                         <a href="https://www.youtube.com/@IAWorldCenter" target="_blank" rel="noopener" aria-label="Canal oficial de YouTube" class="text-slate-300 hover:text-red-400 flex items-center gap-2 transition min-h-[48px]">
                             <i class="fa-brands fa-youtube text-red-500 w-4 text-center" aria-hidden="true"></i> <span>YouTube: <strong>IA World Center</strong></span>
                         </a>
-                        <a href="https://t.me/pc_custom_lab" target="_blank" rel="noopener" aria-label="Canal oficial de Telegram" class="text-slate-300 hover:text-cyan-400 flex items-center gap-2 transition min-h-[48px]">
+                        <a href="https://t.me/vectec_gdl" target="_blank" rel="noopener" aria-label="Canal oficial de Telegram" class="text-slate-300 hover:text-cyan-400 flex items-center gap-2 transition min-h-[48px]">
                             <i class="fa-brands fa-telegram text-cyan-400 w-4 text-center" aria-hidden="true"></i> <span>Telegram: <strong>pc_custom_lab</strong></span>
                         </a>
                     </div>
@@ -459,7 +459,7 @@ INDEX_HTML_FINAL = f"""<!DOCTYPE html>
                 </div>
 
                 <div class="pt-3 text-slate-400">
-                    © 2026 Ecosistema Comercial BAZAR NFL GDL & PC Custom Lab. Pedro Moreno 501 A, Guadalajara Centro, Jalisco. Todos los derechos reservados.
+                    © 2026 Ecosistema Comercial BAZAR NFL GDL & VECTEC. Pedro Moreno 501 A, Guadalajara Centro, Jalisco. Todos los derechos reservados.
                 </div>
             </div>
 
@@ -478,7 +478,7 @@ with open(INDEX_HTML, "w", encoding="utf-8") as f:
 print("✅ index.html reescrito con 20 productos iniciales pre-renderizados (CLS = 0.000).", flush=True)
 
 # 5. SINCRONIZAR A ONEDRIVE C:
-BASE_DIR_C = r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\pc-custom-lab"
+BASE_DIR_C = r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\VECTEC"
 for root, dirs, files in os.walk(BASE_DIR):
     if '.git' in root or 'node_modules' in root: continue
     for file in files:

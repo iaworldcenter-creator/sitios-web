@@ -2,21 +2,21 @@ import os
 import subprocess
 
 BASE_DIR = r"E:\sitios web"
-PC_DIR = os.path.join(BASE_DIR, "pc-custom-lab")
+PC_DIR = os.path.join(BASE_DIR, "VECTEC")
 BASE_DIR_C = r"C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web"
 
 print("=" * 80, flush=True)
 print("RESTAURACIÓN AL PUNTO ESTABLE ANTERIOR (0feaff1 / CATÁLOGO COMPLETO INTACTO)")
 print("=" * 80, flush=True)
 
-# 1. RESTAURAR ARCHIVOS DE PC-CUSTOM-LAB AL COMMIT 0feaff1
+# 1. RESTAURAR ARCHIVOS DE VECTEC AL COMMIT 0feaff1
 lock_file = os.path.join(PC_DIR, ".git", "index.lock")
 if os.path.exists(lock_file):
     try: os.remove(lock_file)
     except: pass
 
 subprocess.run(["git", "checkout", "0feaff1", "--", "index.html", "js/ct-exact-catalog-engine.js"], cwd=PC_DIR)
-print("✅ pc-custom-lab: index.html y js/ct-exact-catalog-engine.js restaurados al punto previo 0feaff1.")
+print("✅ VECTEC: index.html y js/ct-exact-catalog-engine.js restaurados al punto previo 0feaff1.")
 
 # 2. RESTAURAR RAÍZ MONOREPO
 lock_root = os.path.join(BASE_DIR, ".git", "index.lock")
@@ -42,11 +42,11 @@ for root, dirs, files in os.walk(BASE_DIR):
 
 print("✅ Sincronización espejo a OneDrive C: completada.")
 
-# 4. COMMIT Y PUSH EN PC-CUSTOM-LAB
+# 4. COMMIT Y PUSH EN VECTEC
 subprocess.run(["git", "add", "-A"], cwd=PC_DIR)
 subprocess.run(["git", "commit", "-m", "revert: restablecimiento total al punto estable anterior con catalogo completo"], cwd=PC_DIR)
 p1 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=PC_DIR, capture_output=True, text=True)
-print(f" -> pc-custom-lab push code: {p1.returncode}")
+print(f" -> VECTEC push code: {p1.returncode}")
 
 # 5. COMMIT Y PUSH EN ROOT
 subprocess.run(["git", "add", "-A"], cwd=BASE_DIR)

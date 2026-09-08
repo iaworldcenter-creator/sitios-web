@@ -2,27 +2,27 @@ import os
 import subprocess
 
 BASE_DIR = r"E:\sitios web"
-PC_DIR = os.path.join(BASE_DIR, "pc-custom-lab")
+PC_DIR = os.path.join(BASE_DIR, "VECTEC")
 
 print("=" * 80)
 print("SANEAMIENTO Y LIMPIEZA EN REPOSITORIOS GITHUB")
 print("=" * 80)
 
-# 1. Limpiar pc-custom-lab
+# 1. Limpiar VECTEC
 lock_pc = os.path.join(PC_DIR, ".git", "index.lock")
 if os.path.exists(lock_pc):
     try: os.remove(lock_pc)
     except: pass
 
-print("Staging and cleaning pc-custom-lab...")
+print("Staging and cleaning VECTEC...")
 subprocess.run(["git", "add", "-A"], cwd=PC_DIR)
 status_pc = subprocess.run(["git", "status", "--porcelain"], cwd=PC_DIR, capture_output=True, text=True).stdout
 if status_pc:
     subprocess.run(["git", "commit", "-m", "chore(cleanup): purga de archivos temporales, imagenes descartadas y optimizacion de repositorio"], cwd=PC_DIR)
     p1 = subprocess.run(["git", "-c", "gc.auto=0", "push", "origin", "main"], cwd=PC_DIR, capture_output=True, text=True)
-    print(f" -> pc-custom-lab push code: {p1.returncode}")
+    print(f" -> VECTEC push code: {p1.returncode}")
 else:
-    print(" -> pc-custom-lab ya está limpio.")
+    print(" -> VECTEC ya está limpio.")
 
 # 2. Limpiar monorepo raíz sitios-web
 lock_root = os.path.join(BASE_DIR, ".git", "index.lock")

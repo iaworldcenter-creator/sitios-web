@@ -88,15 +88,15 @@
 - Total IDs: 33
 - Duplicados: None
 
-## C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\pc-custom-lab\checkout.html
+## C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\VECTEC\checkout.html
 - Total IDs: 17
 - Duplicados: None
 
-## C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\pc-custom-lab\index.html
+## C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\VECTEC\index.html
 - Total IDs: 22
 - Duplicados: None
 
-## C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\pc-custom-lab\producto.html
+## C:\Users\nflgd\OneDrive\Documentos\ChatGPT\sitios web\VECTEC\producto.html
 - Total IDs: 32
 - Duplicados: None
 
