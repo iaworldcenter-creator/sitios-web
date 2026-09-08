@@ -8,7 +8,9 @@
     "direccion": "Pedro Moreno 501 A, Col. Centro",
     "cp": "44100",
     "total_mxn": 4668.62,
-    "metodo_pago": "SPEI Directo"
+    "metodo_pago": "SPEI Directo",
+    "compras_acumuladas": 2,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00002",
@@ -19,7 +21,9 @@
     "giro_estimado": "Servicios Profesionales / Corporativo",
     "total_mxn": 3226.0,
     "tienda": "Bazar Vía MX NFL",
-    "direccion": "Av. Vallarta #1015, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1015, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 3,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00003",
@@ -30,7 +34,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 901.0,
     "tienda": "Mi Puesto Bazar",
-    "direccion": "Av. Vallarta #1030, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1030, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 4,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00004",
@@ -41,7 +47,9 @@
     "giro_estimado": "Instalador CCTV / Seguridad Privada",
     "total_mxn": 12966.5,
     "tienda": "Ofertas & Liquidaciones",
-    "direccion": "Av. Vallarta #1045, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1045, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 5,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00005",
@@ -52,7 +60,9 @@
     "giro_estimado": "Cibercafé / Papelería Local",
     "total_mxn": 4602.0,
     "tienda": "Kiosco Digital",
-    "direccion": "Av. Vallarta #1060, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1060, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 6,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00006",
@@ -63,7 +73,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 877.5,
     "tienda": "Dulces Bazar",
-    "direccion": "Av. Vallarta #1075, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1075, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 7,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00007",
@@ -74,7 +86,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1403.0,
     "tienda": "Cigarros Bazar",
-    "direccion": "Av. Vallarta #1090, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1090, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 1,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00008",
@@ -85,7 +99,9 @@
     "giro_estimado": "Distribuidor / Mayorista TI",
     "total_mxn": 18678.5,
     "tienda": "Matriz Central",
-    "direccion": "Av. Vallarta #1105, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1105, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 2,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00009",
@@ -96,7 +112,9 @@
     "giro_estimado": "Taller de Ensamble y Reparación PC",
     "total_mxn": 6654.0,
     "tienda": "PC Custom Lab",
-    "direccion": "Av. Vallarta #1120, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1120, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 3,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00010",
@@ -107,7 +125,9 @@
     "giro_estimado": "Servicios Profesionales / Corporativo",
     "total_mxn": 3430.0,
     "tienda": "Bazar Vía MX NFL",
-    "direccion": "Av. Vallarta #1135, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1135, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 4,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00011",
@@ -118,7 +138,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1105.0,
     "tienda": "Mi Puesto Bazar",
-    "direccion": "Av. Vallarta #1150, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1150, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 5,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00012",
@@ -129,7 +151,9 @@
     "giro_estimado": "Instalador CCTV / Seguridad Privada",
     "total_mxn": 13170.5,
     "tienda": "Ofertas & Liquidaciones",
-    "direccion": "Av. Vallarta #1165, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1165, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 6,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00013",
@@ -140,7 +164,9 @@
     "giro_estimado": "Cibercafé / Papelería Local",
     "total_mxn": 4806.0,
     "tienda": "Kiosco Digital",
-    "direccion": "Av. Vallarta #1180, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1180, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 7,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00014",
@@ -151,7 +177,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1081.5,
     "tienda": "Dulces Bazar",
-    "direccion": "Av. Vallarta #1195, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1195, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 1,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00015",
@@ -162,7 +190,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1607.0,
     "tienda": "Cigarros Bazar",
-    "direccion": "Av. Vallarta #1210, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1210, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 2,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00016",
@@ -173,7 +203,9 @@
     "giro_estimado": "Distribuidor / Mayorista TI",
     "total_mxn": 18882.5,
     "tienda": "Matriz Central",
-    "direccion": "Av. Vallarta #1225, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1225, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 3,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00017",
@@ -184,7 +216,9 @@
     "giro_estimado": "Taller de Ensamble y Reparación PC",
     "total_mxn": 6858.0,
     "tienda": "PC Custom Lab",
-    "direccion": "Av. Vallarta #1240, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1240, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 4,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00018",
@@ -195,7 +229,9 @@
     "giro_estimado": "Servicios Profesionales / Corporativo",
     "total_mxn": 3634.0,
     "tienda": "Bazar Vía MX NFL",
-    "direccion": "Av. Vallarta #1255, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1255, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 5,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00019",
@@ -206,7 +242,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1309.0,
     "tienda": "Mi Puesto Bazar",
-    "direccion": "Av. Vallarta #1270, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1270, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 6,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00020",
@@ -217,7 +255,9 @@
     "giro_estimado": "Instalador CCTV / Seguridad Privada",
     "total_mxn": 13374.5,
     "tienda": "Ofertas & Liquidaciones",
-    "direccion": "Av. Vallarta #1285, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1285, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 7,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00021",
@@ -228,7 +268,9 @@
     "giro_estimado": "Cibercafé / Papelería Local",
     "total_mxn": 5010.0,
     "tienda": "Kiosco Digital",
-    "direccion": "Av. Vallarta #1300, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1300, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 1,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00022",
@@ -239,7 +281,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1285.5,
     "tienda": "Dulces Bazar",
-    "direccion": "Av. Vallarta #1315, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1315, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 2,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00023",
@@ -250,7 +294,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1811.0,
     "tienda": "Cigarros Bazar",
-    "direccion": "Av. Vallarta #1330, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1330, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 3,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00024",
@@ -261,7 +307,9 @@
     "giro_estimado": "Distribuidor / Mayorista TI",
     "total_mxn": 19086.5,
     "tienda": "Matriz Central",
-    "direccion": "Av. Vallarta #1345, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1345, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 4,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00025",
@@ -272,7 +320,9 @@
     "giro_estimado": "Taller de Ensamble y Reparación PC",
     "total_mxn": 7062.0,
     "tienda": "PC Custom Lab",
-    "direccion": "Av. Vallarta #1360, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1360, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 5,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00026",
@@ -283,7 +333,9 @@
     "giro_estimado": "Servicios Profesionales / Corporativo",
     "total_mxn": 3838.0,
     "tienda": "Bazar Vía MX NFL",
-    "direccion": "Av. Vallarta #1375, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1375, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 6,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00027",
@@ -294,7 +346,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1513.0,
     "tienda": "Mi Puesto Bazar",
-    "direccion": "Av. Vallarta #1390, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1390, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 7,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00028",
@@ -305,7 +359,9 @@
     "giro_estimado": "Instalador CCTV / Seguridad Privada",
     "total_mxn": 13578.5,
     "tienda": "Ofertas & Liquidaciones",
-    "direccion": "Av. Vallarta #1405, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1405, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 1,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00029",
@@ -316,7 +372,9 @@
     "giro_estimado": "Cibercafé / Papelería Local",
     "total_mxn": 5214.0,
     "tienda": "Kiosco Digital",
-    "direccion": "Av. Vallarta #1420, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1420, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 2,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00030",
@@ -327,7 +385,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1489.5,
     "tienda": "Dulces Bazar",
-    "direccion": "Av. Vallarta #1435, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1435, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 3,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00031",
@@ -338,7 +398,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 2015.0,
     "tienda": "Cigarros Bazar",
-    "direccion": "Av. Vallarta #1450, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1450, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 4,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00032",
@@ -349,7 +411,9 @@
     "giro_estimado": "Distribuidor / Mayorista TI",
     "total_mxn": 19290.5,
     "tienda": "Matriz Central",
-    "direccion": "Av. Vallarta #1465, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1465, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 5,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00033",
@@ -360,7 +424,9 @@
     "giro_estimado": "Taller de Ensamble y Reparación PC",
     "total_mxn": 7266.0,
     "tienda": "PC Custom Lab",
-    "direccion": "Av. Vallarta #1480, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1480, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 6,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00034",
@@ -371,7 +437,9 @@
     "giro_estimado": "Servicios Profesionales / Corporativo",
     "total_mxn": 4042.0,
     "tienda": "Bazar Vía MX NFL",
-    "direccion": "Av. Vallarta #1495, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1495, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 7,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00035",
@@ -382,7 +450,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1717.0,
     "tienda": "Mi Puesto Bazar",
-    "direccion": "Av. Vallarta #1510, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1510, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 1,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00036",
@@ -393,7 +463,9 @@
     "giro_estimado": "Instalador CCTV / Seguridad Privada",
     "total_mxn": 13782.5,
     "tienda": "Ofertas & Liquidaciones",
-    "direccion": "Av. Vallarta #1525, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1525, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 2,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00037",
@@ -404,7 +476,9 @@
     "giro_estimado": "Cibercafé / Papelería Local",
     "total_mxn": 5418.0,
     "tienda": "Kiosco Digital",
-    "direccion": "Av. Vallarta #1540, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1540, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 3,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00038",
@@ -415,7 +489,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1693.5,
     "tienda": "Dulces Bazar",
-    "direccion": "Av. Vallarta #1555, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1555, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 4,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00039",
@@ -426,7 +502,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 2219.0,
     "tienda": "Cigarros Bazar",
-    "direccion": "Av. Vallarta #1570, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1570, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 5,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00040",
@@ -437,7 +515,9 @@
     "giro_estimado": "Distribuidor / Mayorista TI",
     "total_mxn": 19494.5,
     "tienda": "Matriz Central",
-    "direccion": "Av. Vallarta #1585, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1585, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 6,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00041",
@@ -448,7 +528,9 @@
     "giro_estimado": "Taller de Ensamble y Reparación PC",
     "total_mxn": 7470.0,
     "tienda": "PC Custom Lab",
-    "direccion": "Av. Vallarta #1600, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1600, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 7,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00042",
@@ -459,7 +541,9 @@
     "giro_estimado": "Servicios Profesionales / Corporativo",
     "total_mxn": 4246.0,
     "tienda": "Bazar Vía MX NFL",
-    "direccion": "Av. Vallarta #1615, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1615, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 1,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00043",
@@ -470,7 +554,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1921.0,
     "tienda": "Mi Puesto Bazar",
-    "direccion": "Av. Vallarta #1630, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1630, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 2,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00044",
@@ -481,7 +567,9 @@
     "giro_estimado": "Instalador CCTV / Seguridad Privada",
     "total_mxn": 13986.5,
     "tienda": "Ofertas & Liquidaciones",
-    "direccion": "Av. Vallarta #1645, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1645, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 3,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00045",
@@ -492,7 +580,9 @@
     "giro_estimado": "Cibercafé / Papelería Local",
     "total_mxn": 5622.0,
     "tienda": "Kiosco Digital",
-    "direccion": "Av. Vallarta #1660, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1660, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 4,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00046",
@@ -503,7 +593,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 1897.5,
     "tienda": "Dulces Bazar",
-    "direccion": "Av. Vallarta #1675, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1675, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 5,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00047",
@@ -514,7 +606,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 2423.0,
     "tienda": "Cigarros Bazar",
-    "direccion": "Av. Vallarta #1690, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1690, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 6,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00048",
@@ -525,7 +619,9 @@
     "giro_estimado": "Distribuidor / Mayorista TI",
     "total_mxn": 19698.5,
     "tienda": "Matriz Central",
-    "direccion": "Av. Vallarta #1705, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1705, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 7,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00049",
@@ -536,7 +632,9 @@
     "giro_estimado": "Taller de Ensamble y Reparación PC",
     "total_mxn": 7674.0,
     "tienda": "PC Custom Lab",
-    "direccion": "Av. Vallarta #1720, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1720, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 1,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00050",
@@ -547,7 +645,9 @@
     "giro_estimado": "Servicios Profesionales / Corporativo",
     "total_mxn": 4450.0,
     "tienda": "Bazar Vía MX NFL",
-    "direccion": "Av. Vallarta #1735, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1735, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 2,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00051",
@@ -558,7 +658,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 2125.0,
     "tienda": "Mi Puesto Bazar",
-    "direccion": "Av. Vallarta #1750, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1750, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 3,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00052",
@@ -569,7 +671,9 @@
     "giro_estimado": "Instalador CCTV / Seguridad Privada",
     "total_mxn": 14190.5,
     "tienda": "Ofertas & Liquidaciones",
-    "direccion": "Av. Vallarta #1765, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1765, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 4,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00053",
@@ -580,7 +684,9 @@
     "giro_estimado": "Cibercafé / Papelería Local",
     "total_mxn": 5826.0,
     "tienda": "Kiosco Digital",
-    "direccion": "Av. Vallarta #1780, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1780, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 5,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00054",
@@ -591,7 +697,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 2101.5,
     "tienda": "Dulces Bazar",
-    "direccion": "Av. Vallarta #1795, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1795, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 6,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00055",
@@ -602,7 +710,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 2627.0,
     "tienda": "Cigarros Bazar",
-    "direccion": "Av. Vallarta #1810, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1810, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 7,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00056",
@@ -613,7 +723,9 @@
     "giro_estimado": "Distribuidor / Mayorista TI",
     "total_mxn": 19902.5,
     "tienda": "Matriz Central",
-    "direccion": "Av. Vallarta #1825, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1825, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 1,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00057",
@@ -624,7 +736,9 @@
     "giro_estimado": "Taller de Ensamble y Reparación PC",
     "total_mxn": 7878.0,
     "tienda": "PC Custom Lab",
-    "direccion": "Av. Vallarta #1840, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1840, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 2,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00058",
@@ -635,7 +749,9 @@
     "giro_estimado": "Servicios Profesionales / Corporativo",
     "total_mxn": 4654.0,
     "tienda": "Bazar Vía MX NFL",
-    "direccion": "Av. Vallarta #1855, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1855, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 3,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00059",
@@ -646,7 +762,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 2329.0,
     "tienda": "Mi Puesto Bazar",
-    "direccion": "Av. Vallarta #1870, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1870, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 4,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00060",
@@ -657,7 +775,9 @@
     "giro_estimado": "Instalador CCTV / Seguridad Privada",
     "total_mxn": 14394.5,
     "tienda": "Ofertas & Liquidaciones",
-    "direccion": "Av. Vallarta #1885, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1885, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 5,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00061",
@@ -668,7 +788,9 @@
     "giro_estimado": "Cibercafé / Papelería Local",
     "total_mxn": 6030.0,
     "tienda": "Kiosco Digital",
-    "direccion": "Av. Vallarta #1900, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1900, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 6,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00062",
@@ -679,7 +801,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 2305.5,
     "tienda": "Dulces Bazar",
-    "direccion": "Av. Vallarta #1915, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1915, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 7,
+    "cashback_status": "Activo (VIP 100% Automático)"
   },
   {
     "id": "CLI-00063",
@@ -690,7 +814,9 @@
     "giro_estimado": "Consumidor Final / Retail",
     "total_mxn": 2831.0,
     "tienda": "Cigarros Bazar",
-    "direccion": "Av. Vallarta #1930, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1930, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 1,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00064",
@@ -701,7 +827,9 @@
     "giro_estimado": "Distribuidor / Mayorista TI",
     "total_mxn": 20106.5,
     "tienda": "Matriz Central",
-    "direccion": "Av. Vallarta #1945, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1945, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 2,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   },
   {
     "id": "CLI-00065",
@@ -712,6 +840,8 @@
     "giro_estimado": "Taller de Ensamble y Reparación PC",
     "total_mxn": 8082.0,
     "tienda": "PC Custom Lab",
-    "direccion": "Av. Vallarta #1960, Col. Americana, Guadalajara, Jal."
+    "direccion": "Av. Vallarta #1960, Col. Americana, Guadalajara, Jal.",
+    "compras_acumuladas": 3,
+    "cashback_status": "Pendiente de verificación (Requiere confirmación por correo)"
   }
 ]

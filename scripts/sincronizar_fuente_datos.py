@@ -55,8 +55,10 @@ os.makedirs(IMG_DIR, exist_ok=True)
 
 FECHA_PROCESO = datetime.now().strftime("%Y-%m-%d")
 TIPO_CAMBIO = 19.50
-MARGEN_COMERCIAL = 1.20 # 20% margen comercial
-FACTOR_VENTA_MXN = TIPO_CAMBIO * MARGEN_COMERCIAL # 23.40
+FACTOR_LISTA = 2.20 # Factor Precio Lista (Tachado en rojo): Costo Base * 2.20
+MARGEN_OFERTA = 1.65 # Factor Precio Oferta (-25% permanente): Costo Base * 1.65 (Lista * 0.75)
+FACTOR_VENTA_MXN = TIPO_CAMBIO * MARGEN_OFERTA # 32.175 MXN/USD
+MARGEN_COMERCIAL = MARGEN_OFERTA
 
 PRICE_FILE_NAME = "1310 LISTA DE PRECIOS DE CT TOL 090726.xlsx"
 CONFIG_FILE_NAME = "1310 CONFIGURACIONES TOL 090726.xlsx"
@@ -433,11 +435,12 @@ def main():
                         costo_neto_usd = round(intc_cost_mxn / TIPO_CAMBIO, 2)
                         mpn_optimizations += 1
 
-                # Cálculos de precios comerciales VECTEC
-                precio_mxn = round(costo_neto_usd * FACTOR_VENTA_MXN, 2)
-                precio_orig = round(precio_mxn * 1.33333333, 2)
+                # Cálculos de precios comerciales VECTEC con Factor Maestro 2.20
+                costo_base_mxn = costo_neto_usd * TIPO_CAMBIO
+                precio_orig = round(costo_base_mxn * FACTOR_LISTA, 2)
+                precio_mxn = round(precio_orig * 0.75, 2)
                 precio_may = round(precio_mxn * 0.90, 2)
-                descuento_pct = round(((precio_orig - precio_mxn) / precio_orig) * 100)
+                descuento_pct = 25
 
                 # Heredar metadatos curados previos si existen
                 old_item = old_by_sku.get(raw_sku) or old_by_sku.get(final_sku)
@@ -554,10 +557,10 @@ def main():
 
         cost_mxn = intc["cost_mxn"]
         costo_usd = round(cost_mxn / TIPO_CAMBIO, 2)
-        precio_mxn = round(cost_mxn * MARGEN_COMERCIAL, 2)
-        precio_orig = round(precio_mxn * 1.33333333, 2)
+        precio_orig = round(cost_mxn * FACTOR_LISTA, 2)
+        precio_mxn = round(precio_orig * 0.75, 2)
         precio_may = round(precio_mxn * 0.90, 2)
-        descuento_pct = round(((precio_orig - precio_mxn) / precio_orig) * 100)
+        descuento_pct = 25
 
         # Buscar coincidencia con CT por MPN para heredar foto y descripción
         mpn_upper = (intc["mpn"] or "").strip().upper()

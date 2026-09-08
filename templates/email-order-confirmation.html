@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmación de Pedido - {{STORE_NAME}}</title>
+  <style>
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; height: auto; line-height: 100%; outline: none; text-decoration: none; }
+    body { height: 100% !important; margin: 0 !important; padding: 0 !important; width: 100% !important; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    @media screen and (max-width: 600px) {
+      .email-container { width: 100% !important; padding: 12px !important; }
+      .mobile-stack { display: block !important; width: 100% !important; }
+      .step-text { font-size: 10px !important; }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 24px 0; background-color: #f1f5f9; color: #1e293b;">
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+      <td align="center" style="padding: 10px;">
+        
+        <table border="0" cellpadding="0" cellspacing="0" width="600" class="email-container" style="background-color: #ffffff; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.08); border: 1px solid #e2e8f0;">
+          
+          <!-- CABECERA CORPORATIVA / DEPARTAMENTAL -->
+          <tr>
+            <td style="background-color: #0f172a; padding: 28px 32px; text-align: center; border-bottom: 4px solid #06b6d4;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                <tr>
+                  <td align="left" valign="middle">
+                    <h1 style="color: #ffffff; margin: 0; font-size: 24px; font-weight: 900; letter-spacing: -0.5px;">{{STORE_NAME}}</h1>
+                    <p style="color: #94a3b8; margin: 4px 0 0 0; font-size: 11px; font-family: monospace; text-transform: uppercase;">Ecosistema Comercial Pedro Moreno 501 A</p>
+                  </td>
+                  <td align="right" valign="middle">
+                    <span style="display: inline-block; background-color: rgba(6, 182, 212, 0.15); border: 1px solid #06b6d4; color: #22d3ee; padding: 6px 12px; border-radius: 8px; font-size: 12px; font-weight: bold; font-family: monospace;">
+                      {{ORDER_ID}}
+                    </span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- BANNER DE CONFIRMACIÓN -->
+          <tr>
+            <td style="padding: 32px 32px 20px 32px; text-align: center;">
+              <div style="display: inline-block; width: 54px; height: 54px; line-height: 54px; border-radius: 50%; background-color: #dcfce7; color: #16a34a; font-size: 28px; font-weight: bold; margin-bottom: 12px;">
+                ✓
+              </div>
+              <h2 style="margin: 0 0 8px 0; color: #0f172a; font-size: 22px; font-weight: 800;">¡Gracias por tu compra, {{CUSTOMER_NAME}}!</h2>
+              <p style="margin: 0; color: #64748b; font-size: 14px; line-height: 1.5;">Hemos recibido y confirmado tu pedido exitosamente. Tu orden ya está en proceso de despacho seguro.</p>
+              <p style="margin: 6px 0 0 0; color: #94a3b8; font-size: 12px;">Fecha de Registro: <strong>{{ORDER_DATE}}</strong></p>
+            </td>
+          </tr>
+
+          <!-- SEMÁFORO DE PROGRESO DE PEDIDO (ESTILO SEARS) -->
+          <tr>
+            <td style="padding: 10px 32px 28px 32px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 18px 12px;">
+                <tr>
+                  <!-- PASO 1: CONFIRMADO -->
+                  <td align="center" width="25%" valign="top">
+                    <div style="width: 28px; height: 28px; line-height: 28px; border-radius: 50%; background-color: #059669; color: #ffffff; font-weight: bold; font-size: 12px; margin: 0 auto 6px auto;">1</div>
+                    <span class="step-text" style="font-size: 11px; font-weight: bold; color: #059669; display: block;">Confirmado</span>
+                    <span style="font-size: 9px; color: #64748b;">En Firme</span>
+                  </td>
+                  <!-- LÍNEA -->
+                  <td width="5%" align="center" style="color: #cbd5e1; font-size: 16px;">➔</td>
+                  <!-- PASO 2: EMPAQUE / TALLER -->
+                  <td align="center" width="30%" valign="top">
+                    <div style="width: 28px; height: 28px; line-height: 28px; border-radius: 50%; background-color: #0284c7; color: #ffffff; font-weight: bold; font-size: 12px; margin: 0 auto 6px auto;">2</div>
+                    <span class="step-text" style="font-size: 11px; font-weight: bold; color: #0284c7; display: block;">Taller / Empaque</span>
+                    <span style="font-size: 9px; color: #64748b;">Revisión Técnica</span>
+                  </td>
+                  <!-- LÍNEA -->
+                  <td width="5%" align="center" style="color: #cbd5e1; font-size: 16px;">➔</td>
+                  <!-- PASO 3: EN REPARTO -->
+                  <td align="center" width="25%" valign="top">
+                    <div style="width: 28px; height: 28px; line-height: 28px; border-radius: 50%; background-color: #e2e8f0; color: #64748b; font-weight: bold; font-size: 12px; margin: 0 auto 6px auto;">3</div>
+                    <span class="step-text" style="font-size: 11px; font-weight: 600; color: #64748b; display: block;">En Reparto</span>
+                    <span style="font-size: 9px; color: #94a3b8;">Uber Flash / Guía</span>
+                  </td>
+                  <!-- LÍNEA -->
+                  <td width="5%" align="center" style="color: #cbd5e1; font-size: 16px;">➔</td>
+                  <!-- PASO 4: ENTREGADO -->
+                  <td align="center" width="25%" valign="top">
+                    <div style="width: 28px; height: 28px; line-height: 28px; border-radius: 50%; background-color: #e2e8f0; color: #64748b; font-weight: bold; font-size: 12px; margin: 0 auto 6px auto;">4</div>
+                    <span class="step-text" style="font-size: 11px; font-weight: 600; color: #64748b; display: block;">Entregado</span>
+                    <span style="font-size: 9px; color: #94a3b8;">Con PIN Seguro</span>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- BLOQUE DE LOGÍSTICA & PIN DE SEGURIDAD -->
+          <tr>
+            <td style="padding: 0 32px 24px 32px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); border-radius: 14px; padding: 20px; color: #ffffff;">
+                <tr>
+                  <td valign="middle" align="left" style="padding-right: 15px;">
+                    <span style="font-size: 10px; font-family: monospace; color: #38bdf8; text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 4px;">Logística y Reparto a Domicilio</span>
+                    <h3 style="margin: 0 0 6px 0; font-size: 16px; font-weight: bold; color: #ffffff;">{{SHIPPING_CARRIER}}</h3>
+                    <p style="margin: 0; font-size: 12px; color: #cbd5e1; line-height: 1.4;">
+                      📍 <strong>Destino:</strong> {{SHIPPING_ADDRESS}}<br>
+                      🧭 <strong>Ref:</strong> {{SHIPPING_REFERENCES}}
+                    </p>
+                  </td>
+                  <td valign="middle" align="center" width="140" style="background-color: rgba(255,255,255,0.06); border-radius: 12px; padding: 14px; border: 1px dashed rgba(255,255,255,0.2);">
+                    <span style="font-size: 9px; font-family: monospace; color: #fbbf24; text-transform: uppercase; font-weight: bold; display: block; margin-bottom: 2px;">PIN DE ENTREGA</span>
+                    <span style="font-size: 26px; font-weight: 900; font-family: monospace; letter-spacing: 3px; color: #ffffff; display: block;">{{DELIVERY_PIN}}</span>
+                    <span style="font-size: 9px; color: #94a3b8; display: block; margin-top: 4px;">Muestra al chofer</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" align="center" style="padding-top: 16px;">
+                    <a href="{{TRACKING_URL}}" target="_blank" style="display: inline-block; background-color: #06b6d4; color: #0f172a; font-weight: 900; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; padding: 12px 24px; border-radius: 10px; text-decoration: none; box-shadow: 0 4px 12px rgba(6,182,212,0.3);">
+                      🔍 Rastrear Mi Pedido en Vivo
+                    </a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- TABLA DE PRODUCTOS -->
+          <tr>
+            <td style="padding: 0 32px 20px 32px;">
+              <h3 style="margin: 0 0 14px 0; color: #0f172a; font-size: 15px; font-weight: 800; border-bottom: 2px solid #e2e8f0; padding-bottom: 8px;">
+                📦 Detalle de Artículos
+              </h3>
+              
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="border-collapse: collapse;">
+                <thead>
+                  <tr style="background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;">
+                    <th align="left" style="padding: 10px 8px; font-size: 11px; color: #64748b; font-weight: bold; text-transform: uppercase;">Producto</th>
+                    <th align="center" style="padding: 10px 8px; font-size: 11px; color: #64748b; font-weight: bold; text-transform: uppercase; width: 60px;">Cant.</th>
+                    <th align="right" style="padding: 10px 8px; font-size: 11px; color: #64748b; font-weight: bold; text-transform: uppercase; width: 100px;">Precio</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {{ITEMS_ROWS_HTML}}
+                </tbody>
+              </table>
+            </td>
+          </tr>
+
+          <!-- DESGLOSE CONTABLE -->
+          <tr>
+            <td style="padding: 0 32px 24px 32px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f8fafc; border-radius: 12px; padding: 16px; border: 1px solid #e2e8f0;">
+                <tr>
+                  <td style="padding: 4px 0; font-size: 12px; color: #64748b;">Subtotal Productos:</td>
+                  <td align="right" style="padding: 4px 0; font-size: 12px; font-weight: bold; color: #0f172a; font-family: monospace;">${{SUBTOTAL_MXN}} MXN</td>
+                </tr>
+                <tr>
+                  <td style="padding: 4px 0; font-size: 11px; color: #94a3b8;">IVA (16% Incluido):</td>
+                  <td align="right" style="padding: 4px 0; font-size: 11px; color: #64748b; font-family: monospace;">${{IVA_MXN}} MXN</td>
+                </tr>
+                {{MAYOREO_DISCOUNT_ROW}}
+                <tr>
+                  <td style="padding: 4px 0; font-size: 12px; color: #64748b;">Envío a Domicilio:</td>
+                  <td align="right" style="padding: 4px 0; font-size: 12px; font-weight: bold; color: #0f172a; font-family: monospace;">${{SHIPPING_COST_MXN}} MXN</td>
+                </tr>
+                <tr>
+                  <td style="padding: 10px 0 4px 0; font-size: 14px; font-weight: 800; color: #0f172a; border-top: 2px solid #cbd5e1;">TOTAL LIQUIDADO:</td>
+                  <td align="right" style="padding: 10px 0 4px 0; font-size: 18px; font-weight: 900; color: #059669; font-family: monospace; border-top: 2px solid #cbd5e1;">
+                    ${{TOTAL_MXN}} MXN
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding-top: 6px; font-size: 11px; color: #64748b;">
+                    💳 <strong>Método de Pago:</strong> {{PAYMENT_METHOD_LABEL}}
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- BLOQUE DE CASHBACK INTELIGENTE (5%) -->
+          <tr>
+            <td style="padding: 0 32px 28px 32px;">
+              <table border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #f0fdf4; border: 1px solid #86efac; border-radius: 12px; padding: 18px;">
+                <tr>
+                  <td width="42" valign="top" style="padding-right: 12px;">
+                    <span style="display: inline-block; width: 36px; height: 36px; line-height: 36px; border-radius: 50%; background-color: #16a34a; color: #ffffff; text-align: center; font-size: 18px;">🎁</span>
+                  </td>
+                  <td valign="middle" align="left">
+                    <span style="font-size: 10px; font-family: monospace; color: #15803d; text-transform: uppercase; font-weight: bold; display: block;">MONEDERO ELECTRÓNICO</span>
+                    <h4 style="margin: 2px 0; font-size: 15px; font-weight: 800; color: #166534;">+${{CASHBACK_AMOUNT_MXN}} MXN en Cashback Generado</h4>
+                    <p style="margin: 4px 0 0 0; font-size: 12px; color: #15803d; line-height: 1.4;">
+                      {{CASHBACK_ACTION_TEXT}}
+                    </p>
+                  </td>
+                </tr>
+                {{CASHBACK_BUTTON_ROW}}
+              </table>
+            </td>
+          </tr>
+
+          <!-- PIE DE PÁGINA & SOPORTE MATRIZ -->
+          <tr>
+            <td style="background-color: #f8fafc; padding: 24px 32px; text-align: center; border-top: 1px solid #e2e8f0; color: #64748b; font-size: 11px; line-height: 1.6;">
+              <p style="margin: 0 0 6px 0; font-weight: bold; color: #0f172a;">¿Tienes dudas sobre tu entrega o requieres factura?</p>
+              <p style="margin: 0 0 12px 0;">
+                Contáctanos de inmediato vía WhatsApp: 
+                <a href="https://wa.me/523337271440?text=Hola,%20solicito%20apoyo%20con%20mi%20orden%20{{ORDER_ID}}" target="_blank" style="color: #0284c7; font-weight: bold; text-decoration: underline;">
+                  +52 33 3727 1440
+                </a>
+              </p>
+              <p style="margin: 0; font-size: 10px; color: #94a3b8;">
+                Matriz y Almacén Central: Pedro Moreno 501 A, Zona Centro, Guadalajara, Jalisco (CP 44100).<br>
+                Garantía oficial por escrito de 12 a 36 meses directamente con nosotros.
+              </p>
+            </td>
+          </tr>
+
+        </table>
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

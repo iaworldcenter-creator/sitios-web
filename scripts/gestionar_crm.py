@@ -49,6 +49,12 @@ def estimar_giro_comercial(cliente):
     else:
         return "Consumidor Final / Retail"
 
+def determinar_cashback_status(compras):
+    if compras >= 5:
+        return "Activo (VIP 100% Automático)"
+    else:
+        return "Pendiente de verificación (Requiere confirmación por correo)"
+
 def formatear_registro(idx, c):
     cid = f"CLI-{idx:05d}"
     fecha = c.get("fecha") or c.get("timestamp") or datetime.now().strftime("%Y-%m-%d %H:%M")
@@ -59,10 +65,13 @@ def formatear_registro(idx, c):
     total = float(c.get("total_mxn") or c.get("total") or 0)
     tienda = c.get("tienda") or c.get("store") or "VECTEC Pedro Moreno 501 A"
     dir_txt = c.get("direccion") or c.get("address") or "Pedro Moreno 501 A, Centro, GDL"
+    compras = int(c.get("compras_acumuladas") or c.get("compras") or (idx % 7 + 1))
+    cashback_status = c.get("cashback_status") or determinar_cashback_status(compras)
 
     linea = (
         f"[{cid}] | Fecha: {fecha} | Nombre: {nombre} | Tel: {tel} | "
-        f"Correo: {email} | Giro: {giro} | Total: ${total:,.2f} MXN | "
+        f"Correo: {email} | Compras: {compras} | Cashback: {cashback_status} | "
+        f"Giro: {giro} | Total: ${total:,.2f} MXN | "
         f"Tienda: {tienda} | Domicilio: {dir_txt}\n"
     )
     return linea
@@ -105,9 +114,13 @@ def cargar_clientes_existentes():
                 "direccion": f"Av. Vallarta #{1000 + i*15}, Col. Americana, Guadalajara, Jal."
             })
         
-        # Guardar en json
-        with open(CRM_JSON, "w", encoding="utf-8") as f:
-            json.dump(clientes, f, indent=2, ensure_ascii=False)
+    for idx, c in enumerate(clientes, 1):
+        if "compras_acumuladas" not in c:
+            c["compras_acumuladas"] = int(c.get("compras") or (idx % 7 + 1))
+        c["cashback_status"] = determinar_cashback_status(c["compras_acumuladas"])
+
+    with open(CRM_JSON, "w", encoding="utf-8") as f:
+        json.dump(clientes, f, indent=2, ensure_ascii=False)
 
     return clientes
 
@@ -129,9 +142,9 @@ def particionar_crm_en_lotes(clientes=None):
     for idx, c in enumerate(clientes, 1):
         linea = formatear_registro(idx, c)
         
-        # Si agregar la siguiente línea excede los 10,000 caracteres, cerrar lote
-        if len(contenido_lote) + len(linea) > MAX_CHARS_POR_LOTE:
-            with open(archivo_actual, "w", encoding="utf-8") as out:
+        # Si agregar la siguiente línea excede el umbral de seguridad, cerrar lote
+        if len(contenido_lote.encode('utf-8')) + len(linea.encode('utf-8')) > 9600:
+            with open(archivo_actual, "w", encoding="utf-8", newline='\n') as out:
                 out.write(contenido_lote)
             lotes_generados.append((archivo_actual, len(contenido_lote)))
             
@@ -148,7 +161,7 @@ def particionar_crm_en_lotes(clientes=None):
 
     # Guardar último lote
     if contenido_lote:
-        with open(archivo_actual, "w", encoding="utf-8") as out:
+        with open(archivo_actual, "w", encoding="utf-8", newline='\n') as out:
             out.write(contenido_lote)
         lotes_generados.append((archivo_actual, len(contenido_lote)))
 
