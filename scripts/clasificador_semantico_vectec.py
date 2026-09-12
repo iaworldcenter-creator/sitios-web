@@ -82,6 +82,7 @@ DEPT_ID_SET = {d["id"] for d in DEPARTAMENTOS_OFICIALES}
 
 def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet_name="", intc_cat="", intc_sub=""):
     s = (sku or "").upper().strip()
+    raw_s = re.sub(r'^[AB]-', '', s)
     extra = f" {subgrupo_header} {intc_sub} {intc_cat}".strip()
     n = f"{name or ''} {extra}".upper().strip()
     b = (brand or "").upper().strip()
@@ -91,107 +92,121 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     def lacks(*words):
         return not any(w in n for w in words)
     def sku_starts(*prefixes):
-        return any(s.startswith(p) for p in prefixes)
+        return any(raw_s.startswith(p) or s.startswith(p) for p in prefixes)
 
     # -------------------------------------------------------------
-    # 23. TARJETAS MICROSD & SD
+    # 2. TARJETAS MADRE (Motherboards) - Evaluadas al inicio para evitar que RAM/SSD/Fans/Gabinetes/CPUs las roben
     # -------------------------------------------------------------
-    if (sku_starts("MSD") or has("MICROSD", "MICRO SD", "TARJETA SD", "SDHC", "SDXC", "CANVAS SELECT", "EXTREME PRO", "ULTRA MICROSD")) \
-       and lacks("LECTOR", "ADAPTADOR USB", "GABINETE"):
-        return "tarjetas_microsd"
-
-    # -------------------------------------------------------------
-    # 24. MEMORIAS USB FLASH & PENDRIVES
-    # -------------------------------------------------------------
-    if (sku_starts("USB") or has("MEMORIA USB", "PENDRIVE", "FLASH DRIVE", "DUAL DRIVE", "CRUZER", "DATATRAVELER", "ULTRA FLAIR")) \
-       and lacks("WINDOWS", "SISTEMA OPERATIVO", "CABLE", "HUB", "ADAPTADOR", "RED USB", "WIFI USB", "BLUETOOTH", "ANTENA"):
-        return "memorias_usb_pendrives"
-
-    # -------------------------------------------------------------
-    # 25. MEMORIAS RAM LAPTOP (SODIMM)
-    # -------------------------------------------------------------
-    if has("SODIMM", "SO-DIMM", "RAM PARA LAPTOP", "RAM LAPTOP", "DDR4 SODIMM", "DDR5 SODIMM") \
-       and lacks("MINI PC", "NUC", "LIVA", "HERRAMIENTAS", "KIT DE HERRAMIENTAS", "COMPUTADORA", "LAPTOP", "NOTEBOOK", "SURFACE"):
-        return "memorias_ram_laptop"
-
-    # -------------------------------------------------------------
-    # 26. MEMORIAS RAM SERVIDOR (ECC)
-    # -------------------------------------------------------------
-    if has("ECC REG", "ECC REGISTERED", "RDIMM", "ECC UNBUFFERED", "RAM SERVIDOR", "RAM SERVER", "SERVER MEMORY"):
-        return "memorias_ram_servidor"
-
-    # -------------------------------------------------------------
-    # 3. MEMORIAS RAM PC (DIMM)
-    # -------------------------------------------------------------
-    if (sku_starts("MEM") or has("MEMORIA RAM", "DDR4", "DDR5", "FURY BEAST", "VENGEANCE", "XPG SPECTRIX", "TRIDENT")) \
-       and has("DIMM", "UDIMM", "PC", "DESKTOP", "KIT 2X", "FURY", "RGB", "CL", "MHZ", "MT/S") \
-       and lacks("SODIMM", "SO-DIMM", "LAPTOP", "ECC", "SERVIDOR", "SERVER", "MICROSD", "USB", "FLASH DRIVE", "MINI PC"):
-        return "memorias_ram_pc"
-
-    # -------------------------------------------------------------
-    # 22. DISCOS DUROS EXTERNOS
-    # -------------------------------------------------------------
-    if has("DISCO DURO EXTERNO", "DISCO EXTERNO", "SSD EXTERNO", "CANVIO", "PASSPORT", "ELEMENTS", "BACKUP PLUS") \
-       or (has("DISCO PORTATIL", "DISCO PORTÁTIL") and has("TOSHIBA", "WD", "SEAGATE", "ADATA", "USB")):
-        return "discos_duros_externos"
-
-    # -------------------------------------------------------------
-    # 8. SSDS M.2 NVME & PCIE
-    # -------------------------------------------------------------
-    if (has("M.2 NVME", "NVME", "PCIE 4.0", "PCIE 3.0", "PCIE 5.0", "SSD M.2", "UNIDAD DE ESTADO SOLIDO M.2", "UNIDAD DE ESTADO SÓLIDO M.2") or (sku_starts("SSD") and has("M.2", "NVME"))) \
-       and lacks("EXTERNO", "PORTATIL", "PORTÁTIL", "CANVIO", "LAPTOP", "GABINETE PARA SSD"):
-        return "ssds_m2_nvme"
-
-    # -------------------------------------------------------------
-    # 9. DISCOS DUROS INTERNOS HDD
-    # -------------------------------------------------------------
-    if (has("HDD 3.5", "HDD 2.5", "BARRACUDA", "IRONWOLF", "WD PURPLE", "WD BLUE", "WD RED", "WD GOLD", "SKYHAWK", "SURVEILLANCE HDD") or (sku_starts("DDU") and has("3.5\"", "2.5\"", "SATA III", "RPM") and lacks("EXTERNO", "CANVIO", "PORTATIL", "PORTÁTIL", "PASSPORT", "ELEMENTS"))) \
-       and lacks("EXTERNO", "CANVIO", "PORTATIL", "PORTÁTIL", "BACKUP PLUS", "PASSPORT", "LAPTOP", "NOTEBOOK"):
-        return "discos_duros_hdd_internos"
-
-    # -------------------------------------------------------------
-    # 6. ENFRIAMIENTO (Líquido & Aire)
-    # -------------------------------------------------------------
-    if (sku_starts("VEN", "ENF") or has("ENFRIAMIENTO LIQUIDO", "ENFRIAMIENTO LÍQUIDO", "WATER COOLING", "DISIPADOR", "VENTILADOR", "COOLER CPU", "FAN RGB", "PURE LOOP", "SILENT LOOP", "KRAKEN")) \
-       and lacks("LAPTOP", "COMPUTADORA", "PC ", "TODO EN UNO", "ALL-IN-ONE", "GABINETE CON VENTILADORES", "TABLETA", "TABLET"):
-        return "enfriamiento"
-
-    # -------------------------------------------------------------
-    # 7. FUENTES DE ENERGIA (PSUs)
-    # -------------------------------------------------------------
-    if (sku_starts("FUE") or has("FUENTE DE PODER", "FUENTE DE ALIMENTACION", "FUENTE MODULAR", "POWER SUPPLY", "80 PLUS", "80+", "BRONZE", "GOLD", "PLATINUM")) \
-       and lacks("LAPTOP", "NOTEBOOK", "ALL IN ONE", "NO BREAK", "UPS", "REGULADOR", "BATERIA", "POWER BANK", "VENTILADOR PARA FUENTES"):
-        return "fuentes_energia"
-
-    # -------------------------------------------------------------
-    # 4. GABINETES & CHASIS
-    # -------------------------------------------------------------
-    if (sku_starts("GAB") or has("GABINETE", "CHASIS GAMER", "CASE GAMER", "TORRE GAMER", "MID TOWER", "FULL TOWER")) \
-       and lacks("LAPTOP", "NOTEBOOK", "SERVIDOR", "SERVER", "RACK", "COMPUTADORA ENSAMBLADA", "VENTILADOR"):
-        return "gabinetes"
-
-    # -------------------------------------------------------------
-    # 2. TARJETAS MADRE (Motherboards)
-    # -------------------------------------------------------------
-    if (sku_starts("MBD", "MOT") or has("TARJETA MADRE", "MOTHERBOARD", "PLACA MADRE", "PLACA BASE")) \
-       and lacks("LAPTOP", "NOTEBOOK", "COMPUTADORA", "PC ", "SERVIDOR", "SERVER"):
+    if (sku_starts("MBD", "MOT") or n.startswith("MB ") or has("TARJETA MADRE", "MOTHERBOARD", "PLACA MADRE", "PLACA BASE")) \
+       and lacks("COMPUTADORA ENSAMBLADA", "ALL-IN-ONE", "ALL IN ONE", "TODO EN UNO", "LAPTOP", "NOTEBOOK", "MINI PC", "MINIPC", "BAREBONE", "NUC ", "SERVIDOR", "SERVER", "WALLABY", "MONTAJE") \
+       and not sku_starts("COMMAC", "POR", "LAP", "TAB", "IPD", "AIO", "WKS", "SRV", "SVR", "RNUC", "CPUDDL", "CPULEV", "CPUMAC", "CPUASS", "CPUVGO", "CPUGET", "CPUQIA", "CPUYEY", "CPULEN"):
         return "tarjetas_madre"
+
+    # -------------------------------------------------------------
+    # 1. PROCESADORES (CPUs) - Exclusivamente microprocesadores reales de escritorio y servidor
+    # -------------------------------------------------------------
+    if (sku_starts("CPUINT", "CPUAMD") or ((n.startswith("PROCESADOR ") or has("PROCESADOR INTEL", "PROCESADOR AMD", "PROCESADOR RYZEN")) and has("INTEL", "AMD", "RYZEN", "CORE I", "CORE ULTRA", "THREADRIPPER", "CELERON", "PENTIUM", "ATHLON", "XEON"))) \
+       and lacks("MOTHERBOARD", "TARJETA MADRE", "MB ", "SOCKET", "PLACA BASE", "PLACA MADRE", "DISIPADOR", "VENTILADOR", "ENFRIAMIENTO", "COOLER", "GABINETE", "LAPTOP", "NOTEBOOK", "COMPUTADORA", "TODO EN UNO", "ALL-IN-ONE", "ALL IN ONE", "AIO", "MINI PC", "NUC", "SERVIDOR", "SERVER", "TABLET", "IPAD", "WORKSTATION", "PASTA TERMICA", "PASTA TÉRMICA") \
+       and not sku_starts("MBD", "IPD", "TAB", "WKS", "LAP", "CEL", "SMA", "GAB", "FUE", "TVI", "ACC", "CAB", "CAR", "CPUDDL", "CPULEV", "CPUMAC", "CPUASS", "CPUVGO", "CPUGET", "CPUQIA", "CPUYEY", "CPULEN", "SER", "REL"):
+        return "procesadores"
 
     # -------------------------------------------------------------
     # 5. TARJETAS DE VIDEO (GPUs)
     # -------------------------------------------------------------
     if (sku_starts("TVI", "GPU") or has("GEFORCE", "RTX ", "GTX ", "RADEON RX", "TARJETA DE VIDEO", "TARJETA GRÁFICA")) \
        and has("RTX", "GTX", "RX ", "VRAM", "GDDR6", "GDDR6X", "8GB", "12GB", "16GB", "24GB", "OC EDITION", "GAMING") \
-       and lacks("LAPTOP", "NOTEBOOK", "COMPUTADORA", "PC GAMER", "PC ", "SERVIDOR"):
+       and lacks("LAPTOP", "NOTEBOOK", "COMPUTADORA", "PC GAMER", "PC ", "SERVIDOR", "MOTHERBOARD", "TARJETA MADRE", "MB "):
         return "tarjetas_video"
 
     # -------------------------------------------------------------
-    # 1. PROCESADORES (CPUs)
+    # 23. TARJETAS MICROSD & SD
     # -------------------------------------------------------------
-    if (sku_starts("CPU") or has("PROCESADOR", "RYZEN", "THREADRIPPER") or (has("INTEL CORE", "CORE ULTRA") and lacks("MOTHERBOARD", "TARJETA MADRE"))) \
-       and lacks("DISIPADOR", "VENTILADOR", "ENFRIAMIENTO", "COOLER", "GABINETE", "LAPTOP", "NOTEBOOK", "COMPUTADORA", "PC ", "TODO EN UNO", "ALL-IN-ONE", "ALL IN ONE", "AIO", "MINI PC", "NUC", "SERVIDOR", "SERVER", "PASTA"):
-        if has("PROCESADOR", "CORE I", "CORE ULTRA", "RYZEN", "THREADRIPPER", "CELERON", "PENTIUM", "ATHLON", "XEON") or sku_starts("CPU"):
-            return "procesadores"
+    if (sku_starts("MSD") or has("MICROSD", "MICRO SD", "TARJETA SD", "SDHC", "SDXC", "CANVAS SELECT", "EXTREME PRO", "ULTRA MICROSD", "MICRO SECURE DIGITAL", "SECURE DIGITAL")) \
+       and lacks("LECTOR", "ADAPTADOR USB", "GABINETE", "CASE") and not sku_starts("ACC", "CAB"):
+        return "tarjetas_microsd"
+
+    # -------------------------------------------------------------
+    # 24. MEMORIAS USB FLASH & PENDRIVES
+    # -------------------------------------------------------------
+    if (sku_starts("USB") or has("MEMORIA USB", "PENDRIVE", "FLASH DRIVE", "DUAL DRIVE", "CRUZER", "DATATRAVELER", "ULTRA FLAIR")) \
+       and lacks("WINDOWS", "SISTEMA OPERATIVO", "CABLE", "HUB", "ADAPTADOR", "RED USB", "WIFI USB", "BLUETOOTH", "ANTENA", "CARGADOR") and not sku_starts("ACC", "CAB"):
+        return "memorias_usb_pendrives"
+
+    # -------------------------------------------------------------
+    # 25. MEMORIAS RAM LAPTOP (SODIMM)
+    # -------------------------------------------------------------
+    if has("SODIMM", "SO-DIMM", "SO DIMM", "RAM PARA LAPTOP", "RAM LAPTOP", "DDR4 SODIMM", "DDR5 SODIMM") \
+       and lacks("MINI PC", "NUC", "LIVA", "HERRAMIENTAS", "KIT DE HERRAMIENTAS", "COMPUTADORA", "LAPTOP", "NOTEBOOK", "SURFACE", "MOTHERBOARD", "TARJETA MADRE"):
+        return "memorias_ram_laptop"
+
+    # -------------------------------------------------------------
+    # 26. MEMORIAS RAM SERVIDOR (ECC)
+    # -------------------------------------------------------------
+    if has("ECC REG", "ECC REGISTERED", "RDIMM", "ECC UNBUFFERED", "RAM SERVIDOR", "RAM SERVER", "SERVER MEMORY", "TRUDDR4") \
+       and lacks("KIT EN BLANCO", "ESPACIOS DE MEMORIA", "ESPACIO EN BLANCO", "DUMMY", "TAPA"):
+        return "memorias_ram_servidor"
+
+    # -------------------------------------------------------------
+    # 3. MEMORIAS RAM PC (DIMM)
+    # -------------------------------------------------------------
+    if (sku_starts("MEM") or has("MEMORIA RAM", "FURY BEAST", "VENGEANCE", "XPG SPECTRIX", "TRIDENT", "FURY RENEGADE", "RIPJAWS")) \
+       and (has("DIMM", "UDIMM", "DDR4", "DDR5", "DDR3") or has("FURY BEAST", "VENGEANCE", "XPG SPECTRIX", "TRIDENT")) \
+       and lacks("SODIMM", "SO-DIMM", "SO DIMM", "LAPTOP", "ECC", "SERVIDOR", "SERVER", "MICROSD", "MICRO SD", "SECURE DIGITAL", "MICRO SECURE DIGITAL", "USB", "FLASH DRIVE", "MINI PC", "MOTHERBOARD", "TARJETA MADRE", "MB ", "PROCESADOR", "RYZEN", "INTEL CORE", "CLASS 10", "CLASS 4", "UHS-I", "UHS-II", "A1", "A2", "V30", "V60", "KIT EN BLANCO") \
+       and not sku_starts("CPU", "MBD", "ACC", "CAB", "MSD", "USB"):
+        return "memorias_ram_pc"
+
+    # -------------------------------------------------------------
+    # 22. DISCOS DUROS EXTERNOS
+    # -------------------------------------------------------------
+    if (has("DISCO DURO EXTERNO", "DISCO EXTERNO", "SSD EXTERNO", "CANVIO", "PASSPORT", "ELEMENTS", "BACKUP PLUS") \
+       or (has("DISCO PORTATIL", "DISCO PORTÁTIL", "SSD PORTABLE") and has("TOSHIBA", "WD", "SEAGATE", "ADATA", "SANDISK", "KINGSTON", "USB"))) \
+       and lacks("PROTECTOR", "FUNDA", "SILICON", "SILICÓN", "ESTUCHE", "CABLE", "CARCASA", "ENCLOSURE", "ADAPTADOR") \
+       and not sku_starts("ACC", "CAB", "CAR"):
+        return "discos_duros_externos"
+
+    # -------------------------------------------------------------
+    # -------------------------------------------------------------
+    # 8. SSDS M.2 NVME & PCIE
+    # -------------------------------------------------------------
+    prod_name = (name or "").upper().strip()
+    if ((has("M.2 NVME", "NVME", "SSD M.2", "UNIDAD DE ESTADO SOLIDO M.2", "UNIDAD DE ESTADO SÓLIDO M.2") and ("M.2" in prod_name or "NVME" in prod_name or "PCIE" in prod_name)) or (sku_starts("SSD") and has("M.2", "NVME"))) \
+       and lacks("EXTERNO", "PORTATIL", "PORTÁTIL", "CANVIO", "LAPTOP", "GABINETE PARA SSD", "ENCLOSURE", "CARCASA", "ADAPTADOR", "CABLE", "PROCESADOR", "INTEL CORE", "CORE ULTRA", "RYZEN", "MOTHERBOARD", "TARJETA MADRE", "MB ", "2.5\"", "2.5 PULGADAS", "SATAIII 2.5", "SATA 2.5", "SA400S37", "SU630") \
+       and not sku_starts("ACC", "CAB", "CAR", "CPU", "MBD"):
+        return "ssds_m2_nvme"
+
+    # -------------------------------------------------------------
+    # 9. DISCOS DUROS INTERNOS HDD
+    # -------------------------------------------------------------
+    if (has("HDD 3.5", "HDD 2.5", "BARRACUDA", "IRONWOLF", "WD PURPLE", "WD BLUE", "WD RED", "WD GOLD", "SKYHAWK", "SURVEILLANCE HDD") or (sku_starts("DDU") and has("3.5\"", "2.5\"", "SATA III", "RPM") and lacks("EXTERNO", "CANVIO", "PORTATIL", "PORTÁTIL", "PASSPORT", "ELEMENTS", "SSD"))) \
+       and lacks("EXTERNO", "CANVIO", "PORTATIL", "PORTÁTIL", "BACKUP PLUS", "PASSPORT", "LAPTOP", "NOTEBOOK") and not sku_starts("ACC", "CAB"):
+        return "discos_duros_hdd_internos"
+
+    # -------------------------------------------------------------
+    # 6. ENFRIAMIENTO (Líquido & Aire)
+    # -------------------------------------------------------------
+    if (sku_starts("VEN", "ENF") or has("ENFRIAMIENTO LIQUIDO", "ENFRIAMIENTO LÍQUIDO", "WATER COOLING", "DISIPADOR", "VENTILADOR", "COOLER CPU", "FAN RGB", "PURE LOOP", "SILENT LOOP", "KRAKEN")) \
+       and lacks("PASTA TERMICA", "PASTA TÉRMICA", "GRASA TERMICA", "GRASA TÉRMICA", "LAPTOP", "COMPUTADORA", "PC ", "TODO EN UNO", "ALL-IN-ONE", "GABINETE CON VENTILADORES", "TABLETA", "TABLET", "PROCESADOR INTEL", "PROCESADOR AMD", "RYZEN", "CORE I", "CORE ULTRA") \
+       and not sku_starts("CPUINT", "CPUAMD", "MBD"):
+        return "enfriamiento"
+
+    # -------------------------------------------------------------
+    # 7. FUENTES DE ENERGIA (PSUs)
+    # -------------------------------------------------------------
+    if (sku_starts("FUE") or ((sku_starts("GAB") or has("FUENTE DE PODER", "FUENTE DE ALIMENTACION", "POWER SUPPLY")) and (has("FUENTE DE PODER", "FUENTE PODER", "FUENTE ASUS", "FUENTE DE ALIMENTACION", "POWER SUPPLY") or sku_starts("FUE")))) \
+       and not n.startswith(("GABINETE", "CHASIS")) and lacks("GABINETE CON FUENTE", "INCLUYE FUENTE") \
+       and (has("ATX", "SFX", "MODULAR", "80 PLUS", "80+", "BRONZE", "GOLD", "PLATINUM", "WATT", "500W", "600W", "650W", "750W", "850W", "1000W", "PSU") or sku_starts("FUE")) \
+       and lacks("LAPTOP", "NOTEBOOK", "ALL IN ONE", "NO BREAK", "UPS", "REGULADOR", "BATERIA", "POWER BANK", "VENTILADOR PARA FUENTES", "CCTV", "DIVISOR", "REGULADA DE 12", "12 VCC", "12 VCD", "0.5A", "1A", "1.5A", "2A", "DAHUA", "SAXXON", "PROVISION", "BROBOTIX", "CABLE", "MOTHERBOARD", "TARJETA MADRE", "MB ") \
+       and not sku_starts("CAB", "ACC", "MBD", "CPU", "CAM", "DVR", "NVR"):
+        return "fuentes_energia"
+
+    # -------------------------------------------------------------
+    # 4. GABINETES & CHASIS GAMER
+    # -------------------------------------------------------------
+    if has("GABINETE", "CHASIS", "CASE GAMER", "TORRE GAMER", "MID TOWER", "FULL TOWER", "MINI TORRE", "MEDIA TORRE", "PECERA", "GABINETE ATX", "GABINETE MICRO ATX", "GABINETE SLIM") \
+       and not n.startswith(("FUENTE", "CHAROLA", "BANDEJA", "VENTILADOR", "CAMARA", "ESTACION", "CARRO", "CARRITO", "CANALETA", "TORNILLERIA", "TARJETA")) \
+       and lacks("DISCO DURO", "DISCO 2.5", "DISCO 3.5", "GABINETE DE DISCO", "GABINETE PARA DISCO", "GABINETE PARA SSD", "GABINETE PARA HDD", "ENCLOSURE", "CARCASA", "ESTUCHE", "PROTECTOR", "TORNILLO", "TORNILLERIA", "TUERCA", "PATCH", "LAPTOP", "NOTEBOOK", "SERVIDOR", "SERVER", "RACK", "COMPUTADORA ENSAMBLADA", "VENTILADOR DE FUENTE", "REGULADA DE 12", "12 VCC", "12 VCD", "0.5A", "1A", "1.5A", "2A", "SAXXON", "ESTACION DE CARGA", "CARGADOR", "CARRITO DE CARGA", "CARRO DE CARGA", "CHAROLA", "BANDEJA", "SIRENA", "ALARMA", "HUB USB", "CANALETA", "MOTHERBOARD", "TARJETA MADRE", "MB ", "TARJETA DE SONIDO", "TARJETA DE AUDIO", "SOUND CARD", "PCI EXPRESS", "TARJETA PCI", "TARJETA DE RED") \
+       and not sku_starts("ACC", "CAB", "CAR", "CPU", "MBD", "FUE", "VEN", "ROU", "SWT", "MSD", "USB", "DVR", "NVR", "CAM", "TEL", "RCK", "TAR"):
+        return "gabinetes"
 
     # -------------------------------------------------------------
     # 49. SISTEMAS OPERATIVOS (Windows Oficial)
@@ -218,7 +233,9 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 51. SOFTWARE CONTABLE Y ADMINISTRATIVO
     # -------------------------------------------------------------
-    if has("ASPEL", "CONTPAQI", "CONTPAQ", "NOI", "SAE", "COI", "BANCO", "PRODUCCION", "FACTURA ELECTRONICA", "CFDI") and lacks("CABLE", "LECTOR", "TERMINAL", "FLASH USB", "UNICORNIO"):
+    if (re.search(r'\b(ASPEL|CONTPAQI|CONTPAQ)\b', n) or has("FACTURA ELECTRONICA", "CFDI")) \
+       and lacks("AUDIFONOS", "AUDÍFONOS", "HEADSET", "NOISE", "CANCELLING", "TWS", "NVR", "DVR", "CAMARA", "CÁMARA", "COLORES", "BACO", "CABLE", "LECTOR", "TERMINAL", "FLASH USB", "BATERIA", "BATERÍA") \
+       and not sku_starts("BOC", "NVR", "DVR", "ACC", "CAB", "CAR"):
         return "software_contable_administrativo"
 
     # -------------------------------------------------------------
@@ -295,7 +312,9 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 27. DIADEMAS & HEADSETS
     # -------------------------------------------------------------
-    if has("DIADEMA", "HEADSET", "AUDIFONOS", "AUDÍFONOS", "EARBUDS", "AURICULARES") and lacks("MONITOR", "PANTALLA", "CABLE", "BASE HEADSET"):
+    if has("DIADEMA", "HEADSET", "AUDIFONOS", "AUDÍFONOS", "EARBUDS", "AURICULARES") \
+       and lacks("MONITOR", "PANTALLA", "CABLE", "BASE HEADSET", "ADAPTADOR", "CONVERTIDOR", "DIVISOR DE AUDIO", "MICROFONO DE SOLAPA") \
+       and not sku_starts("ACC", "CAB"):
         return "diademas_headsets"
 
     # -------------------------------------------------------------
@@ -308,9 +327,10 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 10. MONITORES & PANTALLAS
     # -------------------------------------------------------------
-    if (sku_starts("MON", "PAN") or has("MONITOR ", "PANTALLA GAMER", "SMART MONITOR")) \
+    if (sku_starts("MON") or (sku_starts("PAN") and lacks("PROYECCION", "PROYECCIÓN", "PANTALLA DE PROYECCION", "PANTALLA DE PROYECCIÓN", "PANTALLA DE PARED", "PANTALLA MURAL", "TRIPODE", "TRÍPODE")) or has("MONITOR ", "PANTALLA GAMER", "SMART MONITOR")) \
        and has("PULGADAS", "\"", "FHD", "QHD", "4K", "144HZ", "165HZ", "100HZ", "60HZ", "240HZ", "IPS", "VA", "OLED", "CURVO", "CURVED", "GAMING", "VIEWFINITY", "ESSENTIAL", "S3", "S5", "S7", "ODYSSEY") \
-       and lacks("SOPORTE", "BRAZO", "CABLE", "LIMPIADOR", "PROTECTOR", "FUNDA", "LAPTOP", "NOTEBOOK", "ALL IN ONE", "ALL-IN-ONE", "TODO EN UNO"):
+       and lacks("SOPORTE", "BRAZO", "CABLE", "LIMPIADOR", "PROTECTOR", "FUNDA", "LAPTOP", "NOTEBOOK", "ALL IN ONE", "ALL-IN-ONE", "TODO EN UNO", "MOUNTING", "KIT DE MONTAJE", "PROYECCION", "PROYECCIÓN", "PANTALLA DE PROYECCION", "PANTALLA DE PARED", "PANTALLA MURAL", "TRIPODE", "TRÍPODE") \
+       and not sku_starts("ACC", "CAB", "PANSCR"):
         return "monitores_pantallas"
 
     # -------------------------------------------------------------
@@ -346,23 +366,27 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
         return "combos_teclado_mouse"
 
     # -------------------------------------------------------------
-    # 31. PROYECTORES
+    # 31. PROYECTORES DE VIDEO & PANTALLAS MURALES
     # -------------------------------------------------------------
-    if has("PROYECTOR", "VIDEOPROYECTOR", "POWERLITE") and lacks("LAMPARA", "LÁMPARA", "LAMP", "SOPORTE", "PANTALLA DE PROYECCION", "CAJA P/MESA"):
+    if (sku_starts("PANSCR") or has("PROYECTOR", "VIDEOPROYECTOR", "POWERLITE", "PANTALLA DE PROYECCION", "PANTALLA DE PROYECCIÓN", "PANTALLA DE PARED MANUAL")) \
+       and lacks("LAMPARA", "LÁMPARA", "LAMP", "SOPORTE", "CAJA P/MESA", "TRIPIE", "TRÍPIE", "TRIPIÉ", "TRIPODE", "TRÍPODE", "KIT DE MONTAJE", "MONTAJE EN TECHO") \
+       and not sku_starts("ACC", "CAB"):
         return "proyectores_presentacion"
 
     # -------------------------------------------------------------
     # 32. CAMARAS DE SEGURIDAD CCTV
     # -------------------------------------------------------------
     if (sku_starts("CAM") or has("CAMARA BALA", "CAMARA DOMO", "CAMARA IP", "CAMARA TURBOHD", "CAMARA DE SEGURIDAD", "CAMARA PTZ", "CÁMARA IP", "CÁMARA BALA", "CÁMARA DOMO")) \
-       and lacks("WEBCAM", "CAMARA WEB", "FOTOGRAFICA", "DVR", "NVR"):
+       and lacks("WEBCAM", "CAMARA WEB", "FOTOGRAFICA", "DVR", "NVR", "CAJA CONEXION", "CAJA DE CONEXION", "CAJA DE CONEXIÓN", "CAJA CONEXIÓN", "BRAZO", "SOPORTE") \
+       and not sku_starts("ACC", "CAB"):
         return "camaras_seguridad_cctv"
 
     # -------------------------------------------------------------
     # 33. GRABADORES DVR & NVR
     # -------------------------------------------------------------
-    if (sku_starts("NVR", "DVR") or has("DVR ", "NVR ", "GRABADOR DVR", "GRABADOR NVR", "TURBOHD DVR", "XVR ")) \
-       and lacks("DISCO DURO", "CAMARA"):
+    if (sku_starts("NVR", "DVR", "GRD") or has("DVR ", "NVR ", "GRABADOR DVR", "GRABADOR NVR", "TURBOHD DVR", "XVR ")) \
+       and lacks("DISCO DURO", "CAMARA", "OREJAS", "RACK KIT", "MONTAJE") \
+       and not sku_starts("ACC", "CAB"):
         return "grabadores_dvr_nvr"
 
     # -------------------------------------------------------------
@@ -393,7 +417,9 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 39. ANTENAS & RADIOENLACES
     # -------------------------------------------------------------
-    if has("ANTENA", "RADIOENLACE", "AIRMAX", "NANOLIGHT", "LITEBEAM", "POWERBEAM", "ROCKET", "UNIFI OUTDOOR") and lacks("ADAPTADOR DE RED USB"):
+    if (has("ANTENA", "RADIOENLACE", "AIRMAX", "NANOLIGHT", "LITEBEAM", "POWERBEAM", "ROCKET", "UNIFI OUTDOOR") or sku_starts("ANT")) \
+       and lacks("ADAPTADOR DE RED USB", "ADAPTADOR DUAL BAND", "ADAPTADOR USB", "EXTENSOR", "SOPORTE PARA ANTENA") \
+       and not sku_starts("TAR", "ACC", "CAB"):
         return "antenas_radioenlaces"
 
     # -------------------------------------------------------------
@@ -405,7 +431,9 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 41. FIBRA OPTICA & TRANSCEIVERS
     # -------------------------------------------------------------
-    if has("FIBRA OPTICA", "FIBRA ÓPTICA", "TRANSCEIVER", "MODULO SFP", "MÓDULO SFP", "SFP+", "CABLE DROP", "PIGTAIL", "ACOPLADOR DE FIBRA") and lacks("BROADCOM"):
+    if (sku_starts("SFP", "TRA", "FIB") or has("FIBRA OPTICA", "FIBRA ÓPTICA", "TRANSCEIVER", "TRANSCEPTOR", "MODULO SFP", "MÓDULO SFP", "SFP+", "SFP ", "MINI-GBIC", "MINIGBIC", "CABLE DROP", "PIGTAIL", "ACOPLADOR DE FIBRA", "10GBASE", "1000BASE")) \
+       and lacks("BROADCOM", "TAPA HDMI", "WALLPLATE", "TAPA", "PLACA DE PARED", "MICROFIBRA", "FIBRA DE CARBON", "FIBRA DE CARBÓN", "ESCRITORIO", "SILLA", "TABLA", "MOUSEPAD", "PAD", "BALUN", "BALUM", "TRANSCEPTOR PASIVO", "TRANSCEPTORES PASIVOS", "CCTV", "HDCVI", "TURBOHD", "AHD", "CÁMARAS DE SEGURIDAD", "CAMARAS DE SEGURIDAD", "SAXXON", "PARA VIDEO", "VB-") \
+       and not sku_starts("CAB"):
         return "fibra_optica_transceivers"
 
     # -------------------------------------------------------------
@@ -417,27 +445,33 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 46. PLOTTERS DE GRAN FORMATO
     # -------------------------------------------------------------
-    if has("PLOTTER", "GRAN FORMATO", "DESIGNJET", "SURECOLOR") and lacks("PAPEL", "TINTA", "CARTUCHO", "ESCANER", "ESCÁNER"):
+    if (has("PLOTTER", "GRAN FORMATO", "DESIGNJET", "SURECOLOR", "IMAGEPROGRAF") or sku_starts("PLO")) \
+       and lacks("PAPEL", "TINTA", "CARTUCHO", "TANQUE", "PFI-", "ESCANER", "ESCÁNER", "CABEZAL", "BOTELLA") \
+       and not sku_starts("CAR", "TIN", "ACC", "CAB"):
         return "plotters_gran_formato"
 
     # -------------------------------------------------------------
-    # 43. IMPRESORAS & MULTIFUNCIONALES
+    # 43. IMPRESORAS & MULTIFUNCIONALES (Oficina & Hogar)
     # -------------------------------------------------------------
     if (sku_starts("IMP", "MLT") or has("IMPRESORA", "ECOTANK", "SMART TANK", "LASERJET", "DESKJET") or (has("MULTIFUNCIONAL") and has("IMPRESORA", "MONOCROMATICA", "MONOCROMÁTICA", "LASER", "LÁSER", "INYECCION", "INYECCIÓN", "DUPLEX", "DÚPLEX", "WIFI", "FAX", "COPIADORA", "SCANNER", "ESCÁNER", "ESCANER", "BROTHER", "EPSON", "CANON", "HP ", "XEROX", "RICOH", "KYOCERA", "PANTUM"))) \
-       and lacks("TONER", "TINTA", "CARTUCHO", "PAPEL", "CABEZAL", "RODILLO", "MANTENIMIENTO", "PLOTTER", "DESIGNJET", "SURECOLOR", "TRIPIE", "TRÍPIE", "TRIPIÉ", "TRIPODE", "TRÍPODE", "HERRAMIENTA", "MOCHILA", "FUNDA"):
+       and lacks("TONER", "TÓNER", "TINTA", "CARTUCHO", "PAPEL", "CABEZAL", "RODILLO", "MANTENIMIENTO", "PLOTTER", "DESIGNJET", "SURECOLOR", "TRIPIE", "TRÍPIE", "TRIPIÉ", "TRIPODE", "TRÍPODE", "HERRAMIENTA", "MOCHILA", "FUNDA", "CINTA", "RIBBON", "BOTELLA RESIDUAL", "DEPOSITO DE DESECHO", "DEPÓSITO", "KIT DE LIMPIEZA", "TARJETAS ADHESIVAS", "MINIPRINTER", "MINI IMPRESORA", "IMPRESORA TERMICA", "IMPRESORA TÉRMICA", "TICKETS", "58MM", "58 MM", "80MM", "80 MM", "PUNTO DE VENTA", "POS", "BATERIA", "BATERÍA") \
+       and not sku_starts("CAR", "TON", "TIN", "ACC", "CAB", "RIB", "BAT"):
         return "impresoras_multifuncionales"
 
     # -------------------------------------------------------------
     # 44. TONERS LASER
     # -------------------------------------------------------------
-    if (sku_starts("TON") or has("TONER", "TÓNER")) and lacks("IMPRESORA", "MULTIFUNCIONAL"):
+    if (sku_starts("TON") or has("TONER", "TÓNER")) \
+       and lacks("IMPRESORA", "MULTIFUNCIONAL", "SENSOR", "PCB", "BOTONERA", "ORVIBO", "DEPOSITO DE DESECHO", "DEPÓSITO") \
+       and not sku_starts("ACC", "CAB"):
         return "toners_laser"
 
     # -------------------------------------------------------------
     # 45. TINTAS & CARTUCHOS
     # -------------------------------------------------------------
-    if (sku_starts("TIN", "CAR") or has("BOTELLA DE TINTA", "CARTUCHO DE TINTA", "TINTA ORIGINAL", "TINTA EPSON", "TINTA CANON", "TINTA HP", "TINTA BROTHER")) \
-       and lacks("IMPRESORA", "MULTIFUNCIONAL", "PLOTTER"):
+    if (sku_starts("TIN") or (sku_starts("CAR") and has("TINTA", "CARTUCHO", "TANQUE")) or has("BOTELLA DE TINTA", "CARTUCHO DE TINTA", "TINTA ORIGINAL", "TINTA EPSON", "TINTA CANON", "TINTA HP", "TINTA BROTHER", "TANQUE CANON", "PFI-")) \
+       and lacks("IMPRESORA", "MULTIFUNCIONAL", "PLOTTER HP", "PLOTTER CANON", "CINTA RIBBON", "SELLO") \
+       and not sku_starts("ACC", "CAB"):
         return "tintas_cartuchos"
 
     # -------------------------------------------------------------
@@ -449,25 +483,31 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 48. ESCANERES & DIGITALIZADORES
     # -------------------------------------------------------------
-    if has("ESCANER", "ESCÁNER", "SCANJET", "DIGITALIZADOR DE DOCUMENTOS", "CAMA PLANA") and lacks("CODIGO DE BARRAS", "CÓDIGO DE BARRAS"):
+    if (has("ESCANER", "ESCÁNER", "SCANJET", "DIGITALIZADOR DE DOCUMENTOS", "CAMA PLANA") or sku_starts("SCN")) \
+       and lacks("CODIGO DE BARRAS", "CÓDIGO DE BARRAS", "CODIGO DE BARRA", "CÓDIGO DE BARRA", "BARCODE", "BARCODE SCANNER", "LECTOR DE CODIGO", "LECTOR DE CÓDIGO", "HUELLAS", "ENROLADOR", "CONVERTIDOR", "SERIAL", "DB9", "FUNDA", "CORREA") \
+       and not sku_starts("ACC", "CAB", "LCT"):
         return "escaneres_digitalizadores"
 
     # -------------------------------------------------------------
     # 54. PUNTO DE VENTA (POS)
     # -------------------------------------------------------------
-    if has("PUNTO DE VENTA", "LECTOR DE CODIGO", "LECTOR DE CÓDIGO", "IMPRESORA TERMICA", "IMPRESORA DE TICKETS", "CAJON DE DINERO", "CAJÓN DE DINERO", "MINIPRINTER"):
+    if has("PUNTO DE VENTA", "LECTOR DE CODIGO", "LECTOR DE CÓDIGO", "IMPRESORA TERMICA", "IMPRESORA TÉRMICA", "IMPRESORA DE TICKETS", "CAJON DE DINERO", "CAJÓN DE DINERO", "MINIPRINTER", "MINIPRINTERS", "CAJA PARA DINERO", "MINI IMPRESORA", "TERMINAL POS", "BARCODE SCANNER", "EC-LINE", "QIAN ANJET", "MNP-158", "MNP-180", "SOFTWARE POS", "POS TOOLS", "POSTOOLS"):
         return "punto_de_venta"
 
     # -------------------------------------------------------------
     # 55. SMARTPHONES & CELULARES
     # -------------------------------------------------------------
-    if has("SMARTPHONE", "TELEFONO CELULAR", "TELÉFONO CELULAR", "GALAXY A", "GALAXY S", "REDMI", "XIAOMI", "MOTO G", "IPHONE") and lacks("FUNDA", "MICA", "CRISTAL TEMPLADO", "VIDEOPORTERO"):
+    if (sku_starts("CEL", "SMA") or has("SMARTPHONE", "TELEFONO CELULAR", "TELÉFONO CELULAR", "IPHONE", "GALAXY S", "GALAXY A", "REDMI", "MOTO G")) \
+       and lacks("ANCLA", "RANURA K-SLOT", "CANDADO", "BRAZALETE", "SOPORTE", "FUNDA", "MICA", "CRISTAL TEMPLADO", "CABLE", "VIDEOPORTERO", "BATERIA", "BATERÍA", "PLOMO", "TECLADO", "MOUSE") \
+       and not sku_starts("ACC", "CAB", "BAT", "TEC", "MOU", "SOF", "LIC"):
         return "smartphones_celulares"
 
     # -------------------------------------------------------------
     # 56. TABLETS & IPADS
     # -------------------------------------------------------------
-    if has("IPAD", "TABLET", "TABLETA", "MATEPAD", "GALAXY TAB") and lacks("FUNDA", "MICA", "SOPORTE", "TECLADO PARA TABLET", "VENTILADOR", "DISIPADOR"):
+    if (sku_starts("TAB", "IPD") or (has("IPAD", "GALAXY TAB", "MATEPAD") or (has("TABLET", "TABLETA") and has("PULGADAS", "WIFI", "ANDROID", "PANTALLA")))) \
+       and lacks("PLUMA", "STYLUS", "FUNDA", "SOPORTE", "MICA", "CRISTAL", "ADAPTADOR", "CABLE", "TECLADO PARA", "VENTILADOR", "DISIPADOR", "ANCLA", "NUC", "MINI PC", "BAREBONE", "MICROFONO", "MICRÓFONO", "BOCINA") \
+       and not sku_starts("ACC", "CAB", "CAR", "CPU", "BOC", "MIC", "CAM"):
         return "tablets_ipads"
 
     # -------------------------------------------------------------
@@ -503,8 +543,9 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 18. SERVIDORES ENTERPRISE
     # -------------------------------------------------------------
-    if (has("SERVIDOR TORRE", "SERVIDOR RACK", "PROLIANT", "POWEREDGE", "SERVER TORRE", "SERVER RACK") or sku_starts("SRV", "SVR")) \
-       and lacks("MEMORIA RAM", "DISCO DURO", "LICENCIA", "WINDOWS SERVER ROK", "WINDOWS SERVER CAL", "GABINETE", "FUENTE", "CABLE"):
+    if (sku_starts("SRV", "SVR", "SER") or has("SERVIDOR TORRE", "SERVIDOR RACK", "PROLIANT", "POWEREDGE", "SERVER TORRE", "SERVER RACK", "THINKSYSTEM")) \
+       and lacks("MEMORIA RAM", "DISCO DURO", "LICENCIA", "WINDOWS SERVER ROK", "WINDOWS SERVER CAL", "GABINETE", "FUENTE", "CABLE", "USUARIO REMOTO", "CLIENTE VPN", "TARJETA RISER", "ADMINISTRADOR GRAFICO", "ADMINISTRADOR GRÁFICO", "XCLARITY") \
+       and not sku_starts("ACC", "CAB", "MEM", "DDU"):
         return "servidores_enterprise"
 
     # -------------------------------------------------------------
@@ -532,8 +573,9 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 16. COMPUTADORAS ENSAMBLADAS / GAMING PCs
     # -------------------------------------------------------------
-    if (sku_starts("CFG-") or has("COMPUTADORA DE ESCRITORIO", "PC GAMER", "PC VECTEC", "EQUIPO DE ESCRITORIO", "COMPUTADORA ENSAMBLADA", "PC ENSAMBLADA")) \
-       and lacks("TODO EN UNO", "ALL-IN-ONE", "ALL IN ONE", "PORTATIL", "PORTÁTIL", "LAPTOP", "NOTEBOOK", "MINI PC", "NUC"):
+    if (sku_starts("CFG-") or has("COMPUTADORA DE ESCRITORIO", "PC GAMER", "PC VECTEC", "EQUIPO DE ESCRITORIO", "COMPUTADORA ENSAMBLADA", "PC ENSAMBLADA", "DESKTOP VORAGO", "THINKCENTRE", "OPTIPLEX DESKTOP", "WORKSTATION DELL", "WORKSTATION HP", "WORKSTATION LENOVO") or (sku_starts("CPUDDL", "CPULEV", "CPUGET", "CPUQIA", "CPUYEY", "CPUVGO", "CPULEN") and has("PC", "DESKTOP", "ESCRITORIO", "TOWER", "TORRE"))) \
+       and lacks("TODO EN UNO", "ALL-IN-ONE", "ALL IN ONE", "PORTATIL", "PORTÁTIL", "LAPTOP", "NOTEBOOK", "MINI PC", "NUC", "TARJETA PARALELA", "TARJETA SERIAL", "PUERTO PARALELO", "PROCESADOR RYZEN", "PROCESADOR INTEL", "PROCESADOR AMD", "4 CORE 4GHZ", "6 CORE 4.2GHZ", "6 CORE 65W", "RETAIL PLATAFORMA") \
+       and not sku_starts("CPUINT", "CPUAMD", "MBD", "TAR", "ACC", "CAB"):
         return "computadoras_ensambladas"
 
     # -------------------------------------------------------------

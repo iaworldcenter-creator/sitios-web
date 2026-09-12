@@ -68,24 +68,33 @@ def regenerar_vitrinas():
             reclassified_count += 1
             p["c"] = new_cat
 
-        # Validacion de imagen (soporta SKU con prefijo A- o B- y archivos en disco)
+        # Validacion y preservacion de galeria multi-imagen HD
         raw_sku = sku.replace("A-", "").replace("B-", "")
-        has_webp_sku = os.path.exists(os.path.join(img_dir, f"{sku}.webp"))
-        has_webp_raw = os.path.exists(os.path.join(img_dir, f"{raw_sku}.webp"))
-        has_webp_0 = os.path.exists(os.path.join(img_dir, f"{sku}_0.webp")) or os.path.exists(os.path.join(img_dir, f"{raw_sku}_0.webp"))
+        valid_k = []
+        if p.get("k") and isinstance(p["k"], list):
+            for kpath in p["k"]:
+                if kpath and os.path.exists(os.path.join(PCC_DIR, kpath)) and "placeholder" not in kpath:
+                    valid_k.append(kpath)
 
-        if has_webp_sku:
-            p["k"] = [f"assets/img/{sku}.webp"]
-            p["i"] = 1
-        elif has_webp_raw:
-            p["k"] = [f"assets/img/{raw_sku}.webp"]
-            p["i"] = 1
-        elif has_webp_0:
-            p["k"] = [f"assets/img/{raw_sku}_0.webp"]
-            p["i"] = 1
-        elif p.get("k") and len(p["k"]) > 0 and os.path.exists(os.path.join(PCC_DIR, p["k"][0])):
+        if not valid_k:
+            for candidate in [f"{sku}.webp", f"{raw_sku}.webp", f"B-{raw_sku}.webp", f"{raw_sku}_0.webp", f"{sku}_0.webp"]:
+                if os.path.exists(os.path.join(img_dir, candidate)):
+                    valid_k.append(f"assets/img/{candidate}")
+                    prefix_base = candidate.replace(".webp", "").replace("_0", "")
+                    for extra_idx in range(1, 6):
+                        extra_cand = f"{prefix_base}_{extra_idx}.webp"
+                        if os.path.exists(os.path.join(img_dir, extra_cand)):
+                            valid_k.append(f"assets/img/{extra_cand}")
+                    break
+
+        if valid_k:
+            p["k"] = valid_k
             p["i"] = 1
         else:
+            pl_path = f"assets/img/placeholders/{new_cat}.jpg"
+            if not os.path.exists(os.path.join(PCC_DIR, pl_path)):
+                pl_path = "assets/img/placeholders/acc_placeholder.jpg"
+            p["k"] = [pl_path]
             p["i"] = 0
 
         dept_products[new_cat].append(p)
