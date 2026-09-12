@@ -1,492 +1,691 @@
-[
-  {
-    "id": "procesadores",
-    "name": "Procesadores Intel & AMD",
-    "icon": "fa-microchip",
-    "badge": "Top Ventas",
-    "link": "https://iaworldcenter-creator.github.io/vectec/catalogo-02-procesadores.html",
-    "products": [
-      {
-        "sku": "A-CPUINT4010",
-        "nombre": "Intel Core I9-12900K Alder Lake 3.20GHz (5.20GHz Turbo) LGA 1700 30 MB Intel Smart Cache, Gráficos : Intel® UHD Graphics",
-        "marca": "VECTEC",
-        "precio": 8612.5,
-        "precio_original": 11483.33,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/CPUINT4010.webp",
-        "categoria": "Procesadores Intel & AMD"
-      },
-      {
-        "sku": "A-CPUINT4020",
-        "nombre": "Intel Core i9-12900KF Alder Lake 3.20GHz (5.20GHz Turbo) LGA 1700 30 MB Intel Smart Cache, 8 Núcleos y 8 subprocesos. CO",
-        "marca": "VECTEC",
-        "precio": 9997.0,
-        "precio_original": 13329.33,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/CPUINT4020.webp",
-        "categoria": "Procesadores Intel & AMD"
-      },
-      {
-        "sku": "A-CPUINT4210",
-        "nombre": "Intel Core i9-12900 Alder Lake 2.40GHz (5.10GHz Turbo) LGA 1700 30 MB Intel Smart Cache, 16 Núcleos. COMPATIBLE SOLO CON",
-        "marca": "VECTEC",
-        "precio": 10456.94,
-        "precio_original": 13942.59,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/CPUINT4210.webp",
-        "categoria": "Procesadores Intel & AMD"
-      },
-      {
-        "sku": "A-CPUINT4160",
-        "nombre": "Intel Core i7-12700 Alder Lake 2.10GHz (4.90GHz Turbo) LGA 1700 25 MB Intel Smart Cache, 8 Núcleos y 4 subprocesos. COMP",
-        "marca": "VECTEC",
-        "precio": 7117.63,
-        "precio_original": 9490.17,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/CPUINT4160.webp",
-        "categoria": "Procesadores Intel & AMD"
-      }
-    ]
-  },
-  {
-    "id": "tarjetas_video",
-    "name": "Tarjetas de Video (GPUs)",
-    "icon": "fa-vr-cardboard",
-    "badge": "RTX Serie 50/40",
-    "link": "https://iaworldcenter-creator.github.io/vectec/catalogo-03-tarjetas-de-video.html",
-    "products": [
-      {
-        "sku": "A-TVIGIG3080",
-        "nombre": "Tarjeta de video GIGABYTE GV-R76GAMING OC-8GD Radeon™ RX 7600 Reloj central Boost Clock*: hasta 2755 MHz Game Clock*: ha",
-        "marca": "VECTEC",
-        "precio": 6923.65,
-        "precio_original": 9231.53,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/TVIGIG3080.webp",
-        "categoria": "Tarjetas de Video (GPUs)"
-      },
-      {
-        "sku": "A-TVIGIG3560",
-        "nombre": "TARJETA DE VIDEO GIGABYTE GV-N5050OC-8GL Procesamiento de gráficos GeForce RTX™ 5050 Reloj central 2587 MHz (Tarjeta de",
-        "marca": "VECTEC",
-        "precio": 6814.6,
-        "precio_original": 9086.13,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/TVIGIG3560.webp",
-        "categoria": "Tarjetas de Video (GPUs)"
-      },
-      {
-        "sku": "A-TVIGIG3420",
-        "nombre": "Tarjeta de Video GIGABYTE GV-N5060 EAGLEMAX OC-8GD Procesamiento de gráficos GeForce RTX™ 5060 Reloj central 2550 MHz (T",
-        "marca": "VECTEC",
-        "precio": 8465.29,
-        "precio_original": 11287.05,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/TVIGIG3420.webp",
-        "categoria": "Tarjetas de Video (GPUs)"
-      },
-      {
-        "sku": "A-TVIGIG3550",
-        "nombre": "TARJETA DE VIDEO GIGABYTE GV-N5050GAMING OC-8GD Procesamiento de gráficos GeForce RTX™ 5050 Reloj central 2632 MHz (Tarj",
-        "marca": "VECTEC",
-        "precio": 6982.3,
-        "precio_original": 9309.73,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/TVIGIG3550.webp",
-        "categoria": "Tarjetas de Video (GPUs)"
-      }
-    ]
-  },
-  {
-    "id": "tarjetas_madre",
-    "name": "Tarjetas Madre (Motherboards)",
-    "icon": "fa-chess-board",
-    "badge": "AM5 / LGA1700",
-    "link": "https://iaworldcenter-creator.github.io/vectec/catalogo-01-tarjetas-madre.html",
-    "products": [
-      {
-        "sku": "A-MBDECS2220",
-        "nombre": "Motherboard ECS H610H7-M2 Admite procesadores de la serie Intel® Core™ / Pentium / Celeron de 12.ª generación para zócal",
-        "marca": "VECTEC",
-        "precio": 1172.66,
-        "precio_original": 1563.55,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/MBDECS2220.webp",
-        "categoria": "Tarjetas Madre (Motherboards)"
-      },
-      {
-        "sku": "A-MBDECS2260",
-        "nombre": "Motherboard ECS B660H7-M22 Admite procesadores de la serie Intel Core/Pentium/Celeron de 12.ª generación para zócalo LGA",
-        "marca": "VECTEC",
-        "precio": 1485.1,
-        "precio_original": 1980.13,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/MBDECS2260.webp",
-        "categoria": "Tarjetas Madre (Motherboards)"
-      },
-      {
-        "sku": "A-MBDECS2110",
-        "nombre": "Motherboard ECS H410H6-M2 ONJUNTO DE CHIPS Conjunto de chips Intel H410 Express GRÁFICOS Compatible con DirectX® 12 MEMO",
-        "marca": "VECTEC",
-        "precio": 1196.59,
-        "precio_original": 1595.45,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/MBDECS2110.webp",
-        "categoria": "Tarjetas Madre (Motherboards)"
-      },
-      {
-        "sku": "A-MBDECS2290",
-        "nombre": "MB ECS B650AM5-M, Admite el zócalo AMD AM5 para procesadores AMD Ryzen™, Potencia de diseño térmico de 6+2+1 fases, Dise",
-        "marca": "VECTEC",
-        "precio": 1462.5,
-        "precio_original": 1950.0,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/MBDECS2290.webp",
-        "categoria": "Tarjetas Madre (Motherboards)"
-      }
-    ]
-  },
-  {
-    "id": "memorias_ram",
-    "name": "Memorias RAM (DDR4 / DDR5)",
-    "icon": "fa-memory",
-    "badge": "Hasta 7200MHz",
-    "link": "https://iaworldcenter-creator.github.io/vectec/catalogo-04-memorias-ram.html",
-    "products": [
-      {
-        "sku": "A-CPUINT4520",
-        "nombre": "Procesador Intel® Core™ i5-14400 (14.ª generación). Con compatibilidad con PCIe 5.0 y 4.0, compatibilidad con DDR5 y DDR",
-        "marca": "VECTEC",
-        "precio": 4654.0,
-        "precio_original": 6205.33,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/CPUINT4520.webp",
-        "categoria": "Memorias RAM (DDR4 / DDR5)"
-      },
-      {
-        "sku": "A-CPUINT4510",
-        "nombre": "Procesador Intel® Core™ i3-14100 (14.ª generación). Con compatibilidad con PCIe 5.0 y 4.0, DDR5 y DDR4, los procesadores",
-        "marca": "VECTEC",
-        "precio": 3198.26,
-        "precio_original": 4264.35,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/CPUINT4510.webp",
-        "categoria": "Memorias RAM (DDR4 / DDR5)"
-      },
-      {
-        "sku": "A-MEMKGN2870",
-        "nombre": "Memoria KINGSTON 8GB 3200MHz DDR4 CL16 DIMM FURY Beast KF432C16BB/8 Negra",
-        "marca": "VECTEC",
-        "precio": 2176.53,
-        "precio_original": 2902.04,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/MEMKGN2870.webp",
-        "categoria": "Memorias RAM (DDR4 / DDR5)"
-      },
-      {
-        "sku": "A-MEMKGN2910",
-        "nombre": "Memoria KINGSTON 16GB 3200MHz DDR4 CL16 DIMM 1Gx8 FURY Beast KF432C16BB1/16 Negra",
-        "marca": "VECTEC",
-        "precio": 3141.32,
-        "precio_original": 4188.43,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/MEMKGN2910.webp",
-        "categoria": "Memorias RAM (DDR4 / DDR5)"
-      }
-    ]
-  },
-  {
-    "id": "almacenamiento",
-    "name": "Almacenamiento & SSDs NVMe",
-    "icon": "fa-hard-drive",
-    "badge": "PCIe 4.0/5.0",
-    "link": "https://iaworldcenter-creator.github.io/vectec/catalogo-05-discos-duros.html",
-    "products": [
-      {
-        "sku": "A-DDUKGT1290",
-        "nombre": "Disco de Estado Solido SATA de 240GB SA400S37/240G",
-        "marca": "VECTEC",
-        "precio": 1100.06,
-        "precio_original": 1466.75,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/DDUKGT1290.webp",
-        "categoria": "Almacenamiento & SSDs NVMe"
-      },
-      {
-        "sku": "A-DDUKGT1300",
-        "nombre": "Disco de Estado Solido SATA de 480GB SA400S37/480G",
-        "marca": "VECTEC",
-        "precio": 1575.6,
-        "precio_original": 2100.8,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/DDUKGT1300.webp",
-        "categoria": "Almacenamiento & SSDs NVMe"
-      },
-      {
-        "sku": "A-DDUKGT1360",
-        "nombre": "Disco de Estado Solido SATA de 960GB SA400S37/960G",
-        "marca": "VECTEC",
-        "precio": 3056.3,
-        "precio_original": 4075.07,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/DDUKGT1360.webp",
-        "categoria": "Almacenamiento & SSDs NVMe"
-      },
-      {
-        "sku": "A-DDUKGT2570",
-        "nombre": "Disco de Estado Solido SATA de 480GB KC-S44480-7S",
-        "marca": "VECTEC",
-        "precio": 1664.0,
-        "precio_original": 2218.67,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/DDUKGT2570.webp",
-        "categoria": "Almacenamiento & SSDs NVMe"
-      }
-    ]
-  },
-  {
-    "id": "laptops_pcs",
-    "name": "Laptops & Computadoras",
-    "icon": "fa-laptop",
-    "badge": "Garantía 1 Año",
-    "link": "https://iaworldcenter-creator.github.io/vectec/laptops/index.html",
-    "products": [
-      {
-        "sku": "A-CFG-INTEL-14400",
-        "nombre": "PC VECTEC Elite Intel Core i5-14400 | ASUS B760M | 16GB RAM | 1TB HDD | Kit Naceb 4en1 + Monitor 19.5\"",
-        "marca": "INTEL / ASUS",
-        "precio": 14868.2,
-        "precio_original": 18585.25,
-        "descuento_pct": 20,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/fachada-oficial.webp",
-        "categoria": "Laptops & Computadoras"
-      },
-      {
-        "sku": "A-CFG-INTEL-14700",
-        "nombre": "PC VECTEC Pro Intel Core i7-14700 | ASUS B760M | 16GB RAM | 1TB HDD | Kit Naceb 4en1 + Monitor 19.5\"",
-        "marca": "INTEL / ASUS",
-        "precio": 18534.2,
-        "precio_original": 23167.75,
-        "descuento_pct": 20,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/fachada-oficial.webp",
-        "categoria": "Laptops & Computadoras"
-      },
-      {
-        "sku": "A-CFG-INTEL-14900",
-        "nombre": "PC VECTEC Master Intel Core i9-14900 | ASUS B760M | 16GB RAM | 1TB HDD | Kit Naceb 4en1 + Monitor 19.5\"",
-        "marca": "INTEL / ASUS",
-        "precio": 23331.2,
-        "precio_original": 29164.0,
-        "descuento_pct": 20,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/fachada-oficial.webp",
-        "categoria": "Laptops & Computadoras"
-      },
-      {
-        "sku": "A-CFG-INTEL-12400",
-        "nombre": "PC VECTEC Entry Intel Core i5-12400 | ASUS H610M | 8GB RAM | 1TB HDD | Kit Naceb 4en1 + Monitor 19.5\"",
-        "marca": "INTEL / ASUS",
-        "precio": 9840.47,
-        "precio_original": 12300.59,
-        "descuento_pct": 20,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/fachada-oficial.webp",
-        "categoria": "Laptops & Computadoras"
-      }
-    ]
-  },
-  {
-    "id": "monitores",
-    "name": "Monitores & Pantallas",
-    "icon": "fa-desktop",
-    "badge": "144Hz - 240Hz",
-    "link": "https://iaworldcenter-creator.github.io/vectec/catalogo-11-monitores-software.html",
-    "products": [
-      {
-        "sku": "A-MONSMG2120",
-        "nombre": "Monitor SAMSUNG Essential S3, S30GD, 22\", Modelo: LS22D300GALXZX; Tamaño de pantalla 22\"; Monitor Plano (Flat); Panel IP",
-        "marca": "VECTEC",
-        "precio": 28794.32,
-        "precio_original": 38392.43,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/MONSMG2120.webp",
-        "categoria": "Monitores & Pantallas"
-      },
-      {
-        "sku": "A-MONSMG2070",
-        "nombre": "Monitor SAMSUNG Gamer Curvo 24\", FHD, Plano, Modelo: LS24DG300ELXZX; Tamaño de pantalla 24\"; Resolución FHD 1920 x 1080;",
-        "marca": "VECTEC",
-        "precio": 56726.53,
-        "precio_original": 75635.37,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/MONSMG2070.webp",
-        "categoria": "Monitores & Pantallas"
-      },
-      {
-        "sku": "A-MONSMG2360",
-        "nombre": "Monitor SAMSUNG Essential S3, 24\", Modelo: LS24F334EALXZX; Tamaño de pantalla 24\"; Monitor Plano (Flat); Panel VA; Resol",
-        "marca": "VECTEC",
-        "precio": 37169.05,
-        "precio_original": 49558.73,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/placeholders/acc_placeholder.jpg",
-        "categoria": "Monitores & Pantallas"
-      },
-      {
-        "sku": "A-MONSMG2090",
-        "nombre": "Monitor SAMSUNG Essential S3, S30GD, 24\", Modelo: LS24D300GALXZX; Tamaño de pantalla 24\"; Monitor Plano (Flat); Panel IP",
-        "marca": "VECTEC",
-        "precio": 31873.26,
-        "precio_original": 42497.68,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/MONSMG2090.webp",
-        "categoria": "Monitores & Pantallas"
-      }
-    ]
-  },
-  {
-    "id": "perifericos",
-    "name": "Periféricos, Teclados & Audio",
-    "icon": "fa-headphones",
-    "badge": "E-Sports",
-    "link": "https://iaworldcenter-creator.github.io/vectec/catalogo-09-perifericos.html",
-    "products": [
-      {
-        "sku": "A-ACCYEY110",
-        "nombre": "Base headset overpower serie1000 YEYIAN YAO-29201N, potencia nominal 5V - 250 mA, micrófono Ø 6 x 5 mm, configuración om",
-        "marca": "VECTEC",
-        "precio": 164.06,
-        "precio_original": 218.75,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/ACCYEY110.webp",
-        "categoria": "Periféricos, Teclados & Audio"
-      },
-      {
-        "sku": "A-DDUDLL2550",
-        "nombre": "Disco duro SATA Dell 400-BLLF - 4TB Hard Drive SATA 6Gbps 7.2K 512n 3.5in Hot-Plug, CUS Kit . Compatible con T350,T550,",
-        "marca": "VECTEC",
-        "precio": 236338.47,
-        "precio_original": 315117.96,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/DDUDLL2550.webp",
-        "categoria": "Periféricos, Teclados & Audio"
-      },
-      {
-        "sku": "A-DDUDLL2530",
-        "nombre": "Disco Duro Dell 161-BCBC 2TB Hard Drive SATA 6Gbps 7.2K 512n 3.5in Cabled Customer Kit. Compatible con servidor R250",
-        "marca": "VECTEC",
-        "precio": 145360.8,
-        "precio_original": 193814.4,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/DDUDLL2530.webp",
-        "categoria": "Periféricos, Teclados & Audio"
-      },
-      {
-        "sku": "A-CPUVGO6150",
-        "nombre": "Computadora Vorago SB5 RZN 5700GT-TR-21 RZN 5700GT 8GB RAM 240GB unidad de estado solido NO DVD/WINDOWS TRIAL, HDMI/VGA/",
-        "marca": "VECTEC",
-        "precio": 11070.97,
-        "precio_original": 14761.29,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/CPUVGO6150.webp",
-        "categoria": "Periféricos, Teclados & Audio"
-      }
-    ]
-  },
-  {
-    "id": "redes",
-    "name": "Conectividad & Redes",
-    "icon": "fa-network-wired",
-    "badge": "Gigabit / Mesh",
-    "link": "https://iaworldcenter-creator.github.io/vectec/catalogo-10-conectividad-redes.html",
-    "products": [
-      {
-        "sku": "A-ROUTPL180",
-        "nombre": "Router Balanceador de Carga Multi-Wan, (TL-R470T+) (3) WAN/LAN 10/100Mbps, (1) WAN 10/100Mbps y (1) LAN 10/100Mbps, Bala",
-        "marca": "VECTEC",
-        "precio": 731.25,
-        "precio_original": 975.0,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/ROUTPL180.webp",
-        "categoria": "Conectividad & Redes"
-      },
-      {
-        "sku": "A-ROUTPL120",
-        "nombre": "Router Balanceador de Carga Multi-Wan, (TL-R480T+) (3) WAN/LAN 10/100Mbps, (1) WAN 10/100Mbps, (1) LAN 10/100Mbps y (1)",
-        "marca": "VECTEC",
-        "precio": 965.25,
-        "precio_original": 1287.0,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/ROUTPL120.webp",
-        "categoria": "Conectividad & Redes"
-      },
-      {
-        "sku": "A-ROUTPL1320",
-        "nombre": "Wi-Fi Gigabit Omada AC1200 (ER605W) 1 puerto WAN Gigabit , 2 puertos WAN/LAN Gigabit ,2 puertos LAN Gigabit , ER605W ofr",
-        "marca": "VECTEC",
-        "precio": 1409.32,
-        "precio_original": 1879.09,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/ROUTPL1320.webp",
-        "categoria": "Conectividad & Redes"
-      },
-      {
-        "sku": "A-ROUTPL970",
-        "nombre": "Router VPN Gigabit-SDN Multi-Wan, (ER605) (1) WAN 10/100/1000Mbps, (3) LAN/WAN 10/100/100 (1) LAN 10/100/1000Mbps, integ",
-        "marca": "VECTEC",
-        "precio": 1143.41,
-        "precio_original": 1524.55,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/ROUTPL970.webp",
-        "categoria": "Conectividad & Redes"
-      }
-    ]
-  },
-  {
-    "id": "gabinetes_energia",
-    "name": "Fuentes, Chasis & Enfriamiento",
-    "icon": "fa-server",
-    "badge": "80 Plus Gold",
-    "link": "https://iaworldcenter-creator.github.io/vectec/catalogo-07-gabinetes.html",
-    "products": [
-      {
-        "sku": "A-CPUINT5080",
-        "nombre": "Procesador Intel i7-14700 CM8071504820817 VERSION TRAY - SIN DISIPADOR, SIN CAJA, 20 núcleos, 28 subprocesos, 2.1 GHz b",
-        "marca": "VECTEC",
-        "precio": 7930.0,
-        "precio_original": 10573.33,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/CPUINT5080.webp",
-        "categoria": "Fuentes, Chasis & Enfriamiento"
-      },
-      {
-        "sku": "A-CPUINT5070",
-        "nombre": "Procesador Intel i5-14400F CM8071505093011, VERSION TRAY - SIN DISIPADOR, SIN CAJA, SIN GRAFICOS 10 núcleos, 16 subproc",
-        "marca": "VECTEC",
-        "precio": 3680.3,
-        "precio_original": 4907.07,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/CPUINT5070.webp",
-        "categoria": "Fuentes, Chasis & Enfriamiento"
-      },
-      {
-        "sku": "A-CPUINT5090",
-        "nombre": "Procesador Intel i5-14400 CM8071504821112, VERSION TRAY - SIN DISIPADOR, SIN CAJA, 10 núcleos, 16 subprocesos, 2.5 GHz",
-        "marca": "VECTEC",
-        "precio": 4110.6,
-        "precio_original": 5480.8,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/CPUINT5090.webp",
-        "categoria": "Fuentes, Chasis & Enfriamiento"
-      },
-      {
-        "sku": "A-CPUINT5020",
-        "nombre": "Procesador Intel i9-12900F BX8071512900F, SIN GRAFICOS - INCLUYE DISIPADOR, 16 núcleos, 24 subprocesos, 2.40 GHz base y",
-        "marca": "VECTEC",
-        "precio": 8554.0,
-        "precio_original": 11405.33,
-        "descuento_pct": 25,
-        "img": "https://iaworldcenter-creator.github.io/vectec/assets/img/CPUINT5020.webp",
-        "categoria": "Fuentes, Chasis & Enfriamiento"
-      }
-    ]
+{
+  "generatedAt": "2026-09-07T14:50:00Z",
+  "totalProducts": 17573,
+  "departmentsCount": 67,
+  "departments": {
+    "procesadores": {
+      "id": "procesadores",
+      "name": "1. Procesadores (CPUs)",
+      "icon": "fa-microchip",
+      "order": 1,
+      "count": 255,
+      "files": [
+        "data/departments/procesadores.json"
+      ]
+    },
+    "tarjetas_madre": {
+      "id": "tarjetas_madre",
+      "name": "2. Tarjetas Madre (Motherboards)",
+      "icon": "fa-chess-board",
+      "order": 2,
+      "count": 88,
+      "files": [
+        "data/departments/tarjetas_madre.json"
+      ]
+    },
+    "memorias_ram_pc": {
+      "id": "memorias_ram_pc",
+      "name": "3. Memorias RAM PC (DIMM)",
+      "icon": "fa-memory",
+      "order": 3,
+      "count": 113,
+      "files": [
+        "data/departments/memorias_ram_pc.json"
+      ]
+    },
+    "gabinetes": {
+      "id": "gabinetes",
+      "name": "4. Gabinetes & Chasis Gamer",
+      "icon": "fa-server",
+      "order": 4,
+      "count": 378,
+      "files": [
+        "data/departments/gabinetes.json"
+      ]
+    },
+    "tarjetas_video": {
+      "id": "tarjetas_video",
+      "name": "5. Tarjetas de Video (GPUs)",
+      "icon": "fa-vr-cardboard",
+      "order": 5,
+      "count": 32,
+      "files": [
+        "data/departments/tarjetas_video.json"
+      ]
+    },
+    "enfriamiento": {
+      "id": "enfriamiento",
+      "name": "6. Sistemas de Enfriamiento Líquido & Aire",
+      "icon": "fa-fan",
+      "order": 6,
+      "count": 299,
+      "files": [
+        "data/departments/enfriamiento.json"
+      ]
+    },
+    "fuentes_energia": {
+      "id": "fuentes_energia",
+      "name": "7. Fuentes de Poder Certificadas",
+      "icon": "fa-bolt",
+      "order": 7,
+      "count": 132,
+      "files": [
+        "data/departments/fuentes_energia.json"
+      ]
+    },
+    "ssds_m2_nvme": {
+      "id": "ssds_m2_nvme",
+      "name": "8. Unidades SSD M.2 NVMe PCIe",
+      "icon": "fa-hard-drive",
+      "order": 8,
+      "count": 127,
+      "files": [
+        "data/departments/ssds_m2_nvme.json"
+      ]
+    },
+    "discos_duros_hdd_internos": {
+      "id": "discos_duros_hdd_internos",
+      "name": "9. Discos Duros Internos HDD",
+      "icon": "fa-hard-drive",
+      "order": 9,
+      "count": 24,
+      "files": [
+        "data/departments/discos_duros_hdd_internos.json"
+      ]
+    },
+    "monitores_pantallas": {
+      "id": "monitores_pantallas",
+      "name": "10. Monitores & Pantallas PC",
+      "icon": "fa-desktop",
+      "order": 10,
+      "count": 433,
+      "files": [
+        "data/departments/monitores_pantallas.json"
+      ]
+    },
+    "teclados": {
+      "id": "teclados",
+      "name": "11. Teclados Mecánicos & Oficina",
+      "icon": "fa-keyboard",
+      "order": 11,
+      "count": 214,
+      "files": [
+        "data/departments/teclados.json"
+      ]
+    },
+    "ratones_mouse": {
+      "id": "ratones_mouse",
+      "name": "12. Ratones & Mouse Gamer",
+      "icon": "fa-mouse",
+      "order": 12,
+      "count": 390,
+      "files": [
+        "data/departments/ratones_mouse.json"
+      ]
+    },
+    "combos_teclado_mouse": {
+      "id": "combos_teclado_mouse",
+      "name": "13. Kits de Teclado y Ratón",
+      "icon": "fa-keyboard",
+      "order": 13,
+      "count": 135,
+      "files": [
+        "data/departments/combos_teclado_mouse.json"
+      ]
+    },
+    "laptops_portatiles": {
+      "id": "laptops_portatiles",
+      "name": "14. Laptops & Computadoras Portátiles",
+      "icon": "fa-laptop",
+      "order": 14,
+      "count": 148,
+      "files": [
+        "data/departments/laptops_portatiles.json"
+      ]
+    },
+    "mini_pcs_nuc": {
+      "id": "mini_pcs_nuc",
+      "name": "15. Mini PCs Ultracompactas & NUCs",
+      "icon": "fa-cube",
+      "order": 15,
+      "count": 58,
+      "files": [
+        "data/departments/mini_pcs_nuc.json"
+      ]
+    },
+    "computadoras_ensambladas": {
+      "id": "computadoras_ensambladas",
+      "name": "16. Computadoras de Escritorio & Gaming PCs",
+      "icon": "fa-computer",
+      "order": 16,
+      "count": 63,
+      "files": [
+        "data/departments/computadoras_ensambladas.json"
+      ]
+    },
+    "computadoras_all_in_one": {
+      "id": "computadoras_all_in_one",
+      "name": "17. Computadoras All-in-One (AIO)",
+      "icon": "fa-tv",
+      "order": 17,
+      "count": 29,
+      "files": [
+        "data/departments/computadoras_all_in_one.json"
+      ]
+    },
+    "servidores_enterprise": {
+      "id": "servidores_enterprise",
+      "name": "18. Servidores Torre & Rack Enterprise",
+      "icon": "fa-server",
+      "order": 18,
+      "count": 28,
+      "files": [
+        "data/departments/servidores_enterprise.json"
+      ]
+    },
+    "no_breaks_ups": {
+      "id": "no_breaks_ups",
+      "name": "19. No-Breaks & Sistemas UPS",
+      "icon": "fa-car-battery",
+      "order": 19,
+      "count": 257,
+      "files": [
+        "data/departments/no_breaks_ups.json"
+      ]
+    },
+    "reguladores_voltaje": {
+      "id": "reguladores_voltaje",
+      "name": "20. Reguladores de Voltaje & Supresores",
+      "icon": "fa-bolt",
+      "order": 20,
+      "count": 70,
+      "files": [
+        "data/departments/reguladores_voltaje.json"
+      ]
+    },
+    "cargadores_baterias_powerbanks": {
+      "id": "cargadores_baterias_powerbanks",
+      "name": "21. Cargadores, Baterías & Power Banks",
+      "icon": "fa-plug-circle-bolt",
+      "order": 21,
+      "count": 239,
+      "files": [
+        "data/departments/cargadores_baterias_powerbanks.json"
+      ]
+    },
+    "discos_duros_externos": {
+      "id": "discos_duros_externos",
+      "name": "22. Unidades & Discos Externos (SSD & HDD)",
+      "icon": "fa-hard-drive",
+      "order": 22,
+      "count": 92,
+      "files": [
+        "data/departments/discos_duros_externos.json"
+      ]
+    },
+    "tarjetas_microsd": {
+      "id": "tarjetas_microsd",
+      "name": "23. Tarjetas de Memoria MicroSD & SD",
+      "icon": "fa-sd-card",
+      "order": 23,
+      "count": 105,
+      "files": [
+        "data/departments/tarjetas_microsd.json"
+      ]
+    },
+    "memorias_usb_pendrives": {
+      "id": "memorias_usb_pendrives",
+      "name": "24. Memorias USB Flash & Pendrives",
+      "icon": "fa-usb",
+      "order": 24,
+      "count": 170,
+      "files": [
+        "data/departments/memorias_usb_pendrives.json"
+      ]
+    },
+    "memorias_ram_laptop": {
+      "id": "memorias_ram_laptop",
+      "name": "25. Memorias RAM para Laptop (SODIMM)",
+      "icon": "fa-laptop",
+      "order": 25,
+      "count": 64,
+      "files": [
+        "data/departments/memorias_ram_laptop.json"
+      ]
+    },
+    "memorias_ram_servidor": {
+      "id": "memorias_ram_servidor",
+      "name": "26. Memorias RAM para Servidor (ECC)",
+      "icon": "fa-server",
+      "order": 26,
+      "count": 30,
+      "files": [
+        "data/departments/memorias_ram_servidor.json"
+      ]
+    },
+    "diademas_headsets": {
+      "id": "diademas_headsets",
+      "name": "27. Diademas & Headsets Gamer",
+      "icon": "fa-headphones",
+      "order": 27,
+      "count": 462,
+      "files": [
+        "data/departments/diademas_headsets.json"
+      ]
+    },
+    "bocinas_sonido": {
+      "id": "bocinas_sonido",
+      "name": "28. Bocinas, Barras de Sonido & Bafles",
+      "icon": "fa-volume-high",
+      "order": 28,
+      "count": 274,
+      "files": [
+        "data/departments/bocinas_sonido.json"
+      ]
+    },
+    "microfonos": {
+      "id": "microfonos",
+      "name": "29. Micrófonos para Streaming & Voz",
+      "icon": "fa-microphone",
+      "order": 29,
+      "count": 19,
+      "files": [
+        "data/departments/microfonos.json"
+      ]
+    },
+    "webcams_videoconferencia": {
+      "id": "webcams_videoconferencia",
+      "name": "30. Cámaras Web & Videoconferencia",
+      "icon": "fa-camera",
+      "order": 30,
+      "count": 54,
+      "files": [
+        "data/departments/webcams_videoconferencia.json"
+      ]
+    },
+    "proyectores_presentacion": {
+      "id": "proyectores_presentacion",
+      "name": "31. Proyectores de Video & Pantallas Murales",
+      "icon": "fa-video",
+      "order": 31,
+      "count": 114,
+      "files": [
+        "data/departments/proyectores_presentacion.json"
+      ]
+    },
+    "camaras_seguridad_cctv": {
+      "id": "camaras_seguridad_cctv",
+      "name": "32. Cámaras de Seguridad (IP, Bala, Domo)",
+      "icon": "fa-video",
+      "order": 32,
+      "count": 315,
+      "files": [
+        "data/departments/camaras_seguridad_cctv.json"
+      ]
+    },
+    "grabadores_dvr_nvr": {
+      "id": "grabadores_dvr_nvr",
+      "name": "33. Grabadores de Video DVR & NVR",
+      "icon": "fa-compact-disc",
+      "order": 33,
+      "count": 136,
+      "files": [
+        "data/departments/grabadores_dvr_nvr.json"
+      ]
+    },
+    "control_acceso_biometricos": {
+      "id": "control_acceso_biometricos",
+      "name": "34. Control de Acceso, Asistencia & Biometría",
+      "icon": "fa-fingerprint",
+      "order": 34,
+      "count": 81,
+      "files": [
+        "data/departments/control_acceso_biometricos.json"
+      ]
+    },
+    "alarmas_sensores_seguridad": {
+      "id": "alarmas_sensores_seguridad",
+      "name": "35. Alarmas, Sensores de Intrusión & Sirenas",
+      "icon": "fa-shield-halved",
+      "order": 35,
+      "count": 25,
+      "files": [
+        "data/departments/alarmas_sensores_seguridad.json"
+      ]
+    },
+    "telefonia_conmutadores": {
+      "id": "telefonia_conmutadores",
+      "name": "36. Conmutadores & Telefonía IP",
+      "icon": "fa-phone",
+      "order": 36,
+      "count": 6,
+      "files": [
+        "data/departments/telefonia_conmutadores.json"
+      ]
+    },
+    "switches_red": {
+      "id": "switches_red",
+      "name": "37. Switches Ethernet & PoE+",
+      "icon": "fa-network-wired",
+      "order": 37,
+      "count": 126,
+      "files": [
+        "data/departments/switches_red.json"
+      ]
+    },
+    "routers_access_points": {
+      "id": "routers_access_points",
+      "name": "38. Routers Inalámbricos & Access Points WiFi",
+      "icon": "fa-wifi",
+      "order": 38,
+      "count": 253,
+      "files": [
+        "data/departments/routers_access_points.json"
+      ]
+    },
+    "antenas_radioenlaces": {
+      "id": "antenas_radioenlaces",
+      "name": "39. Antenas de Largo Alcance & Radioenlaces",
+      "icon": "fa-satellite-dish",
+      "order": 39,
+      "count": 102,
+      "files": [
+        "data/departments/antenas_radioenlaces.json"
+      ]
+    },
+    "cableado_estructurado": {
+      "id": "cableado_estructurado",
+      "name": "40. Bobinas UTP, Patch Cords & Conectores RJ45",
+      "icon": "fa-network-wired",
+      "order": 40,
+      "count": 156,
+      "files": [
+        "data/departments/cableado_estructurado.json"
+      ]
+    },
+    "fibra_optica_transceivers": {
+      "id": "fibra_optica_transceivers",
+      "name": "41. Módulos Transceivers SFP & Fibra Óptica",
+      "icon": "fa-network-wired",
+      "order": 41,
+      "count": 62,
+      "files": [
+        "data/departments/fibra_optica_transceivers.json"
+      ]
+    },
+    "racks_gabinetes_servidor": {
+      "id": "racks_gabinetes_servidor",
+      "name": "42. Racks de Telecomunicaciones & Gabinetes",
+      "icon": "fa-server",
+      "order": 42,
+      "count": 18,
+      "files": [
+        "data/departments/racks_gabinetes_servidor.json"
+      ]
+    },
+    "impresoras_multifuncionales": {
+      "id": "impresoras_multifuncionales",
+      "name": "43. Impresoras de Inyección & Multifuncionales",
+      "icon": "fa-print",
+      "order": 43,
+      "count": 950,
+      "files": [
+        "data/departments/impresoras_multifuncionales_part_1.json",
+        "data/departments/impresoras_multifuncionales_part_2.json"
+      ]
+    },
+    "toners_laser": {
+      "id": "toners_laser",
+      "name": "44. Tóners para Impresoras Láser",
+      "icon": "fa-cubes",
+      "order": 44,
+      "count": 439,
+      "files": [
+        "data/departments/toners_laser.json"
+      ]
+    },
+    "tintas_cartuchos": {
+      "id": "tintas_cartuchos",
+      "name": "45. Tintas Originales & Cartuchos",
+      "icon": "fa-droplet",
+      "order": 45,
+      "count": 70,
+      "files": [
+        "data/departments/tintas_cartuchos.json"
+      ]
+    },
+    "plotters_gran_formato": {
+      "id": "plotters_gran_formato",
+      "name": "46. Plotters de Impresión en Gran Formato",
+      "icon": "fa-ruler-combined",
+      "order": 46,
+      "count": 51,
+      "files": [
+        "data/departments/plotters_gran_formato.json"
+      ]
+    },
+    "etiquetas_ribbons": {
+      "id": "etiquetas_ribbons",
+      "name": "47. Cintas Ribbon, Etiquetas & Papel Térmico",
+      "icon": "fa-tags",
+      "order": 47,
+      "count": 81,
+      "files": [
+        "data/departments/etiquetas_ribbons.json"
+      ]
+    },
+    "escaneres_digitalizadores": {
+      "id": "escaneres_digitalizadores",
+      "name": "48. Escáneres de Documentos & Cama Plana",
+      "icon": "fa-scanner",
+      "order": 48,
+      "count": 154,
+      "files": [
+        "data/departments/escaneres_digitalizadores.json"
+      ]
+    },
+    "sistemas_operativos": {
+      "id": "sistemas_operativos",
+      "name": "49. Sistemas Operativos Windows Oficiales",
+      "icon": "fa-compact-disc",
+      "order": 49,
+      "count": 70,
+      "files": [
+        "data/departments/sistemas_operativos.json"
+      ]
+    },
+    "ofimatica_productividad": {
+      "id": "ofimatica_productividad",
+      "name": "50. Microsoft 365 & Suites de Oficina",
+      "icon": "fa-file-lines",
+      "order": 50,
+      "count": 38,
+      "files": [
+        "data/departments/ofimatica_productividad.json"
+      ]
+    },
+    "software_contable_administrativo": {
+      "id": "software_contable_administrativo",
+      "name": "51. Software Aspel & CONTPAQi Administrativo",
+      "icon": "fa-calculator",
+      "order": 51,
+      "count": 321,
+      "files": [
+        "data/departments/software_contable_administrativo.json"
+      ]
+    },
+    "antivirus_seguridad_digital": {
+      "id": "antivirus_seguridad_digital",
+      "name": "52. Antivirus & Seguridad Digital",
+      "icon": "fa-shield",
+      "order": 52,
+      "count": 395,
+      "files": [
+        "data/departments/antivirus_seguridad_digital.json"
+      ]
+    },
+    "garantias_polizas_servicio": {
+      "id": "garantias_polizas_servicio",
+      "name": "53. Pólizas & Extensiones de Garantía Oficial",
+      "icon": "fa-certificate",
+      "order": 53,
+      "count": 73,
+      "files": [
+        "data/departments/garantias_polizas_servicio.json"
+      ]
+    },
+    "punto_de_venta": {
+      "id": "punto_de_venta",
+      "name": "54. Sistemas de Punto de Venta (POS)",
+      "icon": "fa-barcode",
+      "order": 54,
+      "count": 242,
+      "files": [
+        "data/departments/punto_de_venta.json"
+      ]
+    },
+    "smartphones_celulares": {
+      "id": "smartphones_celulares",
+      "name": "55. Teléfonos Celulares & Smartphones",
+      "icon": "fa-mobile-screen-button",
+      "order": 55,
+      "count": 54,
+      "files": [
+        "data/departments/smartphones_celulares.json"
+      ]
+    },
+    "tablets_ipads": {
+      "id": "tablets_ipads",
+      "name": "56. Tablets & iPads",
+      "icon": "fa-tablet-screen-button",
+      "order": 56,
+      "count": 118,
+      "files": [
+        "data/departments/tablets_ipads.json"
+      ]
+    },
+    "smartwatches_wearables": {
+      "id": "smartwatches_wearables",
+      "name": "57. Smartwatches & Relojes Inteligentes",
+      "icon": "fa-clock",
+      "order": 57,
+      "count": 22,
+      "files": [
+        "data/departments/smartwatches_wearables.json"
+      ]
+    },
+    "limpieza_mantenimiento": {
+      "id": "limpieza_mantenimiento",
+      "name": "58. Aire Comprimido, Espumas & Limpieza",
+      "icon": "fa-spray-can-sparkles",
+      "order": 58,
+      "count": 66,
+      "files": [
+        "data/departments/limpieza_mantenimiento.json"
+      ]
+    },
+    "cables_adaptadores": {
+      "id": "cables_adaptadores",
+      "name": "59. Cables de Video, USB & Adaptadores",
+      "icon": "fa-plug",
+      "order": 59,
+      "count": 655,
+      "files": [
+        "data/departments/cables_adaptadores_part_1.json",
+        "data/departments/cables_adaptadores_part_2.json"
+      ]
+    },
+    "mochilas_fundas_maletines": {
+      "id": "mochilas_fundas_maletines",
+      "name": "60. Mochilas, Fundas & Maletines para Laptop",
+      "icon": "fa-briefcase",
+      "order": 60,
+      "count": 241,
+      "files": [
+        "data/departments/mochilas_fundas_maletines.json"
+      ]
+    },
+    "soportes_ergonomia": {
+      "id": "soportes_ergonomia",
+      "name": "61. Soportes Articulados & Bases para Monitor",
+      "icon": "fa-tv",
+      "order": 61,
+      "count": 90,
+      "files": [
+        "data/departments/soportes_ergonomia.json"
+      ]
+    },
+    "hubs_docks_estaciones": {
+      "id": "hubs_docks_estaciones",
+      "name": "62. Hubs USB-C & Docking Stations",
+      "icon": "fa-layer-group",
+      "order": 62,
+      "count": 82,
+      "files": [
+        "data/departments/hubs_docks_estaciones.json"
+      ]
+    },
+    "herramientas_servicio_tecnico": {
+      "id": "herramientas_servicio_tecnico",
+      "name": "63. Herramientas de Red & Ensamble Técnico",
+      "icon": "fa-wrench",
+      "order": 63,
+      "count": 16,
+      "files": [
+        "data/departments/herramientas_servicio_tecnico.json"
+      ]
+    },
+    "candados_seguridad_laptop": {
+      "id": "candados_seguridad_laptop",
+      "name": "64. Candados de Seguridad Kensington",
+      "icon": "fa-lock",
+      "order": 64,
+      "count": 67,
+      "files": [
+        "data/departments/candados_seguridad_laptop.json"
+      ]
+    },
+    "climatizacion_aires_acondicionados": {
+      "id": "climatizacion_aires_acondicionados",
+      "name": "65. Climatización & Minisplits",
+      "icon": "fa-snowflake",
+      "order": 65,
+      "count": 45,
+      "files": [
+        "data/departments/climatizacion_aires_acondicionados.json"
+      ]
+    },
+    "gaming_consolas_sillas": {
+      "id": "gaming_consolas_sillas",
+      "name": "66. Sillas Gamer, Consolas & Videojuegos",
+      "icon": "fa-gamepad",
+      "order": 66,
+      "count": 99,
+      "files": [
+        "data/departments/gaming_consolas_sillas.json"
+      ]
+    },
+    "accesorios_perifericos": {
+      "id": "accesorios_perifericos",
+      "name": "67. Accesorios de Cómputo & Misceláneos",
+      "icon": "fa-boxes-stacked",
+      "order": 67,
+      "count": 6958,
+      "files": [
+        "data/departments/accesorios_perifericos_part_1.json",
+        "data/departments/accesorios_perifericos_part_2.json",
+        "data/departments/accesorios_perifericos_part_3.json",
+        "data/departments/accesorios_perifericos_part_4.json",
+        "data/departments/accesorios_perifericos_part_5.json",
+        "data/departments/accesorios_perifericos_part_6.json",
+        "data/departments/accesorios_perifericos_part_7.json",
+        "data/departments/accesorios_perifericos_part_8.json",
+        "data/departments/accesorios_perifericos_part_9.json",
+        "data/departments/accesorios_perifericos_part_10.json",
+        "data/departments/accesorios_perifericos_part_11.json",
+        "data/departments/accesorios_perifericos_part_12.json",
+        "data/departments/accesorios_perifericos_part_13.json"
+      ]
+    }
   }
-]
+}
