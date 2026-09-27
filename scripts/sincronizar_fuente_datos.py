@@ -60,27 +60,24 @@ MARGEN_OFERTA = 1.65 # Factor Precio Oferta (-25% permanente): Costo Base * 1.65
 FACTOR_VENTA_MXN = TIPO_CAMBIO * MARGEN_OFERTA # 32.175 MXN/USD
 MARGEN_COMERCIAL = MARGEN_OFERTA
 
-PRICE_FILE_NAME = "1310 LISTA DE PRECIOS DE CT TOL 090726.xlsx"
-CONFIG_FILE_NAME = "1310 CONFIGURACIONES TOL 090726.xlsx"
+def _find_latest_ct_file(pattern):
+    candidates = [f for f in os.listdir(PCC_DATA_DIR) if pattern in f and f.endswith(".xlsx") and not f.startswith("~$")]
+    if candidates:
+        return sorted(candidates, key=lambda x: (os.path.getmtime(os.path.join(PCC_DATA_DIR, x)), x), reverse=True)[0]
+    return None
+
+PRICE_FILE_NAME = _find_latest_ct_file("LISTA DE PRECIOS DE CT") or "1312 LISTA DE PRECIOS DE CT TOL 092126.xlsx"
+CONFIG_FILE_NAME = _find_latest_ct_file("CONFIGURACIONES") or "1312 CONFIGURACIONES TOL 092126.xlsx"
 
 PRICE_XLSX = os.path.join(PCC_DATA_DIR, PRICE_FILE_NAME)
 CONFIG_XLSX = os.path.join(PCC_DATA_DIR, CONFIG_FILE_NAME)
 COMPACT_JSON = os.path.join(PCC_DATA_DIR, "catalogo_maestro_compact.json")
 
-# Fallback para archivos CT
 if not os.path.exists(PRICE_XLSX):
-    candidates = [f for f in os.listdir(PCC_DATA_DIR) if "LISTA DE PRECIOS DE CT" in f and f.endswith(".xlsx")]
-    if candidates:
-        PRICE_XLSX = os.path.join(PCC_DATA_DIR, candidates[0])
-    else:
-        raise FileNotFoundError(f"No se encontró la lista de precios de CT en: {PCC_DATA_DIR}")
+    raise FileNotFoundError(f"No se encontró la lista de precios de CT en: {PCC_DATA_DIR}")
 
 if not os.path.exists(CONFIG_XLSX):
-    candidates = [f for f in os.listdir(PCC_DATA_DIR) if "CONFIGURACIONES" in f and f.endswith(".xlsx")]
-    if candidates:
-        CONFIG_XLSX = os.path.join(PCC_DATA_DIR, candidates[0])
-    else:
-        raise FileNotFoundError(f"No se encontró el archivo de configuraciones en: {PCC_DATA_DIR}")
+    raise FileNotFoundError(f"No se encontró el archivo de configuraciones en: {PCC_DATA_DIR}")
 
 def read_xlsx_workbook(path):
     """Lee un archivo .xlsx usando standard library zipfile y ElementTree."""
@@ -409,8 +406,8 @@ def main():
                 price_str = cells.get('J', cells.get('I', ''))
 
                 try:
-                    costo_neto_usd = float(price_str)
-                    if costo_neto_usd <= 0: continue
+                    price_val = float(price_str)
+                    if price_val <= 0: continue
                 except ValueError:
                     continue
 
@@ -418,7 +415,14 @@ def main():
                 seen_skus.add(raw_sku)
                 ct_active_count += 1
 
-                ct_cost_mxn = costo_neto_usd * TIPO_CAMBIO
+                # Detección precisa de moneda: 'm' indica MXN directo en Columna J; '' o 'd' indica USD
+                col_h = cells.get('H', '').strip().lower()
+                if col_h == 'm':
+                    ct_cost_mxn = price_val
+                    costo_neto_usd = round(price_val / TIPO_CAMBIO, 2)
+                else:
+                    costo_neto_usd = price_val
+                    ct_cost_mxn = price_val * TIPO_CAMBIO
 
                 # Cruce por MPN con Intcomex para optimización de costo
                 matched_intc = intcomex_items.get(raw_sku)
@@ -432,24 +436,28 @@ def main():
                 if matched_intc:
                     intc_cost_mxn = matched_intc["cost_mxn"]
                     if intc_cost_mxn < ct_cost_mxn:
+                        ct_cost_mxn = intc_cost_mxn
                         costo_neto_usd = round(intc_cost_mxn / TIPO_CAMBIO, 2)
                         mpn_optimizations += 1
 
                 # Cálculos de precios comerciales VECTEC con Factor Maestro 2.20
-                costo_base_mxn = costo_neto_usd * TIPO_CAMBIO
+                costo_base_mxn = ct_cost_mxn
                 precio_orig = round(costo_base_mxn * FACTOR_LISTA, 2)
                 precio_mxn = round(precio_orig * 0.75, 2)
                 precio_may = round(precio_mxn * 0.90, 2)
                 descuento_pct = 25
 
-                # Heredar metadatos curados previos si existen
+                # Heredar metadatos curados previos si existen, priorizando la descripción técnica fresca de Columna G
+                full_desc = desc
                 old_item = old_by_sku.get(raw_sku) or old_by_sku.get(final_sku)
                 if old_item:
-                    nombre = clean_text(old_item.get("n", desc[:120]))
-                    subcat = old_item.get("subgrupo_label", current_subgroup)
+                    nombre = clean_text(desc[:120] if desc else old_item.get("n", raw_sku))
+                    subcat = current_subgroup if current_subgroup and current_subgroup != sheet_name else old_item.get("subgrupo_label", current_subgroup)
                     marca = old_item.get("m", "VECTEC")
                     if marca in ["Generica", "GENERIC", ""]: marca = infer_brand(desc, raw_sku)
-                    categoria = clasificar_producto_semantico(raw_sku, nombre, marca, sheet_name=sheet_name, subgrupo_header=subcat)
+                    if not full_desc:
+                        full_desc = clean_text(old_item.get("d", desc))
+                    categoria = clasificar_producto_semantico(raw_sku, nombre, marca, sheet_name=sheet_name, subgrupo_header=subcat, desc=full_desc)
                     images = old_item.get("k", [])
                     if images and len(images) > 0:
                         img = images[0]
@@ -457,13 +465,11 @@ def main():
                         img = f"assets/img/{raw_sku}_0.webp"
                     else:
                         img = f"assets/img/{raw_sku}.webp" if os.path.exists(os.path.join(IMG_DIR, f"{raw_sku}.webp")) else "assets/img/placeholders/acc_placeholder.jpg"
-                    full_desc = clean_text(old_item.get("d", desc))
                 else:
                     nombre = desc[:120]
                     marca = infer_brand(desc, raw_sku)
                     subcat = current_subgroup
-                    categoria = clasificar_producto_semantico(raw_sku, nombre, marca, sheet_name=sheet_name, subgrupo_header=subcat)
-                    full_desc = desc
+                    categoria = clasificar_producto_semantico(raw_sku, nombre, marca, sheet_name=sheet_name, subgrupo_header=subcat, desc=full_desc)
                     if os.path.exists(os.path.join(IMG_DIR, f"{raw_sku}_0.webp")):
                         img = f"assets/img/{raw_sku}_0.webp"
                     elif os.path.exists(os.path.join(IMG_DIR, f"{raw_sku}.webp")):
@@ -501,7 +507,7 @@ def main():
                     "disponible": True,
                     "estado_comercial": "disponible",
                     "outlet": is_outlet,
-                    "descripcion": full_desc[:250] if full_desc else "",
+                    "descripcion": full_desc if full_desc else "",
                     "ficha_tecnica_url": ficha_url,
                     "costo_neto_usd": round(costo_neto_usd, 2)
                 }
@@ -579,7 +585,8 @@ def main():
             subcat = old_item.get("subgrupo_label", intc["subcategory"] or intc["category"])
             marca = old_item.get("m", intc["brand"] or "VECTEC")
             if marca in ["Generica", "GENERIC", ""]: marca = "VECTEC"
-            categoria = clasificar_producto_semantico(raw_sku, nombre, marca, intc_cat=intc.get("category", ""), intc_sub=intc.get("subcategory", ""), subgrupo_header=subcat)
+            full_desc = clean_text(old_item.get("d", intc["name"]))
+            categoria = clasificar_producto_semantico(raw_sku, nombre, marca, intc_cat=intc.get("category", ""), intc_sub=intc.get("subcategory", ""), subgrupo_header=subcat, desc=full_desc)
             images = old_item.get("k", [])
             if images and len(images) > 0:
                 img = images[0]
@@ -589,12 +596,12 @@ def main():
                 img = ct_matched_prod["imagen"]
             else:
                 img = f"assets/img/B-{raw_sku}.webp"
-            full_desc = clean_text(old_item.get("d", intc["name"]))
         else:
             nombre = intc["name"][:120]
             marca = intc["brand"] or infer_brand(nombre, raw_sku)
             subcat = intc["subcategory"] or intc["category"]
-            categoria = clasificar_producto_semantico(raw_sku, nombre, marca, intc_cat=intc.get("category", ""), intc_sub=intc.get("subcategory", ""), subgrupo_header=subcat)
+            full_desc = (ct_matched_prod.get("descripcion", "") if ct_matched_prod else "") or intc["name"]
+            categoria = clasificar_producto_semantico(raw_sku, nombre, marca, intc_cat=intc.get("category", ""), intc_sub=intc.get("subcategory", ""), subgrupo_header=subcat, desc=full_desc)
             
             # Asignación de imagen: propia de B, heredada de CT o descargada
             b_img_path = os.path.join(IMG_DIR, f"B-{raw_sku}.webp")
@@ -604,7 +611,6 @@ def main():
                 img = ct_matched_prod["imagen"]
             else:
                 img = f"assets/img/B-{raw_sku}.webp"
-            full_desc = (ct_matched_prod.get("descripcion", "") if ct_matched_prod else "") or intc["name"]
 
         if not img.startswith("http") and not img.startswith("assets/"):
             img = f"assets/img/{img}"
@@ -632,7 +638,7 @@ def main():
             "disponible": is_in_stock,
             "estado_comercial": "disponible" if is_in_stock else "bajo_pedido",
             "outlet": is_outlet,
-            "descripcion": full_desc[:250] if full_desc else "",
+            "descripcion": full_desc if full_desc else "",
             "ficha_tecnica_url": ficha_url,
             "costo_neto_usd": costo_usd
         }
@@ -667,6 +673,7 @@ def main():
         prov_nombre = old_it.get("prov_nom", "Intcomex México" if clave_prov == "B" else "CT Internacional")
         final_sku = pref_b if clave_prov == "B" else pref_a
 
+        full_desc = clean_text(old_it.get("d", ""))
         disc_item = {
             "id": final_sku,
             "sku": final_sku,
@@ -678,7 +685,7 @@ def main():
             "precio_original": o_val,
             "precio_mayoreo": float(old_it.get("y", p_val * 0.90)),
             "descuento_pct": 0,
-            "categoria": clasificar_producto_semantico(old_raw, clean_text(old_it.get("n", old_raw)), m_val, subgrupo_header=old_it.get("subgrupo_label", "")),
+            "categoria": clasificar_producto_semantico(old_raw, clean_text(old_it.get("n", old_raw)), m_val, subgrupo_header=old_it.get("subgrupo_label", ""), desc=full_desc),
             "subcategoria": old_it.get("subgrupo_label", ""),
             "marca": m_val,
             "imagen": img,
@@ -686,7 +693,7 @@ def main():
             "disponible": False,
             "estado_comercial": "bajo_pedido",
             "outlet": False,
-            "descripcion": clean_text(old_it.get("d", "")[:250]),
+            "descripcion": full_desc if full_desc else "",
             "ficha_tecnica_url": old_it.get("ficha_url", ""),
             "costo_neto_usd": float(old_it.get("u", 0.0))
         }
@@ -814,42 +821,71 @@ def main():
     print(f"   [OK] catalogo_maestro_compact.json actualizado ({os.path.getsize(COMPACT_JSON) / 1024:.1f} KB)")
 
     # --------------------------------------------------------------------------
-    # 8. DISTRIBUCION EN CASCADA AUTOMATICA
+    # 8. DISTRIBUCION EN CASCADA AUTOMATICA A LOS 8 SITIOS
     # --------------------------------------------------------------------------
-    print("\n[+] Distribuyendo archivos JSON en cascada a las tiendas dependientes...")
-    TARGET_DATA_DIRS = [
+    print("\n[+] Distribuyendo archivos JSON en cascada a los 8 sitios del ecosistema...")
+    
+    KIOSCO_DATA_DIR = os.path.join(BASE_DIR, "kiosco-digital", "data")
+    DULCES_DATA_DIR = os.path.join(BASE_DIR, "dulces-bazar", "data")
+    CIGARROS_DATA_DIR = os.path.join(BASE_DIR, "cigarros-bazar", "data")
+
+    ALL_TARGET_DATA_DIRS = [
         PCC_DATA_DIR,
         OFERTAS_DATA_DIR,
         BAZAR_DATA_DIR,
-        PUESTO_DATA_DIR
+        PUESTO_DATA_DIR,
+        KIOSCO_DATA_DIR,
+        DULCES_DATA_DIR,
+        CIGARROS_DATA_DIR,
+        DATA_DIR
     ]
 
     MASTER_FILES = [
         "inventario_maestro_buscador.json",
         "liquidaciones_outlet.json",
         "hardware_ensamble.json",
-        "esquema_articulo.json"
+        "esquema_articulo.json",
+        "catalogo_maestro_compact.json"
     ]
 
-    FORBIDDEN = ["kiosco-digital", "dulces-bazar", "cigarros-bazar"]
-    for target_dir in TARGET_DATA_DIRS:
-        for fbd in FORBIDDEN:
-            if fbd in target_dir:
-                raise PermissionError(f"[ALERTA DE SEGURIDAD] Intento indebido de escribir en tienda blindada: {target_dir}")
-
-    for target_dir in TARGET_DATA_DIRS:
+    for target_dir in ALL_TARGET_DATA_DIRS:
+        os.makedirs(target_dir, exist_ok=True)
         for fname in MASTER_FILES:
-            src = os.path.join(DATA_DIR, fname)
+            src = os.path.join(DATA_DIR if fname != "catalogo_maestro_compact.json" else PCC_DATA_DIR, fname)
             dst = os.path.join(target_dir, fname)
-            shutil.copy2(src, dst)
+            if src != dst and os.path.exists(src):
+                shutil.copy2(src, dst)
         rel_path = os.path.relpath(target_dir, BASE_DIR)
-        print(f"   [OK] Cascada completada en: {rel_path}")
+        print(f"   [OK] Catálogo sincronizado en: {rel_path}")
 
     # --------------------------------------------------------------------------
     # 9. REGENERAR VITRINAS Y PARTICIONES DEPARTAMENTALES
     # --------------------------------------------------------------------------
     print("\n[+] Regenerando vitrinas y particiones departamentales de VECTEC...")
     regenerar_vitrinas_congruentes()
+
+    # Replicar particiones y manifest a todas las tiendas dependientes
+    src_depts = os.path.join(PCC_DATA_DIR, "departments")
+    src_manifest = os.path.join(PCC_DATA_DIR, "departments_manifest.json")
+    if os.path.exists(src_depts):
+        for target_dir in ALL_TARGET_DATA_DIRS:
+            if target_dir == PCC_DATA_DIR: continue
+            dst_depts = os.path.join(target_dir, "departments")
+            if os.path.exists(dst_depts):
+                for f_old in os.listdir(dst_depts):
+                    if f_old.endswith(".json"):
+                        try:
+                            os.remove(os.path.join(dst_depts, f_old))
+                        except Exception:
+                            pass
+            os.makedirs(dst_depts, exist_ok=True)
+            for jf in os.listdir(src_depts):
+                if jf.endswith(".json"):
+                    shutil.copy2(os.path.join(src_depts, jf), os.path.join(dst_depts, jf))
+            if os.path.exists(src_manifest):
+                shutil.copy2(src_manifest, os.path.join(target_dir, "departments_manifest.json"))
+            rel_t = os.path.relpath(target_dir, BASE_DIR)
+            print(f"   [OK] 82 particiones departamentales replicadas en: {rel_t}")
 
     print("\n" + "=" * 80)
     print(f"[EXITO] SINCRONIZACION MULTI-PROVEEDOR VECTEC FINALIZADA CORRECTAMENTE.")

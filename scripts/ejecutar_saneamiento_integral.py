@@ -39,8 +39,14 @@ TIPO_CAMBIO = 19.50
 FACTOR_LISTA = 2.20
 MARGEN_OFERTA = 1.65
 
-PRICE_FILE_NAME = "1310 LISTA DE PRECIOS DE CT TOL 090726.xlsx"
-CONFIG_FILE_NAME = "1310 CONFIGURACIONES TOL 090726.xlsx"
+def _find_latest_ct_file(pattern):
+    candidates = [f for f in os.listdir(PCC_DATA_DIR) if pattern in f and f.endswith(".xlsx") and not f.startswith("~$")]
+    if candidates:
+        return sorted(candidates, key=lambda x: (os.path.getmtime(os.path.join(PCC_DATA_DIR, x)), x), reverse=True)[0]
+    return None
+
+PRICE_FILE_NAME = _find_latest_ct_file("LISTA DE PRECIOS DE CT") or "1312 LISTA DE PRECIOS DE CT TOL 092126.xlsx"
+CONFIG_FILE_NAME = _find_latest_ct_file("CONFIGURACIONES") or "1312 CONFIGURACIONES TOL 092126.xlsx"
 
 PRICE_XLSX = os.path.join(PCC_DATA_DIR, PRICE_FILE_NAME)
 CONFIG_XLSX = os.path.join(PCC_DATA_DIR, CONFIG_FILE_NAME)

@@ -813,6 +813,7 @@ if ('serviceWorker' in navigator) {
         { sku: "A-VENDCO470", boutiqueId: "ofertas", nombre: "Sistema de Enfriamiento Líquido 240mm ARGB Dual Fan", marca: "Enfriamiento", precio: 1740.96, original: 2321.28, desc: "Disipación térmica líquida de circuito cerrado con iluminación personalizable.", img: "https://iaworldcenter-creator.github.io/vectec/assets/img/VENDCO470.webp", tokens: ["enfriamiento", "liquido", "deepcool", "ld240", "v2,"] },
         { sku: "A-TECCOU020", boutiqueId: "ofertas", nombre: "Teclado Gamer Mecánico RGB Switch Táctil Anti-Ghosting", marca: "Teclado", precio: 1809.34, original: 2412.45, desc: "Teclado de alto impacto con chasis reforzado y teclas multimedia.", img: "https://iaworldcenter-creator.github.io/vectec/assets/img/TECCOU020.webp", tokens: ["teclado", "cougar", "puri", "mini", "mecanico"] }
     ];
+    window.masterItems = masterItems;
 
     
 function getSavedProfile() {
@@ -974,7 +975,7 @@ function saveUserProfile() {
                                 const discountPct = (p.original && b.id !== "cigarros") ? Math.round((1 - (p.precio / p.original)) * 100) : 0;
                                 return `
                                     <div class="w-[calc(50%-6px)] min-w-[155px] max-w-[210px] lg:w-auto lg:max-w-none shrink-0 snap-start bg-slate-950/90 hover:bg-slate-950 rounded-2xl p-3 flex flex-col justify-between transition group shadow-xl hover:shadow-[0_8px_30px_rgba(6,182,212,0.2)]">
-                                        <div>
+                                        <div onclick="openProductDetailModal('${p.sku}')" class="cursor-pointer">
                                             <div class="w-full h-32 sm:h-40 overflow-hidden rounded-xl bg-slate-900 flex items-center justify-center p-2 relative mb-2 shadow-inner">
                                                 <img src="${p.img}" alt="${p.nombre}" class="w-full h-full object-contain group-hover:scale-105 transition duration-300" onerror="this.onerror=null; this.src='https://iaworldcenter-creator.github.io/vectec/assets/img/mascota_tigre.webp';" />
                                                 ${discountPct > 0 && b.id !== "cigarros" ? `<span class="absolute top-1 left-1 bg-red-600 text-white text-[8px] font-mono font-black px-1.5 py-0.2 rounded shadow">-${discountPct}%</span>` : `<span class="absolute top-1 left-1 bg-amber-500/20 text-amber-300 text-[8px] font-mono font-black px-1.5 py-0.2 rounded">Directo</span>`}

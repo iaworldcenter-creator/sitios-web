@@ -63,7 +63,7 @@ def regenerar_vitrinas():
         old_cat = p.get("c", "accesorios_perifericos")
 
         # Clasificacion semantica estricta basada en contenido real
-        new_cat = clasificar_producto_semantico(sku, name, brand, subgrupo_header=subg)
+        new_cat = clasificar_producto_semantico(sku, name, brand, subgrupo_header=subg, desc=desc)
         if new_cat != old_cat:
             reclassified_count += 1
             p["c"] = new_cat
@@ -179,6 +179,16 @@ def regenerar_vitrinas():
     total_written_files = 0
     total_written_products = 0
 
+    # Limpiar particiones previas para evitar archivos residuales huérfanos
+    if os.path.exists(DEPTS_OUTPUT_DIR):
+        for f_old in os.listdir(DEPTS_OUTPUT_DIR):
+            if f_old.endswith(".json"):
+                try:
+                    os.remove(os.path.join(DEPTS_OUTPUT_DIR, f_old))
+                except Exception:
+                    pass
+    os.makedirs(DEPTS_OUTPUT_DIR, exist_ok=True)
+
     for d in DEPARTAMENTOS_OFICIALES:
         dept_id = d["id"]
         items = dept_products.get(dept_id, [])
@@ -244,6 +254,23 @@ def regenerar_vitrinas():
 
     print(f"   [OK] {total_written_files} archivos departamentales particionados escritos en data/departments/")
     print(f"   [OK] departments_manifest.json actualizado ({os.path.getsize(MANIFEST_PATH)/1024:.1f} KB)")
+
+    # Replicar a DATA_DIR raiz para disponibilidad universal
+    root_depts_dir = os.path.join(DATA_DIR, "departments")
+    if os.path.exists(root_depts_dir):
+        for f_old in os.listdir(root_depts_dir):
+            if f_old.endswith(".json"):
+                try:
+                    os.remove(os.path.join(root_depts_dir, f_old))
+                except Exception:
+                    pass
+    os.makedirs(root_depts_dir, exist_ok=True)
+    root_manifest = os.path.join(DATA_DIR, "departments_manifest.json")
+    shutil.copy2(MANIFEST_PATH, root_manifest)
+    for fname in os.listdir(DEPTS_OUTPUT_DIR):
+        if fname.endswith(".json"):
+            shutil.copy2(os.path.join(DEPTS_OUTPUT_DIR, fname), os.path.join(root_depts_dir, fname))
+    print(f"   [OK] Replicados {total_written_files} archivos departamentales y manifest a {root_depts_dir}")
 
     # 7. Actualizar catalogo compacto con las categorias corregidas
     with open(COMPACT_JSON, "w", encoding="utf-8") as f:

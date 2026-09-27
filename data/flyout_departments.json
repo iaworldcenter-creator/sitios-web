@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-09-07T14:50:00Z",
-  "totalProducts": 17573,
+  "totalProducts": 17756,
   "departmentsCount": 67,
   "departments": {
     "procesadores": {
@@ -8,7 +8,7 @@
       "name": "1. Procesadores (CPUs)",
       "icon": "fa-microchip",
       "order": 1,
-      "count": 67,
+      "count": 70,
       "files": [
         "data/departments/procesadores.json"
       ]
@@ -38,7 +38,7 @@
       "name": "4. Gabinetes & Chasis Gamer",
       "icon": "fa-server",
       "order": 4,
-      "count": 260,
+      "count": 261,
       "files": [
         "data/departments/gabinetes.json"
       ]
@@ -48,7 +48,7 @@
       "name": "5. Tarjetas de Video (GPUs)",
       "icon": "fa-vr-cardboard",
       "order": 5,
-      "count": 31,
+      "count": 32,
       "files": [
         "data/departments/tarjetas_video.json"
       ]
@@ -58,7 +58,7 @@
       "name": "6. Sistemas de Enfriamiento Líquido & Aire",
       "icon": "fa-fan",
       "order": 6,
-      "count": 299,
+      "count": 303,
       "files": [
         "data/departments/enfriamiento.json"
       ]
@@ -88,7 +88,7 @@
       "name": "9. Discos Duros Internos HDD",
       "icon": "fa-hard-drive",
       "order": 9,
-      "count": 90,
+      "count": 91,
       "files": [
         "data/departments/discos_duros_hdd_internos.json"
       ]
@@ -98,7 +98,7 @@
       "name": "10. Monitores & Pantallas PC",
       "icon": "fa-desktop",
       "order": 10,
-      "count": 562,
+      "count": 564,
       "files": [
         "data/departments/monitores_pantallas_part_1.json",
         "data/departments/monitores_pantallas_part_2.json"
@@ -109,7 +109,7 @@
       "name": "11. Teclados Mecánicos & Oficina",
       "icon": "fa-keyboard",
       "order": 11,
-      "count": 214,
+      "count": 222,
       "files": [
         "data/departments/teclados.json"
       ]
@@ -119,7 +119,7 @@
       "name": "12. Ratones & Mouse Gamer",
       "icon": "fa-mouse",
       "order": 12,
-      "count": 395,
+      "count": 401,
       "files": [
         "data/departments/ratones_mouse.json"
       ]
@@ -129,7 +129,7 @@
       "name": "13. Kits de Teclado y Ratón",
       "icon": "fa-keyboard",
       "order": 13,
-      "count": 136,
+      "count": 138,
       "files": [
         "data/departments/combos_teclado_mouse.json"
       ]
@@ -139,7 +139,7 @@
       "name": "14. Laptops & Computadoras Portátiles",
       "icon": "fa-laptop",
       "order": 14,
-      "count": 165,
+      "count": 166,
       "files": [
         "data/departments/laptops_portatiles.json"
       ]
@@ -169,7 +169,7 @@
       "name": "17. Computadoras All-in-One (AIO)",
       "icon": "fa-tv",
       "order": 17,
-      "count": 37,
+      "count": 38,
       "files": [
         "data/departments/computadoras_all_in_one.json"
       ]
@@ -179,7 +179,7 @@
       "name": "18. Servidores Torre & Rack Enterprise",
       "icon": "fa-server",
       "order": 18,
-      "count": 80,
+      "count": 81,
       "files": [
         "data/departments/servidores_enterprise.json"
       ]
@@ -209,7 +209,7 @@
       "name": "21. Cargadores, Baterías & Power Banks",
       "icon": "fa-plug-circle-bolt",
       "order": 21,
-      "count": 246,
+      "count": 247,
       "files": [
         "data/departments/cargadores_baterias_powerbanks.json"
       ]
@@ -269,7 +269,7 @@
       "name": "27. Diademas & Headsets Gamer",
       "icon": "fa-headphones",
       "order": 27,
-      "count": 383,
+      "count": 393,
       "files": [
         "data/departments/diademas_headsets.json"
       ]
@@ -279,7 +279,7 @@
       "name": "28. Bocinas, Barras de Sonido & Bafles",
       "icon": "fa-volume-high",
       "order": 28,
-      "count": 274,
+      "count": 294,
       "files": [
         "data/departments/bocinas_sonido.json"
       ]
@@ -309,7 +309,7 @@
       "name": "31. Proyectores de Video & Pantallas Murales",
       "icon": "fa-video",
       "order": 31,
-      "count": 129,
+      "count": 130,
       "files": [
         "data/departments/proyectores_presentacion.json"
       ]
@@ -319,7 +319,7 @@
       "name": "32. Cámaras de Seguridad (IP, Bala, Domo)",
       "icon": "fa-video",
       "order": 32,
-      "count": 616,
+      "count": 626,
       "files": [
         "data/departments/camaras_seguridad_cctv_part_1.json",
         "data/departments/camaras_seguridad_cctv_part_2.json"
@@ -330,7 +330,7 @@
       "name": "33. Grabadores de Video DVR & NVR",
       "icon": "fa-compact-disc",
       "order": 33,
-      "count": 145,
+      "count": 151,
       "files": [
         "data/departments/grabadores_dvr_nvr.json"
       ]
@@ -370,7 +370,7 @@
       "name": "37. Switches Ethernet & PoE+",
       "icon": "fa-network-wired",
       "order": 37,
-      "count": 448,
+      "count": 449,
       "files": [
         "data/departments/switches_red.json"
       ]
@@ -390,7 +390,7 @@
       "name": "39. Antenas de Largo Alcance & Radioenlaces",
       "icon": "fa-satellite-dish",
       "order": 39,
-      "count": 58,
+      "count": 59,
       "files": [
         "data/departments/antenas_radioenlaces.json"
       ]
@@ -550,7 +550,7 @@
       "name": "55. Teléfonos Celulares & Smartphones",
       "icon": "fa-mobile-screen-button",
       "order": 55,
-      "count": 38,
+      "count": 39,
       "files": [
         "data/departments/smartphones_celulares.json"
       ]
@@ -560,7 +560,7 @@
       "name": "56. Tablets & iPads",
       "icon": "fa-tablet-screen-button",
       "order": 56,
-      "count": 97,
+      "count": 99,
       "files": [
         "data/departments/tablets_ipads.json"
       ]
@@ -580,7 +580,7 @@
       "name": "58. Aire Comprimido, Espumas & Limpieza",
       "icon": "fa-spray-can-sparkles",
       "order": 58,
-      "count": 67,
+      "count": 68,
       "files": [
         "data/departments/limpieza_mantenimiento.json"
       ]
@@ -590,7 +590,7 @@
       "name": "59. Cables de Video, USB & Adaptadores",
       "icon": "fa-plug",
       "order": 59,
-      "count": 660,
+      "count": 670,
       "files": [
         "data/departments/cables_adaptadores_part_1.json",
         "data/departments/cables_adaptadores_part_2.json"
@@ -601,7 +601,7 @@
       "name": "60. Mochilas, Fundas & Maletines para Laptop",
       "icon": "fa-briefcase",
       "order": 60,
-      "count": 247,
+      "count": 261,
       "files": [
         "data/departments/mochilas_fundas_maletines.json"
       ]
@@ -641,7 +641,7 @@
       "name": "64. Candados de Seguridad Kensington",
       "icon": "fa-lock",
       "order": 64,
-      "count": 67,
+      "count": 69,
       "files": [
         "data/departments/candados_seguridad_laptop.json"
       ]
@@ -661,7 +661,7 @@
       "name": "66. Sillas Gamer, Consolas & Videojuegos",
       "icon": "fa-gamepad",
       "order": 66,
-      "count": 101,
+      "count": 102,
       "files": [
         "data/departments/gaming_consolas_sillas.json"
       ]
@@ -671,7 +671,7 @@
       "name": "67. Accesorios de Cómputo & Misceláneos",
       "icon": "fa-boxes-stacked",
       "order": 67,
-      "count": 7056,
+      "count": 7127,
       "files": [
         "data/departments/accesorios_perifericos_part_1.json",
         "data/departments/accesorios_perifericos_part_2.json",
