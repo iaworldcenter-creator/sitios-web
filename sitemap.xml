@@ -2,101 +2,61 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://iaworldcenter-creator.github.io/sitios-web/</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/checkout.html</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/sitios-web/app.html</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://iaworldcenter-creator.github.io/vectec/</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://iaworldcenter-creator.github.io/pc-custom-lab/</loc>
+    <loc>https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones-/</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://iaworldcenter-creator.github.io/bazar-viamx-NFL.GDL/</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://iaworldcenter-creator.github.io/cigarros-bazar/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://iaworldcenter-creator.github.io/dulces-bazar/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://iaworldcenter-creator.github.io/kiosco-digital/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.85</priority>
   </url>
   <url>
     <loc>https://iaworldcenter-creator.github.io/mi-puesto-bazar/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://iaworldcenter-creator.github.io/ofertas-y-liquidaciones-/</loc>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://iaworldcenter-creator.github.io/pc-custom-lab/procesadores/</loc>
-    <lastmod>2026-09-03</lastmod>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://iaworldcenter-creator.github.io/pc-custom-lab/tarjetas-madre/</loc>
-    <lastmod>2026-09-03</lastmod>
+    <loc>https://iaworldcenter-creator.github.io/kiosco-digital/</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://iaworldcenter-creator.github.io/pc-custom-lab/tarjetas-de-video/</loc>
-    <lastmod>2026-09-03</lastmod>
+    <loc>https://iaworldcenter-creator.github.io/dulces-bazar/</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://iaworldcenter-creator.github.io/pc-custom-lab/memorias-ram/</loc>
-    <lastmod>2026-09-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://iaworldcenter-creator.github.io/pc-custom-lab/almacenamiento-ssd/</loc>
-    <lastmod>2026-09-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://iaworldcenter-creator.github.io/pc-custom-lab/gabinetes/</loc>
-    <lastmod>2026-09-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://iaworldcenter-creator.github.io/pc-custom-lab/monitores/</loc>
-    <lastmod>2026-09-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://iaworldcenter-creator.github.io/pc-custom-lab/laptops/</loc>
-    <lastmod>2026-09-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://iaworldcenter-creator.github.io/pc-custom-lab/punto-de-venta/</loc>
-    <lastmod>2026-09-03</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://iaworldcenter-creator.github.io/pc-custom-lab/impresoras/</loc>
-    <lastmod>2026-09-03</lastmod>
+    <loc>https://iaworldcenter-creator.github.io/cigarros-bazar/</loc>
+    <lastmod>2026-09-28</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.85</priority>
   </url>

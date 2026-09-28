@@ -1,4 +1,4 @@
-﻿name: Deploy Static Portal to Pages
+name: Deploy Static Portal to Pages
 
 on:
   push:
