@@ -130,36 +130,41 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # 15. MINI PCS & NUCS
     # -------------------------------------------------------------
     if (has("MINI PC", "MINIPC", "CHOMP", "TINY", "ELITEDESK MINI", "PRODESK MINI", "MICRO DESKTOP", "TITAN MINI") or (has("NUC") and has("INTEL", "ASUS", "CORE", "BAREBONE", "MINI")) or sku_starts("RNUC")) \
-       and lacks("CANDADO", "SOPORTE", "MONITOR", "DISCO DURO") and not sku_starts("ACC", "CAB", "MEM", "SSD", "DDU"):
+       and lacks("CANDADO", "SOPORTE", "MONITOR") and not sku_starts("ACC", "CAB", "MEM", "SSD", "DDU"):
         return "mini_pcs_nuc"
 
     # -------------------------------------------------------------
     # 16. COMPUTADORAS ENSAMBLADAS / GAMING PCs / WORKSTATIONS
     # -------------------------------------------------------------
     is_pc_name = (
-        any(k in name_u for k in ["THINKSTATION", "THINKCENTRE", "WORKSTATION", "PC GAMER", "COMPUTADORA DE ESCRITORIO", "EQUIPO DE ESCRITORIO", "COMPUTADORA ENSAMBLADA", "PC ENSAMBLADA", "DESKTOP VORAGO", "OPTIPLEX TOWER", "OPTIPLEX SFF", "PRODESK", "ELITEDESK"]) or
+        any(k in name_u for k in ["THINKSTATION", "THINKCENTRE", "WORKSTATION", "PC GAMER", "COMPUTADORA DE ESCRITORIO", "EQUIPO DE ESCRITORIO", "COMPUTADORA ENSAMBLADA", "PC ENSAMBLADA", "DESKTOP VORAGO", "OPTIPLEX TOWER", "OPTIPLEX SFF", "PRODESK", "ELITEDESK", "PCHYCERBERUS"]) or
         sku_starts("CFG-", "WKS", "REL") or
-        (sku_starts("CPUDDL", "CPULEV", "CPUGET", "CPUQIA", "CPUYEY", "CPUVGO", "CPULEN", "PC") and has("PC", "DESKTOP", "ESCRITORIO", "TOWER", "TORRE", "THINKSTATION", "THINKCENTRE", "TINY", "SFF"))
+        (sku_starts("CPUDDL", "CPULEV", "CPUGET", "CPUQIA", "CPUYEY", "CPUVGO", "CPULEN", "CPUHYU", "PC") and has("PC", "DESKTOP", "ESCRITORIO", "TOWER", "TORRE", "THINKSTATION", "THINKCENTRE", "TINY", "SFF", "GAMING", "CERBERUS"))
     )
     if is_pc_name and lacks("ALL IN ONE", "ALL-IN-ONE", "TODO EN UNO", "PORTATIL", "PORTÁTIL", "LAPTOP", "NOTEBOOK", "MINI PC", "NUC", "PROCESADOR RYZEN", "PROCESADOR INTEL", "PROCESADOR AMD", "4 CORE 4GHZ", "6 CORE 4.2GHZ", "RETAIL PLATAFORMA") \
        and not sku_starts("CPUINT", "CPUAMD", "MBD", "GAB", "FUE", "MEM", "SSD", "DDU", "ACC", "CAB", "TVI", "SOF", "LIC"):
         return "computadoras_ensambladas"
+
+    # -------------------------------------------------------------
     # 1. PROCESADORES (CPUs) - Exclusivamente microprocesadores reales de escritorio y servidor
     # -------------------------------------------------------------
-    if sku_starts("CPUINT", "CPUAMD") and not sku_starts("CPUDDL", "CPULEV", "CPUMAC", "CPUASS", "CPUVGO", "CPUGET", "CPUQIA", "CPUYEY", "CPULEN"):
+    if sku_starts("CPUINT", "CPUAMD") and not sku_starts("CPUDDL", "CPULEV", "CPUMAC", "CPUASS", "CPUVGO", "CPUGET", "CPUQIA", "CPUYEY", "CPULEN", "CPUHYU", "CPUNEX", "CPUMTD"):
         return "procesadores"
 
-    if (n.startswith("PROCESADOR ") or has("PROCESADOR INTEL", "PROCESADOR AMD", "PROCESADOR RYZEN", "CORE I3", "CORE I5", "CORE I7", "CORE I9", "CORE ULTRA", "RYZEN 3", "RYZEN 5", "RYZEN 7", "RYZEN 9", "THREADRIPPER", "CELERON", "PENTIUM", "ATHLON", "XEON")) \
-       and lacks("TARJETA MADRE", "MOTHERBOARD", "PLACA BASE", "PLACA MADRE", "GABINETE", "LAPTOP", "NOTEBOOK", "COMPUTADORA", "PORTATIL", "PORTÁTIL", "PC ", "ALL-IN-ONE", "ALL IN ONE", "TODO EN UNO", "AIO", "MINI PC", "NUC", "SERVIDOR", "SERVER", "TABLET", "IPAD", "WORKSTATION", "PASTA TERMICA", "PASTA TÉRMICA", "THINKSTATION", "THINKCENTRE", "TOWER", "ESCRITORIO") \
-       and not sku_starts("CFG-", "COM", "MBD", "IPD", "TAB", "WKS", "LAP", "POR", "CEL", "SMA", "GAB", "FUE", "TVI", "ACC", "CAB", "CAR", "CPUDDL", "CPULEV", "CPUMAC", "CPUASS", "CPUVGO", "CPUGET", "CPUQIA", "CPUYEY", "CPULEN", "SER", "REL", "PC", "DES", "EQU", "SYS"):
+    if (n.startswith("PROCESADOR ") or has("PROCESADOR INTEL", "PROCESADOR AMD", "PROCESADOR RYZEN", "CORE ULTRA")) \
+       and lacks("TARJETA MADRE", "MOTHERBOARD", "PLACA BASE", "PLACA MADRE", "GABINETE", "LAPTOP", "NOTEBOOK", "COMPUTADORA", "PORTATIL", "PORTÁTIL", "PC ", "ALL-IN-ONE", "ALL IN ONE", "TODO EN UNO", "AIO", "MINI PC", "NUC", "SERVIDOR", "SERVER", "TABLET", "IPAD", "WORKSTATION", "PASTA TERMICA", "PASTA TÉRMICA", "THINKSTATION", "THINKCENTRE", "TOWER", "ESCRITORIO", "ENFRIAMIENTO", "LIQUIDO", "LÍQUIDO", "VENTILADOR", "COOLER", "DISIPADOR", "UNIDAD OPTICA", "ESCANER", "ESCÁNER", "KIOSCO", "QUIOSCO", "PUNTO DE VENTA", "POS", "TERMINAL", "MOUSE", "RATON", "RATÓN") \
+       and not sku_starts("CFG-", "COM", "MBD", "IPD", "TAB", "WKS", "LAP", "POR", "CEL", "SMA", "GAB", "FUE", "TVI", "ACC", "CAB", "CAR", "CPUDDL", "CPULEV", "CPUMAC", "CPUASS", "CPUVGO", "CPUGET", "CPUQIA", "CPUYEY", "CPULEN", "CPUHYU", "CPUNEX", "CPUMTD", "SER", "REL", "PC", "DES", "EQU", "SYS", "VEN", "ENF", "SCA", "KIO", "POS", "LCT", "TER", "CDR", "MOU", "PAN"):
         return "procesadores"
 
     # -------------------------------------------------------------
-    # 2. TARJETAS MADRE (Motherboards) - Evaluadas sin absorber procesadores
+    # 2. TARJETAS MADRE (Motherboards) - Evaluadas sin absorber procesadores ni gabinetes
     # -------------------------------------------------------------
-    if (sku_starts("MBD", "MOT") or n.startswith("MB ") or has("TARJETA MADRE", "MOTHERBOARD", "PLACA MADRE", "PLACA BASE")) \
-       and lacks("COMPUTADORA ENSAMBLADA", "ALL-IN-ONE", "ALL IN ONE", "TODO EN UNO", "LAPTOP", "NOTEBOOK", "PORTATIL", "PORTÁTIL", "MINI PC", "MINIPC", "BAREBONE", "NUC ", "NUC:", "BOXNUC", "SERVIDOR", "SERVER", "WALLABY", "MONTAJE") \
-       and not sku_starts("CPUINT", "CPUAMD", "COMMAC", "POR", "LAP", "TAB", "IPD", "AIO", "WKS", "SRV", "SVR", "RNUC", "CPUDDL", "CPULEV", "CPUMAC", "CPUASS", "CPUVGO", "CPUGET", "CPUQIA", "CPUYEY", "CPULEN"):
+    is_mb_explicit = sku_starts("MBD", "MOT") or n.startswith("MB ") or name_u.startswith(("TARJETA MADRE", "MOTHERBOARD", "PLACA MADRE", "PLACA BASE"))
+    is_mb_chipset = (has("TARJETA MADRE", "MOTHERBOARD", "PLACA MADRE", "PLACA BASE") and any(ch in n for ch in ["B650", "B760", "Z790", "B550", "A520", "H610", "H510", "Z890", "X870", "X670", "A320", "B450", "H410"]))
+    if (is_mb_explicit or is_mb_chipset) \
+       and not name_u.startswith(("GABINETE", "CHASIS", "CASE ", "FUENTE", "KIT ", "SOPORTE")) \
+       and not sku_starts("GAB", "FUE", "CPUINT", "CPUAMD", "COMMAC", "POR", "LAP", "TAB", "IPD", "AIO", "WKS", "SRV", "SVR", "RNUC", "CPUDDL", "CPULEV", "CPUMAC", "CPUASS", "CPUVGO", "CPUGET", "CPUQIA", "CPUYEY", "CPULEN", "CPUHYU", "KIT", "ACC", "CAB", "VEN", "ENF", "TVI") \
+       and lacks("COMPUTADORA ENSAMBLADA", "ALL-IN-ONE", "ALL IN ONE", "TODO EN UNO", "LAPTOP", "NOTEBOOK", "PORTATIL", "PORTÁTIL", "MINI PC", "MINIPC", "BAREBONE", "NUC ", "NUC:", "BOXNUC", "SERVIDOR", "SERVER", "WALLABY", "MONTAJE", "SOPORTE PARA TARJETA MADRE", "SOPORTE DE TARJETA MADRE", "SOPORTE DE PLACA"):
         return "tarjetas_madre"
 
     # -------------------------------------------------------------
@@ -175,11 +180,12 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 7. FUENTES DE ENERGIA (PSUs) - Evaluadas antes de enfriamiento para no perder fuentes con ventilador 120mm
     # -------------------------------------------------------------
-    if (sku_starts("FUE") or ((sku_starts("GAB") or has("FUENTE DE PODER", "FUENTE DE ALIMENTACION", "POWER SUPPLY")) and (n.startswith("FUENTE") or has("FUENTE DE PODER", "FUENTE PODER", "FUENTE ASUS", "FUENTE DE ALIMENTACION", "POWER SUPPLY", "FUENTE ATX", "FUENTE SLIM", "FUENTE EVOTEC") or sku_starts("FUE")))) \
-       and not n.startswith(("GABINETE", "CHASIS", "CASE ", "TORRE ", "MEDIA TORRE", "CABLE", "DIVISOR", "ESTACION", "CARRO", "IMPRESORA", "MULTIFUNCIONAL", "PLOTTER", "KIT", "CAMARA", "CÁMARA", "KIOSCO", "VERIFICADOR")) and lacks("GABINETE CON FUENTE", "INCLUYE FUENTE") \
-       and lacks("LAPTOP", "NOTEBOOK", "PORTATIL", "PORTÁTIL", "ALL IN ONE", "NO BREAK", "NO-BREAK", "REGULADOR", "BATERIA", "POWER BANK", "VENTILADOR PARA FUENTES", "CCTV", "DIVISOR DE FUENTE", "REGULADA DE 12", "12 VCC", "12 VCD", "0.5A", "1A", "1.5A", "2A", "DAHUA", "SAXXON", "PROVISION", "IMPRESORA", "PRINTER", "PLOTTER", "MULTIFUNCIONAL", "ETIQUETA", "TRANSFERENCIA TERMICA", "TRANSFERENCIA TÉRMICA", "TURBOHD", "COLORVU", "DVR", "NVR", "KIT DE CAMARAS", "KIT DE CÁMARAS", "HIKVISION", "EPCOM", "CAMARA", "CÁMARA", "KIOSCO", "VERIFICADOR DE PRECIOS", "PUNTO DE VENTA", "ESCANER", "LECTOR") \
+    is_psu = sku_starts("FUE") or ((sku_starts("GAB") or has("FUENTE")) and (name_u.startswith("FUENTE") or has("FUENTE DE PODER", "FUENTE PODER", "FUENTE ASUS", "POWER SUPPLY", "FUENTE ATX", "FUENTE SLIM", "FUENTE EVOTEC", "FUENTE XZEAL")))
+    if is_psu \
+       and not name_u.startswith(("GABINETE", "CHASIS", "CASE ", "TORRE ", "MEDIA TORRE", "CABLE", "DIVISOR", "ESTACION", "CARRO", "IMPRESORA", "MULTIFUNCIONAL", "PLOTTER", "KIT", "CAMARA", "CÁMARA", "KIOSCO", "VERIFICADOR")) \
+       and lacks("GABINETE CON FUENTE", "INCLUYE FUENTE", "NO BREAK", "NO-BREAK", "REGULADOR", "BATERIA", "POWER BANK", "VENTILADOR PARA FUENTES", "CCTV", "DIVISOR DE FUENTE", "REGULADA DE 12", "12 VCC", "12 VCD", "0.5A", "1A", "1.5A", "2A", "DAHUA", "SAXXON", "PROVISION", "IMPRESORA", "PRINTER", "PLOTTER", "MULTIFUNCIONAL", "ETIQUETA", "TRANSFERENCIA TERMICA", "TRANSFERENCIA TÉRMICA", "TURBOHD", "COLORVU", "DVR", "NVR", "KIT DE CAMARAS", "KIT DE CÁMARAS", "HIKVISION", "EPCOM", "CAMARA", "CÁMARA", "KIOSCO", "VERIFICADOR DE PRECIOS", "PUNTO DE VENTA", "ESCANER", "LECTOR", "STORAGE", "POWERVAULT", "FIREWALL") \
        and not bool(re.search(r'\b(UPS|NO[- ]BREAK)\b', n)) \
-       and not sku_starts("CAB", "ACC", "MBD", "CPU", "CAM", "DVR", "NVR", "IMP", "PRN", "PRO", "COM", "WKS", "LAP", "SVR", "SER", "KIT", "CCT", "SEC", "KIO", "POS", "LEC", "SCA", "TRM"):
+       and not sku_starts("CAB", "ACC", "MBD", "CPU", "CAM", "DVR", "NVR", "IMP", "PRN", "PRO", "COM", "WKS", "LAP", "SVR", "SER", "KIT", "CCT", "SEC", "KIO", "POS", "LEC", "SCA", "TRM", "STO", "FIR"):
         return "fuentes_energia"
 
     # -------------------------------------------------------------
@@ -216,7 +222,7 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # 26. MEMORIAS RAM SERVIDOR (ECC)
     # -------------------------------------------------------------
     is_non_ecc = has("NON-ECC", "NON ECC", "NON-ECC CL", "NON ECC CL")
-    if (has("ECC REG", "ECC REGISTERED", "RDIMM", "ECC UNBUFFERED", "TRUDDR4", "TRUDDR5") or (has("RAM SERVIDOR", "RAM SERVER", "SERVER MEMORY", "THINKSYSTEM", "POWEREDGE") and has("DIMM") and not is_non_ecc)) \
+    if (has("ECC REG", "ECC REGISTERED", "RDIMM", "ECC UNBUFFERED", "TRUDDR4", "TRUDDR5", "PARA SERVIDOR", "PARA POWEREDGE") or (has("RAM SERVIDOR", "RAM SERVER", "SERVER MEMORY", "THINKSYSTEM", "POWEREDGE") and has("DIMM") and not is_non_ecc) or (sku_starts("MEMDLL") and has("POWEREDGE"))) \
        and lacks("KIT EN BLANCO", "ESPACIOS DE MEMORIA", "ESPACIO EN BLANCO", "DUMMY", "TAPA"):
         return "memorias_ram_servidor"
 
@@ -225,8 +231,8 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     if (sku_starts("MEM") or has("MEMORIA RAM", "FURY BEAST", "VENGEANCE", "XPG SPECTRIX", "TRIDENT", "FURY RENEGADE", "RIPJAWS")) \
        and (has("DIMM", "UDIMM", "DDR4", "DDR5", "DDR3", "DDR2", "DDR ") or has("FURY BEAST", "VENGEANCE", "XPG SPECTRIX", "TRIDENT")) \
-       and (not has("ECC REG", "ECC REGISTERED", "RDIMM", "TRUDDR") or is_non_ecc) \
-       and lacks("SODIMM", "SO-DIMM", "SO DIMM", "LAPTOP", "PORTATIL", "PORTÁTIL", "MICROSD", "MICRO SD", "SECURE DIGITAL", "MICRO SECURE DIGITAL", "USB", "FLASH DRIVE", "PENDRIVE", "MINI PC", "MOTHERBOARD", "TARJETA MADRE", "MB ", "PROCESADOR", "RYZEN", "INTEL CORE", "CLASS 10", "CLASS 4", "UHS-I", "UHS-II", "A1", "A2", "V30", "V60", "KIT EN BLANCO") \
+       and (not has("ECC REG", "ECC REGISTERED", "RDIMM", "TRUDDR", "PARA SERVIDOR", "POWEREDGE") or is_non_ecc) \
+       and lacks("SODIMM", "SO-DIMM", "SO DIMM", "LAPTOP", "PORTATIL", "PORTÁTIL", "PARA SERVIDOR", "POWEREDGE", "MICROSD", "MICRO SD", "SECURE DIGITAL", "MICRO SECURE DIGITAL", "USB", "FLASH DRIVE", "PENDRIVE", "MINI PC", "MOTHERBOARD", "TARJETA MADRE", "MB ", "PROCESADOR", "RYZEN", "INTEL CORE", "CLASS 10", "CLASS 4", "UHS-I", "UHS-II", "A1", "A2", "V30", "V60", "KIT EN BLANCO") \
        and not sku_starts("CPU", "MBD", "ACC", "CAB", "MSD", "USB"):
         return "memorias_ram_pc"
 
@@ -251,25 +257,26 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 9. DISCOS DUROS INTERNOS HDD
     # -------------------------------------------------------------
-    if (has("HDD 3.5", "HDD 2.5", "BARRACUDA", "IRONWOLF", "WD PURPLE", "WD BLUE", "WD RED", "WD GOLD", "SKYHAWK", "SURVEILLANCE HDD") or (sku_starts("DDU") and has("3.5\"", "2.5\"", "SATA III", "RPM") and lacks("EXTERNO", "CANVIO", "PORTATIL", "PORTÁTIL", "PASSPORT", "ELEMENTS", "SSD"))) \
+    if (has("HDD 3.5", "HDD 2.5", "BARRACUDA", "IRONWOLF", "WD PURPLE", "WD BLUE", "WD RED", "WD GOLD", "SKYHAWK", "SURVEILLANCE HDD", "DISCO DE ESTADO SOLIDO SATA", "SA400S37") or (sku_starts("DDU") and has("3.5\"", "2.5\"", "SATA III", "RPM") and lacks("EXTERNO", "CANVIO", "PORTATIL", "PORTÁTIL", "PASSPORT", "ELEMENTS", "M.2", "NVME"))) \
        and lacks("EXTERNO", "CANVIO", "PORTATIL", "PORTÁTIL", "BACKUP PLUS", "PASSPORT", "LAPTOP", "NOTEBOOK") and not sku_starts("ACC", "CAB"):
         return "discos_duros_hdd_internos"
 
     # -------------------------------------------------------------
     # 4. GABINETES & CHASIS GAMER (Evaluados antes de enfriamiento para no perder gabinetes con ventiladores)
     # -------------------------------------------------------------
-    if (sku_starts("GAB") or has("GABINETE", "CHASIS", "CASE GAMER", "TORRE GAMER", "MID TOWER", "FULL TOWER", "MINI TORRE", "MEDIA TORRE", "PECERA", "GABINETE ATX", "GABINETE MICRO ATX", "GABINETE SLIM")) \
-       and not n.startswith(("FUENTE", "CHAROLA", "BANDEJA", "VENTILADOR", "CAMARA", "ESTACION", "CARRO", "CARRITO", "CANALETA", "TORNILLERIA", "TARJETA", "CABLE", "REGULADOR")) \
-       and lacks("DISCO DURO", "DISCO 2.5", "DISCO 3.5", "GABINETE DE DISCO", "GABINETE PARA DISCO", "GABINETE PARA SSD", "GABINETE PARA HDD", "ENCLOSURE", "CARCASA", "ESTUCHE", "PROTECTOR", "TORNILLO", "TORNILLERIA", "TUERCA", "PATCH", "LAPTOP", "NOTEBOOK", "SERVIDOR", "SERVER", "RACK", "COMPUTADORA ENSAMBLADA", "VENTILADOR DE FUENTE", "REGULADA DE 12", "12 VCC", "12 VCD", "0.5A", "1A", "1.5A", "2A", "SAXXON", "ESTACION DE CARGA", "CARGADOR", "CARRITO DE CARGA", "CARRO DE CARGA", "CHAROLA", "BANDEJA", "SIRENA", "ALARMA", "HUB USB", "CANALETA", "MOTHERBOARD", "TARJETA MADRE", "MB ", "TARJETA DE SONIDO", "TARJETA DE AUDIO", "SOUND CARD", "PCI EXPRESS", "TARJETA PCI", "TARJETA DE RED") \
-       and not sku_starts("ACC", "CAB", "CAR", "CPU", "MBD", "FUE", "VEN", "ROU", "SWT", "MSD", "USB", "DVR", "NVR", "CAM", "TEL", "RCK", "TAR", "IMP", "PRN"):
+    is_gab = (sku_starts("GAB") or name_u.startswith(("GABINETE", "CHASIS", "CASE GAMER", "TORRE GAMER", "MID TOWER", "FULL TOWER", "MINI TORRE", "MEDIA TORRE")) or has("GABINETE ATX", "GABINETE MICRO ATX", "GABINETE SLIM"))
+    if is_gab \
+       and not name_u.startswith(("FUENTE", "CHAROLA", "BANDEJA", "VENTILADOR", "CAMARA", "ESTACION", "CARRO", "CARRITO", "CANALETA", "TORNILLERIA", "TARJETA", "CABLE", "REGULADOR", "AIRE", "CAJON", "CAJÓN", "SILIMPO", "ESPUMA", "SUPRESOR", "NO BREAK", "NO-BREAK", "UPS")) \
+       and lacks("DISCO DURO", "DISCO 2.5", "DISCO 3.5", "GABINETE DE DISCO", "GABINETE PARA DISCO", "GABINETE PARA SSD", "GABINETE PARA HDD", "ENCLOSURE", "CARCASA", "ESTUCHE", "PROTECTOR", "TORNILLO", "TORNILLERIA", "TUERCA", "PATCH", "LAPTOP", "NOTEBOOK", "SERVIDOR", "SERVER", "RACK", "COMPUTADORA ENSAMBLADA", "VENTILADOR DE FUENTE", "REGULADA DE 12", "12 VCC", "12 VCD", "0.5A", "1A", "1.5A", "2A", "SAXXON", "ESTACION DE CARGA", "CARGADOR", "CARRITO DE CARGA", "CARRO DE CARGA", "CHAROLA", "BANDEJA", "SIRENA", "ALARMA", "HUB USB", "CANALETA", "MOTHERBOARD", "TARJETA MADRE", "MB ", "TARJETA DE SONIDO", "TARJETA DE AUDIO", "SOUND CARD", "PCI EXPRESS", "TARJETA PCI", "TARJETA DE RED", "NO BREAK", "NO-BREAK", "UPS", "AIRE ACONDICIONADO", "CAJON DE DINERO", "ESPUMA LIMPIADORA", "SILIMEX") \
+       and not sku_starts("ACC", "CAB", "CAR", "CPU", "MBD", "FUE", "VEN", "ROU", "SWT", "MSD", "USB", "DVR", "NVR", "CAM", "TEL", "RCK", "TAR", "IMP", "PRN", "AIR", "CJN", "SLX", "REG", "NBK", "UPS", "BAT"):
         return "gabinetes"
 
     # -------------------------------------------------------------
     # 6. ENFRIAMIENTO (Líquido & Aire)
     # -------------------------------------------------------------
-    if (sku_starts("VEN", "ENF") or has("ENFRIAMIENTO LIQUIDO", "ENFRIAMIENTO LÍQUIDO", "WATER COOLING", "DISIPADOR", "COOLER CPU", "VENTILADOR PARA PROCESADOR", "VENTILADOR PARA GABINETE", "FAN RGB", "PURE LOOP", "SILENT LOOP", "KRAKEN")) \
-       and not n.startswith(("GABINETE", "CHASIS", "CASE ", "MINI TORRE", "TORRE GAMER", "RACK", "EXTERIOR", "UNIDAD DE ESTADO", "DISCO")) \
-       and not sku_starts("GAB", "RCK", "LIN", "MBD", "CPUINT", "CPUAMD", "FUE", "DDU", "SSD", "HDD") \
+    if (sku_starts("VEN", "ENF") or has("ENFRIAMIENTO LIQUIDO", "ENFRIAMIENTO LÍQUIDO", "WATER COOLING", "DISIPADOR", "COOLER CPU", "VENTILADOR PARA PROCESADOR", "VENTILADOR PARA GABINETE", "FAN RGB", "PURE LOOP", "SILENT LOOP", "KRAKEN", "KIT DE 3 VENTILADORES", "KIT 3 VENTILADORES", "KIT DE VENTILADORES")) \
+       and not n.startswith(("GABINETE", "CHASIS", "CASE ", "MINI TORRE", "TORRE GAMER", "RACK", "EXTERIOR", "UNIDAD DE ESTADO", "DISCO", "PASTA TERMICA", "PASTA TÉRMICA", "GRASA TERMICA")) \
+       and not sku_starts("GAB", "RCK", "LIN", "MBD", "CPUINT", "CPUAMD", "FUE", "DDU", "SSD", "HDD", "SLX") \
        and lacks("UNIDAD DE ESTADO SOLIDO", "UNIDAD DE ESTADO SÓLIDO", "ESTADO SOLIDO", "ESTADO SÓLIDO", "SSD", "M.2", "NVME", "DISCO DURO", "HDD", "LEGEND 900", "LEGEND 800", "LEGEND 700", "GABINETE DE", "GABINETE PARA", "GABINETE ATX", "GABINETE GAMER", "CHASIS GAMER", "PASTA TERMICA", "PASTA TÉRMICA", "GRASA TERMICA", "GRASA TÉRMICA", "LAPTOP", "COMPUTADORA", "PC ", "TODO EN UNO", "ALL-IN-ONE", "GABINETE CON VENTILADORES", "TABLETA", "TABLET", "PROCESADOR INTEL", "PROCESADOR AMD", "RYZEN", "CORE I", "CORE ULTRA"):
         return "enfriamiento"
 
@@ -314,7 +321,7 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 58. LIMPIEZA & MANTENIMIENTO
     # -------------------------------------------------------------
-    if has("AIRE COMPRIMIDO", "REMOVEDOR DE POLVO", "ESPUMA LIMPIADORA", "TOALLITAS ANTIESTATICAS", "TOALLITAS ANTIESTÁTICAS", "ALCOHOL ISOPROPILICO", "ALCOHOL ISOPROPÍLICO", "LIMPIADOR DE PANTALLAS", "KIT DE LIMPIEZA", "PASTA TERMICA", "PASTA TÉRMICA", "GRASA TERMICA", "GRASA TÉRMICA", "CLEANING WIPES", "COMPRESSED AIR", "LIMPIEZA DE CIRCUITOS", "TOALLAS HUMEDAS PARA LIMPIEZA") \
+    if (sku_starts("SLX") or name_u.startswith(("SILIMPO", "ESPUMA LIMPIADORA", "AIRE COMPRIMIDO", "ALCOHOL ISOPROPILICO", "PASTA TERMICA")) or has("AIRE COMPRIMIDO", "REMOVEDOR DE POLVO", "ESPUMA LIMPIADORA", "TOALLITAS ANTIESTATICAS", "TOALLITAS ANTIESTÁTICAS", "ALCOHOL ISOPROPILICO", "ALCOHOL ISOPROPÍLICO", "LIMPIADOR DE PANTALLAS", "KIT DE LIMPIEZA", "PASTA TERMICA", "PASTA TÉRMICA", "GRASA TERMICA", "GRASA TÉRMICA", "CLEANING WIPES", "COMPRESSED AIR", "LIMPIEZA DE CIRCUITOS", "TOALLAS HUMEDAS PARA LIMPIEZA", "SILIMEX", "SILIMPO")) \
        and lacks("LAMPARA", "LÁMPARA", "LAMP", "PROYECTOR", "TINTA", "TONER", "CARTUCHO", "IMPRESORA"):
         return "limpieza_mantenimiento"
 
@@ -329,7 +336,7 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 63. HERRAMIENTAS DE SERVICIO TECNICO
     # -------------------------------------------------------------
-    if has("PONCHADORA", "CRIMPADORA", "PINZA PONCHADORA", "PINZA DE IMPACTO", "PROBADOR DE CABLE", "TESTER DE CABLE", "TESTER DE RED", "DESARMADOR", "DESTORNILLADOR", "JUEGO DE DESTORNILLADORES", "KIT DE HERRAMIENTAS", "CAUTIN", "CAUTÍN", "PELACABLE", "MULTIMETRO", "MULTÍMETRO", "INSERTADORA DE IMPACTO") \
+    if (sku_starts("KITRBT") or has("PONCHADORA", "CRIMPADORA", "PINZA PONCHADORA", "PINZA DE IMPACTO", "PROBADOR DE CABLE", "TESTER DE CABLE", "TESTER DE RED", "DESARMADOR", "DESTORNILLADOR", "JUEGO DE DESTORNILLADORES", "KIT DE HERRAMIENTAS", "CAUTIN", "CAUTÍN", "PELACABLE", "MULTIMETRO", "MULTÍMETRO", "INSERTADORA DE IMPACTO")) \
        and lacks("WINDOWS", "SERVER", "LICENCIA", "ROK", "CAL", "MICROSOFT", "SOFTWARE", "CONECTOR", "JACK RJ45", "PLUG RJ45", "PATCH CORD", "BOBINA"):
         return "herramientas_servicio_tecnico"
 
@@ -365,14 +372,15 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 21. CARGADORES, BATERIAS & POWER BANKS
     # -------------------------------------------------------------
-    if (has("POWER BANK", "POWERBANK", "BATERIA PORTATIL", "BATERÍA PORTÁTIL", "BATERIA EXTERNA", "BATERÍA EXTERNA") or (has("CARGADOR") and has("PARED", "LAPTOP", "TIPO C", "USB-C", "CARRO", "AUTO", "INALAMBRICO", "INALÁMBRICO", "RAPIDO", "RÁPIDO")) or has("ELIMINADOR UNIVERSAL", "ELIMINADOR DE CORRIENTE")) \
-       and lacks("TAPE", "AUTOLOADER", "STORAGE MSL", "LTO-8", "LTO-9", "SAS DRIVE", "FIBRE CHANNEL", "SERVIDOR", "SERVER", "UPS", "NO BREAK", "NO-BREAK", "REGULADOR", "KIOSCO", "MINI KIOSCO", "TERMINAL DE COBRO", "PLUG PARA CARGADOR", "BASE DE CARGA HONEYWELL"):
+    if (sku_starts("BAT") or name_u.startswith(("BATERIA", "BATERÍA", "CARGADOR", "POWER BANK", "ELIMINADOR")) or has("POWER BANK", "POWERBANK", "BATERIA PORTATIL", "BATERÍA PORTÁTIL", "BATERIA EXTERNA", "BATERÍA EXTERNA", "BATERIA PARA LAPTOP", "BATERÍA PARA LAPTOP", "CARGADOR PARA LAPTOP") or (has("CARGADOR") and has("PARED", "LAPTOP", "TIPO C", "USB-C", "CARRO", "AUTO", "INALAMBRICO", "INALÁMBRICO", "RAPIDO", "RÁPIDO")) or has("ELIMINADOR UNIVERSAL", "ELIMINADOR DE CORRIENTE")) \
+       and not sku_starts("CEL", "SMA", "NBK", "UPS") \
+       and lacks("TAPE", "AUTOLOADER", "STORAGE MSL", "LTO-8", "LTO-9", "SAS DRIVE", "FIBRE CHANNEL", "SERVIDOR", "SERVER", "UPS", "NO BREAK", "NO-BREAK", "REGULADOR", "KIOSCO", "MINI KIOSCO", "TERMINAL DE COBRO", "PLUG PARA CARGADOR", "BASE DE CARGA HONEYWELL", "SMARTPHONE"):
         return "cargadores_baterias_powerbanks"
 
     # -------------------------------------------------------------
     # 28. BOCINAS, BARRAS DE SONIDO & BAFLES
     # -------------------------------------------------------------
-    if (has("BOCINA", "BOCINAS", "BARRA DE SONIDO", "SOUNDBAR", "BAFLE", "ALTAVOZ", "ALTAVOCES") or (has("SPEAKER") and lacks("HEADSET", "DIADEMA"))) \
+    if (sku_starts("BOC") or name_u.startswith(("BOCINA", "BARRA DE SONIDO", "BAFLE")) or has("BOCINA", "BOCINAS", "BARRA DE SONIDO", "SOUNDBAR", "BAFLE", "ALTAVOZ", "ALTAVOCES") or (has("SPEAKER") and lacks("HEADSET", "DIADEMA"))) \
        and lacks("MONITOR", "PANTALLA", "NVR", "DVR", "CAMARA", "CÁMARA", "VIDEO PORTERO", "PORTERO", "TELEFONO", "TELÉFONO", "ADAPTADOR STEREO", "CABLE AUDIO", "HEADSET", "DIADEMA", "AUDIFONOS", "AUDÍFONOS", "TROMPETA", "SIRENA"):
         return "bocinas_sonido"
 
@@ -387,22 +395,23 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 59. CABLES & ADAPTADORES
     # -------------------------------------------------------------
-    if (has("CABLE HDMI", "CABLE DISPLAYPORT", "CABLE USB", "CABLE TIPO C", "CABLE LIGHTNING", "CABLE VGA", "CABLE AUDIO", "CABLE PODER", "CABLE ALIMENTACION", "CABLE SATA", "ADAPTADOR HDMI", "ADAPTADOR DISPLAYPORT", "ADAPTADOR USB", "ADAPTADOR TIPO C", "CONVERTIDOR DE VIDEO") or (has("PATCH CORD") and lacks("BOBINA")) or (has("CABLE ") and has("METROS", "MTS", "1.8M", "2M", "3M", "1M", "0.5M"))) \
+    if (sku_starts("CAB") or has("CABLE HDMI", "CABLE DISPLAYPORT", "CABLE USB", "CABLE TIPO C", "CABLE LIGHTNING", "CABLE VGA", "CABLE AUDIO", "CABLE PODER", "CABLE ALIMENTACION", "CABLE SATA", "ADAPTADOR HDMI", "ADAPTADOR DISPLAYPORT", "ADAPTADOR USB", "ADAPTADOR TIPO C", "CONVERTIDOR DE VIDEO") or (has("PATCH CORD") and lacks("BOBINA")) or (has("CABLE ") and has("METROS", "MTS", "1.8M", "2M", "3M", "1M", "0.5M"))) \
        and lacks("MONITOR", "PANTALLA", "SMART MONITOR", "NOTEBOOK", "LAPTOP", "DESKTOP", "TV ", "BOBINA UTP", "BOBINA DE CABLE"):
         return "cables_adaptadores"
 
     # -------------------------------------------------------------
     # 19. NO BREAKS & UPSS
     # -------------------------------------------------------------
-    if (sku_starts("NOB", "UPS") or has("NO-BREAK", "NO BREAK", "SISTEMA UPS", "UPS INTERACTIVO", "UPS ON-LINE", "SMART-UPS", "BACK-UPS")) \
-       and lacks("BATERIA PORTATIL", "POWER BANK", "REGULADOR", "ESTAND", "STAND", "TARJETA"):
+    is_ups = sku_starts("NBK", "NOB", "UPS") or name_u.startswith(("NO BREAK", "NO-BREAK", "UPS ", "SISTEMA UPS")) or has("NO-BREAK", "NO BREAK", "SISTEMA UPS", "UPS INTERACTIVO", "UPS ON-LINE", "SMART-UPS", "BACK-UPS")
+    if is_ups and lacks("BATERIA PORTATIL", "POWER BANK", "ESTAND", "STAND", "TARJETA") \
+       and not sku_starts("ACC", "CAB"):
         return "no_breaks_ups"
 
     # -------------------------------------------------------------
     # 20. REGULADORES DE VOLTAJE
     # -------------------------------------------------------------
-    if (sku_starts("REG") or has("REGULADOR DE VOLTAJE", "REGULADOR AUTOMATICO", "SUPRESOR DE PICOS", "BARRA DE CONTACTOS", "MULTICONTACTO")) \
-       and lacks("NO-BREAK", "NO BREAK", "UPS"):
+    if (sku_starts("REG", "SUP") or name_u.startswith(("REGULADOR", "SUPRESOR")) or has("REGULADOR DE VOLTAJE", "REGULADOR AUTOMATICO", "SUPRESOR DE PICOS", "BARRA DE CONTACTOS", "MULTICONTACTO")) \
+       and lacks("NO-BREAK", "NO BREAK", "UPS") and not sku_starts("NBK", "NOB", "UPS"):
         return "reguladores_voltaje"
 
     # -------------------------------------------------------------
@@ -428,7 +437,7 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 31. PROYECTORES DE VIDEO & PANTALLAS MURALES
     # -------------------------------------------------------------
-    if (sku_starts("PANSCR") or has("PROYECTOR", "VIDEOPROYECTOR", "POWERLITE", "PANTALLA DE PROYECCION", "PANTALLA DE PROYECCIÓN", "PANTALLA DE PARED MANUAL")) \
+    if (sku_starts("PANSCR", "PRO") and has("PROYECTOR", "VIDEOPROYECTOR", "POWERLITE", "PANTALLA DE PROYECCION", "PANTALLA DE PROYECCIÓN", "PANTALLA DE PARED MANUAL")) or name_u.startswith("PROYECTOR") or has("PROYECTOR PORTATIL", "VIDEOPROYECTOR") \
        and lacks("LAMPARA", "LÁMPARA", "LAMP", "SOPORTE", "CAJA P/MESA", "TRIPIE", "TRÍPIE", "TRIPIÉ", "TRIPODE", "TRÍPODE", "KIT DE MONTAJE", "MONTAJE EN TECHO") \
        and not sku_starts("ACC", "CAB"):
         return "proyectores_presentacion"
@@ -499,7 +508,8 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 42. RACKS & GABINETES DE SERVIDOR
     # -------------------------------------------------------------
-    if has("RACK DE PARED", "RACK DE PISO", "GABINETE DE PARED", "ORGANIZADOR VERTICAL", "ORGANIZADOR HORIZONTAL", "BANDEJA PARA RACK", "GABINETE RACK"):
+    if (sku_starts("RCK") or name_u.startswith(("RACK ", "GABINETE DE PARED", "GABINETE RACK")) or has("RACK ABIERTO", "RACK DE PARED", "RACK DE PISO", "GABINETE DE PARED", "ORGANIZADOR VERTICAL", "ORGANIZADOR HORIZONTAL", "BANDEJA PARA RACK", "GABINETE RACK", "RACK 19", "RACK DE 19")) \
+       and not name_u.startswith(("CABLE", "PATCH", "CONECTOR", "HERRAMIENTA")):
         return "racks_gabinetes_servidor"
 
     # -------------------------------------------------------------
@@ -513,24 +523,31 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 43. IMPRESORAS & MULTIFUNCIONALES (Oficina & Hogar)
     # -------------------------------------------------------------
-    if (sku_starts("IMP", "MLT") or has("IMPRESORA", "ECOTANK", "SMART TANK", "LASERJET", "DESKJET") or (has("MULTIFUNCIONAL") and has("IMPRESORA", "MONOCROMATICA", "MONOCROMÁTICA", "LASER", "LÁSER", "INYECCION", "INYECCIÓN", "DUPLEX", "DÚPLEX", "WIFI", "FAX", "COPIADORA", "SCANNER", "ESCÁNER", "ESCANER", "BROTHER", "EPSON", "CANON", "HP ", "XEROX", "RICOH", "KYOCERA", "PANTUM"))) \
-       and lacks("TONER", "TÓNER", "TINTA", "CARTUCHO", "PAPEL", "CABEZAL", "RODILLO", "MANTENIMIENTO", "PLOTTER", "DESIGNJET", "SURECOLOR", "TRIPIE", "TRÍPIE", "TRIPIÉ", "TRIPODE", "TRÍPODE", "HERRAMIENTA", "MOCHILA", "FUNDA", "CINTA", "RIBBON", "BOTELLA RESIDUAL", "DEPOSITO DE DESECHO", "DEPÓSITO", "KIT DE LIMPIEZA", "TARJETAS ADHESIVAS", "MINIPRINTER", "MINI IMPRESORA", "IMPRESORA TERMICA", "IMPRESORA TÉRMICA", "TICKETS", "58MM", "58 MM", "80MM", "80 MM", "PUNTO DE VENTA", "POS", "BATERIA", "BATERÍA") \
-       and not sku_starts("CAR", "TON", "TIN", "ACC", "CAB", "RIB", "BAT"):
+    is_printer = (sku_starts("IMP", "MLT") or name_u.startswith(("IMPRESORA", "MULTIFUNCIONAL", "ECOTANK", "SMART TANK", "LASERJET", "DESKJET")) or (has("IMPRESORA") and has("LASER", "INYECCION", "INYECCIÓN", "MULTIFUNCIONAL", "WIFI", "DUPLEX", "BROTHER", "EPSON", "CANON", "HP ", "XEROX", "RICOH", "KYOCERA", "PANTUM")))
+    if is_printer \
+       and not name_u.startswith(("CARTUCHO", "BOTELLA", "TINTA", "TONER", "TÓNER", "CINTA", "RIBBON", "CABEZAL", "RODILLO", "PAPEL", "DEPOSITO")) \
+       and not sku_starts("CAR", "TON", "TIN", "RIB", "PAP", "BAT", "CAB", "ACC") \
+       and lacks("PLOTTER", "DESIGNJET", "SURECOLOR", "TRIPIE", "TRÍPIE", "TRIPIÉ", "TRIPODE", "TRÍPODE", "HERRAMIENTA", "MOCHILA", "FUNDA", "CINTA RIBBON", "MINIPRINTER", "MINI IMPRESORA", "IMPRESORA TERMICA", "IMPRESORA TÉRMICA", "TICKETS", "58MM", "80MM", "PUNTO DE VENTA", "POS "):
         return "impresoras_multifuncionales"
 
     # -------------------------------------------------------------
     # 44. TONERS LASER
     # -------------------------------------------------------------
-    if (sku_starts("TON") or has("TONER", "TÓNER")) \
-       and lacks("IMPRESORA", "MULTIFUNCIONAL", "SENSOR", "PCB", "BOTONERA", "ORVIBO", "DEPOSITO DE DESECHO", "DEPÓSITO") \
+    is_toner = (sku_starts("TON") or name_u.startswith(("CARTUCHO TÓNER", "CARTUCHO TONER", "TONER", "TÓNER")) or has("CARTUCHO DE TÓNER", "CARTUCHO DE TONER", "TÓNER HP", "TONER HP", "TÓNER BROTHER", "TONER BROTHER", "TÓNER CANON", "TONER CANON", "TÓNER XEROX", "TONER XEROX", "TÓNER SAMSUNG", "TONER SAMSUNG", "TÓNER PANTUM", "TONER PANTUM"))
+    if is_toner \
+       and not (sku_starts("IMP", "MLT") or name_u.startswith(("IMPRESORA", "MULTIFUNCIONAL", "PLOTTER"))) \
+       and lacks("SENSOR", "PCB", "BOTONERA", "ORVIBO", "DEPOSITO DE DESECHO", "DEPÓSITO DE DESECHO", "BOTELLA RESIDUAL") \
        and not sku_starts("ACC", "CAB"):
         return "toners_laser"
 
     # -------------------------------------------------------------
     # 45. TINTAS & CARTUCHOS
     # -------------------------------------------------------------
-    if (sku_starts("TIN") or (sku_starts("CAR") and has("TINTA", "CARTUCHO", "TANQUE")) or has("BOTELLA DE TINTA", "CARTUCHO DE TINTA", "TINTA ORIGINAL", "TINTA EPSON", "TINTA CANON", "TINTA HP", "TINTA BROTHER", "TANQUE CANON", "PFI-")) \
-       and lacks("IMPRESORA", "MULTIFUNCIONAL", "PLOTTER HP", "PLOTTER CANON", "CINTA RIBBON", "SELLO") \
+    is_ink = (sku_starts("TIN") or (sku_starts("CAR") and has("TINTA", "CARTUCHO", "BOTELLA", "CANON", "EPSON", "HP", "BROTHER", "PFI-")) or name_u.startswith(("BOTELLA DE TINTA", "CARTUCHO DE TINTA", "TINTA ")) or has("BOTELLA DE TINTA", "CARTUCHO DE TINTA", "TINTA ORIGINAL", "TINTA EPSON", "TINTA HP", "TINTA CANON", "TINTA BROTHER", "TANQUE CANON", "PFI-"))
+    if is_ink \
+       and not (sku_starts("IMP", "MLT") or name_u.startswith(("IMPRESORA", "MULTIFUNCIONAL", "PLOTTER"))) \
+       and not (sku_starts("TON") or has("TONER", "TÓNER")) \
+       and lacks("PLOTTER HP", "PLOTTER CANON", "CINTA RIBBON", "SELLO") \
        and not sku_starts("ACC", "CAB"):
         return "tintas_cartuchos"
 
@@ -543,7 +560,7 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 48. ESCANERES & DIGITALIZADORES
     # -------------------------------------------------------------
-    if (has("ESCANER", "ESCÁNER", "SCANJET", "DIGITALIZADOR DE DOCUMENTOS", "CAMA PLANA") or sku_starts("SCN")) \
+    if (has("ESCANER", "ESCÁNER", "SCANJET", "DIGITALIZADOR DE DOCUMENTOS", "CAMA PLANA") or sku_starts("SCN", "SCA")) \
        and lacks("CODIGO DE BARRAS", "CÓDIGO DE BARRAS", "CODIGO DE BARRA", "CÓDIGO DE BARRA", "BARCODE", "BARCODE SCANNER", "LECTOR DE CODIGO", "LECTOR DE CÓDIGO", "HUELLAS", "ENROLADOR", "CONVERTIDOR", "SERIAL", "DB9", "FUNDA", "CORREA") \
        and not sku_starts("ACC", "CAB", "LCT"):
         return "escaneres_digitalizadores"
@@ -551,15 +568,17 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 54. PUNTO DE VENTA (POS)
     # -------------------------------------------------------------
-    if (sku_starts("KIO") or has("PUNTO DE VENTA", "LECTOR DE CODIGO", "LECTOR DE CÓDIGO", "IMPRESORA TERMICA", "IMPRESORA TÉRMICA", "IMPRESORA DE TICKETS", "CAJON DE DINERO", "CAJÓN DE DINERO", "MINIPRINTER", "MINIPRINTERS", "CAJA PARA DINERO", "MINI IMPRESORA", "TERMINAL POS", "BARCODE SCANNER", "EC-LINE", "QIAN ANJET", "MNP-158", "MNP-180", "SOFTWARE POS", "POS TOOLS", "POSTOOLS", "VERIFICADOR DE PRECIOS", "KIOSCO")) \
+    if (sku_starts("KIO", "CJN") or name_u.startswith(("PUNTO DE VENTA", "CAJON DE DINERO", "CAJÓN DE DINERO", "TERMINAL POS", "KIOSCO", "QUIOSCO")) or has("PUNTO DE VENTA", "LECTOR DE CODIGO", "LECTOR DE CÓDIGO", "IMPRESORA TERMICA", "IMPRESORA TÉRMICA", "IMPRESORA DE TICKETS", "CAJON DE DINERO", "CAJÓN DE DINERO", "MINIPRINTER", "MINIPRINTERS", "CAJA PARA DINERO", "MINI IMPRESORA", "TERMINAL POS", "BARCODE SCANNER", "EC-LINE", "QIAN ANJET", "MNP-158", "MNP-180", "SOFTWARE POS", "POS TOOLS", "POSTOOLS", "VERIFICADOR DE PRECIOS", "KIOSCO", "QUIOSCO DE AUTOCOBRO")) \
        and lacks("RFID", "HUELLA", "CHAPA", "CERRADURA", "BIOMETR", "BIOMÉTR", "MIN MOE", "TORNIQUETE"):
         return "punto_de_venta"
 
     # -------------------------------------------------------------
     # 55. SMARTPHONES & CELULARES
     # -------------------------------------------------------------
-    if (sku_starts("CEL", "SMA") or has("SMARTPHONE", "TELEFONO CELULAR", "TELÉFONO CELULAR", "IPHONE", "GALAXY S", "GALAXY A", "REDMI", "MOTO G")) \
-       and lacks("ANCLA", "RANURA K-SLOT", "CANDADO", "BRAZALETE", "SOPORTE", "FUNDA", "MICA", "CRISTAL TEMPLADO", "CABLE", "VIDEOPORTERO", "BATERIA", "BATERÍA", "PLOMO", "TECLADO", "MOUSE") \
+    is_phone = (sku_starts("CEL", "SMA") or name_u.startswith(("SMARTPHONE", "TELEFONO CELULAR", "TELÉFONO CELULAR", "IPHONE", "GALAXY S", "GALAXY A", "REDMI", "MOTO G")) or has("SMARTPHONE", "IPHONE", "GALAXY S24", "GALAXY S25", "GALAXY S26", "GALAXY A25", "GALAXY A35", "GALAXY A55", "REDMI NOTE"))
+    if is_phone \
+       and not name_u.startswith(("FUNDA", "MICA", "CRISTAL", "CARGADOR", "CABLE", "SOPORTE")) \
+       and lacks("ANCLA", "RANURA K-SLOT", "CANDADO", "BRAZALETE", "SOPORTE PARA CELULAR", "FUNDA PARA", "MICA PARA", "CRISTAL TEMPLADO", "VIDEOPORTERO", "TECLADO", "MOUSE") \
        and not sku_starts("ACC", "CAB", "BAT", "TEC", "MOU", "SOF", "LIC"):
         return "smartphones_celulares"
 
@@ -580,25 +599,26 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 61. SOPORTES & ERGONOMIA
     # -------------------------------------------------------------
-    if has("SOPORTE PARA MONITOR", "BRAZO PARA MONITOR", "BASE PARA MONITOR", "SOPORTE ARTICULADO", "SOPORTE DE TV", "SOPORTE DE TECHO", "SOPORTE DE PARED", "TAPETE ANTIFATIGA", "DESCANSA PIES"):
+    if has("SOPORTE PARA MONITOR", "BRAZO PARA MONITOR", "BASE PARA MONITOR", "SOPORTE ARTICULADO", "SOPORTE DE TV", "SOPORTE DE TECHO", "SOPORTE DE PARED", "TAPETE ANTIFATIGA", "DESCANSA PIES", "SOPORTE PARA TARJETA"):
         return "soportes_ergonomia"
 
     # -------------------------------------------------------------
     # 62. HUBS, DOCKS & ESTACIONES
     # -------------------------------------------------------------
-    if has("DOCKING STATION", "HUB USB", "ESTACION DE ACOPLAMIENTO", "ADAPTADOR MULTIPUERTO") and lacks("MOUSE", "TECLADO"):
+    if (sku_starts("ACCSTY580") or has("DOCKING STATION", "HUB USB", "HUB CONTROLADOR", "ESTACION DE ACOPLAMIENTO", "ADAPTADOR MULTIPUERTO")) and lacks("MOUSE", "TECLADO"):
         return "hubs_docks_estaciones"
 
     # -------------------------------------------------------------
     # 65. CLIMATIZACION & MINISPLITS
     # -------------------------------------------------------------
-    if has("MINISPLIT", "AIRE ACONDICIONADO", "INVERTER 1 TON", "INVERTER 1.5 TON", "INVERTER 2 TON", "CLIMA"):
+    if sku_starts("AIR") or name_u.startswith("AIRE ") or has("MINISPLIT", "AIRE ACONDICIONADO", "AIRE DE VENTANA", "INVERTER 1 TON", "INVERTER 1.5 TON", "INVERTER 2 TON", "CLIMA"):
         return "climatizacion_aires_acondicionados"
 
     # -------------------------------------------------------------
     # 66. GAMING, CONSOLAS & SILLAS
     # -------------------------------------------------------------
-    if has("SILLA GAMER", "SILLA DE JUEGO", "PLAYSTATION", "XBOX", "NINTENDO", "CONSOLA") and lacks("TARJETA DE EXPANSION", "SANDISK"):
+    is_gaming_chair = sku_starts("SIL") or name_u.startswith(("SILLA ", "PLAYSTATION", "XBOX", "NINTENDO")) or has("SILLA GAMER", "SILLA DE JUEGO", "SILLA DE OFICINA", "SILLA ERGONOMICA", "SILLA ERGONÓMICA", "PLAYSTATION", "XBOX", "NINTENDO", "CONSOLA")
+    if is_gaming_chair and lacks("TARJETA DE EXPANSION", "SANDISK", "MICROSD"):
         return "gaming_consolas_sillas"
 
     # -------------------------------------------------------------
