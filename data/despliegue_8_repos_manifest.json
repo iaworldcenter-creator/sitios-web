@@ -1,0 +1,74 @@
+[
+  {
+    "id": "pc-custom-lab",
+    "nombre": "VECTEC / PC Custom Lab",
+    "branch": "main",
+    "hash": "b7e0fd9",
+    "working_tree_limpio": true,
+    "depts_validados": 86,
+    "dictamen": "APROBADO / CERTIFICADO"
+  },
+  {
+    "id": "bazar-viamx-nfl.gdl",
+    "nombre": "Bazar Viamx NFL GDL",
+    "branch": "main",
+    "hash": "21fc66c",
+    "working_tree_limpio": true,
+    "depts_validados": 86,
+    "dictamen": "APROBADO / CERTIFICADO"
+  },
+  {
+    "id": "cigarros-bazar",
+    "nombre": "Cigarros Bazar",
+    "branch": "main",
+    "hash": "1a9c298",
+    "working_tree_limpio": true,
+    "depts_validados": 86,
+    "dictamen": "APROBADO / CERTIFICADO"
+  },
+  {
+    "id": "dulces-bazar",
+    "nombre": "Dulces Bazar",
+    "branch": "main",
+    "hash": "7c15cb1",
+    "working_tree_limpio": true,
+    "depts_validados": 86,
+    "dictamen": "APROBADO / CERTIFICADO"
+  },
+  {
+    "id": "kiosco-digital",
+    "nombre": "Kiosco Digital",
+    "branch": "main",
+    "hash": "90b2fb1",
+    "working_tree_limpio": true,
+    "depts_validados": 86,
+    "dictamen": "APROBADO / CERTIFICADO"
+  },
+  {
+    "id": "mi-puesto-bazar",
+    "nombre": "Mi Puesto Bazar",
+    "branch": "main",
+    "hash": "39a880b",
+    "working_tree_limpio": true,
+    "depts_validados": 86,
+    "dictamen": "APROBADO / CERTIFICADO"
+  },
+  {
+    "id": "ofertas-y-liquidaciones",
+    "nombre": "Ofertas y Liquidaciones",
+    "branch": "main",
+    "hash": "ca97301",
+    "working_tree_limpio": true,
+    "depts_validados": 86,
+    "dictamen": "APROBADO / CERTIFICADO"
+  },
+  {
+    "id": "sitios-web",
+    "nombre": "Ecosistema Central (sitios-web / VECTEC)",
+    "branch": "main",
+    "hash": "f0f1a0a",
+    "working_tree_limpio": true,
+    "depts_validados": 86,
+    "dictamen": "APROBADO / CERTIFICADO"
+  }
+]
