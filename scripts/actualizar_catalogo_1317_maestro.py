@@ -372,14 +372,22 @@ def main():
 
                 desc = clean_text(cells.get('G', ''))
                 try:
-                    costo_neto_usd = float(str(cells.get('J', '0')).replace(',', '').replace('$', '').strip())
+                    price_val = float(str(cells.get('J', '0')).replace(',', '').replace('$', '').strip())
                 except ValueError:
-                    costo_neto_usd = 0.0
-                if costo_neto_usd <= 0:
+                    price_val = 0.0
+                if price_val <= 0:
                     continue
 
-                costo_mxn = costo_neto_usd * TIPO_CAMBIO
-                precio_orig = round(costo_mxn * FACTOR_LISTA, 2)
+                col_h = cells.get('H', '').strip().lower()
+                if col_h == 'm':
+                    costo_mxn = price_val
+                    costo_neto_usd = round(price_val / TIPO_CAMBIO, 2)
+                else:
+                    costo_neto_usd = price_val
+                    costo_mxn = price_val * TIPO_CAMBIO
+
+                costo_base_mxn = costo_mxn
+                precio_orig = round(costo_base_mxn * FACTOR_LISTA, 2)
                 precio_mxn = round(precio_orig * 0.75, 2)
                 precio_may = round(precio_mxn * 0.90, 2)
                 descuento_pct = 25
@@ -808,12 +816,28 @@ def main():
     print("\n[PASO 9] Regenerando particiones departamentales (JEV) y replicando en cascada...")
     regenerar_vitrinas_congruentes()
 
+    # Copiar también al directorio data raíz de sitios web
+    shutil.copy2(COMPACT_JSON, os.path.join(DATA_DIR, "catalogo_maestro_compact.json"))
+    dst_root_depts = os.path.join(DATA_DIR, "departments")
+    os.makedirs(dst_root_depts, exist_ok=True)
+    src_depts_pcc = os.path.join(PCC_DATA_DIR, "departments")
+    if os.path.exists(src_depts_pcc):
+        for jf in os.listdir(src_depts_pcc):
+            if jf.endswith(".json"):
+                shutil.copy2(os.path.join(src_depts_pcc, jf), os.path.join(dst_root_depts, jf))
+    src_mani_pcc = os.path.join(PCC_DATA_DIR, "departments_manifest.json")
+    if os.path.exists(src_mani_pcc):
+        shutil.copy2(src_mani_pcc, os.path.join(DATA_DIR, "departments_manifest.json"))
+
     # Replicar a tiendas hermanas
     tiendas_destino = [
         "pc-custom-lab",
         "VECTEC",
         "ofertas-y-liquidaciones",
         "bazar-viamx-nfl.gdl",
+        "cigarros-bazar",
+        "dulces-bazar",
+        "kiosco-digital",
         "mi-puesto-bazar"
     ]
     master_files_to_sync = [

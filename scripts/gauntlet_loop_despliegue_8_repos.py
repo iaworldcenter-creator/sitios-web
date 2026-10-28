@@ -407,7 +407,7 @@ def main():
         # Comprobar si hay cambios pendientes
         code, st, _ = ejecutar_comando_git(rpath, ["status", "--porcelain"])
         if st:
-            msg = "feat(catalog): sincronizacion integral semana 1317 factor 2.20 y vitrinas certificadas (86 depts)"
+            msg = "fix(catalog): rectificacion paridad precios semana 1317 factor 2.20 moneda nacional y vitrinas certificadas"
             code_c, out_c, err_c = ejecutar_comando_git(rpath, ["commit", "-m", msg])
             print(f"   [+] Commit generado: {out_c.splitlines()[0] if out_c else 'OK'}")
         else:
@@ -444,7 +444,7 @@ def main():
     ejecutar_comando_git(rpath, ["add", "-A"])
     code, st, _ = ejecutar_comando_git(rpath, ["status", "--porcelain"])
     if st:
-        msg = "feat(ecosystem): despliegue global semana 1317 submodulos y catalogo maestro (86 depts)"
+        msg = "fix(ecosystem): rectificacion global semana 1317 precios factor 2.20 y sincronizacion 8 repos"
         code_c, out_c, err_c = ejecutar_comando_git(rpath, ["commit", "-m", msg])
         print(f"   [+] Commit en raíz generado: {out_c.splitlines()[0] if out_c else 'OK'}")
     else:
