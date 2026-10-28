@@ -3,7 +3,7 @@
     "id": "pc-custom-lab",
     "nombre": "VECTEC / PC Custom Lab",
     "branch": "main",
-    "hash": "ffb7dd1",
+    "hash": "95a9397",
     "working_tree_limpio": true,
     "depts_validados": 86,
     "dictamen": "APROBADO / CERTIFICADO"
@@ -12,7 +12,7 @@
     "id": "bazar-viamx-nfl.gdl",
     "nombre": "Bazar Viamx NFL GDL",
     "branch": "main",
-    "hash": "a2a5fdc",
+    "hash": "fb7215f",
     "working_tree_limpio": true,
     "depts_validados": 86,
     "dictamen": "APROBADO / CERTIFICADO"
@@ -21,7 +21,7 @@
     "id": "cigarros-bazar",
     "nombre": "Cigarros Bazar",
     "branch": "main",
-    "hash": "00a7ade",
+    "hash": "cd3d707",
     "working_tree_limpio": true,
     "depts_validados": 86,
     "dictamen": "APROBADO / CERTIFICADO"
@@ -30,7 +30,7 @@
     "id": "dulces-bazar",
     "nombre": "Dulces Bazar",
     "branch": "main",
-    "hash": "f3e36ca",
+    "hash": "3726714",
     "working_tree_limpio": true,
     "depts_validados": 86,
     "dictamen": "APROBADO / CERTIFICADO"
@@ -39,7 +39,7 @@
     "id": "kiosco-digital",
     "nombre": "Kiosco Digital",
     "branch": "main",
-    "hash": "e4d306f",
+    "hash": "aecece5",
     "working_tree_limpio": true,
     "depts_validados": 86,
     "dictamen": "APROBADO / CERTIFICADO"
@@ -48,7 +48,7 @@
     "id": "mi-puesto-bazar",
     "nombre": "Mi Puesto Bazar",
     "branch": "main",
-    "hash": "ac052da",
+    "hash": "4d52bc5",
     "working_tree_limpio": true,
     "depts_validados": 86,
     "dictamen": "APROBADO / CERTIFICADO"
@@ -57,7 +57,7 @@
     "id": "ofertas-y-liquidaciones",
     "nombre": "Ofertas y Liquidaciones",
     "branch": "main",
-    "hash": "d62ee19",
+    "hash": "05130db",
     "working_tree_limpio": true,
     "depts_validados": 86,
     "dictamen": "APROBADO / CERTIFICADO"
@@ -66,7 +66,7 @@
     "id": "sitios-web",
     "nombre": "Ecosistema Central (sitios-web / VECTEC)",
     "branch": "main",
-    "hash": "3fcec1f",
+    "hash": "bb6ebcc",
     "working_tree_limpio": true,
     "depts_validados": 86,
     "dictamen": "APROBADO / CERTIFICADO"
