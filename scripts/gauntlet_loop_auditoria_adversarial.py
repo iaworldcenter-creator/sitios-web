@@ -3,7 +3,7 @@
 """
 gauntlet_loop_auditoria_adversarial.py
 Protocolo de Rectificación y Auditoría Profunda - Metodología Gauntlet Loop
-Semana 1315 VECTEC / PC Custom Lab
+Semana 1317 VECTEC / PC Custom Lab
 
 1. Árbitro Adversarial Interno (Pre-scan):
    - Escaneo adversarial agresivo en ~18,000 registros para detectar colisiones semánticas,
@@ -240,7 +240,7 @@ def ejecutar_arbitro_adversarial(items, etapa="PRE"):
 def main():
     print("=" * 80)
     print("   VECTEC - GAUNTLET LOOP: PROTOCOLO DE AUDITORIA ADVERSARIAL AUTONOMA")
-    print("   Catálogo Semana 1315 | Verificación Exhaustiva de 18,000 Registros")
+    print("   Catálogo Semana 1317 | Verificación Exhaustiva de 18,000 Registros")
     print("=" * 80)
 
     # 1. Cargar catálogo actual
@@ -491,7 +491,7 @@ def main():
 
     # 9. REPORTE FINAL CONSOLIDADO
     print("\n" + "=" * 80)
-    print("   REPORTE DE CIERRE - PROTOCOLO GAUNTLET LOOP (VECTEC 1315)")
+    print("   REPORTE DE CIERRE - PROTOCOLO GAUNTLET LOOP (VECTEC 1317)")
     print("=" * 80)
     print(f"1. AUDITORIA ADVERSARIAL:")
     print(f"   - Total Registros Auditados:           {res_pre['total_items']:,}")

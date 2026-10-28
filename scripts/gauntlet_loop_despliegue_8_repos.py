@@ -2,7 +2,7 @@
 gauntlet_loop_despliegue_8_repos.py
 ===================================
 Protocolo Gauntlet Loop de Despliegue y Validación en los 8 Repositorios del Ecosistema.
-- Sincronización exacta de catálogos semana 1315 (Factor Maestro 2.20).
+- Sincronización exacta de catálogos semana 1317 (Factor Maestro 2.20).
 - Despliegue de las 86 particiones departamentales y departments_manifest.json.
 - Erradicación sistemática de particiones huérfanas/obsoletas.
 - Preservación permanente de activos en cuarentena (100% fotos en disco).
@@ -146,7 +146,7 @@ def sincronizar_archivos_en_destino(dest_dir, lista_archivos_maestros, master_ma
     return huerfanos_eliminados
 
 
-def arbitro_adversarial_sitio(repo_info, master_md5_compact, master_manifest_files):
+def arbitro_adversarial_sitio(repo_info, master_md5_compact, master_manifest_files, expected_compact_len=None, expected_search_len=None):
     """
     Auditoría hostil e implacable de un repositorio individual:
     1. Existencia y sintaxis de departments_manifest.json.
@@ -238,8 +238,8 @@ def arbitro_adversarial_sitio(repo_info, master_md5_compact, master_manifest_fil
             try:
                 with open(comp_path, "r", encoding="utf-8") as f:
                     c_items = json.load(f)
-                if len(c_items) != 17969:
-                    errores.append(f"[{label}] catalogo compacto tiene {len(c_items)} registros (esperado: 17,969)")
+                if expected_compact_len is not None and len(c_items) != expected_compact_len:
+                    errores.append(f"[{label}] catalogo compacto tiene {len(c_items)} registros (esperado: {expected_compact_len})")
             except Exception as e:
                 errores.append(f"[{label}] Error cargando catalogo compacto: {e}")
 
@@ -251,8 +251,8 @@ def arbitro_adversarial_sitio(repo_info, master_md5_compact, master_manifest_fil
             try:
                 with open(search_path, "r", encoding="utf-8") as f:
                     s_items = json.load(f)
-                if len(s_items) != 17981:
-                    errores.append(f"[{label}] buscador tiene {len(s_items)} registros (esperado: 17,981)")
+                if expected_search_len is not None and len(s_items) != expected_search_len:
+                    errores.append(f"[{label}] buscador tiene {len(s_items)} registros (esperado: {expected_search_len})")
             except Exception as e:
                 errores.append(f"[{label}] Error cargando buscador: {e}")
 
@@ -267,7 +267,7 @@ def arbitro_adversarial_sitio(repo_info, master_md5_compact, master_manifest_fil
 def main():
     print("=" * 80)
     print("   GAUNTLET LOOP: DESPLIEGUE Y SINCRONIZACION EN 8 REPOSITORIOS")
-    print("   Catálogo Semana 1315 | Factor Maestro 2.20 | Paridad 100% Certificada")
+    print("   Catálogo Semana 1317 | Factor Maestro 2.20 | Paridad 100% Certificada")
     print("=" * 80)
 
     # 1. Cargar Manifiesto Maestro y Verificar Integridad de Origen
@@ -308,6 +308,12 @@ def main():
     print("\n[FASE 2] Auditoría de Preservación de Activos de Cuarentena...")
     with open(MASTER_COMPACT, "r", encoding="utf-8") as f:
         master_compact_items = json.load(f)
+    expected_compact_len = len(master_compact_items)
+
+    expected_search_len = None
+    if os.path.exists(MASTER_SEARCH):
+        with open(MASTER_SEARCH, "r", encoding="utf-8") as f:
+            expected_search_len = len(json.load(f))
 
     cuarentena_items = [it for it in master_compact_items if it.get("a") == 1 or it.get("stk", 0) == 0]
     pcc_img_dir = os.path.join(BASE_DIR, "pc-custom-lab", "assets", "img")
@@ -370,7 +376,7 @@ def main():
     print("\n[FASE 4] ÁRBITRO ADVERSARIAL: Auditoría Pre-Commit en los 8 Sitios...")
     todos_aprobados = True
     for repo in REPOSITORIOS:
-        audit_res = arbitro_adversarial_sitio(repo, master_md5_compact, master_manifest_files)
+        audit_res = arbitro_adversarial_sitio(repo, master_md5_compact, master_manifest_files, expected_compact_len, expected_search_len)
         if audit_res["aprobado"]:
             print(f"   [CERTIFICADO] {repo['nombre']}: 86/86 vitrinas válidas, MD5 idéntico.")
         else:
@@ -401,7 +407,7 @@ def main():
         # Comprobar si hay cambios pendientes
         code, st, _ = ejecutar_comando_git(rpath, ["status", "--porcelain"])
         if st:
-            msg = "feat(catalog): sincronizacion integral semana 1315 factor 2.20 y vitrinas certificadas (86 depts)"
+            msg = "feat(catalog): sincronizacion integral semana 1317 factor 2.20 y vitrinas certificadas (86 depts)"
             code_c, out_c, err_c = ejecutar_comando_git(rpath, ["commit", "-m", msg])
             print(f"   [+] Commit generado: {out_c.splitlines()[0] if out_c else 'OK'}")
         else:
@@ -438,7 +444,7 @@ def main():
     ejecutar_comando_git(rpath, ["add", "-A"])
     code, st, _ = ejecutar_comando_git(rpath, ["status", "--porcelain"])
     if st:
-        msg = "feat(ecosystem): despliegue global semana 1315 submodulos y catalogo maestro (86 depts)"
+        msg = "feat(ecosystem): despliegue global semana 1317 submodulos y catalogo maestro (86 depts)"
         code_c, out_c, err_c = ejecutar_comando_git(rpath, ["commit", "-m", msg])
         print(f"   [+] Commit en raíz generado: {out_c.splitlines()[0] if out_c else 'OK'}")
     else:
