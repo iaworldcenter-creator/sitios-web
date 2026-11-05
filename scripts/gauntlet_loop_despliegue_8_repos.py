@@ -2,7 +2,7 @@
 gauntlet_loop_despliegue_8_repos.py
 ===================================
 Protocolo Gauntlet Loop de Despliegue y Validación en los 8 Repositorios del Ecosistema.
-- Sincronización exacta de catálogos semana 1317 (Factor Maestro 2.20).
+- Sincronización exacta de catálogos semana 1318 (Factor Maestro 2.20 en MXN).
 - Despliegue de las 86 particiones departamentales y departments_manifest.json.
 - Erradicación sistemática de particiones huérfanas/obsoletas.
 - Preservación permanente de activos en cuarentena (100% fotos en disco).
@@ -267,7 +267,7 @@ def arbitro_adversarial_sitio(repo_info, master_md5_compact, master_manifest_fil
 def main():
     print("=" * 80)
     print("   GAUNTLET LOOP: DESPLIEGUE Y SINCRONIZACION EN 8 REPOSITORIOS")
-    print("   Catálogo Semana 1317 | Factor Maestro 2.20 | Paridad 100% Certificada")
+    print("   Catálogo Semana 1318 | Factor Maestro 2.20 | Paridad 100% Certificada")
     print("=" * 80)
 
     # 1. Cargar Manifiesto Maestro y Verificar Integridad de Origen
@@ -407,7 +407,7 @@ def main():
         # Comprobar si hay cambios pendientes
         code, st, _ = ejecutar_comando_git(rpath, ["status", "--porcelain"])
         if st:
-            msg = "fix(catalog): rectificacion paridad precios semana 1317 factor 2.20 moneda nacional y vitrinas certificadas"
+            msg = "feat(catalog): actualizacion catalogo semana 1318 factor 2.20 mxn vitrinas y cuarentena certificadas"
             code_c, out_c, err_c = ejecutar_comando_git(rpath, ["commit", "-m", msg])
             print(f"   [+] Commit generado: {out_c.splitlines()[0] if out_c else 'OK'}")
         else:
@@ -444,7 +444,7 @@ def main():
     ejecutar_comando_git(rpath, ["add", "-A"])
     code, st, _ = ejecutar_comando_git(rpath, ["status", "--porcelain"])
     if st:
-        msg = "fix(ecosystem): rectificacion global semana 1317 precios factor 2.20 y sincronizacion 8 repos"
+        msg = "feat(ecosystem): sincronizacion global semana 1318 catalogo maestro vitrinas y despliegue 8 repos"
         code_c, out_c, err_c = ejecutar_comando_git(rpath, ["commit", "-m", msg])
         print(f"   [+] Commit en raíz generado: {out_c.splitlines()[0] if out_c else 'OK'}")
     else:
