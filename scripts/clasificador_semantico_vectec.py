@@ -207,8 +207,9 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 24. MEMORIAS USB FLASH & PENDRIVES
     # -------------------------------------------------------------
-    if (sku_starts("USB") or has("MEMORIA USB", "MEMORIA FLASH USB", "PENDRIVE", "FLASH DRIVE", "DUAL DRIVE", "CRUZER", "DATATRAVELER", "ULTRA FLAIR")) \
-       and lacks("WINDOWS", "SISTEMA OPERATIVO", "CABLE", "HUB", "ADAPTADOR", "RED USB", "WIFI USB", "BLUETOOTH", "ANTENA", "CARGADOR") and not sku_starts("ACC", "CAB"):
+    if (sku_starts("USB") or has("MEMORIA USB", "MEMORIA FLASH USB", "PENDRIVE", "FLASH DRIVE", "DUAL DRIVE", "CRUZER", "DATATRAVELER", "ULTRA FLAIR", "DRIVE TYPE-C", "UNIDAD FLASH USB", "DT EXODIA", "DTX", "DTXM", "DT70", "DTSE9", "DTDUO", "SDCZ")) \
+       and lacks("SISTEMA OPERATIVO", "LICENCIA", "WINDOWS 11 PRO", "WINDOWS 11 HOME", "WINDOWS 10 PRO", "WINDOWS 10 HOME", "CABLE", "HUB", "ADAPTADOR", "RED USB", "WIFI USB", "BLUETOOTH", "ANTENA", "CARGADOR", "DIMM", "UDIMM", "SODIMM", "DDR4", "DDR5", "DDR3", "DDR2", "MICROSD", "MICRO SD", "SDHC", "SDXC", "CORREA PARA MEMORIA", "LECTOR USB", "LECTOR DE MEMORIA", "LECTOR DE TARJETAS") \
+       and not sku_starts("ACC", "CAB", "MSD"):
         return "memorias_usb_pendrives"
 
     # -------------------------------------------------------------
@@ -283,11 +284,15 @@ def clasificar_producto_semantico(sku, name, brand="", subgrupo_header="", sheet
     # -------------------------------------------------------------
     # 49. SISTEMAS OPERATIVOS (Windows Oficial)
     # -------------------------------------------------------------
-    is_sw_sku = sku_starts("SOF", "ESD", "CSP", "LIC", "B-SS", "B-SE", "B-SO", "B-ZZ") or "SISTEMA OPERATIVO" in subgrupo_header.upper() or "WINDOWS" in subgrupo_header.upper()
+    has_compat_phrase = any(cp in n for cp in ["COMPATIBLE CON WINDOWS", "COMPATIBILIDAD CON WINDOWS", "SOPORTA WINDOWS", "FUNCIONA CON WINDOWS", "REQUIERE WINDOWS", "COMPATIBLE CON WIN", "COMPATIBLE CON SISTEMA", "SOPORTE PARA WINDOWS"])
+    is_sw_sku = sku_starts("SOF", "ESD", "CSP", "LIC", "B-SS", "B-SE", "B-SO", "B-ZZ") or "SISTEMA OPERATIVO" in subgrupo_header.upper() or ("WINDOWS" in subgrupo_header.upper() and "SOFTWARE" in sheet_name.upper())
     is_os_name = any(k in name_u for k in ["WINDOWS 11", "WINDOWS 10", "WINDOWS SERVER", "WIN SVR", "WINDOWS GGWA", "KIT DE LEGALIZACION", "CAL FOR WINDOWS", "USER CAL", "DEVICE CAL", "RDS 1 USER", "RDS 1 DEVICE", "WINDOWS 10/11"])
+    is_genuine_software = has("LICENCIA", "OEM", "COA", "DSP", "ESD", "RETAIL", "FPP", "64-BIT", "64 BITS", "32-BIT", "32 BITS", "ELECTRONIC SOFTWARE", "DIGITAL", "MEDIA PACK", "ROK", "CAL", "SISTEMA OPERATIVO", "PRODUCT KEY", "ACTIVACION", "GGWA") or sku_starts("SOF", "ESD", "CSP", "LIC")
+
     if (is_sw_sku or is_os_name) and (is_os_name or has("WINDOWS 11", "WINDOWS 10", "WINDOWS SERVER")) \
-       and lacks("IMPRESORA", "MULTIFUNCIONAL", "SCANNER", "ESCÁNER", "ESCANER", "APUNTADOR", "PRESENTADOR", "TECLADO", "MOUSE", "RATON", "RATÓN", "ROUTER", "SWITCH", "ADAPTADOR", "CABLE", "DOCKING", "HUB", "PROCESADOR", "TARJETA MADRE", "LAPTOP", "COMPUTADORA", "NOTEBOOK", "TABLET", "MONITOR") \
-       and not sku_starts("ACC", "CAB", "IMP", "MTF", "PRN", "SCA", "SCN", "TEC", "MOU", "ROU", "SWT", "SWI", "TAR", "TARTPL", "KIT", "COM", "WKS", "POR", "LAP", "AIO"):
+       and not has_compat_phrase and is_genuine_software \
+       and lacks("IMPRESORA", "MULTIFUNCIONAL", "SCANNER", "ESCÁNER", "ESCANER", "APUNTADOR", "PRESENTADOR", "TECLADO", "MOUSE", "RATON", "RATÓN", "ROUTER", "SWITCH", "ADAPTADOR", "CABLE", "DOCKING", "HUB", "PROCESADOR", "TARJETA MADRE", "LAPTOP", "COMPUTADORA", "NOTEBOOK", "TABLET", "MONITOR", "MEMORIA USB", "PENDRIVE", "FLASH DRIVE", "DISCO DURO", "SSD", "RAM", "GABINETE", "FUENTE", "ENFRIAMIENTO", "DISIPADOR", "VENTILADOR", "WEBCAM", "DIADEMA", "HEADSET", "BOCINA", "MICROFONO", "MICRÓFONO", "CAMARA", "CÁMARA", "DVR", "NVR", "REGULADOR", "NO BREAK", "UPS", "BIOMETRICO", "BIOMÉTRICO", "TERMINAL", "LECTOR") \
+       and not sku_starts("ACC", "CAB", "IMP", "MTF", "PRN", "SCA", "SCN", "TEC", "MOU", "ROU", "SWT", "SWI", "TAR", "TARTPL", "KIT", "COM", "WKS", "POR", "LAP", "AIO", "MEM", "USB", "DDU", "SSD", "GAB", "FUE", "VEN", "ENF", "CAM", "DVR", "NVR"):
         return "sistemas_operativos"
 
     # -------------------------------------------------------------

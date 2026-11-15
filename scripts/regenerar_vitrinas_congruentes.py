@@ -169,8 +169,9 @@ def regenerar_vitrinas():
             os.remove(os.path.join(DEPTS_OUTPUT_DIR, existing))
 
     MAX_CHUNK_BYTES = 320 * 1024
+    from datetime import datetime
     manifest = {
-        "generatedAt": "2026-09-07T14:50:00Z",
+        "generatedAt": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
         "totalProducts": len(catalog_items),
         "departmentsCount": len(DEPARTAMENTOS_OFICIALES),
         "departments": {}
