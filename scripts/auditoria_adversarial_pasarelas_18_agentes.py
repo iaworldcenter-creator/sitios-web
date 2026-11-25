@@ -27,9 +27,9 @@ if not token and env_file.exists():
             token = line.split("=", 1)[1].strip().strip('"').strip("'")
             break
 
-# Fallback al token de producción oficial verificado
+# Requiere configurar MP_ACCESS_TOKEN en entorno o archivo .env local (nunca hardcodeado en repositorio)
 if not token:
-    token = "APP_USR-783757506325362-082612-60b30fdf842397608a8cfcc2a9221837-202684121"
+    print("ERROR: Define MP_ACCESS_TOKEN en el entorno o en .env antes de ejecutar.")
 
 TIENDAS_CONFIG = {
     "pc-custom-lab": {

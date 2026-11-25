@@ -2,10 +2,11 @@
 # Micro-servicio Serverless Python para Generación de Preferencias Mercado Pago
 import json
 import os
+import time
 import urllib.request
 import urllib.error
 
-MP_ACCESS_TOKEN = os.environ.get("MP_ACCESS_TOKEN", "APP_USR-783757506325362-082612-60b30fdf842397608a8cfcc2a9221837-202684121")
+MP_ACCESS_TOKEN = os.environ.get("MP_ACCESS_TOKEN", "")
 
 def handler(event, context=None):
     headers = {

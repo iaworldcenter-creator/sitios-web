@@ -4,9 +4,12 @@
  * Ecosistema Comercial VECTEC / 8 Tiendas
  */
 
-const MP_ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN || "APP_USR-783757506325362-082612-60b30fdf842397608a8cfcc2a9221837-202684121";
+const MP_ACCESS_TOKEN = process.env.MP_ACCESS_TOKEN || "";
 
 module.exports = async (req, res) => {
+    if (!MP_ACCESS_TOKEN) {
+        return res.status(500).json({ error: 'MP_ACCESS_TOKEN no configurado en variables de entorno.' });
+    }
     // Habilitar CORS
     res.setHeader('Access-Control-Allow-Credentials', true);
     res.setHeader('Access-Control-Allow-Origin', '*');

@@ -13,7 +13,12 @@ import urllib.request
 import urllib.error
 
 PORT = int(sys.argv[1]) if len(sys.argv) > 1 else 3000
-MP_ACCESS_TOKEN = os.environ.get("MP_ACCESS_TOKEN", "APP_USR-783757506325362-082612-60b30fdf842397608a8cfcc2a9221837-202684121")
+MP_ACCESS_TOKEN = os.environ.get("MP_ACCESS_TOKEN", "")
+if not MP_ACCESS_TOKEN and os.path.exists(".env"):
+    for _line in open(".env", encoding="utf-8", errors="ignore"):
+        if _line.startswith("MP_ACCESS_TOKEN="):
+            MP_ACCESS_TOKEN = _line.split("=", 1)[1].strip().strip('"').strip("'")
+            break
 
 class MPPreferenceHandler(http.server.BaseHTTPRequestHandler):
     def _send_cors_headers(self):
