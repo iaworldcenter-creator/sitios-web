@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-11-15T07:13:34Z",
-  "totalProducts": 18404,
+  "totalProducts": 18412,
   "departmentsCount": 67,
   "departments": {
     "procesadores": {
@@ -161,7 +161,7 @@
       "name": "16. Computadoras de Escritorio & Gaming PCs",
       "icon": "fa-computer",
       "order": 16,
-      "count": 124,
+      "count": 132,
       "files": [
         "data/departments/computadoras_ensambladas.json"
       ]

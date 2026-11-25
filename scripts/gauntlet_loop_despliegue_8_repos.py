@@ -190,8 +190,9 @@ def arbitro_adversarial_sitio(repo_info, master_md5_compact, master_manifest_fil
             continue
 
         archivos_en_disco = [f for f in os.listdir(dept_dir) if f.endswith(".json")]
-        if len(archivos_en_disco) != 86:
-            errores.append(f"[{label}] Conteo incorrecto de vitrinas: {len(archivos_en_disco)} (esperadas: 86)")
+        expected_depts_files = len(master_manifest_files)
+        if len(archivos_en_disco) != expected_depts_files:
+            errores.append(f"[{label}] Conteo incorrecto de vitrinas: {len(archivos_en_disco)} (esperadas: {expected_depts_files})")
 
         # C. Huérfanos
         manifest_set = set(master_manifest_files)
@@ -216,11 +217,14 @@ def arbitro_adversarial_sitio(repo_info, master_md5_compact, master_manifest_fil
                 if not isinstance(d_content, list):
                     errores.append(f"[{label}] {fname} no es una lista JSON")
                 else:
-                    # Verificar muestra de producto si no está vacío
+                    # Verificar muestra de producto y CERO agotados/cuarentena en vitrinas publicas
                     if len(d_content) > 0:
                         first = d_content[0]
                         if not ("s" in first or "sku" in first):
                             errores.append(f"[{label}] {fname} producto inicial carece de SKU")
+                        agotados_en_vitrina = sum(1 for item in d_content if item.get("a", 0) == 1 or int(item.get("stk", 1)) <= 0)
+                        if agotados_en_vitrina > 0:
+                            errores.append(f"[{label}] {fname} contiene {agotados_en_vitrina} productos agotados/cuarentena en vitrina publica")
                 depts_ok += 1
             except Exception as e:
                 errores.append(f"[{label}] Error sintáctico en vitrina {fname}: {e}")
@@ -267,7 +271,7 @@ def arbitro_adversarial_sitio(repo_info, master_md5_compact, master_manifest_fil
 def main():
     print("=" * 80)
     print("   GAUNTLET LOOP: DESPLIEGUE Y SINCRONIZACION EN 8 REPOSITORIOS")
-    print("   Catálogo Semana 1318 | Factor Maestro 2.20 | Paridad 100% Certificada")
+    print("   Catálogo Semana 1321 (23-28 Nov) | Factor 2.20 | Vitrinas Sin Agotados")
     print("=" * 80)
 
     # 1. Cargar Manifiesto Maestro y Verificar Integridad de Origen
@@ -294,11 +298,10 @@ def main():
             if fn:
                 master_manifest_files.append(os.path.basename(fn))
 
-    # Si la estructura fuera distinta, tomar directamente los 86 archivos de departments/
-    if len(master_manifest_files) != 86:
-        disco_files = sorted([f for f in os.listdir(MASTER_DEPTS_DIR) if f.endswith(".json")])
-        if len(disco_files) == 86:
-            master_manifest_files = disco_files
+    # Fallback si el manifiesto no listó archivos
+    if not master_manifest_files:
+        master_manifest_files = sorted([f for f in os.listdir(MASTER_DEPTS_DIR) if f.endswith(".json")])
+    total_particiones = len(master_manifest_files)
 
     print(f"[*] Manifiesto Maestro: {len(master_manifest_files)} particiones departamentales certificadas.")
     master_md5_compact = calcular_md5(MASTER_COMPACT)
@@ -378,7 +381,7 @@ def main():
     for repo in REPOSITORIOS:
         audit_res = arbitro_adversarial_sitio(repo, master_md5_compact, master_manifest_files, expected_compact_len, expected_search_len)
         if audit_res["aprobado"]:
-            print(f"   [CERTIFICADO] {repo['nombre']}: 86/86 vitrinas válidas, MD5 idéntico.")
+            print(f"   [CERTIFICADO] {repo['nombre']}: {total_particiones}/{total_particiones} vitrinas válidas, 0 agotados en vitrinas, MD5 idéntico.")
         else:
             print(f"   [FALLO ADVERSARIAL] {repo['nombre']}:")
             for err in audit_res["errores"]:
@@ -407,7 +410,7 @@ def main():
         # Comprobar si hay cambios pendientes
         code, st, _ = ejecutar_comando_git(rpath, ["status", "--porcelain"])
         if st:
-            msg = "feat(catalog): actualizacion catalogo semana 1318 factor 2.20 mxn vitrinas y cuarentena certificadas"
+            msg = "feat(catalog): actualizacion semana 1321 (23-28 nov) 18 agentes JEV vitrinas sin agotados y aviso legal"
             code_c, out_c, err_c = ejecutar_comando_git(rpath, ["commit", "-m", msg])
             print(f"   [+] Commit generado: {out_c.splitlines()[0] if out_c else 'OK'}")
         else:
@@ -431,7 +434,7 @@ def main():
             "branch": repo["branch"],
             "hash": commit_hash,
             "working_tree_limpio": len(status_final) == 0,
-            "depts_validados": 86,
+            "depts_validados": total_particiones,
             "dictamen": "APROBADO / CERTIFICADO" if len(status_final) == 0 and code_p == 0 else "REVISION REQUERIDA"
         })
 
@@ -444,7 +447,7 @@ def main():
     ejecutar_comando_git(rpath, ["add", "-A"])
     code, st, _ = ejecutar_comando_git(rpath, ["status", "--porcelain"])
     if st:
-        msg = "feat(ecosystem): sincronizacion global semana 1318 catalogo maestro vitrinas y despliegue 8 repos"
+        msg = "feat(ecosystem): sincronizacion global semana 1321 (23-28 nov) 18 agentes JEV vitrinas y despliegue 8 repos"
         code_c, out_c, err_c = ejecutar_comando_git(rpath, ["commit", "-m", msg])
         print(f"   [+] Commit en raíz generado: {out_c.splitlines()[0] if out_c else 'OK'}")
     else:
@@ -466,7 +469,7 @@ def main():
         "branch": repo_raiz["branch"],
         "hash": commit_hash_raiz,
         "working_tree_limpio": len(status_final_raiz) == 0,
-        "depts_validados": 86,
+        "depts_validados": total_particiones,
         "dictamen": "APROBADO / CERTIFICADO" if len(status_final_raiz) == 0 and code_p == 0 else "REVISION REQUERIDA"
     })
 

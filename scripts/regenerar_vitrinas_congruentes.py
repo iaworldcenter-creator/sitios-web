@@ -47,6 +47,7 @@ def regenerar_vitrinas():
     # 2. Agrupar y re-clasificar con el clasificador semantico estricto
     dept_products = defaultdict(list)
     reclassified_count = 0
+    cuarentena_excluidos_vitrinas = 0
 
     img_dir = os.path.join(PCC_DIR, "assets", "img")
 
@@ -62,11 +63,19 @@ def regenerar_vitrinas():
         subg = p.get("subgrupo_label", "")
         old_cat = p.get("c", "accesorios_perifericos")
 
-        # Clasificacion semantica estricta basada en contenido real
-        new_cat = clasificar_producto_semantico(sku, name, brand, subgrupo_header=subg, desc=desc)
-        if new_cat != old_cat:
-            reclassified_count += 1
-            p["c"] = new_cat
+        # Clasificacion semantica estricta basada en contenido real (respetando certificacion JEV si existe)
+        if p.get("jev_cert") == 1 and old_cat in DEPT_ID_SET:
+            new_cat = old_cat
+        else:
+            new_cat = clasificar_producto_semantico(
+                sku, name, brand,
+                subgrupo_header=subg,
+                sheet_name=p.get("ct_sheet", ""),
+                desc=desc
+            )
+            if new_cat != old_cat:
+                reclassified_count += 1
+                p["c"] = new_cat
 
         # Validacion y preservacion de galeria multi-imagen HD
         raw_sku = sku.replace("A-", "").replace("B-", "")
@@ -97,9 +106,16 @@ def regenerar_vitrinas():
             p["k"] = [pl_path]
             p["i"] = 0
 
-        dept_products[new_cat].append(p)
+        # Guardar todos los productos clasificados en catalogo_maestro_compact.json,
+        # PERO excluir de las vitrinas publicas todo producto agotado / en cuarentena (a == 1 o stk <= 0)
+        is_agotado_cuarentena = (p.get("a", 0) == 1) or (int(p.get("stk", 0)) <= 0)
+        if not is_agotado_cuarentena:
+            dept_products[new_cat].append(p)
+        else:
+            cuarentena_excluidos_vitrinas += 1
 
     print(f"[*] Articulos re-clasificados semanticamente: {reclassified_count:,}")
+    print(f"[*] Articulos en cuarentena/agotados excluidos de vitrinas publicas: {cuarentena_excluidos_vitrinas:,} (100% preservados en catalogo compacto)")
 
     # 3. Preparar los 4 mejores articulos para cada una de las 67 vitrinas (CT_CATALOG_DATA_INITIAL)
     initial_showcase_items = []
@@ -169,10 +185,13 @@ def regenerar_vitrinas():
             os.remove(os.path.join(DEPTS_OUTPUT_DIR, existing))
 
     MAX_CHUNK_BYTES = 320 * 1024
-    from datetime import datetime
+    from datetime import datetime, timezone
+    total_active_vitrinas = sum(len(v) for v in dept_products.values())
     manifest = {
-        "generatedAt": datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
-        "totalProducts": len(catalog_items),
+        "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "totalProducts": total_active_vitrinas,
+        "totalCatalogWithQuarantine": len(catalog_items),
+        "quarantineExcludedFromVitrinas": cuarentena_excluidos_vitrinas,
         "departmentsCount": len(DEPARTAMENTOS_OFICIALES),
         "departments": {}
     }

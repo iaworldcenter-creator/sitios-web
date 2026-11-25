@@ -20,7 +20,7 @@ jobs:
   # FASE 1: AGENTE MAESTRO DE INGESTA
   # ============================================================================
   agente-ingesta-maestro:
-    name: 00 - Agente Maestro Ingesta Excel Semana 1320
+    name: 00 - Agente Maestro Ingesta Excel Semana 1321 (23-28 Nov)
     runs-on: ubuntu-latest
     steps:
       - name: Descargar Repositorio Central
@@ -39,14 +39,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install openpyxl Pillow requests
 
-      - name: Extraer y Preparar Lotes de ~18,400 Articulos (Semana 1320)
+      - name: Extraer y Preparar Lotes de Catalogo (Semana 1321)
         run: |
-          python scripts/actualizar_catalogo_1320_maestro.py
+          python scripts/actualizar_catalogo_1321_maestro.py
 
       - name: Guardar Lotes Particionados para Clasificacion
         uses: actions/upload-artifact@v4
         with:
-          name: lotes-catalogo-1320
+          name: lotes-catalogo-1321
           path: |
             pc-custom-lab/data/
             data/
@@ -94,17 +94,12 @@ jobs:
       - name: Descargar Lotes Particionados
         uses: actions/download-artifact@v4
         with:
-          name: lotes-catalogo-1320
-          path: data-trabajo/
+          name: lotes-catalogo-1321
+          path: .
 
       - name: Clasificacion y Blindaje Factor 2.20 (${{ matrix.departamento }})
         run: |
-          echo "=== AGENTE CLASIFICADOR: ${{ matrix.departamento }} ==="
-          echo "Lectura profunda de especificaciones (Columna G)..."
-          echo "Extraccion de enlace 'Ver Ficha' (Columna L)..."
-          echo "Aplicando factor plano 2.20 sobre costo MXN..."
-          echo "Verificando cuarentena sin borrar fotos WebP..."
-          echo "Departamento ${{ matrix.departamento }} procesado al 100%."
+          python scripts/agente_clasificador_remoto.py --departamento "${{ matrix.departamento }}"
 
   # ============================================================================
   # FASE 3: AUDITORIA ADVERSARIAL DE PASARELAS DE PAGO (MERCADO PAGO)
