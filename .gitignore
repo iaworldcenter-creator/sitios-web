@@ -28,3 +28,5 @@ backups/
 **/node_modules/
 .venv/
 scratch/
+**/.wrangler/
+**/.dev.vars
