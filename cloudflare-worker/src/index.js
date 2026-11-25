@@ -49,6 +49,21 @@ export default {
       );
     }
 
+    // Validar formato básico de Access Token privado (APP_USR-... o TEST-... de ~70+ caracteres)
+    const isPublicKeyUuid = /^APP_USR-[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(token);
+    const hasValidMpPrefix = token.startsWith("APP_USR-") || token.startsWith("TEST-");
+    if (isPublicKeyUuid || !hasValidMpPrefix || token.length < 50) {
+      return new Response(
+        JSON.stringify({
+          success: false,
+          error: isPublicKeyUuid
+            ? "El secreto MP_ACCESS_TOKEN configurado en Cloudflare tiene formato de Public Key, no de Access Token de Producción."
+            : "El secreto MP_ACCESS_TOKEN en Cloudflare no corresponde a un Access Token válido de Mercado Pago (debe iniciar con APP_USR- o TEST- y tener ~70 caracteres)."
+        }),
+        { status: 400, headers: corsHeaders }
+      );
+    }
+
     let body;
     try {
       body = await request.json();
@@ -125,7 +140,8 @@ export default {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          "User-Agent": "VECTEC-Checkout-Proxy/1.0"
         },
         body: JSON.stringify(mpPayload)
       });
